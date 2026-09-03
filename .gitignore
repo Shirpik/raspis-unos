@@ -376,6 +376,8 @@ dist/
 /desktop/release/
 /desktop/release-backups/
 /desktop/*.tgz
+/deadline-tracker/build/
+/deadline-tracker/dist/
 /frontend/node_modules/
 /frontend/dist/
 /logs/
