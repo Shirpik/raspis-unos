@@ -8,6 +8,7 @@
 #include "config.h"
 #include "date_utils.h"
 #include "format_utils.h"
+#include "room_policy.h"
 
 namespace timetable {
 namespace {
@@ -71,12 +72,16 @@ std::string ConflictReason(
     bool has_access = false;
     bool has_purpose = false;
     bool has_features = false;
+    bool has_operational_policy = false;
     bool has_fixed = lesson.fixed_room < 0;
     for (const RoomData& room : rooms) {
         if (!IsAvailableAt(room, all_days, event.start, event.duration) || room.campus != event.campus) continue;
         has_campus = true;
         if (!CanTeacherUseRoom(room, event.teacher)) continue;
         has_access = true;
+        const Date& event_date = all_days[event.start / SLOTS_PER_DAY];
+        if (!OperationalRoomPolicyAllows(room, lesson, event_date)) continue;
+        has_operational_policy = true;
         if (!MatchesRoomPurpose(room, lesson)) continue;
         has_purpose = true;
         if (!MatchesRoomFeatures(room, lesson)) continue;
@@ -88,6 +93,7 @@ std::string ConflictReason(
     }
     if (!has_campus) return "В выбранном корпусе нет активных аудиторий";
     if (!has_access) return "В выбранном корпусе нет аудитории, разрешённой этому преподавателю";
+    if (!has_operational_policy) return "Нет аудитории, разрешённой оперативным правилом для этого вида занятия";
     if (!has_purpose) return "В выбранном корпусе нет аудитории нужного назначения";
     if (!has_features) return "Нет аудитории нужного типа или с требуемым оборудованием";
     if (!has_fixed && !lesson.allow_room_substitution) return "Закреплённая аудитория не найдена или находится в другом корпусе";
@@ -138,13 +144,21 @@ RoomAllocationResult AllocateRooms(
     for (int l = 0; l < static_cast<int>(lessons.size()) && l < static_cast<int>(x_values.size()); l++) {
         for (int t = 0; t < total_slots && t < static_cast<int>(x_values[l].size()); t++) {
             if (!x_values[l][t]) continue;
-            if (lessons[l].is_block && t > 0 && t % SLOTS_PER_DAY > 0 && x_values[l][t - 1]) continue;
+            const bool grouped_pair = lessons[l].is_block || lessons[l].consecutive_pairs == 2;
+            if (grouped_pair && t > 0 && t % SLOTS_PER_DAY > 0 && x_values[l][t - 1]) continue;
 
             Event event;
             event.lesson = l;
             event.teacher = lessons[l].teacher;
             event.start = t;
-            event.duration = lessons[l].is_block && t + 1 < total_slots && x_values[l][t + 1] ? 2 : 1;
+            event.duration = 1;
+            if (grouped_pair) {
+                while (t + event.duration < total_slots &&
+                       (t + event.duration) / SLOTS_PER_DAY == t / SLOTS_PER_DAY &&
+                       x_values[l][t + event.duration]) {
+                    event.duration++;
+                }
+            }
             const int day = t / SLOTS_PER_DAY;
             const int group = lessons[l].group;
             if (group >= 0 && group < static_cast<int>(group_day_campus.size()) &&
@@ -161,6 +175,8 @@ RoomAllocationResult AllocateRooms(
             for (int r : active_rooms) {
                 const RoomData& room = rooms[r];
                 if (!CanTeacherUseRoom(room, event.teacher)) continue;
+                if (!OperationalRoomPolicyAllows(
+                        room, lessons[l], all_days[event.start / SLOTS_PER_DAY])) continue;
                 if (!MatchesRoomPurpose(room, lessons[l])) continue;
                 if (!MatchesRoomFeatures(room, lessons[l])) continue;
                 if (!IsAvailableAt(room, all_days, event.start, event.duration)) continue;
@@ -211,6 +227,7 @@ RoomAllocationResult AllocateRooms(
     std::map<TeacherCampusKey, int> teacher_required_capacity;
     std::map<TeacherCampusKey, int> teacher_preferred_room_id;
     std::map<TeacherCampusKey, int> teacher_hard_room_id;
+    std::map<TeacherCampusKey, std::set<int>> teacher_requested_room_ids;
     std::map<TeacherCampusKey, std::set<std::string>> teacher_room_purposes;
     std::map<TeacherCampusKey, std::vector<int>> teacher_events;
     for (const Event& event : events) {
@@ -227,6 +244,10 @@ RoomAllocationResult AllocateRooms(
             teacher_preferred_room_id.emplace(key, lesson.preferred_room);
         if (lesson.fixed_room >= 0 && !lesson.allow_room_substitution)
             teacher_hard_room_id.emplace(key, lesson.fixed_room);
+        const int requested_room = lesson.fixed_room >= 0
+            ? lesson.fixed_room : lesson.preferred_room;
+        if (requested_room >= 0)
+            teacher_requested_room_ids[key].insert(requested_room);
     }
 
     std::vector<TeacherCampusKey> teacher_keys;
@@ -245,6 +266,10 @@ RoomAllocationResult AllocateRooms(
     std::map<int, int> stable_room_teacher_count;
     for (const TeacherCampusKey& key : teacher_keys) {
         std::vector<int> candidates;
+        // Разные явные кабинеты у одного преподавателя означают разные виды
+        // занятий (например, теория в аудитории и ЛПЗ в мастерской). В этом
+        // случае нельзя распространять один «стабильный» кабинет на все пары.
+        if (teacher_requested_room_ids[key].size() > 1) continue;
         // Если один преподаватель ведёт предметы с разным назначением
         // аудитории, единый стабильный кабинет ему назначать нельзя.
         if (teacher_room_purposes[key].size() != 1) continue;

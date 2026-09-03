@@ -1,4 +1,3 @@
-import ExcelJS from 'exceljs'
 import pdfMake from 'pdfmake/build/pdfmake.js'
 import pdfFonts from 'pdfmake/build/vfs_fonts.js'
 import { collectSlotNumbers, scheduleRowHeight, slotLessonEntries, splitSlotText, subgroupOrdinal } from './schedulePresentation.js'
@@ -180,57 +179,6 @@ const filenameDateRange = schedule => {
 
 export const schedulePdfFilename = schedule =>
   `Расписание_${filenameDateRange(schedule)}_по_образцу.pdf`
-
-const downloadBuffer = (buffer, filename) => {
-  const url = URL.createObjectURL(new Blob([buffer], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' }))
-  const link = document.createElement('a')
-  link.href = url
-  link.download = filename
-  link.click()
-  setTimeout(() => URL.revokeObjectURL(url), 1000)
-}
-
-export async function exportScheduleExcel(schedule) {
-  const workbook = new ExcelJS.Workbook()
-  workbook.creator = 'Генератор расписания техникума'
-  workbook.created = new Date()
-  for (const [course, groups] of groupByCourse(schedule).entries()) {
-    if (!groups.length) continue
-    const { rows, campuses, merges, blockSize } = buildCourseMatrix(groups)
-    const sheet = workbook.addWorksheet(courseLabel(course), {
-      views: [{ state: 'frozen', xSplit: 3 }],
-      pageSetup: { orientation: 'landscape', paperSize: 8, fitToPage: true, fitToWidth: 1, fitToHeight: 0 },
-    })
-    rows.forEach(row => sheet.addRow(row))
-    merges.forEach(merge => sheet.mergeCells(merge.s.r + 1, merge.s.c + 1, merge.e.r + 1, merge.e.c + 1))
-    sheet.columns = [
-      { width: 11 }, { width: 14 }, { width: 5 },
-      ...Array.from({ length: groups.length }, () => ({ width: 24 })),
-    ]
-    rows.forEach((_, rowIndex) => {
-      const isHeader = rowIndex % blockSize === 0
-      const row = sheet.getRow(rowIndex + 1)
-      row.height = isHeader ? 22 : scheduleRowHeight(rows[rowIndex].slice(3))
-      row.eachCell({ includeEmpty: true }, (cell, colNumber) => {
-        const colIndex = colNumber - 1
-        const isLeft = colIndex <= 2
-        const isLesnaya = colIndex > 2 && campuses[rowIndex]?.[colIndex] === 'Лесная'
-        cell.font = { name: 'Arial', size: isHeader ? 10 : 9, bold: isHeader || isLeft, color: { argb: isLesnaya ? 'FFFFFFFF' : 'FF000000' } }
-        cell.alignment = { horizontal: 'center', vertical: 'middle', wrapText: true }
-        cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: `FF${isLesnaya ? '808080' : (isHeader || isLeft ? 'BDD7EE' : 'FFFFFF')}` } }
-        cell.border = {
-          top: { style: 'thin', color: { argb: 'FF000000' } },
-          bottom: { style: 'thin', color: { argb: 'FF000000' } },
-          left: { style: 'thin', color: { argb: 'FF000000' } },
-          right: { style: 'thin', color: { argb: 'FF000000' } },
-        }
-      })
-    })
-  }
-  const filename = `Расписание_${filenameDateRange(schedule)}_по_образцу.xlsx`
-  downloadBuffer(await workbook.xlsx.writeBuffer(), filename)
-  return { filename, sheets: workbook.worksheets.length }
-}
 
 const pdfTableLayout = {
   hLineWidth: () => 0.45,

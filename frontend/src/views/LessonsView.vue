@@ -52,6 +52,8 @@
               <span v-if="l.is_lab" class="badge badge-success">ЛПЗ</span>
               <span v-else-if="l.is_block" class="badge badge-warning">УП-блок</span>
               <span v-else class="badge badge-muted">Лекция</span>
+              <small v-if="l.consecutive_pairs === 2" class="constraint-note">только по 2 подряд</small>
+              <small v-if="l.avoid_lunch_split" class="constraint-note">не через обед</small>
             </td>
             <td>
               <span v-for="c in l.allowed_campuses" :key="c" class="chip" style="margin-right:3px">
@@ -103,6 +105,11 @@
           <input v-model.number="form.total_hours" type="number" min="1" max="1000" class="form-input" />
         </div>
       </div>
+      <div class="form-group">
+        <label class="form-label">Квота в текущей генерации (пар)</label>
+        <input v-model.number="form.total_slots" type="number" min="0" max="100" class="form-input" />
+        <small>Не пересчитывается из часов плана. Для двойных ЛПЗ нечётное значение будет округлено вверх.</small>
+      </div>
       <div class="form-row">
         <div class="form-group"><label class="form-label">Чётность недель</label><select v-model="form.week_parity" class="form-select"><option value="all">Каждую неделю</option><option value="odd">Только нечётные</option><option value="even">Только чётные</option></select></div>
         <div class="form-group"><label class="form-label">Закреплённая аудитория</label><select v-model.number="form.fixed_room" class="form-select"><option :value="-1">Не закреплена</option><option v-for="r in activeRooms" :key="r.id" :value="r.id">{{ r.name }} — {{ r.campus === 1 ? 'Кривоусова' : 'Лесная' }}</option></select></div>
@@ -115,6 +122,7 @@
         <div class="form-group"><label class="form-label">Требуемый тип аудитории</label><select v-model.number="form.required_room_type" class="form-select"><option :value="0">Любой тип</option><option v-for="type in store.roomTypes" :key="type.id" :value="type.id">{{ type.name }}</option></select></div>
         <div class="form-group"><label class="form-label">Минимальная вместимость</label><input v-model.number="form.required_capacity" type="number" min="0" class="form-input" placeholder="0 — по размеру группы" /></div>
       </div>
+      <div class="form-group"><label class="form-label">Назначение помещения</label><select v-model="form.required_room_purpose" class="form-select"><option value="">Обычная учебная аудитория</option><option value="sports_hall">Спортивный зал</option></select></div>
       <div class="form-group"><label class="form-label">Требуемое оборудование</label><input v-model="form.required_equipment_text" class="form-input" placeholder="Проектор, ПК, станки" /><small>Несколько позиций разделяйте запятыми.</small></div>
       <div class="form-row">
         <label class="form-checkbox">
@@ -124,6 +132,16 @@
         <label class="form-checkbox">
           <input type="checkbox" v-model="form.is_block" />
           УП-блок
+        </label>
+      </div>
+      <div class="form-row">
+        <label class="form-checkbox">
+          <input v-model.number="form.consecutive_pairs" type="checkbox" :true-value="2" :false-value="1" />
+          Ставить только блоками по 2 пары подряд
+        </label>
+        <label class="form-checkbox">
+          <input v-model="form.avoid_lunch_split" type="checkbox" />
+          Не объединять 2-ю и 3-ю пары через обед
         </label>
       </div>
       <div class="form-group">
@@ -198,6 +216,7 @@ function roomName(id) { return id >= 0 ? (store.rooms.find(r => r.id === id)?.na
 function roomRequirementSummary(lesson) {
   const parts = []
   if (lesson.required_room_type > 0) parts.push(store.roomTypes.find(type => type.id === lesson.required_room_type)?.name || `тип ${lesson.required_room_type}`)
+  if (lesson.required_room_purpose === 'sports_hall') parts.push('спортзал')
   if (lesson.required_capacity > 0) parts.push(`от ${lesson.required_capacity} мест`)
   if (lesson.required_equipment?.length) parts.push(lesson.required_equipment.join(', '))
   return parts.join(' · ')
@@ -263,5 +282,6 @@ async function doDelete() {
 .auto-room { display:block; margin-top:3px; color:var(--success); white-space:nowrap; }
 .substitution-option { margin: 2px 0 14px; padding:10px 12px; border:1px solid var(--border); border-radius:8px; background:var(--bg-secondary); }
 .form-group small { display:block; color:var(--text-muted); font-size:12px; margin-top:4px; }
+.constraint-note { display:block; color:var(--text-muted); margin-top:3px; }
 @media (max-width: 500px) { .form-row { flex-direction: column; } }
 </style>

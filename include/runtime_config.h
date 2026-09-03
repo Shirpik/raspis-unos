@@ -28,6 +28,10 @@ struct RuntimeSolverConfig {
     // Имя булевого флага сохранено для обратной совместимости с уже
     // сохранёнными настройками. Сам предел задаётся отдельным числом.
     bool hard_max_two_same_subject_per_day = true;
+    // Сначала сохраняем строгий дневной минимум для всех групп. Если такая
+    // неделя доказанно неразрешима, solver может ослабить его у минимального
+    // числа групп, не снимая остальные hard-ограничения.
+    bool allow_single_pair_day_fallback = true;
     bool use_quality_objective = true;
     bool strict_all_theory_before_labs = false;
     bool optimize_teacher_windows = false;
@@ -76,6 +80,7 @@ struct SolverConfigField {
 const std::vector<SolverConfigField>& SolverConfigSchema();
 
 RuntimeSolverConfig DefaultSolverConfig();
+RuntimeSolverConfig ParseSolverConfig(const JsonValue& solver_config_json);
 void ApplySolverConfig(const RuntimeSolverConfig& cfg);
 void LoadSolverConfigFromJson(const JsonValue& solver_config_json);
 JsonValue SolverConfigToJson(const RuntimeSolverConfig& cfg);

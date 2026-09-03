@@ -864,12 +864,12 @@ int GroupIndexFromPathValue(const std::string& raw_value) {
         // дальше ищем по имени
     }
 
-    ScheduleInputData data;
-    std::string error;
-    if (!LoadScheduleInputData(data, error)) return -1;
+    JsonParseResult parsed = LoadRoot();
+    if (!parsed.ok || !parsed.value.At("groups").IsArray()) return -1;
     std::string lowered = Lower(value);
-    for (const GroupData& group : data.groups) {
-        if (Lower(group.name) == lowered) return group.id;
+    for (const JsonValue& group : parsed.value.At("groups").array_value) {
+        if (Lower(JsonString(group, "name", "")) == lowered)
+            return JsonInt(group, "id", -1);
     }
     return -1;
 }
@@ -958,8 +958,8 @@ std::string GetSolverConfig() {
         schema_arr.array_value.push_back(entry);
     }
 
-    LoadSolverConfigFromJson(solver_config);
-    JsonValue effective = SolverConfigToJson(g_solver_config);
+    const RuntimeSolverConfig parsed_config = ParseSolverConfig(solver_config);
+    JsonValue effective = SolverConfigToJson(parsed_config);
     if (solver_config.At("profile").IsString()) effective.At("profile") = solver_config.At("profile");
     JsonValue result = JsonValue::MakeObject();
     result.At("values") = effective;
@@ -976,9 +976,9 @@ std::string UpdateSolverConfig(const std::string& body, bool reset_to_defaults) 
     JsonValue& settings = parsed.value.At("settings");
     if (!settings.IsObject()) settings = JsonValue::MakeObject();
 
+    RuntimeSolverConfig effective_config = DefaultSolverConfig();
     if (reset_to_defaults) {
         settings.At("solver_config") = SolverConfigToJson(DefaultSolverConfig());
-        LoadSolverConfigFromJson(settings.At("solver_config"));
     } else {
         JsonParseResult body_json = ParseJson(body);
         if (!body_json.ok || !body_json.value.IsObject()) {
@@ -996,16 +996,16 @@ std::string UpdateSolverConfig(const std::string& body, bool reset_to_defaults) 
             solver_config.At(kv.first) = kv.second;
         }
 
-        LoadSolverConfigFromJson(solver_config);
+        effective_config = ParseSolverConfig(solver_config);
         const JsonValue profile = solver_config.At("profile");
-        solver_config = SolverConfigToJson(g_solver_config);
+        solver_config = SolverConfigToJson(effective_config);
         if (profile.IsString()) solver_config.At("profile") = profile;
-        if (g_solver_config.min_student_pairs_per_study_day > g_solver_config.max_student_pairs_per_day) {
+        if (effective_config.min_student_pairs_per_study_day > effective_config.max_student_pairs_per_day) {
             return ErrorJson(400, "Bad Request",
                 "Минимум пар у студента не может быть больше суточного максимума");
         }
-        if (g_solver_config.max_whole_group_same_subject_pairs_per_day >
-            g_solver_config.max_same_subject_pairs_per_day) {
+        if (effective_config.max_whole_group_same_subject_pairs_per_day >
+            effective_config.max_same_subject_pairs_per_day) {
             return ErrorJson(400, "Bad Request",
                 "Предел общегрупповых повторов не может быть больше предела физической подгруппы");
         }
@@ -1013,6 +1013,7 @@ std::string UpdateSolverConfig(const std::string& body, bool reset_to_defaults) 
 
     std::string error;
     if (!SaveRoot(parsed.value, error)) return ErrorJson(500, "Internal Server Error", error);
+    ApplySolverConfig(effective_config);
 
     JsonValue envelope = ResponseEnvelope(
         true,
@@ -1091,10 +1092,11 @@ std::string ApplySolverProfile(const std::string& profile_id) {
         config.At("student_late_slot_weight") = JsonValue::MakeNumber(20);
     }
 
-    LoadSolverConfigFromJson(config);
+    const RuntimeSolverConfig effective_config = ParseSolverConfig(config);
     std::string error;
     if (!SaveDataJson(parsed.value, error, "Выбран профиль решателя " + profile_id))
         return ErrorJson(500, "Internal Server Error", error);
+    ApplySolverConfig(effective_config);
     JsonValue envelope = ResponseEnvelope(
         true, "Профиль решателя применён. Запусти регенерацию.", &config);
     return OkJson(envelope);
@@ -1227,6 +1229,16 @@ std::string HandleRequest(const std::string& request, const std::string& output_
             "{\"success\":true,\"username\":\"" +
                 JsonEscape(JsonString(parsed.value, "new_username", "")) + "\"}",
             {{"Set-Cookie", SessionCookie(result.value)}, {"Cache-Control", "no-store"}});
+    }
+
+    // Генератор читает единый согласованный снимок базы и параметров. Любая
+    // параллельная запись могла раньше изменить глобальную конфигурацию или
+    // привести к финальной проверке уже против другой версии данных.
+    const bool mutating_request = method == "POST" || method == "PUT" ||
+        method == "PATCH" || method == "DELETE";
+    if (g_gen.running.load() && mutating_request && path != "/api/schedule/cancel") {
+        return ErrorJson(409, "Conflict",
+            "Во время генерации данные и настройки заблокированы. Дождитесь завершения или отмените генерацию.");
     }
 
     if (method == "GET" && (path == "/" || path == "/api")) {

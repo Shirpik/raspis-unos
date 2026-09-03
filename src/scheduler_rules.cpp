@@ -70,6 +70,23 @@ int EffectiveStudentDailyMinimum(int requested_minimum, int weekly_part_pairs) {
     return std::min(requested_minimum, weekly_part_pairs);
 }
 
+int EffectiveStudentStudyDays(
+    int requested_days,
+    int available_days,
+    int daily_minimum,
+    int weekly_part_pairs
+) {
+    if (requested_days <= 0 || available_days <= 0 || weekly_part_pairs <= 0) return 0;
+    const int effective_minimum = EffectiveStudentDailyMinimum(
+        daily_minimum, weekly_part_pairs);
+    if (effective_minimum <= 0) return 0;
+    return std::max(0, std::min({
+        requested_days,
+        available_days,
+        weekly_part_pairs / effective_minimum
+    }));
+}
+
 int EffectiveTeacherMaxPairsPerDay(int configured_limit) {
     if (configured_limit <= 0) return 0;
     return std::min(configured_limit, SLOTS_PER_DAY);

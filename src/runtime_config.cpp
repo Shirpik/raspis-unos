@@ -27,6 +27,7 @@ RuntimeSolverConfig DefaultSolverConfig() {
     cfg.hard_min_2_teacher_pairs_per_day = false;
     cfg.hard_max_one_two_pair_student_day = false;
     cfg.hard_max_two_same_subject_per_day = true;
+    cfg.allow_single_pair_day_fallback = true;
     cfg.use_quality_objective = false;
     cfg.strict_all_theory_before_labs = false;
     cfg.optimize_teacher_windows = false;
@@ -88,7 +89,7 @@ void PullBool(const JsonValue& obj, const std::string& key, bool& dst) {
 
 }  // namespace
 
-void LoadSolverConfigFromJson(const JsonValue& solver_config_json) {
+RuntimeSolverConfig ParseSolverConfig(const JsonValue& solver_config_json) {
     RuntimeSolverConfig cfg = DefaultSolverConfig();
     if (solver_config_json.IsObject()) {
         PullDouble(solver_config_json, "solver_time_limit_seconds", cfg.solver_time_limit_seconds);
@@ -107,6 +108,7 @@ void LoadSolverConfigFromJson(const JsonValue& solver_config_json) {
         PullBool(solver_config_json, "hard_min_2_teacher_pairs_per_day", cfg.hard_min_2_teacher_pairs_per_day);
         PullBool(solver_config_json, "hard_max_one_two_pair_student_day", cfg.hard_max_one_two_pair_student_day);
         PullBool(solver_config_json, "hard_max_two_same_subject_per_day", cfg.hard_max_two_same_subject_per_day);
+        PullBool(solver_config_json, "allow_single_pair_day_fallback", cfg.allow_single_pair_day_fallback);
         PullBool(solver_config_json, "use_quality_objective", cfg.use_quality_objective);
         PullBool(solver_config_json, "strict_all_theory_before_labs", cfg.strict_all_theory_before_labs);
         PullBool(solver_config_json, "optimize_teacher_windows", cfg.optimize_teacher_windows);
@@ -148,7 +150,11 @@ void LoadSolverConfigFromJson(const JsonValue& solver_config_json) {
         std::clamp(cfg.max_whole_group_same_subject_pairs_per_day, 1, 7);
     cfg.max_same_subject_pairs_per_day = std::clamp(cfg.max_same_subject_pairs_per_day, 1, 7);
 
-    ApplySolverConfig(cfg);
+    return cfg;
+}
+
+void LoadSolverConfigFromJson(const JsonValue& solver_config_json) {
+    ApplySolverConfig(ParseSolverConfig(solver_config_json));
 }
 
 JsonValue SolverConfigToJson(const RuntimeSolverConfig& cfg) {
@@ -169,6 +175,7 @@ JsonValue SolverConfigToJson(const RuntimeSolverConfig& cfg) {
     v.At("hard_min_2_teacher_pairs_per_day") = JsonValue::MakeBool(cfg.hard_min_2_teacher_pairs_per_day);
     v.At("hard_max_one_two_pair_student_day") = JsonValue::MakeBool(cfg.hard_max_one_two_pair_student_day);
     v.At("hard_max_two_same_subject_per_day") = JsonValue::MakeBool(cfg.hard_max_two_same_subject_per_day);
+    v.At("allow_single_pair_day_fallback") = JsonValue::MakeBool(cfg.allow_single_pair_day_fallback);
     v.At("use_quality_objective") = JsonValue::MakeBool(cfg.use_quality_objective);
     v.At("strict_all_theory_before_labs") = JsonValue::MakeBool(cfg.strict_all_theory_before_labs);
     v.At("optimize_teacher_windows") = JsonValue::MakeBool(cfg.optimize_teacher_windows);
@@ -222,6 +229,7 @@ void UpdateSolverConfigFromPatch(const JsonValue& patch) {
     PullBool(patch, "hard_min_2_teacher_pairs_per_day", cfg.hard_min_2_teacher_pairs_per_day);
     PullBool(patch, "hard_max_one_two_pair_student_day", cfg.hard_max_one_two_pair_student_day);
     PullBool(patch, "hard_max_two_same_subject_per_day", cfg.hard_max_two_same_subject_per_day);
+    PullBool(patch, "allow_single_pair_day_fallback", cfg.allow_single_pair_day_fallback);
     PullBool(patch, "use_quality_objective", cfg.use_quality_objective);
     PullBool(patch, "strict_all_theory_before_labs", cfg.strict_all_theory_before_labs);
     PullBool(patch, "optimize_teacher_windows", cfg.optimize_teacher_windows);
@@ -320,6 +328,9 @@ const std::vector<SolverConfigField>& SolverConfigSchema() {
          "hard_soft", "bool"},
         {"hard_max_two_same_subject_per_day", "Ограничить одинаковые пары в день (HARD)",
          "Включает два предела одного предмета: отдельно для всей группы и для календаря каждой физической подгруппы.",
+         "hard_soft", "bool"},
+        {"allow_single_pair_day_fallback", "Резерв: одинарный учебный день",
+         "Если строгий дневной минимум делает неделю неразрешимой, разрешает solver ослабить его только у минимально необходимого числа групп. Все такие группы записываются в метрики.",
          "hard_soft", "bool"},
         {"strict_all_theory_before_labs", "Вся теория до лаб (HARD)",
          "true = ни одна лаба не идёт до теории. false = хотя бы min_initial_theory_slots_before_labs теоретических до первой лабы.",

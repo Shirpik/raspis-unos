@@ -229,7 +229,7 @@ try {
     if (@($occupancy.entries | Where-Object { $_.is_substitution -and $_.teacher_id -eq 1 }).Count -ne 1) {
         throw 'Teacher occupancy did not apply substitution'
     }
-    $csv = (Invoke-WebRequest "$baseUrl/api/accounting/substitutions.csv").Content
+    $csv = (Invoke-WebRequest "$baseUrl/api/accounting/substitutions.csv" -UseBasicParsing).Content
     if ($csv -notmatch 'sick-leave' -or $csv -notmatch 'Substitute Teacher') { throw 'Substitution CSV is invalid' }
     $null = Invoke-RestMethod "$baseUrl/api/schedule/publish" -Method Post -ContentType 'application/json' -Body '{}'
     $published = Invoke-RestMethod "$baseUrl/api/schedule/published"

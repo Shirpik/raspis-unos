@@ -3,48 +3,283 @@
   "group_name": "СП-Пф-1605",
   "days": [
     {
-      "date": "03.09.2026",
-      "date_iso": "2026-09-03",
-      "day_index": 0,
-      "weekday": "ЧТ",
-      "slots": [
-        {"slot": 1, "time": "1 пара (08:30-09:55)", "text": "информатика — 1 п/г, Круглова Юлия Петровна, Кривоусова", "lessons": [{"id":85,"uid":"lesson-e03dcd0f230a3d80","name":"информатика","teacher_id":24,"subgroup":8,"is_lab":false,"is_block":false,"week_parity":"all","room_id":13,"room_name":"28","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
-        {"slot": 2, "time": "2 пара (10:05-11:30)", "text": "литература — вся группа, Кибардина Татьяна Леонидовна, Кривоусова", "lessons": [{"id":77,"uid":"lesson-99973ebb030394a0","name":"литература","teacher_id":22,"subgroup":-1,"is_lab":false,"is_block":false,"week_parity":"all","room_id":16,"room_name":"33","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
-        {"slot": 3, "time": "3 пара (12:25-13:50)", "text": "русский язык — вся группа, Кибардина Татьяна Леонидовна, Кривоусова", "lessons": [{"id":76,"uid":"lesson-54ff384b906b81f2","name":"русский язык","teacher_id":22,"subgroup":-1,"is_lab":false,"is_block":false,"week_parity":"all","room_id":16,"room_name":"33","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
-        {"slot": 4, "time": "4 пара (14:00-15:25)", "text": "физика — вся группа, Силенок Марина Юрьевна, Кривоусова", "lessons": [{"id":89,"uid":"lesson-1eaf279213bb5fe6","name":"физика","teacher_id":19,"subgroup":-1,"is_lab":false,"is_block":false,"week_parity":"all","room_id":9,"room_name":"22","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
-        {"slot": 5, "time": "5 пара (15:35-16:55)", "text": "-", "lessons": []},
-        {"slot": 6, "time": "6 пара (17:05-18:25)", "text": "-", "lessons": []},
-        {"slot": 7, "time": "7 пара (18:35-19:55)", "text": "-", "lessons": []}
-      ]
-    },
-    {
       "date": "04.09.2026",
       "date_iso": "2026-09-04",
-      "day_index": 1,
+      "day_index": 0,
       "weekday": "ПТ",
       "slots": [
-        {"slot": 1, "time": "1 пара (08:30-09:55)", "text": "-", "lessons": []},
-        {"slot": 2, "time": "2 пара (10:05-11:30)", "text": "иностранный язык — 2 п/г, Буркова Елена Владимировна, Лесная", "lessons": [{"id":82,"uid":"lesson-3d322617e8690622","name":"иностранный язык","teacher_id":16,"subgroup":9,"is_lab":false,"is_block":false,"week_parity":"all","room_id":44,"room_name":"405","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
-        {"slot": 3, "time": "3 пара (12:25-13:50)", "text": "иностранный язык — 2 п/г, Буркова Елена Владимировна, Лесная", "lessons": [{"id":82,"uid":"lesson-3d322617e8690622","name":"иностранный язык","teacher_id":16,"subgroup":9,"is_lab":false,"is_block":false,"week_parity":"all","room_id":44,"room_name":"405","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
-        {"slot": 4, "time": "4 пара (14:00-15:25)", "text": "математика — вся группа, Журавский Константин Сергеевич, Лесная", "lessons": [{"id":83,"uid":"lesson-9a439e2053cb5a68","name":"математика","teacher_id":23,"subgroup":-1,"is_lab":false,"is_block":false,"week_parity":"all","room_id":45,"room_name":"407","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
-        {"slot": 5, "time": "5 пара (15:35-16:55)", "text": "история — вся группа, Лучинин Александр Васильевич, Лесная", "lessons": [{"id":78,"uid":"lesson-f53e0f85243a68d5","name":"история","teacher_id":14,"subgroup":-1,"is_lab":false,"is_block":false,"week_parity":"all","room_id":37,"room_name":"317","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
-        {"slot": 6, "time": "6 пара (17:05-18:25)", "text": "иностранный язык — 1 п/г, Буркова Елена Владимировна, Лесная", "lessons": [{"id":81,"uid":"lesson-0d6621217c6ac7fb","name":"иностранный язык","teacher_id":16,"subgroup":8,"is_lab":false,"is_block":false,"week_parity":"all","room_id":44,"room_name":"405","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
-        {"slot": 7, "time": "7 пара (18:35-19:55)", "text": "-", "lessons": []}
+        {
+          "slot": 1,
+          "time": "1 пара (08:30-09:55)",
+          "text": "математика — вся группа, Журавский Константин Сергеевич, Лесная",
+          "lessons": [
+            {
+              "id": 83,
+              "uid": "lesson-9a439e2053cb5a68",
+              "name": "математика",
+              "teacher_id": 23,
+              "subgroup": -1,
+              "is_lab": false,
+              "is_block": false,
+              "consecutive_pairs": 1,
+              "avoid_lunch_split": false,
+              "week_parity": "all",
+              "room_id": 31,
+              "room_name": "205",
+              "room_type": 0,
+              "room_substituted": false,
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_substitution_reason": null
+            }
+          ]
+        },
+        {
+          "slot": 2,
+          "time": "2 пара (10:05-11:30)",
+          "text": "история — вся группа, Лучинин Александр Васильевич, Лесная",
+          "lessons": [
+            {
+              "id": 78,
+              "uid": "lesson-f53e0f85243a68d5",
+              "name": "история",
+              "teacher_id": 14,
+              "subgroup": -1,
+              "is_lab": false,
+              "is_block": false,
+              "consecutive_pairs": 1,
+              "avoid_lunch_split": false,
+              "week_parity": "all",
+              "room_id": 37,
+              "room_name": "317",
+              "room_type": 0,
+              "room_substituted": false,
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_substitution_reason": null
+            }
+          ]
+        },
+        {
+          "slot": 3,
+          "time": "3 пара (12:25-13:50)",
+          "text": "история — вся группа, Лучинин Александр Васильевич, Лесная",
+          "lessons": [
+            {
+              "id": 78,
+              "uid": "lesson-f53e0f85243a68d5",
+              "name": "история",
+              "teacher_id": 14,
+              "subgroup": -1,
+              "is_lab": false,
+              "is_block": false,
+              "consecutive_pairs": 1,
+              "avoid_lunch_split": false,
+              "week_parity": "all",
+              "room_id": 37,
+              "room_name": "317",
+              "room_type": 0,
+              "room_substituted": false,
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_substitution_reason": null
+            }
+          ]
+        },
+        {
+          "slot": 4,
+          "time": "4 пара (14:00-15:25)",
+          "text": "введение в специальность — вся группа, Костарева Наталья Викторовна, Лесная",
+          "lessons": [
+            {
+              "id": 94,
+              "uid": "lesson-7636d468ea165d68",
+              "name": "введение в специальность",
+              "teacher_id": 13,
+              "subgroup": -1,
+              "is_lab": false,
+              "is_block": false,
+              "consecutive_pairs": 1,
+              "avoid_lunch_split": false,
+              "week_parity": "all",
+              "room_id": 38,
+              "room_name": "318",
+              "room_type": 0,
+              "room_substituted": false,
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_substitution_reason": null
+            }
+          ]
+        },
+        {
+          "slot": 5,
+          "time": "5 пара (15:35-16:55)",
+          "text": "-",
+          "lessons": []
+        },
+        {
+          "slot": 6,
+          "time": "6 пара (17:05-18:25)",
+          "text": "-",
+          "lessons": []
+        },
+        {
+          "slot": 7,
+          "time": "7 пара (18:35-19:55)",
+          "text": "-",
+          "lessons": []
+        }
       ]
     },
     {
       "date": "05.09.2026",
       "date_iso": "2026-09-05",
-      "day_index": 2,
+      "day_index": 1,
       "weekday": "СБ",
       "slots": [
-        {"slot": 1, "time": "1 пара (08:30-09:45)", "text": "история — вся группа, Лучинин Александр Васильевич, Лесная", "lessons": [{"id":78,"uid":"lesson-f53e0f85243a68d5","name":"история","teacher_id":14,"subgroup":-1,"is_lab":false,"is_block":false,"week_parity":"all","room_id":37,"room_name":"317","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
-        {"slot": 2, "time": "2 пара (09:55-11:10)", "text": "введение в специальность — вся группа, Костарева Наталья Викторовна, Лесная", "lessons": [{"id":94,"uid":"lesson-7636d468ea165d68","name":"введение в специальность","teacher_id":13,"subgroup":-1,"is_lab":false,"is_block":false,"week_parity":"all","room_id":38,"room_name":"318","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
-        {"slot": 3, "time": "3 пара (11:30-12:45)", "text": "-", "lessons": []},
-        {"slot": 4, "time": "4 пара (12:55-14:10)", "text": "-", "lessons": []},
-        {"slot": 5, "time": "5 пара (14:20-15:30)", "text": "-", "lessons": []},
-        {"slot": 6, "time": "6 пара (15:40-16:50)", "text": "-", "lessons": []},
-        {"slot": 7, "time": "7 пара (17:00-18:10)", "text": "-", "lessons": []}
+        {
+          "slot": 1,
+          "time": "1 пара (08:30-09:45)",
+          "text": "иностранный язык — 2 п/г, Буркова Елена Владимировна, Кривоусова",
+          "lessons": [
+            {
+              "id": 82,
+              "uid": "lesson-3d322617e8690622",
+              "name": "иностранный язык",
+              "teacher_id": 16,
+              "subgroup": 9,
+              "is_lab": false,
+              "is_block": false,
+              "consecutive_pairs": 1,
+              "avoid_lunch_split": false,
+              "week_parity": "all",
+              "room_id": 20,
+              "room_name": "41",
+              "room_type": 0,
+              "room_substituted": false,
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_substitution_reason": null
+            }
+          ]
+        },
+        {
+          "slot": 2,
+          "time": "2 пара (09:55-11:10)",
+          "text": "иностранный язык — 2 п/г, Буркова Елена Владимировна, Кривоусова",
+          "lessons": [
+            {
+              "id": 82,
+              "uid": "lesson-3d322617e8690622",
+              "name": "иностранный язык",
+              "teacher_id": 16,
+              "subgroup": 9,
+              "is_lab": false,
+              "is_block": false,
+              "consecutive_pairs": 1,
+              "avoid_lunch_split": false,
+              "week_parity": "all",
+              "room_id": 20,
+              "room_name": "41",
+              "room_type": 0,
+              "room_substituted": false,
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_substitution_reason": null
+            }
+          ]
+        },
+        {
+          "slot": 3,
+          "time": "3 пара (11:30-12:45)",
+          "text": "физика — вся группа, Силенок Марина Юрьевна, Кривоусова",
+          "lessons": [
+            {
+              "id": 89,
+              "uid": "lesson-1eaf279213bb5fe6",
+              "name": "физика",
+              "teacher_id": 19,
+              "subgroup": -1,
+              "is_lab": false,
+              "is_block": false,
+              "consecutive_pairs": 1,
+              "avoid_lunch_split": false,
+              "week_parity": "all",
+              "room_id": 9,
+              "room_name": "22",
+              "room_type": 0,
+              "room_substituted": false,
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_substitution_reason": null
+            }
+          ]
+        },
+        {
+          "slot": 4,
+          "time": "4 пара (12:55-14:10)",
+          "text": "информатика — 1 п/г, Круглова Юлия Петровна, Кривоусова",
+          "lessons": [
+            {
+              "id": 85,
+              "uid": "lesson-e03dcd0f230a3d80",
+              "name": "информатика",
+              "teacher_id": 24,
+              "subgroup": 8,
+              "is_lab": false,
+              "is_block": false,
+              "consecutive_pairs": 1,
+              "avoid_lunch_split": false,
+              "week_parity": "all",
+              "room_id": 5,
+              "room_name": "16",
+              "room_type": 0,
+              "room_substituted": false,
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_substitution_reason": null
+            }
+          ]
+        },
+        {
+          "slot": 5,
+          "time": "5 пара (14:20-15:30)",
+          "text": "иностранный язык — 1 п/г, Буркова Елена Владимировна, Кривоусова",
+          "lessons": [
+            {
+              "id": 81,
+              "uid": "lesson-0d6621217c6ac7fb",
+              "name": "иностранный язык",
+              "teacher_id": 16,
+              "subgroup": 8,
+              "is_lab": false,
+              "is_block": false,
+              "consecutive_pairs": 1,
+              "avoid_lunch_split": false,
+              "week_parity": "all",
+              "room_id": 20,
+              "room_name": "41",
+              "room_type": 0,
+              "room_substituted": false,
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_substitution_reason": null
+            }
+          ]
+        },
+        {
+          "slot": 6,
+          "time": "6 пара (15:40-16:50)",
+          "text": "-",
+          "lessons": []
+        },
+        {
+          "slot": 7,
+          "time": "7 пара (17:00-18:10)",
+          "text": "-",
+          "lessons": []
+        }
       ]
     }
   ]

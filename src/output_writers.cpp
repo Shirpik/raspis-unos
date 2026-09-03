@@ -584,6 +584,8 @@ void WriteSlotLessonsJson(
             << ",\"subgroup\":" << lessons[l].subgroup
             << ",\"is_lab\":" << (lessons[l].is_lab ? "true" : "false")
             << ",\"is_block\":" << (lessons[l].is_block ? "true" : "false")
+            << ",\"consecutive_pairs\":" << lessons[l].consecutive_pairs
+            << ",\"avoid_lunch_split\":" << (lessons[l].avoid_lunch_split ? "true" : "false")
             << ",\"week_parity\":\"" << JsonEscape(lessons[l].week_parity) << "\""
             << ",\"room_id\":" << (room_id >= 0 ? std::to_string(room_id) : "null")
             << ",\"room_name\":" << (room_name.empty()

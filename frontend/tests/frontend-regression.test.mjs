@@ -13,6 +13,8 @@ import {
   lessonPayloadFromForm,
   roomFormFromEntity,
   roomPayloadFromForm,
+  teacherFormFromEntity,
+  teacherPayloadFromForm,
 } from '../src/utils/entityPayloads.js'
 
 test('schedule presentation keeps slots 6/7 and all parallel subgroup events', () => {
@@ -40,6 +42,43 @@ test('schedule presentation keeps slots 6/7 and all parallel subgroup events', (
   assert.equal(events.length, 6, '3+3 subgroup events must remain six distinct entries')
   assert.deepEqual(events.map(entry => entry.subgroupOrdinal), [1, 2, 1, 2, 1, 2])
   assert.equal(subgroupOrdinal(11, groupIndex), 2)
+})
+
+test('teacher edit round-trip preserves every solver availability limit', () => {
+  const original = {
+    id: 31,
+    uid: 'teacher-31',
+    name: 'Ланитина Елена Сергеевна',
+    default_room: -1,
+    campus_priority: [1, 0],
+    allowed_campuses: [1],
+    max_work_days_per_week: 3,
+    max_pairs_per_day: 4,
+    work_period: { from: '2026-09-01', to: '2026-12-31' },
+    work_days: [{ day: 4, enabled: true, slots: [2, 4], start_slot: 2, end_slot: 4 }],
+    date_slot_overrides: [{ date: '2026-09-07', slots: [] }],
+    future_server_field: { preserve: true },
+  }
+  const payload = teacherPayloadFromForm(teacherFormFromEntity(original))
+
+  assert.equal(payload.max_work_days_per_week, 3)
+  assert.equal(payload.max_pairs_per_day, 4)
+  assert.deepEqual(payload.date_slot_overrides, original.date_slot_overrides)
+  assert.deepEqual(payload.work_days, original.work_days)
+  assert.deepEqual(payload.allowed_campuses, [1])
+  assert.deepEqual(payload.future_server_field, { preserve: true })
+})
+
+test('teacher edit preserves a single-campus priority exactly', () => {
+  const original = {
+    id: 31,
+    name: 'Ланитина Елена Сергеевна',
+    campus_priority: [1],
+    allowed_campuses: [1],
+  }
+  const payload = teacherPayloadFromForm(teacherFormFromEntity(original))
+  assert.deepEqual(payload.campus_priority, [1])
+  assert.deepEqual(payload.allowed_campuses, [1])
 })
 
 test('legacy parallel text is split and tall Excel rows are not clipped', () => {
@@ -95,6 +134,22 @@ test('lesson edit round-trip preserves every room requirement', () => {
   assert.equal(payload.total_slots, 3)
 })
 
+test('lesson plan hours do not overwrite the current generation quota', () => {
+  const original = {
+    name: 'ЛПЗ', group: 17, subgroup: 34, teacher: 10,
+    total_hours: 30, total_slots: 2, is_lab: true,
+    consecutive_pairs: 2, avoid_lunch_split: true,
+  }
+  const form = lessonFormFromEntity(original)
+  form.total_hours = 80
+  const payload = lessonPayloadFromForm(form)
+
+  assert.equal(payload.total_hours, 80)
+  assert.equal(payload.total_slots, 2)
+  assert.equal(payload.consecutive_pairs, 2)
+  assert.equal(payload.avoid_lunch_split, true)
+})
+
 test('validation and solver profiles are wired into the visible application flow', async () => {
   const apiSource = await readFile(new URL('../src/api/index.js', import.meta.url), 'utf8')
   const scheduleSource = await readFile(new URL('../src/views/ScheduleView.vue', import.meta.url), 'utf8')
@@ -107,4 +162,17 @@ test('validation and solver profiles are wired into the visible application flow
   assert.match(constructorSource, /source:\s*'payload'/)
   assert.match(settingsSource, /Все параметры/)
   assert.match(settingsSource, /generationMode/)
+})
+
+test('schedule Excel button uses the supplied template export and reports failures', async () => {
+  const scheduleSource = await readFile(new URL('../src/views/ScheduleView.vue', import.meta.url), 'utf8')
+  const exportSource = await readFile(new URL('../src/utils/scheduleTemplateExport.js', import.meta.url), 'utf8')
+  const viteSource = await readFile(new URL('../vite.config.js', import.meta.url), 'utf8')
+
+  assert.match(scheduleSource, /Excel по образцу/)
+  assert.match(scheduleSource, /scheduleTemplateExport/)
+  assert.match(scheduleSource, /toast\.error/)
+  assert.match(exportSource, /templates\/schedule-template\.xlsx/)
+  assert.match(exportSource, /insertedLessons !== expected/)
+  assert.match(viteSource, /templates\/schedule-template\.xlsx/)
 })

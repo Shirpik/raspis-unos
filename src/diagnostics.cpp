@@ -77,6 +77,15 @@ bool ValidateInputLessonsDetailed(const std::vector<Lesson>& lessons, std::vecto
                 push(prefix.str() + ": блоковое занятие должно иметь минимум 1 двойной блок");
             }
         }
+        if (lesson.consecutive_pairs != 1 && lesson.consecutive_pairs != 2) {
+            push(prefix.str() + ": consecutive_pairs должен быть равен 1 или 2");
+        }
+        if (lesson.consecutive_pairs == 2 && lesson.total_slots % 2 != 0) {
+            push(prefix.str() + ": для блоков по две пары total_slots должен быть чётным");
+        }
+        if (lesson.is_block && lesson.consecutive_pairs != 1) {
+            push(prefix.str() + ": УП уже является двойным блоком; дополнительное consecutive_pairs недопустимо");
+        }
     }
 
     return errors.empty();

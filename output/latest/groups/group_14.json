@@ -3,48 +3,281 @@
   "group_name": "МЦМ-Пф-202",
   "days": [
     {
-      "date": "03.09.2026",
-      "date_iso": "2026-09-03",
-      "day_index": 0,
-      "weekday": "ЧТ",
-      "slots": [
-        {"slot": 1, "time": "1 пара (08:30-09:55)", "text": "-", "lessons": []},
-        {"slot": 2, "time": "2 пара (10:05-11:30)", "text": "-", "lessons": []},
-        {"slot": 3, "time": "3 пара (12:25-13:50)", "text": "Информационные технологии в профессиональной деятельности — 1 п/г, Ланитина Елена Сергеевна, Кривоусова", "lessons": [{"id":288,"uid":"lesson-4360593b1b5531c9","name":"Информационные технологии в профессиональной деятельности","teacher_id":31,"subgroup":28,"is_lab":false,"is_block":false,"week_parity":"all","room_id":20,"room_name":"41","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
-        {"slot": 4, "time": "4 пара (14:00-15:25)", "text": "ВМДК.03.04 Производство медных порошков — вся группа, Письмак Владимир Николаевич, Кривоусова", "lessons": [{"id":299,"uid":"lesson-1a9af800e19ac136","name":"ВМДК.03.04 Производство медных порошков","teacher_id":44,"subgroup":-1,"is_lab":false,"is_block":false,"week_parity":"all","room_id":54,"room_name":"57","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
-        {"slot": 5, "time": "5 пара (15:35-16:55)", "text": "ВМДК.03.04 Производство медных порошков — вся группа, Письмак Владимир Николаевич, Кривоусова", "lessons": [{"id":299,"uid":"lesson-1a9af800e19ac136","name":"ВМДК.03.04 Производство медных порошков","teacher_id":44,"subgroup":-1,"is_lab":false,"is_block":false,"week_parity":"all","room_id":54,"room_name":"57","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
-        {"slot": 6, "time": "6 пара (17:05-18:25)", "text": "ЛПЗ ВМДК.03.04 Производство медных порошков — 2 п/г, Письмак Владимир Николаевич, Кривоусова", "lessons": [{"id":301,"uid":"lesson-fcbe290936bd414a","name":"ЛПЗ ВМДК.03.04 Производство медных порошков","teacher_id":44,"subgroup":29,"is_lab":true,"is_block":false,"week_parity":"all","room_id":54,"room_name":"57","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
-        {"slot": 7, "time": "7 пара (18:35-19:55)", "text": "-", "lessons": []}
-      ]
-    },
-    {
       "date": "04.09.2026",
       "date_iso": "2026-09-04",
-      "day_index": 1,
+      "day_index": 0,
       "weekday": "ПТ",
       "slots": [
-        {"slot": 1, "time": "1 пара (08:30-09:55)", "text": "-", "lessons": []},
-        {"slot": 2, "time": "2 пара (10:05-11:30)", "text": "-", "lessons": []},
-        {"slot": 3, "time": "3 пара (12:25-13:50)", "text": "Информационные технологии в профессиональной деятельности — 2 п/г, Ланитина Елена Сергеевна, Кривоусова", "lessons": [{"id":289,"uid":"lesson-7bb434c76b192ece","name":"Информационные технологии в профессиональной деятельности","teacher_id":31,"subgroup":29,"is_lab":false,"is_block":false,"week_parity":"all","room_id":20,"room_name":"41","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
-        {"slot": 4, "time": "4 пара (14:00-15:25)", "text": "Материаловедение — вся группа, Попова Татьяна Вильевна, Кривоусова", "lessons": [{"id":286,"uid":"lesson-594429990b185796","name":"Материаловедение","teacher_id":43,"subgroup":-1,"is_lab":false,"is_block":false,"week_parity":"all","room_id":57,"room_name":"65","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
-        {"slot": 5, "time": "5 пара (15:35-16:55)", "text": "Материаловедение — вся группа, Попова Татьяна Вильевна, Кривоусова", "lessons": [{"id":286,"uid":"lesson-594429990b185796","name":"Материаловедение","teacher_id":43,"subgroup":-1,"is_lab":false,"is_block":false,"week_parity":"all","room_id":57,"room_name":"65","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
-        {"slot": 6, "time": "6 пара (17:05-18:25)", "text": "ЛПЗ ВМДК.03.04 Производство медных порошков — 1 п/г, Письмак Владимир Николаевич, Кривоусова", "lessons": [{"id":300,"uid":"lesson-9d0ebc3fdf3790f7","name":"ЛПЗ ВМДК.03.04 Производство медных порошков","teacher_id":44,"subgroup":28,"is_lab":true,"is_block":false,"week_parity":"all","room_id":54,"room_name":"57","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
-        {"slot": 7, "time": "7 пара (18:35-19:55)", "text": "-", "lessons": []}
+        {
+          "slot": 1,
+          "time": "1 пара (08:30-09:55)",
+          "text": "Основы металлургического производства — вся группа, Попова Татьяна Вильевна, Кривоусова",
+          "lessons": [
+            {
+              "id": 285,
+              "uid": "lesson-79ca82098ed7ac36",
+              "name": "Основы металлургического производства",
+              "teacher_id": 43,
+              "subgroup": -1,
+              "is_lab": false,
+              "is_block": false,
+              "consecutive_pairs": 1,
+              "avoid_lunch_split": false,
+              "week_parity": "all",
+              "room_id": 57,
+              "room_name": "65",
+              "room_type": 0,
+              "room_substituted": false,
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_substitution_reason": null
+            }
+          ]
+        },
+        {
+          "slot": 2,
+          "time": "2 пара (10:05-11:30)",
+          "text": "Материаловедение — вся группа, Попова Татьяна Вильевна, Кривоусова",
+          "lessons": [
+            {
+              "id": 286,
+              "uid": "lesson-594429990b185796",
+              "name": "Материаловедение",
+              "teacher_id": 43,
+              "subgroup": -1,
+              "is_lab": false,
+              "is_block": false,
+              "consecutive_pairs": 1,
+              "avoid_lunch_split": false,
+              "week_parity": "all",
+              "room_id": 57,
+              "room_name": "65",
+              "room_type": 0,
+              "room_substituted": false,
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_substitution_reason": null
+            }
+          ]
+        },
+        {
+          "slot": 3,
+          "time": "3 пара (12:25-13:50)",
+          "text": "Основы металлургического производства — вся группа, Попова Татьяна Вильевна, Кривоусова",
+          "lessons": [
+            {
+              "id": 285,
+              "uid": "lesson-79ca82098ed7ac36",
+              "name": "Основы металлургического производства",
+              "teacher_id": 43,
+              "subgroup": -1,
+              "is_lab": false,
+              "is_block": false,
+              "consecutive_pairs": 1,
+              "avoid_lunch_split": false,
+              "week_parity": "all",
+              "room_id": 57,
+              "room_name": "65",
+              "room_type": 0,
+              "room_substituted": false,
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_substitution_reason": null
+            }
+          ]
+        },
+        {
+          "slot": 4,
+          "time": "4 пара (14:00-15:25)",
+          "text": "-",
+          "lessons": []
+        },
+        {
+          "slot": 5,
+          "time": "5 пара (15:35-16:55)",
+          "text": "-",
+          "lessons": []
+        },
+        {
+          "slot": 6,
+          "time": "6 пара (17:05-18:25)",
+          "text": "-",
+          "lessons": []
+        },
+        {
+          "slot": 7,
+          "time": "7 пара (18:35-19:55)",
+          "text": "-",
+          "lessons": []
+        }
       ]
     },
     {
       "date": "05.09.2026",
       "date_iso": "2026-09-05",
-      "day_index": 2,
+      "day_index": 1,
       "weekday": "СБ",
       "slots": [
-        {"slot": 1, "time": "1 пара (08:30-09:45)", "text": "-", "lessons": []},
-        {"slot": 2, "time": "2 пара (09:55-11:10)", "text": "-", "lessons": []},
-        {"slot": 3, "time": "3 пара (11:30-12:45)", "text": "Иностранный язык в профессиональной деятельности — 1 п/г, Синельникова Елена Владимировна, Кривоусова", "lessons": [{"id":282,"uid":"lesson-c370107692e30bca","name":"Иностранный язык в профессиональной деятельности","teacher_id":30,"subgroup":28,"is_lab":false,"is_block":false,"week_parity":"all","room_id":20,"room_name":"41","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
-        {"slot": 4, "time": "4 пара (12:55-14:10)", "text": "Основы металлургического производства — вся группа, Попова Татьяна Вильевна, Кривоусова", "lessons": [{"id":285,"uid":"lesson-79ca82098ed7ac36","name":"Основы металлургического производства","teacher_id":43,"subgroup":-1,"is_lab":false,"is_block":false,"week_parity":"all","room_id":57,"room_name":"65","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
-        {"slot": 5, "time": "5 пара (14:20-15:30)", "text": "Основы металлургического производства — вся группа, Попова Татьяна Вильевна, Кривоусова", "lessons": [{"id":285,"uid":"lesson-79ca82098ed7ac36","name":"Основы металлургического производства","teacher_id":43,"subgroup":-1,"is_lab":false,"is_block":false,"week_parity":"all","room_id":57,"room_name":"65","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
-        {"slot": 6, "time": "6 пара (15:40-16:50)", "text": "Иностранный язык в профессиональной деятельности — 2 п/г, Синельникова Елена Владимировна, Кривоусова", "lessons": [{"id":283,"uid":"lesson-02c43126ec63d343","name":"Иностранный язык в профессиональной деятельности","teacher_id":30,"subgroup":29,"is_lab":false,"is_block":false,"week_parity":"all","room_id":20,"room_name":"41","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
-        {"slot": 7, "time": "7 пара (17:00-18:10)", "text": "-", "lessons": []}
+        {
+          "slot": 1,
+          "time": "1 пара (08:30-09:45)",
+          "text": "-",
+          "lessons": []
+        },
+        {
+          "slot": 2,
+          "time": "2 пара (09:55-11:10)",
+          "text": "-",
+          "lessons": []
+        },
+        {
+          "slot": 3,
+          "time": "3 пара (11:30-12:45)",
+          "text": "-",
+          "lessons": []
+        },
+        {
+          "slot": 4,
+          "time": "4 пара (12:55-14:10)",
+          "text": "Иностранный язык в профессиональной деятельности — 1 п/г, Синельникова Елена Владимировна, Кривоусова",
+          "lessons": [
+            {
+              "id": 282,
+              "uid": "lesson-c370107692e30bca",
+              "name": "Иностранный язык в профессиональной деятельности",
+              "teacher_id": 30,
+              "subgroup": 28,
+              "is_lab": false,
+              "is_block": false,
+              "consecutive_pairs": 1,
+              "avoid_lunch_split": false,
+              "week_parity": "all",
+              "room_id": 18,
+              "room_name": "37",
+              "room_type": 0,
+              "room_substituted": false,
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_substitution_reason": null
+            }
+          ]
+        },
+        {
+          "slot": 5,
+          "time": "5 пара (14:20-15:30)",
+          "text": "Иностранный язык в профессиональной деятельности — 1 п/г, Синельникова Елена Владимировна, Кривоусова | Информационные технологии в профессиональной деятельности — 2 п/г, Ланитина Елена Сергеевна, Кривоусова",
+          "lessons": [
+            {
+              "id": 282,
+              "uid": "lesson-c370107692e30bca",
+              "name": "Иностранный язык в профессиональной деятельности",
+              "teacher_id": 30,
+              "subgroup": 28,
+              "is_lab": false,
+              "is_block": false,
+              "consecutive_pairs": 1,
+              "avoid_lunch_split": false,
+              "week_parity": "all",
+              "room_id": 18,
+              "room_name": "37",
+              "room_type": 0,
+              "room_substituted": false,
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_substitution_reason": null
+            },
+            {
+              "id": 289,
+              "uid": "lesson-7bb434c76b192ece",
+              "name": "Информационные технологии в профессиональной деятельности",
+              "teacher_id": 31,
+              "subgroup": 29,
+              "is_lab": false,
+              "is_block": false,
+              "consecutive_pairs": 1,
+              "avoid_lunch_split": false,
+              "week_parity": "all",
+              "room_id": 59,
+              "room_name": "68",
+              "room_type": 0,
+              "room_substituted": false,
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_substitution_reason": null
+            }
+          ]
+        },
+        {
+          "slot": 6,
+          "time": "6 пара (15:40-16:50)",
+          "text": "Иностранный язык в профессиональной деятельности — 2 п/г, Синельникова Елена Владимировна, Кривоусова | Информационные технологии в профессиональной деятельности — 1 п/г, Ланитина Елена Сергеевна, Кривоусова",
+          "lessons": [
+            {
+              "id": 283,
+              "uid": "lesson-02c43126ec63d343",
+              "name": "Иностранный язык в профессиональной деятельности",
+              "teacher_id": 30,
+              "subgroup": 29,
+              "is_lab": false,
+              "is_block": false,
+              "consecutive_pairs": 1,
+              "avoid_lunch_split": false,
+              "week_parity": "all",
+              "room_id": 18,
+              "room_name": "37",
+              "room_type": 0,
+              "room_substituted": false,
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_substitution_reason": null
+            },
+            {
+              "id": 288,
+              "uid": "lesson-4360593b1b5531c9",
+              "name": "Информационные технологии в профессиональной деятельности",
+              "teacher_id": 31,
+              "subgroup": 28,
+              "is_lab": false,
+              "is_block": false,
+              "consecutive_pairs": 1,
+              "avoid_lunch_split": false,
+              "week_parity": "all",
+              "room_id": 59,
+              "room_name": "68",
+              "room_type": 0,
+              "room_substituted": false,
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_substitution_reason": null
+            }
+          ]
+        },
+        {
+          "slot": 7,
+          "time": "7 пара (17:00-18:10)",
+          "text": "Иностранный язык в профессиональной деятельности — 2 п/г, Синельникова Елена Владимировна, Кривоусова",
+          "lessons": [
+            {
+              "id": 283,
+              "uid": "lesson-02c43126ec63d343",
+              "name": "Иностранный язык в профессиональной деятельности",
+              "teacher_id": 30,
+              "subgroup": 29,
+              "is_lab": false,
+              "is_block": false,
+              "consecutive_pairs": 1,
+              "avoid_lunch_split": false,
+              "week_parity": "all",
+              "room_id": 18,
+              "room_name": "37",
+              "room_type": 0,
+              "room_substituted": false,
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_substitution_reason": null
+            }
+          ]
+        }
       ]
     }
   ]

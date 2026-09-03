@@ -3,48 +3,263 @@
   "group_name": "СП-4611",
   "days": [
     {
-      "date": "03.09.2026",
-      "date_iso": "2026-09-03",
-      "day_index": 0,
-      "weekday": "ЧТ",
-      "slots": [
-        {"slot": 1, "time": "1 пара (08:30-09:55)", "text": "МДК.04.01 Основы организации и планирования производственных работ на сварочном участке — вся группа, Билалова Рауиза Галлинуровна, Лесная", "lessons": [{"id":641,"uid":"lesson-3ed59571f999d6cf","name":"МДК.04.01 Основы организации и планирования производственных работ на сварочном участке","teacher_id":58,"subgroup":-1,"is_lab":false,"is_block":false,"week_parity":"all","room_id":34,"room_name":"210","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
-        {"slot": 2, "time": "2 пара (10:05-11:30)", "text": "МДК.02.01 Основы расчѐта и проектирования сварных конструкций — вся группа, Билалова Рауиза Галлинуровна, Лесная", "lessons": [{"id":629,"uid":"lesson-bdb3e53bdeca8311","name":"МДК.02.01 Основы расчѐта и проектирования сварных конструкций","teacher_id":58,"subgroup":-1,"is_lab":false,"is_block":false,"week_parity":"all","room_id":44,"room_name":"405","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
-        {"slot": 3, "time": "3 пара (12:25-13:50)", "text": "МДК.02.01 Основы расчѐта и проектирования сварных конструкций — вся группа, Билалова Рауиза Галлинуровна, Лесная", "lessons": [{"id":629,"uid":"lesson-bdb3e53bdeca8311","name":"МДК.02.01 Основы расчѐта и проектирования сварных конструкций","teacher_id":58,"subgroup":-1,"is_lab":false,"is_block":false,"week_parity":"all","room_id":44,"room_name":"405","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
-        {"slot": 4, "time": "4 пара (14:00-15:25)", "text": "-", "lessons": []},
-        {"slot": 5, "time": "5 пара (15:35-16:55)", "text": "-", "lessons": []},
-        {"slot": 6, "time": "6 пара (17:05-18:25)", "text": "-", "lessons": []},
-        {"slot": 7, "time": "7 пара (18:35-19:55)", "text": "-", "lessons": []}
-      ]
-    },
-    {
       "date": "04.09.2026",
       "date_iso": "2026-09-04",
-      "day_index": 1,
+      "day_index": 0,
       "weekday": "ПТ",
       "slots": [
-        {"slot": 1, "time": "1 пара (08:30-09:55)", "text": "-", "lessons": []},
-        {"slot": 2, "time": "2 пара (10:05-11:30)", "text": "МДК.02.02 Основы проектирования технологических процессов — вся группа, Ахметов Артур Фанависович, Лесная", "lessons": [{"id":633,"uid":"lesson-13dcced48c1af5ee","name":"МДК.02.02 Основы проектирования технологических процессов","teacher_id":56,"subgroup":-1,"is_lab":false,"is_block":false,"week_parity":"all","room_id":31,"room_name":"205","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
-        {"slot": 3, "time": "3 пара (12:25-13:50)", "text": "МДК.02.02 Основы проектирования технологических процессов — вся группа, Ахметов Артур Фанависович, Лесная", "lessons": [{"id":633,"uid":"lesson-13dcced48c1af5ee","name":"МДК.02.02 Основы проектирования технологических процессов","teacher_id":56,"subgroup":-1,"is_lab":false,"is_block":false,"week_parity":"all","room_id":31,"room_name":"205","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
-        {"slot": 4, "time": "4 пара (14:00-15:25)", "text": "Эффективное поведение на рынке труда — вся группа, Кропотова Анастасия Андреевна, Лесная", "lessons": [{"id":623,"uid":"lesson-1301923ffda1432a","name":"Эффективное поведение на рынке труда","teacher_id":15,"subgroup":-1,"is_lab":false,"is_block":false,"week_parity":"all","room_id":33,"room_name":"209","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
-        {"slot": 5, "time": "5 пара (15:35-16:55)", "text": "-", "lessons": []},
-        {"slot": 6, "time": "6 пара (17:05-18:25)", "text": "-", "lessons": []},
-        {"slot": 7, "time": "7 пара (18:35-19:55)", "text": "-", "lessons": []}
+        {
+          "slot": 1,
+          "time": "1 пара (08:30-09:55)",
+          "text": "-",
+          "lessons": []
+        },
+        {
+          "slot": 2,
+          "time": "2 пара (10:05-11:30)",
+          "text": "-",
+          "lessons": []
+        },
+        {
+          "slot": 3,
+          "time": "3 пара (12:25-13:50)",
+          "text": "МДК.02.02 Основы проектирования технологических процессов — вся группа, Ахметов Артур Фанависович, Лесная",
+          "lessons": [
+            {
+              "id": 633,
+              "uid": "lesson-13dcced48c1af5ee",
+              "name": "МДК.02.02 Основы проектирования технологических процессов",
+              "teacher_id": 56,
+              "subgroup": -1,
+              "is_lab": false,
+              "is_block": false,
+              "consecutive_pairs": 1,
+              "avoid_lunch_split": false,
+              "week_parity": "all",
+              "room_id": 31,
+              "room_name": "205",
+              "room_type": 0,
+              "room_substituted": false,
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_substitution_reason": null
+            }
+          ]
+        },
+        {
+          "slot": 4,
+          "time": "4 пара (14:00-15:25)",
+          "text": "Эффективное поведение на рынке труда — вся группа, Кропотова Анастасия Андреевна, Лесная",
+          "lessons": [
+            {
+              "id": 623,
+              "uid": "lesson-1301923ffda1432a",
+              "name": "Эффективное поведение на рынке труда",
+              "teacher_id": 15,
+              "subgroup": -1,
+              "is_lab": false,
+              "is_block": false,
+              "consecutive_pairs": 1,
+              "avoid_lunch_split": false,
+              "week_parity": "all",
+              "room_id": 33,
+              "room_name": "209",
+              "room_type": 0,
+              "room_substituted": false,
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_substitution_reason": null
+            }
+          ]
+        },
+        {
+          "slot": 5,
+          "time": "5 пара (15:35-16:55)",
+          "text": "ЛПЗ МДК.02.02 Основы проектирования технологических процессов — 1 п/г, Ахметов Артур Фанависович, Лесная",
+          "lessons": [
+            {
+              "id": 634,
+              "uid": "lesson-fb9555cf8444ac26",
+              "name": "ЛПЗ МДК.02.02 Основы проектирования технологических процессов",
+              "teacher_id": 56,
+              "subgroup": 56,
+              "is_lab": true,
+              "is_block": false,
+              "consecutive_pairs": 2,
+              "avoid_lunch_split": true,
+              "week_parity": "all",
+              "room_id": 31,
+              "room_name": "205",
+              "room_type": 0,
+              "room_substituted": false,
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_substitution_reason": null
+            }
+          ]
+        },
+        {
+          "slot": 6,
+          "time": "6 пара (17:05-18:25)",
+          "text": "ЛПЗ МДК.02.02 Основы проектирования технологических процессов — 1 п/г, Ахметов Артур Фанависович, Лесная",
+          "lessons": [
+            {
+              "id": 634,
+              "uid": "lesson-fb9555cf8444ac26",
+              "name": "ЛПЗ МДК.02.02 Основы проектирования технологических процессов",
+              "teacher_id": 56,
+              "subgroup": 56,
+              "is_lab": true,
+              "is_block": false,
+              "consecutive_pairs": 2,
+              "avoid_lunch_split": true,
+              "week_parity": "all",
+              "room_id": 31,
+              "room_name": "205",
+              "room_type": 0,
+              "room_substituted": false,
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_substitution_reason": null
+            }
+          ]
+        },
+        {
+          "slot": 7,
+          "time": "7 пара (18:35-19:55)",
+          "text": "-",
+          "lessons": []
+        }
       ]
     },
     {
       "date": "05.09.2026",
       "date_iso": "2026-09-05",
-      "day_index": 2,
+      "day_index": 1,
       "weekday": "СБ",
       "slots": [
-        {"slot": 1, "time": "1 пара (08:30-09:45)", "text": "ЛПЗ МДК.02.01 Основы расчѐта и проектирования сварных конструкций — 2 п/г, Билалова Рауиза Галлинуровна, Лесная | ЛПЗ МДК.02.02 Основы проектирования технологических процессов — 1 п/г, Ахметов Артур Фанависович, Лесная", "lessons": [{"id":631,"uid":"lesson-d39f5b1f03e4d007","name":"ЛПЗ МДК.02.01 Основы расчѐта и проектирования сварных конструкций","teacher_id":58,"subgroup":57,"is_lab":true,"is_block":false,"week_parity":"all","room_id":44,"room_name":"405","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null},{"id":634,"uid":"lesson-fb9555cf8444ac26","name":"ЛПЗ МДК.02.02 Основы проектирования технологических процессов","teacher_id":56,"subgroup":56,"is_lab":true,"is_block":false,"week_parity":"all","room_id":31,"room_name":"205","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
-        {"slot": 2, "time": "2 пара (09:55-11:10)", "text": "МДК.04.01 Основы организации и планирования производственных работ на сварочном участке — вся группа, Билалова Рауиза Галлинуровна, Лесная", "lessons": [{"id":641,"uid":"lesson-3ed59571f999d6cf","name":"МДК.04.01 Основы организации и планирования производственных работ на сварочном участке","teacher_id":58,"subgroup":-1,"is_lab":false,"is_block":false,"week_parity":"all","room_id":44,"room_name":"405","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
-        {"slot": 3, "time": "3 пара (11:30-12:45)", "text": "МДК.04.01 Основы организации и планирования производственных работ на сварочном участке — вся группа, Билалова Рауиза Галлинуровна, Лесная", "lessons": [{"id":641,"uid":"lesson-3ed59571f999d6cf","name":"МДК.04.01 Основы организации и планирования производственных работ на сварочном участке","teacher_id":58,"subgroup":-1,"is_lab":false,"is_block":false,"week_parity":"all","room_id":44,"room_name":"405","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
-        {"slot": 4, "time": "4 пара (12:55-14:10)", "text": "-", "lessons": []},
-        {"slot": 5, "time": "5 пара (14:20-15:30)", "text": "-", "lessons": []},
-        {"slot": 6, "time": "6 пара (15:40-16:50)", "text": "-", "lessons": []},
-        {"slot": 7, "time": "7 пара (17:00-18:10)", "text": "-", "lessons": []}
+        {
+          "slot": 1,
+          "time": "1 пара (08:30-09:45)",
+          "text": "МДК.04.01 Основы организации и планирования производственных работ на сварочном участке — вся группа, Билалова Рауиза Галлинуровна, Лесная",
+          "lessons": [
+            {
+              "id": 641,
+              "uid": "lesson-3ed59571f999d6cf",
+              "name": "МДК.04.01 Основы организации и планирования производственных работ на сварочном участке",
+              "teacher_id": 58,
+              "subgroup": -1,
+              "is_lab": false,
+              "is_block": false,
+              "consecutive_pairs": 1,
+              "avoid_lunch_split": false,
+              "week_parity": "all",
+              "room_id": 45,
+              "room_name": "407",
+              "room_type": 0,
+              "room_substituted": false,
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_substitution_reason": null
+            }
+          ]
+        },
+        {
+          "slot": 2,
+          "time": "2 пара (09:55-11:10)",
+          "text": "МДК.02.01 Основы расчѐта и проектирования сварных конструкций — вся группа, Билалова Рауиза Галлинуровна, Лесная",
+          "lessons": [
+            {
+              "id": 629,
+              "uid": "lesson-bdb3e53bdeca8311",
+              "name": "МДК.02.01 Основы расчѐта и проектирования сварных конструкций",
+              "teacher_id": 58,
+              "subgroup": -1,
+              "is_lab": false,
+              "is_block": false,
+              "consecutive_pairs": 1,
+              "avoid_lunch_split": false,
+              "week_parity": "all",
+              "room_id": 45,
+              "room_name": "407",
+              "room_type": 0,
+              "room_substituted": false,
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_substitution_reason": null
+            }
+          ]
+        },
+        {
+          "slot": 3,
+          "time": "3 пара (11:30-12:45)",
+          "text": "ЛПЗ МДК.02.01 Основы расчѐта и проектирования сварных конструкций — 2 п/г, Билалова Рауиза Галлинуровна, Лесная",
+          "lessons": [
+            {
+              "id": 631,
+              "uid": "lesson-d39f5b1f03e4d007",
+              "name": "ЛПЗ МДК.02.01 Основы расчѐта и проектирования сварных конструкций",
+              "teacher_id": 58,
+              "subgroup": 57,
+              "is_lab": true,
+              "is_block": false,
+              "consecutive_pairs": 2,
+              "avoid_lunch_split": true,
+              "week_parity": "all",
+              "room_id": 45,
+              "room_name": "407",
+              "room_type": 0,
+              "room_substituted": false,
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_substitution_reason": null
+            }
+          ]
+        },
+        {
+          "slot": 4,
+          "time": "4 пара (12:55-14:10)",
+          "text": "ЛПЗ МДК.02.01 Основы расчѐта и проектирования сварных конструкций — 2 п/г, Билалова Рауиза Галлинуровна, Лесная",
+          "lessons": [
+            {
+              "id": 631,
+              "uid": "lesson-d39f5b1f03e4d007",
+              "name": "ЛПЗ МДК.02.01 Основы расчѐта и проектирования сварных конструкций",
+              "teacher_id": 58,
+              "subgroup": 57,
+              "is_lab": true,
+              "is_block": false,
+              "consecutive_pairs": 2,
+              "avoid_lunch_split": true,
+              "week_parity": "all",
+              "room_id": 45,
+              "room_name": "407",
+              "room_type": 0,
+              "room_substituted": false,
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_substitution_reason": null
+            }
+          ]
+        },
+        {
+          "slot": 5,
+          "time": "5 пара (14:20-15:30)",
+          "text": "-",
+          "lessons": []
+        },
+        {
+          "slot": 6,
+          "time": "6 пара (15:40-16:50)",
+          "text": "-",
+          "lessons": []
+        },
+        {
+          "slot": 7,
+          "time": "7 пара (17:00-18:10)",
+          "text": "-",
+          "lessons": []
+        }
       ]
     }
   ]

@@ -58,6 +58,10 @@
       <div class="form-group"><label class="form-label">Разрешённые площадки (жёстко)</label><div class="campus-checks"><label class="form-checkbox"><input v-model="form.allowed_campuses" type="checkbox" :value="0" /> Лесная</label><label class="form-checkbox"><input v-model="form.allowed_campuses" type="checkbox" :value="1" /> Кривоусова, 53</label></div><small>Решатель никогда не поставит преподавателя на неотмеченную площадку.</small></div>
       <div class="form-group"><label class="form-label">Закрепление из аудиторного фонда</label><textarea v-model="form.room_responsibility" class="form-input" rows="2" placeholder="Например: 409 (Лесная, 1)" /></div>
       <div class="form-group"><label class="form-label">Примечание по доступности</label><textarea v-model="form.availability_note" class="form-input" rows="2" placeholder="Источник и расшифровка ограничения" /></div>
+      <div class="form-row">
+        <div class="form-group"><label class="form-label">Максимум рабочих дней в неделю</label><input v-model.number="form.max_work_days_per_week" type="number" min="0" max="7" class="form-input" /><small>0 — без отдельного ограничения.</small></div>
+        <div class="form-group"><label class="form-label">Максимум пар в день</label><input v-model.number="form.max_pairs_per_day" type="number" min="0" max="7" class="form-input" /><small>0 — без отдельного ограничения.</small></div>
+      </div>
       <WorkScheduleEditor :schedule="form" />
       <template #footer>
         <button class="btn btn-ghost" @click="modalOpen = false">Отмена</button>
@@ -106,6 +110,7 @@
 import { computed, ref, onMounted } from 'vue'
 import Modal from '../components/Modal.vue'
 import WorkScheduleEditor from '../components/WorkScheduleEditor.vue'
+import { emptyTeacherForm, teacherFormFromEntity, teacherPayloadFromForm } from '../utils/entityPayloads.js'
 import { useDataStore } from '../stores/data.js'
 import { useToast } from '../composables/useToast.js'
 
@@ -122,7 +127,7 @@ const selected=ref([]),bulkModal=ref(false)
 const search=ref(''),campusFilter=ref(-2),bulkTemplateId=ref(-1)
 const defaultDays=()=>Array.from({length:7},(_,i)=>({day:i+1,enabled:i<6,start_slot:1,end_slot:7,slots:i<6?Array.from({length:7},(_,j)=>j+1):[]}))
 const baseSchedule=()=>({work_period:{from:'',to:''},work_days:defaultDays()})
-const form = ref({ name: '',default_room:-1,preferred_campus:-1,allowed_campuses:[0,1],room_responsibility:'',availability_note:'',...baseSchedule() })
+const form = ref(emptyTeacherForm())
 const bulkForm=ref({preferred_campus:-1,allowed_campuses:[0,1],default_room:-1,...baseSchedule()})
 const bulkApply=ref({period:true,days:true,campus:false,allowedCampuses:false,room:false})
 const filteredTeachers=computed(()=>{const q=search.value.toLocaleLowerCase('ru');return store.teachers.filter(t=>(campusFilter.value===-2||(t.campus_priority?.[0]??-1)===campusFilter.value)&&(!q||`${t.name} ${t.room_responsibility||''} ${t.availability_note||''}`.toLocaleLowerCase('ru').includes(q)))})
@@ -142,13 +147,13 @@ function initials(name) {
 
 function openAdd() {
   editItem.value = null
-  form.value = { name: '',default_room:-1,preferred_campus:-1,allowed_campuses:[0,1],room_responsibility:'',availability_note:'',...baseSchedule() }
+  form.value = emptyTeacherForm()
   modalOpen.value = true
 }
 
 function openEdit(t) {
   editItem.value = t
-  form.value = { name: t.name,default_room:t.default_room??-1,preferred_campus:t.campus_priority?.[0]??-1,allowed_campuses:t.allowed_campuses?.length?[...t.allowed_campuses]:[0,1],room_responsibility:t.room_responsibility||'',availability_note:t.availability_note||'',work_period:{from:t.work_period?.from||'',to:t.work_period?.to||''},work_days:(t.work_days||defaultDays()).map(d=>({...d})) }
+  form.value = teacherFormFromEntity(t)
   modalOpen.value = true
 }
 function toggleVisible(){const visible=filteredTeachers.value.map(t=>t.id);selected.value=allVisibleSelected.value?selected.value.filter(id=>!visible.includes(id)):[...new Set([...selected.value,...visible])]}
@@ -181,7 +186,7 @@ async function save() {
     toast.error(r.data?.message || 'Ошибка сохранения')
   }
 }
-function teacherPayload(){const pref=form.value.preferred_campus;return{name:form.value.name.trim(),default_room:form.value.default_room,room_responsibility:form.value.room_responsibility.trim(),availability_note:form.value.availability_note.trim(),campus_priority:pref<0?[]:[pref,pref===0?1:0],allowed_campuses:[...form.value.allowed_campuses],work_period:form.value.work_period,work_days:form.value.work_days}}
+function teacherPayload(){return teacherPayloadFromForm(form.value)}
 async function saveBulk(){if(!hasBulkChanges.value)return;const patch={};if(bulkApply.value.period)patch.work_period={...bulkForm.value.work_period};if(bulkApply.value.days)patch.work_days=bulkForm.value.work_days.map(d=>({...d}));if(bulkApply.value.campus){const p=bulkForm.value.preferred_campus;patch.campus_priority=p<0?[]:[p,p===0?1:0]}if(bulkApply.value.allowedCampuses)patch.allowed_campuses=[...bulkForm.value.allowed_campuses];if(bulkApply.value.room)patch.default_room=bulkForm.value.default_room;saving.value=true;const count=selected.value.length;const r=await store.bulkUpdateTeachers(selected.value,patch);saving.value=false;if(r.ok){toast.success(`Настройки применены к ${count} преподавателям`);bulkModal.value=false}else toast.error(r.data?.message||'Ошибка')}
 
 async function doDelete() {
@@ -198,7 +203,7 @@ async function doDelete() {
 </script>
 
 <style scoped>
-.center-load { display:flex; justify-content:center; padding:60px; }.header-actions{display:flex;gap:8px;flex-wrap:wrap}.entity-check{width:17px;height:17px;flex-shrink:0}.bulk-note,.page-help{color:var(--text-secondary);font-size:14px}.page-help{margin-top:4px}.teacher-toolbar{display:grid;grid-template-columns:minmax(260px,1fr) 200px auto auto;gap:8px;margin-bottom:12px}.selection-bar{position:sticky;top:8px;z-index:4;display:flex;align-items:center;gap:12px;padding:10px 14px;margin-bottom:12px;border:1px solid var(--accent);background:var(--accent-light);border-radius:10px}.selection-bar span{flex:1;color:var(--text-secondary);font-size:13px}.template-row{display:grid;grid-template-columns:1fr auto;gap:8px;margin-bottom:14px}.bulk-options{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:12px;background:var(--bg-secondary);border:1px solid var(--border);border-radius:9px;margin-bottom:14px}.bulk-options label{display:flex;gap:8px;align-items:center;font-size:14px}
+.center-load { display:flex; justify-content:center; padding:60px; }.header-actions{display:flex;gap:8px;flex-wrap:wrap}.entity-check{width:17px;height:17px;flex-shrink:0}.bulk-note,.page-help{color:var(--text-secondary);font-size:14px}.page-help{margin-top:4px}.teacher-toolbar{display:grid;grid-template-columns:minmax(260px,1fr) 200px auto auto;gap:8px;margin-bottom:12px}.selection-bar{position:sticky;top:8px;z-index:4;display:flex;align-items:center;gap:12px;padding:10px 14px;margin-bottom:12px;border:1px solid var(--accent);background:var(--accent-light);border-radius:10px}.selection-bar span{flex:1;color:var(--text-secondary);font-size:13px}.template-row{display:grid;grid-template-columns:1fr auto;gap:8px;margin-bottom:14px}.bulk-options{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:12px;background:var(--bg-secondary);border:1px solid var(--border);border-radius:9px;margin-bottom:14px}.bulk-options label{display:flex;gap:8px;align-items:center;font-size:14px}.form-row{display:grid;grid-template-columns:1fr 1fr;gap:10px}.form-group small{display:block;color:var(--text-muted);font-size:12px;margin-top:4px}
 .cards-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 14px; }
 .teacher-card { display: flex; flex-direction: column; gap: 12px; }.teacher-card.selected{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent)}
 .tc-body { display: flex; align-items: center; gap: 12px; }

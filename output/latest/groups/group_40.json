@@ -3,48 +3,243 @@
   "group_name": "ИСП-2308",
   "days": [
     {
-      "date": "03.09.2026",
-      "date_iso": "2026-09-03",
-      "day_index": 0,
-      "weekday": "ЧТ",
-      "slots": [
-        {"slot": 1, "time": "1 пара (08:30-09:55)", "text": "МДК.03.01 Внедрение и поддержка компьютерных систем — вся группа, Гарбузов Андрей Евгеньевич, Лесная", "lessons": [{"id":869,"uid":"lesson-fd5236fdf4b5af5e","name":"МДК.03.01 Внедрение и поддержка компьютерных систем","teacher_id":67,"subgroup":-1,"is_lab":false,"is_block":false,"week_parity":"all","room_id":49,"room_name":"411","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
-        {"slot": 2, "time": "2 пара (10:05-11:30)", "text": "Дискретная математика с элементами математической логики — вся группа, Нифонтова Ирина Геннадьевна, Лесная", "lessons": [{"id":862,"uid":"lesson-bf7b743a5bbd46ed","name":"Дискретная математика с элементами математической логики","teacher_id":17,"subgroup":-1,"is_lab":false,"is_block":false,"week_parity":"all","room_id":36,"room_name":"315","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
-        {"slot": 3, "time": "3 пара (12:25-13:50)", "text": "Элементы высшей математики — вся группа, Нифонтова Ирина Геннадьевна, Лесная", "lessons": [{"id":861,"uid":"lesson-dfd7d40fa92273fd","name":"Элементы высшей математики","teacher_id":17,"subgroup":-1,"is_lab":false,"is_block":false,"week_parity":"all","room_id":36,"room_name":"315","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
-        {"slot": 4, "time": "4 пара (14:00-15:25)", "text": "-", "lessons": []},
-        {"slot": 5, "time": "5 пара (15:35-16:55)", "text": "-", "lessons": []},
-        {"slot": 6, "time": "6 пара (17:05-18:25)", "text": "-", "lessons": []},
-        {"slot": 7, "time": "7 пара (18:35-19:55)", "text": "-", "lessons": []}
-      ]
-    },
-    {
       "date": "04.09.2026",
       "date_iso": "2026-09-04",
-      "day_index": 1,
+      "day_index": 0,
       "weekday": "ПТ",
       "slots": [
-        {"slot": 1, "time": "1 пара (08:30-09:55)", "text": "ЛПЗ МДК.03.01 Внедрение и поддержка компьютерных систем — 1 п/г, Гарбузов Андрей Евгеньевич, Лесная", "lessons": [{"id":870,"uid":"lesson-7895fea78554410c","name":"ЛПЗ МДК.03.01 Внедрение и поддержка компьютерных систем","teacher_id":67,"subgroup":80,"is_lab":true,"is_block":false,"week_parity":"all","room_id":49,"room_name":"411","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
-        {"slot": 2, "time": "2 пара (10:05-11:30)", "text": "География — вся группа, Кропотова Анастасия Андреевна, Лесная", "lessons": [{"id":855,"uid":"lesson-0299be4362227564","name":"География","teacher_id":15,"subgroup":-1,"is_lab":false,"is_block":false,"week_parity":"all","room_id":33,"room_name":"209","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
-        {"slot": 3, "time": "3 пара (12:25-13:50)", "text": "Элементы высшей математики — вся группа, Нифонтова Ирина Геннадьевна, Лесная", "lessons": [{"id":861,"uid":"lesson-dfd7d40fa92273fd","name":"Элементы высшей математики","teacher_id":17,"subgroup":-1,"is_lab":false,"is_block":false,"week_parity":"all","room_id":36,"room_name":"315","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
-        {"slot": 4, "time": "4 пара (14:00-15:25)", "text": "-", "lessons": []},
-        {"slot": 5, "time": "5 пара (15:35-16:55)", "text": "-", "lessons": []},
-        {"slot": 6, "time": "6 пара (17:05-18:25)", "text": "-", "lessons": []},
-        {"slot": 7, "time": "7 пара (18:35-19:55)", "text": "-", "lessons": []}
+        {
+          "slot": 1,
+          "time": "1 пара (08:30-09:55)",
+          "text": "Элементы высшей математики — вся группа, Нифонтова Ирина Геннадьевна, Лесная",
+          "lessons": [
+            {
+              "id": 861,
+              "uid": "lesson-dfd7d40fa92273fd",
+              "name": "Элементы высшей математики",
+              "teacher_id": 17,
+              "subgroup": -1,
+              "is_lab": false,
+              "is_block": false,
+              "consecutive_pairs": 1,
+              "avoid_lunch_split": false,
+              "week_parity": "all",
+              "room_id": 36,
+              "room_name": "315",
+              "room_type": 0,
+              "room_substituted": false,
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_substitution_reason": null
+            }
+          ]
+        },
+        {
+          "slot": 2,
+          "time": "2 пара (10:05-11:30)",
+          "text": "География — вся группа, Кропотова Анастасия Андреевна, Лесная",
+          "lessons": [
+            {
+              "id": 855,
+              "uid": "lesson-0299be4362227564",
+              "name": "География",
+              "teacher_id": 15,
+              "subgroup": -1,
+              "is_lab": false,
+              "is_block": false,
+              "consecutive_pairs": 1,
+              "avoid_lunch_split": false,
+              "week_parity": "all",
+              "room_id": 33,
+              "room_name": "209",
+              "room_type": 0,
+              "room_substituted": false,
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_substitution_reason": null
+            }
+          ]
+        },
+        {
+          "slot": 3,
+          "time": "3 пара (12:25-13:50)",
+          "text": "Дискретная математика с элементами математической логики — вся группа, Нифонтова Ирина Геннадьевна, Лесная",
+          "lessons": [
+            {
+              "id": 862,
+              "uid": "lesson-bf7b743a5bbd46ed",
+              "name": "Дискретная математика с элементами математической логики",
+              "teacher_id": 17,
+              "subgroup": -1,
+              "is_lab": false,
+              "is_block": false,
+              "consecutive_pairs": 1,
+              "avoid_lunch_split": false,
+              "week_parity": "all",
+              "room_id": 36,
+              "room_name": "315",
+              "room_type": 0,
+              "room_substituted": false,
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_substitution_reason": null
+            }
+          ]
+        },
+        {
+          "slot": 4,
+          "time": "4 пара (14:00-15:25)",
+          "text": "-",
+          "lessons": []
+        },
+        {
+          "slot": 5,
+          "time": "5 пара (15:35-16:55)",
+          "text": "-",
+          "lessons": []
+        },
+        {
+          "slot": 6,
+          "time": "6 пара (17:05-18:25)",
+          "text": "-",
+          "lessons": []
+        },
+        {
+          "slot": 7,
+          "time": "7 пара (18:35-19:55)",
+          "text": "-",
+          "lessons": []
+        }
       ]
     },
     {
       "date": "05.09.2026",
       "date_iso": "2026-09-05",
-      "day_index": 2,
+      "day_index": 1,
       "weekday": "СБ",
       "slots": [
-        {"slot": 1, "time": "1 пара (08:30-09:45)", "text": "-", "lessons": []},
-        {"slot": 2, "time": "2 пара (09:55-11:10)", "text": "-", "lessons": []},
-        {"slot": 3, "time": "3 пара (11:30-12:45)", "text": "Химия — вся группа, Альшаева Алина Павловна, Лесная", "lessons": [{"id":856,"uid":"lesson-acb8fa01f0cb5191","name":"Химия","teacher_id":48,"subgroup":-1,"is_lab":false,"is_block":false,"week_parity":"all","room_id":39,"room_name":"319","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
-        {"slot": 4, "time": "4 пара (12:55-14:10)", "text": "Компьютерные сети — вся группа, Колтышев Евгений Валерьевич, Лесная", "lessons": [{"id":868,"uid":"lesson-1ce211e8cd90d40c","name":"Компьютерные сети","teacher_id":66,"subgroup":-1,"is_lab":false,"is_block":false,"week_parity":"all","room_id":34,"room_name":"210","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
-        {"slot": 5, "time": "5 пара (14:20-15:30)", "text": "Компьютерные сети — вся группа, Колтышев Евгений Валерьевич, Лесная", "lessons": [{"id":868,"uid":"lesson-1ce211e8cd90d40c","name":"Компьютерные сети","teacher_id":66,"subgroup":-1,"is_lab":false,"is_block":false,"week_parity":"all","room_id":34,"room_name":"210","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
-        {"slot": 6, "time": "6 пара (15:40-16:50)", "text": "ЛПЗ МДК.03.01 Внедрение и поддержка компьютерных систем — 2 п/г, Гарбузов Андрей Евгеньевич, Лесная", "lessons": [{"id":871,"uid":"lesson-7f42a791bad8ea76","name":"ЛПЗ МДК.03.01 Внедрение и поддержка компьютерных систем","teacher_id":67,"subgroup":81,"is_lab":true,"is_block":false,"week_parity":"all","room_id":49,"room_name":"411","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
-        {"slot": 7, "time": "7 пара (17:00-18:10)", "text": "-", "lessons": []}
+        {
+          "slot": 1,
+          "time": "1 пара (08:30-09:45)",
+          "text": "-",
+          "lessons": []
+        },
+        {
+          "slot": 2,
+          "time": "2 пара (09:55-11:10)",
+          "text": "ЛПЗ МДК.03.01 Внедрение и поддержка компьютерных систем — 2 п/г, Гарбузов Андрей Евгеньевич, Лесная",
+          "lessons": [
+            {
+              "id": 871,
+              "uid": "lesson-7f42a791bad8ea76",
+              "name": "ЛПЗ МДК.03.01 Внедрение и поддержка компьютерных систем",
+              "teacher_id": 67,
+              "subgroup": 81,
+              "is_lab": true,
+              "is_block": false,
+              "consecutive_pairs": 1,
+              "avoid_lunch_split": false,
+              "week_parity": "all",
+              "room_id": 49,
+              "room_name": "411",
+              "room_type": 0,
+              "room_substituted": false,
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_substitution_reason": null
+            }
+          ]
+        },
+        {
+          "slot": 3,
+          "time": "3 пара (11:30-12:45)",
+          "text": "История — вся группа, Лучинин Александр Васильевич, Лесная",
+          "lessons": [
+            {
+              "id": 857,
+              "uid": "lesson-680e6b001d717c9c",
+              "name": "История",
+              "teacher_id": 14,
+              "subgroup": -1,
+              "is_lab": false,
+              "is_block": false,
+              "consecutive_pairs": 1,
+              "avoid_lunch_split": false,
+              "week_parity": "all",
+              "room_id": 37,
+              "room_name": "317",
+              "room_type": 0,
+              "room_substituted": false,
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_substitution_reason": null
+            }
+          ]
+        },
+        {
+          "slot": 4,
+          "time": "4 пара (12:55-14:10)",
+          "text": "Химия — вся группа, Альшаева Алина Павловна, Лесная",
+          "lessons": [
+            {
+              "id": 856,
+              "uid": "lesson-acb8fa01f0cb5191",
+              "name": "Химия",
+              "teacher_id": 48,
+              "subgroup": -1,
+              "is_lab": false,
+              "is_block": false,
+              "consecutive_pairs": 1,
+              "avoid_lunch_split": false,
+              "week_parity": "all",
+              "room_id": 39,
+              "room_name": "319",
+              "room_type": 0,
+              "room_substituted": false,
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_substitution_reason": null
+            }
+          ]
+        },
+        {
+          "slot": 5,
+          "time": "5 пара (14:20-15:30)",
+          "text": "Элементы высшей математики — вся группа, Нифонтова Ирина Геннадьевна, Лесная",
+          "lessons": [
+            {
+              "id": 861,
+              "uid": "lesson-dfd7d40fa92273fd",
+              "name": "Элементы высшей математики",
+              "teacher_id": 17,
+              "subgroup": -1,
+              "is_lab": false,
+              "is_block": false,
+              "consecutive_pairs": 1,
+              "avoid_lunch_split": false,
+              "week_parity": "all",
+              "room_id": 36,
+              "room_name": "315",
+              "room_type": 0,
+              "room_substituted": false,
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_substitution_reason": null
+            }
+          ]
+        },
+        {
+          "slot": 6,
+          "time": "6 пара (15:40-16:50)",
+          "text": "-",
+          "lessons": []
+        },
+        {
+          "slot": 7,
+          "time": "7 пара (17:00-18:10)",
+          "text": "-",
+          "lessons": []
+        }
       ]
     }
   ]

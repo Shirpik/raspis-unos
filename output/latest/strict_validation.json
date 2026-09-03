@@ -1,0 +1,1437 @@
+{
+  "passed": true,
+  "period": {
+    "from": "2026-09-04",
+    "to": "2026-09-05"
+  },
+  "active_lessons": 290,
+  "planned_occurrences": 349,
+  "scheduled_occurrences": 349,
+  "rendered_slot_events": 349,
+  "max_aggregate_group_events_per_day": 7,
+  "busiest_group_day": {
+    "group": 13,
+    "date": "2026-09-05",
+    "events": 7,
+    "part_loads": [
+      3,
+      4
+    ]
+  },
+  "parallel_group_days": [
+    {
+      "group": 13,
+      "name": "ОСА-491",
+      "date": "2026-09-05",
+      "events": 7,
+      "part_loads": [
+        3,
+        4
+      ]
+    },
+    {
+      "group": 14,
+      "name": "МЦМ-Пф-202",
+      "date": "2026-09-05",
+      "events": 6,
+      "part_loads": [
+        3,
+        3
+      ]
+    },
+    {
+      "group": 30,
+      "name": "ТОиРА-2701п",
+      "date": "2026-09-05",
+      "events": 6,
+      "part_loads": [
+        3,
+        3
+      ]
+    },
+    {
+      "group": 31,
+      "name": "ТОРД-3706",
+      "date": "2026-09-04",
+      "events": 6,
+      "part_loads": [
+        3,
+        3
+      ]
+    },
+    {
+      "group": 32,
+      "name": "ТОРД-3707п",
+      "date": "2026-09-04",
+      "events": 6,
+      "part_loads": [
+        3,
+        4
+      ]
+    },
+    {
+      "group": 33,
+      "name": "ТОРД-4705п",
+      "date": "2026-09-05",
+      "events": 6,
+      "part_loads": [
+        4,
+        4
+      ]
+    },
+    {
+      "group": 37,
+      "name": "ТМ-3416п",
+      "date": "2026-09-04",
+      "events": 6,
+      "part_loads": [
+        3,
+        3
+      ]
+    },
+    {
+      "group": 42,
+      "name": "ИСП-3306п",
+      "date": "2026-09-04",
+      "events": 6,
+      "part_loads": [
+        3,
+        3
+      ]
+    },
+    {
+      "group": 43,
+      "name": "ИСП-3307п",
+      "date": "2026-09-05",
+      "events": 6,
+      "part_loads": [
+        3,
+        3
+      ]
+    },
+    {
+      "group": 0,
+      "name": "ТАКХС-Пф-1203",
+      "date": "2026-09-05",
+      "events": 5,
+      "part_loads": [
+        4,
+        4
+      ]
+    },
+    {
+      "group": 3,
+      "name": "МЦМ-Пф-103",
+      "date": "2026-09-05",
+      "events": 5,
+      "part_loads": [
+        4,
+        4
+      ]
+    },
+    {
+      "group": 4,
+      "name": "СП-Пф-1605",
+      "date": "2026-09-05",
+      "events": 5,
+      "part_loads": [
+        3,
+        3
+      ]
+    },
+    {
+      "group": 7,
+      "name": "РУП-1301п",
+      "date": "2026-09-05",
+      "events": 5,
+      "part_loads": [
+        4,
+        4
+      ]
+    },
+    {
+      "group": 11,
+      "name": "ТИК-212",
+      "date": "2026-09-05",
+      "events": 5,
+      "part_loads": [
+        3,
+        3
+      ]
+    },
+    {
+      "group": 18,
+      "name": "ТАКХС-3201",
+      "date": "2026-09-05",
+      "events": 5,
+      "part_loads": [
+        2,
+        3
+      ]
+    },
+    {
+      "group": 19,
+      "name": "ТАКХС-4202",
+      "date": "2026-09-04",
+      "events": 5,
+      "part_loads": [
+        3,
+        3
+      ]
+    },
+    {
+      "group": 20,
+      "name": "ТЭО-Пф-3501",
+      "date": "2026-09-04",
+      "events": 5,
+      "part_loads": [
+        4,
+        3
+      ]
+    },
+    {
+      "group": 21,
+      "name": "ПКД-2808п",
+      "date": "2026-09-04",
+      "events": 5,
+      "part_loads": [
+        4,
+        4
+      ]
+    },
+    {
+      "group": 24,
+      "name": "СП-Пф-2603",
+      "date": "2026-09-04",
+      "events": 5,
+      "part_loads": [
+        4,
+        3
+      ]
+    },
+    {
+      "group": 25,
+      "name": "СП-Пф-2604п",
+      "date": "2026-09-05",
+      "events": 5,
+      "part_loads": [
+        3,
+        3
+      ]
+    },
+    {
+      "group": 39,
+      "name": "ТМ-4414п",
+      "date": "2026-09-05",
+      "events": 5,
+      "part_loads": [
+        4,
+        4
+      ]
+    },
+    {
+      "group": 45,
+      "name": "ИСП-4305п",
+      "date": "2026-09-05",
+      "events": 5,
+      "part_loads": [
+        3,
+        3
+      ]
+    },
+    {
+      "group": 1,
+      "name": "ТМ-1419",
+      "date": "2026-09-04",
+      "events": 4,
+      "part_loads": [
+        3,
+        3
+      ]
+    },
+    {
+      "group": 2,
+      "name": "ТМ-1420",
+      "date": "2026-09-04",
+      "events": 4,
+      "part_loads": [
+        3,
+        3
+      ]
+    },
+    {
+      "group": 5,
+      "name": "СП-Пф-1606п",
+      "date": "2026-09-04",
+      "events": 4,
+      "part_loads": [
+        3,
+        3
+      ]
+    },
+    {
+      "group": 5,
+      "name": "СП-Пф-1606п",
+      "date": "2026-09-05",
+      "events": 4,
+      "part_loads": [
+        3,
+        3
+      ]
+    },
+    {
+      "group": 8,
+      "name": "ПКД-1809",
+      "date": "2026-09-04",
+      "events": 4,
+      "part_loads": [
+        3,
+        3
+      ]
+    },
+    {
+      "group": 8,
+      "name": "ПКД-1809",
+      "date": "2026-09-05",
+      "events": 4,
+      "part_loads": [
+        3,
+        3
+      ]
+    },
+    {
+      "group": 9,
+      "name": "ТОиРА-1702",
+      "date": "2026-09-04",
+      "events": 4,
+      "part_loads": [
+        3,
+        3
+      ]
+    },
+    {
+      "group": 16,
+      "name": "МЦМ-408",
+      "date": "2026-09-04",
+      "events": 4,
+      "part_loads": [
+        3,
+        3
+      ]
+    },
+    {
+      "group": 20,
+      "name": "ТЭО-Пф-3501",
+      "date": "2026-09-05",
+      "events": 4,
+      "part_loads": [
+        2,
+        3
+      ]
+    },
+    {
+      "group": 22,
+      "name": "ПКД-380607п",
+      "date": "2026-09-04",
+      "events": 4,
+      "part_loads": [
+        3,
+        3
+      ]
+    },
+    {
+      "group": 26,
+      "name": "СП-Пф-3601",
+      "date": "2026-09-04",
+      "events": 4,
+      "part_loads": [
+        3,
+        2
+      ]
+    },
+    {
+      "group": 34,
+      "name": "ТМ-2417",
+      "date": "2026-09-05",
+      "events": 4,
+      "part_loads": [
+        3,
+        3
+      ]
+    },
+    {
+      "group": 36,
+      "name": "ТМ-3415",
+      "date": "2026-09-04",
+      "events": 4,
+      "part_loads": [
+        2,
+        2
+      ]
+    },
+    {
+      "group": 36,
+      "name": "ТМ-3415",
+      "date": "2026-09-05",
+      "events": 4,
+      "part_loads": [
+        3,
+        3
+      ]
+    },
+    {
+      "group": 37,
+      "name": "ТМ-3416п",
+      "date": "2026-09-05",
+      "events": 4,
+      "part_loads": [
+        2,
+        3
+      ]
+    },
+    {
+      "group": 38,
+      "name": "ТМ-4413",
+      "date": "2026-09-05",
+      "events": 4,
+      "part_loads": [
+        3,
+        2
+      ]
+    },
+    {
+      "group": 43,
+      "name": "ИСП-3307п",
+      "date": "2026-09-04",
+      "events": 4,
+      "part_loads": [
+        3,
+        3
+      ]
+    },
+    {
+      "group": 44,
+      "name": "ИСП-4304",
+      "date": "2026-09-04",
+      "events": 4,
+      "part_loads": [
+        3,
+        3
+      ]
+    },
+    {
+      "group": 44,
+      "name": "ИСП-4304",
+      "date": "2026-09-05",
+      "events": 4,
+      "part_loads": [
+        3,
+        2
+      ]
+    },
+    {
+      "group": 10,
+      "name": "ТОиРА-1703п",
+      "date": "2026-09-04",
+      "events": 3,
+      "part_loads": [
+        2,
+        2
+      ]
+    },
+    {
+      "group": 15,
+      "name": "МЦМ-Пф-301",
+      "date": "2026-09-05",
+      "events": 3,
+      "part_loads": [
+        2,
+        2
+      ]
+    },
+    {
+      "group": 19,
+      "name": "ТАКХС-4202",
+      "date": "2026-09-05",
+      "events": 3,
+      "part_loads": [
+        2,
+        2
+      ]
+    },
+    {
+      "group": 32,
+      "name": "ТОРД-3707п",
+      "date": "2026-09-05",
+      "events": 3,
+      "part_loads": [
+        2,
+        2
+      ]
+    }
+  ],
+  "student_part_load": {
+    "parts": 90,
+    "minimum": 2,
+    "maximum": 8,
+    "distribution": {
+      "2": 1,
+      "4": 4,
+      "5": 20,
+      "6": 48,
+      "7": 16,
+      "8": 1
+    }
+  },
+  "teacher_load": [
+    {
+      "id": 62,
+      "name": "Вальдиянов Ян Мансурович",
+      "days": {
+        "2026-09-04": 7,
+        "2026-09-05": 7
+      },
+      "total": 14
+    },
+    {
+      "id": 67,
+      "name": "Гарбузов Андрей Евгеньевич",
+      "days": {
+        "2026-09-04": 7,
+        "2026-09-05": 7
+      },
+      "total": 14
+    },
+    {
+      "id": 64,
+      "name": "Меренчуков Иван Александрович",
+      "days": {
+        "2026-09-04": 7,
+        "2026-09-05": 7
+      },
+      "total": 14
+    },
+    {
+      "id": 4,
+      "name": "Давыдова Валентина Алексеевна",
+      "days": {
+        "2026-09-04": 6,
+        "2026-09-05": 6
+      },
+      "total": 12
+    },
+    {
+      "id": 27,
+      "name": "Ермолина Ирина Павловна",
+      "days": {
+        "2026-09-04": 6,
+        "2026-09-05": 6
+      },
+      "total": 12
+    },
+    {
+      "id": 8,
+      "name": "Потапова Регина Александровна",
+      "days": {
+        "2026-09-04": 6,
+        "2026-09-05": 6
+      },
+      "total": 12
+    },
+    {
+      "id": 40,
+      "name": "Сивилькаев Вадим Михайлович",
+      "days": {
+        "2026-09-04": 6,
+        "2026-09-05": 6
+      },
+      "total": 12
+    },
+    {
+      "id": 61,
+      "name": "Саламатина Вера Викторовна",
+      "days": {
+        "2026-09-04": 5,
+        "2026-09-05": 6
+      },
+      "total": 11
+    },
+    {
+      "id": 59,
+      "name": "Самцов Андрей Евгеньевич",
+      "days": {
+        "2026-09-04": 4,
+        "2026-09-05": 7
+      },
+      "total": 11
+    },
+    {
+      "id": 10,
+      "name": "Семенова Лилиана Ивановна",
+      "days": {
+        "2026-09-04": 7,
+        "2026-09-05": 4
+      },
+      "total": 11
+    },
+    {
+      "id": 30,
+      "name": "Синельникова Елена Владимировна",
+      "days": {
+        "2026-09-04": 4,
+        "2026-09-05": 7
+      },
+      "total": 11
+    },
+    {
+      "id": 56,
+      "name": "Ахметов Артур Фанависович",
+      "days": {
+        "2026-09-04": 5,
+        "2026-09-05": 5
+      },
+      "total": 10
+    },
+    {
+      "id": 16,
+      "name": "Буркова Елена Владимировна",
+      "days": {
+        "2026-09-04": 5,
+        "2026-09-05": 5
+      },
+      "total": 10
+    },
+    {
+      "id": 55,
+      "name": "Лимонова Евгения Николаевна",
+      "days": {
+        "2026-09-04": 5,
+        "2026-09-05": 5
+      },
+      "total": 10
+    },
+    {
+      "id": 14,
+      "name": "Лучинин Александр Васильевич",
+      "days": {
+        "2026-09-04": 7,
+        "2026-09-05": 3
+      },
+      "total": 10
+    },
+    {
+      "id": 15,
+      "name": "Кропотова Анастасия Андреевна",
+      "days": {
+        "2026-09-04": 5,
+        "2026-09-05": 4
+      },
+      "total": 9
+    },
+    {
+      "id": 13,
+      "name": "Костарева Наталья Викторовна",
+      "days": {
+        "2026-09-04": 3,
+        "2026-09-05": 5
+      },
+      "total": 8
+    },
+    {
+      "id": 17,
+      "name": "Нифонтова Ирина Геннадьевна",
+      "days": {
+        "2026-09-04": 3,
+        "2026-09-05": 5
+      },
+      "total": 8
+    },
+    {
+      "id": 34,
+      "name": "Нуров Мирзо Нуралиевич",
+      "days": {
+        "2026-09-04": 3,
+        "2026-09-05": 5
+      },
+      "total": 8
+    },
+    {
+      "id": 42,
+      "name": "Осипчук Александр Александрович",
+      "days": {
+        "2026-09-04": 0,
+        "2026-09-05": 7
+      },
+      "total": 7
+    },
+    {
+      "id": 19,
+      "name": "Силенок Марина Юрьевна",
+      "days": {
+        "2026-09-04": 2,
+        "2026-09-05": 5
+      },
+      "total": 7
+    },
+    {
+      "id": 9,
+      "name": "Сутягин Артём Борисович",
+      "days": {
+        "2026-09-04": 7,
+        "2026-09-05": 0
+      },
+      "total": 7
+    },
+    {
+      "id": 58,
+      "name": "Билалова Рауиза Галлинуровна",
+      "days": {
+        "2026-09-04": 0,
+        "2026-09-05": 6
+      },
+      "total": 6
+    },
+    {
+      "id": 45,
+      "name": "Елагина Ольга Александровна",
+      "days": {
+        "2026-09-04": 5,
+        "2026-09-05": 1
+      },
+      "total": 6
+    },
+    {
+      "id": 31,
+      "name": "Ланитина Елена Сергеевна",
+      "days": {
+        "2026-09-04": 0,
+        "2026-09-05": 6
+      },
+      "total": 6
+    },
+    {
+      "id": 3,
+      "name": "Никонова Антонина Олеговна",
+      "days": {
+        "2026-09-04": 3,
+        "2026-09-05": 3
+      },
+      "total": 6
+    },
+    {
+      "id": 38,
+      "name": "Абрамчук Раида Филимазовна",
+      "days": {
+        "2026-09-04": 5,
+        "2026-09-05": 0
+      },
+      "total": 5
+    },
+    {
+      "id": 47,
+      "name": "Азарян Карине Айказовна",
+      "days": {
+        "2026-09-04": 5,
+        "2026-09-05": 0
+      },
+      "total": 5
+    },
+    {
+      "id": 48,
+      "name": "Альшаева Алина Павловна",
+      "days": {
+        "2026-09-04": 0,
+        "2026-09-05": 5
+      },
+      "total": 5
+    },
+    {
+      "id": 5,
+      "name": "Домарева Ирина Вячеславовна",
+      "days": {
+        "2026-09-04": 3,
+        "2026-09-05": 2
+      },
+      "total": 5
+    },
+    {
+      "id": 23,
+      "name": "Журавский Константин Сергеевич",
+      "days": {
+        "2026-09-04": 2,
+        "2026-09-05": 3
+      },
+      "total": 5
+    },
+    {
+      "id": 43,
+      "name": "Попова Татьяна Вильевна",
+      "days": {
+        "2026-09-04": 3,
+        "2026-09-05": 2
+      },
+      "total": 5
+    },
+    {
+      "id": 20,
+      "name": "Соболева Любовь Анатольевна",
+      "days": {
+        "2026-09-04": 2,
+        "2026-09-05": 3
+      },
+      "total": 5
+    },
+    {
+      "id": 60,
+      "name": "Тимеров Валерий Вагизович",
+      "days": {
+        "2026-09-04": 2,
+        "2026-09-05": 3
+      },
+      "total": 5
+    },
+    {
+      "id": 36,
+      "name": "Дорохова Евгения Владимировна",
+      "days": {
+        "2026-09-04": 1,
+        "2026-09-05": 3
+      },
+      "total": 4
+    },
+    {
+      "id": 49,
+      "name": "Кальчевская Наталья Владимировна",
+      "days": {
+        "2026-09-04": 2,
+        "2026-09-05": 2
+      },
+      "total": 4
+    },
+    {
+      "id": 22,
+      "name": "Кибардина Татьяна Леонидовна",
+      "days": {
+        "2026-09-04": 0,
+        "2026-09-05": 4
+      },
+      "total": 4
+    },
+    {
+      "id": 28,
+      "name": "Новосёлова Светлана Юрьевна",
+      "days": {
+        "2026-09-04": 4,
+        "2026-09-05": 0
+      },
+      "total": 4
+    },
+    {
+      "id": 41,
+      "name": "Садриева Татьяна Геннадьевна",
+      "days": {
+        "2026-09-04": 2,
+        "2026-09-05": 2
+      },
+      "total": 4
+    },
+    {
+      "id": 0,
+      "name": "Хасанова Гузель Хамитовна",
+      "days": {
+        "2026-09-04": 1,
+        "2026-09-05": 3
+      },
+      "total": 4
+    },
+    {
+      "id": 29,
+      "name": "Галузин Антон Илюсович",
+      "days": {
+        "2026-09-04": 0,
+        "2026-09-05": 3
+      },
+      "total": 3
+    },
+    {
+      "id": 51,
+      "name": "Кошелев Дмитрий Александрович",
+      "days": {
+        "2026-09-04": 0,
+        "2026-09-05": 3
+      },
+      "total": 3
+    },
+    {
+      "id": 24,
+      "name": "Круглова Юлия Петровна",
+      "days": {
+        "2026-09-04": 1,
+        "2026-09-05": 2
+      },
+      "total": 3
+    },
+    {
+      "id": 68,
+      "name": "Ханьжина Ксения Владимировна",
+      "days": {
+        "2026-09-04": 1,
+        "2026-09-05": 2
+      },
+      "total": 3
+    },
+    {
+      "id": 52,
+      "name": "Чадова Марина Александровна",
+      "days": {
+        "2026-09-04": 3,
+        "2026-09-05": 0
+      },
+      "total": 3
+    },
+    {
+      "id": 1,
+      "name": "Вагайская Татьяна Александровна",
+      "days": {
+        "2026-09-04": 2,
+        "2026-09-05": 0
+      },
+      "total": 2
+    },
+    {
+      "id": 21,
+      "name": "Комарова Яна Николаевна",
+      "days": {
+        "2026-09-04": 0,
+        "2026-09-05": 2
+      },
+      "total": 2
+    },
+    {
+      "id": 54,
+      "name": "Кузнецова Елизавета Олеговна",
+      "days": {
+        "2026-09-04": 1,
+        "2026-09-05": 1
+      },
+      "total": 2
+    },
+    {
+      "id": 32,
+      "name": "Логинова Ксения Ивановна",
+      "days": {
+        "2026-09-04": 0,
+        "2026-09-05": 2
+      },
+      "total": 2
+    },
+    {
+      "id": 57,
+      "name": "Подчиненнов Александр Юрьевич",
+      "days": {
+        "2026-09-04": 2,
+        "2026-09-05": 0
+      },
+      "total": 2
+    },
+    {
+      "id": 12,
+      "name": "Рабенок Мария Александровна",
+      "days": {
+        "2026-09-04": 2,
+        "2026-09-05": 0
+      },
+      "total": 2
+    },
+    {
+      "id": 11,
+      "name": "Цимфер Татьяна Ивановна",
+      "days": {
+        "2026-09-04": 2,
+        "2026-09-05": 0
+      },
+      "total": 2
+    },
+    {
+      "id": 46,
+      "name": "Черепанова Татьяна Михайловна",
+      "days": {
+        "2026-09-04": 2,
+        "2026-09-05": 0
+      },
+      "total": 2
+    },
+    {
+      "id": 53,
+      "name": "Конева Кристина Сергеевна",
+      "days": {
+        "2026-09-04": 1,
+        "2026-09-05": 0
+      },
+      "total": 1
+    },
+    {
+      "id": 50,
+      "name": "Ярославцева Елена Анатольевна",
+      "days": {
+        "2026-09-04": 1,
+        "2026-09-05": 0
+      },
+      "total": 1
+    }
+  ],
+  "teacher_period_targets": [
+    {
+      "teacher": 0,
+      "name": "Хасанова Гузель Хамитовна",
+      "minimum_pairs": 4,
+      "planned_pairs": 4,
+      "scheduled_pairs": 4,
+      "gap": 0
+    },
+    {
+      "teacher": 1,
+      "name": "Вагайская Татьяна Александровна",
+      "minimum_pairs": 2,
+      "planned_pairs": 2,
+      "scheduled_pairs": 2,
+      "gap": 0
+    },
+    {
+      "teacher": 3,
+      "name": "Никонова Антонина Олеговна",
+      "minimum_pairs": 6,
+      "planned_pairs": 6,
+      "scheduled_pairs": 6,
+      "gap": 0
+    },
+    {
+      "teacher": 4,
+      "name": "Давыдова Валентина Алексеевна",
+      "minimum_pairs": 12,
+      "planned_pairs": 12,
+      "scheduled_pairs": 12,
+      "gap": 0
+    },
+    {
+      "teacher": 5,
+      "name": "Домарева Ирина Вячеславовна",
+      "minimum_pairs": 5,
+      "planned_pairs": 5,
+      "scheduled_pairs": 5,
+      "gap": 0
+    },
+    {
+      "teacher": 8,
+      "name": "Потапова Регина Александровна",
+      "minimum_pairs": 12,
+      "planned_pairs": 12,
+      "scheduled_pairs": 12,
+      "gap": 0
+    },
+    {
+      "teacher": 9,
+      "name": "Сутягин Артём Борисович",
+      "minimum_pairs": 7,
+      "planned_pairs": 7,
+      "scheduled_pairs": 7,
+      "gap": 0
+    },
+    {
+      "teacher": 10,
+      "name": "Семенова Лилиана Ивановна",
+      "minimum_pairs": 11,
+      "planned_pairs": 11,
+      "scheduled_pairs": 11,
+      "gap": 0
+    },
+    {
+      "teacher": 11,
+      "name": "Цимфер Татьяна Ивановна",
+      "minimum_pairs": 2,
+      "planned_pairs": 2,
+      "scheduled_pairs": 2,
+      "gap": 0
+    },
+    {
+      "teacher": 12,
+      "name": "Рабенок Мария Александровна",
+      "minimum_pairs": 2,
+      "planned_pairs": 2,
+      "scheduled_pairs": 2,
+      "gap": 0
+    },
+    {
+      "teacher": 13,
+      "name": "Костарева Наталья Викторовна",
+      "minimum_pairs": 8,
+      "planned_pairs": 8,
+      "scheduled_pairs": 8,
+      "gap": 0
+    },
+    {
+      "teacher": 14,
+      "name": "Лучинин Александр Васильевич",
+      "minimum_pairs": 10,
+      "planned_pairs": 10,
+      "scheduled_pairs": 10,
+      "gap": 0
+    },
+    {
+      "teacher": 15,
+      "name": "Кропотова Анастасия Андреевна",
+      "minimum_pairs": 9,
+      "planned_pairs": 9,
+      "scheduled_pairs": 9,
+      "gap": 0
+    },
+    {
+      "teacher": 16,
+      "name": "Буркова Елена Владимировна",
+      "minimum_pairs": 10,
+      "planned_pairs": 10,
+      "scheduled_pairs": 10,
+      "gap": 0
+    },
+    {
+      "teacher": 17,
+      "name": "Нифонтова Ирина Геннадьевна",
+      "minimum_pairs": 8,
+      "planned_pairs": 8,
+      "scheduled_pairs": 8,
+      "gap": 0
+    },
+    {
+      "teacher": 19,
+      "name": "Силенок Марина Юрьевна",
+      "minimum_pairs": 7,
+      "planned_pairs": 7,
+      "scheduled_pairs": 7,
+      "gap": 0
+    },
+    {
+      "teacher": 20,
+      "name": "Соболева Любовь Анатольевна",
+      "minimum_pairs": 5,
+      "planned_pairs": 5,
+      "scheduled_pairs": 5,
+      "gap": 0
+    },
+    {
+      "teacher": 21,
+      "name": "Комарова Яна Николаевна",
+      "minimum_pairs": 2,
+      "planned_pairs": 2,
+      "scheduled_pairs": 2,
+      "gap": 0
+    },
+    {
+      "teacher": 22,
+      "name": "Кибардина Татьяна Леонидовна",
+      "minimum_pairs": 4,
+      "planned_pairs": 4,
+      "scheduled_pairs": 4,
+      "gap": 0
+    },
+    {
+      "teacher": 23,
+      "name": "Журавский Константин Сергеевич",
+      "minimum_pairs": 5,
+      "planned_pairs": 5,
+      "scheduled_pairs": 5,
+      "gap": 0
+    },
+    {
+      "teacher": 24,
+      "name": "Круглова Юлия Петровна",
+      "minimum_pairs": 3,
+      "planned_pairs": 3,
+      "scheduled_pairs": 3,
+      "gap": 0
+    },
+    {
+      "teacher": 27,
+      "name": "Ермолина Ирина Павловна",
+      "minimum_pairs": 12,
+      "planned_pairs": 12,
+      "scheduled_pairs": 12,
+      "gap": 0
+    },
+    {
+      "teacher": 28,
+      "name": "Новосёлова Светлана Юрьевна",
+      "minimum_pairs": 4,
+      "planned_pairs": 4,
+      "scheduled_pairs": 4,
+      "gap": 0
+    },
+    {
+      "teacher": 29,
+      "name": "Галузин Антон Илюсович",
+      "minimum_pairs": 3,
+      "planned_pairs": 3,
+      "scheduled_pairs": 3,
+      "gap": 0
+    },
+    {
+      "teacher": 30,
+      "name": "Синельникова Елена Владимировна",
+      "minimum_pairs": 11,
+      "planned_pairs": 11,
+      "scheduled_pairs": 11,
+      "gap": 0
+    },
+    {
+      "teacher": 31,
+      "name": "Ланитина Елена Сергеевна",
+      "minimum_pairs": 6,
+      "planned_pairs": 6,
+      "scheduled_pairs": 6,
+      "gap": 0
+    },
+    {
+      "teacher": 32,
+      "name": "Логинова Ксения Ивановна",
+      "minimum_pairs": 2,
+      "planned_pairs": 2,
+      "scheduled_pairs": 2,
+      "gap": 0
+    },
+    {
+      "teacher": 34,
+      "name": "Нуров Мирзо Нуралиевич",
+      "minimum_pairs": 8,
+      "planned_pairs": 8,
+      "scheduled_pairs": 8,
+      "gap": 0
+    },
+    {
+      "teacher": 36,
+      "name": "Дорохова Евгения Владимировна",
+      "minimum_pairs": 4,
+      "planned_pairs": 4,
+      "scheduled_pairs": 4,
+      "gap": 0
+    },
+    {
+      "teacher": 38,
+      "name": "Абрамчук Раида Филимазовна",
+      "minimum_pairs": 5,
+      "planned_pairs": 5,
+      "scheduled_pairs": 5,
+      "gap": 0
+    },
+    {
+      "teacher": 40,
+      "name": "Сивилькаев Вадим Михайлович",
+      "minimum_pairs": 12,
+      "planned_pairs": 12,
+      "scheduled_pairs": 12,
+      "gap": 0
+    },
+    {
+      "teacher": 41,
+      "name": "Садриева Татьяна Геннадьевна",
+      "minimum_pairs": 4,
+      "planned_pairs": 4,
+      "scheduled_pairs": 4,
+      "gap": 0
+    },
+    {
+      "teacher": 42,
+      "name": "Осипчук Александр Александрович",
+      "minimum_pairs": 7,
+      "planned_pairs": 7,
+      "scheduled_pairs": 7,
+      "gap": 0
+    },
+    {
+      "teacher": 43,
+      "name": "Попова Татьяна Вильевна",
+      "minimum_pairs": 5,
+      "planned_pairs": 5,
+      "scheduled_pairs": 5,
+      "gap": 0
+    },
+    {
+      "teacher": 45,
+      "name": "Елагина Ольга Александровна",
+      "minimum_pairs": 6,
+      "planned_pairs": 6,
+      "scheduled_pairs": 6,
+      "gap": 0
+    },
+    {
+      "teacher": 46,
+      "name": "Черепанова Татьяна Михайловна",
+      "minimum_pairs": 2,
+      "planned_pairs": 2,
+      "scheduled_pairs": 2,
+      "gap": 0
+    },
+    {
+      "teacher": 47,
+      "name": "Азарян Карине Айказовна",
+      "minimum_pairs": 5,
+      "planned_pairs": 5,
+      "scheduled_pairs": 5,
+      "gap": 0
+    },
+    {
+      "teacher": 48,
+      "name": "Альшаева Алина Павловна",
+      "minimum_pairs": 5,
+      "planned_pairs": 5,
+      "scheduled_pairs": 5,
+      "gap": 0
+    },
+    {
+      "teacher": 49,
+      "name": "Кальчевская Наталья Владимировна",
+      "minimum_pairs": 4,
+      "planned_pairs": 4,
+      "scheduled_pairs": 4,
+      "gap": 0
+    },
+    {
+      "teacher": 50,
+      "name": "Ярославцева Елена Анатольевна",
+      "minimum_pairs": 1,
+      "planned_pairs": 1,
+      "scheduled_pairs": 1,
+      "gap": 0
+    },
+    {
+      "teacher": 51,
+      "name": "Кошелев Дмитрий Александрович",
+      "minimum_pairs": 3,
+      "planned_pairs": 3,
+      "scheduled_pairs": 3,
+      "gap": 0
+    },
+    {
+      "teacher": 52,
+      "name": "Чадова Марина Александровна",
+      "minimum_pairs": 3,
+      "planned_pairs": 3,
+      "scheduled_pairs": 3,
+      "gap": 0
+    },
+    {
+      "teacher": 53,
+      "name": "Конева Кристина Сергеевна",
+      "minimum_pairs": 1,
+      "planned_pairs": 1,
+      "scheduled_pairs": 1,
+      "gap": 0
+    },
+    {
+      "teacher": 54,
+      "name": "Кузнецова Елизавета Олеговна",
+      "minimum_pairs": 2,
+      "planned_pairs": 2,
+      "scheduled_pairs": 2,
+      "gap": 0
+    },
+    {
+      "teacher": 55,
+      "name": "Лимонова Евгения Николаевна",
+      "minimum_pairs": 10,
+      "planned_pairs": 10,
+      "scheduled_pairs": 10,
+      "gap": 0
+    },
+    {
+      "teacher": 56,
+      "name": "Ахметов Артур Фанависович",
+      "minimum_pairs": 10,
+      "planned_pairs": 10,
+      "scheduled_pairs": 10,
+      "gap": 0
+    },
+    {
+      "teacher": 57,
+      "name": "Подчиненнов Александр Юрьевич",
+      "minimum_pairs": 2,
+      "planned_pairs": 2,
+      "scheduled_pairs": 2,
+      "gap": 0
+    },
+    {
+      "teacher": 58,
+      "name": "Билалова Рауиза Галлинуровна",
+      "minimum_pairs": 6,
+      "planned_pairs": 6,
+      "scheduled_pairs": 6,
+      "gap": 0
+    },
+    {
+      "teacher": 59,
+      "name": "Самцов Андрей Евгеньевич",
+      "minimum_pairs": 11,
+      "planned_pairs": 11,
+      "scheduled_pairs": 11,
+      "gap": 0
+    },
+    {
+      "teacher": 60,
+      "name": "Тимеров Валерий Вагизович",
+      "minimum_pairs": 5,
+      "planned_pairs": 5,
+      "scheduled_pairs": 5,
+      "gap": 0
+    },
+    {
+      "teacher": 61,
+      "name": "Саламатина Вера Викторовна",
+      "minimum_pairs": 11,
+      "planned_pairs": 11,
+      "scheduled_pairs": 11,
+      "gap": 0
+    },
+    {
+      "teacher": 62,
+      "name": "Вальдиянов Ян Мансурович",
+      "minimum_pairs": 14,
+      "planned_pairs": 14,
+      "scheduled_pairs": 14,
+      "gap": 0
+    },
+    {
+      "teacher": 64,
+      "name": "Меренчуков Иван Александрович",
+      "minimum_pairs": 14,
+      "planned_pairs": 14,
+      "scheduled_pairs": 14,
+      "gap": 0
+    },
+    {
+      "teacher": 67,
+      "name": "Гарбузов Андрей Евгеньевич",
+      "minimum_pairs": 14,
+      "planned_pairs": 14,
+      "scheduled_pairs": 14,
+      "gap": 0
+    },
+    {
+      "teacher": 68,
+      "name": "Ханьжина Ксения Владимировна",
+      "minimum_pairs": 3,
+      "planned_pairs": 3,
+      "scheduled_pairs": 3,
+      "gap": 0
+    }
+  ],
+  "error_count": 0,
+  "errors": [],
+  "warnings": [
+    {
+      "code": "student_daily_minimum_fallback",
+      "group": 38,
+      "part": 0,
+      "date": "2026-09-04",
+      "count": 1,
+      "min": 2
+    }
+  ]
+}

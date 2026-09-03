@@ -8,7 +8,7 @@ export default defineConfig({
     vue(),
     VitePWA({
       registerType: 'autoUpdate',
-      includeAssets: ['icons/icon.svg'],
+      includeAssets: ['icons/icon.svg', 'templates/schedule-template.xlsx'],
       workbox: {
         // Тяжёлые библиотеки Excel/PDF загружаются только по нажатию экспорта,
         // а не вместе с установкой/обновлением основного интерфейса.

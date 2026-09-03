@@ -53,6 +53,12 @@ int main() {
         "part 1 daily minimum must be derived from its own weekly load");
     ok &= Expect(timetable::EffectiveStudentDailyMinimum(3, parallel_load[0][1]) == 3,
         "part 2 daily minimum must be derived from its own weekly load");
+    ok &= Expect(timetable::EffectiveStudentStudyDays(3, 3, 2, 5) == 2,
+        "five weekly pairs at two per active day cannot require three study days");
+    ok &= Expect(timetable::EffectiveStudentStudyDays(3, 3, 2, 6) == 3,
+        "six weekly pairs can require three two-pair study days");
+    ok &= Expect(timetable::EffectiveStudentStudyDays(3, 2, 2, 6) == 2,
+        "study-day requirement must respect available dates");
 
     // Общее занятие потребляет слот каждой существующей части; УП — два слота
     // только той части, которой принадлежит.

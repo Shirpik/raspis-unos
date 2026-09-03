@@ -75,12 +75,22 @@ try {
 
     Write-Host 'Transfer bundle: full data, schedules, reports, substitutions, accounting and backup passed.'
 } finally {
-    if ($process -and !$process.HasExited) { Stop-Process -Id $process.Id -Force }
+    if ($process -and !$process.HasExited) {
+        Stop-Process -Id $process.Id -Force
+        try { Wait-Process -Id $process.Id -Timeout 5 -ErrorAction Stop } catch {}
+    }
     $resolvedTemp = [IO.Path]::GetFullPath([IO.Path]::GetTempPath())
     $resolvedTest = [IO.Path]::GetFullPath($testRoot)
     if ($resolvedTest.StartsWith($resolvedTemp, [StringComparison]::OrdinalIgnoreCase) -and
         [IO.Path]::GetFileName($resolvedTest).StartsWith('raspis-transfer-', [StringComparison]::OrdinalIgnoreCase) -and
         (Test-Path -LiteralPath $resolvedTest)) {
-        Remove-Item -LiteralPath $resolvedTest -Recurse -Force
+        for ($attempt = 0; $attempt -lt 10 -and (Test-Path -LiteralPath $resolvedTest); $attempt++) {
+            try {
+                Remove-Item -LiteralPath $resolvedTest -Recurse -Force -ErrorAction Stop
+            } catch {
+                if ($attempt -eq 9) { throw $_ }
+                Start-Sleep -Milliseconds 100
+            }
+        }
     }
 }

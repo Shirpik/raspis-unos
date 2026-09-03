@@ -26,6 +26,7 @@ add_executable(timetable_solver
     src/scheduler_rules.cpp
     src/schedule_validator.cpp
     src/room_allocator.cpp
+    src/room_policy.cpp
     src/auth.cpp
 )
 
@@ -67,8 +68,10 @@ if (BUILD_TESTING)
         src/json_utils.cpp
         src/data_store.cpp
         src/date_utils.cpp
+        src/scheduler_rules.cpp
         src/types.cpp
         src/config.cpp
+        src/room_policy.cpp
     )
     target_include_directories(schedule_validator_test PRIVATE include)
     target_link_libraries(schedule_validator_test PRIVATE ortools::ortools)
@@ -77,6 +80,15 @@ if (BUILD_TESTING)
     endif()
     add_test(NAME schedule_validator_cpp_regression COMMAND schedule_validator_test)
     set_tests_properties(schedule_validator_cpp_regression PROPERTIES TIMEOUT 15)
+
+    add_executable(room_policy_test
+        tests/room_policy_test.cpp
+        src/room_policy.cpp
+    )
+    target_include_directories(room_policy_test PRIVATE include)
+    target_link_libraries(room_policy_test PRIVATE ortools::ortools)
+    add_test(NAME room_policy_cpp_regression COMMAND room_policy_test)
+    set_tests_properties(room_policy_cpp_regression PROPERTIES TIMEOUT 15)
 endif()
 
 if (BUILD_TESTING AND WIN32)

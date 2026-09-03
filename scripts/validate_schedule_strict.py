@@ -156,6 +156,11 @@ def main() -> int:
                 "semester_limit": semester_limit,
                 "total_hours": academic_hours,
             })
+        consecutive = int(lesson.get("consecutive_pairs", 1))
+        if consecutive not in (1, 2):
+            errors.append({"code": "invalid_consecutive_pairs", "lesson": lesson_id, "value": consecutive})
+        if consecutive == 2 and short_quota % 2:
+            errors.append({"code": "odd_consecutive_pair_quota", "lesson": lesson_id, "quota": short_quota})
 
     events = []
     output_dates = set()
@@ -238,6 +243,36 @@ def main() -> int:
     if unexpected:
         errors.append({"code": "inactive_lessons_scheduled", "lessons": unexpected})
 
+    lesson_day_pairs: dict[tuple[int, date], set[int]] = defaultdict(set)
+    for event in events:
+        lesson_day_pairs[(event["lesson"], event["date"])].add(event["pair"])
+    for (lesson_id, event_date), pairs in lesson_day_pairs.items():
+        lesson = lessons[lesson_id]
+        ordered = sorted(pairs)
+        if int(lesson.get("consecutive_pairs", 1)) == 2:
+            valid = len(ordered) % 2 == 0 and all(
+                ordered[index + 1] == ordered[index] + 1
+                for index in range(0, len(ordered), 2)
+            )
+            if not valid:
+                errors.append({
+                    "code": "lesson_consecutive_pairs_broken", "lesson": lesson_id,
+                    "date": event_date.isoformat(), "pairs": ordered,
+                })
+            if lesson.get("avoid_lunch_split", False) and any(
+                ordered[index:index + 2] == [2, 3]
+                for index in range(0, len(ordered) - 1, 2)
+            ):
+                errors.append({
+                    "code": "lesson_pair_crosses_lunch", "lesson": lesson_id,
+                    "date": event_date.isoformat(), "pairs": ordered,
+                })
+        elif lesson.get("avoid_lunch_split", False) and 2 in pairs and 3 in pairs:
+            errors.append({
+                "code": "lesson_pair_crosses_lunch", "lesson": lesson_id,
+                "date": event_date.isoformat(), "pairs": ordered,
+            })
+
     teacher_slot: dict[tuple[date, int, int], list[int]] = defaultdict(list)
     room_slot: dict[tuple[date, int, int], list[int]] = defaultdict(list)
     part_slot: dict[tuple[date, int, int, int], list[int]] = defaultdict(list)
@@ -307,6 +342,32 @@ def main() -> int:
         owners = {int(value) for value in room.get("responsible_teacher_ids", [])}
         if room.get("access_mode") == "exclusive" and event["teacher"] not in owners:
             errors.append({"code": "exclusive_room_access", "room": event["room"], "teacher": event["teacher"]})
+        if event_iso >= "2026-09-05":
+            lesson_name = str(lesson.get("name", ""))
+            is_lpz = "лпз" in lesson_name.casefold()
+            teacher_id = event["teacher"]
+            ordinary_lesnaya = (
+                campus == 0
+                and str(room.get("name", "")) != "210"
+                and room.get("access_mode", "general") == "general"
+                and bool(room.get("active", True))
+            )
+            policy_ok = True
+            if teacher_id == 55:
+                policy_ok = event["room"] == 66 if is_lpz else ordinary_lesnaya
+            elif teacher_id == 59:
+                policy_ok = event["room"] in {64, 65} if is_lpz else ordinary_lesnaya
+            elif teacher_id == 49 and is_lpz:
+                policy_ok = event["room"] == 68
+            if not policy_ok:
+                errors.append({
+                    "code": "operational_room_policy_mismatch",
+                    "lesson": event["lesson"],
+                    "teacher": teacher_id,
+                    "room": event["room"],
+                    "date": event_iso,
+                    "pair": pair,
+                })
         if int(lesson.get("fixed_room", -1)) >= 0 and event["room"] != int(lesson["fixed_room"]):
             errors.append({"code": "fixed_room_mismatch", "lesson": event["lesson"], "expected": lesson["fixed_room"], "actual": event["room"]})
         required_purpose = str(lesson.get("required_room_purpose", ""))
@@ -342,18 +403,50 @@ def main() -> int:
     maximum = int(config.get("max_student_pairs_per_day", 7))
     minimum_days = int(config.get("min_student_study_days_per_week", 0))
     for group_id, group in groups.items():
-        for part in range(max(1, int(group.get("parts", 2)))):
-            study_days = 0
+        part_count = max(1, int(group.get("parts", 2)))
+        for part in range(part_count):
             for event_date in expected_dates:
                 slots = part_day_slots[(group_id, part, event_date)]
                 if slots:
-                    study_days += 1
-                    if not minimum <= len(slots) <= maximum:
+                    if len(slots) > maximum:
                         errors.append({"code": "student_daily_load", "group": group_id, "part": part, "date": event_date.isoformat(), "count": len(slots), "min": minimum, "max": maximum})
+                    elif len(slots) < minimum:
+                        issue = {"code": "student_daily_minimum_fallback", "group": group_id, "part": part, "date": event_date.isoformat(), "count": len(slots), "min": minimum}
+                        if config.get("allow_single_pair_day_fallback", False):
+                            warnings.append(issue)
+                        else:
+                            errors.append(issue)
                     if config.get("hard_no_student_windows", False) and max(slots) - min(slots) + 1 != len(slots):
                         errors.append({"code": "student_window", "group": group_id, "part": part, "date": event_date.isoformat(), "slots": sorted(slots)})
-            if config.get("hard_min_study_days_per_week", False) and study_days < min(minimum_days, len(expected_dates)):
-                errors.append({"code": "student_study_days", "group": group_id, "part": part, "actual": study_days, "required": min(minimum_days, len(expected_dates))})
+        if config.get("hard_min_study_days_per_week", False):
+            dates_by_week: dict[date, list[date]] = defaultdict(list)
+            for event_date in expected_dates:
+                dates_by_week[event_date - timedelta(days=event_date.weekday())].append(event_date)
+            for week_start, week_dates in dates_by_week.items():
+                available_days = sum(
+                    any(work_schedule_allows(group, event_date, pair) for pair in range(1, 8))
+                    for event_date in week_dates
+                )
+                required_days = min(minimum_days, available_days)
+                for synchronized_part in range(part_count):
+                    weekly_pairs = sum(
+                        len(part_day_slots[(group_id, synchronized_part, event_date)])
+                        for event_date in week_dates
+                    )
+                    if weekly_pairs <= 0:
+                        continue
+                    effective_minimum = min(minimum, weekly_pairs) if minimum > 0 else 0
+                    required_days = min(
+                        required_days,
+                        weekly_pairs // effective_minimum if effective_minimum else 0,
+                    )
+                for part in range(part_count):
+                    actual_days = sum(
+                        bool(part_day_slots[(group_id, part, event_date)])
+                        for event_date in week_dates
+                    )
+                    if actual_days < required_days:
+                        errors.append({"code": "student_study_days", "group": group_id, "part": part, "week": week_start.isoformat(), "actual": actual_days, "required": required_days})
 
     if config.get("hard_max_two_same_subject_per_day", False):
         subgroup_subject_limit = max(1, min(7, int(config.get("max_same_subject_pairs_per_day", 3))))

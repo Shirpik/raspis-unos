@@ -11,6 +11,7 @@ export const useScheduleStore = defineStore('schedule', () => {
   // Прогресс недельной генерации
   const progress = ref(null)   // null | { state, total_weeks, current_week, solved_weeks, weeks, message, total_elapsed }
   let _pollTimer = null
+  let _pollFailures = 0
 
   async function fetchSchedule() {
     loading.value = true
@@ -40,12 +41,22 @@ export const useScheduleStore = defineStore('schedule', () => {
 
   async function _pollProgress() {
     const res = await api.schedule.progress()
-    if (!res.ok) return
+    if (!res.ok) {
+      _pollFailures++
+      if (res.status === 401 || _pollFailures >= 5) {
+        _stopPolling()
+        generating.value = false
+        error.value = res.data?.message || 'Потеряна связь с генератором расписания'
+      }
+      return
+    }
+    _pollFailures = 0
     progress.value = res.data
 
     const st = res.data?.state
     if (st === 'done' || st === 'failed' || st === 'cancelled' || st === 'idle') {
       _stopPolling()
+      _pollFailures = 0
       generating.value = false
       // Обновляем расписание если успешно завершено
       if (st === 'done') await fetchSchedule()
@@ -66,6 +77,7 @@ export const useScheduleStore = defineStore('schedule', () => {
     if (res.data?.async) {
       // Async (weekly) — запускаем polling
       _stopPolling()
+      _pollFailures = 0
       _pollTimer = setInterval(_pollProgress, 1000)
       return { ok: true, async: true, message: 'Генерация запущена' }
     }

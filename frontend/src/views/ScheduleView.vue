@@ -4,7 +4,9 @@
     <div class="page-header">
       <h1 class="page-title">📅 Расписание</h1>
       <div class="header-actions">
-        <button class="btn btn-ghost" :disabled="!store.scheduleData" @click="downloadExcel">Excel</button>
+        <button class="btn btn-ghost" :disabled="!store.scheduleData || excelExporting" @click="downloadExcel">
+          <span v-if="excelExporting" class="spinner spinner-sm" />{{ excelExporting ? 'Собираю Excel…' : 'Excel по образцу' }}
+        </button>
         <button class="btn btn-ghost" :disabled="!store.scheduleData" @click="downloadPdf">PDF</button>
         <select v-model="validationSource" class="form-select validation-source" :disabled="validating">
           <option value="auto">Проверить автогенерацию</option>
@@ -365,6 +367,7 @@ const lockMode = ref('none')
 const generationMode = ref('weekly')
 const publishing = ref(false)
 const validating = ref(false)
+const excelExporting = ref(false)
 const validationSource = ref('auto')
 const validationResult = ref(null)
 
@@ -392,7 +395,18 @@ async function runValidation() {
   if (r.data?.ok) toast.success('Полная проверка пройдена')
   else toast.error(`Найдено нарушений: ${r.data?.summary?.hard_errors ?? 0}`)
 }
-async function downloadExcel() { const { exportScheduleExcel } = await import('../utils/scheduleExport.js'); await exportScheduleExcel(store.scheduleData) }
+async function downloadExcel() {
+  excelExporting.value = true
+  try {
+    const { exportScheduleExcel } = await import('../utils/scheduleTemplateExport.js')
+    const result = await exportScheduleExcel(store.scheduleData)
+    toast.success(`Excel по образцу готов: ${result.insertedLessons} занятий`)
+  } catch (error) {
+    toast.error(`Не удалось собрать Excel: ${error.message}`)
+  } finally {
+    excelExporting.value = false
+  }
+}
 async function downloadPdf() { const { exportSchedulePdf } = await import('../utils/scheduleExport.js'); exportSchedulePdf(store.scheduleData) }
 
 // ── Helpers ──────────────────────────────────────────────────────────────

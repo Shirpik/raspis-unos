@@ -42,6 +42,15 @@ std::vector<std::vector<int>> ComputeGroupPartWeeklyOccupiedPairs(
 
 int EffectiveStudentDailyMinimum(int requested_minimum, int weekly_part_pairs);
 
+// Число обязательных учебных дней не может требовать больше pair-slot, чем
+// реально выделено этой физической части группы на неделю.
+int EffectiveStudentStudyDays(
+    int requested_days,
+    int available_days,
+    int daily_minimum,
+    int weekly_part_pairs
+);
+
 // 0 означает «индивидуальный лимит не задан». Значения выше физического
 // числа pair-slot дня эквивалентны полному семипарному дню.
 int EffectiveTeacherMaxPairsPerDay(int configured_limit);

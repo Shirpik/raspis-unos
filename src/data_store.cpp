@@ -690,6 +690,8 @@ void NormalizeDataRoot(JsonValue& root) {
         if (!item.At("week_parity").IsString()) item.At("week_parity") = JsonValue::MakeString("all");
         if (!item.At("fixed_room").IsNumber()) item.At("fixed_room") = JsonValue::MakeNumber(-1);
         if (!item.At("allow_room_substitution").IsBool()) item.At("allow_room_substitution") = JsonValue::MakeBool(true);
+        if (!item.At("consecutive_pairs").IsNumber()) item.At("consecutive_pairs") = JsonValue::MakeNumber(1);
+        if (!item.At("avoid_lunch_split").IsBool()) item.At("avoid_lunch_split") = JsonValue::MakeBool(false);
         if (!item.At("required_capacity").IsNumber()) item.At("required_capacity") = JsonValue::MakeNumber(0);
         if (!item.At("required_room_type").IsNumber()) item.At("required_room_type") = JsonValue::MakeNumber(0);
         if (!item.At("required_equipment").IsArray()) item.At("required_equipment") = JsonValue::MakeArray();
@@ -1110,11 +1112,16 @@ bool LoadScheduleInputData(ScheduleInputData& data, std::string& error) {
         lesson.is_lab = JsonBool(item, "is_lab", false);
         lesson.is_block = JsonBool(item, "is_block", false);
         lesson.is_pp = JsonBool(item, "is_pp", false);
+        lesson.consecutive_pairs = JsonInt(item, "consecutive_pairs", 1) == 2 ? 2 : 1;
+        lesson.avoid_lunch_split = JsonBool(item, "avoid_lunch_split", false);
         lesson.week_parity = JsonString(item, "week_parity", "all");
         if (lesson.week_parity != "odd" && lesson.week_parity != "even") lesson.week_parity = "all";
         lesson.fixed_room = JsonInt(item, "fixed_room", -1);
-        lesson.preferred_room = teacher_default_rooms.count(lesson.teacher)
-            ? teacher_default_rooms[lesson.teacher] : -1;
+        lesson.preferred_room = JsonInt(
+            item,
+            "preferred_room",
+            teacher_default_rooms.count(lesson.teacher)
+                ? teacher_default_rooms[lesson.teacher] : -1);
         lesson.allow_room_substitution = JsonBool(item, "allow_room_substitution", true);
         lesson.required_capacity = JsonInt(item, "required_capacity", 0);
         lesson.required_room_type = JsonInt(item, "required_room_type", 0);
@@ -1142,10 +1149,6 @@ bool LoadScheduleInputData(ScheduleInputData& data, std::string& error) {
             lesson.allowed_campuses.insert(LESNAYA);
             lesson.allowed_campuses.insert(KRIVOUSOVA);
         }
-        if (room_it != rooms_by_id.end()) {
-            lesson.allowed_campuses.clear();
-            lesson.allowed_campuses.insert(static_cast<Campus>(room_it->second.campus));
-        }
         // Ограничение преподавателя имеет приоритет над импортированным мягким
         // списком площадок занятия. Иначе CP-SAT мог перенести Цимфер, Силенок
         // и других владельцев кабинетов в чужой корпус.
@@ -1155,6 +1158,13 @@ bool LoadScheduleInputData(ScheduleInputData& data, std::string& error) {
             lesson.allowed_campuses.clear();
             for (int campus : teacher_campuses->second)
                 lesson.allowed_campuses.insert(static_cast<Campus>(campus));
+        }
+        // Жёстко закреплённая аудитория имеет самый высокий приоритет. Раньше
+        // общий список корпусов преподавателя затирал её корпус, CP-SAT выбирал
+        // другую площадку, а пост-распределитель оставлял занятие без кабинета.
+        if (room_it != rooms_by_id.end()) {
+            lesson.allowed_campuses.clear();
+            lesson.allowed_campuses.insert(static_cast<Campus>(room_it->second.campus));
         }
         data.lessons.push_back(lesson);
     }
@@ -1369,6 +1379,13 @@ JsonValue BuildDataAudit(const JsonValue& source_root) {
             AddIssue(issues, "warning", "teacher_vacancy", "Для занятия «" + name + "» преподаватель не назначен", "lesson", id);
         if (generation_active && total_slots <= 0)
             AddIssue(issues, "error", "lesson_hours_invalid", "У занятия «" + name + "» отсутствует положительная нагрузка", "lesson", id);
+        const int consecutive_pairs = JsonInt(lesson, "consecutive_pairs", 1);
+        if (consecutive_pairs != 1 && consecutive_pairs != 2)
+            AddIssue(issues, "error", "lesson_consecutive_pairs_invalid",
+                "У занятия «" + name + "» допустим блок только по 1 или 2 пары", "lesson", id);
+        if (generation_active && consecutive_pairs == 2 && total_slots % 2 != 0)
+            AddIssue(issues, "error", "lesson_consecutive_pairs_odd_quota",
+                "Для занятия «" + name + "» с блоками по 2 нужна чётная квота пар", "lesson", id);
         const std::string parity = JsonString(lesson, "week_parity", "all");
         if (parity != "all" && parity != "odd" && parity != "even")
             AddIssue(issues, "error", "invalid_week_parity", "Некорректная чётность недели у занятия «" + name + "»", "lesson", id);

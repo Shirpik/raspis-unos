@@ -57,7 +57,7 @@ for group in schedule.get("groups", []):
             for event in slot.get("lessons", []):
                 subgroup = int(event.get("subgroup", -1))
                 for part in range(real_parts):
-                    if subgroup in (-1, part):
+                    if subgroup == -1 or subgroup == int(group["group_index"]) * 2 + part:
                         part_slots[part].add(pair)
                         part_subjects[part][
                             (bool(event.get("is_lab", False)), event.get("name", ""))

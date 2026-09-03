@@ -9,10 +9,12 @@ const path = require('node:path')
 const PRODUCT_NAME = 'Расписание УСПО'
 const LOOPBACK = '127.0.0.1'
 const BACKEND_READY_TIMEOUT_MS = 20_000
-const SEED_VERSION = '1.2.0'
+const SEED_VERSION = '1.3.1'
 const REPLACEABLE_SEED_DATABASE_HASHES = new Set([
   // Исходная база из установщика 1.0.0. Изменённую пользователем базу не перезаписываем.
   '01BFB8D30D3DF7423DF51D232CAAEE12C3806028C20821FE790536E69193756B',
+  // Исходная база установщика 1.3.0 перед субботней правкой кабинетов.
+  '50B1003AF48F9EDCD371D4AED303807F85F84780E652D8FB1C6B2EDF4B420F9B',
 ])
 
 let mainWindow = null
@@ -50,7 +52,17 @@ function writeSeedMarker() {
 
 function upgradePristineLegacySeed(seedRoot, targetData, targetDatabase) {
   if (!fs.existsSync(targetDatabase)) return false
-  if (!REPLACEABLE_SEED_DATABASE_HASHES.has(fileSha256(targetDatabase))) return false
+  let installedSeedVersion = ''
+  try {
+    installedSeedVersion = JSON.parse(
+      fs.readFileSync(path.join(workspaceRoot, 'seed-version.json'), 'utf8'),
+    ).version || ''
+  } catch {
+    // Старые версии могли не иметь маркера; для них остаётся проверка хэша.
+  }
+  const isUrgentPreviousRelease = installedSeedVersion === '1.3.0'
+  if (!isUrgentPreviousRelease &&
+      !REPLACEABLE_SEED_DATABASE_HASHES.has(fileSha256(targetDatabase))) return false
 
   const backupRoot = path.join(workspaceRoot, 'update-backups', `before-seed-${SEED_VERSION}-${timestampForPath()}`)
   fs.mkdirSync(backupRoot, { recursive: true })
@@ -187,6 +199,7 @@ const MIME_TYPES = {
   '.png': 'image/png',
   '.svg': 'image/svg+xml; charset=utf-8',
   '.txt': 'text/plain; charset=utf-8',
+  '.xlsx': 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
   '.webmanifest': 'application/manifest+json; charset=utf-8',
   '.woff': 'font/woff',
   '.woff2': 'font/woff2',

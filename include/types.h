@@ -53,6 +53,11 @@ struct Lesson {
     bool is_lab;
     bool is_block;      // true = УП, одно появление = 2 пары нагрузки
     bool is_pp;         // true = ПП, ставится только в конец семестра
+    // Для обычного занятия total_slots по-прежнему хранит число пар. Значение
+    // 2 требует раскладывать их только соседними двухпарными блоками.
+    int consecutive_pairs = 1;
+    // Запрещает считать 2-ю и 3-ю пары одним непрерывным блоком: между ними обед.
+    bool avoid_lunch_split = false;
     std::set<Campus> allowed_campuses;
     std::string week_parity = "all";  // all | odd | even
     int fixed_room = -1;              // -1 = кабинет пока не закреплён

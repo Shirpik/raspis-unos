@@ -3,6 +3,10 @@
 ###############################################################################
 * text=auto
 
+# Desktop installers are published from the repository without inflating the
+# normal Git object database.
+desktop/release/Raspis-USPO-Setup-*.exe filter=lfs diff=lfs merge=lfs -text
+
 ###############################################################################
 # Set default behavior for command prompt diff.
 #

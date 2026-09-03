@@ -10,6 +10,8 @@
 
 #include "config.h"
 #include "date_utils.h"
+#include "scheduler_rules.h"
+#include "room_policy.h"
 
 namespace timetable {
 namespace {
@@ -386,6 +388,11 @@ ScheduleValidationResult ValidateScheduleJson(
             collector.Add("error", "rooms", "exclusive_room_access",
                           "Преподаватель не имеет доступа к закреплённой аудитории", ctx);
         }
+        if (!OperationalRoomPolicyAllows(*room, *lesson, event.date)) {
+            JsonValue ctx = Context(); Put(ctx, "room", event.room); Put(ctx, "lesson", event.lesson); Put(ctx, "date", DateLabel(event.date));
+            collector.Add("error", "rooms", "operational_room_policy_mismatch",
+                          "Аудитория не соответствует правилу ЛПЗ/лекции преподавателя", ctx);
+        }
         if (!RoomFitsLesson(*room, *lesson)) {
             JsonValue ctx = Context(); Put(ctx, "room", event.room); Put(ctx, "lesson", event.lesson);
             collector.Add("error", "rooms", "room_requirements_mismatch",
@@ -446,6 +453,44 @@ ScheduleValidationResult ValidateScheduleJson(
                       "У физической подгруппы несколько занятий одновременно", ctx);
     }
 
+    // Проверяем не только количество ЛПЗ, но и их форму. Это независимый
+    // fail-closed барьер: даже импортированное или вручную собранное
+    // расписание не будет опубликовано с разорванной двойной парой.
+    for (const Lesson& lesson : data.lessons) {
+        std::map<Date, std::set<int>> lesson_day_pairs;
+        for (const Event& event : events_by_lesson[lesson.id])
+            lesson_day_pairs[event.date].insert(event.pair);
+        for (const auto& [date, pairs] : lesson_day_pairs) {
+            if (lesson.consecutive_pairs == 2) {
+                const std::vector<int> ordered(pairs.begin(), pairs.end());
+                bool valid = ordered.size() % 2 == 0;
+                bool crosses_lunch = false;
+                for (size_t index = 0; valid && index < ordered.size(); index += 2) {
+                    valid = ordered[index + 1] == ordered[index] + 1;
+                    crosses_lunch = crosses_lunch ||
+                        (lesson.avoid_lunch_split && ordered[index] == 2);
+                }
+                if (!valid) {
+                    JsonValue ctx = Context(); Put(ctx, "lesson", lesson.id);
+                    Put(ctx, "date", DateLabel(date)); ctx.At("slots") = SlotsJson(pairs);
+                    collector.Add("error", "structure", "lesson_consecutive_pairs_broken",
+                                  "Занятие должно идти только блоками по две пары подряд", ctx);
+                }
+                if (crosses_lunch) {
+                    JsonValue ctx = Context(); Put(ctx, "lesson", lesson.id);
+                    Put(ctx, "date", DateLabel(date)); ctx.At("slots") = SlotsJson(pairs);
+                    collector.Add("error", "structure", "lesson_pair_crosses_lunch",
+                                  "Двойная пара не должна соединять 2-ю и 3-ю пары через обед", ctx);
+                }
+            } else if (lesson.avoid_lunch_split && pairs.count(2) && pairs.count(3)) {
+                JsonValue ctx = Context(); Put(ctx, "lesson", lesson.id);
+                Put(ctx, "date", DateLabel(date)); ctx.At("slots") = SlotsJson(pairs);
+                collector.Add("error", "structure", "lesson_pair_crosses_lunch",
+                              "Занятие не должно продолжаться с 2-й на 3-ю пару через обед", ctx);
+            }
+        }
+    }
+
     for (const auto& item : teacher_day_campuses) {
         if (item.second.size() <= 1) continue;
         JsonValue ctx = Context(); Put(ctx, "teacher", item.first.first); Put(ctx, "date", DateLabel(item.first.second));
@@ -464,10 +509,18 @@ ScheduleValidationResult ValidateScheduleJson(
         const int part = std::get<1>(item.first);
         const Date& date = std::get<2>(item.first);
         const int count = static_cast<int>(item.second.size());
-        if (count < config.min_student_pairs_per_study_day || count > config.max_student_pairs_per_day) {
+        if (count > config.max_student_pairs_per_day) {
             JsonValue ctx = Context(); Put(ctx, "group", group_id); Put(ctx, "part", part + 1); Put(ctx, "date", DateLabel(date)); Put(ctx, "count", count); Put(ctx, "min", config.min_student_pairs_per_study_day); Put(ctx, "max", config.max_student_pairs_per_day);
             collector.Add("error", "daily_load", "student_daily_load",
                           "Суточная нагрузка подгруппы выходит за заданные границы", ctx);
+        } else if (count < config.min_student_pairs_per_study_day) {
+            JsonValue ctx = Context(); Put(ctx, "group", group_id); Put(ctx, "part", part + 1); Put(ctx, "date", DateLabel(date)); Put(ctx, "count", count); Put(ctx, "min", config.min_student_pairs_per_study_day); Put(ctx, "max", config.max_student_pairs_per_day);
+            collector.Add(config.allow_single_pair_day_fallback ? "warning" : "error",
+                          "daily_load", "student_daily_minimum_fallback",
+                          config.allow_single_pair_day_fallback
+                              ? "Дневной минимум ослаблен резервным режимом решателя"
+                              : "Суточная нагрузка подгруппы ниже заданного минимума",
+                          ctx);
         }
         if (!IsContiguous(item.second)) {
             JsonValue ctx = Context(); Put(ctx, "group", group_id); Put(ctx, "part", part + 1); Put(ctx, "date", DateLabel(date)); ctx.At("slots") = SlotsJson(item.second);
@@ -477,10 +530,13 @@ ScheduleValidationResult ValidateScheduleJson(
     }
 
     std::map<std::tuple<int, int, int>, int> part_week_days;
+    std::map<std::tuple<int, int, int>, int> part_week_pairs;
     std::map<std::tuple<int, int, int>, int> part_week_two_pair_days;
     for (const auto& item : part_day_slots) {
         const int week = MondaySerial(data.start_date, std::get<2>(item.first));
         part_week_days[{std::get<0>(item.first), std::get<1>(item.first), week}]++;
+        part_week_pairs[{std::get<0>(item.first), std::get<1>(item.first), week}] +=
+            static_cast<int>(item.second.size());
         if (item.second.size() == 2) part_week_two_pair_days[{std::get<0>(item.first), std::get<1>(item.first), week}]++;
     }
     if (config.hard_min_study_days_per_week || config.hard_max_one_two_pair_student_day) {
@@ -499,7 +555,23 @@ ScheduleValidationResult ValidateScheduleJson(
                                 any_slot = any_slot || WorkScheduleAllows(group.work_schedule, date, pair - 1);
                             if (any_slot) available_days++;
                         }
-                        const int required = std::min(config.min_student_study_days_per_week, available_days);
+                        int required = std::min(
+                            config.min_student_study_days_per_week, available_days);
+                        // Части группы учатся в одни и те же дни. Поэтому, как
+                        // и в solver, берём достижимый минимум для всей группы,
+                        // а не завышаем его по более нагруженной части.
+                        for (int synchronized_part = 0;
+                             synchronized_part < std::max(1, group.parts);
+                             ++synchronized_part) {
+                            const int weekly_pairs = part_week_pairs[{
+                                group.id, synchronized_part, week}];
+                            if (weekly_pairs <= 0) continue;
+                            required = std::min(required, EffectiveStudentStudyDays(
+                                config.min_student_study_days_per_week,
+                                available_days,
+                                config.min_student_pairs_per_study_day,
+                                weekly_pairs));
+                        }
                         const int actual = part_week_days[{group.id, part, week}];
                         if (actual < required) {
                             JsonValue ctx = Context(); Put(ctx, "group", group.id); Put(ctx, "part", part + 1); Put(ctx, "week", week + 1); Put(ctx, "actual", actual); Put(ctx, "required", required);

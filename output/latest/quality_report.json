@@ -1,27 +1,19 @@
 {
   "completion_percent": 100,
-  "configured_student_daily_limit": 4,
-  "excess_hours": 0,
-  "five_pair_student_days": 0,
   "load_matches_plan_exactly": true,
-  "max_student_pairs_per_day": 4,
-  "mismatched_lessons": 0,
+  "planned_occurrences": 349,
+  "scheduled_occurrences": 349,
   "missing_hours": 0,
-  "planned_hours": 1038,
+  "excess_hours": 0,
   "remaining_hours": 0,
-  "rooms": {
-    "assigned": 519,
-    "conflicts": [],
-    "events": 519,
-    "inventory_configured": true,
-    "substituted": 0,
-    "substitutions": [],
-    "unassigned": 0
-  },
-  "scheduled_hours": 1038,
-  "student_days_at_daily_limit": 53,
+  "mismatched_lessons": 0,
   "student_windows": 0,
-  "teacher_windows": 9,
-  "up_day_rule_violations": 0,
-  "up_teacher_lock_violations": 0
+  "rooms": {
+    "events": 349,
+    "assigned": 349,
+    "unassigned": 0,
+    "conflicts": []
+  },
+  "validation_errors": 0,
+  "validation_warnings": 1
 }
