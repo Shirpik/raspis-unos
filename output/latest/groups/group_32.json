@@ -1,0 +1,51 @@
+{
+  "group_index": 32,
+  "group_name": "ТОРД-3707п",
+  "days": [
+    {
+      "date": "03.09.2026",
+      "date_iso": "2026-09-03",
+      "day_index": 0,
+      "weekday": "ЧТ",
+      "slots": [
+        {"slot": 1, "time": "1 пара (08:30-09:55)", "text": "-", "lessons": []},
+        {"slot": 2, "time": "2 пара (10:05-11:30)", "text": "-", "lessons": []},
+        {"slot": 3, "time": "3 пара (12:25-13:50)", "text": "ВМДК.04.02 Диагностика, техническое обслуживание и ремонт мехатронных систем автомобиля — вся группа, Тимеров Валерий Вагизович, Лесная", "lessons": [{"id":721,"uid":"lesson-2bc1c9ed9f0b1055","name":"ВМДК.04.02 Диагностика, техническое обслуживание и ремонт мехатронных систем автомобиля","teacher_id":60,"subgroup":-1,"is_lab":false,"is_block":false,"week_parity":"all","room_id":32,"room_name":"207","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
+        {"slot": 4, "time": "4 пара (14:00-15:25)", "text": "ЛПЗ ВМДК.04.01 Слесарное дело и технические измерения — 2 п/г, Самцов Андрей Евгеньевич, Лесная | ЛПЗ ВМДК.04.02 Диагностика, техническое обслуживание и ремонт мехатронных систем автомобиля — 1 п/г, Тимеров Валерий Вагизович, Лесная", "lessons": [{"id":720,"uid":"lesson-9623ab6a1f228ef0","name":"ЛПЗ ВМДК.04.01 Слесарное дело и технические измерения","teacher_id":59,"subgroup":65,"is_lab":true,"is_block":false,"week_parity":"all","room_id":64,"room_name":"115-116","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null},{"id":722,"uid":"lesson-7900ea6f5c567cd8","name":"ЛПЗ ВМДК.04.02 Диагностика, техническое обслуживание и ремонт мехатронных систем автомобиля","teacher_id":60,"subgroup":64,"is_lab":true,"is_block":false,"week_parity":"all","room_id":32,"room_name":"207","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
+        {"slot": 5, "time": "5 пара (15:35-16:55)", "text": "ЛПЗ ВМДК.04.01 Слесарное дело и технические измерения — 1 п/г, Самцов Андрей Евгеньевич, Лесная | ЛПЗ ВМДК.04.02 Диагностика, техническое обслуживание и ремонт мехатронных систем автомобиля — 2 п/г, Тимеров Валерий Вагизович, Лесная", "lessons": [{"id":719,"uid":"lesson-d98dabe437f45eae","name":"ЛПЗ ВМДК.04.01 Слесарное дело и технические измерения","teacher_id":59,"subgroup":64,"is_lab":true,"is_block":false,"week_parity":"all","room_id":64,"room_name":"115-116","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null},{"id":723,"uid":"lesson-474ef9f00c3ba061","name":"ЛПЗ ВМДК.04.02 Диагностика, техническое обслуживание и ремонт мехатронных систем автомобиля","teacher_id":60,"subgroup":65,"is_lab":true,"is_block":false,"week_parity":"all","room_id":32,"room_name":"207","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
+        {"slot": 6, "time": "6 пара (17:05-18:25)", "text": "ЛПЗ ВМДК.04.02 Диагностика, техническое обслуживание и ремонт мехатронных систем автомобиля — 2 п/г, Тимеров Валерий Вагизович, Лесная", "lessons": [{"id":723,"uid":"lesson-474ef9f00c3ba061","name":"ЛПЗ ВМДК.04.02 Диагностика, техническое обслуживание и ремонт мехатронных систем автомобиля","teacher_id":60,"subgroup":65,"is_lab":true,"is_block":false,"week_parity":"all","room_id":32,"room_name":"207","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
+        {"slot": 7, "time": "7 пара (18:35-19:55)", "text": "-", "lessons": []}
+      ]
+    },
+    {
+      "date": "04.09.2026",
+      "date_iso": "2026-09-04",
+      "day_index": 1,
+      "weekday": "ПТ",
+      "slots": [
+        {"slot": 1, "time": "1 пара (08:30-09:55)", "text": "Автоматизация автомастерской в компьютерной программе \"1С предприятие 8: \"Автосервис\" — 2 п/г, Азарян Карине Айказовна, Лесная", "lessons": [{"id":712,"uid":"lesson-fc177ba530fd1a39","name":"Автоматизация автомастерской в компьютерной программе \"1С предприятие 8: \"Автосервис\"","teacher_id":47,"subgroup":65,"is_lab":false,"is_block":false,"week_parity":"all","room_id":34,"room_name":"210","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
+        {"slot": 2, "time": "2 пара (10:05-11:30)", "text": "ВМДК.04.01 Слесарное дело и технические измерения — вся группа, Самцов Андрей Евгеньевич, Лесная", "lessons": [{"id":718,"uid":"lesson-719170e47002c3ef","name":"ВМДК.04.01 Слесарное дело и технические измерения","teacher_id":59,"subgroup":-1,"is_lab":false,"is_block":false,"week_parity":"all","room_id":64,"room_name":"115-116","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
+        {"slot": 3, "time": "3 пара (12:25-13:50)", "text": "Автоматизация автомастерской в компьютерной программе \"1С предприятие 8: \"Автосервис\" — 1 п/г, Азарян Карине Айказовна, Лесная", "lessons": [{"id":711,"uid":"lesson-a30c42aad89b9a70","name":"Автоматизация автомастерской в компьютерной программе \"1С предприятие 8: \"Автосервис\"","teacher_id":47,"subgroup":64,"is_lab":false,"is_block":false,"week_parity":"all","room_id":34,"room_name":"210","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
+        {"slot": 4, "time": "4 пара (14:00-15:25)", "text": "Иностранный язык в профессиональной деятельности — 1 п/г, Новосёлова Светлана Юрьевна, Лесная", "lessons": [{"id":704,"uid":"lesson-d97ca3b6c22703bb","name":"Иностранный язык в профессиональной деятельности","teacher_id":28,"subgroup":64,"is_lab":false,"is_block":false,"week_parity":"all","room_id":47,"room_name":"417","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
+        {"slot": 5, "time": "5 пара (15:35-16:55)", "text": "-", "lessons": []},
+        {"slot": 6, "time": "6 пара (17:05-18:25)", "text": "-", "lessons": []},
+        {"slot": 7, "time": "7 пара (18:35-19:55)", "text": "-", "lessons": []}
+      ]
+    },
+    {
+      "date": "05.09.2026",
+      "date_iso": "2026-09-05",
+      "day_index": 2,
+      "weekday": "СБ",
+      "slots": [
+        {"slot": 1, "time": "1 пара (08:30-09:45)", "text": "-", "lessons": []},
+        {"slot": 2, "time": "2 пара (09:55-11:10)", "text": "-", "lessons": []},
+        {"slot": 3, "time": "3 пара (11:30-12:45)", "text": "Информационные технологии в профессиональной деятельности — 2 п/г, Ланитина Елена Сергеевна, Кривоусова", "lessons": [{"id":709,"uid":"lesson-f89a2a335557f397","name":"Информационные технологии в профессиональной деятельности","teacher_id":31,"subgroup":65,"is_lab":false,"is_block":false,"week_parity":"all","room_id":58,"room_name":"67","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
+        {"slot": 4, "time": "4 пара (12:55-14:10)", "text": "Метрология, стандартизация, сертификация — вся группа, Садриева Татьяна Геннадьевна, Кривоусова", "lessons": [{"id":707,"uid":"lesson-a06fc3fbb3e7045e","name":"Метрология, стандартизация, сертификация","teacher_id":41,"subgroup":-1,"is_lab":false,"is_block":false,"week_parity":"all","room_id":58,"room_name":"67","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
+        {"slot": 5, "time": "5 пара (14:20-15:30)", "text": "Безопасность жизнедеятельности — вся группа, Потапова Регина Александровна, Кривоусова", "lessons": [{"id":710,"uid":"lesson-f632b6963309c647","name":"Безопасность жизнедеятельности","teacher_id":8,"subgroup":-1,"is_lab":false,"is_block":false,"week_parity":"all","room_id":18,"room_name":"37","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
+        {"slot": 6, "time": "6 пара (15:40-16:50)", "text": "Информационные технологии в профессиональной деятельности — 1 п/г, Ланитина Елена Сергеевна, Кривоусова", "lessons": [{"id":708,"uid":"lesson-f66a3462c48b11da","name":"Информационные технологии в профессиональной деятельности","teacher_id":31,"subgroup":64,"is_lab":false,"is_block":false,"week_parity":"all","room_id":54,"room_name":"57","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
+        {"slot": 7, "time": "7 пара (17:00-18:10)", "text": "-", "lessons": []}
+      ]
+    }
+  ]
+}

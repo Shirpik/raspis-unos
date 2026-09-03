@@ -1,0 +1,70 @@
+{
+  "groups": [
+    {
+      "group_index": 14,
+      "group_name": "МЦМ-Пф-202",
+      "days": [
+        {
+          "date": "02.09.2026",
+          "date_iso": "2026-09-02",
+          "slots": [
+            { "slot": 1, "lessons": [{ "id": 290 }] },
+            { "slot": 2, "lessons": [{ "id": 290 }] }
+          ]
+        },
+        {
+          "date": "04.09.2026",
+          "date_iso": "2026-09-04",
+          "slots": [
+            { "slot": 1, "lessons": [{ "id": 285 }] },
+            { "slot": 2, "lessons": [{ "id": 285 }] }
+          ]
+        },
+        {
+          "date": "05.09.2026",
+          "date_iso": "2026-09-05",
+          "slots": [
+            { "slot": 1, "lessons": [{ "id": 286 }] },
+            { "slot": 2, "lessons": [{ "id": 286 }] }
+          ]
+        }
+      ]
+    },
+    {
+      "group_index": 15,
+      "group_name": "МЦМ-Пф-301",
+      "days": [
+        {
+          "date": "04.09.2026",
+          "date_iso": "2026-09-04",
+          "slots": [
+            { "slot": 3, "lessons": [{ "id": 324 }] },
+            { "slot": 4, "lessons": [{ "id": 324 }] }
+          ]
+        },
+        {
+          "date": "05.09.2026",
+          "date_iso": "2026-09-05",
+          "slots": [
+            { "slot": 3, "lessons": [{ "id": 310 }] },
+            { "slot": 4, "lessons": [{ "id": 310 }] }
+          ]
+        }
+      ]
+    },
+    {
+      "group_index": 16,
+      "group_name": "МЦМ-408",
+      "days": [
+        {
+          "date": "02.09.2026",
+          "date_iso": "2026-09-02",
+          "slots": [
+            { "slot": 3, "lessons": [{ "id": 337 }] },
+            { "slot": 4, "lessons": [{ "id": 337 }] }
+          ]
+        }
+      ]
+    }
+  ]
+}

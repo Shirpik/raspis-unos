@@ -1,0 +1,51 @@
+{
+  "group_index": 13,
+  "group_name": "ОСА-491",
+  "days": [
+    {
+      "date": "03.09.2026",
+      "date_iso": "2026-09-03",
+      "day_index": 0,
+      "weekday": "ЧТ",
+      "slots": [
+        {"slot": 1, "time": "1 пара (08:30-09:55)", "text": "МДК.03.01 Планирование материально-технического обеспечения работ по монтажу, наладке и техническому обслуживанию систем и средств автоматизации — вся группа, Сивилькаев Вадим Михайлович, Кривоусова", "lessons": [{"id":265,"uid":"lesson-72cac0e5bd3f7cc3","name":"МДК.03.01 Планирование материально-технического обеспечения работ по монтажу, наладке и техническому обслуживанию систем и средств автоматизации","teacher_id":40,"subgroup":-1,"is_lab":false,"is_block":false,"week_parity":"all","room_id":61,"room_name":"70","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
+        {"slot": 2, "time": "2 пара (10:05-11:30)", "text": "МДК.03.02 Разработка, организация и контроль качества работ по монтажу, наладке и техническому обслуживанию систем и средств автоматизации — вся группа, Сивилькаев Вадим Михайлович, Кривоусова", "lessons": [{"id":268,"uid":"lesson-95de3ff736de43b0","name":"МДК.03.02 Разработка, организация и контроль качества работ по монтажу, наладке и техническому обслуживанию систем и средств автоматизации","teacher_id":40,"subgroup":-1,"is_lab":false,"is_block":false,"week_parity":"all","room_id":61,"room_name":"70","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
+        {"slot": 3, "time": "3 пара (12:25-13:50)", "text": "ВМДК.05.01 Технология сборки, регулировки и ремонта контрольно-измерительных приборов и систем автоматики — вся группа, Сивилькаев Вадим Михайлович, Кривоусова", "lessons": [{"id":273,"uid":"lesson-0037dd01732e42f4","name":"ВМДК.05.01 Технология сборки, регулировки и ремонта контрольно-измерительных приборов и систем автоматики","teacher_id":40,"subgroup":-1,"is_lab":false,"is_block":false,"week_parity":"all","room_id":61,"room_name":"70","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
+        {"slot": 4, "time": "4 пара (14:00-15:25)", "text": "ЛПЗ ВМДК.05.01 Технология сборки, регулировки и ремонта контрольно-измерительных приборов и систем автоматики — 1 п/г, Сивилькаев Вадим Михайлович, Кривоусова", "lessons": [{"id":274,"uid":"lesson-2fde5ee5a5cbe72b","name":"ЛПЗ ВМДК.05.01 Технология сборки, регулировки и ремонта контрольно-измерительных приборов и систем автоматики","teacher_id":40,"subgroup":26,"is_lab":true,"is_block":false,"week_parity":"all","room_id":61,"room_name":"70","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
+        {"slot": 5, "time": "5 пара (15:35-16:55)", "text": "-", "lessons": []},
+        {"slot": 6, "time": "6 пара (17:05-18:25)", "text": "-", "lessons": []},
+        {"slot": 7, "time": "7 пара (18:35-19:55)", "text": "-", "lessons": []}
+      ]
+    },
+    {
+      "date": "04.09.2026",
+      "date_iso": "2026-09-04",
+      "day_index": 1,
+      "weekday": "ПТ",
+      "slots": [
+        {"slot": 1, "time": "1 пара (08:30-09:55)", "text": "-", "lessons": []},
+        {"slot": 2, "time": "2 пара (10:05-11:30)", "text": "МДК.03.01 Планирование материально-технического обеспечения работ по монтажу, наладке и техническому обслуживанию систем и средств автоматизации — вся группа, Сивилькаев Вадим Михайлович, Кривоусова", "lessons": [{"id":265,"uid":"lesson-72cac0e5bd3f7cc3","name":"МДК.03.01 Планирование материально-технического обеспечения работ по монтажу, наладке и техническому обслуживанию систем и средств автоматизации","teacher_id":40,"subgroup":-1,"is_lab":false,"is_block":false,"week_parity":"all","room_id":61,"room_name":"70","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
+        {"slot": 3, "time": "3 пара (12:25-13:50)", "text": "ВМДК.05.02 Технология выполнения слесарных и слесарно-сборочных работ — вся группа, Сивилькаев Вадим Михайлович, Кривоусова", "lessons": [{"id":276,"uid":"lesson-6e1f3db7a04bd5ca","name":"ВМДК.05.02 Технология выполнения слесарных и слесарно-сборочных работ","teacher_id":40,"subgroup":-1,"is_lab":false,"is_block":false,"week_parity":"all","room_id":61,"room_name":"70","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
+        {"slot": 4, "time": "4 пара (14:00-15:25)", "text": "-", "lessons": []},
+        {"slot": 5, "time": "5 пара (15:35-16:55)", "text": "-", "lessons": []},
+        {"slot": 6, "time": "6 пара (17:05-18:25)", "text": "-", "lessons": []},
+        {"slot": 7, "time": "7 пара (18:35-19:55)", "text": "-", "lessons": []}
+      ]
+    },
+    {
+      "date": "05.09.2026",
+      "date_iso": "2026-09-05",
+      "day_index": 2,
+      "weekday": "СБ",
+      "slots": [
+        {"slot": 1, "time": "1 пара (08:30-09:45)", "text": "ЛПЗ МДК.03.02 Разработка, организация и контроль качества работ по монтажу, наладке и техническому обслуживанию систем и средств автоматизации — 1 п/г, Осипчук Александр Александрович, Лесная", "lessons": [{"id":269,"uid":"lesson-8f89dcd1211cbbe9","name":"ЛПЗ МДК.03.02 Разработка, организация и контроль качества работ по монтажу, наладке и техническому обслуживанию систем и средств автоматизации","teacher_id":42,"subgroup":26,"is_lab":true,"is_block":false,"week_parity":"all","room_id":45,"room_name":"407","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
+        {"slot": 2, "time": "2 пара (09:55-11:10)", "text": "ЛПЗ ВМДК.05.02 Технология выполнения слесарных и слесарно-сборочных работ — 1 п/г, Осипчук Александр Александрович, Лесная", "lessons": [{"id":277,"uid":"lesson-635a92e49b36896e","name":"ЛПЗ ВМДК.05.02 Технология выполнения слесарных и слесарно-сборочных работ","teacher_id":42,"subgroup":26,"is_lab":true,"is_block":false,"week_parity":"all","room_id":45,"room_name":"407","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
+        {"slot": 3, "time": "3 пара (11:30-12:45)", "text": "ЛПЗ МДК.03.01 Планирование материально-технического обеспечения работ по монтажу, наладке и техническому обслуживанию систем и средств автоматизации — 1 п/г, Осипчук Александр Александрович, Лесная", "lessons": [{"id":266,"uid":"lesson-974e9ce70280f140","name":"ЛПЗ МДК.03.01 Планирование материально-технического обеспечения работ по монтажу, наладке и техническому обслуживанию систем и средств автоматизации","teacher_id":42,"subgroup":26,"is_lab":true,"is_block":false,"week_parity":"all","room_id":45,"room_name":"407","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
+        {"slot": 4, "time": "4 пара (12:55-14:10)", "text": "ЛПЗ МДК.03.02 Разработка, организация и контроль качества работ по монтажу, наладке и техническому обслуживанию систем и средств автоматизации — 2 п/г, Осипчук Александр Александрович, Лесная", "lessons": [{"id":270,"uid":"lesson-826dd93b108af040","name":"ЛПЗ МДК.03.02 Разработка, организация и контроль качества работ по монтажу, наладке и техническому обслуживанию систем и средств автоматизации","teacher_id":42,"subgroup":27,"is_lab":true,"is_block":false,"week_parity":"all","room_id":45,"room_name":"407","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
+        {"slot": 5, "time": "5 пара (14:20-15:30)", "text": "ЛПЗ МДК.03.01 Планирование материально-технического обеспечения работ по монтажу, наладке и техническому обслуживанию систем и средств автоматизации — 2 п/г, Осипчук Александр Александрович, Лесная", "lessons": [{"id":267,"uid":"lesson-2d9963a6c7734dbc","name":"ЛПЗ МДК.03.01 Планирование материально-технического обеспечения работ по монтажу, наладке и техническому обслуживанию систем и средств автоматизации","teacher_id":42,"subgroup":27,"is_lab":true,"is_block":false,"week_parity":"all","room_id":45,"room_name":"407","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
+        {"slot": 6, "time": "6 пара (15:40-16:50)", "text": "ЛПЗ ВМДК.05.02 Технология выполнения слесарных и слесарно-сборочных работ — 2 п/г, Осипчук Александр Александрович, Лесная", "lessons": [{"id":278,"uid":"lesson-a74028f841981ee9","name":"ЛПЗ ВМДК.05.02 Технология выполнения слесарных и слесарно-сборочных работ","teacher_id":42,"subgroup":27,"is_lab":true,"is_block":false,"week_parity":"all","room_id":45,"room_name":"407","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
+        {"slot": 7, "time": "7 пара (17:00-18:10)", "text": "ЛПЗ МДК.02.02 Испытания модели элементов систем автоматизации в реальных условиях и их оптимизация — 2 п/г, Осипчук Александр Александрович, Лесная", "lessons": [{"id":262,"uid":"lesson-468553c9bd0f6c04","name":"ЛПЗ МДК.02.02 Испытания модели элементов систем автоматизации в реальных условиях и их оптимизация","teacher_id":42,"subgroup":27,"is_lab":true,"is_block":false,"week_parity":"all","room_id":45,"room_name":"407","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]}
+      ]
+    }
+  ]
+}

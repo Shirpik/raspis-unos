@@ -1,0 +1,12 @@
+{
+  "issues": [],
+  "message": "Недельные квоты проходят проверку физической вместимости",
+  "ok": true,
+  "summary": {
+    "errors": 0,
+    "ok": true,
+    "warnings": 0,
+    "weeks": 1
+  },
+  "warnings": []
+}

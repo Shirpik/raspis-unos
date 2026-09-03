@@ -1,0 +1,51 @@
+{
+  "group_index": 25,
+  "group_name": "СП-Пф-2604п",
+  "days": [
+    {
+      "date": "03.09.2026",
+      "date_iso": "2026-09-03",
+      "day_index": 0,
+      "weekday": "ЧТ",
+      "slots": [
+        {"slot": 1, "time": "1 пара (08:30-09:55)", "text": "Охрана труда — вся группа, Костарева Наталья Викторовна, Лесная", "lessons": [{"id":550,"uid":"lesson-f09901b5a7cf83d2","name":"Охрана труда","teacher_id":13,"subgroup":-1,"is_lab":false,"is_block":false,"week_parity":"all","room_id":38,"room_name":"318","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
+        {"slot": 2, "time": "2 пара (10:05-11:30)", "text": "Техническая механика — вся группа, Абрамчук Раида Филимазовна, Лесная", "lessons": [{"id":553,"uid":"lesson-1568667ae1b5ab24","name":"Техническая механика","teacher_id":38,"subgroup":-1,"is_lab":false,"is_block":false,"week_parity":"all","room_id":29,"room_name":"201","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
+        {"slot": 3, "time": "3 пара (12:25-13:50)", "text": "МДК.06.02 Технология ручной дуговой сварки — вся группа, Лимонова Евгения Николаевна, Лесная", "lessons": [{"id":566,"uid":"lesson-83b0506cf6fa9761","name":"МДК.06.02 Технология ручной дуговой сварки","teacher_id":55,"subgroup":-1,"is_lab":false,"is_block":false,"week_parity":"all","room_id":66,"room_name":"120-121","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
+        {"slot": 4, "time": "4 пара (14:00-15:25)", "text": "-", "lessons": []},
+        {"slot": 5, "time": "5 пара (15:35-16:55)", "text": "-", "lessons": []},
+        {"slot": 6, "time": "6 пара (17:05-18:25)", "text": "-", "lessons": []},
+        {"slot": 7, "time": "7 пара (18:35-19:55)", "text": "-", "lessons": []}
+      ]
+    },
+    {
+      "date": "04.09.2026",
+      "date_iso": "2026-09-04",
+      "day_index": 1,
+      "weekday": "ПТ",
+      "slots": [
+        {"slot": 1, "time": "1 пара (08:30-09:55)", "text": "-", "lessons": []},
+        {"slot": 2, "time": "2 пара (10:05-11:30)", "text": "Информационные технологии в профессиональной деятельности — 2 п/г, Ланитина Елена Сергеевна, Кривоусова", "lessons": [{"id":549,"uid":"lesson-6046900264569435","name":"Информационные технологии в профессиональной деятельности","teacher_id":31,"subgroup":51,"is_lab":false,"is_block":false,"week_parity":"all","room_id":58,"room_name":"67","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
+        {"slot": 3, "time": "3 пара (12:25-13:50)", "text": "Метрология, стандартизация и сертификация — вся группа, Садриева Татьяна Геннадьевна, Кривоусова", "lessons": [{"id":556,"uid":"lesson-46279c6e89eec731","name":"Метрология, стандартизация и сертификация","teacher_id":41,"subgroup":-1,"is_lab":false,"is_block":false,"week_parity":"all","room_id":58,"room_name":"67","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
+        {"slot": 4, "time": "4 пара (14:00-15:25)", "text": "Физическая культура — вся группа, Потапова Регина Александровна, Кривоусова", "lessons": [{"id":547,"uid":"lesson-506363fdc00ede8f","name":"Физическая культура","teacher_id":8,"subgroup":-1,"is_lab":false,"is_block":false,"week_parity":"all","room_id":22,"room_name":"Спортзал","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
+        {"slot": 5, "time": "5 пара (15:35-16:55)", "text": "-", "lessons": []},
+        {"slot": 6, "time": "6 пара (17:05-18:25)", "text": "-", "lessons": []},
+        {"slot": 7, "time": "7 пара (18:35-19:55)", "text": "-", "lessons": []}
+      ]
+    },
+    {
+      "date": "05.09.2026",
+      "date_iso": "2026-09-05",
+      "day_index": 2,
+      "weekday": "СБ",
+      "slots": [
+        {"slot": 1, "time": "1 пара (08:30-09:45)", "text": "МДК.06.02 Технология ручной дуговой сварки — вся группа, Лимонова Евгения Николаевна, Кривоусова", "lessons": [{"id":566,"uid":"lesson-83b0506cf6fa9761","name":"МДК.06.02 Технология ручной дуговой сварки","teacher_id":55,"subgroup":-1,"is_lab":false,"is_block":false,"week_parity":"all","room_id":60,"room_name":"69","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
+        {"slot": 2, "time": "2 пара (09:55-11:10)", "text": "Информационные технологии в профессиональной деятельности — 1 п/г, Ланитина Елена Сергеевна, Кривоусова | ЛПЗ МДК.06.02 Технология ручной дуговой сварки — 2 п/г, Лимонова Евгения Николаевна, Кривоусова", "lessons": [{"id":548,"uid":"lesson-51115653fa62c92e","name":"Информационные технологии в профессиональной деятельности","teacher_id":31,"subgroup":50,"is_lab":false,"is_block":false,"week_parity":"all","room_id":58,"room_name":"67","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null},{"id":568,"uid":"lesson-20cb85a9a131cd2f","name":"ЛПЗ МДК.06.02 Технология ручной дуговой сварки","teacher_id":55,"subgroup":51,"is_lab":true,"is_block":false,"week_parity":"all","room_id":60,"room_name":"69","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
+        {"slot": 3, "time": "3 пара (11:30-12:45)", "text": "Материаловедение — вся группа, Лимонова Евгения Николаевна, Кривоусова", "lessons": [{"id":554,"uid":"lesson-7d868eea3050fd4c","name":"Материаловедение","teacher_id":55,"subgroup":-1,"is_lab":false,"is_block":false,"week_parity":"all","room_id":60,"room_name":"69","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
+        {"slot": 4, "time": "4 пара (12:55-14:10)", "text": "ЛПЗ МДК.06.02 Технология ручной дуговой сварки — 1 п/г, Лимонова Евгения Николаевна, Кривоусова", "lessons": [{"id":567,"uid":"lesson-3d43059e98f3ca77","name":"ЛПЗ МДК.06.02 Технология ручной дуговой сварки","teacher_id":55,"subgroup":50,"is_lab":true,"is_block":false,"week_parity":"all","room_id":60,"room_name":"69","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
+        {"slot": 5, "time": "5 пара (14:20-15:30)", "text": "-", "lessons": []},
+        {"slot": 6, "time": "6 пара (15:40-16:50)", "text": "-", "lessons": []},
+        {"slot": 7, "time": "7 пара (17:00-18:10)", "text": "-", "lessons": []}
+      ]
+    }
+  ]
+}

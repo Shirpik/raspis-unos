@@ -1,0 +1,51 @@
+{
+  "group_index": 21,
+  "group_name": "ПКД-2808п",
+  "days": [
+    {
+      "date": "03.09.2026",
+      "date_iso": "2026-09-03",
+      "day_index": 0,
+      "weekday": "ЧТ",
+      "slots": [
+        {"slot": 1, "time": "1 пара (08:30-09:55)", "text": "Физическая культура — вся группа, Нуров Мирзо Нуралиевич, Лесная", "lessons": [{"id":441,"uid":"lesson-a0242ae03365da6f","name":"Физическая культура","teacher_id":34,"subgroup":-1,"is_lab":false,"is_block":false,"week_parity":"all","room_id":67,"room_name":"Спортзал","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
+        {"slot": 2, "time": "2 пара (10:05-11:30)", "text": "Охрана труда — вся группа, Костарева Наталья Викторовна, Лесная", "lessons": [{"id":446,"uid":"lesson-4e9d8640d0ec142c","name":"Охрана труда","teacher_id":13,"subgroup":-1,"is_lab":false,"is_block":false,"week_parity":"all","room_id":38,"room_name":"318","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
+        {"slot": 3, "time": "3 пара (12:25-13:50)", "text": "-", "lessons": []},
+        {"slot": 4, "time": "4 пара (14:00-15:25)", "text": "-", "lessons": []},
+        {"slot": 5, "time": "5 пара (15:35-16:55)", "text": "-", "lessons": []},
+        {"slot": 6, "time": "6 пара (17:05-18:25)", "text": "-", "lessons": []},
+        {"slot": 7, "time": "7 пара (18:35-19:55)", "text": "-", "lessons": []}
+      ]
+    },
+    {
+      "date": "04.09.2026",
+      "date_iso": "2026-09-04",
+      "day_index": 1,
+      "weekday": "ПТ",
+      "slots": [
+        {"slot": 1, "time": "1 пара (08:30-09:55)", "text": "Биология — вся группа, Никонова Антонина Олеговна, Кривоусова", "lessons": [{"id":438,"uid":"lesson-ba65a3e89baee095","name":"Биология","teacher_id":3,"subgroup":-1,"is_lab":false,"is_block":false,"week_parity":"all","room_id":54,"room_name":"57","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
+        {"slot": 2, "time": "2 пара (10:05-11:30)", "text": "Химия — вся группа, Соболева Любовь Анатольевна, Кривоусова", "lessons": [{"id":442,"uid":"lesson-12f8ee13398b3715","name":"Химия","teacher_id":20,"subgroup":-1,"is_lab":false,"is_block":false,"week_parity":"all","room_id":4,"room_name":"15","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
+        {"slot": 3, "time": "3 пара (12:25-13:50)", "text": "Организация хранения и контроль запасов и сырья — вся группа, Чадова Марина Александровна, Кривоусова", "lessons": [{"id":444,"uid":"lesson-9cd4fc4283490126","name":"Организация хранения и контроль запасов и сырья","teacher_id":52,"subgroup":-1,"is_lab":false,"is_block":false,"week_parity":"all","room_id":53,"room_name":"56","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
+        {"slot": 4, "time": "4 пара (14:00-15:25)", "text": "ЛПЗ ВМДК.07.02 Термическая обработка теста и отделка поверхности хлебобулочных изделий — 1 п/г, Чадова Марина Александровна, Кривоусова", "lessons": [{"id":456,"uid":"lesson-f3129ef1c956d309","name":"ЛПЗ ВМДК.07.02 Термическая обработка теста и отделка поверхности хлебобулочных изделий","teacher_id":52,"subgroup":42,"is_lab":true,"is_block":false,"week_parity":"all","room_id":53,"room_name":"56","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
+        {"slot": 5, "time": "5 пара (15:35-16:55)", "text": "-", "lessons": []},
+        {"slot": 6, "time": "6 пара (17:05-18:25)", "text": "-", "lessons": []},
+        {"slot": 7, "time": "7 пара (18:35-19:55)", "text": "-", "lessons": []}
+      ]
+    },
+    {
+      "date": "05.09.2026",
+      "date_iso": "2026-09-05",
+      "day_index": 2,
+      "weekday": "СБ",
+      "slots": [
+        {"slot": 1, "time": "1 пара (08:30-09:45)", "text": "Иностранный язык в профессиональной деятельности — 1 п/г, Синельникова Елена Владимировна, Кривоусова | ЛПЗ ВМДК.07.02 Термическая обработка теста и отделка поверхности хлебобулочных изделий — 2 п/г, Чадова Марина Александровна, Кривоусова", "lessons": [{"id":439,"uid":"lesson-18055696bcdcaa1f","name":"Иностранный язык в профессиональной деятельности","teacher_id":30,"subgroup":42,"is_lab":false,"is_block":false,"week_parity":"all","room_id":18,"room_name":"37","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null},{"id":457,"uid":"lesson-ea06dc6fe37ddaf5","name":"ЛПЗ ВМДК.07.02 Термическая обработка теста и отделка поверхности хлебобулочных изделий","teacher_id":52,"subgroup":43,"is_lab":true,"is_block":false,"week_parity":"all","room_id":53,"room_name":"56","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
+        {"slot": 2, "time": "2 пара (09:55-11:10)", "text": "Организация хранения и контроль запасов и сырья — вся группа, Чадова Марина Александровна, Кривоусова", "lessons": [{"id":444,"uid":"lesson-9cd4fc4283490126","name":"Организация хранения и контроль запасов и сырья","teacher_id":52,"subgroup":-1,"is_lab":false,"is_block":false,"week_parity":"all","room_id":53,"room_name":"56","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
+        {"slot": 3, "time": "3 пара (11:30-12:45)", "text": "Техническое оснащение организаций питания — вся группа, Елагина Ольга Александровна, Кривоусова", "lessons": [{"id":445,"uid":"lesson-952a2e105e1c1d76","name":"Техническое оснащение организаций питания","teacher_id":45,"subgroup":-1,"is_lab":false,"is_block":false,"week_parity":"all","room_id":25,"room_name":"50","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
+        {"slot": 4, "time": "4 пара (12:55-14:10)", "text": "Иностранный язык в профессиональной деятельности — 2 п/г, Шадрина Елена Федоровна, Кривоусова", "lessons": [{"id":440,"uid":"lesson-8e5b0b268468bcca","name":"Иностранный язык в профессиональной деятельности","teacher_id":33,"subgroup":43,"is_lab":false,"is_block":false,"week_parity":"all","room_id":17,"room_name":"34","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
+        {"slot": 5, "time": "5 пара (14:20-15:30)", "text": "-", "lessons": []},
+        {"slot": 6, "time": "6 пара (15:40-16:50)", "text": "-", "lessons": []},
+        {"slot": 7, "time": "7 пара (17:00-18:10)", "text": "-", "lessons": []}
+      ]
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "group_index": 30,
+  "group_name": "ТОиРА-2701п",
+  "days": [
+    {
+      "date": "03.09.2026",
+      "date_iso": "2026-09-03",
+      "day_index": 0,
+      "weekday": "ЧТ",
+      "slots": [
+        {"slot": 1, "time": "1 пара (08:30-09:55)", "text": "ВМДК.05.02 Основы управления транспортными средствами — вся группа, Тимеров Валерий Вагизович, Лесная", "lessons": [{"id":678,"uid":"lesson-69e61b101c0a02a6","name":"ВМДК.05.02 Основы управления транспортными средствами","teacher_id":60,"subgroup":-1,"is_lab":false,"is_block":false,"week_parity":"all","room_id":32,"room_name":"207","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
+        {"slot": 2, "time": "2 пара (10:05-11:30)", "text": "ВМДК.05.02 Основы управления транспортными средствами — вся группа, Тимеров Валерий Вагизович, Лесная", "lessons": [{"id":678,"uid":"lesson-69e61b101c0a02a6","name":"ВМДК.05.02 Основы управления транспортными средствами","teacher_id":60,"subgroup":-1,"is_lab":false,"is_block":false,"week_parity":"all","room_id":32,"room_name":"207","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
+        {"slot": 3, "time": "3 пара (12:25-13:50)", "text": "Техническая механика — вся группа, Абрамчук Раида Филимазовна, Лесная", "lessons": [{"id":668,"uid":"lesson-95a34af506b0ca2c","name":"Техническая механика","teacher_id":38,"subgroup":-1,"is_lab":false,"is_block":false,"week_parity":"all","room_id":29,"room_name":"201","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
+        {"slot": 4, "time": "4 пара (14:00-15:25)", "text": "-", "lessons": []},
+        {"slot": 5, "time": "5 пара (15:35-16:55)", "text": "-", "lessons": []},
+        {"slot": 6, "time": "6 пара (17:05-18:25)", "text": "-", "lessons": []},
+        {"slot": 7, "time": "7 пара (18:35-19:55)", "text": "-", "lessons": []}
+      ]
+    },
+    {
+      "date": "04.09.2026",
+      "date_iso": "2026-09-04",
+      "day_index": 1,
+      "weekday": "ПТ",
+      "slots": [
+        {"slot": 1, "time": "1 пара (08:30-09:55)", "text": "-", "lessons": []},
+        {"slot": 2, "time": "2 пара (10:05-11:30)", "text": "-", "lessons": []},
+        {"slot": 3, "time": "3 пара (12:25-13:50)", "text": "-", "lessons": []},
+        {"slot": 4, "time": "4 пара (14:00-15:25)", "text": "ВМДК.04.01 Слесарное дело и технические измерения — вся группа, Самцов Андрей Евгеньевич, Лесная", "lessons": [{"id":669,"uid":"lesson-cd645b6fc5916a72","name":"ВМДК.04.01 Слесарное дело и технические измерения","teacher_id":59,"subgroup":-1,"is_lab":false,"is_block":false,"week_parity":"all","room_id":64,"room_name":"115-116","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
+        {"slot": 5, "time": "5 пара (15:35-16:55)", "text": "Техническая механика — вся группа, Абрамчук Раида Филимазовна, Лесная", "lessons": [{"id":668,"uid":"lesson-95a34af506b0ca2c","name":"Техническая механика","teacher_id":38,"subgroup":-1,"is_lab":false,"is_block":false,"week_parity":"all","room_id":29,"room_name":"201","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
+        {"slot": 6, "time": "6 пара (17:05-18:25)", "text": "ВМДК.04.02 Диагностика, техническое обслуживание и ремонт мехатронных систем автомобиля — вся группа, Тимеров Валерий Вагизович, Лесная", "lessons": [{"id":672,"uid":"lesson-90e4246321a659b8","name":"ВМДК.04.02 Диагностика, техническое обслуживание и ремонт мехатронных систем автомобиля","teacher_id":60,"subgroup":-1,"is_lab":false,"is_block":false,"week_parity":"all","room_id":32,"room_name":"207","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
+        {"slot": 7, "time": "7 пара (18:35-19:55)", "text": "-", "lessons": []}
+      ]
+    },
+    {
+      "date": "05.09.2026",
+      "date_iso": "2026-09-05",
+      "day_index": 2,
+      "weekday": "СБ",
+      "slots": [
+        {"slot": 1, "time": "1 пара (08:30-09:45)", "text": "Иностранный язык в профессиональной деятельности — 1 п/г, Ермолина Ирина Павловна, Лесная", "lessons": [{"id":663,"uid":"lesson-6f076ed8edd2a6f8","name":"Иностранный язык в профессиональной деятельности","teacher_id":27,"subgroup":60,"is_lab":false,"is_block":false,"week_parity":"all","room_id":41,"room_name":"324","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
+        {"slot": 2, "time": "2 пара (09:55-11:10)", "text": "История России — вся группа, Лучинин Александр Васильевич, Лесная", "lessons": [{"id":662,"uid":"lesson-113f392cc39a0296","name":"История России","teacher_id":14,"subgroup":-1,"is_lab":false,"is_block":false,"week_parity":"all","room_id":37,"room_name":"317","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
+        {"slot": 3, "time": "3 пара (11:30-12:45)", "text": "Иностранный язык в профессиональной деятельности — 2 п/г, Ермолина Ирина Павловна, Лесная | ЛПЗ ВМДК.04.01 Слесарное дело и технические измерения — 1 п/г, Самцов Андрей Евгеньевич, Лесная", "lessons": [{"id":664,"uid":"lesson-8d962ea3010aa8d9","name":"Иностранный язык в профессиональной деятельности","teacher_id":27,"subgroup":61,"is_lab":false,"is_block":false,"week_parity":"all","room_id":41,"room_name":"324","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null},{"id":670,"uid":"lesson-2892d24cfadc2cfe","name":"ЛПЗ ВМДК.04.01 Слесарное дело и технические измерения","teacher_id":59,"subgroup":60,"is_lab":true,"is_block":false,"week_parity":"all","room_id":64,"room_name":"115-116","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
+        {"slot": 4, "time": "4 пара (12:55-14:10)", "text": "ЛПЗ ВМДК.04.01 Слесарное дело и технические измерения — 2 п/г, Тимеров Валерий Вагизович, Лесная", "lessons": [{"id":671,"uid":"lesson-0a5191c56c9dc532","name":"ЛПЗ ВМДК.04.01 Слесарное дело и технические измерения","teacher_id":60,"subgroup":61,"is_lab":true,"is_block":false,"week_parity":"all","room_id":32,"room_name":"207","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
+        {"slot": 5, "time": "5 пара (14:20-15:30)", "text": "-", "lessons": []},
+        {"slot": 6, "time": "6 пара (15:40-16:50)", "text": "-", "lessons": []},
+        {"slot": 7, "time": "7 пара (17:00-18:10)", "text": "-", "lessons": []}
+      ]
+    }
+  ]
+}

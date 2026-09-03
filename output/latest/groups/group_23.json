@@ -1,0 +1,51 @@
+{
+  "group_index": 23,
+  "group_name": "ПКД-4805п",
+  "days": [
+    {
+      "date": "03.09.2026",
+      "date_iso": "2026-09-03",
+      "day_index": 0,
+      "weekday": "ЧТ",
+      "slots": [
+        {"slot": 1, "time": "1 пара (08:30-09:55)", "text": "Эффективное поведение на рынке труда — вся группа, Кропотова Анастасия Андреевна, Лесная", "lessons": [{"id":497,"uid":"lesson-95c4eda298b5c5bf","name":"Эффективное поведение на рынке труда","teacher_id":15,"subgroup":-1,"is_lab":false,"is_block":false,"week_parity":"all","room_id":33,"room_name":"209","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
+        {"slot": 2, "time": "2 пара (10:05-11:30)", "text": "Физическая культура — вся группа, Потапова Регина Александровна, Лесная", "lessons": [{"id":489,"uid":"lesson-67b6f56e73d95f2c","name":"Физическая культура","teacher_id":8,"subgroup":-1,"is_lab":false,"is_block":false,"week_parity":"all","room_id":42,"room_name":"330","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
+        {"slot": 3, "time": "3 пара (12:25-13:50)", "text": "-", "lessons": []},
+        {"slot": 4, "time": "4 пара (14:00-15:25)", "text": "-", "lessons": []},
+        {"slot": 5, "time": "5 пара (15:35-16:55)", "text": "-", "lessons": []},
+        {"slot": 6, "time": "6 пара (17:05-18:25)", "text": "-", "lessons": []},
+        {"slot": 7, "time": "7 пара (18:35-19:55)", "text": "-", "lessons": []}
+      ]
+    },
+    {
+      "date": "04.09.2026",
+      "date_iso": "2026-09-04",
+      "day_index": 1,
+      "weekday": "ПТ",
+      "slots": [
+        {"slot": 1, "time": "1 пара (08:30-09:55)", "text": "МДК.06.01 Оперативное управление текущей деятельностью подчиненного персонала — вся группа, Елагина Ольга Александровна, Кривоусова", "lessons": [{"id":513,"uid":"lesson-93fd216c079f1ff2","name":"МДК.06.01 Оперативное управление текущей деятельностью подчиненного персонала","teacher_id":45,"subgroup":-1,"is_lab":false,"is_block":false,"week_parity":"all","room_id":25,"room_name":"50","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
+        {"slot": 2, "time": "2 пара (10:05-11:30)", "text": "Основы предпринимательской деятельности — вся группа, Елагина Ольга Александровна, Кривоусова", "lessons": [{"id":496,"uid":"lesson-8e25b5135072617a","name":"Основы предпринимательской деятельности","teacher_id":45,"subgroup":-1,"is_lab":false,"is_block":false,"week_parity":"all","room_id":25,"room_name":"50","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
+        {"slot": 3, "time": "3 пара (12:25-13:50)", "text": "Калькуляция и учет в общественном питании — вся группа, Елагина Ольга Александровна, Кривоусова", "lessons": [{"id":492,"uid":"lesson-56f44953b2c5b779","name":"Калькуляция и учет в общественном питании","teacher_id":45,"subgroup":-1,"is_lab":false,"is_block":false,"week_parity":"all","room_id":25,"room_name":"50","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
+        {"slot": 4, "time": "4 пара (14:00-15:25)", "text": "ЛПЗ МДК.04.02 Процессы приготовления, подготовки к реализации холодных и горячих десертов, напитков сложного ассортимента — 2 п/г, Кузнецова Елизавета Олеговна, Кривоусова | ЛПЗ МДК.06.01 Оперативное управление текущей деятельностью подчиненного персонала — 1 п/г, Елагина Ольга Александровна, Кривоусова", "lessons": [{"id":505,"uid":"lesson-922a5074e4ee3103","name":"ЛПЗ МДК.04.02 Процессы приготовления, подготовки к реализации холодных и горячих десертов, напитков сложного ассортимента","teacher_id":54,"subgroup":47,"is_lab":true,"is_block":false,"week_parity":"all","room_id":51,"room_name":"13","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null},{"id":514,"uid":"lesson-050b877f97ccdb15","name":"ЛПЗ МДК.06.01 Оперативное управление текущей деятельностью подчиненного персонала","teacher_id":45,"subgroup":46,"is_lab":true,"is_block":false,"week_parity":"all","room_id":25,"room_name":"50","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
+        {"slot": 5, "time": "5 пара (15:35-16:55)", "text": "-", "lessons": []},
+        {"slot": 6, "time": "6 пара (17:05-18:25)", "text": "-", "lessons": []},
+        {"slot": 7, "time": "7 пара (18:35-19:55)", "text": "-", "lessons": []}
+      ]
+    },
+    {
+      "date": "05.09.2026",
+      "date_iso": "2026-09-05",
+      "day_index": 2,
+      "weekday": "СБ",
+      "slots": [
+        {"slot": 1, "time": "1 пара (08:30-09:45)", "text": "ЛПЗ МДК.05.02 Процессы приготовления, подготовки к реализации хлебобулочных, мучных кондитерских изделий сложного ассортимента — 1 п/г, Конева Кристина Сергеевна, Кривоусова", "lessons": [{"id":509,"uid":"lesson-fe12e4f958cc0191","name":"ЛПЗ МДК.05.02 Процессы приготовления, подготовки к реализации хлебобулочных, мучных кондитерских изделий сложного ассортимента","teacher_id":53,"subgroup":46,"is_lab":true,"is_block":false,"week_parity":"all","room_id":28,"room_name":"61","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
+        {"slot": 2, "time": "2 пара (09:55-11:10)", "text": "ЛПЗ МДК.04.02 Процессы приготовления, подготовки к реализации холодных и горячих десертов, напитков сложного ассортимента — 1 п/г, Конева Кристина Сергеевна, Кривоусова", "lessons": [{"id":504,"uid":"lesson-a854066778c476b8","name":"ЛПЗ МДК.04.02 Процессы приготовления, подготовки к реализации холодных и горячих десертов, напитков сложного ассортимента","teacher_id":53,"subgroup":46,"is_lab":true,"is_block":false,"week_parity":"all","room_id":28,"room_name":"61","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
+        {"slot": 3, "time": "3 пара (11:30-12:45)", "text": "Психология общения — вся группа, Ярославцева Елена Анатольевна, Кривоусова", "lessons": [{"id":490,"uid":"lesson-c8ac25f967070917","name":"Психология общения","teacher_id":50,"subgroup":-1,"is_lab":false,"is_block":false,"week_parity":"all","room_id":15,"room_name":"32","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
+        {"slot": 4, "time": "4 пара (12:55-14:10)", "text": "ЛПЗ МДК.06.01 Оперативное управление текущей деятельностью подчиненного персонала — 2 п/г, Елагина Ольга Александровна, Кривоусова", "lessons": [{"id":515,"uid":"lesson-0d3afb2b42bb972e","name":"ЛПЗ МДК.06.01 Оперативное управление текущей деятельностью подчиненного персонала","teacher_id":45,"subgroup":47,"is_lab":true,"is_block":false,"week_parity":"all","room_id":25,"room_name":"50","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
+        {"slot": 5, "time": "5 пара (14:20-15:30)", "text": "ЛПЗ МДК.05.02 Процессы приготовления, подготовки к реализации хлебобулочных, мучных кондитерских изделий сложного ассортимента — 2 п/г, Кузнецова Елизавета Олеговна, Кривоусова", "lessons": [{"id":510,"uid":"lesson-835ba93ce4e1cc0b","name":"ЛПЗ МДК.05.02 Процессы приготовления, подготовки к реализации хлебобулочных, мучных кондитерских изделий сложного ассортимента","teacher_id":54,"subgroup":47,"is_lab":true,"is_block":false,"week_parity":"all","room_id":51,"room_name":"13","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
+        {"slot": 6, "time": "6 пара (15:40-16:50)", "text": "-", "lessons": []},
+        {"slot": 7, "time": "7 пара (17:00-18:10)", "text": "-", "lessons": []}
+      ]
+    }
+  ]
+}

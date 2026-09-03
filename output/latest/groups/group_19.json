@@ -1,0 +1,51 @@
+{
+  "group_index": 19,
+  "group_name": "ТАКХС-4202",
+  "days": [
+    {
+      "date": "03.09.2026",
+      "date_iso": "2026-09-03",
+      "day_index": 0,
+      "weekday": "ЧТ",
+      "slots": [
+        {"slot": 1, "time": "1 пара (08:30-09:55)", "text": "-", "lessons": []},
+        {"slot": 2, "time": "2 пара (10:05-11:30)", "text": "-", "lessons": []},
+        {"slot": 3, "time": "3 пара (12:25-13:50)", "text": "-", "lessons": []},
+        {"slot": 4, "time": "4 пара (14:00-15:25)", "text": "-", "lessons": []},
+        {"slot": 5, "time": "5 пара (15:35-16:55)", "text": "Иностранный язык в профессиональной деятельности — 1 п/г, Ермолина Ирина Павловна, Лесная", "lessons": [{"id":394,"uid":"lesson-5b1a26dd0b07cc1d","name":"Иностранный язык в профессиональной деятельности","teacher_id":27,"subgroup":38,"is_lab":false,"is_block":false,"week_parity":"all","room_id":41,"room_name":"324","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
+        {"slot": 6, "time": "6 пара (17:05-18:25)", "text": "Физическая культура — вся группа, Потапова Регина Александровна, Лесная", "lessons": [{"id":396,"uid":"lesson-3b860196a7e16125","name":"Физическая культура","teacher_id":8,"subgroup":-1,"is_lab":false,"is_block":false,"week_parity":"all","room_id":42,"room_name":"330","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
+        {"slot": 7, "time": "7 пара (18:35-19:55)", "text": "Иностранный язык в профессиональной деятельности — 2 п/г, Ермолина Ирина Павловна, Лесная", "lessons": [{"id":395,"uid":"lesson-1a52d30d117a24e8","name":"Иностранный язык в профессиональной деятельности","teacher_id":27,"subgroup":39,"is_lab":false,"is_block":false,"week_parity":"all","room_id":41,"room_name":"324","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]}
+      ]
+    },
+    {
+      "date": "04.09.2026",
+      "date_iso": "2026-09-04",
+      "day_index": 1,
+      "weekday": "ПТ",
+      "slots": [
+        {"slot": 1, "time": "1 пара (08:30-09:55)", "text": "-", "lessons": []},
+        {"slot": 2, "time": "2 пара (10:05-11:30)", "text": "-", "lessons": []},
+        {"slot": 3, "time": "3 пара (12:25-13:50)", "text": "-", "lessons": []},
+        {"slot": 4, "time": "4 пара (14:00-15:25)", "text": "Психология общения — вся группа, Ярославцева Елена Анатольевна, Кривоусова", "lessons": [{"id":397,"uid":"lesson-7a9bc95a9b0a6f74","name":"Психология общения","teacher_id":50,"subgroup":-1,"is_lab":false,"is_block":false,"week_parity":"all","room_id":15,"room_name":"32","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
+        {"slot": 5, "time": "5 пара (15:35-16:55)", "text": "МДК.02.01 Основы качественного и количественного анализа природных и промышленных материалов — вся группа, Семенова Лилиана Ивановна, Кривоусова", "lessons": [{"id":404,"uid":"lesson-d2339e699d128554","name":"МДК.02.01 Основы качественного и количественного анализа природных и промышленных материалов","teacher_id":10,"subgroup":-1,"is_lab":false,"is_block":false,"week_parity":"all","room_id":52,"room_name":"54","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
+        {"slot": 6, "time": "6 пара (17:05-18:25)", "text": "МДК.02.01 Основы качественного и количественного анализа природных и промышленных материалов — вся группа, Семенова Лилиана Ивановна, Кривоусова", "lessons": [{"id":404,"uid":"lesson-d2339e699d128554","name":"МДК.02.01 Основы качественного и количественного анализа природных и промышленных материалов","teacher_id":10,"subgroup":-1,"is_lab":false,"is_block":false,"week_parity":"all","room_id":52,"room_name":"54","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
+        {"slot": 7, "time": "7 пара (18:35-19:55)", "text": "ЛПЗ МДК.01.01 Основы аналитической химии и физико-химических методов анализа — 1 п/г, Семенова Лилиана Ивановна, Кривоусова", "lessons": [{"id":400,"uid":"lesson-6c6e4b7e069ed681","name":"ЛПЗ МДК.01.01 Основы аналитической химии и физико-химических методов анализа","teacher_id":10,"subgroup":38,"is_lab":true,"is_block":false,"week_parity":"all","room_id":52,"room_name":"54","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]}
+      ]
+    },
+    {
+      "date": "05.09.2026",
+      "date_iso": "2026-09-05",
+      "day_index": 2,
+      "weekday": "СБ",
+      "slots": [
+        {"slot": 1, "time": "1 пара (08:30-09:45)", "text": "ЛПЗ МДК.02.01 Основы качественного и количественного анализа природных и промышленных материалов — 1 п/г, Семенова Лилиана Ивановна, Кривоусова", "lessons": [{"id":405,"uid":"lesson-799b82203a849518","name":"ЛПЗ МДК.02.01 Основы качественного и количественного анализа природных и промышленных материалов","teacher_id":10,"subgroup":38,"is_lab":true,"is_block":false,"week_parity":"all","room_id":52,"room_name":"54","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
+        {"slot": 2, "time": "2 пара (09:55-11:10)", "text": "ЛПЗ МДК.02.01 Основы качественного и количественного анализа природных и промышленных материалов — 1 п/г, Семенова Лилиана Ивановна, Кривоусова", "lessons": [{"id":405,"uid":"lesson-799b82203a849518","name":"ЛПЗ МДК.02.01 Основы качественного и количественного анализа природных и промышленных материалов","teacher_id":10,"subgroup":38,"is_lab":true,"is_block":false,"week_parity":"all","room_id":52,"room_name":"54","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
+        {"slot": 3, "time": "3 пара (11:30-12:45)", "text": "ЛПЗ МДК.02.01 Основы качественного и количественного анализа природных и промышленных материалов — 1 п/г, Семенова Лилиана Ивановна, Кривоусова", "lessons": [{"id":405,"uid":"lesson-799b82203a849518","name":"ЛПЗ МДК.02.01 Основы качественного и количественного анализа природных и промышленных материалов","teacher_id":10,"subgroup":38,"is_lab":true,"is_block":false,"week_parity":"all","room_id":52,"room_name":"54","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
+        {"slot": 4, "time": "4 пара (12:55-14:10)", "text": "ЛПЗ МДК.02.01 Основы качественного и количественного анализа природных и промышленных материалов — 2 п/г, Семенова Лилиана Ивановна, Кривоусова", "lessons": [{"id":406,"uid":"lesson-26962e13b65bedf5","name":"ЛПЗ МДК.02.01 Основы качественного и количественного анализа природных и промышленных материалов","teacher_id":10,"subgroup":39,"is_lab":true,"is_block":false,"week_parity":"all","room_id":52,"room_name":"54","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
+        {"slot": 5, "time": "5 пара (14:20-15:30)", "text": "ЛПЗ МДК.02.01 Основы качественного и количественного анализа природных и промышленных материалов — 2 п/г, Семенова Лилиана Ивановна, Кривоусова", "lessons": [{"id":406,"uid":"lesson-26962e13b65bedf5","name":"ЛПЗ МДК.02.01 Основы качественного и количественного анализа природных и промышленных материалов","teacher_id":10,"subgroup":39,"is_lab":true,"is_block":false,"week_parity":"all","room_id":52,"room_name":"54","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
+        {"slot": 6, "time": "6 пара (15:40-16:50)", "text": "ЛПЗ МДК.02.01 Основы качественного и количественного анализа природных и промышленных материалов — 2 п/г, Семенова Лилиана Ивановна, Кривоусова", "lessons": [{"id":406,"uid":"lesson-26962e13b65bedf5","name":"ЛПЗ МДК.02.01 Основы качественного и количественного анализа природных и промышленных материалов","teacher_id":10,"subgroup":39,"is_lab":true,"is_block":false,"week_parity":"all","room_id":52,"room_name":"54","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
+        {"slot": 7, "time": "7 пара (17:00-18:10)", "text": "ЛПЗ МДК.01.01 Основы аналитической химии и физико-химических методов анализа — 2 п/г, Семенова Лилиана Ивановна, Кривоусова", "lessons": [{"id":401,"uid":"lesson-cec8b7df2df83aca","name":"ЛПЗ МДК.01.01 Основы аналитической химии и физико-химических методов анализа","teacher_id":10,"subgroup":39,"is_lab":true,"is_block":false,"week_parity":"all","room_id":52,"room_name":"54","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]}
+      ]
+    }
+  ]
+}

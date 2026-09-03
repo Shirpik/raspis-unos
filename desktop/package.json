@@ -1,0 +1,89 @@
+{
+  "name": "raspis-uspo-desktop",
+  "version": "1.2.0",
+  "description": "Локальное desktop-приложение для настройки и генерации расписания УСПО",
+  "main": "main.cjs",
+  "author": "УСПО",
+  "license": "UNLICENSED",
+  "private": true,
+  "scripts": {
+    "start": "electron .",
+    "smoke": "electron . --smoke-test",
+    "pack": "electron-builder --win --dir",
+    "dist": "electron-builder --win nsis"
+  },
+  "devDependencies": {
+    "electron": "38.1.0",
+    "electron-builder": "26.0.12"
+  },
+  "build": {
+    "appId": "ru.uspo.raspis.desktop",
+    "productName": "Расписание УСПО",
+    "artifactName": "Raspis-USPO-Setup-${version}.${ext}",
+    "asar": true,
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "main.cjs",
+      "package.json"
+    ],
+    "extraResources": [
+      {
+        "from": "../frontend/dist",
+        "to": "frontend"
+      },
+      {
+        "from": "../build-desktop",
+        "to": "solver",
+        "filter": [
+          "*.exe",
+          "*.dll"
+        ]
+      },
+      {
+        "from": "runtime",
+        "to": "solver",
+        "filter": [
+          "*.dll"
+        ]
+      },
+      {
+        "from": "../data",
+        "to": "seed/data"
+      },
+      {
+        "from": "../output/latest",
+        "to": "seed/output/latest"
+      },
+      {
+        "from": "../output/manual",
+        "to": "seed/output/manual"
+      },
+      {
+        "from": "../output/published",
+        "to": "seed/output/published"
+      }
+    ],
+    "win": {
+      "signAndEditExecutable": false,
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "icon": "build/icon.ico"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "Расписание УСПО",
+      "deleteAppDataOnUninstall": false
+    }
+  }
+}

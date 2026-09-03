@@ -1,0 +1,84 @@
+#pragma once
+
+#include <set>
+#include <string>
+#include <vector>
+
+#include "ortools/sat/cp_model.h"
+
+namespace timetable {
+
+enum Campus {
+    LESNAYA = 0,
+    KRIVOUSOVA = 1
+};
+
+struct Date {
+    int year;
+    int month;
+    int day;
+
+    bool operator<(const Date& o) const {
+        if (year != o.year) return year < o.year;
+        if (month != o.month) return month < o.month;
+        return day < o.day;
+    }
+
+    bool operator==(const Date& o) const {
+        return year == o.year && month == o.month && day == o.day;
+    }
+
+    bool operator<=(const Date& o) const {
+        return *this < o || *this == o;
+    }
+
+    bool operator>(const Date& o) const {
+        return o < *this;
+    }
+
+    bool operator>=(const Date& o) const {
+        return !(*this < o);
+    }
+};
+
+struct Lesson {
+    int id;
+    std::string uid;
+    int group;
+    int subgroup;       // -1 = вся группа, иначе 0/1 или 2/3
+    int teacher;
+    int total_slots;
+    std::string name;
+    int subject_id;     // для связки теория-лабы
+    bool is_lab;
+    bool is_block;      // true = УП, одно появление = 2 пары нагрузки
+    bool is_pp;         // true = ПП, ставится только в конец семестра
+    std::set<Campus> allowed_campuses;
+    std::string week_parity = "all";  // all | odd | even
+    int fixed_room = -1;              // -1 = кабинет пока не закреплён
+    int preferred_room = -1;          // Мягкое закрепление преподавателя.
+    bool allow_room_substitution = true; // При конфликте можно взять совместимый кабинет из фонда.
+    std::string fixed_room_name;
+    int required_capacity = 0;
+    int required_room_type = 0;       // Специализация отключена; 0 = любой кабинет корпуса.
+    std::set<std::string> required_equipment;
+    // Пустая строка = обычная учебная аудитория. Специальное назначение
+    // (например, sports_hall) является жёстким требованием занятия.
+    std::string required_room_purpose;
+};
+
+struct BlockInfo {
+    int lesson_id;
+    std::vector<int> possible_starts;
+    std::vector<operations_research::sat::BoolVar> start_vars;
+};
+
+struct TimeInterval {
+    int from_minute;
+    int to_minute;
+};
+
+std::string SubjectFamilyKey(const Lesson& lesson);
+bool LessonAffectsPart(const Lesson& lesson, int group, int part);
+
+}  // namespace timetable

@@ -1,0 +1,51 @@
+{
+  "group_index": 20,
+  "group_name": "ТЭО-Пф-3501",
+  "days": [
+    {
+      "date": "03.09.2026",
+      "date_iso": "2026-09-03",
+      "day_index": 0,
+      "weekday": "ЧТ",
+      "slots": [
+        {"slot": 1, "time": "1 пара (08:30-09:55)", "text": "-", "lessons": []},
+        {"slot": 2, "time": "2 пара (10:05-11:30)", "text": "-", "lessons": []},
+        {"slot": 3, "time": "3 пара (12:25-13:50)", "text": "Физическая культура — вся группа, Потапова Регина Александровна, Лесная", "lessons": [{"id":413,"uid":"lesson-c638d679ee2cdf52","name":"Физическая культура","teacher_id":8,"subgroup":-1,"is_lab":false,"is_block":false,"week_parity":"all","room_id":42,"room_name":"330","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
+        {"slot": 4, "time": "4 пара (14:00-15:25)", "text": "Безопасность жизнидеятельности — вся группа, Потапова Регина Александровна, Лесная", "lessons": [{"id":412,"uid":"lesson-ac6276f138f8a292","name":"Безопасность жизнидеятельности","teacher_id":8,"subgroup":-1,"is_lab":false,"is_block":false,"week_parity":"all","room_id":44,"room_name":"405","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
+        {"slot": 5, "time": "5 пара (15:35-16:55)", "text": "Физическая культура — вся группа, Потапова Регина Александровна, Лесная", "lessons": [{"id":413,"uid":"lesson-c638d679ee2cdf52","name":"Физическая культура","teacher_id":8,"subgroup":-1,"is_lab":false,"is_block":false,"week_parity":"all","room_id":42,"room_name":"330","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
+        {"slot": 6, "time": "6 пара (17:05-18:25)", "text": "-", "lessons": []},
+        {"slot": 7, "time": "7 пара (18:35-19:55)", "text": "-", "lessons": []}
+      ]
+    },
+    {
+      "date": "04.09.2026",
+      "date_iso": "2026-09-04",
+      "day_index": 1,
+      "weekday": "ПТ",
+      "slots": [
+        {"slot": 1, "time": "1 пара (08:30-09:55)", "text": "-", "lessons": []},
+        {"slot": 2, "time": "2 пара (10:05-11:30)", "text": "-", "lessons": []},
+        {"slot": 3, "time": "3 пара (12:25-13:50)", "text": "ЛПЗ МДК.03.01 Основы энергоснабжения объектов отрасли — 2 п/г, Сутягин Артём Борисович, Кривоусова", "lessons": [{"id":425,"uid":"lesson-55fdd4d3427d5163","name":"ЛПЗ МДК.03.01 Основы энергоснабжения объектов отрасли","teacher_id":9,"subgroup":41,"is_lab":true,"is_block":false,"week_parity":"all","room_id":55,"room_name":"63","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
+        {"slot": 4, "time": "4 пара (14:00-15:25)", "text": "МДК.03.01 Основы энергоснабжения объектов отрасли — вся группа, Сутягин Артём Борисович, Кривоусова", "lessons": [{"id":423,"uid":"lesson-a62fe957fd4ffa32","name":"МДК.03.01 Основы энергоснабжения объектов отрасли","teacher_id":9,"subgroup":-1,"is_lab":false,"is_block":false,"week_parity":"all","room_id":55,"room_name":"63","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
+        {"slot": 5, "time": "5 пара (15:35-16:55)", "text": "МДК.03.01 Основы энергоснабжения объектов отрасли — вся группа, Сутягин Артём Борисович, Кривоусова", "lessons": [{"id":423,"uid":"lesson-a62fe957fd4ffa32","name":"МДК.03.01 Основы энергоснабжения объектов отрасли","teacher_id":9,"subgroup":-1,"is_lab":false,"is_block":false,"week_parity":"all","room_id":55,"room_name":"63","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
+        {"slot": 6, "time": "6 пара (17:05-18:25)", "text": "ЛПЗ МДК.03.01 Основы энергоснабжения объектов отрасли — 1 п/г, Сутягин Артём Борисович, Кривоусова", "lessons": [{"id":424,"uid":"lesson-0f8b7f1463e2d311","name":"ЛПЗ МДК.03.01 Основы энергоснабжения объектов отрасли","teacher_id":9,"subgroup":40,"is_lab":true,"is_block":false,"week_parity":"all","room_id":55,"room_name":"63","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
+        {"slot": 7, "time": "7 пара (18:35-19:55)", "text": "ЛПЗ МДК.03.01 Основы энергоснабжения объектов отрасли — 1 п/г, Сутягин Артём Борисович, Кривоусова", "lessons": [{"id":424,"uid":"lesson-0f8b7f1463e2d311","name":"ЛПЗ МДК.03.01 Основы энергоснабжения объектов отрасли","teacher_id":9,"subgroup":40,"is_lab":true,"is_block":false,"week_parity":"all","room_id":55,"room_name":"63","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]}
+      ]
+    },
+    {
+      "date": "05.09.2026",
+      "date_iso": "2026-09-05",
+      "day_index": 2,
+      "weekday": "СБ",
+      "slots": [
+        {"slot": 1, "time": "1 пара (08:30-09:45)", "text": "ЛПЗ МДК.02.02 Разработка документации по эксплуатации электрического и электромеханического оборудования — 1 п/г, Кошелев Дмитрий Александрович, Кривоусова", "lessons": [{"id":420,"uid":"lesson-07b5afd7ec01f507","name":"ЛПЗ МДК.02.02 Разработка документации по эксплуатации электрического и электромеханического оборудования","teacher_id":51,"subgroup":40,"is_lab":true,"is_block":false,"week_parity":"all","room_id":21,"room_name":"42","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
+        {"slot": 2, "time": "2 пара (09:55-11:10)", "text": "Безопасность жизнидеятельности — вся группа, Потапова Регина Александровна, Кривоусова", "lessons": [{"id":412,"uid":"lesson-ac6276f138f8a292","name":"Безопасность жизнидеятельности","teacher_id":8,"subgroup":-1,"is_lab":false,"is_block":false,"week_parity":"all","room_id":18,"room_name":"37","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
+        {"slot": 3, "time": "3 пара (11:30-12:45)", "text": "ЛПЗ МДК.02.02 Разработка документации по эксплуатации электрического и электромеханического оборудования — 2 п/г, Кошелев Дмитрий Александрович, Кривоусова", "lessons": [{"id":421,"uid":"lesson-c548081121938a4c","name":"ЛПЗ МДК.02.02 Разработка документации по эксплуатации электрического и электромеханического оборудования","teacher_id":51,"subgroup":41,"is_lab":true,"is_block":false,"week_parity":"all","room_id":21,"room_name":"42","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
+        {"slot": 4, "time": "4 пара (12:55-14:10)", "text": "ЛПЗ МДК.02.02 Разработка документации по эксплуатации электрического и электромеханического оборудования — 2 п/г, Кошелев Дмитрий Александрович, Кривоусова", "lessons": [{"id":421,"uid":"lesson-c548081121938a4c","name":"ЛПЗ МДК.02.02 Разработка документации по эксплуатации электрического и электромеханического оборудования","teacher_id":51,"subgroup":41,"is_lab":true,"is_block":false,"week_parity":"all","room_id":21,"room_name":"42","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
+        {"slot": 5, "time": "5 пара (14:20-15:30)", "text": "-", "lessons": []},
+        {"slot": 6, "time": "6 пара (15:40-16:50)", "text": "-", "lessons": []},
+        {"slot": 7, "time": "7 пара (17:00-18:10)", "text": "-", "lessons": []}
+      ]
+    }
+  ]
+}

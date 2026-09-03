@@ -1,0 +1,2432 @@
+{
+  "audit": "semester_teacher_readout",
+  "data": "C:\\Users\\SHIRP\\Desktop\\work\\raspis-unost-master\\output\\scenarios\\manual-sep2\\input_sep2_5_audit.json",
+  "schedule": "C:\\Users\\SHIRP\\Desktop\\work\\raspis-unost-master\\output\\scenarios\\manual-sep2\\schedule_sep2_5_combined.json",
+  "period": {
+    "from": "2026-09-02",
+    "to": "2026-09-05",
+    "semester_deadline": "2026-12-19",
+    "future_from": "2026-09-06"
+  },
+  "conversion": {
+    "regular": "ceil(total_hours / 2)",
+    "up": "ceil(total_hours / 6), scheduled occurrences counted by block starts",
+    "pp": "ceil(total_hours / 2)"
+  },
+  "summary": {
+    "teachers_audited": 69,
+    "configured_period_targets": 62,
+    "period_targets_met": true,
+    "period_target_shortfalls": 0,
+    "soft_desired_target_shortfalls": 0,
+    "full_semester_physically_infeasible": 8,
+    "future_infeasible_after_period": 8,
+    "strict_ok": false
+  },
+  "strict_failures": {
+    "integrity": [],
+    "period_target_shortfalls": [],
+    "future_infeasible_after_period": [
+      {
+        "teacher_id": 9,
+        "teacher": "Сутягин Артём Борисович",
+        "remaining_pairs": 148,
+        "future_capacity_pairs": 105,
+        "gap_pairs": 43
+      },
+      {
+        "teacher_id": 12,
+        "teacher": "Рабенок Мария Александровна",
+        "remaining_pairs": 88,
+        "future_capacity_pairs": 86,
+        "gap_pairs": 2
+      },
+      {
+        "teacher_id": 18,
+        "teacher": "Третяк Надежда Александровна",
+        "remaining_pairs": 58,
+        "future_capacity_pairs": 0,
+        "gap_pairs": 58
+      },
+      {
+        "teacher_id": 35,
+        "teacher": "Серянина Светлана Федоровна",
+        "remaining_pairs": 280,
+        "future_capacity_pairs": 0,
+        "gap_pairs": 280
+      },
+      {
+        "teacher_id": 37,
+        "teacher": "Безбородов Игорь Алексеевич",
+        "remaining_pairs": 206,
+        "future_capacity_pairs": 0,
+        "gap_pairs": 206
+      },
+      {
+        "teacher_id": 39,
+        "teacher": "Коробкова Эльвира Федоровна",
+        "remaining_pairs": 218,
+        "future_capacity_pairs": 0,
+        "gap_pairs": 218
+      },
+      {
+        "teacher_id": 42,
+        "teacher": "Осипчук Александр Александрович",
+        "remaining_pairs": 111,
+        "future_capacity_pairs": 105,
+        "gap_pairs": 6
+      },
+      {
+        "teacher_id": 65,
+        "teacher": "Михайлова Татьяна Алексеевна",
+        "remaining_pairs": 327,
+        "future_capacity_pairs": 300,
+        "gap_pairs": 27
+      }
+    ]
+  },
+  "diagnostics": {
+    "full_semester_physically_infeasible": [
+      {
+        "teacher_id": 9,
+        "teacher": "Сутягин Артём Борисович",
+        "gap_pairs": 43
+      },
+      {
+        "teacher_id": 12,
+        "teacher": "Рабенок Мария Александровна",
+        "gap_pairs": 8
+      },
+      {
+        "teacher_id": 18,
+        "teacher": "Третяк Надежда Александровна",
+        "gap_pairs": 58
+      },
+      {
+        "teacher_id": 35,
+        "teacher": "Серянина Светлана Федоровна",
+        "gap_pairs": 280
+      },
+      {
+        "teacher_id": 37,
+        "teacher": "Безбородов Игорь Алексеевич",
+        "gap_pairs": 206
+      },
+      {
+        "teacher_id": 39,
+        "teacher": "Коробкова Эльвира Федоровна",
+        "gap_pairs": 218
+      },
+      {
+        "teacher_id": 42,
+        "teacher": "Осипчук Александр Александрович",
+        "gap_pairs": 6
+      },
+      {
+        "teacher_id": 65,
+        "teacher": "Михайлова Татьяна Алексеевна",
+        "gap_pairs": 26
+      }
+    ],
+    "schedule_integrity": {
+      "unique_lesson_slot_items": 722,
+      "deduplicated_items": 0,
+      "outside_period_items": 0,
+      "unknown_lesson_ids": [],
+      "teacher_mismatches": []
+    },
+    "ignored_inactive_occurrences": {
+      "regular": 220,
+      "up": 12,
+      "pp": 0
+    },
+    "unassigned_active_occurrences": {
+      "regular": 62,
+      "up": 180,
+      "pp": 756
+    }
+  },
+  "teachers": [
+    {
+      "teacher_id": 0,
+      "teacher": "Хасанова Гузель Хамитовна",
+      "semester_need_occurrences": {
+        "regular": 136,
+        "up": 0,
+        "pp": 0
+      },
+      "scheduled_period_occurrences": {
+        "regular": 10,
+        "up_block_starts": 0,
+        "pp": 0
+      },
+      "capacity_pairs": {
+        "full_from_period_start": 502,
+        "current_period": 22,
+        "future_after_period": 480
+      },
+      "must_now_pairs": 0,
+      "configured_period_target_pairs": 7,
+      "desired_period_target_pairs": 7,
+      "required_period_target_pairs": 7,
+      "actual_period_pairs": 10,
+      "target_gap_pairs": 0,
+      "desired_target_gap_pairs": 0,
+      "remaining_regular_pairs": 126,
+      "future_gap_pairs": 0,
+      "future_capacity_margin_pairs": 354,
+      "full_capacity_gap_pairs": 0,
+      "full_capacity_margin_pairs": 366,
+      "status": "ok",
+      "future_capacity_utilization_percent": 26.2
+    },
+    {
+      "teacher_id": 1,
+      "teacher": "Вагайская Татьяна Александровна",
+      "semester_need_occurrences": {
+        "regular": 138,
+        "up": 0,
+        "pp": 0
+      },
+      "scheduled_period_occurrences": {
+        "regular": 8,
+        "up_block_starts": 0,
+        "pp": 0
+      },
+      "capacity_pairs": {
+        "full_from_period_start": 156,
+        "current_period": 6,
+        "future_after_period": 150
+      },
+      "must_now_pairs": 0,
+      "configured_period_target_pairs": 6,
+      "desired_period_target_pairs": 6,
+      "required_period_target_pairs": 6,
+      "actual_period_pairs": 8,
+      "target_gap_pairs": 0,
+      "desired_target_gap_pairs": 0,
+      "remaining_regular_pairs": 130,
+      "future_gap_pairs": 0,
+      "future_capacity_margin_pairs": 20,
+      "full_capacity_gap_pairs": 0,
+      "full_capacity_margin_pairs": 18,
+      "status": "ok",
+      "future_capacity_utilization_percent": 86.7
+    },
+    {
+      "teacher_id": 2,
+      "teacher": "Демина Екатерина Алексеевна",
+      "semester_need_occurrences": {
+        "regular": 175,
+        "up": 0,
+        "pp": 0
+      },
+      "scheduled_period_occurrences": {
+        "regular": 0,
+        "up_block_starts": 0,
+        "pp": 0
+      },
+      "capacity_pairs": {
+        "full_from_period_start": 300,
+        "current_period": 0,
+        "future_after_period": 300
+      },
+      "must_now_pairs": 0,
+      "configured_period_target_pairs": null,
+      "desired_period_target_pairs": 0,
+      "required_period_target_pairs": 0,
+      "actual_period_pairs": 0,
+      "target_gap_pairs": 0,
+      "desired_target_gap_pairs": 0,
+      "remaining_regular_pairs": 175,
+      "future_gap_pairs": 0,
+      "future_capacity_margin_pairs": 125,
+      "full_capacity_gap_pairs": 0,
+      "full_capacity_margin_pairs": 125,
+      "status": "ok",
+      "future_capacity_utilization_percent": 58.3
+    },
+    {
+      "teacher_id": 3,
+      "teacher": "Никонова Антонина Олеговна",
+      "semester_need_occurrences": {
+        "regular": 280,
+        "up": 0,
+        "pp": 0
+      },
+      "scheduled_period_occurrences": {
+        "regular": 16,
+        "up_block_starts": 0,
+        "pp": 0
+      },
+      "capacity_pairs": {
+        "full_from_period_start": 282,
+        "current_period": 12,
+        "future_after_period": 270
+      },
+      "must_now_pairs": 10,
+      "configured_period_target_pairs": 16,
+      "desired_period_target_pairs": 16,
+      "required_period_target_pairs": 16,
+      "actual_period_pairs": 16,
+      "target_gap_pairs": 0,
+      "desired_target_gap_pairs": 0,
+      "remaining_regular_pairs": 264,
+      "future_gap_pairs": 0,
+      "future_capacity_margin_pairs": 6,
+      "full_capacity_gap_pairs": 0,
+      "full_capacity_margin_pairs": 2,
+      "status": "ok",
+      "future_capacity_utilization_percent": 97.8
+    },
+    {
+      "teacher_id": 4,
+      "teacher": "Давыдова Валентина Алексеевна",
+      "semester_need_occurrences": {
+        "regular": 337,
+        "up": 0,
+        "pp": 0
+      },
+      "scheduled_period_occurrences": {
+        "regular": 13,
+        "up_block_starts": 0,
+        "pp": 0
+      },
+      "capacity_pairs": {
+        "full_from_period_start": 658,
+        "current_period": 28,
+        "future_after_period": 630
+      },
+      "must_now_pairs": 0,
+      "configured_period_target_pairs": 11,
+      "desired_period_target_pairs": 11,
+      "required_period_target_pairs": 11,
+      "actual_period_pairs": 13,
+      "target_gap_pairs": 0,
+      "desired_target_gap_pairs": 0,
+      "remaining_regular_pairs": 324,
+      "future_gap_pairs": 0,
+      "future_capacity_margin_pairs": 306,
+      "full_capacity_gap_pairs": 0,
+      "full_capacity_margin_pairs": 321,
+      "status": "ok",
+      "future_capacity_utilization_percent": 51.4
+    },
+    {
+      "teacher_id": 5,
+      "teacher": "Домарева Ирина Вячеславовна",
+      "semester_need_occurrences": {
+        "regular": 218,
+        "up": 0,
+        "pp": 0
+      },
+      "scheduled_period_occurrences": {
+        "regular": 9,
+        "up_block_starts": 0,
+        "pp": 0
+      },
+      "capacity_pairs": {
+        "full_from_period_start": 282,
+        "current_period": 12,
+        "future_after_period": 270
+      },
+      "must_now_pairs": 0,
+      "configured_period_target_pairs": 9,
+      "desired_period_target_pairs": 9,
+      "required_period_target_pairs": 9,
+      "actual_period_pairs": 9,
+      "target_gap_pairs": 0,
+      "desired_target_gap_pairs": 0,
+      "remaining_regular_pairs": 209,
+      "future_gap_pairs": 0,
+      "future_capacity_margin_pairs": 61,
+      "full_capacity_gap_pairs": 0,
+      "full_capacity_margin_pairs": 64,
+      "status": "ok",
+      "future_capacity_utilization_percent": 77.4
+    },
+    {
+      "teacher_id": 6,
+      "teacher": "Бобылева Екатерина Дмитриевна",
+      "semester_need_occurrences": {
+        "regular": 43,
+        "up": 0,
+        "pp": 0
+      },
+      "scheduled_period_occurrences": {
+        "regular": 2,
+        "up_block_starts": 0,
+        "pp": 0
+      },
+      "capacity_pairs": {
+        "full_from_period_start": 94,
+        "current_period": 4,
+        "future_after_period": 90
+      },
+      "must_now_pairs": 0,
+      "configured_period_target_pairs": 2,
+      "desired_period_target_pairs": 2,
+      "required_period_target_pairs": 2,
+      "actual_period_pairs": 2,
+      "target_gap_pairs": 0,
+      "desired_target_gap_pairs": 0,
+      "remaining_regular_pairs": 41,
+      "future_gap_pairs": 0,
+      "future_capacity_margin_pairs": 49,
+      "full_capacity_gap_pairs": 0,
+      "full_capacity_margin_pairs": 51,
+      "status": "ok",
+      "future_capacity_utilization_percent": 45.6
+    },
+    {
+      "teacher_id": 7,
+      "teacher": "Кобылянская Татьяна Александровна",
+      "semester_need_occurrences": {
+        "regular": 187,
+        "up": 0,
+        "pp": 0
+      },
+      "scheduled_period_occurrences": {
+        "regular": 0,
+        "up_block_starts": 0,
+        "pp": 0
+      },
+      "capacity_pairs": {
+        "full_from_period_start": 490,
+        "current_period": 0,
+        "future_after_period": 490
+      },
+      "must_now_pairs": 0,
+      "configured_period_target_pairs": null,
+      "desired_period_target_pairs": 0,
+      "required_period_target_pairs": 0,
+      "actual_period_pairs": 0,
+      "target_gap_pairs": 0,
+      "desired_target_gap_pairs": 0,
+      "remaining_regular_pairs": 187,
+      "future_gap_pairs": 0,
+      "future_capacity_margin_pairs": 303,
+      "full_capacity_gap_pairs": 0,
+      "full_capacity_margin_pairs": 303,
+      "status": "ok",
+      "future_capacity_utilization_percent": 38.2
+    },
+    {
+      "teacher_id": 8,
+      "teacher": "Потапова Регина Александровна",
+      "semester_need_occurrences": {
+        "regular": 445,
+        "up": 0,
+        "pp": 0
+      },
+      "scheduled_period_occurrences": {
+        "regular": 25,
+        "up_block_starts": 0,
+        "pp": 0
+      },
+      "capacity_pairs": {
+        "full_from_period_start": 651,
+        "current_period": 28,
+        "future_after_period": 623
+      },
+      "must_now_pairs": 0,
+      "configured_period_target_pairs": 19,
+      "desired_period_target_pairs": 19,
+      "required_period_target_pairs": 19,
+      "actual_period_pairs": 25,
+      "target_gap_pairs": 0,
+      "desired_target_gap_pairs": 0,
+      "remaining_regular_pairs": 420,
+      "future_gap_pairs": 0,
+      "future_capacity_margin_pairs": 203,
+      "full_capacity_gap_pairs": 0,
+      "full_capacity_margin_pairs": 206,
+      "status": "ok",
+      "future_capacity_utilization_percent": 67.4
+    },
+    {
+      "teacher_id": 9,
+      "teacher": "Сутягин Артём Борисович",
+      "semester_need_occurrences": {
+        "regular": 155,
+        "up": 12,
+        "pp": 0
+      },
+      "scheduled_period_occurrences": {
+        "regular": 7,
+        "up_block_starts": 0,
+        "pp": 0
+      },
+      "capacity_pairs": {
+        "full_from_period_start": 112,
+        "current_period": 7,
+        "future_after_period": 105
+      },
+      "must_now_pairs": 50,
+      "configured_period_target_pairs": 7,
+      "desired_period_target_pairs": 7,
+      "required_period_target_pairs": 7,
+      "actual_period_pairs": 7,
+      "target_gap_pairs": 0,
+      "desired_target_gap_pairs": 0,
+      "remaining_regular_pairs": 148,
+      "future_gap_pairs": 43,
+      "future_capacity_margin_pairs": -43,
+      "full_capacity_gap_pairs": 43,
+      "full_capacity_margin_pairs": -43,
+      "status": "full_semester_physically_infeasible+future_readout_infeasible_after_period",
+      "future_capacity_utilization_percent": 141.0
+    },
+    {
+      "teacher_id": 10,
+      "teacher": "Семенова Лилиана Ивановна",
+      "semester_need_occurrences": {
+        "regular": 472,
+        "up": 72,
+        "pp": 0
+      },
+      "scheduled_period_occurrences": {
+        "regular": 26,
+        "up_block_starts": 0,
+        "pp": 0
+      },
+      "capacity_pairs": {
+        "full_from_period_start": 658,
+        "current_period": 28,
+        "future_after_period": 630
+      },
+      "must_now_pairs": 0,
+      "configured_period_target_pairs": 17,
+      "desired_period_target_pairs": 17,
+      "required_period_target_pairs": 17,
+      "actual_period_pairs": 26,
+      "target_gap_pairs": 0,
+      "desired_target_gap_pairs": 0,
+      "remaining_regular_pairs": 446,
+      "future_gap_pairs": 0,
+      "future_capacity_margin_pairs": 184,
+      "full_capacity_gap_pairs": 0,
+      "full_capacity_margin_pairs": 186,
+      "status": "ok",
+      "future_capacity_utilization_percent": 70.8
+    },
+    {
+      "teacher_id": 11,
+      "teacher": "Цимфер Татьяна Ивановна",
+      "semester_need_occurrences": {
+        "regular": 117,
+        "up": 0,
+        "pp": 0
+      },
+      "scheduled_period_occurrences": {
+        "regular": 6,
+        "up_block_starts": 0,
+        "pp": 0
+      },
+      "capacity_pairs": {
+        "full_from_period_start": 326,
+        "current_period": 11,
+        "future_after_period": 315
+      },
+      "must_now_pairs": 0,
+      "configured_period_target_pairs": 6,
+      "desired_period_target_pairs": 6,
+      "required_period_target_pairs": 6,
+      "actual_period_pairs": 6,
+      "target_gap_pairs": 0,
+      "desired_target_gap_pairs": 0,
+      "remaining_regular_pairs": 111,
+      "future_gap_pairs": 0,
+      "future_capacity_margin_pairs": 204,
+      "full_capacity_gap_pairs": 0,
+      "full_capacity_margin_pairs": 209,
+      "status": "ok",
+      "future_capacity_utilization_percent": 35.2
+    },
+    {
+      "teacher_id": 12,
+      "teacher": "Рабенок Мария Александровна",
+      "semester_need_occurrences": {
+        "regular": 99,
+        "up": 0,
+        "pp": 0
+      },
+      "scheduled_period_occurrences": {
+        "regular": 11,
+        "up_block_starts": 0,
+        "pp": 0
+      },
+      "capacity_pairs": {
+        "full_from_period_start": 91,
+        "current_period": 5,
+        "future_after_period": 86
+      },
+      "must_now_pairs": 13,
+      "configured_period_target_pairs": 11,
+      "desired_period_target_pairs": 11,
+      "required_period_target_pairs": 11,
+      "actual_period_pairs": 11,
+      "target_gap_pairs": 0,
+      "desired_target_gap_pairs": 0,
+      "remaining_regular_pairs": 88,
+      "future_gap_pairs": 2,
+      "future_capacity_margin_pairs": -2,
+      "full_capacity_gap_pairs": 8,
+      "full_capacity_margin_pairs": -8,
+      "status": "full_semester_physically_infeasible+future_readout_infeasible_after_period",
+      "future_capacity_utilization_percent": 102.3
+    },
+    {
+      "teacher_id": 13,
+      "teacher": "Костарева Наталья Викторовна",
+      "semester_need_occurrences": {
+        "regular": 233,
+        "up": 0,
+        "pp": 0
+      },
+      "scheduled_period_occurrences": {
+        "regular": 14,
+        "up_block_starts": 0,
+        "pp": 0
+      },
+      "capacity_pairs": {
+        "full_from_period_start": 658,
+        "current_period": 28,
+        "future_after_period": 630
+      },
+      "must_now_pairs": 0,
+      "configured_period_target_pairs": 10,
+      "desired_period_target_pairs": 10,
+      "required_period_target_pairs": 10,
+      "actual_period_pairs": 14,
+      "target_gap_pairs": 0,
+      "desired_target_gap_pairs": 0,
+      "remaining_regular_pairs": 219,
+      "future_gap_pairs": 0,
+      "future_capacity_margin_pairs": 411,
+      "full_capacity_gap_pairs": 0,
+      "full_capacity_margin_pairs": 425,
+      "status": "ok",
+      "future_capacity_utilization_percent": 34.8
+    },
+    {
+      "teacher_id": 14,
+      "teacher": "Лучинин Александр Васильевич",
+      "semester_need_occurrences": {
+        "regular": 345,
+        "up": 0,
+        "pp": 0
+      },
+      "scheduled_period_occurrences": {
+        "regular": 14,
+        "up_block_starts": 0,
+        "pp": 0
+      },
+      "capacity_pairs": {
+        "full_from_period_start": 651,
+        "current_period": 21,
+        "future_after_period": 630
+      },
+      "must_now_pairs": 0,
+      "configured_period_target_pairs": 11,
+      "desired_period_target_pairs": 11,
+      "required_period_target_pairs": 11,
+      "actual_period_pairs": 14,
+      "target_gap_pairs": 0,
+      "desired_target_gap_pairs": 0,
+      "remaining_regular_pairs": 331,
+      "future_gap_pairs": 0,
+      "future_capacity_margin_pairs": 299,
+      "full_capacity_gap_pairs": 0,
+      "full_capacity_margin_pairs": 306,
+      "status": "ok",
+      "future_capacity_utilization_percent": 52.5
+    },
+    {
+      "teacher_id": 15,
+      "teacher": "Кропотова Анастасия Андреевна",
+      "semester_need_occurrences": {
+        "regular": 304,
+        "up": 0,
+        "pp": 0
+      },
+      "scheduled_period_occurrences": {
+        "regular": 17,
+        "up_block_starts": 0,
+        "pp": 0
+      },
+      "capacity_pairs": {
+        "full_from_period_start": 658,
+        "current_period": 28,
+        "future_after_period": 630
+      },
+      "must_now_pairs": 0,
+      "configured_period_target_pairs": 14,
+      "desired_period_target_pairs": 14,
+      "required_period_target_pairs": 14,
+      "actual_period_pairs": 17,
+      "target_gap_pairs": 0,
+      "desired_target_gap_pairs": 0,
+      "remaining_regular_pairs": 287,
+      "future_gap_pairs": 0,
+      "future_capacity_margin_pairs": 343,
+      "full_capacity_gap_pairs": 0,
+      "full_capacity_margin_pairs": 354,
+      "status": "ok",
+      "future_capacity_utilization_percent": 45.6
+    },
+    {
+      "teacher_id": 16,
+      "teacher": "Буркова Елена Владимировна",
+      "semester_need_occurrences": {
+        "regular": 170,
+        "up": 0,
+        "pp": 0
+      },
+      "scheduled_period_occurrences": {
+        "regular": 10,
+        "up_block_starts": 0,
+        "pp": 0
+      },
+      "capacity_pairs": {
+        "full_from_period_start": 224,
+        "current_period": 14,
+        "future_after_period": 210
+      },
+      "must_now_pairs": 0,
+      "configured_period_target_pairs": 10,
+      "desired_period_target_pairs": 10,
+      "required_period_target_pairs": 10,
+      "actual_period_pairs": 10,
+      "target_gap_pairs": 0,
+      "desired_target_gap_pairs": 0,
+      "remaining_regular_pairs": 160,
+      "future_gap_pairs": 0,
+      "future_capacity_margin_pairs": 50,
+      "full_capacity_gap_pairs": 0,
+      "full_capacity_margin_pairs": 54,
+      "status": "ok",
+      "future_capacity_utilization_percent": 76.2
+    },
+    {
+      "teacher_id": 17,
+      "teacher": "Нифонтова Ирина Геннадьевна",
+      "semester_need_occurrences": {
+        "regular": 366,
+        "up": 0,
+        "pp": 0
+      },
+      "scheduled_period_occurrences": {
+        "regular": 19,
+        "up_block_starts": 0,
+        "pp": 0
+      },
+      "capacity_pairs": {
+        "full_from_period_start": 658,
+        "current_period": 28,
+        "future_after_period": 630
+      },
+      "must_now_pairs": 0,
+      "configured_period_target_pairs": 15,
+      "desired_period_target_pairs": 15,
+      "required_period_target_pairs": 15,
+      "actual_period_pairs": 19,
+      "target_gap_pairs": 0,
+      "desired_target_gap_pairs": 0,
+      "remaining_regular_pairs": 347,
+      "future_gap_pairs": 0,
+      "future_capacity_margin_pairs": 283,
+      "full_capacity_gap_pairs": 0,
+      "full_capacity_margin_pairs": 292,
+      "status": "ok",
+      "future_capacity_utilization_percent": 55.1
+    },
+    {
+      "teacher_id": 18,
+      "teacher": "Третяк Надежда Александровна",
+      "semester_need_occurrences": {
+        "regular": 58,
+        "up": 0,
+        "pp": 0
+      },
+      "scheduled_period_occurrences": {
+        "regular": 0,
+        "up_block_starts": 0,
+        "pp": 0
+      },
+      "capacity_pairs": {
+        "full_from_period_start": 0,
+        "current_period": 0,
+        "future_after_period": 0
+      },
+      "must_now_pairs": 58,
+      "configured_period_target_pairs": null,
+      "desired_period_target_pairs": 0,
+      "required_period_target_pairs": 0,
+      "actual_period_pairs": 0,
+      "target_gap_pairs": 0,
+      "desired_target_gap_pairs": 0,
+      "remaining_regular_pairs": 58,
+      "future_gap_pairs": 58,
+      "future_capacity_margin_pairs": -58,
+      "full_capacity_gap_pairs": 58,
+      "full_capacity_margin_pairs": -58,
+      "status": "full_semester_physically_infeasible+future_readout_infeasible_after_period",
+      "future_capacity_utilization_percent": 999.0
+    },
+    {
+      "teacher_id": 19,
+      "teacher": "Силенок Марина Юрьевна",
+      "semester_need_occurrences": {
+        "regular": 220,
+        "up": 0,
+        "pp": 0
+      },
+      "scheduled_period_occurrences": {
+        "regular": 12,
+        "up_block_starts": 0,
+        "pp": 0
+      },
+      "capacity_pairs": {
+        "full_from_period_start": 486,
+        "current_period": 21,
+        "future_after_period": 465
+      },
+      "must_now_pairs": 0,
+      "configured_period_target_pairs": 10,
+      "desired_period_target_pairs": 10,
+      "required_period_target_pairs": 10,
+      "actual_period_pairs": 12,
+      "target_gap_pairs": 0,
+      "desired_target_gap_pairs": 0,
+      "remaining_regular_pairs": 208,
+      "future_gap_pairs": 0,
+      "future_capacity_margin_pairs": 257,
+      "full_capacity_gap_pairs": 0,
+      "full_capacity_margin_pairs": 266,
+      "status": "ok",
+      "future_capacity_utilization_percent": 44.7
+    },
+    {
+      "teacher_id": 20,
+      "teacher": "Соболева Любовь Анатольевна",
+      "semester_need_occurrences": {
+        "regular": 209,
+        "up": 0,
+        "pp": 0
+      },
+      "scheduled_period_occurrences": {
+        "regular": 13,
+        "up_block_starts": 0,
+        "pp": 0
+      },
+      "capacity_pairs": {
+        "full_from_period_start": 486,
+        "current_period": 21,
+        "future_after_period": 465
+      },
+      "must_now_pairs": 0,
+      "configured_period_target_pairs": 9,
+      "desired_period_target_pairs": 9,
+      "required_period_target_pairs": 9,
+      "actual_period_pairs": 13,
+      "target_gap_pairs": 0,
+      "desired_target_gap_pairs": 0,
+      "remaining_regular_pairs": 196,
+      "future_gap_pairs": 0,
+      "future_capacity_margin_pairs": 269,
+      "full_capacity_gap_pairs": 0,
+      "full_capacity_margin_pairs": 277,
+      "status": "ok",
+      "future_capacity_utilization_percent": 42.2
+    },
+    {
+      "teacher_id": 21,
+      "teacher": "Комарова Яна Николаевна",
+      "semester_need_occurrences": {
+        "regular": 58,
+        "up": 0,
+        "pp": 0
+      },
+      "scheduled_period_occurrences": {
+        "regular": 6,
+        "up_block_starts": 0,
+        "pp": 0
+      },
+      "capacity_pairs": {
+        "full_from_period_start": 424,
+        "current_period": 19,
+        "future_after_period": 405
+      },
+      "must_now_pairs": 0,
+      "configured_period_target_pairs": 3,
+      "desired_period_target_pairs": 3,
+      "required_period_target_pairs": 3,
+      "actual_period_pairs": 6,
+      "target_gap_pairs": 0,
+      "desired_target_gap_pairs": 0,
+      "remaining_regular_pairs": 52,
+      "future_gap_pairs": 0,
+      "future_capacity_margin_pairs": 353,
+      "full_capacity_gap_pairs": 0,
+      "full_capacity_margin_pairs": 366,
+      "status": "ok",
+      "future_capacity_utilization_percent": 12.8
+    },
+    {
+      "teacher_id": 22,
+      "teacher": "Кибардина Татьяна Леонидовна",
+      "semester_need_occurrences": {
+        "regular": 238,
+        "up": 0,
+        "pp": 0
+      },
+      "scheduled_period_occurrences": {
+        "regular": 15,
+        "up_block_starts": 0,
+        "pp": 0
+      },
+      "capacity_pairs": {
+        "full_from_period_start": 658,
+        "current_period": 28,
+        "future_after_period": 630
+      },
+      "must_now_pairs": 0,
+      "configured_period_target_pairs": 11,
+      "desired_period_target_pairs": 11,
+      "required_period_target_pairs": 11,
+      "actual_period_pairs": 15,
+      "target_gap_pairs": 0,
+      "desired_target_gap_pairs": 0,
+      "remaining_regular_pairs": 223,
+      "future_gap_pairs": 0,
+      "future_capacity_margin_pairs": 407,
+      "full_capacity_gap_pairs": 0,
+      "full_capacity_margin_pairs": 420,
+      "status": "ok",
+      "future_capacity_utilization_percent": 35.4
+    },
+    {
+      "teacher_id": 23,
+      "teacher": "Журавский Константин Сергеевич",
+      "semester_need_occurrences": {
+        "regular": 272,
+        "up": 0,
+        "pp": 0
+      },
+      "scheduled_period_occurrences": {
+        "regular": 13,
+        "up_block_starts": 0,
+        "pp": 0
+      },
+      "capacity_pairs": {
+        "full_from_period_start": 658,
+        "current_period": 28,
+        "future_after_period": 630
+      },
+      "must_now_pairs": 0,
+      "configured_period_target_pairs": 12,
+      "desired_period_target_pairs": 12,
+      "required_period_target_pairs": 12,
+      "actual_period_pairs": 13,
+      "target_gap_pairs": 0,
+      "desired_target_gap_pairs": 0,
+      "remaining_regular_pairs": 259,
+      "future_gap_pairs": 0,
+      "future_capacity_margin_pairs": 371,
+      "full_capacity_gap_pairs": 0,
+      "full_capacity_margin_pairs": 386,
+      "status": "ok",
+      "future_capacity_utilization_percent": 41.1
+    },
+    {
+      "teacher_id": 24,
+      "teacher": "Круглова Юлия Петровна",
+      "semester_need_occurrences": {
+        "regular": 58,
+        "up": 0,
+        "pp": 0
+      },
+      "scheduled_period_occurrences": {
+        "regular": 6,
+        "up_block_starts": 0,
+        "pp": 0
+      },
+      "capacity_pairs": {
+        "full_from_period_start": 658,
+        "current_period": 28,
+        "future_after_period": 630
+      },
+      "must_now_pairs": 0,
+      "configured_period_target_pairs": 3,
+      "desired_period_target_pairs": 3,
+      "required_period_target_pairs": 3,
+      "actual_period_pairs": 6,
+      "target_gap_pairs": 0,
+      "desired_target_gap_pairs": 0,
+      "remaining_regular_pairs": 52,
+      "future_gap_pairs": 0,
+      "future_capacity_margin_pairs": 578,
+      "full_capacity_gap_pairs": 0,
+      "full_capacity_margin_pairs": 600,
+      "status": "ok",
+      "future_capacity_utilization_percent": 8.3
+    },
+    {
+      "teacher_id": 25,
+      "teacher": "Тарасов Игорь Викторович",
+      "semester_need_occurrences": {
+        "regular": 18,
+        "up": 0,
+        "pp": 0
+      },
+      "scheduled_period_occurrences": {
+        "regular": 2,
+        "up_block_starts": 0,
+        "pp": 0
+      },
+      "capacity_pairs": {
+        "full_from_period_start": 156,
+        "current_period": 6,
+        "future_after_period": 150
+      },
+      "must_now_pairs": 0,
+      "configured_period_target_pairs": 2,
+      "desired_period_target_pairs": 2,
+      "required_period_target_pairs": 2,
+      "actual_period_pairs": 2,
+      "target_gap_pairs": 0,
+      "desired_target_gap_pairs": 0,
+      "remaining_regular_pairs": 16,
+      "future_gap_pairs": 0,
+      "future_capacity_margin_pairs": 134,
+      "full_capacity_gap_pairs": 0,
+      "full_capacity_margin_pairs": 138,
+      "status": "ok",
+      "future_capacity_utilization_percent": 10.7
+    },
+    {
+      "teacher_id": 26,
+      "teacher": "Дроговейко Дарья Юрьевна",
+      "semester_need_occurrences": {
+        "regular": 68,
+        "up": 0,
+        "pp": 0
+      },
+      "scheduled_period_occurrences": {
+        "regular": 0,
+        "up_block_starts": 0,
+        "pp": 0
+      },
+      "capacity_pairs": {
+        "full_from_period_start": 336,
+        "current_period": 0,
+        "future_after_period": 336
+      },
+      "must_now_pairs": 0,
+      "configured_period_target_pairs": null,
+      "desired_period_target_pairs": 0,
+      "required_period_target_pairs": 0,
+      "actual_period_pairs": 0,
+      "target_gap_pairs": 0,
+      "desired_target_gap_pairs": 0,
+      "remaining_regular_pairs": 68,
+      "future_gap_pairs": 0,
+      "future_capacity_margin_pairs": 268,
+      "full_capacity_gap_pairs": 0,
+      "full_capacity_margin_pairs": 268,
+      "status": "ok",
+      "future_capacity_utilization_percent": 20.2
+    },
+    {
+      "teacher_id": 27,
+      "teacher": "Ермолина Ирина Павловна",
+      "semester_need_occurrences": {
+        "regular": 287,
+        "up": 0,
+        "pp": 0
+      },
+      "scheduled_period_occurrences": {
+        "regular": 23,
+        "up_block_starts": 0,
+        "pp": 0
+      },
+      "capacity_pairs": {
+        "full_from_period_start": 658,
+        "current_period": 28,
+        "future_after_period": 630
+      },
+      "must_now_pairs": 0,
+      "configured_period_target_pairs": 12,
+      "desired_period_target_pairs": 12,
+      "required_period_target_pairs": 12,
+      "actual_period_pairs": 23,
+      "target_gap_pairs": 0,
+      "desired_target_gap_pairs": 0,
+      "remaining_regular_pairs": 264,
+      "future_gap_pairs": 0,
+      "future_capacity_margin_pairs": 366,
+      "full_capacity_gap_pairs": 0,
+      "full_capacity_margin_pairs": 371,
+      "status": "ok",
+      "future_capacity_utilization_percent": 41.9
+    },
+    {
+      "teacher_id": 28,
+      "teacher": "Новосёлова Светлана Юрьевна",
+      "semester_need_occurrences": {
+        "regular": 167,
+        "up": 0,
+        "pp": 0
+      },
+      "scheduled_period_occurrences": {
+        "regular": 4,
+        "up_block_starts": 0,
+        "pp": 0
+      },
+      "capacity_pairs": {
+        "full_from_period_start": 188,
+        "current_period": 8,
+        "future_after_period": 180
+      },
+      "must_now_pairs": 0,
+      "configured_period_target_pairs": 4,
+      "desired_period_target_pairs": 4,
+      "required_period_target_pairs": 4,
+      "actual_period_pairs": 4,
+      "target_gap_pairs": 0,
+      "desired_target_gap_pairs": 0,
+      "remaining_regular_pairs": 163,
+      "future_gap_pairs": 0,
+      "future_capacity_margin_pairs": 17,
+      "full_capacity_gap_pairs": 0,
+      "full_capacity_margin_pairs": 21,
+      "status": "ok",
+      "future_capacity_utilization_percent": 90.6
+    },
+    {
+      "teacher_id": 29,
+      "teacher": "Галузин Антон Илюсович",
+      "semester_need_occurrences": {
+        "regular": 43,
+        "up": 0,
+        "pp": 0
+      },
+      "scheduled_period_occurrences": {
+        "regular": 3,
+        "up_block_starts": 0,
+        "pp": 0
+      },
+      "capacity_pairs": {
+        "full_from_period_start": 112,
+        "current_period": 7,
+        "future_after_period": 105
+      },
+      "must_now_pairs": 0,
+      "configured_period_target_pairs": 3,
+      "desired_period_target_pairs": 3,
+      "required_period_target_pairs": 3,
+      "actual_period_pairs": 3,
+      "target_gap_pairs": 0,
+      "desired_target_gap_pairs": 0,
+      "remaining_regular_pairs": 40,
+      "future_gap_pairs": 0,
+      "future_capacity_margin_pairs": 65,
+      "full_capacity_gap_pairs": 0,
+      "full_capacity_margin_pairs": 69,
+      "status": "ok",
+      "future_capacity_utilization_percent": 38.1
+    },
+    {
+      "teacher_id": 30,
+      "teacher": "Синельникова Елена Владимировна",
+      "semester_need_occurrences": {
+        "regular": 315,
+        "up": 0,
+        "pp": 0
+      },
+      "scheduled_period_occurrences": {
+        "regular": 15,
+        "up_block_starts": 0,
+        "pp": 0
+      },
+      "capacity_pairs": {
+        "full_from_period_start": 658,
+        "current_period": 28,
+        "future_after_period": 630
+      },
+      "must_now_pairs": 0,
+      "configured_period_target_pairs": 10,
+      "desired_period_target_pairs": 10,
+      "required_period_target_pairs": 10,
+      "actual_period_pairs": 15,
+      "target_gap_pairs": 0,
+      "desired_target_gap_pairs": 0,
+      "remaining_regular_pairs": 300,
+      "future_gap_pairs": 0,
+      "future_capacity_margin_pairs": 330,
+      "full_capacity_gap_pairs": 0,
+      "full_capacity_margin_pairs": 343,
+      "status": "ok",
+      "future_capacity_utilization_percent": 47.6
+    },
+    {
+      "teacher_id": 31,
+      "teacher": "Ланитина Елена Сергеевна",
+      "semester_need_occurrences": {
+        "regular": 233,
+        "up": 0,
+        "pp": 0
+      },
+      "scheduled_period_occurrences": {
+        "regular": 12,
+        "up_block_starts": 0,
+        "pp": 0
+      },
+      "capacity_pairs": {
+        "full_from_period_start": 658,
+        "current_period": 28,
+        "future_after_period": 630
+      },
+      "must_now_pairs": 0,
+      "configured_period_target_pairs": 8,
+      "desired_period_target_pairs": 8,
+      "required_period_target_pairs": 8,
+      "actual_period_pairs": 12,
+      "target_gap_pairs": 0,
+      "desired_target_gap_pairs": 0,
+      "remaining_regular_pairs": 221,
+      "future_gap_pairs": 0,
+      "future_capacity_margin_pairs": 409,
+      "full_capacity_gap_pairs": 0,
+      "full_capacity_margin_pairs": 425,
+      "status": "ok",
+      "future_capacity_utilization_percent": 35.1
+    },
+    {
+      "teacher_id": 32,
+      "teacher": "Логинова Ксения Ивановна",
+      "semester_need_occurrences": {
+        "regular": 86,
+        "up": 0,
+        "pp": 0
+      },
+      "scheduled_period_occurrences": {
+        "regular": 6,
+        "up_block_starts": 0,
+        "pp": 0
+      },
+      "capacity_pairs": {
+        "full_from_period_start": 658,
+        "current_period": 28,
+        "future_after_period": 630
+      },
+      "must_now_pairs": 0,
+      "configured_period_target_pairs": 4,
+      "desired_period_target_pairs": 4,
+      "required_period_target_pairs": 4,
+      "actual_period_pairs": 6,
+      "target_gap_pairs": 0,
+      "desired_target_gap_pairs": 0,
+      "remaining_regular_pairs": 80,
+      "future_gap_pairs": 0,
+      "future_capacity_margin_pairs": 550,
+      "full_capacity_gap_pairs": 0,
+      "full_capacity_margin_pairs": 572,
+      "status": "ok",
+      "future_capacity_utilization_percent": 12.7
+    },
+    {
+      "teacher_id": 33,
+      "teacher": "Шадрина Елена Федоровна",
+      "semester_need_occurrences": {
+        "regular": 40,
+        "up": 0,
+        "pp": 0
+      },
+      "scheduled_period_occurrences": {
+        "regular": 2,
+        "up_block_starts": 0,
+        "pp": 0
+      },
+      "capacity_pairs": {
+        "full_from_period_start": 407,
+        "current_period": 17,
+        "future_after_period": 390
+      },
+      "must_now_pairs": 0,
+      "configured_period_target_pairs": 2,
+      "desired_period_target_pairs": 2,
+      "required_period_target_pairs": 2,
+      "actual_period_pairs": 2,
+      "target_gap_pairs": 0,
+      "desired_target_gap_pairs": 0,
+      "remaining_regular_pairs": 38,
+      "future_gap_pairs": 0,
+      "future_capacity_margin_pairs": 352,
+      "full_capacity_gap_pairs": 0,
+      "full_capacity_margin_pairs": 367,
+      "status": "ok",
+      "future_capacity_utilization_percent": 9.7
+    },
+    {
+      "teacher_id": 34,
+      "teacher": "Нуров Мирзо Нуралиевич",
+      "semester_need_occurrences": {
+        "regular": 238,
+        "up": 0,
+        "pp": 0
+      },
+      "scheduled_period_occurrences": {
+        "regular": 17,
+        "up_block_starts": 0,
+        "pp": 0
+      },
+      "capacity_pairs": {
+        "full_from_period_start": 658,
+        "current_period": 28,
+        "future_after_period": 630
+      },
+      "must_now_pairs": 0,
+      "configured_period_target_pairs": 11,
+      "desired_period_target_pairs": 11,
+      "required_period_target_pairs": 11,
+      "actual_period_pairs": 17,
+      "target_gap_pairs": 0,
+      "desired_target_gap_pairs": 0,
+      "remaining_regular_pairs": 221,
+      "future_gap_pairs": 0,
+      "future_capacity_margin_pairs": 409,
+      "full_capacity_gap_pairs": 0,
+      "full_capacity_margin_pairs": 420,
+      "status": "ok",
+      "future_capacity_utilization_percent": 35.1
+    },
+    {
+      "teacher_id": 35,
+      "teacher": "Серянина Светлана Федоровна",
+      "semester_need_occurrences": {
+        "regular": 280,
+        "up": 0,
+        "pp": 0
+      },
+      "scheduled_period_occurrences": {
+        "regular": 0,
+        "up_block_starts": 0,
+        "pp": 0
+      },
+      "capacity_pairs": {
+        "full_from_period_start": 0,
+        "current_period": 0,
+        "future_after_period": 0
+      },
+      "must_now_pairs": 280,
+      "configured_period_target_pairs": null,
+      "desired_period_target_pairs": 0,
+      "required_period_target_pairs": 0,
+      "actual_period_pairs": 0,
+      "target_gap_pairs": 0,
+      "desired_target_gap_pairs": 0,
+      "remaining_regular_pairs": 280,
+      "future_gap_pairs": 280,
+      "future_capacity_margin_pairs": -280,
+      "full_capacity_gap_pairs": 280,
+      "full_capacity_margin_pairs": -280,
+      "status": "full_semester_physically_infeasible+future_readout_infeasible_after_period",
+      "future_capacity_utilization_percent": 999.0
+    },
+    {
+      "teacher_id": 36,
+      "teacher": "Дорохова Евгения Владимировна",
+      "semester_need_occurrences": {
+        "regular": 187,
+        "up": 12,
+        "pp": 0
+      },
+      "scheduled_period_occurrences": {
+        "regular": 6,
+        "up_block_starts": 0,
+        "pp": 0
+      },
+      "capacity_pairs": {
+        "full_from_period_start": 594,
+        "current_period": 24,
+        "future_after_period": 570
+      },
+      "must_now_pairs": 0,
+      "configured_period_target_pairs": 6,
+      "desired_period_target_pairs": 6,
+      "required_period_target_pairs": 6,
+      "actual_period_pairs": 6,
+      "target_gap_pairs": 0,
+      "desired_target_gap_pairs": 0,
+      "remaining_regular_pairs": 181,
+      "future_gap_pairs": 0,
+      "future_capacity_margin_pairs": 389,
+      "full_capacity_gap_pairs": 0,
+      "full_capacity_margin_pairs": 407,
+      "status": "ok",
+      "future_capacity_utilization_percent": 31.8
+    },
+    {
+      "teacher_id": 37,
+      "teacher": "Безбородов Игорь Алексеевич",
+      "semester_need_occurrences": {
+        "regular": 206,
+        "up": 0,
+        "pp": 0
+      },
+      "scheduled_period_occurrences": {
+        "regular": 0,
+        "up_block_starts": 0,
+        "pp": 0
+      },
+      "capacity_pairs": {
+        "full_from_period_start": 0,
+        "current_period": 0,
+        "future_after_period": 0
+      },
+      "must_now_pairs": 206,
+      "configured_period_target_pairs": null,
+      "desired_period_target_pairs": 0,
+      "required_period_target_pairs": 0,
+      "actual_period_pairs": 0,
+      "target_gap_pairs": 0,
+      "desired_target_gap_pairs": 0,
+      "remaining_regular_pairs": 206,
+      "future_gap_pairs": 206,
+      "future_capacity_margin_pairs": -206,
+      "full_capacity_gap_pairs": 206,
+      "full_capacity_margin_pairs": -206,
+      "status": "full_semester_physically_infeasible+future_readout_infeasible_after_period",
+      "future_capacity_utilization_percent": 999.0
+    },
+    {
+      "teacher_id": 38,
+      "teacher": "Абрамчук Раида Филимазовна",
+      "semester_need_occurrences": {
+        "regular": 271,
+        "up": 0,
+        "pp": 0
+      },
+      "scheduled_period_occurrences": {
+        "regular": 14,
+        "up_block_starts": 0,
+        "pp": 0
+      },
+      "capacity_pairs": {
+        "full_from_period_start": 390,
+        "current_period": 15,
+        "future_after_period": 375
+      },
+      "must_now_pairs": 0,
+      "configured_period_target_pairs": 12,
+      "desired_period_target_pairs": 12,
+      "required_period_target_pairs": 12,
+      "actual_period_pairs": 14,
+      "target_gap_pairs": 0,
+      "desired_target_gap_pairs": 0,
+      "remaining_regular_pairs": 257,
+      "future_gap_pairs": 0,
+      "future_capacity_margin_pairs": 118,
+      "full_capacity_gap_pairs": 0,
+      "full_capacity_margin_pairs": 119,
+      "status": "ok",
+      "future_capacity_utilization_percent": 68.5
+    },
+    {
+      "teacher_id": 39,
+      "teacher": "Коробкова Эльвира Федоровна",
+      "semester_need_occurrences": {
+        "regular": 218,
+        "up": 12,
+        "pp": 0
+      },
+      "scheduled_period_occurrences": {
+        "regular": 0,
+        "up_block_starts": 0,
+        "pp": 0
+      },
+      "capacity_pairs": {
+        "full_from_period_start": 0,
+        "current_period": 0,
+        "future_after_period": 0
+      },
+      "must_now_pairs": 218,
+      "configured_period_target_pairs": null,
+      "desired_period_target_pairs": 0,
+      "required_period_target_pairs": 0,
+      "actual_period_pairs": 0,
+      "target_gap_pairs": 0,
+      "desired_target_gap_pairs": 0,
+      "remaining_regular_pairs": 218,
+      "future_gap_pairs": 218,
+      "future_capacity_margin_pairs": -218,
+      "full_capacity_gap_pairs": 218,
+      "full_capacity_margin_pairs": -218,
+      "status": "full_semester_physically_infeasible+future_readout_infeasible_after_period",
+      "future_capacity_utilization_percent": 999.0
+    },
+    {
+      "teacher_id": 40,
+      "teacher": "Сивилькаев Вадим Михайлович",
+      "semester_need_occurrences": {
+        "regular": 425,
+        "up": 36,
+        "pp": 0
+      },
+      "scheduled_period_occurrences": {
+        "regular": 27,
+        "up_block_starts": 0,
+        "pp": 0
+      },
+      "capacity_pairs": {
+        "full_from_period_start": 658,
+        "current_period": 28,
+        "future_after_period": 630
+      },
+      "must_now_pairs": 0,
+      "configured_period_target_pairs": 16,
+      "desired_period_target_pairs": 16,
+      "required_period_target_pairs": 16,
+      "actual_period_pairs": 27,
+      "target_gap_pairs": 0,
+      "desired_target_gap_pairs": 0,
+      "remaining_regular_pairs": 398,
+      "future_gap_pairs": 0,
+      "future_capacity_margin_pairs": 232,
+      "full_capacity_gap_pairs": 0,
+      "full_capacity_margin_pairs": 233,
+      "status": "ok",
+      "future_capacity_utilization_percent": 63.2
+    },
+    {
+      "teacher_id": 41,
+      "teacher": "Садриева Татьяна Геннадьевна",
+      "semester_need_occurrences": {
+        "regular": 137,
+        "up": 0,
+        "pp": 0
+      },
+      "scheduled_period_occurrences": {
+        "regular": 9,
+        "up_block_starts": 0,
+        "pp": 0
+      },
+      "capacity_pairs": {
+        "full_from_period_start": 658,
+        "current_period": 28,
+        "future_after_period": 630
+      },
+      "must_now_pairs": 0,
+      "configured_period_target_pairs": 5,
+      "desired_period_target_pairs": 5,
+      "required_period_target_pairs": 5,
+      "actual_period_pairs": 9,
+      "target_gap_pairs": 0,
+      "desired_target_gap_pairs": 0,
+      "remaining_regular_pairs": 128,
+      "future_gap_pairs": 0,
+      "future_capacity_margin_pairs": 502,
+      "full_capacity_gap_pairs": 0,
+      "full_capacity_margin_pairs": 521,
+      "status": "ok",
+      "future_capacity_utilization_percent": 20.3
+    },
+    {
+      "teacher_id": 42,
+      "teacher": "Осипчук Александр Александрович",
+      "semester_need_occurrences": {
+        "regular": 118,
+        "up": 0,
+        "pp": 0
+      },
+      "scheduled_period_occurrences": {
+        "regular": 7,
+        "up_block_starts": 0,
+        "pp": 0
+      },
+      "capacity_pairs": {
+        "full_from_period_start": 112,
+        "current_period": 7,
+        "future_after_period": 105
+      },
+      "must_now_pairs": 13,
+      "configured_period_target_pairs": 7,
+      "desired_period_target_pairs": 7,
+      "required_period_target_pairs": 7,
+      "actual_period_pairs": 7,
+      "target_gap_pairs": 0,
+      "desired_target_gap_pairs": 0,
+      "remaining_regular_pairs": 111,
+      "future_gap_pairs": 6,
+      "future_capacity_margin_pairs": -6,
+      "full_capacity_gap_pairs": 6,
+      "full_capacity_margin_pairs": -6,
+      "status": "full_semester_physically_infeasible+future_readout_infeasible_after_period",
+      "future_capacity_utilization_percent": 105.7
+    },
+    {
+      "teacher_id": 43,
+      "teacher": "Попова Татьяна Вильевна",
+      "semester_need_occurrences": {
+        "regular": 109,
+        "up": 0,
+        "pp": 0
+      },
+      "scheduled_period_occurrences": {
+        "regular": 13,
+        "up_block_starts": 0,
+        "pp": 0
+      },
+      "capacity_pairs": {
+        "full_from_period_start": 658,
+        "current_period": 28,
+        "future_after_period": 630
+      },
+      "must_now_pairs": 0,
+      "configured_period_target_pairs": 6,
+      "desired_period_target_pairs": 6,
+      "required_period_target_pairs": 6,
+      "actual_period_pairs": 13,
+      "target_gap_pairs": 0,
+      "desired_target_gap_pairs": 0,
+      "remaining_regular_pairs": 96,
+      "future_gap_pairs": 0,
+      "future_capacity_margin_pairs": 534,
+      "full_capacity_gap_pairs": 0,
+      "full_capacity_margin_pairs": 549,
+      "status": "ok",
+      "future_capacity_utilization_percent": 15.2
+    },
+    {
+      "teacher_id": 44,
+      "teacher": "Письмак Владимир Николаевич",
+      "semester_need_occurrences": {
+        "regular": 108,
+        "up": 36,
+        "pp": 0
+      },
+      "scheduled_period_occurrences": {
+        "regular": 5,
+        "up_block_starts": 0,
+        "pp": 0
+      },
+      "capacity_pairs": {
+        "full_from_period_start": 282,
+        "current_period": 12,
+        "future_after_period": 270
+      },
+      "must_now_pairs": 0,
+      "configured_period_target_pairs": 4,
+      "desired_period_target_pairs": 4,
+      "required_period_target_pairs": 4,
+      "actual_period_pairs": 5,
+      "target_gap_pairs": 0,
+      "desired_target_gap_pairs": 0,
+      "remaining_regular_pairs": 103,
+      "future_gap_pairs": 0,
+      "future_capacity_margin_pairs": 167,
+      "full_capacity_gap_pairs": 0,
+      "full_capacity_margin_pairs": 174,
+      "status": "ok",
+      "future_capacity_utilization_percent": 38.1
+    },
+    {
+      "teacher_id": 45,
+      "teacher": "Елагина Ольга Александровна",
+      "semester_need_occurrences": {
+        "regular": 228,
+        "up": 0,
+        "pp": 0
+      },
+      "scheduled_period_occurrences": {
+        "regular": 12,
+        "up_block_starts": 0,
+        "pp": 0
+      },
+      "capacity_pairs": {
+        "full_from_period_start": 658,
+        "current_period": 28,
+        "future_after_period": 630
+      },
+      "must_now_pairs": 0,
+      "configured_period_target_pairs": 9,
+      "desired_period_target_pairs": 9,
+      "required_period_target_pairs": 9,
+      "actual_period_pairs": 12,
+      "target_gap_pairs": 0,
+      "desired_target_gap_pairs": 0,
+      "remaining_regular_pairs": 216,
+      "future_gap_pairs": 0,
+      "future_capacity_margin_pairs": 414,
+      "full_capacity_gap_pairs": 0,
+      "full_capacity_margin_pairs": 430,
+      "status": "ok",
+      "future_capacity_utilization_percent": 34.3
+    },
+    {
+      "teacher_id": 46,
+      "teacher": "Черепанова Татьяна Михайловна",
+      "semester_need_occurrences": {
+        "regular": 140,
+        "up": 0,
+        "pp": 0
+      },
+      "scheduled_period_occurrences": {
+        "regular": 7,
+        "up_block_starts": 0,
+        "pp": 0
+      },
+      "capacity_pairs": {
+        "full_from_period_start": 390,
+        "current_period": 15,
+        "future_after_period": 375
+      },
+      "must_now_pairs": 0,
+      "configured_period_target_pairs": 4,
+      "desired_period_target_pairs": 4,
+      "required_period_target_pairs": 4,
+      "actual_period_pairs": 7,
+      "target_gap_pairs": 0,
+      "desired_target_gap_pairs": 0,
+      "remaining_regular_pairs": 133,
+      "future_gap_pairs": 0,
+      "future_capacity_margin_pairs": 242,
+      "full_capacity_gap_pairs": 0,
+      "full_capacity_margin_pairs": 250,
+      "status": "ok",
+      "future_capacity_utilization_percent": 35.5
+    },
+    {
+      "teacher_id": 47,
+      "teacher": "Азарян Карине Айказовна",
+      "semester_need_occurrences": {
+        "regular": 158,
+        "up": 0,
+        "pp": 0
+      },
+      "scheduled_period_occurrences": {
+        "regular": 11,
+        "up_block_starts": 0,
+        "pp": 0
+      },
+      "capacity_pairs": {
+        "full_from_period_start": 310,
+        "current_period": 10,
+        "future_after_period": 300
+      },
+      "must_now_pairs": 0,
+      "configured_period_target_pairs": 7,
+      "desired_period_target_pairs": 7,
+      "required_period_target_pairs": 7,
+      "actual_period_pairs": 11,
+      "target_gap_pairs": 0,
+      "desired_target_gap_pairs": 0,
+      "remaining_regular_pairs": 147,
+      "future_gap_pairs": 0,
+      "future_capacity_margin_pairs": 153,
+      "full_capacity_gap_pairs": 0,
+      "full_capacity_margin_pairs": 152,
+      "status": "ok",
+      "future_capacity_utilization_percent": 49.0
+    },
+    {
+      "teacher_id": 48,
+      "teacher": "Альшаева Алина Павловна",
+      "semester_need_occurrences": {
+        "regular": 72,
+        "up": 0,
+        "pp": 0
+      },
+      "scheduled_period_occurrences": {
+        "regular": 5,
+        "up_block_starts": 0,
+        "pp": 0
+      },
+      "capacity_pairs": {
+        "full_from_period_start": 112,
+        "current_period": 7,
+        "future_after_period": 105
+      },
+      "must_now_pairs": 0,
+      "configured_period_target_pairs": 5,
+      "desired_period_target_pairs": 5,
+      "required_period_target_pairs": 5,
+      "actual_period_pairs": 5,
+      "target_gap_pairs": 0,
+      "desired_target_gap_pairs": 0,
+      "remaining_regular_pairs": 67,
+      "future_gap_pairs": 0,
+      "future_capacity_margin_pairs": 38,
+      "full_capacity_gap_pairs": 0,
+      "full_capacity_margin_pairs": 40,
+      "status": "ok",
+      "future_capacity_utilization_percent": 63.8
+    },
+    {
+      "teacher_id": 49,
+      "teacher": "Кальчевская Наталья Владимировна",
+      "semester_need_occurrences": {
+        "regular": 131,
+        "up": 72,
+        "pp": 0
+      },
+      "scheduled_period_occurrences": {
+        "regular": 10,
+        "up_block_starts": 0,
+        "pp": 0
+      },
+      "capacity_pairs": {
+        "full_from_period_start": 658,
+        "current_period": 28,
+        "future_after_period": 630
+      },
+      "must_now_pairs": 0,
+      "configured_period_target_pairs": 5,
+      "desired_period_target_pairs": 5,
+      "required_period_target_pairs": 5,
+      "actual_period_pairs": 10,
+      "target_gap_pairs": 0,
+      "desired_target_gap_pairs": 0,
+      "remaining_regular_pairs": 121,
+      "future_gap_pairs": 0,
+      "future_capacity_margin_pairs": 509,
+      "full_capacity_gap_pairs": 0,
+      "full_capacity_margin_pairs": 527,
+      "status": "ok",
+      "future_capacity_utilization_percent": 19.2
+    },
+    {
+      "teacher_id": 50,
+      "teacher": "Ярославцева Елена Анатольевна",
+      "semester_need_occurrences": {
+        "regular": 57,
+        "up": 0,
+        "pp": 0
+      },
+      "scheduled_period_occurrences": {
+        "regular": 6,
+        "up_block_starts": 0,
+        "pp": 0
+      },
+      "capacity_pairs": {
+        "full_from_period_start": 438,
+        "current_period": 18,
+        "future_after_period": 420
+      },
+      "must_now_pairs": 0,
+      "configured_period_target_pairs": 3,
+      "desired_period_target_pairs": 3,
+      "required_period_target_pairs": 3,
+      "actual_period_pairs": 6,
+      "target_gap_pairs": 0,
+      "desired_target_gap_pairs": 0,
+      "remaining_regular_pairs": 51,
+      "future_gap_pairs": 0,
+      "future_capacity_margin_pairs": 369,
+      "full_capacity_gap_pairs": 0,
+      "full_capacity_margin_pairs": 381,
+      "status": "ok",
+      "future_capacity_utilization_percent": 12.1
+    },
+    {
+      "teacher_id": 51,
+      "teacher": "Кошелев Дмитрий Александрович",
+      "semester_need_occurrences": {
+        "regular": 22,
+        "up": 12,
+        "pp": 0
+      },
+      "scheduled_period_occurrences": {
+        "regular": 3,
+        "up_block_starts": 0,
+        "pp": 0
+      },
+      "capacity_pairs": {
+        "full_from_period_start": 112,
+        "current_period": 7,
+        "future_after_period": 105
+      },
+      "must_now_pairs": 0,
+      "configured_period_target_pairs": 2,
+      "desired_period_target_pairs": 2,
+      "required_period_target_pairs": 2,
+      "actual_period_pairs": 3,
+      "target_gap_pairs": 0,
+      "desired_target_gap_pairs": 0,
+      "remaining_regular_pairs": 19,
+      "future_gap_pairs": 0,
+      "future_capacity_margin_pairs": 86,
+      "full_capacity_gap_pairs": 0,
+      "full_capacity_margin_pairs": 90,
+      "status": "ok",
+      "future_capacity_utilization_percent": 18.1
+    },
+    {
+      "teacher_id": 52,
+      "teacher": "Чадова Марина Александровна",
+      "semester_need_occurrences": {
+        "regular": 140,
+        "up": 15,
+        "pp": 0
+      },
+      "scheduled_period_occurrences": {
+        "regular": 9,
+        "up_block_starts": 0,
+        "pp": 0
+      },
+      "capacity_pairs": {
+        "full_from_period_start": 658,
+        "current_period": 28,
+        "future_after_period": 630
+      },
+      "must_now_pairs": 0,
+      "configured_period_target_pairs": 6,
+      "desired_period_target_pairs": 6,
+      "required_period_target_pairs": 6,
+      "actual_period_pairs": 9,
+      "target_gap_pairs": 0,
+      "desired_target_gap_pairs": 0,
+      "remaining_regular_pairs": 131,
+      "future_gap_pairs": 0,
+      "future_capacity_margin_pairs": 499,
+      "full_capacity_gap_pairs": 0,
+      "full_capacity_margin_pairs": 518,
+      "status": "ok",
+      "future_capacity_utilization_percent": 20.8
+    },
+    {
+      "teacher_id": 53,
+      "teacher": "Конева Кристина Сергеевна",
+      "semester_need_occurrences": {
+        "regular": 99,
+        "up": 30,
+        "pp": 72
+      },
+      "scheduled_period_occurrences": {
+        "regular": 6,
+        "up_block_starts": 0,
+        "pp": 0
+      },
+      "capacity_pairs": {
+        "full_from_period_start": 658,
+        "current_period": 28,
+        "future_after_period": 630
+      },
+      "must_now_pairs": 0,
+      "configured_period_target_pairs": 4,
+      "desired_period_target_pairs": 4,
+      "required_period_target_pairs": 4,
+      "actual_period_pairs": 6,
+      "target_gap_pairs": 0,
+      "desired_target_gap_pairs": 0,
+      "remaining_regular_pairs": 93,
+      "future_gap_pairs": 0,
+      "future_capacity_margin_pairs": 537,
+      "full_capacity_gap_pairs": 0,
+      "full_capacity_margin_pairs": 559,
+      "status": "ok",
+      "future_capacity_utilization_percent": 14.8
+    },
+    {
+      "teacher_id": 54,
+      "teacher": "Кузнецова Елизавета Олеговна",
+      "semester_need_occurrences": {
+        "regular": 134,
+        "up": 33,
+        "pp": 0
+      },
+      "scheduled_period_occurrences": {
+        "regular": 8,
+        "up_block_starts": 0,
+        "pp": 0
+      },
+      "capacity_pairs": {
+        "full_from_period_start": 547,
+        "current_period": 22,
+        "future_after_period": 525
+      },
+      "must_now_pairs": 0,
+      "configured_period_target_pairs": 5,
+      "desired_period_target_pairs": 5,
+      "required_period_target_pairs": 5,
+      "actual_period_pairs": 8,
+      "target_gap_pairs": 0,
+      "desired_target_gap_pairs": 0,
+      "remaining_regular_pairs": 126,
+      "future_gap_pairs": 0,
+      "future_capacity_margin_pairs": 399,
+      "full_capacity_gap_pairs": 0,
+      "full_capacity_margin_pairs": 413,
+      "status": "ok",
+      "future_capacity_utilization_percent": 24.0
+    },
+    {
+      "teacher_id": 55,
+      "teacher": "Лимонова Евгения Николаевна",
+      "semester_need_occurrences": {
+        "regular": 291,
+        "up": 9,
+        "pp": 0
+      },
+      "scheduled_period_occurrences": {
+        "regular": 18,
+        "up_block_starts": 0,
+        "pp": 0
+      },
+      "capacity_pairs": {
+        "full_from_period_start": 626,
+        "current_period": 26,
+        "future_after_period": 600
+      },
+      "must_now_pairs": 0,
+      "configured_period_target_pairs": 11,
+      "desired_period_target_pairs": 11,
+      "required_period_target_pairs": 11,
+      "actual_period_pairs": 18,
+      "target_gap_pairs": 0,
+      "desired_target_gap_pairs": 0,
+      "remaining_regular_pairs": 273,
+      "future_gap_pairs": 0,
+      "future_capacity_margin_pairs": 327,
+      "full_capacity_gap_pairs": 0,
+      "full_capacity_margin_pairs": 335,
+      "status": "ok",
+      "future_capacity_utilization_percent": 45.5
+    },
+    {
+      "teacher_id": 56,
+      "teacher": "Ахметов Артур Фанависович",
+      "semester_need_occurrences": {
+        "regular": 335,
+        "up": 18,
+        "pp": 0
+      },
+      "scheduled_period_occurrences": {
+        "regular": 21,
+        "up_block_starts": 0,
+        "pp": 0
+      },
+      "capacity_pairs": {
+        "full_from_period_start": 658,
+        "current_period": 28,
+        "future_after_period": 630
+      },
+      "must_now_pairs": 0,
+      "configured_period_target_pairs": 13,
+      "desired_period_target_pairs": 13,
+      "required_period_target_pairs": 13,
+      "actual_period_pairs": 21,
+      "target_gap_pairs": 0,
+      "desired_target_gap_pairs": 0,
+      "remaining_regular_pairs": 314,
+      "future_gap_pairs": 0,
+      "future_capacity_margin_pairs": 316,
+      "full_capacity_gap_pairs": 0,
+      "full_capacity_margin_pairs": 323,
+      "status": "ok",
+      "future_capacity_utilization_percent": 49.8
+    },
+    {
+      "teacher_id": 57,
+      "teacher": "Подчиненнов Александр Юрьевич",
+      "semester_need_occurrences": {
+        "regular": 30,
+        "up": 48,
+        "pp": 0
+      },
+      "scheduled_period_occurrences": {
+        "regular": 1,
+        "up_block_starts": 0,
+        "pp": 0
+      },
+      "capacity_pairs": {
+        "full_from_period_start": 658,
+        "current_period": 28,
+        "future_after_period": 630
+      },
+      "must_now_pairs": 0,
+      "configured_period_target_pairs": 1,
+      "desired_period_target_pairs": 1,
+      "required_period_target_pairs": 1,
+      "actual_period_pairs": 1,
+      "target_gap_pairs": 0,
+      "desired_target_gap_pairs": 0,
+      "remaining_regular_pairs": 29,
+      "future_gap_pairs": 0,
+      "future_capacity_margin_pairs": 601,
+      "full_capacity_gap_pairs": 0,
+      "full_capacity_margin_pairs": 628,
+      "status": "ok",
+      "future_capacity_utilization_percent": 4.6
+    },
+    {
+      "teacher_id": 58,
+      "teacher": "Билалова Рауиза Галлинуровна",
+      "semester_need_occurrences": {
+        "regular": 189,
+        "up": 0,
+        "pp": 0
+      },
+      "scheduled_period_occurrences": {
+        "regular": 12,
+        "up_block_starts": 0,
+        "pp": 0
+      },
+      "capacity_pairs": {
+        "full_from_period_start": 224,
+        "current_period": 14,
+        "future_after_period": 210
+      },
+      "must_now_pairs": 0,
+      "configured_period_target_pairs": 12,
+      "desired_period_target_pairs": 12,
+      "required_period_target_pairs": 12,
+      "actual_period_pairs": 12,
+      "target_gap_pairs": 0,
+      "desired_target_gap_pairs": 0,
+      "remaining_regular_pairs": 177,
+      "future_gap_pairs": 0,
+      "future_capacity_margin_pairs": 33,
+      "full_capacity_gap_pairs": 0,
+      "full_capacity_margin_pairs": 35,
+      "status": "ok",
+      "future_capacity_utilization_percent": 84.3
+    },
+    {
+      "teacher_id": 59,
+      "teacher": "Самцов Андрей Евгеньевич",
+      "semester_need_occurrences": {
+        "regular": 236,
+        "up": 30,
+        "pp": 0
+      },
+      "scheduled_period_occurrences": {
+        "regular": 20,
+        "up_block_starts": 0,
+        "pp": 0
+      },
+      "capacity_pairs": {
+        "full_from_period_start": 658,
+        "current_period": 28,
+        "future_after_period": 630
+      },
+      "must_now_pairs": 0,
+      "configured_period_target_pairs": 8,
+      "desired_period_target_pairs": 8,
+      "required_period_target_pairs": 8,
+      "actual_period_pairs": 20,
+      "target_gap_pairs": 0,
+      "desired_target_gap_pairs": 0,
+      "remaining_regular_pairs": 216,
+      "future_gap_pairs": 0,
+      "future_capacity_margin_pairs": 414,
+      "full_capacity_gap_pairs": 0,
+      "full_capacity_margin_pairs": 422,
+      "status": "ok",
+      "future_capacity_utilization_percent": 34.3
+    },
+    {
+      "teacher_id": 60,
+      "teacher": "Тимеров Валерий Вагизович",
+      "semester_need_occurrences": {
+        "regular": 256,
+        "up": 18,
+        "pp": 0
+      },
+      "scheduled_period_occurrences": {
+        "regular": 15,
+        "up_block_starts": 0,
+        "pp": 0
+      },
+      "capacity_pairs": {
+        "full_from_period_start": 658,
+        "current_period": 28,
+        "future_after_period": 630
+      },
+      "must_now_pairs": 0,
+      "configured_period_target_pairs": 10,
+      "desired_period_target_pairs": 10,
+      "required_period_target_pairs": 10,
+      "actual_period_pairs": 15,
+      "target_gap_pairs": 0,
+      "desired_target_gap_pairs": 0,
+      "remaining_regular_pairs": 241,
+      "future_gap_pairs": 0,
+      "future_capacity_margin_pairs": 389,
+      "full_capacity_gap_pairs": 0,
+      "full_capacity_margin_pairs": 402,
+      "status": "ok",
+      "future_capacity_utilization_percent": 38.3
+    },
+    {
+      "teacher_id": 61,
+      "teacher": "Саламатина Вера Викторовна",
+      "semester_need_occurrences": {
+        "regular": 370,
+        "up": 0,
+        "pp": 0
+      },
+      "scheduled_period_occurrences": {
+        "regular": 23,
+        "up_block_starts": 0,
+        "pp": 0
+      },
+      "capacity_pairs": {
+        "full_from_period_start": 658,
+        "current_period": 28,
+        "future_after_period": 630
+      },
+      "must_now_pairs": 0,
+      "configured_period_target_pairs": 15,
+      "desired_period_target_pairs": 15,
+      "required_period_target_pairs": 15,
+      "actual_period_pairs": 23,
+      "target_gap_pairs": 0,
+      "desired_target_gap_pairs": 0,
+      "remaining_regular_pairs": 347,
+      "future_gap_pairs": 0,
+      "future_capacity_margin_pairs": 283,
+      "full_capacity_gap_pairs": 0,
+      "full_capacity_margin_pairs": 288,
+      "status": "ok",
+      "future_capacity_utilization_percent": 55.1
+    },
+    {
+      "teacher_id": 62,
+      "teacher": "Вальдиянов Ян Мансурович",
+      "semester_need_occurrences": {
+        "regular": 510,
+        "up": 6,
+        "pp": 0
+      },
+      "scheduled_period_occurrences": {
+        "regular": 24,
+        "up_block_starts": 0,
+        "pp": 0
+      },
+      "capacity_pairs": {
+        "full_from_period_start": 651,
+        "current_period": 28,
+        "future_after_period": 623
+      },
+      "must_now_pairs": 0,
+      "configured_period_target_pairs": 17,
+      "desired_period_target_pairs": 17,
+      "required_period_target_pairs": 17,
+      "actual_period_pairs": 24,
+      "target_gap_pairs": 0,
+      "desired_target_gap_pairs": 0,
+      "remaining_regular_pairs": 486,
+      "future_gap_pairs": 0,
+      "future_capacity_margin_pairs": 137,
+      "full_capacity_gap_pairs": 0,
+      "full_capacity_margin_pairs": 141,
+      "status": "ok",
+      "future_capacity_utilization_percent": 78.0
+    },
+    {
+      "teacher_id": 63,
+      "teacher": "Клабуков Василий Витальевич",
+      "semester_need_occurrences": {
+        "regular": 40,
+        "up": 48,
+        "pp": 0
+      },
+      "scheduled_period_occurrences": {
+        "regular": 1,
+        "up_block_starts": 0,
+        "pp": 0
+      },
+      "capacity_pairs": {
+        "full_from_period_start": 329,
+        "current_period": 14,
+        "future_after_period": 315
+      },
+      "must_now_pairs": 0,
+      "configured_period_target_pairs": 1,
+      "desired_period_target_pairs": 1,
+      "required_period_target_pairs": 1,
+      "actual_period_pairs": 1,
+      "target_gap_pairs": 0,
+      "desired_target_gap_pairs": 0,
+      "remaining_regular_pairs": 39,
+      "future_gap_pairs": 0,
+      "future_capacity_margin_pairs": 276,
+      "full_capacity_gap_pairs": 0,
+      "full_capacity_margin_pairs": 289,
+      "status": "ok",
+      "future_capacity_utilization_percent": 12.4
+    },
+    {
+      "teacher_id": 64,
+      "teacher": "Меренчуков Иван Александрович",
+      "semester_need_occurrences": {
+        "regular": 630,
+        "up": 0,
+        "pp": 0
+      },
+      "scheduled_period_occurrences": {
+        "regular": 28,
+        "up_block_starts": 0,
+        "pp": 0
+      },
+      "capacity_pairs": {
+        "full_from_period_start": 658,
+        "current_period": 28,
+        "future_after_period": 630
+      },
+      "must_now_pairs": 0,
+      "configured_period_target_pairs": 28,
+      "desired_period_target_pairs": 28,
+      "required_period_target_pairs": 28,
+      "actual_period_pairs": 28,
+      "target_gap_pairs": 0,
+      "desired_target_gap_pairs": 0,
+      "remaining_regular_pairs": 602,
+      "future_gap_pairs": 0,
+      "future_capacity_margin_pairs": 28,
+      "full_capacity_gap_pairs": 0,
+      "full_capacity_margin_pairs": 28,
+      "status": "ok",
+      "future_capacity_utilization_percent": 95.6
+    },
+    {
+      "teacher_id": 65,
+      "teacher": "Михайлова Татьяна Алексеевна",
+      "semester_need_occurrences": {
+        "regular": 338,
+        "up": 0,
+        "pp": 0
+      },
+      "scheduled_period_occurrences": {
+        "regular": 11,
+        "up_block_starts": 0,
+        "pp": 0
+      },
+      "capacity_pairs": {
+        "full_from_period_start": 312,
+        "current_period": 12,
+        "future_after_period": 300
+      },
+      "must_now_pairs": 38,
+      "configured_period_target_pairs": 11,
+      "desired_period_target_pairs": 11,
+      "required_period_target_pairs": 11,
+      "actual_period_pairs": 11,
+      "target_gap_pairs": 0,
+      "desired_target_gap_pairs": 0,
+      "remaining_regular_pairs": 327,
+      "future_gap_pairs": 27,
+      "future_capacity_margin_pairs": -27,
+      "full_capacity_gap_pairs": 26,
+      "full_capacity_margin_pairs": -26,
+      "status": "full_semester_physically_infeasible+future_readout_infeasible_after_period",
+      "future_capacity_utilization_percent": 109.0
+    },
+    {
+      "teacher_id": 66,
+      "teacher": "Колтышев Евгений Валерьевич",
+      "semester_need_occurrences": {
+        "regular": 36,
+        "up": 0,
+        "pp": 0
+      },
+      "scheduled_period_occurrences": {
+        "regular": 3,
+        "up_block_starts": 0,
+        "pp": 0
+      },
+      "capacity_pairs": {
+        "full_from_period_start": 96,
+        "current_period": 6,
+        "future_after_period": 90
+      },
+      "must_now_pairs": 0,
+      "configured_period_target_pairs": 3,
+      "desired_period_target_pairs": 3,
+      "required_period_target_pairs": 3,
+      "actual_period_pairs": 3,
+      "target_gap_pairs": 0,
+      "desired_target_gap_pairs": 0,
+      "remaining_regular_pairs": 33,
+      "future_gap_pairs": 0,
+      "future_capacity_margin_pairs": 57,
+      "full_capacity_gap_pairs": 0,
+      "full_capacity_margin_pairs": 60,
+      "status": "ok",
+      "future_capacity_utilization_percent": 36.7
+    },
+    {
+      "teacher_id": 67,
+      "teacher": "Гарбузов Андрей Евгеньевич",
+      "semester_need_occurrences": {
+        "regular": 600,
+        "up": 12,
+        "pp": 0
+      },
+      "scheduled_period_occurrences": {
+        "regular": 28,
+        "up_block_starts": 0,
+        "pp": 0
+      },
+      "capacity_pairs": {
+        "full_from_period_start": 658,
+        "current_period": 28,
+        "future_after_period": 630
+      },
+      "must_now_pairs": 0,
+      "configured_period_target_pairs": 28,
+      "desired_period_target_pairs": 28,
+      "required_period_target_pairs": 28,
+      "actual_period_pairs": 28,
+      "target_gap_pairs": 0,
+      "desired_target_gap_pairs": 0,
+      "remaining_regular_pairs": 572,
+      "future_gap_pairs": 0,
+      "future_capacity_margin_pairs": 58,
+      "full_capacity_gap_pairs": 0,
+      "full_capacity_margin_pairs": 58,
+      "status": "ok",
+      "future_capacity_utilization_percent": 90.8
+    },
+    {
+      "teacher_id": 68,
+      "teacher": "Ханьжина Ксения Владимировна",
+      "semester_need_occurrences": {
+        "regular": 84,
+        "up": 0,
+        "pp": 0
+      },
+      "scheduled_period_occurrences": {
+        "regular": 3,
+        "up_block_starts": 0,
+        "pp": 0
+      },
+      "capacity_pairs": {
+        "full_from_period_start": 220,
+        "current_period": 10,
+        "future_after_period": 210
+      },
+      "must_now_pairs": 0,
+      "configured_period_target_pairs": 3,
+      "desired_period_target_pairs": 3,
+      "required_period_target_pairs": 3,
+      "actual_period_pairs": 3,
+      "target_gap_pairs": 0,
+      "desired_target_gap_pairs": 0,
+      "remaining_regular_pairs": 81,
+      "future_gap_pairs": 0,
+      "future_capacity_margin_pairs": 129,
+      "full_capacity_gap_pairs": 0,
+      "full_capacity_margin_pairs": 136,
+      "status": "ok",
+      "future_capacity_utilization_percent": 38.6
+    }
+  ],
+  "limitations": [
+    "UP and PP are reported separately and are not credited toward the regular-lesson pace gate; they require separate practice calendars.",
+    "Capacity is an availability upper bound; group, room, subject, and cross-teacher conflicts can only reduce achievable readout."
+  ]
+}

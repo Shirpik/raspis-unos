@@ -1,0 +1,12 @@
+{
+  "adjustment_count": 0,
+  "adjustments": [],
+  "cancelled": false,
+  "constraints": 1428,
+  "feasibility_seconds": 0.0237533,
+  "quality_seconds": 0.0141521,
+  "solve_seconds": 0.0379054,
+  "status": "OPTIMAL",
+  "success": true,
+  "variables": 838
+}

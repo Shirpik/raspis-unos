@@ -1,0 +1,51 @@
+{
+  "group_index": 33,
+  "group_name": "ТОРД-4705п",
+  "days": [
+    {
+      "date": "03.09.2026",
+      "date_iso": "2026-09-03",
+      "day_index": 0,
+      "weekday": "ЧТ",
+      "slots": [
+        {"slot": 1, "time": "1 пара (08:30-09:55)", "text": "Психология общения — вся группа, Ярославцева Елена Анатольевна, Кривоусова", "lessons": [{"id":730,"uid":"lesson-fb6902e83f8e50b7","name":"Психология общения","teacher_id":50,"subgroup":-1,"is_lab":false,"is_block":false,"week_parity":"all","room_id":15,"room_name":"32","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
+        {"slot": 2, "time": "2 пара (10:05-11:30)", "text": "МДК.02.03 Управление коллективом исполнителей — вся группа, Черепанова Татьяна Михайловна, Кривоусова", "lessons": [{"id":738,"uid":"lesson-39cd1a13136b895d","name":"МДК.02.03 Управление коллективом исполнителей","teacher_id":46,"subgroup":-1,"is_lab":false,"is_block":false,"week_parity":"all","room_id":58,"room_name":"67","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
+        {"slot": 3, "time": "3 пара (12:25-13:50)", "text": "-", "lessons": []},
+        {"slot": 4, "time": "4 пара (14:00-15:25)", "text": "-", "lessons": []},
+        {"slot": 5, "time": "5 пара (15:35-16:55)", "text": "-", "lessons": []},
+        {"slot": 6, "time": "6 пара (17:05-18:25)", "text": "-", "lessons": []},
+        {"slot": 7, "time": "7 пара (18:35-19:55)", "text": "-", "lessons": []}
+      ]
+    },
+    {
+      "date": "04.09.2026",
+      "date_iso": "2026-09-04",
+      "day_index": 1,
+      "weekday": "ПТ",
+      "slots": [
+        {"slot": 1, "time": "1 пара (08:30-09:55)", "text": "МДК.03.03 Тюнинг автомобилей — вся группа, Самцов Андрей Евгеньевич, Лесная", "lessons": [{"id":741,"uid":"lesson-5879e1aaa089c74f","name":"МДК.03.03 Тюнинг автомобилей","teacher_id":59,"subgroup":-1,"is_lab":false,"is_block":false,"week_parity":"all","room_id":64,"room_name":"115-116","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
+        {"slot": 2, "time": "2 пара (10:05-11:30)", "text": "МДК.02.01 Техническая документация — вся группа, Абрамчук Раида Филимазовна, Лесная", "lessons": [{"id":735,"uid":"lesson-c999f26b54787712","name":"МДК.02.01 Техническая документация","teacher_id":38,"subgroup":-1,"is_lab":false,"is_block":false,"week_parity":"all","room_id":29,"room_name":"201","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
+        {"slot": 3, "time": "3 пара (12:25-13:50)", "text": "МДК.03.03 Тюнинг автомобилей — вся группа, Самцов Андрей Евгеньевич, Лесная", "lessons": [{"id":741,"uid":"lesson-5879e1aaa089c74f","name":"МДК.03.03 Тюнинг автомобилей","teacher_id":59,"subgroup":-1,"is_lab":false,"is_block":false,"week_parity":"all","room_id":64,"room_name":"115-116","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
+        {"slot": 4, "time": "4 пара (14:00-15:25)", "text": "МДК.02.02 Управление процессом технического обслуживания и ремонта автомобилей — вся группа, Абрамчук Раида Филимазовна, Лесная", "lessons": [{"id":736,"uid":"lesson-3faf60c47999016c","name":"МДК.02.02 Управление процессом технического обслуживания и ремонта автомобилей","teacher_id":38,"subgroup":-1,"is_lab":false,"is_block":false,"week_parity":"all","room_id":29,"room_name":"201","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
+        {"slot": 5, "time": "5 пара (15:35-16:55)", "text": "-", "lessons": []},
+        {"slot": 6, "time": "6 пара (17:05-18:25)", "text": "-", "lessons": []},
+        {"slot": 7, "time": "7 пара (18:35-19:55)", "text": "-", "lessons": []}
+      ]
+    },
+    {
+      "date": "05.09.2026",
+      "date_iso": "2026-09-05",
+      "day_index": 2,
+      "weekday": "СБ",
+      "slots": [
+        {"slot": 1, "time": "1 пара (08:30-09:45)", "text": "ЛПЗ МДК.03.03 Тюнинг автомобилей — 2 п/г, Самцов Андрей Евгеньевич, Лесная", "lessons": [{"id":743,"uid":"lesson-a694bda8445a64a3","name":"ЛПЗ МДК.03.03 Тюнинг автомобилей","teacher_id":59,"subgroup":67,"is_lab":true,"is_block":false,"week_parity":"all","room_id":64,"room_name":"115-116","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
+        {"slot": 2, "time": "2 пара (09:55-11:10)", "text": "Эффективное поведение на рынке труда — вся группа, Кропотова Анастасия Андреевна, Лесная", "lessons": [{"id":734,"uid":"lesson-8b64f8d19993c97b","name":"Эффективное поведение на рынке труда","teacher_id":15,"subgroup":-1,"is_lab":false,"is_block":false,"week_parity":"all","room_id":33,"room_name":"209","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
+        {"slot": 3, "time": "3 пара (11:30-12:45)", "text": "МДК.03.02 Организация работ по модернизации автотранспортных средств — вся группа, Тимеров Валерий Вагизович, Лесная", "lessons": [{"id":740,"uid":"lesson-392a3685ec499be1","name":"МДК.03.02 Организация работ по модернизации автотранспортных средств","teacher_id":60,"subgroup":-1,"is_lab":false,"is_block":false,"week_parity":"all","room_id":32,"room_name":"207","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
+        {"slot": 4, "time": "4 пара (12:55-14:10)", "text": "ЛПЗ МДК.03.03 Тюнинг автомобилей — 1 п/г, Самцов Андрей Евгеньевич, Лесная", "lessons": [{"id":742,"uid":"lesson-4257e214af4777d0","name":"ЛПЗ МДК.03.03 Тюнинг автомобилей","teacher_id":59,"subgroup":66,"is_lab":true,"is_block":false,"week_parity":"all","room_id":64,"room_name":"115-116","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
+        {"slot": 5, "time": "5 пара (14:20-15:30)", "text": "-", "lessons": []},
+        {"slot": 6, "time": "6 пара (15:40-16:50)", "text": "-", "lessons": []},
+        {"slot": 7, "time": "7 пара (17:00-18:10)", "text": "-", "lessons": []}
+      ]
+    }
+  ]
+}

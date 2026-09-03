@@ -1,0 +1,51 @@
+{
+  "group_index": 38,
+  "group_name": "ТМ-4413",
+  "days": [
+    {
+      "date": "03.09.2026",
+      "date_iso": "2026-09-03",
+      "day_index": 0,
+      "weekday": "ЧТ",
+      "slots": [
+        {"slot": 1, "time": "1 пара (08:30-09:55)", "text": "-", "lessons": []},
+        {"slot": 2, "time": "2 пара (10:05-11:30)", "text": "-", "lessons": []},
+        {"slot": 3, "time": "3 пара (12:25-13:50)", "text": "-", "lessons": []},
+        {"slot": 4, "time": "4 пара (14:00-15:25)", "text": "-", "lessons": []},
+        {"slot": 5, "time": "5 пара (15:35-16:55)", "text": "МДК.03.01 Разработка и реализация технологических процессов в механосборочном производстве — вся группа, Сивилькаев Вадим Михайлович, Кривоусова", "lessons": [{"id":831,"uid":"lesson-3613fa8593f05519","name":"МДК.03.01 Разработка и реализация технологических процессов в механосборочном производстве","teacher_id":40,"subgroup":-1,"is_lab":false,"is_block":false,"week_parity":"all","room_id":61,"room_name":"70","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
+        {"slot": 6, "time": "6 пара (17:05-18:25)", "text": "МДК.03.01 Разработка и реализация технологических процессов в механосборочном производстве — вся группа, Сивилькаев Вадим Михайлович, Кривоусова", "lessons": [{"id":831,"uid":"lesson-3613fa8593f05519","name":"МДК.03.01 Разработка и реализация технологических процессов в механосборочном производстве","teacher_id":40,"subgroup":-1,"is_lab":false,"is_block":false,"week_parity":"all","room_id":61,"room_name":"70","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
+        {"slot": 7, "time": "7 пара (18:35-19:55)", "text": "ЛПЗ МДК.03.01 Разработка и реализация технологических процессов в механосборочном производстве — 1 п/г, Сивилькаев Вадим Михайлович, Кривоусова", "lessons": [{"id":832,"uid":"lesson-ffd9e1b599e02cbb","name":"ЛПЗ МДК.03.01 Разработка и реализация технологических процессов в механосборочном производстве","teacher_id":40,"subgroup":76,"is_lab":true,"is_block":false,"week_parity":"all","room_id":61,"room_name":"70","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]}
+      ]
+    },
+    {
+      "date": "04.09.2026",
+      "date_iso": "2026-09-04",
+      "day_index": 1,
+      "weekday": "ПТ",
+      "slots": [
+        {"slot": 1, "time": "1 пара (08:30-09:55)", "text": "-", "lessons": []},
+        {"slot": 2, "time": "2 пара (10:05-11:30)", "text": "МДК.05.01 Планирование, организация и контроль деятельности подчиненного персонала — вся группа, Черепанова Татьяна Михайловна, Лесная", "lessons": [{"id":840,"uid":"lesson-e32cc321099a028e","name":"МДК.05.01 Планирование, организация и контроль деятельности подчиненного персонала","teacher_id":46,"subgroup":-1,"is_lab":false,"is_block":false,"week_parity":"all","room_id":39,"room_name":"319","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
+        {"slot": 3, "time": "3 пара (12:25-13:50)", "text": "МДК.05.01 Планирование, организация и контроль деятельности подчиненного персонала — вся группа, Черепанова Татьяна Михайловна, Лесная", "lessons": [{"id":840,"uid":"lesson-e32cc321099a028e","name":"МДК.05.01 Планирование, организация и контроль деятельности подчиненного персонала","teacher_id":46,"subgroup":-1,"is_lab":false,"is_block":false,"week_parity":"all","room_id":39,"room_name":"319","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
+        {"slot": 4, "time": "4 пара (14:00-15:25)", "text": "МДК.04.01 Контроль, наладка, подналадка и техническое обслуживание сборочного оборудования — вся группа, Саламатина Вера Викторовна, Лесная", "lessons": [{"id":836,"uid":"lesson-7f60dbfc7fb601ca","name":"МДК.04.01 Контроль, наладка, подналадка и техническое обслуживание сборочного оборудования","teacher_id":61,"subgroup":-1,"is_lab":false,"is_block":false,"week_parity":"all","room_id":40,"room_name":"322","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
+        {"slot": 5, "time": "5 пара (15:35-16:55)", "text": "ЛПЗ МДК.04.01 Контроль, наладка, подналадка и техническое обслуживание сборочного оборудования — 2 п/г, Вальдиянов Ян Мансурович, Лесная", "lessons": [{"id":838,"uid":"lesson-bd3a030e73dd7a36","name":"ЛПЗ МДК.04.01 Контроль, наладка, подналадка и техническое обслуживание сборочного оборудования","teacher_id":62,"subgroup":77,"is_lab":true,"is_block":false,"week_parity":"all","room_id":48,"room_name":"413","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
+        {"slot": 6, "time": "6 пара (17:05-18:25)", "text": "-", "lessons": []},
+        {"slot": 7, "time": "7 пара (18:35-19:55)", "text": "-", "lessons": []}
+      ]
+    },
+    {
+      "date": "05.09.2026",
+      "date_iso": "2026-09-05",
+      "day_index": 2,
+      "weekday": "СБ",
+      "slots": [
+        {"slot": 1, "time": "1 пара (08:30-09:45)", "text": "ЛПЗ МДК.03.01 Разработка и реализация технологических процессов в механосборочном производстве — 2 п/г, Сивилькаев Вадим Михайлович, Кривоусова", "lessons": [{"id":833,"uid":"lesson-1257b5085514f787","name":"ЛПЗ МДК.03.01 Разработка и реализация технологических процессов в механосборочном производстве","teacher_id":40,"subgroup":77,"is_lab":true,"is_block":false,"week_parity":"all","room_id":61,"room_name":"70","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
+        {"slot": 2, "time": "2 пара (09:55-11:10)", "text": "КП МДК.03.01 Разработка и реализация технологических процессов в механосборочном производстве — вся группа, Сивилькаев Вадим Михайлович, Кривоусова", "lessons": [{"id":834,"uid":"lesson-762415706f6267fa","name":"КП МДК.03.01 Разработка и реализация технологических процессов в механосборочном производстве","teacher_id":40,"subgroup":-1,"is_lab":false,"is_block":false,"week_parity":"all","room_id":61,"room_name":"70","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
+        {"slot": 3, "time": "3 пара (11:30-12:45)", "text": "МДК.03.01 Разработка и реализация технологических процессов в механосборочном производстве — вся группа, Сивилькаев Вадим Михайлович, Кривоусова", "lessons": [{"id":831,"uid":"lesson-3613fa8593f05519","name":"МДК.03.01 Разработка и реализация технологических процессов в механосборочном производстве","teacher_id":40,"subgroup":-1,"is_lab":false,"is_block":false,"week_parity":"all","room_id":61,"room_name":"70","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
+        {"slot": 4, "time": "4 пара (12:55-14:10)", "text": "ЛПЗ МДК.03.01 Разработка и реализация технологических процессов в механосборочном производстве — 1 п/г, Сивилькаев Вадим Михайлович, Кривоусова", "lessons": [{"id":832,"uid":"lesson-ffd9e1b599e02cbb","name":"ЛПЗ МДК.03.01 Разработка и реализация технологических процессов в механосборочном производстве","teacher_id":40,"subgroup":76,"is_lab":true,"is_block":false,"week_parity":"all","room_id":61,"room_name":"70","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
+        {"slot": 5, "time": "5 пара (14:20-15:30)", "text": "-", "lessons": []},
+        {"slot": 6, "time": "6 пара (15:40-16:50)", "text": "-", "lessons": []},
+        {"slot": 7, "time": "7 пара (17:00-18:10)", "text": "-", "lessons": []}
+      ]
+    }
+  ]
+}

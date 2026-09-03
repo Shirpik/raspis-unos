@@ -1,0 +1,51 @@
+{
+  "group_index": 6,
+  "group_name": "ЭОЭ-Пф-151",
+  "days": [
+    {
+      "date": "03.09.2026",
+      "date_iso": "2026-09-03",
+      "day_index": 0,
+      "weekday": "ЧТ",
+      "slots": [
+        {"slot": 1, "time": "1 пара (08:30-09:55)", "text": "основы безопасности и защиты Родины — вся группа, Потапова Регина Александровна, Лесная", "lessons": [{"id":126,"uid":"lesson-ca8d6b4eee98a204","name":"основы безопасности и защиты Родины","teacher_id":8,"subgroup":-1,"is_lab":false,"is_block":false,"week_parity":"all","room_id":44,"room_name":"405","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
+        {"slot": 2, "time": "2 пара (10:05-11:30)", "text": "математика — вся группа, Домарева Ирина Вячеславовна, Лесная", "lessons": [{"id":121,"uid":"lesson-2842a8120014754f","name":"математика","teacher_id":5,"subgroup":-1,"is_lab":false,"is_block":false,"week_parity":"all","room_id":35,"room_name":"311","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
+        {"slot": 3, "time": "3 пара (12:25-13:50)", "text": "математика — вся группа, Домарева Ирина Вячеславовна, Лесная", "lessons": [{"id":121,"uid":"lesson-2842a8120014754f","name":"математика","teacher_id":5,"subgroup":-1,"is_lab":false,"is_block":false,"week_parity":"all","room_id":35,"room_name":"311","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
+        {"slot": 4, "time": "4 пара (14:00-15:25)", "text": "-", "lessons": []},
+        {"slot": 5, "time": "5 пара (15:35-16:55)", "text": "-", "lessons": []},
+        {"slot": 6, "time": "6 пара (17:05-18:25)", "text": "-", "lessons": []},
+        {"slot": 7, "time": "7 пара (18:35-19:55)", "text": "-", "lessons": []}
+      ]
+    },
+    {
+      "date": "04.09.2026",
+      "date_iso": "2026-09-04",
+      "day_index": 1,
+      "weekday": "ПТ",
+      "slots": [
+        {"slot": 1, "time": "1 пара (08:30-09:55)", "text": "иностранный язык — 1 п/г, Ермолина Ирина Павловна, Лесная", "lessons": [{"id":119,"uid":"lesson-87db2f93c9a0a515","name":"иностранный язык","teacher_id":27,"subgroup":12,"is_lab":false,"is_block":false,"week_parity":"all","room_id":41,"room_name":"324","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
+        {"slot": 2, "time": "2 пара (10:05-11:30)", "text": "введение в специальность — вся группа, Костарева Наталья Викторовна, Лесная", "lessons": [{"id":132,"uid":"lesson-cbf9669781d83669","name":"введение в специальность","teacher_id":13,"subgroup":-1,"is_lab":false,"is_block":false,"week_parity":"all","room_id":38,"room_name":"318","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
+        {"slot": 3, "time": "3 пара (12:25-13:50)", "text": "иностранный язык — 2 п/г, Ермолина Ирина Павловна, Лесная", "lessons": [{"id":120,"uid":"lesson-7a552148728c72d4","name":"иностранный язык","teacher_id":27,"subgroup":13,"is_lab":false,"is_block":false,"week_parity":"all","room_id":41,"room_name":"324","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
+        {"slot": 4, "time": "4 пара (14:00-15:25)", "text": "иностранный язык — 2 п/г, Ермолина Ирина Павловна, Лесная", "lessons": [{"id":120,"uid":"lesson-7a552148728c72d4","name":"иностранный язык","teacher_id":27,"subgroup":13,"is_lab":false,"is_block":false,"week_parity":"all","room_id":41,"room_name":"324","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
+        {"slot": 5, "time": "5 пара (15:35-16:55)", "text": "-", "lessons": []},
+        {"slot": 6, "time": "6 пара (17:05-18:25)", "text": "-", "lessons": []},
+        {"slot": 7, "time": "7 пара (18:35-19:55)", "text": "-", "lessons": []}
+      ]
+    },
+    {
+      "date": "05.09.2026",
+      "date_iso": "2026-09-05",
+      "day_index": 2,
+      "weekday": "СБ",
+      "slots": [
+        {"slot": 1, "time": "1 пара (08:30-09:45)", "text": "-", "lessons": []},
+        {"slot": 2, "time": "2 пара (09:55-11:10)", "text": "информатика — 1 п/г, Комарова Яна Николаевна, Кривоусова", "lessons": [{"id":123,"uid":"lesson-21df7d3a750c145e","name":"информатика","teacher_id":21,"subgroup":12,"is_lab":false,"is_block":false,"week_parity":"all","room_id":19,"room_name":"38","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
+        {"slot": 3, "time": "3 пара (11:30-12:45)", "text": "литература — вся группа, Кибардина Татьяна Леонидовна, Кривоусова", "lessons": [{"id":115,"uid":"lesson-f95ac32c77d44a65","name":"литература","teacher_id":22,"subgroup":-1,"is_lab":false,"is_block":false,"week_parity":"all","room_id":16,"room_name":"33","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
+        {"slot": 4, "time": "4 пара (12:55-14:10)", "text": "русский язык — вся группа, Кибардина Татьяна Леонидовна, Кривоусова", "lessons": [{"id":114,"uid":"lesson-4e15ec115822571e","name":"русский язык","teacher_id":22,"subgroup":-1,"is_lab":false,"is_block":false,"week_parity":"all","room_id":16,"room_name":"33","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
+        {"slot": 5, "time": "5 пара (14:20-15:30)", "text": "химия — вся группа, Соболева Любовь Анатольевна, Кривоусова", "lessons": [{"id":128,"uid":"lesson-356d41d10e75f2f7","name":"химия","teacher_id":20,"subgroup":-1,"is_lab":false,"is_block":false,"week_parity":"all","room_id":4,"room_name":"15","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
+        {"slot": 6, "time": "6 пара (15:40-16:50)", "text": "-", "lessons": []},
+        {"slot": 7, "time": "7 пара (17:00-18:10)", "text": "-", "lessons": []}
+      ]
+    }
+  ]
+}

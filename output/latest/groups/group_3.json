@@ -1,0 +1,51 @@
+{
+  "group_index": 3,
+  "group_name": "МЦМ-Пф-103",
+  "days": [
+    {
+      "date": "03.09.2026",
+      "date_iso": "2026-09-03",
+      "day_index": 0,
+      "weekday": "ЧТ",
+      "slots": [
+        {"slot": 1, "time": "1 пара (08:30-09:55)", "text": "-", "lessons": []},
+        {"slot": 2, "time": "2 пара (10:05-11:30)", "text": "-", "lessons": []},
+        {"slot": 3, "time": "3 пара (12:25-13:50)", "text": "-", "lessons": []},
+        {"slot": 4, "time": "4 пара (14:00-15:25)", "text": "информатика — 1 п/г, Комарова Яна Николаевна, Кривоусова", "lessons": [{"id":66,"uid":"lesson-8223ff47cefffa1e","name":"информатика","teacher_id":21,"subgroup":6,"is_lab":false,"is_block":false,"week_parity":"all","room_id":19,"room_name":"38","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
+        {"slot": 5, "time": "5 пара (15:35-16:55)", "text": "литература — вся группа, Хасанова Гузель Хамитовна, Кривоусова", "lessons": [{"id":58,"uid":"lesson-c643bb7e7a53ea94","name":"литература","teacher_id":0,"subgroup":-1,"is_lab":false,"is_block":false,"week_parity":"all","room_id":10,"room_name":"23","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
+        {"slot": 6, "time": "6 пара (17:05-18:25)", "text": "русский язык — вся группа, Хасанова Гузель Хамитовна, Кривоусова", "lessons": [{"id":57,"uid":"lesson-449fcb9d4cac93ea","name":"русский язык","teacher_id":0,"subgroup":-1,"is_lab":false,"is_block":false,"week_parity":"all","room_id":10,"room_name":"23","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
+        {"slot": 7, "time": "7 пара (18:35-19:55)", "text": "физика — вся группа, Силенок Марина Юрьевна, Кривоусова", "lessons": [{"id":70,"uid":"lesson-472fbaa726b87d2c","name":"физика","teacher_id":19,"subgroup":-1,"is_lab":false,"is_block":false,"week_parity":"all","room_id":9,"room_name":"22","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]}
+      ]
+    },
+    {
+      "date": "04.09.2026",
+      "date_iso": "2026-09-04",
+      "day_index": 1,
+      "weekday": "ПТ",
+      "slots": [
+        {"slot": 1, "time": "1 пара (08:30-09:55)", "text": "-", "lessons": []},
+        {"slot": 2, "time": "2 пара (10:05-11:30)", "text": "математика — вся группа, Домарева Ирина Вячеславовна, Лесная", "lessons": [{"id":64,"uid":"lesson-f95aca26331db019","name":"математика","teacher_id":5,"subgroup":-1,"is_lab":false,"is_block":false,"week_parity":"all","room_id":35,"room_name":"311","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
+        {"slot": 3, "time": "3 пара (12:25-13:50)", "text": "математика — вся группа, Домарева Ирина Вячеславовна, Лесная", "lessons": [{"id":64,"uid":"lesson-f95aca26331db019","name":"математика","teacher_id":5,"subgroup":-1,"is_lab":false,"is_block":false,"week_parity":"all","room_id":35,"room_name":"311","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
+        {"slot": 4, "time": "4 пара (14:00-15:25)", "text": "история — вся группа, Вагайская Татьяна Александровна, Лесная", "lessons": [{"id":59,"uid":"lesson-df00a271eb1073df","name":"история","teacher_id":1,"subgroup":-1,"is_lab":false,"is_block":false,"week_parity":"all","room_id":32,"room_name":"207","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
+        {"slot": 5, "time": "5 пара (15:35-16:55)", "text": "иностранный язык — 2 п/г, Буркова Елена Владимировна, Лесная", "lessons": [{"id":63,"uid":"lesson-1ebdb918a6de5feb","name":"иностранный язык","teacher_id":16,"subgroup":7,"is_lab":false,"is_block":false,"week_parity":"all","room_id":44,"room_name":"405","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
+        {"slot": 6, "time": "6 пара (17:05-18:25)", "text": "-", "lessons": []},
+        {"slot": 7, "time": "7 пара (18:35-19:55)", "text": "-", "lessons": []}
+      ]
+    },
+    {
+      "date": "05.09.2026",
+      "date_iso": "2026-09-05",
+      "day_index": 2,
+      "weekday": "СБ",
+      "slots": [
+        {"slot": 1, "time": "1 пара (08:30-09:45)", "text": "-", "lessons": []},
+        {"slot": 2, "time": "2 пара (09:55-11:10)", "text": "математика — вся группа, Домарева Ирина Вячеславовна, Лесная", "lessons": [{"id":64,"uid":"lesson-f95aca26331db019","name":"математика","teacher_id":5,"subgroup":-1,"is_lab":false,"is_block":false,"week_parity":"all","room_id":35,"room_name":"311","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
+        {"slot": 3, "time": "3 пара (11:30-12:45)", "text": "математика — вся группа, Домарева Ирина Вячеславовна, Лесная", "lessons": [{"id":64,"uid":"lesson-f95aca26331db019","name":"математика","teacher_id":5,"subgroup":-1,"is_lab":false,"is_block":false,"week_parity":"all","room_id":35,"room_name":"311","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
+        {"slot": 4, "time": "4 пара (12:55-14:10)", "text": "-", "lessons": []},
+        {"slot": 5, "time": "5 пара (14:20-15:30)", "text": "-", "lessons": []},
+        {"slot": 6, "time": "6 пара (15:40-16:50)", "text": "-", "lessons": []},
+        {"slot": 7, "time": "7 пара (17:00-18:10)", "text": "-", "lessons": []}
+      ]
+    }
+  ]
+}

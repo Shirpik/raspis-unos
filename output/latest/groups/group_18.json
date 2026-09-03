@@ -1,0 +1,51 @@
+{
+  "group_index": 18,
+  "group_name": "ТАКХС-3201",
+  "days": [
+    {
+      "date": "03.09.2026",
+      "date_iso": "2026-09-03",
+      "day_index": 0,
+      "weekday": "ЧТ",
+      "slots": [
+        {"slot": 1, "time": "1 пара (08:30-09:55)", "text": "ЛПЗ МДК.04.01 Выполнение работ по профессии Лаборант химического анализа анализа — 1 п/г, Кальчевская Наталья Владимировна, Кривоусова", "lessons": [{"id":390,"uid":"lesson-69ed98b10cee839f","name":"ЛПЗ МДК.04.01 Выполнение работ по профессии Лаборант химического анализа анализа","teacher_id":49,"subgroup":36,"is_lab":true,"is_block":false,"week_parity":"all","room_id":23,"room_name":"47","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
+        {"slot": 2, "time": "2 пара (10:05-11:30)", "text": "ЛПЗ МДК.01.01 Основы аналитической химии и физико-химических методов анализа — 1 п/г, Кальчевская Наталья Владимировна, Кривоусова", "lessons": [{"id":381,"uid":"lesson-cb30ce6ca94dba0f","name":"ЛПЗ МДК.01.01 Основы аналитической химии и физико-химических методов анализа","teacher_id":49,"subgroup":36,"is_lab":true,"is_block":false,"week_parity":"all","room_id":23,"room_name":"47","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
+        {"slot": 3, "time": "3 пара (12:25-13:50)", "text": "ЛПЗ МДК.01.01 Основы аналитической химии и физико-химических методов анализа — 1 п/г, Кальчевская Наталья Владимировна, Кривоусова", "lessons": [{"id":381,"uid":"lesson-cb30ce6ca94dba0f","name":"ЛПЗ МДК.01.01 Основы аналитической химии и физико-химических методов анализа","teacher_id":49,"subgroup":36,"is_lab":true,"is_block":false,"week_parity":"all","room_id":23,"room_name":"47","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
+        {"slot": 4, "time": "4 пара (14:00-15:25)", "text": "ЛПЗ МДК.04.01 Выполнение работ по профессии Лаборант химического анализа анализа — 2 п/г, Кальчевская Наталья Владимировна, Кривоусова", "lessons": [{"id":391,"uid":"lesson-5433854886d3e149","name":"ЛПЗ МДК.04.01 Выполнение работ по профессии Лаборант химического анализа анализа","teacher_id":49,"subgroup":37,"is_lab":true,"is_block":false,"week_parity":"all","room_id":23,"room_name":"47","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
+        {"slot": 5, "time": "5 пара (15:35-16:55)", "text": "Иностранный язык в профессиональной деятельности — 2 п/г, Синельникова Елена Владимировна, Кривоусова", "lessons": [{"id":374,"uid":"lesson-897f74e5f58f1d16","name":"Иностранный язык в профессиональной деятельности","teacher_id":30,"subgroup":37,"is_lab":false,"is_block":false,"week_parity":"all","room_id":18,"room_name":"37","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
+        {"slot": 6, "time": "6 пара (17:05-18:25)", "text": "ЛПЗ МДК.02.01 Основы качественного и количественного анализа природных и промышленных материалов — 2 п/г, Семенова Лилиана Ивановна, Кривоусова", "lessons": [{"id":387,"uid":"lesson-1bd703b872d9780d","name":"ЛПЗ МДК.02.01 Основы качественного и количественного анализа природных и промышленных материалов","teacher_id":10,"subgroup":37,"is_lab":true,"is_block":false,"week_parity":"all","room_id":52,"room_name":"54","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
+        {"slot": 7, "time": "7 пара (18:35-19:55)", "text": "-", "lessons": []}
+      ]
+    },
+    {
+      "date": "04.09.2026",
+      "date_iso": "2026-09-04",
+      "day_index": 1,
+      "weekday": "ПТ",
+      "slots": [
+        {"slot": 1, "time": "1 пара (08:30-09:55)", "text": "ЛПЗ МДК.01.01 Основы аналитической химии и физико-химических методов анализа — 2 п/г, Кальчевская Наталья Владимировна, Кривоусова", "lessons": [{"id":382,"uid":"lesson-33b84c16ed75fa58","name":"ЛПЗ МДК.01.01 Основы аналитической химии и физико-химических методов анализа","teacher_id":49,"subgroup":37,"is_lab":true,"is_block":false,"week_parity":"all","room_id":23,"room_name":"47","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
+        {"slot": 2, "time": "2 пара (10:05-11:30)", "text": "метрология, стандартизация и сертификация — вся группа, Садриева Татьяна Геннадьевна, Кривоусова", "lessons": [{"id":378,"uid":"lesson-d7d67128b48cdf25","name":"метрология, стандартизация и сертификация","teacher_id":41,"subgroup":-1,"is_lab":false,"is_block":false,"week_parity":"all","room_id":2,"room_name":"2","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
+        {"slot": 3, "time": "3 пара (12:25-13:50)", "text": "Иностранный язык в профессиональной деятельности — 1 п/г, Синельникова Елена Владимировна, Кривоусова | ЛПЗ МДК.01.01 Основы аналитической химии и физико-химических методов анализа — 2 п/г, Кальчевская Наталья Владимировна, Кривоусова", "lessons": [{"id":373,"uid":"lesson-24f06ed51733ee99","name":"Иностранный язык в профессиональной деятельности","teacher_id":30,"subgroup":36,"is_lab":false,"is_block":false,"week_parity":"all","room_id":18,"room_name":"37","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null},{"id":382,"uid":"lesson-33b84c16ed75fa58","name":"ЛПЗ МДК.01.01 Основы аналитической химии и физико-химических методов анализа","teacher_id":49,"subgroup":37,"is_lab":true,"is_block":false,"week_parity":"all","room_id":23,"room_name":"47","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
+        {"slot": 4, "time": "4 пара (14:00-15:25)", "text": "ЛПЗ МДК.02.01 Основы качественного и количественного анализа природных и промышленных материалов — 1 п/г, Семенова Лилиана Ивановна, Кривоусова", "lessons": [{"id":386,"uid":"lesson-05f1264d778f22a4","name":"ЛПЗ МДК.02.01 Основы качественного и количественного анализа природных и промышленных материалов","teacher_id":10,"subgroup":36,"is_lab":true,"is_block":false,"week_parity":"all","room_id":52,"room_name":"54","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
+        {"slot": 5, "time": "5 пара (15:35-16:55)", "text": "-", "lessons": []},
+        {"slot": 6, "time": "6 пара (17:05-18:25)", "text": "-", "lessons": []},
+        {"slot": 7, "time": "7 пара (18:35-19:55)", "text": "-", "lessons": []}
+      ]
+    },
+    {
+      "date": "05.09.2026",
+      "date_iso": "2026-09-05",
+      "day_index": 2,
+      "weekday": "СБ",
+      "slots": [
+        {"slot": 1, "time": "1 пара (08:30-09:45)", "text": "Охрана труда/основы интеллектуального труда — вся группа, Костарева Наталья Викторовна, Лесная", "lessons": [{"id":379,"uid":"lesson-abd05ae18c028462","name":"Охрана труда/основы интеллектуального труда","teacher_id":13,"subgroup":-1,"is_lab":false,"is_block":false,"week_parity":"all","room_id":38,"room_name":"318","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
+        {"slot": 2, "time": "2 пара (09:55-11:10)", "text": "Физическая культура — вся группа, Нуров Мирзо Нуралиевич, Лесная", "lessons": [{"id":375,"uid":"lesson-9d1a1bcd03712894","name":"Физическая культура","teacher_id":34,"subgroup":-1,"is_lab":false,"is_block":false,"week_parity":"all","room_id":67,"room_name":"Спортзал","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
+        {"slot": 3, "time": "3 пара (11:30-12:45)", "text": "Основы философии — вся группа, Лучинин Александр Васильевич, Лесная", "lessons": [{"id":372,"uid":"lesson-03300b194b80c34e","name":"Основы философии","teacher_id":14,"subgroup":-1,"is_lab":false,"is_block":false,"week_parity":"all","room_id":37,"room_name":"317","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
+        {"slot": 4, "time": "4 пара (12:55-14:10)", "text": "-", "lessons": []},
+        {"slot": 5, "time": "5 пара (14:20-15:30)", "text": "-", "lessons": []},
+        {"slot": 6, "time": "6 пара (15:40-16:50)", "text": "-", "lessons": []},
+        {"slot": 7, "time": "7 пара (17:00-18:10)", "text": "-", "lessons": []}
+      ]
+    }
+  ]
+}

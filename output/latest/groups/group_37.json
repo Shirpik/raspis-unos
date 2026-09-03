@@ -1,0 +1,51 @@
+{
+  "group_index": 37,
+  "group_name": "ТМ-3416п",
+  "days": [
+    {
+      "date": "03.09.2026",
+      "date_iso": "2026-09-03",
+      "day_index": 0,
+      "weekday": "ЧТ",
+      "slots": [
+        {"slot": 1, "time": "1 пара (08:30-09:55)", "text": "-", "lessons": []},
+        {"slot": 2, "time": "2 пара (10:05-11:30)", "text": "ВМДК.06.02 Технология металлообработки на металлорежущих станках с программным управлением — вся группа, Вальдиянов Ян Мансурович, Лесная", "lessons": [{"id":821,"uid":"lesson-e11a46b0aa42f831","name":"ВМДК.06.02 Технология металлообработки на металлорежущих станках с программным управлением","teacher_id":62,"subgroup":-1,"is_lab":false,"is_block":false,"week_parity":"all","room_id":48,"room_name":"413","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
+        {"slot": 3, "time": "3 пара (12:25-13:50)", "text": "МДК.02.01 Разработка и внедрение управляющих программ изготовления деталей машин — вся группа, Вальдиянов Ян Мансурович, Лесная", "lessons": [{"id":818,"uid":"lesson-ffca8a6e1b065a86","name":"МДК.02.01 Разработка и внедрение управляющих программ изготовления деталей машин","teacher_id":62,"subgroup":-1,"is_lab":false,"is_block":false,"week_parity":"all","room_id":48,"room_name":"413","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
+        {"slot": 4, "time": "4 пара (14:00-15:25)", "text": "ВМДК.07.01 Технология обработки на металлорежущих станках — вся группа, Саламатина Вера Викторовна, Лесная", "lessons": [{"id":824,"uid":"lesson-df64fff4326331a9","name":"ВМДК.07.01 Технология обработки на металлорежущих станках","teacher_id":61,"subgroup":-1,"is_lab":false,"is_block":false,"week_parity":"all","room_id":40,"room_name":"322","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
+        {"slot": 5, "time": "5 пара (15:35-16:55)", "text": "ЛПЗ ВМДК.06.02 Технология металлообработки на металлорежущих станках с программным управлением — 2 п/г, Вальдиянов Ян Мансурович, Лесная", "lessons": [{"id":823,"uid":"lesson-65f60bac71c25ba5","name":"ЛПЗ ВМДК.06.02 Технология металлообработки на металлорежущих станках с программным управлением","teacher_id":62,"subgroup":75,"is_lab":true,"is_block":false,"week_parity":"all","room_id":48,"room_name":"413","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
+        {"slot": 6, "time": "6 пара (17:05-18:25)", "text": "-", "lessons": []},
+        {"slot": 7, "time": "7 пара (18:35-19:55)", "text": "-", "lessons": []}
+      ]
+    },
+    {
+      "date": "04.09.2026",
+      "date_iso": "2026-09-04",
+      "day_index": 1,
+      "weekday": "ПТ",
+      "slots": [
+        {"slot": 1, "time": "1 пара (08:30-09:55)", "text": "-", "lessons": []},
+        {"slot": 2, "time": "2 пара (10:05-11:30)", "text": "-", "lessons": []},
+        {"slot": 3, "time": "3 пара (12:25-13:50)", "text": "ЛПЗ ВМДК.07.01 Технология обработки на металлорежущих станках — 1 п/г, Вальдиянов Ян Мансурович, Лесная", "lessons": [{"id":825,"uid":"lesson-c1ebb6e9f3d37051","name":"ЛПЗ ВМДК.07.01 Технология обработки на металлорежущих станках","teacher_id":62,"subgroup":74,"is_lab":true,"is_block":false,"week_parity":"all","room_id":48,"room_name":"413","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
+        {"slot": 4, "time": "4 пара (14:00-15:25)", "text": "ЛПЗ МДК.02.01 Разработка и внедрение управляющих программ изготовления деталей машин — 1 п/г, Вальдиянов Ян Мансурович, Лесная", "lessons": [{"id":819,"uid":"lesson-f44b7ff0fab8df2a","name":"ЛПЗ МДК.02.01 Разработка и внедрение управляющих программ изготовления деталей машин","teacher_id":62,"subgroup":74,"is_lab":true,"is_block":false,"week_parity":"all","room_id":48,"room_name":"413","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
+        {"slot": 5, "time": "5 пара (15:35-16:55)", "text": "Иностранный язык в профессиональной деятельности — 2 п/г, Ермолина Ирина Павловна, Лесная", "lessons": [{"id":807,"uid":"lesson-677077744d77a806","name":"Иностранный язык в профессиональной деятельности","teacher_id":27,"subgroup":75,"is_lab":false,"is_block":false,"week_parity":"all","room_id":41,"room_name":"324","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
+        {"slot": 6, "time": "6 пара (17:05-18:25)", "text": "ЛПЗ МДК.02.01 Разработка и внедрение управляющих программ изготовления деталей машин — 2 п/г, Вальдиянов Ян Мансурович, Лесная", "lessons": [{"id":820,"uid":"lesson-ce97c9c48e849009","name":"ЛПЗ МДК.02.01 Разработка и внедрение управляющих программ изготовления деталей машин","teacher_id":62,"subgroup":75,"is_lab":true,"is_block":false,"week_parity":"all","room_id":48,"room_name":"413","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
+        {"slot": 7, "time": "7 пара (18:35-19:55)", "text": "ЛПЗ ВМДК.06.02 Технология металлообработки на металлорежущих станках с программным управлением — 2 п/г, Вальдиянов Ян Мансурович, Лесная", "lessons": [{"id":823,"uid":"lesson-65f60bac71c25ba5","name":"ЛПЗ ВМДК.06.02 Технология металлообработки на металлорежущих станках с программным управлением","teacher_id":62,"subgroup":75,"is_lab":true,"is_block":false,"week_parity":"all","room_id":48,"room_name":"413","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]}
+      ]
+    },
+    {
+      "date": "05.09.2026",
+      "date_iso": "2026-09-05",
+      "day_index": 2,
+      "weekday": "СБ",
+      "slots": [
+        {"slot": 1, "time": "1 пара (08:30-09:45)", "text": "-", "lessons": []},
+        {"slot": 2, "time": "2 пара (09:55-11:10)", "text": "ЛПЗ ВМДК.07.01 Технология обработки на металлорежущих станках — 2 п/г, Вальдиянов Ян Мансурович, Лесная", "lessons": [{"id":826,"uid":"lesson-0baa9de35290f54d","name":"ЛПЗ ВМДК.07.01 Технология обработки на металлорежущих станках","teacher_id":62,"subgroup":75,"is_lab":true,"is_block":false,"week_parity":"all","room_id":48,"room_name":"413","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
+        {"slot": 3, "time": "3 пара (11:30-12:45)", "text": "Физическая культура — вся группа, Нуров Мирзо Нуралиевич, Лесная", "lessons": [{"id":809,"uid":"lesson-0065fa2d0a7577e3","name":"Физическая культура","teacher_id":34,"subgroup":-1,"is_lab":false,"is_block":false,"week_parity":"all","room_id":67,"room_name":"Спортзал","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
+        {"slot": 4, "time": "4 пара (12:55-14:10)", "text": "Иностранный язык в профессиональной деятельности — 1 п/г, Ермолина Ирина Павловна, Лесная", "lessons": [{"id":806,"uid":"lesson-20c0faa5832ed947","name":"Иностранный язык в профессиональной деятельности","teacher_id":27,"subgroup":74,"is_lab":false,"is_block":false,"week_parity":"all","room_id":41,"room_name":"324","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
+        {"slot": 5, "time": "5 пара (14:20-15:30)", "text": "ЛПЗ ВМДК.06.02 Технология металлообработки на металлорежущих станках с программным управлением — 1 п/г, Вальдиянов Ян Мансурович, Лесная", "lessons": [{"id":822,"uid":"lesson-8eb798e0e0179c47","name":"ЛПЗ ВМДК.06.02 Технология металлообработки на металлорежущих станках с программным управлением","teacher_id":62,"subgroup":74,"is_lab":true,"is_block":false,"week_parity":"all","room_id":48,"room_name":"413","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
+        {"slot": 6, "time": "6 пара (15:40-16:50)", "text": "Иностранный язык в профессиональной деятельности — 1 п/г, Ермолина Ирина Павловна, Лесная", "lessons": [{"id":806,"uid":"lesson-20c0faa5832ed947","name":"Иностранный язык в профессиональной деятельности","teacher_id":27,"subgroup":74,"is_lab":false,"is_block":false,"week_parity":"all","room_id":41,"room_name":"324","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
+        {"slot": 7, "time": "7 пара (17:00-18:10)", "text": "-", "lessons": []}
+      ]
+    }
+  ]
+}

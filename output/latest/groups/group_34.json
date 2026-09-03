@@ -1,0 +1,51 @@
+{
+  "group_index": 34,
+  "group_name": "ТМ-2417",
+  "days": [
+    {
+      "date": "03.09.2026",
+      "date_iso": "2026-09-03",
+      "day_index": 0,
+      "weekday": "ЧТ",
+      "slots": [
+        {"slot": 1, "time": "1 пара (08:30-09:55)", "text": "Техническая механика — вся группа, Абрамчук Раида Филимазовна, Лесная", "lessons": [{"id":753,"uid":"lesson-bf3d48f02a7dd443","name":"Техническая механика","teacher_id":38,"subgroup":-1,"is_lab":false,"is_block":false,"week_parity":"all","room_id":29,"room_name":"201","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
+        {"slot": 2, "time": "2 пара (10:05-11:30)", "text": "География — вся группа, Кропотова Анастасия Андреевна, Лесная", "lessons": [{"id":747,"uid":"lesson-c897c50ae47b574c","name":"География","teacher_id":15,"subgroup":-1,"is_lab":false,"is_block":false,"week_parity":"all","room_id":33,"room_name":"209","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
+        {"slot": 3, "time": "3 пара (12:25-13:50)", "text": "Физическая культура — вся группа, Нуров Мирзо Нуралиевич, Лесная", "lessons": [{"id":751,"uid":"lesson-79f0da60fa69916c","name":"Физическая культура","teacher_id":34,"subgroup":-1,"is_lab":false,"is_block":false,"week_parity":"all","room_id":67,"room_name":"Спортзал","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
+        {"slot": 4, "time": "4 пара (14:00-15:25)", "text": "-", "lessons": []},
+        {"slot": 5, "time": "5 пара (15:35-16:55)", "text": "-", "lessons": []},
+        {"slot": 6, "time": "6 пара (17:05-18:25)", "text": "-", "lessons": []},
+        {"slot": 7, "time": "7 пара (18:35-19:55)", "text": "-", "lessons": []}
+      ]
+    },
+    {
+      "date": "04.09.2026",
+      "date_iso": "2026-09-04",
+      "day_index": 1,
+      "weekday": "ПТ",
+      "slots": [
+        {"slot": 1, "time": "1 пара (08:30-09:55)", "text": "Технология машиностроения — вся группа, Саламатина Вера Викторовна, Лесная", "lessons": [{"id":756,"uid":"lesson-11eddd2113230e48","name":"Технология машиностроения","teacher_id":61,"subgroup":-1,"is_lab":false,"is_block":false,"week_parity":"all","room_id":40,"room_name":"322","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
+        {"slot": 2, "time": "2 пара (10:05-11:30)", "text": "ВМДК.07.01 Технология обработки на металлорежущих станках — вся группа, Саламатина Вера Викторовна, Лесная", "lessons": [{"id":762,"uid":"lesson-16a1d9fe5155d7f2","name":"ВМДК.07.01 Технология обработки на металлорежущих станках","teacher_id":61,"subgroup":-1,"is_lab":false,"is_block":false,"week_parity":"all","room_id":40,"room_name":"322","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
+        {"slot": 3, "time": "3 пара (12:25-13:50)", "text": "Иностранный язык в профессиональной деятельности — 2 п/г, Давыдова Валентина Алексеевна, Лесная", "lessons": [{"id":750,"uid":"lesson-591eeb542e3c4409","name":"Иностранный язык в профессиональной деятельности","teacher_id":4,"subgroup":69,"is_lab":false,"is_block":false,"week_parity":"all","room_id":43,"room_name":"401","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
+        {"slot": 4, "time": "4 пара (14:00-15:25)", "text": "-", "lessons": []},
+        {"slot": 5, "time": "5 пара (15:35-16:55)", "text": "-", "lessons": []},
+        {"slot": 6, "time": "6 пара (17:05-18:25)", "text": "-", "lessons": []},
+        {"slot": 7, "time": "7 пара (18:35-19:55)", "text": "-", "lessons": []}
+      ]
+    },
+    {
+      "date": "05.09.2026",
+      "date_iso": "2026-09-05",
+      "day_index": 2,
+      "weekday": "СБ",
+      "slots": [
+        {"slot": 1, "time": "1 пара (08:30-09:45)", "text": "ВМДК.07.01 Технология обработки на металлорежущих станках — вся группа, Саламатина Вера Викторовна, Лесная", "lessons": [{"id":762,"uid":"lesson-16a1d9fe5155d7f2","name":"ВМДК.07.01 Технология обработки на металлорежущих станках","teacher_id":61,"subgroup":-1,"is_lab":false,"is_block":false,"week_parity":"all","room_id":40,"room_name":"322","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
+        {"slot": 2, "time": "2 пара (09:55-11:10)", "text": "Технологическая оснастка — вся группа, Саламатина Вера Викторовна, Лесная", "lessons": [{"id":758,"uid":"lesson-58185a6ed340a12b","name":"Технологическая оснастка","teacher_id":61,"subgroup":-1,"is_lab":false,"is_block":false,"week_parity":"all","room_id":40,"room_name":"322","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
+        {"slot": 3, "time": "3 пара (11:30-12:45)", "text": "Технологическая оснастка — вся группа, Саламатина Вера Викторовна, Лесная", "lessons": [{"id":758,"uid":"lesson-58185a6ed340a12b","name":"Технологическая оснастка","teacher_id":61,"subgroup":-1,"is_lab":false,"is_block":false,"week_parity":"all","room_id":40,"room_name":"322","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
+        {"slot": 4, "time": "4 пара (12:55-14:10)", "text": "Иностранный язык в профессиональной деятельности — 1 п/г, Давыдова Валентина Алексеевна, Лесная", "lessons": [{"id":749,"uid":"lesson-3a42481f0391ce14","name":"Иностранный язык в профессиональной деятельности","teacher_id":4,"subgroup":68,"is_lab":false,"is_block":false,"week_parity":"all","room_id":43,"room_name":"401","room_type":0,"room_substituted":false,"requested_room_id":null,"requested_room_name":null,"room_substitution_reason":null}]},
+        {"slot": 5, "time": "5 пара (14:20-15:30)", "text": "-", "lessons": []},
+        {"slot": 6, "time": "6 пара (15:40-16:50)", "text": "-", "lessons": []},
+        {"slot": 7, "time": "7 пара (17:00-18:10)", "text": "-", "lessons": []}
+      ]
+    }
+  ]
+}
