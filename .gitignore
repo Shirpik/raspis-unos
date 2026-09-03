@@ -375,9 +375,11 @@ dist/
 /desktop/node_modules/
 /desktop/release/
 /desktop/release-backups/
+/desktop/*.tgz
 /frontend/node_modules/
 /frontend/dist/
 /logs/
+/logs2.txt
 /tmp/
 /outputs/
 /x64/
