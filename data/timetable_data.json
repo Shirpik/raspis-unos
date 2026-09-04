@@ -9671,7 +9671,7 @@
       "required_room_type": 0,
       "subgroup": -1,
       "subject_id": 121,
-      "teacher": 9,
+      "teacher": -1,
       "total_hours": 50,
       "total_slots": 0,
       "uid": "lesson-8eec71b6d94809f0",
@@ -12425,7 +12425,7 @@
       "required_room_type": 0,
       "subgroup": -1,
       "subject_id": 194,
-      "teacher": 37,
+      "teacher": -1,
       "total_hours": 30,
       "total_slots": 0,
       "uid": "lesson-7158128e4c97e65f",
@@ -12708,7 +12708,7 @@
       "required_room_type": 0,
       "subgroup": 24,
       "subject_id": -1,
-      "teacher": -1,
+      "teacher": 40,
       "total_hours": 18,
       "total_slots": 0,
       "uid": "lesson-f20ea05eb1a80df6",
@@ -12737,7 +12737,7 @@
       "required_room_type": 0,
       "subgroup": 25,
       "subject_id": -1,
-      "teacher": -1,
+      "teacher": 40,
       "total_hours": 18,
       "total_slots": 0,
       "uid": "lesson-d1d735ad0b6bb38b",
@@ -14218,7 +14218,7 @@
       "required_room_type": 0,
       "subgroup": -1,
       "subject_id": 232,
-      "teacher": -1,
+      "teacher": 43,
       "total_hours": 20,
       "total_slots": 0,
       "uid": "lesson-01055fc0c66b99d1",
@@ -14702,90 +14702,6 @@
       "total_hours": 72,
       "total_slots": 0,
       "uid": "lesson-c94fc5115780f12c",
-      "week_parity": "all"
-    },
-    {
-      "allow_room_substitution": false,
-      "allowed_campuses": [
-        1
-      ],
-      "avoid_lunch_split": false,
-      "consecutive_pairs": 1,
-      "fixed_room": -1,
-      "generation_active": true,
-      "group": 15,
-      "id": 324,
-      "is_block": false,
-      "is_lab": false,
-      "is_pp": false,
-      "name": "ВМДК.03.03 Технология производства цветных металлов и сплавов (по типам производства)",
-      "plan_active": false,
-      "required_capacity": 0,
-      "required_equipment": [],
-      "required_room_purpose": "",
-      "required_room_type": 0,
-      "subgroup": -1,
-      "subject_id": 241,
-      "teacher": 43,
-      "total_hours": 8,
-      "total_slots": 0,
-      "uid": "lesson-a35d9365d021e25a",
-      "week_parity": "all"
-    },
-    {
-      "allow_room_substitution": false,
-      "allowed_campuses": [
-        1
-      ],
-      "avoid_lunch_split": false,
-      "consecutive_pairs": 1,
-      "fixed_room": -1,
-      "generation_active": false,
-      "group": 15,
-      "id": 325,
-      "is_block": false,
-      "is_lab": true,
-      "is_pp": false,
-      "name": "ЛПЗ ВМДК.03.03 Технология производства цветных металлов и сплавов (по типам производства)",
-      "plan_active": false,
-      "required_capacity": 0,
-      "required_equipment": [],
-      "required_room_purpose": "",
-      "required_room_type": 0,
-      "subgroup": 30,
-      "subject_id": 241,
-      "teacher": 43,
-      "total_hours": 12,
-      "total_slots": 0,
-      "uid": "lesson-05c18b0e974b3abe",
-      "week_parity": "all"
-    },
-    {
-      "allow_room_substitution": false,
-      "allowed_campuses": [
-        1
-      ],
-      "avoid_lunch_split": false,
-      "consecutive_pairs": 1,
-      "fixed_room": -1,
-      "generation_active": false,
-      "group": 15,
-      "id": 326,
-      "is_block": false,
-      "is_lab": true,
-      "is_pp": false,
-      "name": "ЛПЗ ВМДК.03.03 Технология производства цветных металлов и сплавов (по типам производства)",
-      "plan_active": false,
-      "required_capacity": 0,
-      "required_equipment": [],
-      "required_room_purpose": "",
-      "required_room_type": 0,
-      "subgroup": 31,
-      "subject_id": 241,
-      "teacher": 43,
-      "total_hours": 12,
-      "total_slots": 0,
-      "uid": "lesson-c2f2be8738f0437f",
       "week_parity": "all"
     },
     {
@@ -15487,7 +15403,7 @@
       "is_lab": false,
       "is_pp": false,
       "name": "География",
-      "plan_active": false,
+      "plan_active": true,
       "required_capacity": 0,
       "required_equipment": [],
       "required_room_purpose": "",
@@ -15496,7 +15412,7 @@
       "subject_id": 254,
       "teacher": 15,
       "total_hours": 36,
-      "total_slots": 0,
+      "total_slots": 1,
       "uid": "lesson-ccc6d1bc1c6c5d59",
       "week_parity": "all"
     },
@@ -15744,16 +15660,16 @@
       "is_lab": false,
       "is_pp": false,
       "name": "Физическая и коллоидная химия",
-      "plan_active": true,
+      "plan_active": false,
       "required_capacity": 0,
       "required_equipment": [],
       "required_room_purpose": "",
       "required_room_type": 0,
       "subgroup": -1,
       "subject_id": 263,
-      "teacher": 48,
+      "teacher": 10,
       "total_hours": 22,
-      "total_slots": 1,
+      "total_slots": 0,
       "uid": "lesson-5b3476d2fcabf463",
       "week_parity": "all"
     },
@@ -15864,7 +15780,7 @@
       "required_room_type": 0,
       "subgroup": -1,
       "subject_id": 266,
-      "teacher": 49,
+      "teacher": 81,
       "total_hours": 2,
       "total_slots": 0,
       "uid": "lesson-38f48a30bc85ef92",
@@ -15886,18 +15802,18 @@
       "is_pp": false,
       "name": "ЛПЗ МДК.04.01 Выполнение работ по профессии лаборант химического анализа",
       "plan_active": true,
+      "preferred_room": 68,
       "required_capacity": 0,
       "required_equipment": [],
       "required_room_purpose": "",
       "required_room_type": 0,
       "subgroup": 34,
       "subject_id": 267,
-      "teacher": 49,
+      "teacher": 81,
       "total_hours": 24,
       "total_slots": 2,
       "uid": "lesson-33ae7e612ea4effb",
-      "week_parity": "all",
-      "preferred_room": 68
+      "week_parity": "all"
     },
     {
       "allow_room_substitution": false,
@@ -15915,18 +15831,18 @@
       "is_pp": false,
       "name": "ЛПЗ МДК.04.01 Выполнение работ по профессии лаборант химического анализа",
       "plan_active": false,
+      "preferred_room": 68,
       "required_capacity": 0,
       "required_equipment": [],
       "required_room_purpose": "",
       "required_room_type": 0,
       "subgroup": 35,
       "subject_id": 267,
-      "teacher": 49,
+      "teacher": 81,
       "total_hours": 24,
       "total_slots": 0,
       "uid": "lesson-8742e5b34b158183",
-      "week_parity": "all",
-      "preferred_room": 68
+      "week_parity": "all"
     },
     {
       "allow_room_substitution": false,
@@ -15950,7 +15866,7 @@
       "required_room_type": 0,
       "subgroup": -1,
       "subject_id": 268,
-      "teacher": 49,
+      "teacher": 81,
       "total_hours": 14,
       "total_slots": 0,
       "uid": "lesson-1af2492a570059c2",
@@ -15972,18 +15888,18 @@
       "is_pp": false,
       "name": "ЛПЗ ВМДК.04.02 Химический анализ сырья, материалов и готовой продукции",
       "plan_active": false,
+      "preferred_room": 68,
       "required_capacity": 0,
       "required_equipment": [],
       "required_room_purpose": "",
       "required_room_type": 0,
       "subgroup": 34,
       "subject_id": 269,
-      "teacher": 49,
+      "teacher": 81,
       "total_hours": 16,
       "total_slots": 0,
       "uid": "lesson-d664a95a292cb4f1",
-      "week_parity": "all",
-      "preferred_room": 68
+      "week_parity": "all"
     },
     {
       "allow_room_substitution": false,
@@ -16001,18 +15917,18 @@
       "is_pp": false,
       "name": "ЛПЗ ВМДК.04.02 Химический анализ сырья, материалов и готовой продукции",
       "plan_active": false,
+      "preferred_room": 68,
       "required_capacity": 0,
       "required_equipment": [],
       "required_room_purpose": "",
       "required_room_type": 0,
       "subgroup": 35,
       "subject_id": 269,
-      "teacher": 49,
+      "teacher": 81,
       "total_hours": 16,
       "total_slots": 0,
       "uid": "lesson-de308c217f2bfc75",
-      "week_parity": "all",
-      "preferred_room": 68
+      "week_parity": "all"
     },
     {
       "allow_room_substitution": false,
@@ -16036,7 +15952,7 @@
       "required_room_type": 0,
       "subgroup": 34,
       "subject_id": -1,
-      "teacher": 49,
+      "teacher": 81,
       "total_hours": 72,
       "total_slots": 0,
       "uid": "lesson-9dc607eeebf61d44",
@@ -16064,7 +15980,7 @@
       "required_room_type": 0,
       "subgroup": 35,
       "subject_id": -1,
-      "teacher": 49,
+      "teacher": 81,
       "total_hours": 72,
       "total_slots": 0,
       "uid": "lesson-f6d18e3413f81a26",
@@ -16235,7 +16151,7 @@
       "subgroup": -1,
       "subject_id": 276,
       "teacher": 35,
-      "total_hours": 54,
+      "total_hours": 42,
       "total_slots": 0,
       "uid": "lesson-b48d0a209d11eb39",
       "week_parity": "all"
@@ -16319,7 +16235,7 @@
       "required_room_type": 0,
       "subgroup": -1,
       "subject_id": 279,
-      "teacher": 49,
+      "teacher": 81,
       "total_hours": 6,
       "total_slots": 0,
       "uid": "lesson-586fd954fb29729a",
@@ -16341,6 +16257,7 @@
       "is_pp": false,
       "name": "ЛПЗ МДК.01.01 Основы аналитической химии и физико-химических методов анализа",
       "plan_active": true,
+      "preferred_room": 68,
       "required_capacity": 0,
       "required_equipment": [],
       "required_room_purpose": "",
@@ -16348,11 +16265,10 @@
       "subgroup": 36,
       "subject_id": 280,
       "teacher": 49,
-      "total_hours": 50,
+      "total_hours": 60,
       "total_slots": 2,
       "uid": "lesson-cb30ce6ca94dba0f",
-      "week_parity": "all",
-      "preferred_room": 68
+      "week_parity": "all"
     },
     {
       "allow_room_substitution": false,
@@ -16370,18 +16286,18 @@
       "is_pp": false,
       "name": "ЛПЗ МДК.01.01 Основы аналитической химии и физико-химических методов анализа",
       "plan_active": false,
+      "preferred_room": 68,
       "required_capacity": 0,
       "required_equipment": [],
       "required_room_purpose": "",
       "required_room_type": 0,
       "subgroup": 37,
       "subject_id": 280,
-      "teacher": 49,
-      "total_hours": 50,
+      "teacher": 81,
+      "total_hours": 60,
       "total_slots": 0,
       "uid": "lesson-33b84c16ed75fa58",
-      "week_parity": "all",
-      "preferred_room": 68
+      "week_parity": "all"
     },
     {
       "allow_room_substitution": false,
@@ -16405,7 +16321,7 @@
       "required_room_type": 0,
       "subgroup": 36,
       "subject_id": -1,
-      "teacher": 49,
+      "teacher": 81,
       "total_hours": 108,
       "total_slots": 0,
       "uid": "lesson-2604a2f0a81e6ef6",
@@ -16433,38 +16349,10 @@
       "required_room_type": 0,
       "subgroup": 37,
       "subject_id": -1,
-      "teacher": 49,
+      "teacher": 81,
       "total_hours": 108,
       "total_slots": 0,
       "uid": "lesson-137d44793ee627fa",
-      "week_parity": "all"
-    },
-    {
-      "allow_room_substitution": false,
-      "allowed_campuses": [
-        1
-      ],
-      "avoid_lunch_split": false,
-      "consecutive_pairs": 1,
-      "fixed_room": -1,
-      "generation_active": true,
-      "group": 18,
-      "id": 385,
-      "is_block": false,
-      "is_lab": false,
-      "is_pp": false,
-      "name": "МДК.02.01 Основы качественного и количественного анализа природных и промышленных материалов",
-      "plan_active": false,
-      "required_capacity": 0,
-      "required_equipment": [],
-      "required_room_purpose": "",
-      "required_room_type": 0,
-      "subgroup": -1,
-      "subject_id": 282,
-      "teacher": 10,
-      "total_hours": 10,
-      "total_slots": 0,
-      "uid": "lesson-20a37db0b4582c60",
       "week_parity": "all"
     },
     {
@@ -16582,68 +16470,6 @@
     {
       "allow_room_substitution": false,
       "allowed_campuses": [
-        0
-      ],
-      "avoid_lunch_split": true,
-      "consecutive_pairs": 2,
-      "fixed_room": 68,
-      "generation_active": false,
-      "generation_deferred_reason": "Квота ЛПЗ перенесена целым двойным блоком на следующий период",
-      "generation_deferred_until": "2026-09-07",
-      "group": 18,
-      "id": 390,
-      "is_block": false,
-      "is_lab": true,
-      "is_pp": false,
-      "name": "ЛПЗ МДК.04.01 Выполнение работ по профессии Лаборант химического анализа анализа",
-      "plan_active": false,
-      "required_capacity": 0,
-      "required_equipment": [],
-      "required_room_purpose": "",
-      "required_room_type": 0,
-      "subgroup": 36,
-      "subject_id": 285,
-      "teacher": 49,
-      "total_hours": 30,
-      "total_slots": 0,
-      "uid": "lesson-69ed98b10cee839f",
-      "week_parity": "all",
-      "preferred_room": 68
-    },
-    {
-      "allow_room_substitution": false,
-      "allowed_campuses": [
-        0
-      ],
-      "avoid_lunch_split": true,
-      "consecutive_pairs": 2,
-      "fixed_room": 68,
-      "generation_active": false,
-      "generation_deferred_reason": "Квота ЛПЗ перенесена целым двойным блоком на следующий период",
-      "generation_deferred_until": "2026-09-07",
-      "group": 18,
-      "id": 391,
-      "is_block": false,
-      "is_lab": true,
-      "is_pp": false,
-      "name": "ЛПЗ МДК.04.01 Выполнение работ по профессии Лаборант химического анализа анализа",
-      "plan_active": false,
-      "required_capacity": 0,
-      "required_equipment": [],
-      "required_room_purpose": "",
-      "required_room_type": 0,
-      "subgroup": 37,
-      "subject_id": 285,
-      "teacher": 49,
-      "total_hours": 30,
-      "total_slots": 0,
-      "uid": "lesson-5433854886d3e149",
-      "week_parity": "all",
-      "preferred_room": 68
-    },
-    {
-      "allow_room_substitution": false,
-      "allowed_campuses": [
         1
       ],
       "avoid_lunch_split": false,
@@ -16663,7 +16489,7 @@
       "required_room_type": 0,
       "subgroup": 36,
       "subject_id": -1,
-      "teacher": 49,
+      "teacher": 81,
       "total_hours": 36,
       "total_slots": 0,
       "uid": "lesson-07cedaf06f4e1f53",
@@ -16691,7 +16517,7 @@
       "required_room_type": 0,
       "subgroup": 37,
       "subject_id": -1,
-      "teacher": 49,
+      "teacher": 81,
       "total_hours": 36,
       "total_slots": 0,
       "uid": "lesson-c6968faf867325ee",
@@ -16862,7 +16688,7 @@
       "subgroup": -1,
       "subject_id": 292,
       "teacher": 10,
-      "total_hours": 18,
+      "total_hours": 22,
       "total_slots": 0,
       "uid": "lesson-0bc2f4e94e0a876d",
       "week_parity": "all"
@@ -16892,7 +16718,7 @@
       "subgroup": 38,
       "subject_id": 293,
       "teacher": 10,
-      "total_hours": 28,
+      "total_hours": 24,
       "total_slots": 0,
       "uid": "lesson-6c6e4b7e069ed681",
       "week_parity": "all"
@@ -16922,7 +16748,7 @@
       "subgroup": 39,
       "subject_id": 293,
       "teacher": 10,
-      "total_hours": 28,
+      "total_hours": 24,
       "total_slots": 0,
       "uid": "lesson-cec8b7df2df83aca",
       "week_parity": "all"
@@ -17006,7 +16832,7 @@
       "subgroup": -1,
       "subject_id": 295,
       "teacher": 10,
-      "total_hours": 80,
+      "total_hours": 26,
       "total_slots": 1,
       "uid": "lesson-d2339e699d128554",
       "week_parity": "all"
@@ -17034,7 +16860,7 @@
       "subgroup": 38,
       "subject_id": 296,
       "teacher": 10,
-      "total_hours": 154,
+      "total_hours": 52,
       "total_slots": 2,
       "uid": "lesson-799b82203a849518",
       "week_parity": "all"
@@ -17062,7 +16888,7 @@
       "subgroup": 39,
       "subject_id": 296,
       "teacher": 10,
-      "total_hours": 154,
+      "total_hours": 52,
       "total_slots": 2,
       "uid": "lesson-26962e13b65bedf5",
       "week_parity": "all"
@@ -17118,7 +16944,7 @@
       "subgroup": 38,
       "subject_id": -1,
       "teacher": 10,
-      "total_hours": 144,
+      "total_hours": 108,
       "total_slots": 0,
       "uid": "lesson-8acbab60bf8aa6c0",
       "week_parity": "all"
@@ -17146,7 +16972,7 @@
       "subgroup": 39,
       "subject_id": -1,
       "teacher": 10,
-      "total_hours": 144,
+      "total_hours": 108,
       "total_slots": 0,
       "uid": "lesson-4cd4046431f54a15",
       "week_parity": "all"
@@ -17174,8 +17000,8 @@
       "required_room_type": 0,
       "subgroup": -1,
       "subject_id": 299,
-      "teacher": -1,
-      "total_hours": 88,
+      "teacher": 81,
+      "total_hours": 50,
       "total_slots": 0,
       "uid": "lesson-b4d5c2fac493e32c",
       "week_parity": "all"
@@ -17203,7 +17029,7 @@
       "required_room_type": 0,
       "subgroup": -1,
       "subject_id": -1,
-      "teacher": -1,
+      "teacher": 81,
       "total_hours": 16,
       "total_slots": 0,
       "uid": "lesson-1cdc4365ed650469",
@@ -17290,7 +17116,7 @@
       "required_room_type": 0,
       "subgroup": -1,
       "subject_id": 303,
-      "teacher": 39,
+      "teacher": 9,
       "total_hours": 16,
       "total_slots": 0,
       "uid": "lesson-825f3b3d5b81eb58",
@@ -17319,7 +17145,7 @@
       "required_room_type": 0,
       "subgroup": 40,
       "subject_id": 304,
-      "teacher": 39,
+      "teacher": 9,
       "total_hours": 10,
       "total_slots": 0,
       "uid": "lesson-89aaaa1048844953",
@@ -17348,7 +17174,7 @@
       "required_room_type": 0,
       "subgroup": 41,
       "subject_id": 304,
-      "teacher": 39,
+      "teacher": 9,
       "total_hours": 10,
       "total_slots": 0,
       "uid": "lesson-3d59059bb74adc9c",
@@ -17377,7 +17203,7 @@
       "required_room_type": 0,
       "subgroup": 40,
       "subject_id": -1,
-      "teacher": 39,
+      "teacher": 82,
       "total_hours": 36,
       "total_slots": 0,
       "uid": "lesson-79ccd955fc7a2b67",
@@ -17406,7 +17232,7 @@
       "required_room_type": 0,
       "subgroup": 41,
       "subject_id": -1,
-      "teacher": 39,
+      "teacher": 82,
       "total_hours": 36,
       "total_slots": 0,
       "uid": "lesson-d19234d26a197582",
@@ -17435,7 +17261,7 @@
       "required_room_type": 0,
       "subgroup": -1,
       "subject_id": 306,
-      "teacher": 39,
+      "teacher": 82,
       "total_hours": 41,
       "total_slots": 0,
       "uid": "lesson-ac5f305ab4ff1bf0",
@@ -17522,7 +17348,7 @@
       "required_room_type": 0,
       "subgroup": -1,
       "subject_id": -1,
-      "teacher": 39,
+      "teacher": 82,
       "total_hours": 20,
       "total_slots": 0,
       "uid": "lesson-9fee41b0c176e0c5",
@@ -17638,7 +17464,7 @@
       "required_room_type": 0,
       "subgroup": -1,
       "subject_id": 311,
-      "teacher": 39,
+      "teacher": 82,
       "total_hours": 14,
       "total_slots": 0,
       "uid": "lesson-0e65080fcc40f6d8",
@@ -17667,7 +17493,7 @@
       "required_room_type": 0,
       "subgroup": 40,
       "subject_id": 312,
-      "teacher": 39,
+      "teacher": 82,
       "total_hours": 24,
       "total_slots": 0,
       "uid": "lesson-a468cd3b69f98089",
@@ -17696,7 +17522,7 @@
       "required_room_type": 0,
       "subgroup": 41,
       "subject_id": 312,
-      "teacher": 39,
+      "teacher": 82,
       "total_hours": 24,
       "total_slots": 0,
       "uid": "lesson-34ce843194160114",
@@ -17725,7 +17551,7 @@
       "required_room_type": 0,
       "subgroup": 40,
       "subject_id": -1,
-      "teacher": 9,
+      "teacher": 82,
       "total_hours": 36,
       "total_slots": 0,
       "uid": "lesson-e66a1ef859932332",
@@ -17754,7 +17580,7 @@
       "required_room_type": 0,
       "subgroup": 41,
       "subject_id": -1,
-      "teacher": 9,
+      "teacher": 82,
       "total_hours": 36,
       "total_slots": 0,
       "uid": "lesson-17260bd70299485d",
@@ -17812,7 +17638,7 @@
       "required_room_type": 0,
       "subgroup": -1,
       "subject_id": 315,
-      "teacher": 39,
+      "teacher": 9,
       "total_hours": 10,
       "total_slots": 0,
       "uid": "lesson-30548a09ac03643e",
@@ -17841,7 +17667,7 @@
       "required_room_type": 0,
       "subgroup": 40,
       "subject_id": 316,
-      "teacher": 39,
+      "teacher": 9,
       "total_hours": 20,
       "total_slots": 0,
       "uid": "lesson-96e3b6a32a702c20",
@@ -17870,7 +17696,7 @@
       "required_room_type": 0,
       "subgroup": 41,
       "subject_id": 316,
-      "teacher": 39,
+      "teacher": 9,
       "total_hours": 20,
       "total_slots": 0,
       "uid": "lesson-87db4bcfefb32acf",
@@ -19336,7 +19162,7 @@
       "required_room_type": 0,
       "subgroup": -1,
       "subject_id": 355,
-      "teacher": 53,
+      "teacher": 54,
       "total_hours": 144,
       "total_slots": 0,
       "uid": "lesson-95975d24e69edd0f",
@@ -19621,7 +19447,7 @@
       "subgroup": -1,
       "subject_id": 364,
       "teacher": 45,
-      "total_hours": 60,
+      "total_hours": 48,
       "total_slots": 1,
       "uid": "lesson-8e25b5135072617a",
       "week_parity": "all"
@@ -20463,7 +20289,7 @@
       "required_room_type": 0,
       "subgroup": -1,
       "subject_id": 385,
-      "teacher": 37,
+      "teacher": -1,
       "total_hours": 56,
       "total_slots": 0,
       "uid": "lesson-9ea2b0d818d51ca6",
@@ -20513,18 +20339,18 @@
       "is_pp": false,
       "name": "Материаловедение",
       "plan_active": true,
+      "preferred_room": -1,
       "required_capacity": 0,
       "required_equipment": [],
       "required_room_purpose": "",
       "required_room_type": 0,
       "subgroup": -1,
       "subject_id": 387,
-      "teacher": 55,
-      "total_hours": 48,
+      "teacher": 56,
+      "total_hours": 36,
       "total_slots": 1,
       "uid": "lesson-e80b70e1309e5007",
-      "week_parity": "all",
-      "preferred_room": -1
+      "week_parity": "all"
     },
     {
       "allow_room_substitution": false,
@@ -20550,7 +20376,7 @@
       "subgroup": -1,
       "subject_id": 388,
       "teacher": 39,
-      "total_hours": 48,
+      "total_hours": 36,
       "total_slots": 0,
       "uid": "lesson-5808515b3a5a9180",
       "week_parity": "all"
@@ -20635,7 +20461,7 @@
       "required_room_type": 0,
       "subgroup": -1,
       "subject_id": 391,
-      "teacher": 37,
+      "teacher": -1,
       "total_hours": 8,
       "total_slots": 0,
       "uid": "lesson-d982f5632ea455ab",
@@ -20664,7 +20490,7 @@
       "required_room_type": 0,
       "subgroup": 48,
       "subject_id": 391,
-      "teacher": 37,
+      "teacher": -1,
       "total_hours": 32,
       "total_slots": 0,
       "uid": "lesson-cdbc81228d56bc45",
@@ -20693,7 +20519,7 @@
       "required_room_type": 0,
       "subgroup": 49,
       "subject_id": 391,
-      "teacher": 37,
+      "teacher": -1,
       "total_hours": 32,
       "total_slots": 0,
       "uid": "lesson-29ca0ecc3966ff89",
@@ -20715,6 +20541,7 @@
       "is_pp": false,
       "name": "МДК.01.01 Технология сварочных работ",
       "plan_active": false,
+      "preferred_room": -1,
       "required_capacity": 0,
       "required_equipment": [],
       "required_room_purpose": "",
@@ -20725,8 +20552,7 @@
       "total_hours": 14,
       "total_slots": 0,
       "uid": "lesson-9fc76b7328c037ad",
-      "week_parity": "all",
-      "preferred_room": -1
+      "week_parity": "all"
     },
     {
       "allow_room_substitution": false,
@@ -20744,6 +20570,7 @@
       "is_pp": false,
       "name": "ЛПЗ МДК.01.01 Технология сварочных работ",
       "plan_active": false,
+      "preferred_room": 66,
       "required_capacity": 0,
       "required_equipment": [],
       "required_room_purpose": "",
@@ -20754,8 +20581,7 @@
       "total_hours": 18,
       "total_slots": 0,
       "uid": "lesson-adf86684d7b3229f",
-      "week_parity": "all",
-      "preferred_room": 66
+      "week_parity": "all"
     },
     {
       "allow_room_substitution": false,
@@ -20773,6 +20599,7 @@
       "is_pp": false,
       "name": "ЛПЗ МДК.01.01 Технология сварочных работ",
       "plan_active": false,
+      "preferred_room": 66,
       "required_capacity": 0,
       "required_equipment": [],
       "required_room_purpose": "",
@@ -20783,8 +20610,7 @@
       "total_hours": 18,
       "total_slots": 0,
       "uid": "lesson-131f522ec5030c7c",
-      "week_parity": "all",
-      "preferred_room": 66
+      "week_parity": "all"
     },
     {
       "allow_room_substitution": false,
@@ -20860,6 +20686,7 @@
       "is_pp": false,
       "name": "ВМДК.06.02 Технология ручной дуговой сварки неплавящимся электродом в защитном газе",
       "plan_active": false,
+      "preferred_room": -1,
       "required_capacity": 0,
       "required_equipment": [],
       "required_room_purpose": "",
@@ -20870,8 +20697,7 @@
       "total_hours": 24,
       "total_slots": 0,
       "uid": "lesson-b4ea8cc643dcc3f4",
-      "week_parity": "all",
-      "preferred_room": -1
+      "week_parity": "all"
     },
     {
       "allow_room_substitution": false,
@@ -20889,6 +20715,7 @@
       "is_pp": false,
       "name": "ЛПЗ ВМДК.06.02 Технология ручной дуговой сварки неплавящимся электродом в защитном газе",
       "plan_active": true,
+      "preferred_room": 66,
       "required_capacity": 0,
       "required_equipment": [],
       "required_room_purpose": "",
@@ -20899,8 +20726,7 @@
       "total_hours": 40,
       "total_slots": 2,
       "uid": "lesson-a26ca4ae71c36a58",
-      "week_parity": "all",
-      "preferred_room": 66
+      "week_parity": "all"
     },
     {
       "allow_room_substitution": false,
@@ -20918,6 +20744,7 @@
       "is_pp": false,
       "name": "ЛПЗ ВМДК.06.02 Технология ручной дуговой сварки неплавящимся электродом в защитном газе",
       "plan_active": false,
+      "preferred_room": 66,
       "required_capacity": 0,
       "required_equipment": [],
       "required_room_purpose": "",
@@ -20928,8 +20755,7 @@
       "total_hours": 40,
       "total_slots": 0,
       "uid": "lesson-ef61c5bb126da203",
-      "week_parity": "all",
-      "preferred_room": 66
+      "week_parity": "all"
     },
     {
       "allow_room_substitution": false,
@@ -21209,7 +21035,7 @@
       "required_room_type": 0,
       "subgroup": -1,
       "subject_id": 402,
-      "teacher": 37,
+      "teacher": -1,
       "total_hours": 56,
       "total_slots": 0,
       "uid": "lesson-7cebc17421ab68c9",
@@ -21260,6 +21086,7 @@
       "is_pp": false,
       "name": "Материаловедение",
       "plan_active": true,
+      "preferred_room": -1,
       "required_capacity": 0,
       "required_equipment": [],
       "required_room_purpose": "",
@@ -21267,11 +21094,10 @@
       "subgroup": -1,
       "subject_id": 404,
       "teacher": 55,
-      "total_hours": 48,
+      "total_hours": 36,
       "total_slots": 1,
       "uid": "lesson-7d868eea3050fd4c",
-      "week_parity": "all",
-      "preferred_room": -1
+      "week_parity": "all"
     },
     {
       "allow_room_substitution": false,
@@ -21297,7 +21123,7 @@
       "subgroup": -1,
       "subject_id": 405,
       "teacher": 39,
-      "total_hours": 48,
+      "total_hours": 36,
       "total_slots": 0,
       "uid": "lesson-e29eebb3443a8bac",
       "week_parity": "all"
@@ -21382,7 +21208,7 @@
       "required_room_type": 0,
       "subgroup": -1,
       "subject_id": 408,
-      "teacher": 37,
+      "teacher": -1,
       "total_hours": 8,
       "total_slots": 0,
       "uid": "lesson-26d7f6c5922b9051",
@@ -21411,7 +21237,7 @@
       "required_room_type": 0,
       "subgroup": 50,
       "subject_id": 408,
-      "teacher": 37,
+      "teacher": -1,
       "total_hours": 32,
       "total_slots": 0,
       "uid": "lesson-154aae63ccca1da5",
@@ -21440,7 +21266,7 @@
       "required_room_type": 0,
       "subgroup": 51,
       "subject_id": 408,
-      "teacher": 37,
+      "teacher": -1,
       "total_hours": 32,
       "total_slots": 0,
       "uid": "lesson-35d42b17a556dfcc",
@@ -21462,6 +21288,7 @@
       "is_pp": false,
       "name": "МДК.01.01 Технология сварочных работ",
       "plan_active": false,
+      "preferred_room": -1,
       "required_capacity": 0,
       "required_equipment": [],
       "required_room_purpose": "",
@@ -21472,8 +21299,7 @@
       "total_hours": 14,
       "total_slots": 0,
       "uid": "lesson-405a390aac1e6b35",
-      "week_parity": "all",
-      "preferred_room": -1
+      "week_parity": "all"
     },
     {
       "allow_room_substitution": false,
@@ -21491,6 +21317,7 @@
       "is_pp": false,
       "name": "ЛПЗ МДК.01.01 Технология сварочных работ",
       "plan_active": false,
+      "preferred_room": 66,
       "required_capacity": 0,
       "required_equipment": [],
       "required_room_purpose": "",
@@ -21501,8 +21328,7 @@
       "total_hours": 18,
       "total_slots": 0,
       "uid": "lesson-3bfd7e7cd1cdd1d2",
-      "week_parity": "all",
-      "preferred_room": 66
+      "week_parity": "all"
     },
     {
       "allow_room_substitution": false,
@@ -21520,6 +21346,7 @@
       "is_pp": false,
       "name": "ЛПЗ МДК.01.01 Технология сварочных работ",
       "plan_active": false,
+      "preferred_room": 66,
       "required_capacity": 0,
       "required_equipment": [],
       "required_room_purpose": "",
@@ -21530,8 +21357,7 @@
       "total_hours": 18,
       "total_slots": 0,
       "uid": "lesson-859de38e3eda632b",
-      "week_parity": "all",
-      "preferred_room": 66
+      "week_parity": "all"
     },
     {
       "allow_room_substitution": false,
@@ -21607,6 +21433,7 @@
       "is_pp": false,
       "name": "МДК.06.02 Технология ручной дуговой сварки",
       "plan_active": true,
+      "preferred_room": -1,
       "required_capacity": 0,
       "required_equipment": [],
       "required_room_purpose": "",
@@ -21617,8 +21444,7 @@
       "total_hours": 24,
       "total_slots": 1,
       "uid": "lesson-83b0506cf6fa9761",
-      "week_parity": "all",
-      "preferred_room": -1
+      "week_parity": "all"
     },
     {
       "allow_room_substitution": false,
@@ -21636,6 +21462,7 @@
       "is_pp": false,
       "name": "ЛПЗ МДК.06.02 Технология ручной дуговой сварки",
       "plan_active": true,
+      "preferred_room": 66,
       "required_capacity": 0,
       "required_equipment": [],
       "required_room_purpose": "",
@@ -21646,8 +21473,7 @@
       "total_hours": 40,
       "total_slots": 2,
       "uid": "lesson-3d43059e98f3ca77",
-      "week_parity": "all",
-      "preferred_room": 66
+      "week_parity": "all"
     },
     {
       "allow_room_substitution": false,
@@ -21665,6 +21491,7 @@
       "is_pp": false,
       "name": "ЛПЗ МДК.06.02 Технология ручной дуговой сварки",
       "plan_active": true,
+      "preferred_room": 66,
       "required_capacity": 0,
       "required_equipment": [],
       "required_room_purpose": "",
@@ -21675,8 +21502,7 @@
       "total_hours": 40,
       "total_slots": 2,
       "uid": "lesson-20cb85a9a131cd2f",
-      "week_parity": "all",
-      "preferred_room": 66
+      "week_parity": "all"
     },
     {
       "allow_room_substitution": false,
@@ -22117,6 +21943,7 @@
       "is_pp": false,
       "name": "МДК.05.01 Электросварочные работы на автоматических и полуавтоматических машинах",
       "plan_active": false,
+      "preferred_room": -1,
       "required_capacity": 0,
       "required_equipment": [],
       "required_room_purpose": "",
@@ -22127,8 +21954,7 @@
       "total_hours": 4,
       "total_slots": 0,
       "uid": "lesson-5f7b6fa80f02f717",
-      "week_parity": "all",
-      "preferred_room": -1
+      "week_parity": "all"
     },
     {
       "allow_room_substitution": false,
@@ -22146,6 +21972,7 @@
       "is_pp": false,
       "name": "ЛПЗ МДК.05.01 Электросварочные работы на автоматических и полуавтоматических машинах",
       "plan_active": false,
+      "preferred_room": 66,
       "required_capacity": 0,
       "required_equipment": [],
       "required_room_purpose": "",
@@ -22156,8 +21983,7 @@
       "total_hours": 20,
       "total_slots": 0,
       "uid": "lesson-27033b55f4af7c9f",
-      "week_parity": "all",
-      "preferred_room": 66
+      "week_parity": "all"
     },
     {
       "allow_room_substitution": false,
@@ -22175,6 +22001,7 @@
       "is_pp": false,
       "name": "ЛПЗ МДК.05.01 Электросварочные работы на автоматических и полуавтоматических машинах",
       "plan_active": false,
+      "preferred_room": 66,
       "required_capacity": 0,
       "required_equipment": [],
       "required_room_purpose": "",
@@ -22185,8 +22012,7 @@
       "total_hours": 20,
       "total_slots": 0,
       "uid": "lesson-a0b4e9b829970932",
-      "week_parity": "all",
-      "preferred_room": 66
+      "week_parity": "all"
     },
     {
       "allow_room_substitution": true,
@@ -22206,6 +22032,7 @@
       "is_pp": false,
       "name": "МДК.05.02 Технология ручной дуговой сварки неплавящимся электродом в защитном газе",
       "plan_active": false,
+      "preferred_room": -1,
       "required_capacity": 0,
       "required_equipment": [],
       "required_room_purpose": "",
@@ -22216,8 +22043,7 @@
       "total_hours": 10,
       "total_slots": 0,
       "uid": "lesson-b9a6cc0655276c58",
-      "week_parity": "all",
-      "preferred_room": -1
+      "week_parity": "all"
     },
     {
       "allow_room_substitution": false,
@@ -22237,6 +22063,7 @@
       "is_pp": false,
       "name": "ЛПЗ МДК.05.02 Технология ручной дуговой сварки неплавящимся электродом в защитном газе",
       "plan_active": false,
+      "preferred_room": 66,
       "required_capacity": 0,
       "required_equipment": [],
       "required_room_purpose": "",
@@ -22247,8 +22074,7 @@
       "total_hours": 30,
       "total_slots": 0,
       "uid": "lesson-946cef0d8b7e28b9",
-      "week_parity": "all",
-      "preferred_room": 66
+      "week_parity": "all"
     },
     {
       "allow_room_substitution": false,
@@ -22268,6 +22094,7 @@
       "is_pp": false,
       "name": "ЛПЗ МДК.05.02 Технология ручной дуговой сварки неплавящимся электродом в защитном газе",
       "plan_active": false,
+      "preferred_room": 66,
       "required_capacity": 0,
       "required_equipment": [],
       "required_room_purpose": "",
@@ -22278,8 +22105,7 @@
       "total_hours": 30,
       "total_slots": 0,
       "uid": "lesson-0d919345fda95926",
-      "week_parity": "all",
-      "preferred_room": 66
+      "week_parity": "all"
     },
     {
       "allow_room_substitution": false,
@@ -22370,8 +22196,7 @@
     {
       "allow_room_substitution": false,
       "allowed_campuses": [
-        0,
-        1
+        0
       ],
       "avoid_lunch_split": true,
       "consecutive_pairs": 2,
@@ -22384,6 +22209,7 @@
       "is_pp": false,
       "name": "ЛПЗ ВМДК.06.01 Технология выполнения газовой сварки и резки",
       "plan_active": true,
+      "preferred_room": 68,
       "required_capacity": 0,
       "required_equipment": [],
       "required_room_purpose": "",
@@ -22399,8 +22225,7 @@
     {
       "allow_room_substitution": false,
       "allowed_campuses": [
-        0,
-        1
+        0
       ],
       "avoid_lunch_split": true,
       "consecutive_pairs": 2,
@@ -22413,6 +22238,7 @@
       "is_pp": false,
       "name": "ЛПЗ ВМДК.06.01 Технология выполнения газовой сварки и резки",
       "plan_active": false,
+      "preferred_room": 68,
       "required_capacity": 0,
       "required_equipment": [],
       "required_room_purpose": "",
@@ -22810,6 +22636,7 @@
       "is_pp": false,
       "name": "МДК.05.01 Электросварочные работы на автоматических и полуавтоматических машинах",
       "plan_active": false,
+      "preferred_room": -1,
       "required_capacity": 0,
       "required_equipment": [],
       "required_room_purpose": "",
@@ -22820,8 +22647,7 @@
       "total_hours": 4,
       "total_slots": 0,
       "uid": "lesson-1c8761d9149f4915",
-      "week_parity": "all",
-      "preferred_room": -1
+      "week_parity": "all"
     },
     {
       "allow_room_substitution": false,
@@ -22839,6 +22665,7 @@
       "is_pp": false,
       "name": "ЛПЗ МДК.05.01 Электросварочные работы на автоматических и полуавтоматических машинах",
       "plan_active": false,
+      "preferred_room": 66,
       "required_capacity": 0,
       "required_equipment": [],
       "required_room_purpose": "",
@@ -22849,8 +22676,7 @@
       "total_hours": 20,
       "total_slots": 0,
       "uid": "lesson-2f4e254c030183d0",
-      "week_parity": "all",
-      "preferred_room": 66
+      "week_parity": "all"
     },
     {
       "allow_room_substitution": true,
@@ -22868,6 +22694,7 @@
       "is_pp": false,
       "name": "МДК.05.02 Технология ручной дуговой сварки неплавящимся электродом в защитном газе",
       "plan_active": true,
+      "preferred_room": -1,
       "required_capacity": 0,
       "required_equipment": [],
       "required_room_purpose": "",
@@ -22878,8 +22705,7 @@
       "total_hours": 10,
       "total_slots": 1,
       "uid": "lesson-8dbf681b5d445ed2",
-      "week_parity": "all",
-      "preferred_room": -1
+      "week_parity": "all"
     },
     {
       "allow_room_substitution": false,
@@ -22897,6 +22723,7 @@
       "is_pp": false,
       "name": "ЛПЗ МДК.05.02 Технология ручной дуговой сварки неплавящимся электродом в защитном газе",
       "plan_active": false,
+      "preferred_room": 66,
       "required_capacity": 0,
       "required_equipment": [],
       "required_room_purpose": "",
@@ -22907,8 +22734,7 @@
       "total_hours": 30,
       "total_slots": 0,
       "uid": "lesson-ca1dd65769137fcc",
-      "week_parity": "all",
-      "preferred_room": 66
+      "week_parity": "all"
     },
     {
       "allow_room_substitution": false,
@@ -22970,8 +22796,7 @@
     {
       "allow_room_substitution": false,
       "allowed_campuses": [
-        0,
-        1
+        0
       ],
       "avoid_lunch_split": true,
       "consecutive_pairs": 2,
@@ -22984,6 +22809,7 @@
       "is_pp": false,
       "name": "ЛПЗ ВМДК.06.01 Технология выполнения газовой сварки и резки",
       "plan_active": false,
+      "preferred_room": 68,
       "required_capacity": 0,
       "required_equipment": [],
       "required_room_purpose": "",
@@ -23352,6 +23178,7 @@
       "is_pp": false,
       "name": "УП.01",
       "plan_active": false,
+      "preferred_room": -1,
       "required_capacity": 0,
       "required_equipment": [],
       "required_room_purpose": "",
@@ -23362,8 +23189,7 @@
       "total_hours": 18,
       "total_slots": 0,
       "uid": "lesson-2662ef6e4de7522f",
-      "week_parity": "all",
-      "preferred_room": -1
+      "week_parity": "all"
     },
     {
       "allow_room_substitution": true,
@@ -23381,6 +23207,7 @@
       "is_pp": false,
       "name": "УП.01",
       "plan_active": false,
+      "preferred_room": -1,
       "required_capacity": 0,
       "required_equipment": [],
       "required_room_purpose": "",
@@ -23391,8 +23218,7 @@
       "total_hours": 18,
       "total_slots": 0,
       "uid": "lesson-687fd4dfb0fa985a",
-      "week_parity": "all",
-      "preferred_room": -1
+      "week_parity": "all"
     },
     {
       "allow_room_substitution": false,
@@ -24011,6 +23837,7 @@
       "is_pp": false,
       "name": "УП.01",
       "plan_active": false,
+      "preferred_room": -1,
       "required_capacity": 0,
       "required_equipment": [],
       "required_room_purpose": "",
@@ -24021,8 +23848,7 @@
       "total_hours": 18,
       "total_slots": 0,
       "uid": "lesson-fcbabe1e81e4659f",
-      "week_parity": "all",
-      "preferred_room": -1
+      "week_parity": "all"
     },
     {
       "allow_room_substitution": false,
@@ -24505,7 +24331,7 @@
       "required_room_type": 0,
       "subgroup": -1,
       "subject_id": 473,
-      "teacher": 37,
+      "teacher": -1,
       "total_hours": 34,
       "total_slots": 0,
       "uid": "lesson-f887fc2087313fdc",
@@ -24555,6 +24381,7 @@
       "is_pp": false,
       "name": "ВМДК.04.01 Слесарное дело и технические измерения",
       "plan_active": false,
+      "preferred_room": -1,
       "required_capacity": 0,
       "required_equipment": [],
       "required_room_purpose": "",
@@ -24565,8 +24392,7 @@
       "total_hours": 28,
       "total_slots": 0,
       "uid": "lesson-cd645b6fc5916a72",
-      "week_parity": "all",
-      "preferred_room": -1
+      "week_parity": "all"
     },
     {
       "allow_room_substitution": true,
@@ -24584,6 +24410,7 @@
       "is_pp": false,
       "name": "ЛПЗ ВМДК.04.01 Слесарное дело и технические измерения",
       "plan_active": true,
+      "preferred_room": 64,
       "required_capacity": 0,
       "required_equipment": [],
       "required_room_purpose": "",
@@ -24594,8 +24421,7 @@
       "total_hours": 28,
       "total_slots": 2,
       "uid": "lesson-2892d24cfadc2cfe",
-      "week_parity": "all",
-      "preferred_room": 64
+      "week_parity": "all"
     },
     {
       "allow_room_substitution": false,
@@ -24670,6 +24496,7 @@
       "is_pp": false,
       "name": "ЛПЗ ВМДК.04.02 Диагностика, техническое обслуживание и ремонт мехатронных систем автомобиля",
       "plan_active": false,
+      "preferred_room": 64,
       "required_capacity": 0,
       "required_equipment": [],
       "required_room_purpose": "",
@@ -24680,8 +24507,7 @@
       "total_hours": 20,
       "total_slots": 0,
       "uid": "lesson-f636252776f434ca",
-      "week_parity": "all",
-      "preferred_room": 64
+      "week_parity": "all"
     },
     {
       "allow_room_substitution": false,
@@ -24727,6 +24553,7 @@
       "is_pp": false,
       "name": "УП.04",
       "plan_active": false,
+      "preferred_room": -1,
       "required_capacity": 0,
       "required_equipment": [],
       "required_room_purpose": "",
@@ -24737,8 +24564,7 @@
       "total_hours": 36,
       "total_slots": 0,
       "uid": "lesson-cdb921f3af7521dc",
-      "week_parity": "all",
-      "preferred_room": -1
+      "week_parity": "all"
     },
     {
       "allow_room_substitution": false,
@@ -25125,6 +24951,7 @@
       "is_pp": false,
       "name": "УП.01",
       "plan_active": false,
+      "preferred_room": -1,
       "required_capacity": 0,
       "required_equipment": [],
       "required_room_purpose": "",
@@ -25135,8 +24962,7 @@
       "total_hours": 36,
       "total_slots": 0,
       "uid": "lesson-088dece3f8c48c2d",
-      "week_parity": "all",
-      "preferred_room": -1
+      "week_parity": "all"
     },
     {
       "allow_room_substitution": false,
@@ -25184,6 +25010,7 @@
       "is_pp": false,
       "name": "ВМДК.04.01 Слесарное дело и технические измерения",
       "plan_active": false,
+      "preferred_room": -1,
       "required_capacity": 0,
       "required_equipment": [],
       "required_room_purpose": "",
@@ -25191,11 +25018,10 @@
       "subgroup": -1,
       "subject_id": 487,
       "teacher": 59,
-      "total_hours": 40,
+      "total_hours": 34,
       "total_slots": 0,
       "uid": "lesson-7f79b2488e019075",
-      "week_parity": "all",
-      "preferred_room": -1
+      "week_parity": "all"
     },
     {
       "allow_room_substitution": true,
@@ -25213,6 +25039,7 @@
       "is_pp": false,
       "name": "ЛПЗ ВМДК.04.01 Слесарное дело и технические измерения",
       "plan_active": true,
+      "preferred_room": 64,
       "required_capacity": 0,
       "required_equipment": [],
       "required_room_purpose": "",
@@ -25223,8 +25050,7 @@
       "total_hours": 40,
       "total_slots": 2,
       "uid": "lesson-06e03726d1c178bc",
-      "week_parity": "all",
-      "preferred_room": 64
+      "week_parity": "all"
     },
     {
       "allow_room_substitution": true,
@@ -25242,6 +25068,7 @@
       "is_pp": false,
       "name": "ЛПЗ ВМДК.04.01 Слесарное дело и технические измерения",
       "plan_active": true,
+      "preferred_room": 64,
       "required_capacity": 0,
       "required_equipment": [],
       "required_room_purpose": "",
@@ -25252,8 +25079,7 @@
       "total_hours": 40,
       "total_slots": 2,
       "uid": "lesson-318773e9f0310300",
-      "week_parity": "all",
-      "preferred_room": 64
+      "week_parity": "all"
     },
     {
       "allow_room_substitution": false,
@@ -25278,7 +25104,7 @@
       "subgroup": -1,
       "subject_id": 488,
       "teacher": 60,
-      "total_hours": 10,
+      "total_hours": 4,
       "total_slots": 0,
       "uid": "lesson-440b0e49799db369",
       "week_parity": "all"
@@ -25449,7 +25275,7 @@
       "subgroup": -1,
       "subject_id": 491,
       "teacher": 50,
-      "total_hours": 12,
+      "total_hours": 10,
       "total_slots": 0,
       "uid": "lesson-dcd5d91bcacacd6c",
       "week_parity": "all"
@@ -25470,6 +25296,7 @@
       "is_pp": false,
       "name": "ВМДК.05.05 Транспортная логистика и безопасность дорожного движения",
       "plan_active": true,
+      "preferred_room": -1,
       "required_capacity": 0,
       "required_equipment": [],
       "required_room_purpose": "",
@@ -25477,11 +25304,10 @@
       "subgroup": -1,
       "subject_id": 492,
       "teacher": 59,
-      "total_hours": 20,
+      "total_hours": 10,
       "total_slots": 1,
       "uid": "lesson-77af1a6f7a6833e6",
-      "week_parity": "all",
-      "preferred_room": -1
+      "week_parity": "all"
     },
     {
       "allow_room_substitution": false,
@@ -25506,7 +25332,7 @@
       "required_room_type": 0,
       "subgroup": 62,
       "subject_id": -1,
-      "teacher": -1,
+      "teacher": 59,
       "total_hours": 36,
       "total_slots": 0,
       "uid": "lesson-5e5b309ec5166872",
@@ -25535,7 +25361,7 @@
       "required_room_type": 0,
       "subgroup": 63,
       "subject_id": -1,
-      "teacher": -1,
+      "teacher": 59,
       "total_hours": 36,
       "total_slots": 0,
       "uid": "lesson-94d1fe8a8d1854f3",
@@ -25900,6 +25726,7 @@
       "is_pp": false,
       "name": "УП.01",
       "plan_active": false,
+      "preferred_room": -1,
       "required_capacity": 0,
       "required_equipment": [],
       "required_room_purpose": "",
@@ -25910,8 +25737,7 @@
       "total_hours": 36,
       "total_slots": 0,
       "uid": "lesson-0ce8cae9f3bc52e7",
-      "week_parity": "all",
-      "preferred_room": -1
+      "week_parity": "all"
     },
     {
       "allow_room_substitution": false,
@@ -25957,6 +25783,7 @@
       "is_pp": false,
       "name": "ВМДК.04.01 Слесарное дело и технические измерения",
       "plan_active": false,
+      "preferred_room": -1,
       "required_capacity": 0,
       "required_equipment": [],
       "required_room_purpose": "",
@@ -25967,8 +25794,7 @@
       "total_hours": 28,
       "total_slots": 0,
       "uid": "lesson-719170e47002c3ef",
-      "week_parity": "all",
-      "preferred_room": -1
+      "week_parity": "all"
     },
     {
       "allow_room_substitution": true,
@@ -25988,6 +25814,7 @@
       "is_pp": false,
       "name": "ЛПЗ ВМДК.04.01 Слесарное дело и технические измерения",
       "plan_active": false,
+      "preferred_room": 64,
       "required_capacity": 0,
       "required_equipment": [],
       "required_room_purpose": "",
@@ -25998,8 +25825,7 @@
       "total_hours": 40,
       "total_slots": 0,
       "uid": "lesson-d98dabe437f45eae",
-      "week_parity": "all",
-      "preferred_room": 64
+      "week_parity": "all"
     },
     {
       "allow_room_substitution": true,
@@ -26019,6 +25845,7 @@
       "is_pp": false,
       "name": "ЛПЗ ВМДК.04.01 Слесарное дело и технические измерения",
       "plan_active": false,
+      "preferred_room": 64,
       "required_capacity": 0,
       "required_equipment": [],
       "required_room_purpose": "",
@@ -26029,8 +25856,7 @@
       "total_hours": 40,
       "total_slots": 0,
       "uid": "lesson-9623ab6a1f228ef0",
-      "week_parity": "all",
-      "preferred_room": 64
+      "week_parity": "all"
     },
     {
       "allow_room_substitution": false,
@@ -26616,6 +26442,7 @@
       "is_pp": false,
       "name": "МДК.03.03 Тюнинг автомобилей",
       "plan_active": false,
+      "preferred_room": -1,
       "required_capacity": 0,
       "required_equipment": [],
       "required_room_purpose": "",
@@ -26626,8 +26453,7 @@
       "total_hours": 40,
       "total_slots": 0,
       "uid": "lesson-5879e1aaa089c74f",
-      "week_parity": "all",
-      "preferred_room": -1
+      "week_parity": "all"
     },
     {
       "allow_room_substitution": true,
@@ -26645,6 +26471,7 @@
       "is_pp": false,
       "name": "ЛПЗ МДК.03.03 Тюнинг автомобилей",
       "plan_active": true,
+      "preferred_room": 64,
       "required_capacity": 0,
       "required_equipment": [],
       "required_room_purpose": "",
@@ -26655,8 +26482,7 @@
       "total_hours": 36,
       "total_slots": 2,
       "uid": "lesson-4257e214af4777d0",
-      "week_parity": "all",
-      "preferred_room": 64
+      "week_parity": "all"
     },
     {
       "allow_room_substitution": true,
@@ -26674,6 +26500,7 @@
       "is_pp": false,
       "name": "ЛПЗ МДК.03.03 Тюнинг автомобилей",
       "plan_active": true,
+      "preferred_room": 64,
       "required_capacity": 0,
       "required_equipment": [],
       "required_room_purpose": "",
@@ -26684,8 +26511,7 @@
       "total_hours": 36,
       "total_slots": 2,
       "uid": "lesson-a694bda8445a64a3",
-      "week_parity": "all",
-      "preferred_room": 64
+      "week_parity": "all"
     },
     {
       "allow_room_substitution": true,
@@ -26703,6 +26529,7 @@
       "is_pp": false,
       "name": "МДК.03.04 Производственное оборудование",
       "plan_active": false,
+      "preferred_room": -1,
       "required_capacity": 0,
       "required_equipment": [],
       "required_room_purpose": "",
@@ -26713,8 +26540,7 @@
       "total_hours": 36,
       "total_slots": 0,
       "uid": "lesson-90852a515296c25c",
-      "week_parity": "all",
-      "preferred_room": -1
+      "week_parity": "all"
     },
     {
       "allow_room_substitution": true,
@@ -26732,6 +26558,7 @@
       "is_pp": false,
       "name": "УП.03",
       "plan_active": false,
+      "preferred_room": -1,
       "required_capacity": 0,
       "required_equipment": [],
       "required_room_purpose": "",
@@ -26742,8 +26569,7 @@
       "total_hours": 36,
       "total_slots": 0,
       "uid": "lesson-f4a14328fbd1e361",
-      "week_parity": "all",
-      "preferred_room": -1
+      "week_parity": "all"
     },
     {
       "allow_room_substitution": true,
@@ -26761,6 +26587,7 @@
       "is_pp": false,
       "name": "УП.03",
       "plan_active": false,
+      "preferred_room": -1,
       "required_capacity": 0,
       "required_equipment": [],
       "required_room_purpose": "",
@@ -26771,8 +26598,7 @@
       "total_hours": 36,
       "total_slots": 0,
       "uid": "lesson-8b1ddb15b6ca622b",
-      "week_parity": "all",
-      "preferred_room": -1
+      "week_parity": "all"
     },
     {
       "allow_room_substitution": false,
@@ -26937,7 +26763,7 @@
       "required_room_type": 0,
       "subgroup": -1,
       "subject_id": 525,
-      "teacher": 37,
+      "teacher": -1,
       "total_hours": 46,
       "total_slots": 0,
       "uid": "lesson-8b09f7d378ef2c4d",
@@ -27447,7 +27273,7 @@
       "required_room_type": 0,
       "subgroup": -1,
       "subject_id": 539,
-      "teacher": 37,
+      "teacher": -1,
       "total_hours": 46,
       "total_slots": 0,
       "uid": "lesson-1d66fec2d3fa0dc8",
@@ -28114,34 +27940,6 @@
       "fixed_room": -1,
       "generation_active": true,
       "group": 36,
-      "id": 794,
-      "is_block": true,
-      "is_lab": false,
-      "is_pp": false,
-      "name": "УП.01",
-      "plan_active": false,
-      "required_capacity": 0,
-      "required_equipment": [],
-      "required_room_purpose": "",
-      "required_room_type": 0,
-      "subgroup": 73,
-      "subject_id": -1,
-      "teacher": 62,
-      "total_hours": 18,
-      "total_slots": 0,
-      "uid": "lesson-a7e65ead03947cf9",
-      "week_parity": "all"
-    },
-    {
-      "allow_room_substitution": false,
-      "allowed_campuses": [
-        0
-      ],
-      "avoid_lunch_split": false,
-      "consecutive_pairs": 1,
-      "fixed_room": -1,
-      "generation_active": true,
-      "group": 36,
       "id": 795,
       "is_block": false,
       "is_lab": false,
@@ -28183,7 +27981,7 @@
       "subgroup": 72,
       "subject_id": 555,
       "teacher": 62,
-      "total_hours": 48,
+      "total_hours": 30,
       "total_slots": 0,
       "uid": "lesson-6b694e323a63caa8",
       "week_parity": "all"
@@ -28211,7 +28009,7 @@
       "subgroup": 73,
       "subject_id": 555,
       "teacher": 62,
-      "total_hours": 48,
+      "total_hours": 30,
       "total_slots": 1,
       "uid": "lesson-b10f3d9513b80b47",
       "week_parity": "all"
@@ -28267,7 +28065,7 @@
       "subgroup": 72,
       "subject_id": 556,
       "teacher": 62,
-      "total_hours": 60,
+      "total_hours": 30,
       "total_slots": 2,
       "uid": "lesson-aa5b72223ef33321",
       "week_parity": "all"
@@ -28295,7 +28093,7 @@
       "subgroup": 73,
       "subject_id": 556,
       "teacher": 62,
-      "total_hours": 60,
+      "total_hours": 30,
       "total_slots": 1,
       "uid": "lesson-8c92cdaa0355e487",
       "week_parity": "all"
@@ -28757,34 +28555,6 @@
     {
       "allow_room_substitution": false,
       "allowed_campuses": [
-        1
-      ],
-      "avoid_lunch_split": false,
-      "consecutive_pairs": 1,
-      "fixed_room": -1,
-      "generation_active": true,
-      "group": 37,
-      "id": 817,
-      "is_block": true,
-      "is_lab": false,
-      "is_pp": false,
-      "name": "УП.01",
-      "plan_active": false,
-      "required_capacity": 0,
-      "required_equipment": [],
-      "required_room_purpose": "",
-      "required_room_type": 0,
-      "subgroup": 75,
-      "subject_id": -1,
-      "teacher": 40,
-      "total_hours": 18,
-      "total_slots": 0,
-      "uid": "lesson-c42741f93daf49b2",
-      "week_parity": "all"
-    },
-    {
-      "allow_room_substitution": false,
-      "allowed_campuses": [
         0
       ],
       "avoid_lunch_split": false,
@@ -28833,7 +28603,7 @@
       "subgroup": 74,
       "subject_id": 566,
       "teacher": 62,
-      "total_hours": 48,
+      "total_hours": 30,
       "total_slots": 1,
       "uid": "lesson-f44b7ff0fab8df2a",
       "week_parity": "all"
@@ -28861,7 +28631,7 @@
       "subgroup": 75,
       "subject_id": 566,
       "teacher": 62,
-      "total_hours": 48,
+      "total_hours": 30,
       "total_slots": 1,
       "uid": "lesson-ce97c9c48e849009",
       "week_parity": "all"
@@ -28917,7 +28687,7 @@
       "subgroup": 74,
       "subject_id": 567,
       "teacher": 62,
-      "total_hours": 60,
+      "total_hours": 30,
       "total_slots": 0,
       "uid": "lesson-8eb798e0e0179c47",
       "week_parity": "all"
@@ -28945,7 +28715,7 @@
       "subgroup": 75,
       "subject_id": 567,
       "teacher": 62,
-      "total_hours": 60,
+      "total_hours": 30,
       "total_slots": 2,
       "uid": "lesson-65f60bac71c25ba5",
       "week_parity": "all"
@@ -29260,38 +29030,9 @@
       "subgroup": -1,
       "subject_id": -1,
       "teacher": 40,
-      "total_hours": 30,
+      "total_hours": 12,
       "total_slots": 0,
       "uid": "lesson-762415706f6267fa",
-      "week_parity": "all"
-    },
-    {
-      "allow_room_substitution": false,
-      "allowed_campuses": [
-        0,
-        1
-      ],
-      "avoid_lunch_split": false,
-      "consecutive_pairs": 1,
-      "fixed_room": -1,
-      "generation_active": true,
-      "group": 38,
-      "id": 835,
-      "is_block": true,
-      "is_lab": false,
-      "is_pp": false,
-      "name": "УП.03",
-      "plan_active": false,
-      "required_capacity": 0,
-      "required_equipment": [],
-      "required_room_purpose": "",
-      "required_room_type": 0,
-      "subgroup": 76,
-      "subject_id": -1,
-      "teacher": -1,
-      "total_hours": 72,
-      "total_slots": 0,
-      "uid": "lesson-ad674b1b0dfda20e",
       "week_parity": "all"
     },
     {
@@ -29317,7 +29058,7 @@
       "subgroup": -1,
       "subject_id": 575,
       "teacher": 61,
-      "total_hours": 82,
+      "total_hours": 88,
       "total_slots": 1,
       "uid": "lesson-7f60dbfc7fb601ca",
       "week_parity": "all"
@@ -29345,7 +29086,7 @@
       "subgroup": 76,
       "subject_id": 575,
       "teacher": 62,
-      "total_hours": 60,
+      "total_hours": 90,
       "total_slots": 0,
       "uid": "lesson-d7f13536ca6d7c0e",
       "week_parity": "all"
@@ -29373,38 +29114,9 @@
       "subgroup": 77,
       "subject_id": 575,
       "teacher": 62,
-      "total_hours": 60,
+      "total_hours": 90,
       "total_slots": 1,
       "uid": "lesson-bd3a030e73dd7a36",
-      "week_parity": "all"
-    },
-    {
-      "allow_room_substitution": false,
-      "allowed_campuses": [
-        0,
-        1
-      ],
-      "avoid_lunch_split": false,
-      "consecutive_pairs": 1,
-      "fixed_room": -1,
-      "generation_active": true,
-      "group": 38,
-      "id": 839,
-      "is_block": true,
-      "is_lab": false,
-      "is_pp": false,
-      "name": "УП.04",
-      "plan_active": false,
-      "required_capacity": 0,
-      "required_equipment": [],
-      "required_room_purpose": "",
-      "required_room_type": 0,
-      "subgroup": 76,
-      "subject_id": -1,
-      "teacher": -1,
-      "total_hours": 72,
-      "total_slots": 0,
-      "uid": "lesson-42ea153599a341f5",
       "week_parity": "all"
     },
     {
@@ -29431,38 +29143,9 @@
       "subgroup": -1,
       "subject_id": 577,
       "teacher": 46,
-      "total_hours": 74,
+      "total_hours": 116,
       "total_slots": 0,
       "uid": "lesson-e32cc321099a028e",
-      "week_parity": "all"
-    },
-    {
-      "allow_room_substitution": false,
-      "allowed_campuses": [
-        0,
-        1
-      ],
-      "avoid_lunch_split": false,
-      "consecutive_pairs": 1,
-      "fixed_room": -1,
-      "generation_active": true,
-      "group": 38,
-      "id": 841,
-      "is_block": true,
-      "is_lab": false,
-      "is_pp": false,
-      "name": "УП.05",
-      "plan_active": false,
-      "required_capacity": 0,
-      "required_equipment": [],
-      "required_room_purpose": "",
-      "required_room_type": 0,
-      "subgroup": 76,
-      "subject_id": -1,
-      "teacher": -1,
-      "total_hours": 18,
-      "total_slots": 0,
-      "uid": "lesson-b0be4f2cba58b974",
       "week_parity": "all"
     },
     {
@@ -29630,38 +29313,9 @@
       "subgroup": -1,
       "subject_id": -1,
       "teacher": 40,
-      "total_hours": 30,
+      "total_hours": 12,
       "total_slots": 0,
       "uid": "lesson-3c95c6483d78b476",
-      "week_parity": "all"
-    },
-    {
-      "allow_room_substitution": false,
-      "allowed_campuses": [
-        0,
-        1
-      ],
-      "avoid_lunch_split": false,
-      "consecutive_pairs": 1,
-      "fixed_room": -1,
-      "generation_active": true,
-      "group": 39,
-      "id": 848,
-      "is_block": true,
-      "is_lab": false,
-      "is_pp": false,
-      "name": "УП.03",
-      "plan_active": false,
-      "required_capacity": 0,
-      "required_equipment": [],
-      "required_room_purpose": "",
-      "required_room_type": 0,
-      "subgroup": 78,
-      "subject_id": -1,
-      "teacher": -1,
-      "total_hours": 72,
-      "total_slots": 0,
-      "uid": "lesson-38135f305c1aaccb",
       "week_parity": "all"
     },
     {
@@ -29687,7 +29341,7 @@
       "subgroup": -1,
       "subject_id": 583,
       "teacher": 61,
-      "total_hours": 82,
+      "total_hours": 88,
       "total_slots": 2,
       "uid": "lesson-5f788fa51a1f5e2b",
       "week_parity": "all"
@@ -29715,7 +29369,7 @@
       "subgroup": 78,
       "subject_id": 583,
       "teacher": 62,
-      "total_hours": 60,
+      "total_hours": 90,
       "total_slots": 1,
       "uid": "lesson-29e7c589a24f4c74",
       "week_parity": "all"
@@ -29743,38 +29397,9 @@
       "subgroup": 79,
       "subject_id": 583,
       "teacher": 62,
-      "total_hours": 60,
+      "total_hours": 90,
       "total_slots": 1,
       "uid": "lesson-913daf4069a419eb",
-      "week_parity": "all"
-    },
-    {
-      "allow_room_substitution": false,
-      "allowed_campuses": [
-        0,
-        1
-      ],
-      "avoid_lunch_split": false,
-      "consecutive_pairs": 1,
-      "fixed_room": -1,
-      "generation_active": true,
-      "group": 39,
-      "id": 852,
-      "is_block": true,
-      "is_lab": false,
-      "is_pp": false,
-      "name": "УП.04",
-      "plan_active": false,
-      "required_capacity": 0,
-      "required_equipment": [],
-      "required_room_purpose": "",
-      "required_room_type": 0,
-      "subgroup": 78,
-      "subject_id": -1,
-      "teacher": -1,
-      "total_hours": 72,
-      "total_slots": 0,
-      "uid": "lesson-ad0734f4c5efd2c0",
       "week_parity": "all"
     },
     {
@@ -29801,38 +29426,9 @@
       "subgroup": -1,
       "subject_id": 585,
       "teacher": 46,
-      "total_hours": 74,
+      "total_hours": 116,
       "total_slots": 1,
       "uid": "lesson-0c89ff4cd32c55ba",
-      "week_parity": "all"
-    },
-    {
-      "allow_room_substitution": false,
-      "allowed_campuses": [
-        0,
-        1
-      ],
-      "avoid_lunch_split": false,
-      "consecutive_pairs": 1,
-      "fixed_room": -1,
-      "generation_active": true,
-      "group": 39,
-      "id": 854,
-      "is_block": true,
-      "is_lab": false,
-      "is_pp": false,
-      "name": "УП.05",
-      "plan_active": false,
-      "required_capacity": 0,
-      "required_equipment": [],
-      "required_room_purpose": "",
-      "required_room_type": 0,
-      "subgroup": 78,
-      "subject_id": -1,
-      "teacher": -1,
-      "total_hours": 18,
-      "total_slots": 0,
-      "uid": "lesson-3fa01afda5976381",
       "week_parity": "all"
     },
     {
@@ -30978,7 +30574,7 @@
       "is_lab": false,
       "is_pp": false,
       "name": "Основы филосовии",
-      "plan_active": true,
+      "plan_active": false,
       "required_capacity": 0,
       "required_equipment": [],
       "required_room_purpose": "",
@@ -30987,7 +30583,7 @@
       "subject_id": 613,
       "teacher": 54,
       "total_hours": 48,
-      "total_slots": 1,
+      "total_slots": 0,
       "uid": "lesson-73db37cdf4082032",
       "week_parity": "all"
     },
@@ -31121,7 +30717,7 @@
       "is_lab": false,
       "is_pp": false,
       "name": "Стандартизация, серификация и техническое документоведение",
-      "plan_active": true,
+      "plan_active": false,
       "required_capacity": 0,
       "required_equipment": [],
       "required_room_purpose": "",
@@ -31130,7 +30726,7 @@
       "subject_id": 617,
       "teacher": 41,
       "total_hours": 36,
-      "total_slots": 1,
+      "total_slots": 0,
       "uid": "lesson-fb5832e6ab52dd34",
       "week_parity": "all"
     },
@@ -31486,7 +31082,7 @@
       "is_lab": false,
       "is_pp": false,
       "name": "ВМДК 05.01 Управление и автоматизация баз данных",
-      "plan_active": false,
+      "plan_active": true,
       "required_capacity": 0,
       "required_equipment": [],
       "required_room_purpose": "",
@@ -31495,7 +31091,7 @@
       "subject_id": 622,
       "teacher": 68,
       "total_hours": 12,
-      "total_slots": 0,
+      "total_slots": 2,
       "uid": "lesson-e22831c88841ab50",
       "week_parity": "all"
     },
@@ -31855,7 +31451,7 @@
       "is_lab": true,
       "is_pp": false,
       "name": "ЛПЗ МДК.01.02 Поддержка и тестирование программных модулей",
-      "plan_active": true,
+      "plan_active": false,
       "required_capacity": 0,
       "required_equipment": [],
       "required_room_purpose": "",
@@ -31864,7 +31460,7 @@
       "subject_id": 629,
       "teacher": 64,
       "total_hours": 60,
-      "total_slots": 1,
+      "total_slots": 0,
       "uid": "lesson-04da8defa0720327",
       "week_parity": "all"
     },
@@ -32080,7 +31676,7 @@
       "is_lab": false,
       "is_pp": false,
       "name": "ВМДК 05.01 Управление и автоматизация баз данных",
-      "plan_active": false,
+      "plan_active": true,
       "required_capacity": 0,
       "required_equipment": [],
       "required_room_purpose": "",
@@ -32089,7 +31685,7 @@
       "subject_id": 632,
       "teacher": 68,
       "total_hours": 12,
-      "total_slots": 0,
+      "total_slots": 1,
       "uid": "lesson-bfe722f72ff35a20",
       "week_parity": "all"
     },
@@ -32252,7 +31848,7 @@
       "is_lab": false,
       "is_pp": false,
       "name": "МДК.02.01 Технология разработки программного обеспечения",
-      "plan_active": false,
+      "plan_active": true,
       "required_capacity": 0,
       "required_equipment": [],
       "required_room_purpose": "",
@@ -32261,7 +31857,7 @@
       "subject_id": 635,
       "teacher": 68,
       "total_hours": 12,
-      "total_slots": 0,
+      "total_slots": 1,
       "uid": "lesson-e17d7c83ba0692d1",
       "week_parity": "all"
     },
@@ -32602,7 +32198,7 @@
       "subject_id": 639,
       "teacher": 67,
       "total_hours": 76,
-      "total_slots": 2,
+      "total_slots": 1,
       "uid": "lesson-821caf8ee7d0d21a",
       "week_parity": "all"
     },
@@ -32912,7 +32508,7 @@
       "subject_id": 644,
       "teacher": 68,
       "total_hours": 12,
-      "total_slots": 2,
+      "total_slots": 3,
       "uid": "lesson-19cca264c7aa2c14",
       "week_parity": "all"
     },
@@ -33269,7 +32865,7 @@
       "is_lab": true,
       "is_pp": false,
       "name": "ЛПЗ ВМДК.05.01 Управление и автоматизация баз данных",
-      "plan_active": true,
+      "plan_active": false,
       "required_capacity": 0,
       "required_equipment": [],
       "required_room_purpose": "",
@@ -33278,7 +32874,7 @@
       "subject_id": 648,
       "teacher": 67,
       "total_hours": 72,
-      "total_slots": 1,
+      "total_slots": 0,
       "uid": "lesson-c85ad173e14efcd8",
       "week_parity": "all"
     },
@@ -33448,6 +33044,696 @@
       "total_hours": 18,
       "total_slots": 0,
       "uid": "lesson-1ec31e3620130a39",
+      "week_parity": "all"
+    },
+    {
+      "allow_room_substitution": true,
+      "allowed_campuses": [
+        0,
+        1
+      ],
+      "avoid_lunch_split": false,
+      "consecutive_pairs": 1,
+      "fixed_room": -1,
+      "generation_active": false,
+      "group": 15,
+      "id": 983,
+      "is_block": false,
+      "is_lab": false,
+      "is_pp": false,
+      "name": "ВМДК.03.02 Технология производства цветных металлов и сплавов (по типам производства)",
+      "plan_active": false,
+      "preferred_room": -1,
+      "required_capacity": 0,
+      "required_equipment": [],
+      "required_room_purpose": "",
+      "required_room_type": 0,
+      "subgroup": -1,
+      "subject_id": -1,
+      "teacher": 43,
+      "total_hours": 8,
+      "total_slots": 0,
+      "uid": "lesson-2aad4549bde568e5",
+      "week_parity": "all"
+    },
+    {
+      "allow_room_substitution": true,
+      "allowed_campuses": [
+        0,
+        1
+      ],
+      "avoid_lunch_split": false,
+      "consecutive_pairs": 1,
+      "fixed_room": -1,
+      "generation_active": false,
+      "group": 15,
+      "id": 984,
+      "is_block": false,
+      "is_lab": true,
+      "is_pp": false,
+      "name": "ЛПЗ ВМДК.03.02 Технология производства цветных металлов и сплавов (по типам производства)",
+      "plan_active": false,
+      "preferred_room": -1,
+      "required_capacity": 0,
+      "required_equipment": [],
+      "required_room_purpose": "",
+      "required_room_type": 0,
+      "subgroup": 30,
+      "subject_id": -1,
+      "teacher": 43,
+      "total_hours": 12,
+      "total_slots": 0,
+      "uid": "lesson-8fcdd998533d99bc",
+      "week_parity": "all"
+    },
+    {
+      "allow_room_substitution": true,
+      "allowed_campuses": [
+        0,
+        1
+      ],
+      "avoid_lunch_split": false,
+      "consecutive_pairs": 1,
+      "fixed_room": -1,
+      "generation_active": false,
+      "group": 15,
+      "id": 985,
+      "is_block": false,
+      "is_lab": true,
+      "is_pp": false,
+      "name": "ЛПЗ ВМДК.03.02 Технология производства цветных металлов и сплавов (по типам производства)",
+      "plan_active": false,
+      "preferred_room": -1,
+      "required_capacity": 0,
+      "required_equipment": [],
+      "required_room_purpose": "",
+      "required_room_type": 0,
+      "subgroup": 31,
+      "subject_id": -1,
+      "teacher": 43,
+      "total_hours": 12,
+      "total_slots": 0,
+      "uid": "lesson-0eb6b99463298f87",
+      "week_parity": "all"
+    },
+    {
+      "allow_room_substitution": true,
+      "allowed_campuses": [
+        0,
+        1
+      ],
+      "avoid_lunch_split": false,
+      "consecutive_pairs": 1,
+      "fixed_room": -1,
+      "generation_active": false,
+      "group": 18,
+      "id": 986,
+      "is_block": false,
+      "is_lab": true,
+      "is_pp": false,
+      "name": "ЛПЗ МДК.04.01 Выполнение работ по профессии Лаборант химического анализа",
+      "plan_active": false,
+      "preferred_room": -1,
+      "required_capacity": 0,
+      "required_equipment": [],
+      "required_room_purpose": "",
+      "required_room_type": 0,
+      "subgroup": 36,
+      "subject_id": -1,
+      "teacher": 81,
+      "total_hours": 30,
+      "total_slots": 0,
+      "uid": "lesson-7247eb148ccbdb04",
+      "week_parity": "all"
+    },
+    {
+      "allow_room_substitution": true,
+      "allowed_campuses": [
+        0,
+        1
+      ],
+      "avoid_lunch_split": false,
+      "consecutive_pairs": 1,
+      "fixed_room": -1,
+      "generation_active": false,
+      "group": 18,
+      "id": 987,
+      "is_block": false,
+      "is_lab": true,
+      "is_pp": false,
+      "name": "ЛПЗ МДК.04.01 Выполнение работ по профессии Лаборант химического анализа",
+      "plan_active": false,
+      "preferred_room": -1,
+      "required_capacity": 0,
+      "required_equipment": [],
+      "required_room_purpose": "",
+      "required_room_type": 0,
+      "subgroup": 37,
+      "subject_id": -1,
+      "teacher": 81,
+      "total_hours": 30,
+      "total_slots": 0,
+      "uid": "lesson-8d93e0e8c8e621b8",
+      "week_parity": "all"
+    },
+    {
+      "allow_room_substitution": true,
+      "allowed_campuses": [
+        0,
+        1
+      ],
+      "avoid_lunch_split": false,
+      "consecutive_pairs": 1,
+      "fixed_room": -1,
+      "generation_active": false,
+      "group": 19,
+      "id": 988,
+      "is_block": false,
+      "is_lab": false,
+      "is_pp": false,
+      "name": "Основы предпринимательской деятельности",
+      "plan_active": false,
+      "preferred_room": -1,
+      "required_capacity": 0,
+      "required_equipment": [],
+      "required_room_purpose": "",
+      "required_room_type": 0,
+      "subgroup": -1,
+      "subject_id": -1,
+      "teacher": 35,
+      "total_hours": 36,
+      "total_slots": 0,
+      "uid": "lesson-77ffea8d4b7d0131",
+      "week_parity": "all"
+    },
+    {
+      "allow_room_substitution": true,
+      "allowed_campuses": [
+        0,
+        1
+      ],
+      "avoid_lunch_split": false,
+      "consecutive_pairs": 1,
+      "fixed_room": -1,
+      "generation_active": false,
+      "group": 19,
+      "id": 989,
+      "is_block": false,
+      "is_lab": false,
+      "is_pp": false,
+      "name": "Эффективное поведение на рынке труда",
+      "plan_active": false,
+      "preferred_room": -1,
+      "required_capacity": 0,
+      "required_equipment": [],
+      "required_room_purpose": "",
+      "required_room_type": 0,
+      "subgroup": -1,
+      "subject_id": -1,
+      "teacher": 15,
+      "total_hours": 36,
+      "total_slots": 0,
+      "uid": "lesson-727493a776b51667",
+      "week_parity": "all"
+    },
+    {
+      "allow_room_substitution": true,
+      "allowed_campuses": [
+        0,
+        1
+      ],
+      "avoid_lunch_split": false,
+      "consecutive_pairs": 1,
+      "fixed_room": -1,
+      "generation_active": false,
+      "group": 19,
+      "id": 990,
+      "is_block": false,
+      "is_lab": true,
+      "is_pp": false,
+      "name": "ЛПЗ МДК.03.01 Организация лабораторно-производственной деятельности",
+      "plan_active": false,
+      "preferred_room": -1,
+      "required_capacity": 0,
+      "required_equipment": [],
+      "required_room_purpose": "",
+      "required_room_type": 0,
+      "subgroup": 38,
+      "subject_id": -1,
+      "teacher": 81,
+      "total_hours": 38,
+      "total_slots": 0,
+      "uid": "lesson-2011be2db8d0dda9",
+      "week_parity": "all"
+    },
+    {
+      "allow_room_substitution": true,
+      "allowed_campuses": [
+        0,
+        1
+      ],
+      "avoid_lunch_split": false,
+      "consecutive_pairs": 1,
+      "fixed_room": -1,
+      "generation_active": false,
+      "group": 19,
+      "id": 991,
+      "is_block": false,
+      "is_lab": true,
+      "is_pp": false,
+      "name": "ЛПЗ МДК.03.01 Организация лабораторно-производственной деятельности",
+      "plan_active": false,
+      "preferred_room": -1,
+      "required_capacity": 0,
+      "required_equipment": [],
+      "required_room_purpose": "",
+      "required_room_type": 0,
+      "subgroup": 39,
+      "subject_id": -1,
+      "teacher": 81,
+      "total_hours": 38,
+      "total_slots": 0,
+      "uid": "lesson-d2d806a1632f71ad",
+      "week_parity": "all"
+    },
+    {
+      "allow_room_substitution": true,
+      "allowed_campuses": [
+        0,
+        1
+      ],
+      "avoid_lunch_split": false,
+      "consecutive_pairs": 1,
+      "fixed_room": -1,
+      "generation_active": false,
+      "group": 36,
+      "id": 992,
+      "is_block": false,
+      "is_lab": false,
+      "is_pp": false,
+      "name": "КП МДК.01.02 Оформление технологической документации по процессам изготовления деталей машин",
+      "plan_active": false,
+      "preferred_room": -1,
+      "required_capacity": 0,
+      "required_equipment": [],
+      "required_room_purpose": "",
+      "required_room_type": 0,
+      "subgroup": -1,
+      "subject_id": -1,
+      "teacher": 61,
+      "total_hours": 16,
+      "total_slots": 0,
+      "uid": "lesson-240bf13a7bc9733d",
+      "week_parity": "all"
+    },
+    {
+      "allow_room_substitution": true,
+      "allowed_campuses": [
+        0,
+        1
+      ],
+      "avoid_lunch_split": false,
+      "consecutive_pairs": 1,
+      "fixed_room": -1,
+      "generation_active": false,
+      "group": 36,
+      "id": 993,
+      "is_block": false,
+      "is_lab": false,
+      "is_pp": false,
+      "name": "ВМДК.06.01 Программирование для автоматизированного оборудования",
+      "plan_active": false,
+      "preferred_room": -1,
+      "required_capacity": 0,
+      "required_equipment": [],
+      "required_room_purpose": "",
+      "required_room_type": 0,
+      "subgroup": -1,
+      "subject_id": -1,
+      "teacher": 62,
+      "total_hours": 6,
+      "total_slots": 0,
+      "uid": "lesson-c27c254a08effd10",
+      "week_parity": "all"
+    },
+    {
+      "allow_room_substitution": true,
+      "allowed_campuses": [
+        0,
+        1
+      ],
+      "avoid_lunch_split": false,
+      "consecutive_pairs": 1,
+      "fixed_room": -1,
+      "generation_active": false,
+      "group": 36,
+      "id": 994,
+      "is_block": false,
+      "is_lab": true,
+      "is_pp": false,
+      "name": "ЛПЗ ВМДК.06.01 Программирование для автоматизированного оборудования",
+      "plan_active": false,
+      "preferred_room": -1,
+      "required_capacity": 0,
+      "required_equipment": [],
+      "required_room_purpose": "",
+      "required_room_type": 0,
+      "subgroup": 72,
+      "subject_id": -1,
+      "teacher": 62,
+      "total_hours": 24,
+      "total_slots": 0,
+      "uid": "lesson-ddf5c8438f09cf3a",
+      "week_parity": "all"
+    },
+    {
+      "allow_room_substitution": true,
+      "allowed_campuses": [
+        0,
+        1
+      ],
+      "avoid_lunch_split": false,
+      "consecutive_pairs": 1,
+      "fixed_room": -1,
+      "generation_active": false,
+      "group": 36,
+      "id": 995,
+      "is_block": false,
+      "is_lab": true,
+      "is_pp": false,
+      "name": "ЛПЗ ВМДК.06.01 Программирование для автоматизированного оборудования",
+      "plan_active": false,
+      "preferred_room": -1,
+      "required_capacity": 0,
+      "required_equipment": [],
+      "required_room_purpose": "",
+      "required_room_type": 0,
+      "subgroup": 73,
+      "subject_id": -1,
+      "teacher": 62,
+      "total_hours": 24,
+      "total_slots": 0,
+      "uid": "lesson-c903b12effc47ad7",
+      "week_parity": "all"
+    },
+    {
+      "allow_room_substitution": true,
+      "allowed_campuses": [
+        0,
+        1
+      ],
+      "avoid_lunch_split": false,
+      "consecutive_pairs": 1,
+      "fixed_room": -1,
+      "generation_active": false,
+      "group": 37,
+      "id": 996,
+      "is_block": false,
+      "is_lab": false,
+      "is_pp": false,
+      "name": "КП МДК.01.02 Оформление технологической документации по процессам изготовления деталей машин",
+      "plan_active": false,
+      "preferred_room": -1,
+      "required_capacity": 0,
+      "required_equipment": [],
+      "required_room_purpose": "",
+      "required_room_type": 0,
+      "subgroup": -1,
+      "subject_id": -1,
+      "teacher": 61,
+      "total_hours": 16,
+      "total_slots": 0,
+      "uid": "lesson-0ed8b8ba8f92c97e",
+      "week_parity": "all"
+    },
+    {
+      "allow_room_substitution": true,
+      "allowed_campuses": [
+        0,
+        1
+      ],
+      "avoid_lunch_split": false,
+      "consecutive_pairs": 1,
+      "fixed_room": -1,
+      "generation_active": false,
+      "group": 37,
+      "id": 997,
+      "is_block": false,
+      "is_lab": false,
+      "is_pp": false,
+      "name": "ВМДК.06.01 Программирование для автоматизированного оборудования",
+      "plan_active": false,
+      "preferred_room": -1,
+      "required_capacity": 0,
+      "required_equipment": [],
+      "required_room_purpose": "",
+      "required_room_type": 0,
+      "subgroup": -1,
+      "subject_id": -1,
+      "teacher": 62,
+      "total_hours": 6,
+      "total_slots": 0,
+      "uid": "lesson-7a4aecb240d2a699",
+      "week_parity": "all"
+    },
+    {
+      "allow_room_substitution": true,
+      "allowed_campuses": [
+        0,
+        1
+      ],
+      "avoid_lunch_split": false,
+      "consecutive_pairs": 1,
+      "fixed_room": -1,
+      "generation_active": false,
+      "group": 37,
+      "id": 998,
+      "is_block": false,
+      "is_lab": true,
+      "is_pp": false,
+      "name": "ЛПЗ ВМДК.06.01 Программирование для автоматизированного оборудования",
+      "plan_active": false,
+      "preferred_room": -1,
+      "required_capacity": 0,
+      "required_equipment": [],
+      "required_room_purpose": "",
+      "required_room_type": 0,
+      "subgroup": 74,
+      "subject_id": -1,
+      "teacher": 62,
+      "total_hours": 24,
+      "total_slots": 0,
+      "uid": "lesson-b37a30d8aa3ed8a7",
+      "week_parity": "all"
+    },
+    {
+      "allow_room_substitution": true,
+      "allowed_campuses": [
+        0,
+        1
+      ],
+      "avoid_lunch_split": false,
+      "consecutive_pairs": 1,
+      "fixed_room": -1,
+      "generation_active": false,
+      "group": 37,
+      "id": 999,
+      "is_block": false,
+      "is_lab": true,
+      "is_pp": false,
+      "name": "ЛПЗ ВМДК.06.01 Программирование для автоматизированного оборудования",
+      "plan_active": false,
+      "preferred_room": -1,
+      "required_capacity": 0,
+      "required_equipment": [],
+      "required_room_purpose": "",
+      "required_room_type": 0,
+      "subgroup": 75,
+      "subject_id": -1,
+      "teacher": 62,
+      "total_hours": 24,
+      "total_slots": 0,
+      "uid": "lesson-eca6b13bca604f02",
+      "week_parity": "all"
+    },
+    {
+      "allow_room_substitution": true,
+      "allowed_campuses": [
+        0,
+        1
+      ],
+      "avoid_lunch_split": false,
+      "consecutive_pairs": 1,
+      "fixed_room": -1,
+      "generation_active": false,
+      "group": 38,
+      "id": 1000,
+      "is_block": false,
+      "is_lab": false,
+      "is_pp": false,
+      "name": "МДК.03.02 Контроль соответствия качеству деталей требованиям технической документации",
+      "plan_active": false,
+      "preferred_room": -1,
+      "required_capacity": 0,
+      "required_equipment": [],
+      "required_room_purpose": "",
+      "required_room_type": 0,
+      "subgroup": -1,
+      "subject_id": -1,
+      "teacher": 61,
+      "total_hours": 18,
+      "total_slots": 0,
+      "uid": "lesson-b88de5c245d89377",
+      "week_parity": "all"
+    },
+    {
+      "allow_room_substitution": true,
+      "allowed_campuses": [
+        0,
+        1
+      ],
+      "avoid_lunch_split": false,
+      "consecutive_pairs": 1,
+      "fixed_room": -1,
+      "generation_active": false,
+      "group": 38,
+      "id": 1001,
+      "is_block": false,
+      "is_lab": false,
+      "is_pp": false,
+      "name": "КП МДК.05.01 Планирование, организация и контроль деятельности подчиненного персонала",
+      "plan_active": false,
+      "preferred_room": -1,
+      "required_capacity": 0,
+      "required_equipment": [],
+      "required_room_purpose": "",
+      "required_room_type": 0,
+      "subgroup": -1,
+      "subject_id": -1,
+      "teacher": 46,
+      "total_hours": 30,
+      "total_slots": 0,
+      "uid": "lesson-6c313afd6c5ba167",
+      "week_parity": "all"
+    },
+    {
+      "allow_room_substitution": true,
+      "allowed_campuses": [
+        0,
+        1
+      ],
+      "avoid_lunch_split": false,
+      "consecutive_pairs": 1,
+      "fixed_room": -1,
+      "generation_active": false,
+      "group": 38,
+      "id": 1002,
+      "is_block": false,
+      "is_lab": false,
+      "is_pp": false,
+      "name": "ВМДК.05.02 Основы экономики и организации правового обеспечения в профессиональной деятельности",
+      "plan_active": false,
+      "preferred_room": -1,
+      "required_capacity": 0,
+      "required_equipment": [],
+      "required_room_purpose": "",
+      "required_room_type": 0,
+      "subgroup": -1,
+      "subject_id": -1,
+      "teacher": 45,
+      "total_hours": 30,
+      "total_slots": 0,
+      "uid": "lesson-fde263926b4f4744",
+      "week_parity": "all"
+    },
+    {
+      "allow_room_substitution": true,
+      "allowed_campuses": [
+        0,
+        1
+      ],
+      "avoid_lunch_split": false,
+      "consecutive_pairs": 1,
+      "fixed_room": -1,
+      "generation_active": false,
+      "group": 39,
+      "id": 1003,
+      "is_block": false,
+      "is_lab": false,
+      "is_pp": false,
+      "name": "МДК.03.02 Контроль соответствия качеству деталей требованиям технической документации",
+      "plan_active": false,
+      "preferred_room": -1,
+      "required_capacity": 0,
+      "required_equipment": [],
+      "required_room_purpose": "",
+      "required_room_type": 0,
+      "subgroup": -1,
+      "subject_id": -1,
+      "teacher": 61,
+      "total_hours": 18,
+      "total_slots": 0,
+      "uid": "lesson-8f9d46666d88ec7b",
+      "week_parity": "all"
+    },
+    {
+      "allow_room_substitution": true,
+      "allowed_campuses": [
+        0,
+        1
+      ],
+      "avoid_lunch_split": false,
+      "consecutive_pairs": 1,
+      "fixed_room": -1,
+      "generation_active": false,
+      "group": 39,
+      "id": 1004,
+      "is_block": false,
+      "is_lab": false,
+      "is_pp": false,
+      "name": "КП МДК.05.01 Планирование, организация и контроль деятельности подчиненного персонала",
+      "plan_active": false,
+      "preferred_room": -1,
+      "required_capacity": 0,
+      "required_equipment": [],
+      "required_room_purpose": "",
+      "required_room_type": 0,
+      "subgroup": -1,
+      "subject_id": -1,
+      "teacher": 46,
+      "total_hours": 30,
+      "total_slots": 0,
+      "uid": "lesson-b925ca9eaaaf0404",
+      "week_parity": "all"
+    },
+    {
+      "allow_room_substitution": true,
+      "allowed_campuses": [
+        0,
+        1
+      ],
+      "avoid_lunch_split": false,
+      "consecutive_pairs": 1,
+      "fixed_room": -1,
+      "generation_active": false,
+      "group": 39,
+      "id": 1005,
+      "is_block": false,
+      "is_lab": false,
+      "is_pp": false,
+      "name": "ВМДК.05.02 Основы экономики и организации правового обеспечения в профессиональной деятельности",
+      "plan_active": false,
+      "preferred_room": -1,
+      "required_capacity": 0,
+      "required_equipment": [],
+      "required_room_purpose": "",
+      "required_room_type": 0,
+      "subgroup": -1,
+      "subject_id": -1,
+      "teacher": 45,
+      "total_hours": 30,
+      "total_slots": 0,
+      "uid": "lesson-5ab9a1b46367641d",
       "week_parity": "all"
     }
   ],
@@ -34108,24 +34394,58 @@
       "lock_source": "manual"
     },
     "generation_scenario": {
-      "label": "friday-saturday-only",
+      "active_lessons": 293,
+      "backup": "C:\\Users\\Student\\Desktop\\raspis-unos\\data\\history\\before_friday_saturday_generation_20260903-131302.json",
       "date_from": "2026-09-04",
       "date_to": "2026-09-05",
-      "source_schedule": "C:\\Users\\Student\\Desktop\\raspis-unos\\output\\latest\\schedule_all.json",
-      "selected_occurrences": 349,
-      "active_lessons": 293,
-      "initial_theory_additions": [],
       "excluded_existing_days": [
         "2026-09-02",
         "2026-09-03"
       ],
-      "backup": "C:\\Users\\Student\\Desktop\\raspis-unos\\data\\history\\before_friday_saturday_generation_20260903-131302.json"
+      "initial_theory_additions": [],
+      "label": "friday-saturday-only",
+      "selected_occurrences": 349,
+      "source_schedule": "C:\\Users\\Student\\Desktop\\raspis-unos\\output\\latest\\schedule_all.json"
     },
     "last_workload_import": {
       "at": "2026-08-31T08:32:07.206283+03:00",
       "source": "C:\\Users\\SHIRP\\Downloads\\Telegram Desktop\\Вклейки 2026-2027 (1).xlsx",
       "vacancy_rows": 35
     },
+    "operational_constraints": [
+      {
+        "id": "absence-revision-2026-09-03-v1",
+        "rules": [
+          "Колтышев: занятий на текущей неделе нет",
+          "Письмак: занятий на текущей неделе нет",
+          "Семенова Лилиана Ивановна: в субботу только пары 1-4",
+          "Удалённые шесть занятий заменены занятиями тех же групп; общая нагрузка сохранена"
+        ],
+        "scope": [
+          "2026-08-31",
+          "2026-09-05"
+        ]
+      },
+      {
+        "id": "revision-2026-09-03-friday-saturday-v3",
+        "rules": [
+          "Колтышев: суббота запрещена",
+          "Коробкова: четверг и пятница, пары 1-4",
+          "Окна у студентов запрещены",
+          "С 05.09: у Лимоновой только занятия с буквами ЛПЗ идут в мастерскую 120-121; остальные — обычная аудитория на Лесной, кроме 210",
+          "С 05.09: у Самцова только занятия с буквами ЛПЗ идут в мастерские 115-116/122-123; остальные — обычная аудитория на Лесной, кроме 210",
+          "С 05.09: занятия Кальчевской с буквами ЛПЗ идут в ЦПДЭ",
+          "Расписание пятницы 04.09 сохраняется без изменений"
+        ],
+        "scope": [
+          "2026-09-04",
+          "2026-09-05"
+        ]
+      }
+    ],
+    "operational_notes": [
+      "Семенова Л.И.: суббота 1-4; одно занятие химии группы ТАКХС-Пф-1203 заменено математикой этой же группы"
+    ],
     "room_access_policy": {
       "applied_at": "2026-08-31T18:50:41",
       "backup": "C:\\Users\\SHIRP\\Desktop\\work\\raspis-unost-master\\data\\history\\before_room_access_policies_20260831-185041.json",
@@ -37281,41 +37601,7 @@
           "teacher": 68
         }
       ]
-    },
-    "operational_constraints": [
-      {
-        "id": "absence-revision-2026-09-03-v1",
-        "scope": [
-          "2026-08-31",
-          "2026-09-05"
-        ],
-        "rules": [
-          "Колтышев: занятий на текущей неделе нет",
-          "Письмак: занятий на текущей неделе нет",
-          "Семенова Лилиана Ивановна: в субботу только пары 1-4",
-          "Удалённые шесть занятий заменены занятиями тех же групп; общая нагрузка сохранена"
-        ]
-      },
-      {
-        "id": "revision-2026-09-03-friday-saturday-v3",
-        "scope": [
-          "2026-09-04",
-          "2026-09-05"
-        ],
-        "rules": [
-          "Колтышев: суббота запрещена",
-          "Коробкова: четверг и пятница, пары 1-4",
-          "Окна у студентов запрещены",
-          "С 05.09: у Лимоновой только занятия с буквами ЛПЗ идут в мастерскую 120-121; остальные — обычная аудитория на Лесной, кроме 210",
-          "С 05.09: у Самцова только занятия с буквами ЛПЗ идут в мастерские 115-116/122-123; остальные — обычная аудитория на Лесной, кроме 210",
-          "С 05.09: занятия Кальчевской с буквами ЛПЗ идут в ЦПДЭ",
-          "Расписание пятницы 04.09 сохраняется без изменений"
-        ]
-      }
-    ],
-    "operational_notes": [
-      "Семенова Л.И.: суббота 1-4; одно занятие химии группы ТАКХС-Пф-1203 заменено математикой этой же группы"
-    ]
+    }
   },
   "room_types": [
     {
@@ -47466,7 +47752,9 @@
       "purpose": "",
       "responsible_note": "Кальчевская Н.В.",
       "responsible_teacher_ids": [
-        49
+        49,
+        57,
+        81
       ],
       "room_type": 0,
       "source": "Оперативное ограничение от 03.09.2026",
@@ -47578,6 +47866,7 @@
   ],
   "settings": {
     "end_date": "2026-09-05",
+    "hard_no_student_windows": true,
     "prior_theory_pairs": [
       {
         "group": 0,
@@ -48361,34 +48650,34 @@
       },
       {
         "group": 11,
-        "subject": 185,
-        "pairs": 1
+        "pairs": 1,
+        "subject": 185
       },
       {
         "group": 25,
-        "subject": 411,
-        "pairs": 1
+        "pairs": 1,
+        "subject": 411
       },
       {
         "group": 28,
-        "subject": 449,
-        "pairs": 1
+        "pairs": 1,
+        "subject": 449
       },
       {
         "group": 28,
-        "subject": 450,
-        "pairs": 1
+        "pairs": 1,
+        "subject": 450
       },
       {
         "group": 38,
-        "subject": 573,
-        "pairs": 2
+        "pairs": 2,
+        "subject": 573
       }
     ],
     "solver_config": {
+      "allow_single_pair_day_fallback": true,
       "block_subject_active_bucket_unit": 4,
       "group_week_missing_day_weight": 300,
-      "allow_single_pair_day_fallback": true,
       "hard_max_one_two_pair_student_day": false,
       "hard_max_two_same_subject_per_day": true,
       "hard_min_2_teacher_pairs_per_day": false,
@@ -48433,499 +48722,508 @@
     "start_date": "2026-09-04",
     "teacher_period_targets": [
       {
-        "teacher": 0,
+        "desired_pairs": 4,
+        "minimum_pairs": 4,
+        "minimum_safe_for_deadline": 0,
         "name": "Хасанова Гузель Хамитовна",
-        "minimum_pairs": 4,
-        "desired_pairs": 4,
+        "remaining_semester_pairs": 131,
         "selected_pairs": 4,
-        "minimum_safe_for_deadline": 0,
-        "remaining_semester_pairs": 131
+        "teacher": 0
       },
       {
-        "teacher": 1,
+        "desired_pairs": 2,
+        "minimum_pairs": 2,
+        "minimum_safe_for_deadline": 0,
         "name": "Вагайская Татьяна Александровна",
-        "minimum_pairs": 2,
-        "desired_pairs": 2,
+        "remaining_semester_pairs": 134,
         "selected_pairs": 2,
-        "minimum_safe_for_deadline": 0,
-        "remaining_semester_pairs": 134
+        "teacher": 1
       },
       {
-        "teacher": 3,
+        "desired_pairs": 6,
+        "minimum_pairs": 6,
+        "minimum_safe_for_deadline": 0,
         "name": "Никонова Антонина Олеговна",
-        "minimum_pairs": 6,
-        "desired_pairs": 6,
+        "remaining_semester_pairs": 273,
         "selected_pairs": 6,
-        "minimum_safe_for_deadline": 0,
-        "remaining_semester_pairs": 273
+        "teacher": 3
       },
       {
-        "teacher": 4,
+        "desired_pairs": 12,
+        "minimum_pairs": 12,
+        "minimum_safe_for_deadline": 0,
         "name": "Давыдова Валентина Алексеевна",
-        "minimum_pairs": 12,
-        "desired_pairs": 12,
+        "remaining_semester_pairs": 337,
         "selected_pairs": 12,
-        "minimum_safe_for_deadline": 0,
-        "remaining_semester_pairs": 337
+        "teacher": 4
       },
       {
-        "teacher": 5,
+        "desired_pairs": 5,
+        "minimum_pairs": 5,
+        "minimum_safe_for_deadline": 0,
         "name": "Домарева Ирина Вячеславовна",
-        "minimum_pairs": 5,
-        "desired_pairs": 5,
+        "remaining_semester_pairs": 216,
         "selected_pairs": 5,
-        "minimum_safe_for_deadline": 0,
-        "remaining_semester_pairs": 216
+        "teacher": 5
       },
       {
-        "teacher": 8,
+        "desired_pairs": 12,
+        "minimum_pairs": 12,
+        "minimum_safe_for_deadline": 0,
         "name": "Потапова Регина Александровна",
-        "minimum_pairs": 12,
-        "desired_pairs": 12,
+        "remaining_semester_pairs": 438,
         "selected_pairs": 12,
-        "minimum_safe_for_deadline": 0,
-        "remaining_semester_pairs": 438
+        "teacher": 8
       },
       {
-        "teacher": 9,
-        "name": "Сутягин Артём Борисович",
-        "minimum_pairs": 7,
         "desired_pairs": 7,
-        "selected_pairs": 7,
+        "minimum_pairs": 7,
         "minimum_safe_for_deadline": 7,
-        "remaining_semester_pairs": 155
+        "name": "Сутягин Артём Борисович",
+        "remaining_semester_pairs": 155,
+        "selected_pairs": 7,
+        "teacher": 9
       },
       {
-        "teacher": 10,
+        "desired_pairs": 11,
+        "minimum_pairs": 11,
+        "minimum_safe_for_deadline": 0,
         "name": "Семенова Лилиана Ивановна",
-        "minimum_pairs": 11,
-        "desired_pairs": 11,
+        "remaining_semester_pairs": 466,
         "selected_pairs": 11,
-        "minimum_safe_for_deadline": 0,
-        "remaining_semester_pairs": 466
+        "teacher": 10
       },
       {
-        "teacher": 11,
+        "desired_pairs": 2,
+        "minimum_pairs": 2,
+        "minimum_safe_for_deadline": 0,
         "name": "Цимфер Татьяна Ивановна",
-        "minimum_pairs": 2,
-        "desired_pairs": 2,
+        "remaining_semester_pairs": 114,
         "selected_pairs": 2,
-        "minimum_safe_for_deadline": 0,
-        "remaining_semester_pairs": 114
+        "teacher": 11
       },
       {
-        "teacher": 12,
+        "desired_pairs": 2,
+        "minimum_pairs": 2,
+        "minimum_safe_for_deadline": 0,
         "name": "Рабенок Мария Александровна",
-        "minimum_pairs": 2,
-        "desired_pairs": 2,
+        "remaining_semester_pairs": 92,
         "selected_pairs": 2,
-        "minimum_safe_for_deadline": 0,
-        "remaining_semester_pairs": 92
+        "teacher": 12
       },
       {
-        "teacher": 13,
+        "desired_pairs": 8,
+        "minimum_pairs": 8,
+        "minimum_safe_for_deadline": 0,
         "name": "Костарева Наталья Викторовна",
-        "minimum_pairs": 8,
-        "desired_pairs": 8,
+        "remaining_semester_pairs": 227,
         "selected_pairs": 8,
-        "minimum_safe_for_deadline": 0,
-        "remaining_semester_pairs": 227
+        "teacher": 13
       },
       {
-        "teacher": 14,
+        "desired_pairs": 10,
+        "minimum_pairs": 10,
+        "minimum_safe_for_deadline": 0,
         "name": "Лучинин Александр Васильевич",
-        "minimum_pairs": 10,
-        "desired_pairs": 10,
+        "remaining_semester_pairs": 340,
         "selected_pairs": 10,
-        "minimum_safe_for_deadline": 0,
-        "remaining_semester_pairs": 340
+        "teacher": 14
       },
       {
-        "teacher": 15,
+        "desired_pairs": 10,
+        "minimum_pairs": 10,
+        "minimum_safe_for_deadline": 0,
         "name": "Кропотова Анастасия Андреевна",
-        "minimum_pairs": 9,
-        "desired_pairs": 9,
-        "selected_pairs": 9,
-        "minimum_safe_for_deadline": 0,
-        "remaining_semester_pairs": 298
+        "remaining_semester_pairs": 298,
+        "selected_pairs": 10,
+        "teacher": 15
       },
       {
-        "teacher": 16,
+        "desired_pairs": 10,
+        "minimum_pairs": 10,
+        "minimum_safe_for_deadline": 0,
         "name": "Буркова Елена Владимировна",
-        "minimum_pairs": 10,
-        "desired_pairs": 10,
+        "remaining_semester_pairs": 170,
         "selected_pairs": 10,
-        "minimum_safe_for_deadline": 0,
-        "remaining_semester_pairs": 170
+        "teacher": 16
       },
       {
-        "teacher": 17,
+        "desired_pairs": 8,
+        "minimum_pairs": 8,
+        "minimum_safe_for_deadline": 0,
         "name": "Нифонтова Ирина Геннадьевна",
-        "minimum_pairs": 8,
-        "desired_pairs": 8,
+        "remaining_semester_pairs": 359,
         "selected_pairs": 8,
-        "minimum_safe_for_deadline": 0,
-        "remaining_semester_pairs": 359
+        "teacher": 17
       },
       {
-        "teacher": 19,
+        "desired_pairs": 7,
+        "minimum_pairs": 7,
+        "minimum_safe_for_deadline": 0,
         "name": "Силенок Марина Юрьевна",
-        "minimum_pairs": 7,
-        "desired_pairs": 7,
+        "remaining_semester_pairs": 217,
         "selected_pairs": 7,
-        "minimum_safe_for_deadline": 0,
-        "remaining_semester_pairs": 217
+        "teacher": 19
       },
       {
-        "teacher": 20,
+        "desired_pairs": 5,
+        "minimum_pairs": 5,
+        "minimum_safe_for_deadline": 0,
         "name": "Соболева Любовь Анатольевна",
-        "minimum_pairs": 5,
-        "desired_pairs": 5,
+        "remaining_semester_pairs": 202,
         "selected_pairs": 5,
-        "minimum_safe_for_deadline": 0,
-        "remaining_semester_pairs": 202
+        "teacher": 20
       },
       {
-        "teacher": 21,
+        "desired_pairs": 2,
+        "minimum_pairs": 2,
+        "minimum_safe_for_deadline": 0,
         "name": "Комарова Яна Николаевна",
-        "minimum_pairs": 2,
-        "desired_pairs": 2,
+        "remaining_semester_pairs": 54,
         "selected_pairs": 2,
-        "minimum_safe_for_deadline": 0,
-        "remaining_semester_pairs": 54
+        "teacher": 21
       },
       {
-        "teacher": 22,
+        "desired_pairs": 4,
+        "minimum_pairs": 4,
+        "minimum_safe_for_deadline": 0,
         "name": "Кибардина Татьяна Леонидовна",
-        "minimum_pairs": 4,
-        "desired_pairs": 4,
+        "remaining_semester_pairs": 232,
         "selected_pairs": 4,
-        "minimum_safe_for_deadline": 0,
-        "remaining_semester_pairs": 232
+        "teacher": 22
       },
       {
-        "teacher": 23,
+        "desired_pairs": 5,
+        "minimum_pairs": 5,
+        "minimum_safe_for_deadline": 0,
         "name": "Журавский Константин Сергеевич",
-        "minimum_pairs": 5,
-        "desired_pairs": 5,
+        "remaining_semester_pairs": 268,
         "selected_pairs": 5,
-        "minimum_safe_for_deadline": 0,
-        "remaining_semester_pairs": 268
+        "teacher": 23
       },
       {
-        "teacher": 24,
+        "desired_pairs": 3,
+        "minimum_pairs": 3,
+        "minimum_safe_for_deadline": 0,
         "name": "Круглова Юлия Петровна",
-        "minimum_pairs": 3,
-        "desired_pairs": 3,
+        "remaining_semester_pairs": 55,
         "selected_pairs": 3,
-        "minimum_safe_for_deadline": 0,
-        "remaining_semester_pairs": 55
+        "teacher": 24
       },
       {
-        "teacher": 27,
+        "desired_pairs": 12,
+        "minimum_pairs": 12,
+        "minimum_safe_for_deadline": 0,
         "name": "Ермолина Ирина Павловна",
-        "minimum_pairs": 12,
-        "desired_pairs": 12,
+        "remaining_semester_pairs": 282,
         "selected_pairs": 12,
-        "minimum_safe_for_deadline": 0,
-        "remaining_semester_pairs": 282
+        "teacher": 27
       },
       {
-        "teacher": 28,
+        "desired_pairs": 4,
+        "minimum_pairs": 4,
+        "minimum_safe_for_deadline": 0,
         "name": "Новосёлова Светлана Юрьевна",
-        "minimum_pairs": 4,
-        "desired_pairs": 4,
+        "remaining_semester_pairs": 167,
         "selected_pairs": 4,
-        "minimum_safe_for_deadline": 0,
-        "remaining_semester_pairs": 167
+        "teacher": 28
       },
       {
-        "teacher": 29,
+        "desired_pairs": 3,
+        "minimum_pairs": 3,
+        "minimum_safe_for_deadline": 0,
         "name": "Галузин Антон Илюсович",
-        "minimum_pairs": 3,
-        "desired_pairs": 3,
+        "remaining_semester_pairs": 43,
         "selected_pairs": 3,
-        "minimum_safe_for_deadline": 0,
-        "remaining_semester_pairs": 43
+        "teacher": 29
       },
       {
-        "teacher": 30,
+        "desired_pairs": 11,
+        "minimum_pairs": 11,
+        "minimum_safe_for_deadline": 0,
         "name": "Синельникова Елена Владимировна",
-        "minimum_pairs": 11,
-        "desired_pairs": 11,
+        "remaining_semester_pairs": 315,
         "selected_pairs": 11,
-        "minimum_safe_for_deadline": 0,
-        "remaining_semester_pairs": 315
+        "teacher": 30
       },
       {
-        "teacher": 31,
+        "desired_pairs": 6,
+        "minimum_pairs": 6,
+        "minimum_safe_for_deadline": 0,
         "name": "Ланитина Елена Сергеевна",
-        "minimum_pairs": 6,
-        "desired_pairs": 6,
+        "remaining_semester_pairs": 233,
         "selected_pairs": 6,
-        "minimum_safe_for_deadline": 0,
-        "remaining_semester_pairs": 233
+        "teacher": 31
       },
       {
-        "teacher": 32,
+        "desired_pairs": 2,
+        "minimum_pairs": 2,
+        "minimum_safe_for_deadline": 0,
         "name": "Логинова Ксения Ивановна",
-        "minimum_pairs": 2,
-        "desired_pairs": 2,
+        "remaining_semester_pairs": 84,
         "selected_pairs": 2,
-        "minimum_safe_for_deadline": 0,
-        "remaining_semester_pairs": 84
+        "teacher": 32
       },
       {
-        "teacher": 34,
-        "name": "Нуров Мирзо Нуралиевич",
-        "minimum_pairs": 8,
         "desired_pairs": 8,
+        "minimum_pairs": 8,
+        "minimum_safe_for_deadline": 0,
+        "name": "Нуров Мирзо Нуралиевич",
+        "remaining_semester_pairs": 232,
         "selected_pairs": 8,
-        "minimum_safe_for_deadline": 0,
-        "remaining_semester_pairs": 232
+        "teacher": 34
       },
       {
-        "teacher": 36,
+        "desired_pairs": 4,
+        "minimum_pairs": 4,
+        "minimum_safe_for_deadline": 0,
         "name": "Дорохова Евгения Владимировна",
-        "minimum_pairs": 4,
-        "desired_pairs": 4,
+        "remaining_semester_pairs": 187,
         "selected_pairs": 4,
-        "minimum_safe_for_deadline": 0,
-        "remaining_semester_pairs": 187
+        "teacher": 36
       },
       {
-        "teacher": 38,
+        "desired_pairs": 5,
+        "minimum_pairs": 5,
+        "minimum_safe_for_deadline": 0,
         "name": "Абрамчук Раида Филимазовна",
-        "minimum_pairs": 5,
-        "desired_pairs": 5,
+        "remaining_semester_pairs": 265,
         "selected_pairs": 5,
-        "minimum_safe_for_deadline": 0,
-        "remaining_semester_pairs": 265
+        "teacher": 38
       },
       {
-        "teacher": 40,
-        "name": "Сивилькаев Вадим Михайлович",
-        "minimum_pairs": 12,
         "desired_pairs": 12,
+        "minimum_pairs": 12,
+        "minimum_safe_for_deadline": 0,
+        "name": "Сивилькаев Вадим Михайлович",
+        "remaining_semester_pairs": 418,
         "selected_pairs": 12,
-        "minimum_safe_for_deadline": 0,
-        "remaining_semester_pairs": 418
+        "teacher": 40
       },
       {
-        "teacher": 41,
+        "desired_pairs": 3,
+        "minimum_pairs": 3,
+        "minimum_safe_for_deadline": 0,
         "name": "Садриева Татьяна Геннадьевна",
-        "minimum_pairs": 4,
-        "desired_pairs": 4,
-        "selected_pairs": 4,
-        "minimum_safe_for_deadline": 0,
-        "remaining_semester_pairs": 137
+        "remaining_semester_pairs": 137,
+        "selected_pairs": 3,
+        "teacher": 41
       },
       {
-        "teacher": 42,
-        "name": "Осипчук Александр Александрович",
-        "minimum_pairs": 7,
         "desired_pairs": 7,
-        "selected_pairs": 7,
+        "minimum_pairs": 7,
         "minimum_safe_for_deadline": 6,
-        "remaining_semester_pairs": 118
+        "name": "Осипчук Александр Александрович",
+        "remaining_semester_pairs": 118,
+        "selected_pairs": 7,
+        "teacher": 42
       },
       {
-        "teacher": 43,
+        "desired_pairs": 5,
+        "minimum_pairs": 5,
+        "minimum_safe_for_deadline": 0,
         "name": "Попова Татьяна Вильевна",
-        "minimum_pairs": 5,
-        "desired_pairs": 5,
+        "remaining_semester_pairs": 102,
         "selected_pairs": 5,
-        "minimum_safe_for_deadline": 0,
-        "remaining_semester_pairs": 102
+        "teacher": 43
       },
       {
-        "teacher": 45,
+        "desired_pairs": 6,
+        "minimum_pairs": 6,
+        "minimum_safe_for_deadline": 0,
         "name": "Елагина Ольга Александровна",
-        "minimum_pairs": 6,
-        "desired_pairs": 6,
+        "remaining_semester_pairs": 225,
         "selected_pairs": 6,
-        "minimum_safe_for_deadline": 0,
-        "remaining_semester_pairs": 225
+        "teacher": 45
       },
       {
-        "teacher": 46,
+        "desired_pairs": 2,
+        "minimum_pairs": 2,
+        "minimum_safe_for_deadline": 0,
         "name": "Черепанова Татьяна Михайловна",
-        "minimum_pairs": 2,
-        "desired_pairs": 2,
+        "remaining_semester_pairs": 140,
         "selected_pairs": 2,
-        "minimum_safe_for_deadline": 0,
-        "remaining_semester_pairs": 140
+        "teacher": 46
       },
       {
-        "teacher": 47,
+        "desired_pairs": 5,
+        "minimum_pairs": 5,
+        "minimum_safe_for_deadline": 0,
         "name": "Азарян Карине Айказовна",
-        "minimum_pairs": 5,
-        "desired_pairs": 5,
+        "remaining_semester_pairs": 152,
         "selected_pairs": 5,
-        "minimum_safe_for_deadline": 0,
-        "remaining_semester_pairs": 152
+        "teacher": 47
       },
       {
-        "teacher": 48,
-        "name": "Альшаева Алина Павловна",
-        "minimum_pairs": 5,
-        "desired_pairs": 5,
-        "selected_pairs": 5,
-        "minimum_safe_for_deadline": 0,
-        "remaining_semester_pairs": 72
-      },
-      {
-        "teacher": 49,
-        "name": "Кальчевская Наталья Владимировна",
-        "minimum_pairs": 4,
         "desired_pairs": 4,
+        "minimum_pairs": 4,
+        "minimum_safe_for_deadline": 0,
+        "name": "Альшаева Алина Павловна",
+        "remaining_semester_pairs": 72,
         "selected_pairs": 4,
-        "minimum_safe_for_deadline": 0,
-        "remaining_semester_pairs": 128
+        "teacher": 48
       },
       {
-        "teacher": 50,
+        "desired_pairs": 2,
+        "minimum_pairs": 2,
+        "minimum_safe_for_deadline": 0,
+        "name": "Кальчевская Наталья Владимировна",
+        "remaining_semester_pairs": 128,
+        "selected_pairs": 2,
+        "teacher": 49
+      },
+      {
+        "desired_pairs": 1,
+        "minimum_pairs": 1,
+        "minimum_safe_for_deadline": 0,
         "name": "Ярославцева Елена Анатольевна",
-        "minimum_pairs": 1,
-        "desired_pairs": 1,
+        "remaining_semester_pairs": 54,
         "selected_pairs": 1,
-        "minimum_safe_for_deadline": 0,
-        "remaining_semester_pairs": 54
+        "teacher": 50
       },
       {
-        "teacher": 51,
+        "desired_pairs": 3,
+        "minimum_pairs": 3,
+        "minimum_safe_for_deadline": 0,
         "name": "Кошелев Дмитрий Александрович",
-        "minimum_pairs": 3,
-        "desired_pairs": 3,
+        "remaining_semester_pairs": 22,
         "selected_pairs": 3,
-        "minimum_safe_for_deadline": 0,
-        "remaining_semester_pairs": 22
+        "teacher": 51
       },
       {
-        "teacher": 52,
+        "desired_pairs": 3,
+        "minimum_pairs": 3,
+        "minimum_safe_for_deadline": 0,
         "name": "Чадова Марина Александровна",
-        "minimum_pairs": 3,
-        "desired_pairs": 3,
+        "remaining_semester_pairs": 136,
         "selected_pairs": 3,
-        "minimum_safe_for_deadline": 0,
-        "remaining_semester_pairs": 136
+        "teacher": 52
       },
       {
-        "teacher": 53,
-        "name": "Конева Кристина Сергеевна",
-        "minimum_pairs": 1,
         "desired_pairs": 1,
+        "minimum_pairs": 1,
+        "minimum_safe_for_deadline": 0,
+        "name": "Конева Кристина Сергеевна",
+        "remaining_semester_pairs": 96,
         "selected_pairs": 1,
-        "minimum_safe_for_deadline": 0,
-        "remaining_semester_pairs": 96
+        "teacher": 53
       },
       {
-        "teacher": 54,
+        "desired_pairs": 1,
+        "minimum_pairs": 1,
+        "minimum_safe_for_deadline": 0,
         "name": "Кузнецова Елизавета Олеговна",
-        "minimum_pairs": 2,
-        "desired_pairs": 2,
-        "selected_pairs": 2,
-        "minimum_safe_for_deadline": 0,
-        "remaining_semester_pairs": 130
+        "remaining_semester_pairs": 130,
+        "selected_pairs": 1,
+        "teacher": 54
       },
       {
-        "teacher": 55,
+        "desired_pairs": 9,
+        "minimum_pairs": 9,
+        "minimum_safe_for_deadline": 0,
         "name": "Лимонова Евгения Николаевна",
-        "minimum_pairs": 10,
-        "desired_pairs": 10,
-        "selected_pairs": 10,
-        "minimum_safe_for_deadline": 0,
-        "remaining_semester_pairs": 287
+        "remaining_semester_pairs": 287,
+        "selected_pairs": 9,
+        "teacher": 55
       },
       {
-        "teacher": 56,
+        "desired_pairs": 11,
+        "minimum_pairs": 11,
+        "minimum_safe_for_deadline": 0,
         "name": "Ахметов Артур Фанависович",
-        "minimum_pairs": 10,
-        "desired_pairs": 10,
-        "selected_pairs": 10,
-        "minimum_safe_for_deadline": 0,
-        "remaining_semester_pairs": 328
+        "remaining_semester_pairs": 328,
+        "selected_pairs": 11,
+        "teacher": 56
       },
       {
-        "teacher": 57,
-        "name": "Подчиненнов Александр Юрьевич",
-        "minimum_pairs": 2,
         "desired_pairs": 2,
+        "minimum_pairs": 2,
+        "minimum_safe_for_deadline": 0,
+        "name": "Подчиненнов Александр Юрьевич",
+        "remaining_semester_pairs": 30,
         "selected_pairs": 2,
-        "minimum_safe_for_deadline": 0,
-        "remaining_semester_pairs": 30
+        "teacher": 57
       },
       {
-        "teacher": 58,
-        "name": "Билалова Рауиза Галлинуровна",
-        "minimum_pairs": 6,
         "desired_pairs": 6,
+        "minimum_pairs": 6,
+        "minimum_safe_for_deadline": 0,
+        "name": "Билалова Рауиза Галлинуровна",
+        "remaining_semester_pairs": 189,
         "selected_pairs": 6,
-        "minimum_safe_for_deadline": 0,
-        "remaining_semester_pairs": 189
+        "teacher": 58
       },
       {
-        "teacher": 59,
+        "desired_pairs": 11,
+        "minimum_pairs": 11,
+        "minimum_safe_for_deadline": 0,
         "name": "Самцов Андрей Евгеньевич",
-        "minimum_pairs": 11,
-        "desired_pairs": 11,
+        "remaining_semester_pairs": 231,
         "selected_pairs": 11,
-        "minimum_safe_for_deadline": 0,
-        "remaining_semester_pairs": 231
+        "teacher": 59
       },
       {
-        "teacher": 60,
-        "name": "Тимеров Валерий Вагизович",
-        "minimum_pairs": 5,
         "desired_pairs": 5,
+        "minimum_pairs": 5,
+        "minimum_safe_for_deadline": 0,
+        "name": "Тимеров Валерий Вагизович",
+        "remaining_semester_pairs": 250,
         "selected_pairs": 5,
-        "minimum_safe_for_deadline": 0,
-        "remaining_semester_pairs": 250
+        "teacher": 60
       },
       {
-        "teacher": 61,
-        "name": "Саламатина Вера Викторовна",
-        "minimum_pairs": 11,
         "desired_pairs": 11,
+        "minimum_pairs": 11,
+        "minimum_safe_for_deadline": 0,
+        "name": "Саламатина Вера Викторовна",
+        "remaining_semester_pairs": 363,
         "selected_pairs": 11,
-        "minimum_safe_for_deadline": 0,
-        "remaining_semester_pairs": 363
+        "teacher": 61
       },
       {
-        "teacher": 62,
+        "desired_pairs": 14,
+        "minimum_pairs": 14,
+        "minimum_safe_for_deadline": 0,
         "name": "Вальдиянов Ян Мансурович",
-        "minimum_pairs": 14,
-        "desired_pairs": 14,
+        "remaining_semester_pairs": 505,
         "selected_pairs": 14,
-        "minimum_safe_for_deadline": 0,
-        "remaining_semester_pairs": 505
+        "teacher": 62
       },
       {
-        "teacher": 64,
+        "desired_pairs": 13,
+        "minimum_pairs": 13,
+        "minimum_safe_for_deadline": 0,
         "name": "Меренчуков Иван Александрович",
-        "minimum_pairs": 14,
-        "desired_pairs": 14,
-        "selected_pairs": 14,
-        "minimum_safe_for_deadline": 0,
-        "remaining_semester_pairs": 623
+        "remaining_semester_pairs": 623,
+        "selected_pairs": 13,
+        "teacher": 64
       },
       {
-        "teacher": 67,
+        "desired_pairs": 12,
+        "minimum_pairs": 12,
+        "minimum_safe_for_deadline": 0,
         "name": "Гарбузов Андрей Евгеньевич",
-        "minimum_pairs": 14,
-        "desired_pairs": 14,
-        "selected_pairs": 14,
-        "minimum_safe_for_deadline": 0,
-        "remaining_semester_pairs": 593
+        "remaining_semester_pairs": 593,
+        "selected_pairs": 12,
+        "teacher": 67
       },
       {
-        "teacher": 68,
-        "name": "Ханьжина Ксения Владимировна",
-        "minimum_pairs": 3,
-        "desired_pairs": 3,
-        "selected_pairs": 3,
+        "desired_pairs": 8,
+        "minimum_pairs": 8,
         "minimum_safe_for_deadline": 0,
-        "remaining_semester_pairs": 84
+        "name": "Ханьжина Ксения Владимировна",
+        "remaining_semester_pairs": 84,
+        "selected_pairs": 8,
+        "teacher": 68
+      },
+      {
+        "desired_pairs": 2,
+        "minimum_pairs": 2,
+        "minimum_safe_for_deadline": 0,
+        "name": "Рахматулина Наталья Владимировна",
+        "remaining_semester_pairs": 2,
+        "selected_pairs": 2,
+        "teacher": 81
       }
     ]
   },
@@ -49019,6 +49317,14 @@
       "text": "Отсутствует всю текущую учебную неделю",
       "to": "2026-09-05",
       "uid": "teacher_unavailable-koltyshev-2026w36"
+    },
+    {
+      "from_date": "2026-09-08",
+      "id": 9,
+      "teacher": 68,
+      "text": "Командировка",
+      "to_date": "2026-09-18",
+      "uid": "teacher_unavailable-462132d458bf30c0"
     }
   ],
   "teachers": [
@@ -54171,7 +54477,21 @@
       "allowed_campuses": [],
       "availability_note": "Занятия пока не ставить",
       "campus_priority": [],
-      "date_slot_overrides": [],
+      "date_slot_overrides": [
+        {
+          "date": "2026-09-04",
+          "slots": [
+            1,
+            2,
+            3,
+            4
+          ]
+        },
+        {
+          "date": "2026-09-05",
+          "slots": []
+        }
+      ],
       "default_room": -1,
       "id": 39,
       "max_pairs_per_day": 0,
@@ -57289,7 +57609,12 @@
       "campus_priority": [
         0
       ],
-      "date_slot_overrides": [],
+      "date_slot_overrides": [
+        {
+          "date": "2026-09-05",
+          "slots": []
+        }
+      ],
       "default_room": 46,
       "id": 65,
       "max_pairs_per_day": 0,
@@ -57614,7 +57939,16 @@
       "allowed_campuses": [],
       "availability_note": "",
       "campus_priority": [],
-      "date_slot_overrides": [],
+      "date_slot_overrides": [
+        {
+          "date": "2026-09-07",
+          "slots": [
+            5,
+            6,
+            7
+          ]
+        }
+      ],
       "default_room": -1,
       "id": 68,
       "max_pairs_per_day": 0,
@@ -57676,12 +58010,15 @@
         {
           "day": 6,
           "enabled": true,
-          "end_slot": 4,
+          "end_slot": 7,
           "slots": [
             1,
             2,
             3,
-            4
+            4,
+            5,
+            6,
+            7
           ],
           "start_slot": 1
         },
@@ -60127,6 +60464,238 @@
         "from": "",
         "to": ""
       }
+    },
+    {
+      "allowed_campuses": [],
+      "availability_note": "",
+      "campus_priority": [],
+      "date_slot_overrides": [],
+      "default_room": -1,
+      "id": 81,
+      "max_pairs_per_day": 0,
+      "max_work_days_per_week": 0,
+      "name": "Рахматулина Наталья Владимировна",
+      "room_responsibility": "",
+      "uid": "teacher-b039dd6a6243f5c0",
+      "work_days": [
+        {
+          "day": 1,
+          "enabled": true,
+          "end_slot": 7,
+          "slots": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "start_slot": 1
+        },
+        {
+          "day": 2,
+          "enabled": true,
+          "end_slot": 7,
+          "slots": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "start_slot": 1
+        },
+        {
+          "day": 3,
+          "enabled": true,
+          "end_slot": 7,
+          "slots": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "start_slot": 1
+        },
+        {
+          "day": 4,
+          "enabled": true,
+          "end_slot": 7,
+          "slots": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "start_slot": 1
+        },
+        {
+          "day": 5,
+          "enabled": true,
+          "end_slot": 7,
+          "slots": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "start_slot": 1
+        },
+        {
+          "day": 6,
+          "enabled": true,
+          "end_slot": 7,
+          "slots": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "start_slot": 1
+        },
+        {
+          "day": 7,
+          "enabled": false,
+          "end_slot": 7,
+          "slots": [],
+          "start_slot": 1
+        }
+      ],
+      "work_period": {
+        "from": "",
+        "to": ""
+      }
+    },
+    {
+      "allowed_campuses": [],
+      "availability_note": "",
+      "campus_priority": [],
+      "date_slot_overrides": [],
+      "default_room": -1,
+      "id": 82,
+      "max_pairs_per_day": 0,
+      "max_work_days_per_week": 0,
+      "name": "Усков Алексей Николаевич",
+      "room_responsibility": "",
+      "uid": "teacher-1ac9756569e329ea",
+      "work_days": [
+        {
+          "day": 1,
+          "enabled": true,
+          "end_slot": 7,
+          "slots": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "start_slot": 1
+        },
+        {
+          "day": 2,
+          "enabled": true,
+          "end_slot": 7,
+          "slots": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "start_slot": 1
+        },
+        {
+          "day": 3,
+          "enabled": true,
+          "end_slot": 7,
+          "slots": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "start_slot": 1
+        },
+        {
+          "day": 4,
+          "enabled": true,
+          "end_slot": 7,
+          "slots": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "start_slot": 1
+        },
+        {
+          "day": 5,
+          "enabled": true,
+          "end_slot": 7,
+          "slots": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "start_slot": 1
+        },
+        {
+          "day": 6,
+          "enabled": true,
+          "end_slot": 7,
+          "slots": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "start_slot": 1
+        },
+        {
+          "day": 7,
+          "enabled": false,
+          "end_slot": 7,
+          "slots": [],
+          "start_slot": 1
+        }
+      ],
+      "work_period": {
+        "from": "",
+        "to": ""
+      }
     }
   ],
   "unavailable": [],
@@ -60152,6 +60721,17 @@
       "mode": "replace_roster",
       "semester": 1,
       "teachers": 69
+    },
+    {
+      "active_lessons": 290,
+      "backup": "before_vkleyki_merge_20260904_144957.json",
+      "file_name": "Вклейки 2026-2027 (1).xlsx",
+      "groups": 46,
+      "id": 2,
+      "imported_at": "2026-09-04T09:49:57.160074+00:00",
+      "mode": "stable_id_merge",
+      "semester": 1,
+      "teachers": 83
     }
   ]
 }

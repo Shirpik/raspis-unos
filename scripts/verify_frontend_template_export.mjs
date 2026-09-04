@@ -8,7 +8,7 @@ const projectRoot = path.resolve(import.meta.dirname, '..')
 const templatePath = path.join(projectRoot, 'frontend', 'public', 'templates', 'schedule-template.xlsx')
 const schedulePath = path.join(projectRoot, 'output', 'latest', 'schedule_all.json')
 const outputDir = path.join(projectRoot, 'outputs', '01a0657b-9924-7df3-a37f-2d7d021e8aa9')
-const outputPath = path.join(outputDir, 'frontend-export-check.xlsx')
+const outputPath = path.join(outputDir, 'Расписание_04-05.09.2026_обновлено.xlsx')
 
 const schedule = JSON.parse(await fs.readFile(schedulePath, 'utf8'))
 const templateBytes = await fs.readFile(templatePath)

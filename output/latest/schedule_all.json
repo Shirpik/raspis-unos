@@ -847,12 +847,12 @@
             {
               "slot": 2,
               "time": "2 пара (09:55-11:10)",
-              "text": "литература — вся группа, Хасанова Гузель Хамитовна, Кривоусова",
+              "text": "русский язык — вся группа, Хасанова Гузель Хамитовна, Кривоусова",
               "lessons": [
                 {
-                  "id": 58,
-                  "uid": "lesson-c643bb7e7a53ea94",
-                  "name": "литература",
+                  "id": 57,
+                  "uid": "lesson-449fcb9d4cac93ea",
+                  "name": "русский язык",
                   "teacher_id": 0,
                   "subgroup": -1,
                   "is_lab": false,
@@ -873,12 +873,12 @@
             {
               "slot": 3,
               "time": "3 пара (11:30-12:45)",
-              "text": "русский язык — вся группа, Хасанова Гузель Хамитовна, Кривоусова",
+              "text": "литература — вся группа, Хасанова Гузель Хамитовна, Кривоусова",
               "lessons": [
                 {
-                  "id": 57,
-                  "uid": "lesson-449fcb9d4cac93ea",
-                  "name": "русский язык",
+                  "id": 58,
+                  "uid": "lesson-c643bb7e7a53ea94",
+                  "name": "литература",
                   "teacher_id": 0,
                   "subgroup": -1,
                   "is_lab": false,
@@ -1694,12 +1694,12 @@
             {
               "slot": 4,
               "time": "4 пара (12:55-14:10)",
-              "text": "литература — вся группа, Кибардина Татьяна Леонидовна, Кривоусова",
+              "text": "русский язык — вся группа, Кибардина Татьяна Леонидовна, Кривоусова",
               "lessons": [
                 {
-                  "id": 115,
-                  "uid": "lesson-f95ac32c77d44a65",
-                  "name": "литература",
+                  "id": 114,
+                  "uid": "lesson-4e15ec115822571e",
+                  "name": "русский язык",
                   "teacher_id": 22,
                   "subgroup": -1,
                   "is_lab": false,
@@ -1720,12 +1720,12 @@
             {
               "slot": 5,
               "time": "5 пара (14:20-15:30)",
-              "text": "русский язык — вся группа, Кибардина Татьяна Леонидовна, Кривоусова",
+              "text": "литература — вся группа, Кибардина Татьяна Леонидовна, Кривоусова",
               "lessons": [
                 {
-                  "id": 114,
-                  "uid": "lesson-4e15ec115822571e",
-                  "name": "русский язык",
+                  "id": 115,
+                  "uid": "lesson-f95ac32c77d44a65",
+                  "name": "литература",
                   "teacher_id": 22,
                   "subgroup": -1,
                   "is_lab": false,
@@ -1895,8 +1895,8 @@
                   "consecutive_pairs": 1,
                   "avoid_lunch_split": false,
                   "week_parity": "all",
-                  "room_id": 44,
-                  "room_name": "405",
+                  "room_id": 46,
+                  "room_name": "409",
                   "room_type": 0,
                   "room_substituted": false,
                   "requested_room_id": null,
@@ -1921,8 +1921,8 @@
                   "consecutive_pairs": 1,
                   "avoid_lunch_split": false,
                   "week_parity": "all",
-                  "room_id": 44,
-                  "room_name": "405",
+                  "room_id": 46,
+                  "room_name": "409",
                   "room_type": 0,
                   "room_substituted": false,
                   "requested_room_id": null,
@@ -1999,8 +1999,8 @@
                   "consecutive_pairs": 1,
                   "avoid_lunch_split": false,
                   "week_parity": "all",
-                  "room_id": 44,
-                  "room_name": "405",
+                  "room_id": 46,
+                  "room_name": "409",
                   "room_type": 0,
                   "room_substituted": false,
                   "requested_room_id": null,
@@ -2194,32 +2194,6 @@
             {
               "slot": 2,
               "time": "2 пара (09:55-11:10)",
-              "text": "география — вся группа, Никонова Антонина Олеговна, Кривоусова",
-              "lessons": [
-                {
-                  "id": 156,
-                  "uid": "lesson-34af4c92195eaadc",
-                  "name": "география",
-                  "teacher_id": 3,
-                  "subgroup": -1,
-                  "is_lab": false,
-                  "is_block": false,
-                  "consecutive_pairs": 1,
-                  "avoid_lunch_split": false,
-                  "week_parity": "all",
-                  "room_id": 58,
-                  "room_name": "67",
-                  "room_type": 0,
-                  "room_substituted": false,
-                  "requested_room_id": null,
-                  "requested_room_name": null,
-                  "room_substitution_reason": null
-                }
-              ]
-            },
-            {
-              "slot": 3,
-              "time": "3 пара (11:30-12:45)",
               "text": "русский язык — вся группа, Кибардина Татьяна Леонидовна, Кривоусова",
               "lessons": [
                 {
@@ -2235,6 +2209,32 @@
                   "week_parity": "all",
                   "room_id": 16,
                   "room_name": "33",
+                  "room_type": 0,
+                  "room_substituted": false,
+                  "requested_room_id": null,
+                  "requested_room_name": null,
+                  "room_substitution_reason": null
+                }
+              ]
+            },
+            {
+              "slot": 3,
+              "time": "3 пара (11:30-12:45)",
+              "text": "география — вся группа, Никонова Антонина Олеговна, Кривоусова",
+              "lessons": [
+                {
+                  "id": 156,
+                  "uid": "lesson-34af4c92195eaadc",
+                  "name": "география",
+                  "teacher_id": 3,
+                  "subgroup": -1,
+                  "is_lab": false,
+                  "is_block": false,
+                  "consecutive_pairs": 1,
+                  "avoid_lunch_split": false,
+                  "week_parity": "all",
+                  "room_id": 58,
+                  "room_name": "67",
                   "room_type": 0,
                   "room_substituted": false,
                   "requested_room_id": null,
@@ -2434,6 +2434,12 @@
             {
               "slot": 1,
               "time": "1 пара (08:30-09:45)",
+              "text": "-",
+              "lessons": []
+            },
+            {
+              "slot": 2,
+              "time": "2 пара (09:55-11:10)",
               "text": "биология — вся группа, Никонова Антонина Олеговна, Кривоусова",
               "lessons": [
                 {
@@ -2449,32 +2455,6 @@
                   "week_parity": "all",
                   "room_id": 58,
                   "room_name": "67",
-                  "room_type": 0,
-                  "room_substituted": false,
-                  "requested_room_id": null,
-                  "requested_room_name": null,
-                  "room_substitution_reason": null
-                }
-              ]
-            },
-            {
-              "slot": 2,
-              "time": "2 пара (09:55-11:10)",
-              "text": "физика — вся группа, Силенок Марина Юрьевна, Кривоусова",
-              "lessons": [
-                {
-                  "id": 184,
-                  "uid": "lesson-1253c866ccaae848",
-                  "name": "физика",
-                  "teacher_id": 19,
-                  "subgroup": -1,
-                  "is_lab": false,
-                  "is_block": false,
-                  "consecutive_pairs": 1,
-                  "avoid_lunch_split": false,
-                  "week_parity": "all",
-                  "room_id": 9,
-                  "room_name": "22",
                   "room_type": 0,
                   "room_substituted": false,
                   "requested_room_id": null,
@@ -2512,6 +2492,32 @@
             {
               "slot": 4,
               "time": "4 пара (12:55-14:10)",
+              "text": "физика — вся группа, Силенок Марина Юрьевна, Кривоусова",
+              "lessons": [
+                {
+                  "id": 184,
+                  "uid": "lesson-1253c866ccaae848",
+                  "name": "физика",
+                  "teacher_id": 19,
+                  "subgroup": -1,
+                  "is_lab": false,
+                  "is_block": false,
+                  "consecutive_pairs": 1,
+                  "avoid_lunch_split": false,
+                  "week_parity": "all",
+                  "room_id": 9,
+                  "room_name": "22",
+                  "room_type": 0,
+                  "room_substituted": false,
+                  "requested_room_id": null,
+                  "requested_room_name": null,
+                  "room_substitution_reason": null
+                }
+              ]
+            },
+            {
+              "slot": 5,
+              "time": "5 пара (14:20-15:30)",
               "text": "информатика — 1 п/г, Логинова Ксения Ивановна, Кривоусова",
               "lessons": [
                 {
@@ -2534,12 +2540,6 @@
                   "room_substitution_reason": null
                 }
               ]
-            },
-            {
-              "slot": 5,
-              "time": "5 пара (14:20-15:30)",
-              "text": "-",
-              "lessons": []
             },
             {
               "slot": 6,
@@ -2679,38 +2679,6 @@
             {
               "slot": 1,
               "time": "1 пара (08:30-09:45)",
-              "text": "-",
-              "lessons": []
-            },
-            {
-              "slot": 2,
-              "time": "2 пара (09:55-11:10)",
-              "text": "литература — вся группа, Кибардина Татьяна Леонидовна, Кривоусова",
-              "lessons": [
-                {
-                  "id": 191,
-                  "uid": "lesson-d87d6d1a057db795",
-                  "name": "литература",
-                  "teacher_id": 22,
-                  "subgroup": -1,
-                  "is_lab": false,
-                  "is_block": false,
-                  "consecutive_pairs": 1,
-                  "avoid_lunch_split": false,
-                  "week_parity": "all",
-                  "room_id": 16,
-                  "room_name": "33",
-                  "room_type": 0,
-                  "room_substituted": false,
-                  "requested_room_id": null,
-                  "requested_room_name": null,
-                  "room_substitution_reason": null
-                }
-              ]
-            },
-            {
-              "slot": 3,
-              "time": "3 пара (11:30-12:45)",
               "text": "биология — вся группа, Никонова Антонина Олеговна, Кривоусова",
               "lessons": [
                 {
@@ -2735,8 +2703,8 @@
               ]
             },
             {
-              "slot": 4,
-              "time": "4 пара (12:55-14:10)",
+              "slot": 2,
+              "time": "2 пара (09:55-11:10)",
               "text": "физика — вся группа, Силенок Марина Юрьевна, Кривоусова",
               "lessons": [
                 {
@@ -2761,8 +2729,34 @@
               ]
             },
             {
-              "slot": 5,
-              "time": "5 пара (14:20-15:30)",
+              "slot": 3,
+              "time": "3 пара (11:30-12:45)",
+              "text": "литература — вся группа, Кибардина Татьяна Леонидовна, Кривоусова",
+              "lessons": [
+                {
+                  "id": 191,
+                  "uid": "lesson-d87d6d1a057db795",
+                  "name": "литература",
+                  "teacher_id": 22,
+                  "subgroup": -1,
+                  "is_lab": false,
+                  "is_block": false,
+                  "consecutive_pairs": 1,
+                  "avoid_lunch_split": false,
+                  "week_parity": "all",
+                  "room_id": 16,
+                  "room_name": "33",
+                  "room_type": 0,
+                  "room_substituted": false,
+                  "requested_room_id": null,
+                  "requested_room_name": null,
+                  "room_substitution_reason": null
+                }
+              ]
+            },
+            {
+              "slot": 4,
+              "time": "4 пара (12:55-14:10)",
               "text": "информатика — 1 п/г, Логинова Ксения Ивановна, Кривоусова",
               "lessons": [
                 {
@@ -2785,6 +2779,12 @@
                   "room_substitution_reason": null
                 }
               ]
+            },
+            {
+              "slot": 5,
+              "time": "5 пара (14:20-15:30)",
+              "text": "-",
+              "lessons": []
             },
             {
               "slot": 6,
@@ -3435,12 +3435,12 @@
             {
               "slot": 1,
               "time": "1 пара (08:30-09:45)",
-              "text": "ЛПЗ МДК.03.02 Разработка, организация и контроль качества работ по монтажу, наладке и техническому обслуживанию систем и средств автоматизации — 1 п/г, Осипчук Александр Александрович, Кривоусова",
+              "text": "ЛПЗ МДК.03.01 Планирование материально-технического обеспечения работ по монтажу, наладке и техническому обслуживанию систем и средств автоматизации — 1 п/г, Осипчук Александр Александрович, Кривоусова",
               "lessons": [
                 {
-                  "id": 269,
-                  "uid": "lesson-8f89dcd1211cbbe9",
-                  "name": "ЛПЗ МДК.03.02 Разработка, организация и контроль качества работ по монтажу, наладке и техническому обслуживанию систем и средств автоматизации",
+                  "id": 266,
+                  "uid": "lesson-974e9ce70280f140",
+                  "name": "ЛПЗ МДК.03.01 Планирование материально-технического обеспечения работ по монтажу, наладке и техническому обслуживанию систем и средств автоматизации",
                   "teacher_id": 42,
                   "subgroup": 26,
                   "is_lab": true,
@@ -3461,12 +3461,12 @@
             {
               "slot": 2,
               "time": "2 пара (09:55-11:10)",
-              "text": "ЛПЗ МДК.03.01 Планирование материально-технического обеспечения работ по монтажу, наладке и техническому обслуживанию систем и средств автоматизации — 1 п/г, Осипчук Александр Александрович, Кривоусова",
+              "text": "ЛПЗ МДК.03.02 Разработка, организация и контроль качества работ по монтажу, наладке и техническому обслуживанию систем и средств автоматизации — 1 п/г, Осипчук Александр Александрович, Кривоусова",
               "lessons": [
                 {
-                  "id": 266,
-                  "uid": "lesson-974e9ce70280f140",
-                  "name": "ЛПЗ МДК.03.01 Планирование материально-технического обеспечения работ по монтажу, наладке и техническому обслуживанию систем и средств автоматизации",
+                  "id": 269,
+                  "uid": "lesson-8f89dcd1211cbbe9",
+                  "name": "ЛПЗ МДК.03.02 Разработка, организация и контроль качества работ по монтажу, наладке и техническому обслуживанию систем и средств автоматизации",
                   "teacher_id": 42,
                   "subgroup": 26,
                   "is_lab": true,
@@ -3539,12 +3539,12 @@
             {
               "slot": 5,
               "time": "5 пара (14:20-15:30)",
-              "text": "ЛПЗ МДК.02.02 Испытания модели элементов систем автоматизации в реальных условиях и их оптимизация — 2 п/г, Осипчук Александр Александрович, Кривоусова",
+              "text": "ЛПЗ МДК.03.01 Планирование материально-технического обеспечения работ по монтажу, наладке и техническому обслуживанию систем и средств автоматизации — 2 п/г, Осипчук Александр Александрович, Кривоусова",
               "lessons": [
                 {
-                  "id": 262,
-                  "uid": "lesson-468553c9bd0f6c04",
-                  "name": "ЛПЗ МДК.02.02 Испытания модели элементов систем автоматизации в реальных условиях и их оптимизация",
+                  "id": 267,
+                  "uid": "lesson-2d9963a6c7734dbc",
+                  "name": "ЛПЗ МДК.03.01 Планирование материально-технического обеспечения работ по монтажу, наладке и техническому обслуживанию систем и средств автоматизации",
                   "teacher_id": 42,
                   "subgroup": 27,
                   "is_lab": true,
@@ -3591,12 +3591,12 @@
             {
               "slot": 7,
               "time": "7 пара (17:00-18:10)",
-              "text": "ЛПЗ МДК.03.01 Планирование материально-технического обеспечения работ по монтажу, наладке и техническому обслуживанию систем и средств автоматизации — 2 п/г, Осипчук Александр Александрович, Кривоусова",
+              "text": "ЛПЗ МДК.02.02 Испытания модели элементов систем автоматизации в реальных условиях и их оптимизация — 2 п/г, Осипчук Александр Александрович, Кривоусова",
               "lessons": [
                 {
-                  "id": 267,
-                  "uid": "lesson-2d9963a6c7734dbc",
-                  "name": "ЛПЗ МДК.03.01 Планирование материально-технического обеспечения работ по монтажу, наладке и техническому обслуживанию систем и средств автоматизации",
+                  "id": 262,
+                  "uid": "lesson-468553c9bd0f6c04",
+                  "name": "ЛПЗ МДК.02.02 Испытания модели элементов систем автоматизации в реальных условиях и их оптимизация",
                   "teacher_id": 42,
                   "subgroup": 27,
                   "is_lab": true,
@@ -3759,14 +3759,14 @@
             {
               "slot": 4,
               "time": "4 пара (12:55-14:10)",
-              "text": "Иностранный язык в профессиональной деятельности — 1 п/г, Синельникова Елена Владимировна, Кривоусова",
+              "text": "Иностранный язык в профессиональной деятельности — 2 п/г, Синельникова Елена Владимировна, Кривоусова",
               "lessons": [
                 {
-                  "id": 282,
-                  "uid": "lesson-c370107692e30bca",
+                  "id": 283,
+                  "uid": "lesson-02c43126ec63d343",
                   "name": "Иностранный язык в профессиональной деятельности",
                   "teacher_id": 30,
-                  "subgroup": 28,
+                  "subgroup": 29,
                   "is_lab": false,
                   "is_block": false,
                   "consecutive_pairs": 1,
@@ -3875,14 +3875,14 @@
             {
               "slot": 7,
               "time": "7 пара (17:00-18:10)",
-              "text": "Иностранный язык в профессиональной деятельности — 2 п/г, Синельникова Елена Владимировна, Кривоусова",
+              "text": "Иностранный язык в профессиональной деятельности — 1 п/г, Синельникова Елена Владимировна, Кривоусова",
               "lessons": [
                 {
-                  "id": 283,
-                  "uid": "lesson-02c43126ec63d343",
+                  "id": 282,
+                  "uid": "lesson-c370107692e30bca",
                   "name": "Иностранный язык в профессиональной деятельности",
                   "teacher_id": 30,
-                  "subgroup": 29,
+                  "subgroup": 28,
                   "is_lab": false,
                   "is_block": false,
                   "consecutive_pairs": 1,
@@ -4270,21 +4270,21 @@
             {
               "slot": 1,
               "time": "1 пара (08:30-09:45)",
-              "text": "МДК.01.01 Металлургия цветных металлов — вся группа, Попова Татьяна Вильевна, Кривоусова",
+              "text": "Основы предпринимательской деятельности — вся группа, Елагина Ольга Александровна, Кривоусова",
               "lessons": [
                 {
-                  "id": 337,
-                  "uid": "lesson-f3a1eb2a1498dc76",
-                  "name": "МДК.01.01 Металлургия цветных металлов",
-                  "teacher_id": 43,
+                  "id": 335,
+                  "uid": "lesson-50698330984068ef",
+                  "name": "Основы предпринимательской деятельности",
+                  "teacher_id": 45,
                   "subgroup": -1,
                   "is_lab": false,
                   "is_block": false,
                   "consecutive_pairs": 1,
                   "avoid_lunch_split": false,
                   "week_parity": "all",
-                  "room_id": 57,
-                  "room_name": "65",
+                  "room_id": 25,
+                  "room_name": "50",
                   "room_type": 0,
                   "room_substituted": false,
                   "requested_room_id": null,
@@ -4322,21 +4322,21 @@
             {
               "slot": 3,
               "time": "3 пара (11:30-12:45)",
-              "text": "Основы предпринимательской деятельности — вся группа, Елагина Ольга Александровна, Кривоусова",
+              "text": "МДК.01.01 Металлургия цветных металлов — вся группа, Попова Татьяна Вильевна, Кривоусова",
               "lessons": [
                 {
-                  "id": 335,
-                  "uid": "lesson-50698330984068ef",
-                  "name": "Основы предпринимательской деятельности",
-                  "teacher_id": 45,
+                  "id": 337,
+                  "uid": "lesson-f3a1eb2a1498dc76",
+                  "name": "МДК.01.01 Металлургия цветных металлов",
+                  "teacher_id": 43,
                   "subgroup": -1,
                   "is_lab": false,
                   "is_block": false,
                   "consecutive_pairs": 1,
                   "avoid_lunch_split": false,
                   "week_parity": "all",
-                  "room_id": 25,
-                  "room_name": "50",
+                  "room_id": 57,
+                  "room_name": "65",
                   "room_type": 0,
                   "room_substituted": false,
                   "requested_room_id": null,
@@ -4476,32 +4476,6 @@
             {
               "slot": 1,
               "time": "1 пара (08:30-09:45)",
-              "text": "Физическая культура — вся группа, Потапова Регина Александровна, Лесная",
-              "lessons": [
-                {
-                  "id": 355,
-                  "uid": "lesson-5e2dbe623ff4e0a2",
-                  "name": "Физическая культура",
-                  "teacher_id": 8,
-                  "subgroup": -1,
-                  "is_lab": false,
-                  "is_block": false,
-                  "consecutive_pairs": 1,
-                  "avoid_lunch_split": false,
-                  "week_parity": "all",
-                  "room_id": 42,
-                  "room_name": "330",
-                  "room_type": 0,
-                  "room_substituted": false,
-                  "requested_room_id": null,
-                  "requested_room_name": null,
-                  "room_substitution_reason": null
-                }
-              ]
-            },
-            {
-              "slot": 2,
-              "time": "2 пара (09:55-11:10)",
               "text": "Математика — вся группа, Нифонтова Ирина Геннадьевна, Лесная",
               "lessons": [
                 {
@@ -4526,23 +4500,49 @@
               ]
             },
             {
-              "slot": 3,
-              "time": "3 пара (11:30-12:45)",
-              "text": "Физическая и коллоидная химия — вся группа, Альшаева Алина Павловна, Лесная",
+              "slot": 2,
+              "time": "2 пара (09:55-11:10)",
+              "text": "Физическая культура — вся группа, Потапова Регина Александровна, Лесная",
               "lessons": [
                 {
-                  "id": 360,
-                  "uid": "lesson-5b3476d2fcabf463",
-                  "name": "Физическая и коллоидная химия",
-                  "teacher_id": 48,
+                  "id": 355,
+                  "uid": "lesson-5e2dbe623ff4e0a2",
+                  "name": "Физическая культура",
+                  "teacher_id": 8,
                   "subgroup": -1,
                   "is_lab": false,
                   "is_block": false,
                   "consecutive_pairs": 1,
                   "avoid_lunch_split": false,
                   "week_parity": "all",
-                  "room_id": 39,
-                  "room_name": "319",
+                  "room_id": 42,
+                  "room_name": "330",
+                  "room_type": 0,
+                  "room_substituted": false,
+                  "requested_room_id": null,
+                  "requested_room_name": null,
+                  "room_substitution_reason": null
+                }
+              ]
+            },
+            {
+              "slot": 3,
+              "time": "3 пара (11:30-12:45)",
+              "text": "География — вся группа, Кропотова Анастасия Андреевна, Лесная",
+              "lessons": [
+                {
+                  "id": 351,
+                  "uid": "lesson-ccc6d1bc1c6c5d59",
+                  "name": "География",
+                  "teacher_id": 15,
+                  "subgroup": -1,
+                  "is_lab": false,
+                  "is_block": false,
+                  "consecutive_pairs": 1,
+                  "avoid_lunch_split": false,
+                  "week_parity": "all",
+                  "room_id": 33,
+                  "room_name": "209",
                   "room_type": 0,
                   "room_substituted": false,
                   "requested_room_id": null,
@@ -4554,13 +4554,13 @@
             {
               "slot": 4,
               "time": "4 пара (12:55-14:10)",
-              "text": "ЛПЗ МДК.04.01 Выполнение работ по профессии лаборант химического анализа — 1 п/г, Кальчевская Наталья Владимировна, Лесная",
+              "text": "ЛПЗ МДК.04.01 Выполнение работ по профессии лаборант химического анализа — 1 п/г, Рахматулина Наталья Владимировна, Лесная",
               "lessons": [
                 {
                   "id": 365,
                   "uid": "lesson-33ae7e612ea4effb",
                   "name": "ЛПЗ МДК.04.01 Выполнение работ по профессии лаборант химического анализа",
-                  "teacher_id": 49,
+                  "teacher_id": 81,
                   "subgroup": 34,
                   "is_lab": true,
                   "is_block": false,
@@ -4580,13 +4580,13 @@
             {
               "slot": 5,
               "time": "5 пара (14:20-15:30)",
-              "text": "ЛПЗ МДК.04.01 Выполнение работ по профессии лаборант химического анализа — 1 п/г, Кальчевская Наталья Владимировна, Лесная",
+              "text": "ЛПЗ МДК.04.01 Выполнение работ по профессии лаборант химического анализа — 1 п/г, Рахматулина Наталья Владимировна, Лесная",
               "lessons": [
                 {
                   "id": 365,
                   "uid": "lesson-33ae7e612ea4effb",
                   "name": "ЛПЗ МДК.04.01 Выполнение работ по профессии лаборант химического анализа",
-                  "teacher_id": 49,
+                  "teacher_id": 81,
                   "subgroup": 34,
                   "is_lab": true,
                   "is_block": false,
@@ -5087,58 +5087,24 @@
             {
               "slot": 1,
               "time": "1 пара (08:30-09:45)",
-              "text": "Иностранный язык в профессиональной деятельности — 2 п/г, Ермолина Ирина Павловна, Лесная",
-              "lessons": [
-                {
-                  "id": 395,
-                  "uid": "lesson-1a52d30d117a24e8",
-                  "name": "Иностранный язык в профессиональной деятельности",
-                  "teacher_id": 27,
-                  "subgroup": 39,
-                  "is_lab": false,
-                  "is_block": false,
-                  "consecutive_pairs": 1,
-                  "avoid_lunch_split": false,
-                  "week_parity": "all",
-                  "room_id": 41,
-                  "room_name": "324",
-                  "room_type": 0,
-                  "room_substituted": false,
-                  "requested_room_id": null,
-                  "requested_room_name": null,
-                  "room_substitution_reason": null
-                }
-              ]
+              "text": "-",
+              "lessons": []
             },
             {
               "slot": 2,
               "time": "2 пара (09:55-11:10)",
-              "text": "Физическая культура — вся группа, Потапова Регина Александровна, Лесная",
-              "lessons": [
-                {
-                  "id": 396,
-                  "uid": "lesson-3b860196a7e16125",
-                  "name": "Физическая культура",
-                  "teacher_id": 8,
-                  "subgroup": -1,
-                  "is_lab": false,
-                  "is_block": false,
-                  "consecutive_pairs": 1,
-                  "avoid_lunch_split": false,
-                  "week_parity": "all",
-                  "room_id": 42,
-                  "room_name": "330",
-                  "room_type": 0,
-                  "room_substituted": false,
-                  "requested_room_id": null,
-                  "requested_room_name": null,
-                  "room_substitution_reason": null
-                }
-              ]
+              "text": "-",
+              "lessons": []
             },
             {
               "slot": 3,
               "time": "3 пара (11:30-12:45)",
+              "text": "-",
+              "lessons": []
+            },
+            {
+              "slot": 4,
+              "time": "4 пара (12:55-14:10)",
               "text": "Иностранный язык в профессиональной деятельности — 1 п/г, Ермолина Ирина Павловна, Лесная",
               "lessons": [
                 {
@@ -5163,22 +5129,56 @@
               ]
             },
             {
-              "slot": 4,
-              "time": "4 пара (12:55-14:10)",
-              "text": "-",
-              "lessons": []
-            },
-            {
               "slot": 5,
               "time": "5 пара (14:20-15:30)",
-              "text": "-",
-              "lessons": []
+              "text": "Физическая культура — вся группа, Потапова Регина Александровна, Лесная",
+              "lessons": [
+                {
+                  "id": 396,
+                  "uid": "lesson-3b860196a7e16125",
+                  "name": "Физическая культура",
+                  "teacher_id": 8,
+                  "subgroup": -1,
+                  "is_lab": false,
+                  "is_block": false,
+                  "consecutive_pairs": 1,
+                  "avoid_lunch_split": false,
+                  "week_parity": "all",
+                  "room_id": 42,
+                  "room_name": "330",
+                  "room_type": 0,
+                  "room_substituted": false,
+                  "requested_room_id": null,
+                  "requested_room_name": null,
+                  "room_substitution_reason": null
+                }
+              ]
             },
             {
               "slot": 6,
               "time": "6 пара (15:40-16:50)",
-              "text": "-",
-              "lessons": []
+              "text": "Иностранный язык в профессиональной деятельности — 2 п/г, Ермолина Ирина Павловна, Лесная",
+              "lessons": [
+                {
+                  "id": 395,
+                  "uid": "lesson-1a52d30d117a24e8",
+                  "name": "Иностранный язык в профессиональной деятельности",
+                  "teacher_id": 27,
+                  "subgroup": 39,
+                  "is_lab": false,
+                  "is_block": false,
+                  "consecutive_pairs": 1,
+                  "avoid_lunch_split": false,
+                  "week_parity": "all",
+                  "room_id": 41,
+                  "room_name": "324",
+                  "room_type": 0,
+                  "room_substituted": false,
+                  "requested_room_id": null,
+                  "requested_room_name": null,
+                  "room_substitution_reason": null
+                }
+              ]
             },
             {
               "slot": 7,
@@ -5359,8 +5359,28 @@
             {
               "slot": 2,
               "time": "2 пара (09:55-11:10)",
-              "text": "-",
-              "lessons": []
+              "text": "ЛПЗ МДК.02.02 Разработка документации по эксплуатации электрического и электромеханического оборудования — 2 п/г, Кошелев Дмитрий Александрович, Лесная",
+              "lessons": [
+                {
+                  "id": 421,
+                  "uid": "lesson-c548081121938a4c",
+                  "name": "ЛПЗ МДК.02.02 Разработка документации по эксплуатации электрического и электромеханического оборудования",
+                  "teacher_id": 51,
+                  "subgroup": 41,
+                  "is_lab": true,
+                  "is_block": false,
+                  "consecutive_pairs": 1,
+                  "avoid_lunch_split": false,
+                  "week_parity": "all",
+                  "room_id": 29,
+                  "room_name": "201",
+                  "room_type": 0,
+                  "room_substituted": false,
+                  "requested_room_id": null,
+                  "requested_room_name": null,
+                  "room_substitution_reason": null
+                }
+              ]
             },
             {
               "slot": 3,
@@ -5378,8 +5398,8 @@
                   "consecutive_pairs": 1,
                   "avoid_lunch_split": false,
                   "week_parity": "all",
-                  "room_id": 46,
-                  "room_name": "409",
+                  "room_id": 29,
+                  "room_name": "201",
                   "room_type": 0,
                   "room_substituted": false,
                   "requested_room_id": null,
@@ -5391,32 +5411,6 @@
             {
               "slot": 4,
               "time": "4 пара (12:55-14:10)",
-              "text": "ЛПЗ МДК.02.02 Разработка документации по эксплуатации электрического и электромеханического оборудования — 2 п/г, Кошелев Дмитрий Александрович, Лесная",
-              "lessons": [
-                {
-                  "id": 421,
-                  "uid": "lesson-c548081121938a4c",
-                  "name": "ЛПЗ МДК.02.02 Разработка документации по эксплуатации электрического и электромеханического оборудования",
-                  "teacher_id": 51,
-                  "subgroup": 41,
-                  "is_lab": true,
-                  "is_block": false,
-                  "consecutive_pairs": 1,
-                  "avoid_lunch_split": false,
-                  "week_parity": "all",
-                  "room_id": 46,
-                  "room_name": "409",
-                  "room_type": 0,
-                  "room_substituted": false,
-                  "requested_room_id": null,
-                  "requested_room_name": null,
-                  "room_substitution_reason": null
-                }
-              ]
-            },
-            {
-              "slot": 5,
-              "time": "5 пара (14:20-15:30)",
               "text": "Физическая культура — вся группа, Потапова Регина Александровна, Лесная",
               "lessons": [
                 {
@@ -5441,8 +5435,8 @@
               ]
             },
             {
-              "slot": 6,
-              "time": "6 пара (15:40-16:50)",
+              "slot": 5,
+              "time": "5 пара (14:20-15:30)",
               "text": "ЛПЗ МДК.02.02 Разработка документации по эксплуатации электрического и электромеханического оборудования — 1 п/г, Кошелев Дмитрий Александрович, Лесная",
               "lessons": [
                 {
@@ -5456,8 +5450,8 @@
                   "consecutive_pairs": 1,
                   "avoid_lunch_split": false,
                   "week_parity": "all",
-                  "room_id": 46,
-                  "room_name": "409",
+                  "room_id": 29,
+                  "room_name": "201",
                   "room_type": 0,
                   "room_substituted": false,
                   "requested_room_id": null,
@@ -5465,6 +5459,12 @@
                   "room_substitution_reason": null
                 }
               ]
+            },
+            {
+              "slot": 6,
+              "time": "6 пара (15:40-16:50)",
+              "text": "-",
+              "lessons": []
             },
             {
               "slot": 7,
@@ -5864,24 +5864,6 @@
             {
               "slot": 1,
               "time": "1 пара (08:30-09:45)",
-              "text": "-",
-              "lessons": []
-            },
-            {
-              "slot": 2,
-              "time": "2 пара (09:55-11:10)",
-              "text": "-",
-              "lessons": []
-            },
-            {
-              "slot": 3,
-              "time": "3 пара (11:30-12:45)",
-              "text": "-",
-              "lessons": []
-            },
-            {
-              "slot": 4,
-              "time": "4 пара (12:55-14:10)",
               "text": "История — вся группа, Лучинин Александр Васильевич, Лесная",
               "lessons": [
                 {
@@ -5906,8 +5888,8 @@
               ]
             },
             {
-              "slot": 5,
-              "time": "5 пара (14:20-15:30)",
+              "slot": 2,
+              "time": "2 пара (09:55-11:10)",
               "text": "Химия — вся группа, Альшаева Алина Павловна, Лесная",
               "lessons": [
                 {
@@ -5932,8 +5914,8 @@
               ]
             },
             {
-              "slot": 6,
-              "time": "6 пара (15:40-16:50)",
+              "slot": 3,
+              "time": "3 пара (11:30-12:45)",
               "text": "Химия — вся группа, Альшаева Алина Павловна, Лесная",
               "lessons": [
                 {
@@ -5956,6 +5938,24 @@
                   "room_substitution_reason": null
                 }
               ]
+            },
+            {
+              "slot": 4,
+              "time": "4 пара (12:55-14:10)",
+              "text": "-",
+              "lessons": []
+            },
+            {
+              "slot": 5,
+              "time": "5 пара (14:20-15:30)",
+              "text": "-",
+              "lessons": []
+            },
+            {
+              "slot": 6,
+              "time": "6 пара (15:40-16:50)",
+              "text": "-",
+              "lessons": []
             },
             {
               "slot": 7,
@@ -6110,18 +6110,32 @@
             {
               "slot": 1,
               "time": "1 пара (08:30-09:45)",
-              "text": "-",
-              "lessons": []
+              "text": "Физическая культура — вся группа, Потапова Регина Александровна, Лесная",
+              "lessons": [
+                {
+                  "id": 489,
+                  "uid": "lesson-67b6f56e73d95f2c",
+                  "name": "Физическая культура",
+                  "teacher_id": 8,
+                  "subgroup": -1,
+                  "is_lab": false,
+                  "is_block": false,
+                  "consecutive_pairs": 1,
+                  "avoid_lunch_split": false,
+                  "week_parity": "all",
+                  "room_id": 42,
+                  "room_name": "330",
+                  "room_type": 0,
+                  "room_substituted": false,
+                  "requested_room_id": null,
+                  "requested_room_name": null,
+                  "room_substitution_reason": null
+                }
+              ]
             },
             {
               "slot": 2,
               "time": "2 пара (09:55-11:10)",
-              "text": "-",
-              "lessons": []
-            },
-            {
-              "slot": 3,
-              "time": "3 пара (11:30-12:45)",
               "text": "Эффективное поведение на рынке труда — вся группа, Кропотова Анастасия Андреевна, Лесная",
               "lessons": [
                 {
@@ -6146,30 +6160,16 @@
               ]
             },
             {
+              "slot": 3,
+              "time": "3 пара (11:30-12:45)",
+              "text": "-",
+              "lessons": []
+            },
+            {
               "slot": 4,
               "time": "4 пара (12:55-14:10)",
-              "text": "Физическая культура — вся группа, Потапова Регина Александровна, Лесная",
-              "lessons": [
-                {
-                  "id": 489,
-                  "uid": "lesson-67b6f56e73d95f2c",
-                  "name": "Физическая культура",
-                  "teacher_id": 8,
-                  "subgroup": -1,
-                  "is_lab": false,
-                  "is_block": false,
-                  "consecutive_pairs": 1,
-                  "avoid_lunch_split": false,
-                  "week_parity": "all",
-                  "room_id": 42,
-                  "room_name": "330",
-                  "room_type": 0,
-                  "room_substituted": false,
-                  "requested_room_id": null,
-                  "requested_room_name": null,
-                  "room_substitution_reason": null
-                }
-              ]
+              "text": "-",
+              "lessons": []
             },
             {
               "slot": 5,
@@ -6355,32 +6355,24 @@
             {
               "slot": 1,
               "time": "1 пара (08:30-09:45)",
-              "text": "Охрана труда — вся группа, Костарева Наталья Викторовна, Лесная",
-              "lessons": [
-                {
-                  "id": 524,
-                  "uid": "lesson-421c06b347a5a12a",
-                  "name": "Охрана труда",
-                  "teacher_id": 13,
-                  "subgroup": -1,
-                  "is_lab": false,
-                  "is_block": false,
-                  "consecutive_pairs": 1,
-                  "avoid_lunch_split": false,
-                  "week_parity": "all",
-                  "room_id": 38,
-                  "room_name": "318",
-                  "room_type": 0,
-                  "room_substituted": false,
-                  "requested_room_id": null,
-                  "requested_room_name": null,
-                  "room_substitution_reason": null
-                }
-              ]
+              "text": "-",
+              "lessons": []
             },
             {
               "slot": 2,
               "time": "2 пара (09:55-11:10)",
+              "text": "-",
+              "lessons": []
+            },
+            {
+              "slot": 3,
+              "time": "3 пара (11:30-12:45)",
+              "text": "-",
+              "lessons": []
+            },
+            {
+              "slot": 4,
+              "time": "4 пара (12:55-14:10)",
               "text": "Физическая культура — вся группа, Нуров Мирзо Нуралиевич, Лесная",
               "lessons": [
                 {
@@ -6405,23 +6397,23 @@
               ]
             },
             {
-              "slot": 3,
-              "time": "3 пара (11:30-12:45)",
-              "text": "Материаловедение — вся группа, Лимонова Евгения Николаевна, Лесная",
+              "slot": 5,
+              "time": "5 пара (14:20-15:30)",
+              "text": "Материаловедение — вся группа, Ахметов Артур Фанависович, Лесная",
               "lessons": [
                 {
                   "id": 528,
                   "uid": "lesson-e80b70e1309e5007",
                   "name": "Материаловедение",
-                  "teacher_id": 55,
+                  "teacher_id": 56,
                   "subgroup": -1,
                   "is_lab": false,
                   "is_block": false,
                   "consecutive_pairs": 1,
                   "avoid_lunch_split": false,
                   "week_parity": "all",
-                  "room_id": 44,
-                  "room_name": "405",
+                  "room_id": 31,
+                  "room_name": "205",
                   "room_type": 0,
                   "room_substituted": false,
                   "requested_room_id": null,
@@ -6431,8 +6423,34 @@
               ]
             },
             {
-              "slot": 4,
-              "time": "4 пара (12:55-14:10)",
+              "slot": 6,
+              "time": "6 пара (15:40-16:50)",
+              "text": "Охрана труда — вся группа, Костарева Наталья Викторовна, Лесная",
+              "lessons": [
+                {
+                  "id": 524,
+                  "uid": "lesson-421c06b347a5a12a",
+                  "name": "Охрана труда",
+                  "teacher_id": 13,
+                  "subgroup": -1,
+                  "is_lab": false,
+                  "is_block": false,
+                  "consecutive_pairs": 1,
+                  "avoid_lunch_split": false,
+                  "week_parity": "all",
+                  "room_id": 38,
+                  "room_name": "318",
+                  "room_type": 0,
+                  "room_substituted": false,
+                  "requested_room_id": null,
+                  "requested_room_name": null,
+                  "room_substitution_reason": null
+                }
+              ]
+            },
+            {
+              "slot": 7,
+              "time": "7 пара (17:00-18:10)",
               "text": "Иностранный язык в профессиональной деятельности — 1 п/г, Ермолина Ирина Павловна, Лесная",
               "lessons": [
                 {
@@ -6455,24 +6473,6 @@
                   "room_substitution_reason": null
                 }
               ]
-            },
-            {
-              "slot": 5,
-              "time": "5 пара (14:20-15:30)",
-              "text": "-",
-              "lessons": []
-            },
-            {
-              "slot": 6,
-              "time": "6 пара (15:40-16:50)",
-              "text": "-",
-              "lessons": []
-            },
-            {
-              "slot": 7,
-              "time": "7 пара (17:00-18:10)",
-              "text": "-",
-              "lessons": []
             }
           ]
         }
@@ -6601,14 +6601,14 @@
             {
               "slot": 1,
               "time": "1 пара (08:30-09:45)",
-              "text": "ЛПЗ МДК.06.02 Технология ручной дуговой сварки — 1 п/г, Лимонова Евгения Николаевна, Лесная",
+              "text": "ЛПЗ МДК.06.02 Технология ручной дуговой сварки — 2 п/г, Лимонова Евгения Николаевна, Лесная",
               "lessons": [
                 {
-                  "id": 567,
-                  "uid": "lesson-3d43059e98f3ca77",
+                  "id": 568,
+                  "uid": "lesson-20cb85a9a131cd2f",
                   "name": "ЛПЗ МДК.06.02 Технология ручной дуговой сварки",
                   "teacher_id": 55,
-                  "subgroup": 50,
+                  "subgroup": 51,
                   "is_lab": true,
                   "is_block": false,
                   "consecutive_pairs": 2,
@@ -6627,14 +6627,14 @@
             {
               "slot": 2,
               "time": "2 пара (09:55-11:10)",
-              "text": "ЛПЗ МДК.06.02 Технология ручной дуговой сварки — 1 п/г, Лимонова Евгения Николаевна, Лесная",
+              "text": "ЛПЗ МДК.06.02 Технология ручной дуговой сварки — 2 п/г, Лимонова Евгения Николаевна, Лесная",
               "lessons": [
                 {
-                  "id": 567,
-                  "uid": "lesson-3d43059e98f3ca77",
+                  "id": 568,
+                  "uid": "lesson-20cb85a9a131cd2f",
                   "name": "ЛПЗ МДК.06.02 Технология ручной дуговой сварки",
                   "teacher_id": 55,
-                  "subgroup": 50,
+                  "subgroup": 51,
                   "is_lab": true,
                   "is_block": false,
                   "consecutive_pairs": 2,
@@ -6679,14 +6679,14 @@
             {
               "slot": 4,
               "time": "4 пара (12:55-14:10)",
-              "text": "ЛПЗ МДК.06.02 Технология ручной дуговой сварки — 2 п/г, Лимонова Евгения Николаевна, Лесная",
+              "text": "ЛПЗ МДК.06.02 Технология ручной дуговой сварки — 1 п/г, Лимонова Евгения Николаевна, Лесная",
               "lessons": [
                 {
-                  "id": 568,
-                  "uid": "lesson-20cb85a9a131cd2f",
+                  "id": 567,
+                  "uid": "lesson-3d43059e98f3ca77",
                   "name": "ЛПЗ МДК.06.02 Технология ручной дуговой сварки",
                   "teacher_id": 55,
-                  "subgroup": 51,
+                  "subgroup": 50,
                   "is_lab": true,
                   "is_block": false,
                   "consecutive_pairs": 2,
@@ -6705,14 +6705,14 @@
             {
               "slot": 5,
               "time": "5 пара (14:20-15:30)",
-              "text": "ЛПЗ МДК.06.02 Технология ручной дуговой сварки — 2 п/г, Лимонова Евгения Николаевна, Лесная",
+              "text": "ЛПЗ МДК.06.02 Технология ручной дуговой сварки — 1 п/г, Лимонова Евгения Николаевна, Лесная",
               "lessons": [
                 {
-                  "id": 568,
-                  "uid": "lesson-20cb85a9a131cd2f",
+                  "id": 567,
+                  "uid": "lesson-3d43059e98f3ca77",
                   "name": "ЛПЗ МДК.06.02 Технология ручной дуговой сварки",
                   "teacher_id": 55,
-                  "subgroup": 51,
+                  "subgroup": 50,
                   "is_lab": true,
                   "is_block": false,
                   "consecutive_pairs": 2,
@@ -6905,6 +6905,12 @@
             {
               "slot": 4,
               "time": "4 пара (12:55-14:10)",
+              "text": "-",
+              "lessons": []
+            },
+            {
+              "slot": 5,
+              "time": "5 пара (14:20-15:30)",
               "text": "Физическая культура — вся группа, Нуров Мирзо Нуралиевич, Лесная",
               "lessons": [
                 {
@@ -6929,8 +6935,8 @@
               ]
             },
             {
-              "slot": 5,
-              "time": "5 пара (14:20-15:30)",
+              "slot": 6,
+              "time": "6 пара (15:40-16:50)",
               "text": "КП МДК.01.01 Технология сварочных работ — вся группа, Ахметов Артур Фанависович, Лесная",
               "lessons": [
                 {
@@ -6953,12 +6959,6 @@
                   "room_substitution_reason": null
                 }
               ]
-            },
-            {
-              "slot": 6,
-              "time": "6 пара (15:40-16:50)",
-              "text": "-",
-              "lessons": []
             },
             {
               "slot": 7,
@@ -7359,12 +7359,12 @@
             {
               "slot": 1,
               "time": "1 пара (08:30-09:45)",
-              "text": "МДК.04.01 Основы организации и планирования производственных работ на сварочном участке — вся группа, Билалова Рауиза Галлинуровна, Лесная",
+              "text": "МДК.02.01 Основы расчѐта и проектирования сварных конструкций — вся группа, Билалова Рауиза Галлинуровна, Лесная",
               "lessons": [
                 {
-                  "id": 641,
-                  "uid": "lesson-3ed59571f999d6cf",
-                  "name": "МДК.04.01 Основы организации и планирования производственных работ на сварочном участке",
+                  "id": 629,
+                  "uid": "lesson-bdb3e53bdeca8311",
+                  "name": "МДК.02.01 Основы расчѐта и проектирования сварных конструкций",
                   "teacher_id": 58,
                   "subgroup": -1,
                   "is_lab": false,
@@ -7385,12 +7385,12 @@
             {
               "slot": 2,
               "time": "2 пара (09:55-11:10)",
-              "text": "МДК.02.01 Основы расчѐта и проектирования сварных конструкций — вся группа, Билалова Рауиза Галлинуровна, Лесная",
+              "text": "МДК.04.01 Основы организации и планирования производственных работ на сварочном участке — вся группа, Билалова Рауиза Галлинуровна, Лесная",
               "lessons": [
                 {
-                  "id": 629,
-                  "uid": "lesson-bdb3e53bdeca8311",
-                  "name": "МДК.02.01 Основы расчѐта и проектирования сварных конструкций",
+                  "id": 641,
+                  "uid": "lesson-3ed59571f999d6cf",
+                  "name": "МДК.04.01 Основы организации и планирования производственных работ на сварочном участке",
                   "teacher_id": 58,
                   "subgroup": -1,
                   "is_lab": false,
@@ -7486,6 +7486,56 @@
       "group_index": 29,
       "group_name": "СП-4612п",
       "days": [
+        {
+          "day_index": 0,
+          "date": "04.09.2026",
+          "date_iso": "2026-09-04",
+          "weekday": "ПТ",
+          "slots": [
+            {
+              "slot": 1,
+              "time": "1 пара (08:30-09:55)",
+              "text": "-",
+              "lessons": []
+            },
+            {
+              "slot": 2,
+              "time": "2 пара (10:05-11:30)",
+              "text": "-",
+              "lessons": []
+            },
+            {
+              "slot": 3,
+              "time": "3 пара (12:25-13:50)",
+              "text": "-",
+              "lessons": []
+            },
+            {
+              "slot": 4,
+              "time": "4 пара (14:00-15:25)",
+              "text": "-",
+              "lessons": []
+            },
+            {
+              "slot": 5,
+              "time": "5 пара (15:35-16:55)",
+              "text": "-",
+              "lessons": []
+            },
+            {
+              "slot": 6,
+              "time": "6 пара (17:05-18:25)",
+              "text": "-",
+              "lessons": []
+            },
+            {
+              "slot": 7,
+              "time": "7 пара (18:35-19:55)",
+              "text": "-",
+              "lessons": []
+            }
+          ]
+        },
         {
           "date": "05.09.2026",
           "date_iso": "2026-09-05",
@@ -7701,65 +7751,8 @@
             {
               "slot": 1,
               "time": "1 пара (08:30-09:45)",
-              "text": "-",
-              "lessons": []
-            },
-            {
-              "slot": 2,
-              "time": "2 пара (09:55-11:10)",
-              "text": "-",
-              "lessons": []
-            },
-            {
-              "slot": 3,
-              "time": "3 пара (11:30-12:45)",
-              "text": "ЛПЗ ВМДК.04.01 Слесарное дело и технические измерения — 1 п/г, Самцов Андрей Евгеньевич, Лесная",
+              "text": "ЛПЗ ВМДК.04.01 Слесарное дело и технические измерения — 2 п/г, Тимеров Валерий Вагизович, Лесная",
               "lessons": [
-                {
-                  "id": 670,
-                  "uid": "lesson-2892d24cfadc2cfe",
-                  "name": "ЛПЗ ВМДК.04.01 Слесарное дело и технические измерения",
-                  "teacher_id": 59,
-                  "subgroup": 60,
-                  "is_lab": true,
-                  "is_block": false,
-                  "consecutive_pairs": 2,
-                  "avoid_lunch_split": true,
-                  "week_parity": "all",
-                  "room_id": 64,
-                  "room_name": "115-116",
-                  "room_type": 0,
-                  "room_substituted": false,
-                  "requested_room_id": null,
-                  "requested_room_name": null,
-                  "room_substitution_reason": null
-                }
-              ]
-            },
-            {
-              "slot": 4,
-              "time": "4 пара (12:55-14:10)",
-              "text": "ЛПЗ ВМДК.04.01 Слесарное дело и технические измерения — 1 п/г, Самцов Андрей Евгеньевич, Лесная | ЛПЗ ВМДК.04.01 Слесарное дело и технические измерения — 2 п/г, Тимеров Валерий Вагизович, Лесная",
-              "lessons": [
-                {
-                  "id": 670,
-                  "uid": "lesson-2892d24cfadc2cfe",
-                  "name": "ЛПЗ ВМДК.04.01 Слесарное дело и технические измерения",
-                  "teacher_id": 59,
-                  "subgroup": 60,
-                  "is_lab": true,
-                  "is_block": false,
-                  "consecutive_pairs": 2,
-                  "avoid_lunch_split": true,
-                  "week_parity": "all",
-                  "room_id": 64,
-                  "room_name": "115-116",
-                  "room_type": 0,
-                  "room_substituted": false,
-                  "requested_room_id": null,
-                  "requested_room_name": null,
-                  "room_substitution_reason": null
-                },
                 {
                   "id": 671,
                   "uid": "lesson-0a5191c56c9dc532",
@@ -7782,8 +7775,8 @@
               ]
             },
             {
-              "slot": 5,
-              "time": "5 пара (14:20-15:30)",
+              "slot": 2,
+              "time": "2 пара (09:55-11:10)",
               "text": "Иностранный язык в профессиональной деятельности — 1 п/г, Ермолина Ирина Павловна, Лесная | ЛПЗ ВМДК.04.01 Слесарное дело и технические измерения — 2 п/г, Тимеров Валерий Вагизович, Лесная",
               "lessons": [
                 {
@@ -7827,9 +7820,9 @@
               ]
             },
             {
-              "slot": 6,
-              "time": "6 пара (15:40-16:50)",
-              "text": "Иностранный язык в профессиональной деятельности — 2 п/г, Ермолина Ирина Павловна, Лесная",
+              "slot": 3,
+              "time": "3 пара (11:30-12:45)",
+              "text": "Иностранный язык в профессиональной деятельности — 2 п/г, Ермолина Ирина Павловна, Лесная | ЛПЗ ВМДК.04.01 Слесарное дело и технические измерения — 1 п/г, Самцов Андрей Евгеньевич, Лесная",
               "lessons": [
                 {
                   "id": 664,
@@ -7849,8 +7842,65 @@
                   "requested_room_id": null,
                   "requested_room_name": null,
                   "room_substitution_reason": null
+                },
+                {
+                  "id": 670,
+                  "uid": "lesson-2892d24cfadc2cfe",
+                  "name": "ЛПЗ ВМДК.04.01 Слесарное дело и технические измерения",
+                  "teacher_id": 59,
+                  "subgroup": 60,
+                  "is_lab": true,
+                  "is_block": false,
+                  "consecutive_pairs": 2,
+                  "avoid_lunch_split": true,
+                  "week_parity": "all",
+                  "room_id": 64,
+                  "room_name": "115-116",
+                  "room_type": 0,
+                  "room_substituted": false,
+                  "requested_room_id": null,
+                  "requested_room_name": null,
+                  "room_substitution_reason": null
                 }
               ]
+            },
+            {
+              "slot": 4,
+              "time": "4 пара (12:55-14:10)",
+              "text": "ЛПЗ ВМДК.04.01 Слесарное дело и технические измерения — 1 п/г, Самцов Андрей Евгеньевич, Лесная",
+              "lessons": [
+                {
+                  "id": 670,
+                  "uid": "lesson-2892d24cfadc2cfe",
+                  "name": "ЛПЗ ВМДК.04.01 Слесарное дело и технические измерения",
+                  "teacher_id": 59,
+                  "subgroup": 60,
+                  "is_lab": true,
+                  "is_block": false,
+                  "consecutive_pairs": 2,
+                  "avoid_lunch_split": true,
+                  "week_parity": "all",
+                  "room_id": 64,
+                  "room_name": "115-116",
+                  "room_type": 0,
+                  "room_substituted": false,
+                  "requested_room_id": null,
+                  "requested_room_name": null,
+                  "room_substitution_reason": null
+                }
+              ]
+            },
+            {
+              "slot": 5,
+              "time": "5 пара (14:20-15:30)",
+              "text": "-",
+              "lessons": []
+            },
+            {
+              "slot": 6,
+              "time": "6 пара (15:40-16:50)",
+              "text": "-",
+              "lessons": []
             },
             {
               "slot": 7,
@@ -8112,12 +8162,12 @@
                   "consecutive_pairs": 1,
                   "avoid_lunch_split": false,
                   "week_parity": "all",
-                  "room_id": 44,
-                  "room_name": "405",
+                  "room_id": 45,
+                  "room_name": "407",
                   "room_type": 0,
                   "room_substituted": false,
-                  "requested_room_id": 44,
-                  "requested_room_name": "405",
+                  "requested_room_id": null,
+                  "requested_room_name": null,
                   "room_substitution_reason": null
                 }
               ]
@@ -8346,8 +8396,8 @@
                   "consecutive_pairs": 1,
                   "avoid_lunch_split": false,
                   "week_parity": "all",
-                  "room_id": 13,
-                  "room_name": "28",
+                  "room_id": 21,
+                  "room_name": "42",
                   "room_type": 0,
                   "room_substituted": false,
                   "requested_room_id": null,
@@ -8799,20 +8849,80 @@
             {
               "slot": 1,
               "time": "1 пара (08:30-09:45)",
-              "text": "-",
-              "lessons": []
+              "text": "Иностранный язык в профессиональной деятельности — 1 п/г, Давыдова Валентина Алексеевна, Лесная",
+              "lessons": [
+                {
+                  "id": 749,
+                  "uid": "lesson-3a42481f0391ce14",
+                  "name": "Иностранный язык в профессиональной деятельности",
+                  "teacher_id": 4,
+                  "subgroup": 68,
+                  "is_lab": false,
+                  "is_block": false,
+                  "consecutive_pairs": 1,
+                  "avoid_lunch_split": false,
+                  "week_parity": "all",
+                  "room_id": 43,
+                  "room_name": "401",
+                  "room_type": 0,
+                  "room_substituted": false,
+                  "requested_room_id": null,
+                  "requested_room_name": null,
+                  "room_substitution_reason": null
+                }
+              ]
             },
             {
               "slot": 2,
               "time": "2 пара (09:55-11:10)",
-              "text": "-",
-              "lessons": []
+              "text": "Технология машиностроения — вся группа, Саламатина Вера Викторовна, Лесная",
+              "lessons": [
+                {
+                  "id": 756,
+                  "uid": "lesson-11eddd2113230e48",
+                  "name": "Технология машиностроения",
+                  "teacher_id": 61,
+                  "subgroup": -1,
+                  "is_lab": false,
+                  "is_block": false,
+                  "consecutive_pairs": 1,
+                  "avoid_lunch_split": false,
+                  "week_parity": "all",
+                  "room_id": 40,
+                  "room_name": "322",
+                  "room_type": 0,
+                  "room_substituted": false,
+                  "requested_room_id": null,
+                  "requested_room_name": null,
+                  "room_substitution_reason": null
+                }
+              ]
             },
             {
               "slot": 3,
               "time": "3 пара (11:30-12:45)",
-              "text": "-",
-              "lessons": []
+              "text": "ВМДК.07.01 Технология обработки на металлорежущих станках — вся группа, Саламатина Вера Викторовна, Лесная",
+              "lessons": [
+                {
+                  "id": 762,
+                  "uid": "lesson-16a1d9fe5155d7f2",
+                  "name": "ВМДК.07.01 Технология обработки на металлорежущих станках",
+                  "teacher_id": 61,
+                  "subgroup": -1,
+                  "is_lab": false,
+                  "is_block": false,
+                  "consecutive_pairs": 1,
+                  "avoid_lunch_split": false,
+                  "week_parity": "all",
+                  "room_id": 40,
+                  "room_name": "322",
+                  "room_type": 0,
+                  "room_substituted": false,
+                  "requested_room_id": null,
+                  "requested_room_name": null,
+                  "room_substitution_reason": null
+                }
+              ]
             },
             {
               "slot": 4,
@@ -8843,80 +8953,20 @@
             {
               "slot": 5,
               "time": "5 пара (14:20-15:30)",
-              "text": "ВМДК.07.01 Технология обработки на металлорежущих станках — вся группа, Саламатина Вера Викторовна, Лесная",
-              "lessons": [
-                {
-                  "id": 762,
-                  "uid": "lesson-16a1d9fe5155d7f2",
-                  "name": "ВМДК.07.01 Технология обработки на металлорежущих станках",
-                  "teacher_id": 61,
-                  "subgroup": -1,
-                  "is_lab": false,
-                  "is_block": false,
-                  "consecutive_pairs": 1,
-                  "avoid_lunch_split": false,
-                  "week_parity": "all",
-                  "room_id": 40,
-                  "room_name": "322",
-                  "room_type": 0,
-                  "room_substituted": false,
-                  "requested_room_id": null,
-                  "requested_room_name": null,
-                  "room_substitution_reason": null
-                }
-              ]
+              "text": "-",
+              "lessons": []
             },
             {
               "slot": 6,
               "time": "6 пара (15:40-16:50)",
-              "text": "Технология машиностроения — вся группа, Саламатина Вера Викторовна, Лесная",
-              "lessons": [
-                {
-                  "id": 756,
-                  "uid": "lesson-11eddd2113230e48",
-                  "name": "Технология машиностроения",
-                  "teacher_id": 61,
-                  "subgroup": -1,
-                  "is_lab": false,
-                  "is_block": false,
-                  "consecutive_pairs": 1,
-                  "avoid_lunch_split": false,
-                  "week_parity": "all",
-                  "room_id": 40,
-                  "room_name": "322",
-                  "room_type": 0,
-                  "room_substituted": false,
-                  "requested_room_id": null,
-                  "requested_room_name": null,
-                  "room_substitution_reason": null
-                }
-              ]
+              "text": "-",
+              "lessons": []
             },
             {
               "slot": 7,
               "time": "7 пара (17:00-18:10)",
-              "text": "Иностранный язык в профессиональной деятельности — 1 п/г, Давыдова Валентина Алексеевна, Лесная",
-              "lessons": [
-                {
-                  "id": 749,
-                  "uid": "lesson-3a42481f0391ce14",
-                  "name": "Иностранный язык в профессиональной деятельности",
-                  "teacher_id": 4,
-                  "subgroup": 68,
-                  "is_lab": false,
-                  "is_block": false,
-                  "consecutive_pairs": 1,
-                  "avoid_lunch_split": false,
-                  "week_parity": "all",
-                  "room_id": 43,
-                  "room_name": "401",
-                  "room_type": 0,
-                  "room_substituted": false,
-                  "requested_room_id": null,
-                  "requested_room_name": null,
-                  "room_substitution_reason": null
-                }
-              ]
+              "text": "-",
+              "lessons": []
             }
           ]
         }
@@ -9065,32 +9115,30 @@
             {
               "slot": 1,
               "time": "1 пара (08:30-09:45)",
-              "text": "Процессы формообразования и инструменты — вся группа, Саламатина Вера Викторовна, Лесная",
-              "lessons": [
-                {
-                  "id": 773,
-                  "uid": "lesson-37ea5589077313a7",
-                  "name": "Процессы формообразования и инструменты",
-                  "teacher_id": 61,
-                  "subgroup": -1,
-                  "is_lab": false,
-                  "is_block": false,
-                  "consecutive_pairs": 1,
-                  "avoid_lunch_split": false,
-                  "week_parity": "all",
-                  "room_id": 40,
-                  "room_name": "322",
-                  "room_type": 0,
-                  "room_substituted": false,
-                  "requested_room_id": null,
-                  "requested_room_name": null,
-                  "room_substitution_reason": null
-                }
-              ]
+              "text": "-",
+              "lessons": []
             },
             {
               "slot": 2,
               "time": "2 пара (09:55-11:10)",
+              "text": "-",
+              "lessons": []
+            },
+            {
+              "slot": 3,
+              "time": "3 пара (11:30-12:45)",
+              "text": "-",
+              "lessons": []
+            },
+            {
+              "slot": 4,
+              "time": "4 пара (12:55-14:10)",
+              "text": "-",
+              "lessons": []
+            },
+            {
+              "slot": 5,
+              "time": "5 пара (14:20-15:30)",
               "text": "География — вся группа, Кропотова Анастасия Андреевна, Лесная",
               "lessons": [
                 {
@@ -9115,8 +9163,34 @@
               ]
             },
             {
-              "slot": 3,
-              "time": "3 пара (11:30-12:45)",
+              "slot": 6,
+              "time": "6 пара (15:40-16:50)",
+              "text": "Процессы формообразования и инструменты — вся группа, Саламатина Вера Викторовна, Лесная",
+              "lessons": [
+                {
+                  "id": 773,
+                  "uid": "lesson-37ea5589077313a7",
+                  "name": "Процессы формообразования и инструменты",
+                  "teacher_id": 61,
+                  "subgroup": -1,
+                  "is_lab": false,
+                  "is_block": false,
+                  "consecutive_pairs": 1,
+                  "avoid_lunch_split": false,
+                  "week_parity": "all",
+                  "room_id": 40,
+                  "room_name": "322",
+                  "room_type": 0,
+                  "room_substituted": false,
+                  "requested_room_id": null,
+                  "requested_room_name": null,
+                  "room_substitution_reason": null
+                }
+              ]
+            },
+            {
+              "slot": 7,
+              "time": "7 пара (17:00-18:10)",
               "text": "Материаловедение — вся группа, Саламатина Вера Викторовна, Лесная",
               "lessons": [
                 {
@@ -9139,30 +9213,6 @@
                   "room_substitution_reason": null
                 }
               ]
-            },
-            {
-              "slot": 4,
-              "time": "4 пара (12:55-14:10)",
-              "text": "-",
-              "lessons": []
-            },
-            {
-              "slot": 5,
-              "time": "5 пара (14:20-15:30)",
-              "text": "-",
-              "lessons": []
-            },
-            {
-              "slot": 6,
-              "time": "6 пара (15:40-16:50)",
-              "text": "-",
-              "lessons": []
-            },
-            {
-              "slot": 7,
-              "time": "7 пара (17:00-18:10)",
-              "text": "-",
-              "lessons": []
             }
           ]
         }
@@ -9309,24 +9359,6 @@
             {
               "slot": 1,
               "time": "1 пара (08:30-09:45)",
-              "text": "-",
-              "lessons": []
-            },
-            {
-              "slot": 2,
-              "time": "2 пара (09:55-11:10)",
-              "text": "-",
-              "lessons": []
-            },
-            {
-              "slot": 3,
-              "time": "3 пара (11:30-12:45)",
-              "text": "-",
-              "lessons": []
-            },
-            {
-              "slot": 4,
-              "time": "4 пара (12:55-14:10)",
               "text": "ЛПЗ ВМДК.06.02 Технология металлообработки на металлорежущих станках с программным управлением — 1 п/г, Вальдиянов Ян Мансурович, Лесная",
               "lessons": [
                 {
@@ -9351,8 +9383,8 @@
               ]
             },
             {
-              "slot": 5,
-              "time": "5 пара (14:20-15:30)",
+              "slot": 2,
+              "time": "2 пара (09:55-11:10)",
               "text": "Физическая культура — вся группа, Нуров Мирзо Нуралиевич, Лесная",
               "lessons": [
                 {
@@ -9377,8 +9409,8 @@
               ]
             },
             {
-              "slot": 6,
-              "time": "6 пара (15:40-16:50)",
+              "slot": 3,
+              "time": "3 пара (11:30-12:45)",
               "text": "МДК.02.01 Разработка и внедрение управляющих программ изготовления деталей машин — вся группа, Вальдиянов Ян Мансурович, Лесная",
               "lessons": [
                 {
@@ -9403,8 +9435,8 @@
               ]
             },
             {
-              "slot": 7,
-              "time": "7 пара (17:00-18:10)",
+              "slot": 4,
+              "time": "4 пара (12:55-14:10)",
               "text": "ЛПЗ МДК.02.01 Разработка и внедрение управляющих программ изготовления деталей машин — 2 п/г, Вальдиянов Ян Мансурович, Лесная",
               "lessons": [
                 {
@@ -9427,6 +9459,24 @@
                   "room_substitution_reason": null
                 }
               ]
+            },
+            {
+              "slot": 5,
+              "time": "5 пара (14:20-15:30)",
+              "text": "-",
+              "lessons": []
+            },
+            {
+              "slot": 6,
+              "time": "6 пара (15:40-16:50)",
+              "text": "-",
+              "lessons": []
+            },
+            {
+              "slot": 7,
+              "time": "7 пара (17:00-18:10)",
+              "text": "-",
+              "lessons": []
             }
           ]
         }
@@ -9613,32 +9663,30 @@
             {
               "slot": 1,
               "time": "1 пара (08:30-09:45)",
-              "text": "Физическая культура — вся группа, Нуров Мирзо Нуралиевич, Лесная",
-              "lessons": [
-                {
-                  "id": 809,
-                  "uid": "lesson-0065fa2d0a7577e3",
-                  "name": "Физическая культура",
-                  "teacher_id": 34,
-                  "subgroup": -1,
-                  "is_lab": false,
-                  "is_block": false,
-                  "consecutive_pairs": 1,
-                  "avoid_lunch_split": false,
-                  "week_parity": "all",
-                  "room_id": 67,
-                  "room_name": "Спортзал",
-                  "room_type": 0,
-                  "room_substituted": false,
-                  "requested_room_id": null,
-                  "requested_room_name": null,
-                  "room_substitution_reason": null
-                }
-              ]
+              "text": "-",
+              "lessons": []
             },
             {
               "slot": 2,
               "time": "2 пара (09:55-11:10)",
+              "text": "-",
+              "lessons": []
+            },
+            {
+              "slot": 3,
+              "time": "3 пара (11:30-12:45)",
+              "text": "-",
+              "lessons": []
+            },
+            {
+              "slot": 4,
+              "time": "4 пара (12:55-14:10)",
+              "text": "-",
+              "lessons": []
+            },
+            {
+              "slot": 5,
+              "time": "5 пара (14:20-15:30)",
               "text": "Иностранный язык в профессиональной деятельности — 2 п/г, Ермолина Ирина Павловна, Лесная | ЛПЗ МДК.02.01 Разработка и внедрение управляющих программ изготовления деталей машин — 1 п/г, Вальдиянов Ян Мансурович, Лесная",
               "lessons": [
                 {
@@ -9682,8 +9730,34 @@
               ]
             },
             {
-              "slot": 3,
-              "time": "3 пара (11:30-12:45)",
+              "slot": 6,
+              "time": "6 пара (15:40-16:50)",
+              "text": "Физическая культура — вся группа, Нуров Мирзо Нуралиевич, Лесная",
+              "lessons": [
+                {
+                  "id": 809,
+                  "uid": "lesson-0065fa2d0a7577e3",
+                  "name": "Физическая культура",
+                  "teacher_id": 34,
+                  "subgroup": -1,
+                  "is_lab": false,
+                  "is_block": false,
+                  "consecutive_pairs": 1,
+                  "avoid_lunch_split": false,
+                  "week_parity": "all",
+                  "room_id": 67,
+                  "room_name": "Спортзал",
+                  "room_type": 0,
+                  "room_substituted": false,
+                  "requested_room_id": null,
+                  "requested_room_name": null,
+                  "room_substitution_reason": null
+                }
+              ]
+            },
+            {
+              "slot": 7,
+              "time": "7 пара (17:00-18:10)",
               "text": "ЛПЗ МДК.02.01 Разработка и внедрение управляющих программ изготовления деталей машин — 2 п/г, Вальдиянов Ян Мансурович, Лесная",
               "lessons": [
                 {
@@ -9706,30 +9780,6 @@
                   "room_substitution_reason": null
                 }
               ]
-            },
-            {
-              "slot": 4,
-              "time": "4 пара (12:55-14:10)",
-              "text": "-",
-              "lessons": []
-            },
-            {
-              "slot": 5,
-              "time": "5 пара (14:20-15:30)",
-              "text": "-",
-              "lessons": []
-            },
-            {
-              "slot": 6,
-              "time": "6 пара (15:40-16:50)",
-              "text": "-",
-              "lessons": []
-            },
-            {
-              "slot": 7,
-              "time": "7 пара (17:00-18:10)",
-              "text": "-",
-              "lessons": []
             }
           ]
         }
@@ -10084,6 +10134,12 @@
             {
               "slot": 1,
               "time": "1 пара (08:30-09:45)",
+              "text": "-",
+              "lessons": []
+            },
+            {
+              "slot": 2,
+              "time": "2 пара (09:55-11:10)",
               "text": "ЛПЗ МДК.04.01 Контроль, наладка, подналадка и техническое обслуживание сборочного оборудования — 2 п/г, Вальдиянов Ян Мансурович, Лесная",
               "lessons": [
                 {
@@ -10099,32 +10155,6 @@
                   "week_parity": "all",
                   "room_id": 48,
                   "room_name": "413",
-                  "room_type": 0,
-                  "room_substituted": false,
-                  "requested_room_id": null,
-                  "requested_room_name": null,
-                  "room_substitution_reason": null
-                }
-              ]
-            },
-            {
-              "slot": 2,
-              "time": "2 пара (09:55-11:10)",
-              "text": "МДК.04.01 Контроль, наладка, подналадка и техническое обслуживание сборочного оборудования — вся группа, Саламатина Вера Викторовна, Лесная",
-              "lessons": [
-                {
-                  "id": 849,
-                  "uid": "lesson-5f788fa51a1f5e2b",
-                  "name": "МДК.04.01 Контроль, наладка, подналадка и техническое обслуживание сборочного оборудования",
-                  "teacher_id": 61,
-                  "subgroup": -1,
-                  "is_lab": false,
-                  "is_block": false,
-                  "consecutive_pairs": 1,
-                  "avoid_lunch_split": false,
-                  "week_parity": "all",
-                  "room_id": 40,
-                  "room_name": "322",
                   "room_type": 0,
                   "room_substituted": false,
                   "requested_room_id": null,
@@ -10188,6 +10218,32 @@
             {
               "slot": 5,
               "time": "5 пара (14:20-15:30)",
+              "text": "МДК.04.01 Контроль, наладка, подналадка и техническое обслуживание сборочного оборудования — вся группа, Саламатина Вера Викторовна, Лесная",
+              "lessons": [
+                {
+                  "id": 849,
+                  "uid": "lesson-5f788fa51a1f5e2b",
+                  "name": "МДК.04.01 Контроль, наладка, подналадка и техническое обслуживание сборочного оборудования",
+                  "teacher_id": 61,
+                  "subgroup": -1,
+                  "is_lab": false,
+                  "is_block": false,
+                  "consecutive_pairs": 1,
+                  "avoid_lunch_split": false,
+                  "week_parity": "all",
+                  "room_id": 40,
+                  "room_name": "322",
+                  "room_type": 0,
+                  "room_substituted": false,
+                  "requested_room_id": null,
+                  "requested_room_name": null,
+                  "room_substitution_reason": null
+                }
+              ]
+            },
+            {
+              "slot": 6,
+              "time": "6 пара (15:40-16:50)",
               "text": "ЛПЗ МДК.04.01 Контроль, наладка, подналадка и техническое обслуживание сборочного оборудования — 1 п/г, Вальдиянов Ян Мансурович, Лесная",
               "lessons": [
                 {
@@ -10210,12 +10266,6 @@
                   "room_substitution_reason": null
                 }
               ]
-            },
-            {
-              "slot": 6,
-              "time": "6 пара (15:40-16:50)",
-              "text": "-",
-              "lessons": []
             },
             {
               "slot": 7,
@@ -10356,28 +10406,8 @@
             {
               "slot": 2,
               "time": "2 пара (09:55-11:10)",
-              "text": "ЛПЗ МДК.03.01 Внедрение и поддержка компьютерных систем — 2 п/г, Гарбузов Андрей Евгеньевич, Лесная",
-              "lessons": [
-                {
-                  "id": 871,
-                  "uid": "lesson-7f42a791bad8ea76",
-                  "name": "ЛПЗ МДК.03.01 Внедрение и поддержка компьютерных систем",
-                  "teacher_id": 67,
-                  "subgroup": 81,
-                  "is_lab": true,
-                  "is_block": false,
-                  "consecutive_pairs": 1,
-                  "avoid_lunch_split": false,
-                  "week_parity": "all",
-                  "room_id": 49,
-                  "room_name": "411",
-                  "room_type": 0,
-                  "room_substituted": false,
-                  "requested_room_id": null,
-                  "requested_room_name": null,
-                  "room_substitution_reason": null
-                }
-              ]
+              "text": "-",
+              "lessons": []
             },
             {
               "slot": 3,
@@ -10460,8 +10490,28 @@
             {
               "slot": 6,
               "time": "6 пара (15:40-16:50)",
-              "text": "-",
-              "lessons": []
+              "text": "ЛПЗ МДК.03.01 Внедрение и поддержка компьютерных систем — 2 п/г, Гарбузов Андрей Евгеньевич, Лесная",
+              "lessons": [
+                {
+                  "id": 871,
+                  "uid": "lesson-7f42a791bad8ea76",
+                  "name": "ЛПЗ МДК.03.01 Внедрение и поддержка компьютерных систем",
+                  "teacher_id": 67,
+                  "subgroup": 81,
+                  "is_lab": true,
+                  "is_block": false,
+                  "consecutive_pairs": 1,
+                  "avoid_lunch_split": false,
+                  "week_parity": "all",
+                  "room_id": 49,
+                  "room_name": "411",
+                  "room_type": 0,
+                  "room_substituted": false,
+                  "requested_room_id": null,
+                  "requested_room_name": null,
+                  "room_substitution_reason": null
+                }
+              ]
             },
             {
               "slot": 7,
@@ -10596,32 +10646,6 @@
             {
               "slot": 1,
               "time": "1 пара (08:30-09:45)",
-              "text": "Элементы высшей математики — вся группа, Нифонтова Ирина Геннадьевна, Лесная",
-              "lessons": [
-                {
-                  "id": 881,
-                  "uid": "lesson-9f2c9cbabc02601d",
-                  "name": "Элементы высшей математики",
-                  "teacher_id": 17,
-                  "subgroup": -1,
-                  "is_lab": false,
-                  "is_block": false,
-                  "consecutive_pairs": 1,
-                  "avoid_lunch_split": false,
-                  "week_parity": "all",
-                  "room_id": 36,
-                  "room_name": "315",
-                  "room_type": 0,
-                  "room_substituted": false,
-                  "requested_room_id": null,
-                  "requested_room_name": null,
-                  "room_substitution_reason": null
-                }
-              ]
-            },
-            {
-              "slot": 2,
-              "time": "2 пара (09:55-11:10)",
               "text": "Химия — вся группа, Альшаева Алина Павловна, Лесная",
               "lessons": [
                 {
@@ -10637,6 +10661,32 @@
                   "week_parity": "all",
                   "room_id": 39,
                   "room_name": "319",
+                  "room_type": 0,
+                  "room_substituted": false,
+                  "requested_room_id": null,
+                  "requested_room_name": null,
+                  "room_substitution_reason": null
+                }
+              ]
+            },
+            {
+              "slot": 2,
+              "time": "2 пара (09:55-11:10)",
+              "text": "Элементы высшей математики — вся группа, Нифонтова Ирина Геннадьевна, Лесная",
+              "lessons": [
+                {
+                  "id": 881,
+                  "uid": "lesson-9f2c9cbabc02601d",
+                  "name": "Элементы высшей математики",
+                  "teacher_id": 17,
+                  "subgroup": -1,
+                  "is_lab": false,
+                  "is_block": false,
+                  "consecutive_pairs": 1,
+                  "avoid_lunch_split": false,
+                  "week_parity": "all",
+                  "room_id": 36,
+                  "room_name": "315",
                   "room_type": 0,
                   "room_substituted": false,
                   "requested_room_id": null,
@@ -10862,66 +10912,66 @@
             {
               "slot": 1,
               "time": "1 пара (08:30-09:45)",
-              "text": "-",
-              "lessons": []
+              "text": "ВМДК 05.01 Управление и автоматизация баз данных — вся группа, Ханьжина Ксения Владимировна, Лесная",
+              "lessons": [
+                {
+                  "id": 913,
+                  "uid": "lesson-e22831c88841ab50",
+                  "name": "ВМДК 05.01 Управление и автоматизация баз данных",
+                  "teacher_id": 68,
+                  "subgroup": -1,
+                  "is_lab": false,
+                  "is_block": false,
+                  "consecutive_pairs": 1,
+                  "avoid_lunch_split": false,
+                  "week_parity": "all",
+                  "room_id": 44,
+                  "room_name": "405",
+                  "room_type": 0,
+                  "room_substituted": false,
+                  "requested_room_id": null,
+                  "requested_room_name": null,
+                  "room_substitution_reason": null
+                }
+              ]
             },
             {
               "slot": 2,
               "time": "2 пара (09:55-11:10)",
-              "text": "-",
-              "lessons": []
+              "text": "ВМДК 05.01 Управление и автоматизация баз данных — вся группа, Ханьжина Ксения Владимировна, Лесная",
+              "lessons": [
+                {
+                  "id": 913,
+                  "uid": "lesson-e22831c88841ab50",
+                  "name": "ВМДК 05.01 Управление и автоматизация баз данных",
+                  "teacher_id": 68,
+                  "subgroup": -1,
+                  "is_lab": false,
+                  "is_block": false,
+                  "consecutive_pairs": 1,
+                  "avoid_lunch_split": false,
+                  "week_parity": "all",
+                  "room_id": 44,
+                  "room_name": "405",
+                  "room_type": 0,
+                  "room_substituted": false,
+                  "requested_room_id": null,
+                  "requested_room_name": null,
+                  "room_substitution_reason": null
+                }
+              ]
             },
             {
               "slot": 3,
               "time": "3 пара (11:30-12:45)",
-              "text": "Стандартизация, серификация и техническое документоведение — вся группа, Садриева Татьяна Геннадьевна, Кривоусова",
-              "lessons": [
-                {
-                  "id": 900,
-                  "uid": "lesson-fb5832e6ab52dd34",
-                  "name": "Стандартизация, серификация и техническое документоведение",
-                  "teacher_id": 41,
-                  "subgroup": -1,
-                  "is_lab": false,
-                  "is_block": false,
-                  "consecutive_pairs": 1,
-                  "avoid_lunch_split": false,
-                  "week_parity": "all",
-                  "room_id": 13,
-                  "room_name": "28",
-                  "room_type": 0,
-                  "room_substituted": false,
-                  "requested_room_id": null,
-                  "requested_room_name": null,
-                  "room_substitution_reason": null
-                }
-              ]
+              "text": "-",
+              "lessons": []
             },
             {
               "slot": 4,
               "time": "4 пара (12:55-14:10)",
-              "text": "Основы филосовии — вся группа, Кузнецова Елизавета Олеговна, Кривоусова",
-              "lessons": [
-                {
-                  "id": 895,
-                  "uid": "lesson-73db37cdf4082032",
-                  "name": "Основы филосовии",
-                  "teacher_id": 54,
-                  "subgroup": -1,
-                  "is_lab": false,
-                  "is_block": false,
-                  "consecutive_pairs": 1,
-                  "avoid_lunch_split": false,
-                  "week_parity": "all",
-                  "room_id": 51,
-                  "room_name": "13",
-                  "room_type": 0,
-                  "room_substituted": false,
-                  "requested_room_id": null,
-                  "requested_room_name": null,
-                  "room_substitution_reason": null
-                }
-              ]
+              "text": "-",
+              "lessons": []
             },
             {
               "slot": 5,
@@ -11100,18 +11150,32 @@
             {
               "slot": 3,
               "time": "3 пара (11:30-12:45)",
-              "text": "-",
-              "lessons": []
+              "text": "ЛПЗ МДК.01.04 Системное программирование — 2 п/г, Гарбузов Андрей Евгеньевич, Лесная",
+              "lessons": [
+                {
+                  "id": 933,
+                  "uid": "lesson-cdc5ae6616e06546",
+                  "name": "ЛПЗ МДК.01.04 Системное программирование",
+                  "teacher_id": 67,
+                  "subgroup": 87,
+                  "is_lab": true,
+                  "is_block": false,
+                  "consecutive_pairs": 1,
+                  "avoid_lunch_split": false,
+                  "week_parity": "all",
+                  "room_id": 49,
+                  "room_name": "411",
+                  "room_type": 0,
+                  "room_substituted": false,
+                  "requested_room_id": null,
+                  "requested_room_name": null,
+                  "room_substitution_reason": null
+                }
+              ]
             },
             {
               "slot": 4,
               "time": "4 пара (12:55-14:10)",
-              "text": "-",
-              "lessons": []
-            },
-            {
-              "slot": 5,
-              "time": "5 пара (14:20-15:30)",
               "text": "ЛПЗ МДК.01.02 Поддержка и тестирование программных модулей — 2 п/г, Меренчуков Иван Александрович, Лесная | ЛПЗ МДК.01.04 Системное программирование — 1 п/г, Гарбузов Андрей Евгеньевич, Лесная",
               "lessons": [
                 {
@@ -11155,8 +11219,8 @@
               ]
             },
             {
-              "slot": 6,
-              "time": "6 пара (15:40-16:50)",
+              "slot": 5,
+              "time": "5 пара (14:20-15:30)",
               "text": "ЛПЗ МДК 01.03 Разработка мобильных приложений — 1 п/г, Меренчуков Иван Александрович, Лесная | ЛПЗ МДК.01.04 Системное программирование — 2 п/г, Гарбузов Андрей Евгеньевич, Лесная",
               "lessons": [
                 {
@@ -11200,42 +11264,23 @@
               ]
             },
             {
-              "slot": 7,
-              "time": "7 пара (17:00-18:10)",
-              "text": "ЛПЗ МДК.01.02 Поддержка и тестирование программных модулей — 1 п/г, Меренчуков Иван Александрович, Лесная | ЛПЗ МДК.01.04 Системное программирование — 2 п/г, Гарбузов Андрей Евгеньевич, Лесная",
+              "slot": 6,
+              "time": "6 пара (15:40-16:50)",
+              "text": "ВМДК 05.01 Управление и автоматизация баз данных — вся группа, Ханьжина Ксения Владимировна, Лесная",
               "lessons": [
                 {
-                  "id": 926,
-                  "uid": "lesson-04da8defa0720327",
-                  "name": "ЛПЗ МДК.01.02 Поддержка и тестирование программных модулей",
-                  "teacher_id": 64,
-                  "subgroup": 86,
-                  "is_lab": true,
+                  "id": 934,
+                  "uid": "lesson-bfe722f72ff35a20",
+                  "name": "ВМДК 05.01 Управление и автоматизация баз данных",
+                  "teacher_id": 68,
+                  "subgroup": -1,
+                  "is_lab": false,
                   "is_block": false,
                   "consecutive_pairs": 1,
                   "avoid_lunch_split": false,
                   "week_parity": "all",
-                  "room_id": 30,
-                  "room_name": "204",
-                  "room_type": 0,
-                  "room_substituted": false,
-                  "requested_room_id": null,
-                  "requested_room_name": null,
-                  "room_substitution_reason": null
-                },
-                {
-                  "id": 933,
-                  "uid": "lesson-cdc5ae6616e06546",
-                  "name": "ЛПЗ МДК.01.04 Системное программирование",
-                  "teacher_id": 67,
-                  "subgroup": 87,
-                  "is_lab": true,
-                  "is_block": false,
-                  "consecutive_pairs": 1,
-                  "avoid_lunch_split": false,
-                  "week_parity": "all",
-                  "room_id": 49,
-                  "room_name": "411",
+                  "room_id": 44,
+                  "room_name": "405",
                   "room_type": 0,
                   "room_substituted": false,
                   "requested_room_id": null,
@@ -11243,6 +11288,12 @@
                   "room_substitution_reason": null
                 }
               ]
+            },
+            {
+              "slot": 7,
+              "time": "7 пара (17:00-18:10)",
+              "text": "-",
+              "lessons": []
             }
           ]
         }
@@ -11390,32 +11441,6 @@
             {
               "slot": 1,
               "time": "1 пара (08:30-09:45)",
-              "text": "ЛПЗ ВМДК.05.01 Управление и автоматизация баз данных — 1 п/г, Гарбузов Андрей Евгеньевич, Лесная",
-              "lessons": [
-                {
-                  "id": 953,
-                  "uid": "lesson-00455d7d6173decf",
-                  "name": "ЛПЗ ВМДК.05.01 Управление и автоматизация баз данных",
-                  "teacher_id": 67,
-                  "subgroup": 88,
-                  "is_lab": true,
-                  "is_block": false,
-                  "consecutive_pairs": 1,
-                  "avoid_lunch_split": false,
-                  "week_parity": "all",
-                  "room_id": 49,
-                  "room_name": "411",
-                  "room_type": 0,
-                  "room_substituted": false,
-                  "requested_room_id": null,
-                  "requested_room_name": null,
-                  "room_substitution_reason": null
-                }
-              ]
-            },
-            {
-              "slot": 2,
-              "time": "2 пара (09:55-11:10)",
               "text": "ЛПЗ ВМДК.05.02 Сертификация информационных систем — 1 п/г, Меренчуков Иван Александрович, Лесная",
               "lessons": [
                 {
@@ -11440,17 +11465,17 @@
               ]
             },
             {
-              "slot": 3,
-              "time": "3 пара (11:30-12:45)",
-              "text": "ВМДК.05.01 Управление и автоматизация баз данных — вся группа, Гарбузов Андрей Евгеньевич, Лесная",
+              "slot": 2,
+              "time": "2 пара (09:55-11:10)",
+              "text": "ЛПЗ ВМДК.05.01 Управление и автоматизация баз данных — 1 п/г, Гарбузов Андрей Евгеньевич, Лесная | ЛПЗ ВМДК.05.02 Сертификация информационных систем — 2 п/г, Меренчуков Иван Александрович, Лесная",
               "lessons": [
                 {
-                  "id": 952,
-                  "uid": "lesson-821caf8ee7d0d21a",
-                  "name": "ВМДК.05.01 Управление и автоматизация баз данных",
+                  "id": 953,
+                  "uid": "lesson-00455d7d6173decf",
+                  "name": "ЛПЗ ВМДК.05.01 Управление и автоматизация баз данных",
                   "teacher_id": 67,
-                  "subgroup": -1,
-                  "is_lab": false,
+                  "subgroup": 88,
+                  "is_lab": true,
                   "is_block": false,
                   "consecutive_pairs": 1,
                   "avoid_lunch_split": false,
@@ -11462,14 +11487,7 @@
                   "requested_room_id": null,
                   "requested_room_name": null,
                   "room_substitution_reason": null
-                }
-              ]
-            },
-            {
-              "slot": 4,
-              "time": "4 пара (12:55-14:10)",
-              "text": "ЛПЗ ВМДК.05.02 Сертификация информационных систем — 2 п/г, Меренчуков Иван Александрович, Лесная",
-              "lessons": [
+                },
                 {
                   "id": 957,
                   "uid": "lesson-e55f3cd9abc0db20",
@@ -11490,6 +11508,38 @@
                   "room_substitution_reason": null
                 }
               ]
+            },
+            {
+              "slot": 3,
+              "time": "3 пара (11:30-12:45)",
+              "text": "МДК.02.01 Технология разработки программного обеспечения — вся группа, Ханьжина Ксения Владимировна, Лесная",
+              "lessons": [
+                {
+                  "id": 940,
+                  "uid": "lesson-e17d7c83ba0692d1",
+                  "name": "МДК.02.01 Технология разработки программного обеспечения",
+                  "teacher_id": 68,
+                  "subgroup": -1,
+                  "is_lab": false,
+                  "is_block": false,
+                  "consecutive_pairs": 1,
+                  "avoid_lunch_split": false,
+                  "week_parity": "all",
+                  "room_id": 44,
+                  "room_name": "405",
+                  "room_type": 0,
+                  "room_substituted": false,
+                  "requested_room_id": null,
+                  "requested_room_name": null,
+                  "room_substitution_reason": null
+                }
+              ]
+            },
+            {
+              "slot": 4,
+              "time": "4 пара (12:55-14:10)",
+              "text": "-",
+              "lessons": []
             },
             {
               "slot": 5,
@@ -11636,79 +11686,20 @@
             {
               "slot": 1,
               "time": "1 пара (08:30-09:45)",
-              "text": "ЛПЗ ВМДК.05.02 Сертификация информационных систем — 2 п/г, Меренчуков Иван Александрович, Лесная",
-              "lessons": [
-                {
-                  "id": 980,
-                  "uid": "lesson-a609e71ca332b4d7",
-                  "name": "ЛПЗ ВМДК.05.02 Сертификация информационных систем",
-                  "teacher_id": 64,
-                  "subgroup": 91,
-                  "is_lab": true,
-                  "is_block": false,
-                  "consecutive_pairs": 1,
-                  "avoid_lunch_split": false,
-                  "week_parity": "all",
-                  "room_id": 30,
-                  "room_name": "204",
-                  "room_type": 0,
-                  "room_substituted": false,
-                  "requested_room_id": null,
-                  "requested_room_name": null,
-                  "room_substitution_reason": null
-                }
-              ]
+              "text": "-",
+              "lessons": []
             },
             {
               "slot": 2,
               "time": "2 пара (09:55-11:10)",
-              "text": "МДК.02.01 Технология разработки программного обеспечения — вся группа, Ханьжина Ксения Владимировна, Лесная",
-              "lessons": [
-                {
-                  "id": 963,
-                  "uid": "lesson-19cca264c7aa2c14",
-                  "name": "МДК.02.01 Технология разработки программного обеспечения",
-                  "teacher_id": 68,
-                  "subgroup": -1,
-                  "is_lab": false,
-                  "is_block": false,
-                  "consecutive_pairs": 1,
-                  "avoid_lunch_split": false,
-                  "week_parity": "all",
-                  "room_id": 29,
-                  "room_name": "201",
-                  "room_type": 0,
-                  "room_substituted": false,
-                  "requested_room_id": null,
-                  "requested_room_name": null,
-                  "room_substitution_reason": null
-                }
-              ]
+              "text": "-",
+              "lessons": []
             },
             {
               "slot": 3,
               "time": "3 пара (11:30-12:45)",
-              "text": "ЛПЗ МДК.02.01 Технология разработки программного обеспечения — 2 п/г, Ханьжина Ксения Владимировна, Лесная | ЛПЗ ВМДК.05.02 Сертификация информационных систем — 1 п/г, Меренчуков Иван Александрович, Лесная",
+              "text": "ЛПЗ ВМДК.05.02 Сертификация информационных систем — 1 п/г, Меренчуков Иван Александрович, Лесная",
               "lessons": [
-                {
-                  "id": 965,
-                  "uid": "lesson-98e4b93b5fb8d0a1",
-                  "name": "ЛПЗ МДК.02.01 Технология разработки программного обеспечения",
-                  "teacher_id": 68,
-                  "subgroup": 91,
-                  "is_lab": true,
-                  "is_block": false,
-                  "consecutive_pairs": 1,
-                  "avoid_lunch_split": false,
-                  "week_parity": "all",
-                  "room_id": 29,
-                  "room_name": "201",
-                  "room_type": 0,
-                  "room_substituted": false,
-                  "requested_room_id": null,
-                  "requested_room_name": null,
-                  "room_substitution_reason": null
-                },
                 {
                   "id": 979,
                   "uid": "lesson-037861c3ec2f4a5b",
@@ -11733,21 +11724,21 @@
             {
               "slot": 4,
               "time": "4 пара (12:55-14:10)",
-              "text": "ЛПЗ ВМДК.05.01 Управление и автоматизация баз данных — 1 п/г, Гарбузов Андрей Евгеньевич, Лесная",
+              "text": "МДК.02.01 Технология разработки программного обеспечения — вся группа, Ханьжина Ксения Владимировна, Лесная",
               "lessons": [
                 {
-                  "id": 976,
-                  "uid": "lesson-c85ad173e14efcd8",
-                  "name": "ЛПЗ ВМДК.05.01 Управление и автоматизация баз данных",
-                  "teacher_id": 67,
-                  "subgroup": 90,
-                  "is_lab": true,
+                  "id": 963,
+                  "uid": "lesson-19cca264c7aa2c14",
+                  "name": "МДК.02.01 Технология разработки программного обеспечения",
+                  "teacher_id": 68,
+                  "subgroup": -1,
+                  "is_lab": false,
                   "is_block": false,
                   "consecutive_pairs": 1,
                   "avoid_lunch_split": false,
                   "week_parity": "all",
-                  "room_id": 49,
-                  "room_name": "411",
+                  "room_id": 44,
+                  "room_name": "405",
                   "room_type": 0,
                   "room_substituted": false,
                   "requested_room_id": null,
@@ -11759,24 +11750,86 @@
             {
               "slot": 5,
               "time": "5 пара (14:20-15:30)",
-              "text": "-",
-              "lessons": []
+              "text": "МДК.02.01 Технология разработки программного обеспечения — вся группа, Ханьжина Ксения Владимировна, Лесная",
+              "lessons": [
+                {
+                  "id": 963,
+                  "uid": "lesson-19cca264c7aa2c14",
+                  "name": "МДК.02.01 Технология разработки программного обеспечения",
+                  "teacher_id": 68,
+                  "subgroup": -1,
+                  "is_lab": false,
+                  "is_block": false,
+                  "consecutive_pairs": 1,
+                  "avoid_lunch_split": false,
+                  "week_parity": "all",
+                  "room_id": 44,
+                  "room_name": "405",
+                  "room_type": 0,
+                  "room_substituted": false,
+                  "requested_room_id": null,
+                  "requested_room_name": null,
+                  "room_substitution_reason": null
+                }
+              ]
             },
             {
               "slot": 6,
               "time": "6 пара (15:40-16:50)",
-              "text": "-",
-              "lessons": []
+              "text": "ЛПЗ ВМДК.05.02 Сертификация информационных систем — 2 п/г, Меренчуков Иван Александрович, Лесная",
+              "lessons": [
+                {
+                  "id": 980,
+                  "uid": "lesson-a609e71ca332b4d7",
+                  "name": "ЛПЗ ВМДК.05.02 Сертификация информационных систем",
+                  "teacher_id": 64,
+                  "subgroup": 91,
+                  "is_lab": true,
+                  "is_block": false,
+                  "consecutive_pairs": 1,
+                  "avoid_lunch_split": false,
+                  "week_parity": "all",
+                  "room_id": 30,
+                  "room_name": "204",
+                  "room_type": 0,
+                  "room_substituted": false,
+                  "requested_room_id": null,
+                  "requested_room_name": null,
+                  "room_substitution_reason": null
+                }
+              ]
             },
             {
               "slot": 7,
               "time": "7 пара (17:00-18:10)",
-              "text": "-",
-              "lessons": []
+              "text": "ЛПЗ МДК.02.01 Технология разработки программного обеспечения — 2 п/г, Ханьжина Ксения Владимировна, Лесная",
+              "lessons": [
+                {
+                  "id": 965,
+                  "uid": "lesson-98e4b93b5fb8d0a1",
+                  "name": "ЛПЗ МДК.02.01 Технология разработки программного обеспечения",
+                  "teacher_id": 68,
+                  "subgroup": 91,
+                  "is_lab": true,
+                  "is_block": false,
+                  "consecutive_pairs": 1,
+                  "avoid_lunch_split": false,
+                  "week_parity": "all",
+                  "room_id": 44,
+                  "room_name": "405",
+                  "room_type": 0,
+                  "room_substituted": false,
+                  "requested_room_id": null,
+                  "requested_room_name": null,
+                  "room_substitution_reason": null
+                }
+              ]
             }
           ]
         }
       ]
     }
-  ]
+  ],
+  "date_from": "04.09.2026",
+  "date_to": "05.09.2026"
 }
