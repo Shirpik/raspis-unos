@@ -49,6 +49,8 @@ export const emptyTeacherForm = () => ({
   max_work_days_per_week: 0, max_pairs_per_day: 0,
   work_period: { from: '', to: '' }, work_days: defaultWorkDays(),
   date_slot_overrides: [],
+  desired_load_rules: [],
+  scheduling_active: true,
 })
 
 export function teacherFormFromEntity(teacher = null) {
@@ -96,6 +98,21 @@ export function teacherPayloadFromForm(form) {
     .filter(item => item?.date)
     .map(item => ({ ...item, slots: [...new Set((item.slots || []).map(Number))].sort((a, b) => a - b) }))
   return payload
+}
+
+export function teacherBulkPayload(form, apply) {
+  const source = clone(form) || {}
+  const patch = {}
+  if (apply.period) patch.work_period = source.work_period
+  if (apply.days) patch.work_days = source.work_days
+  if (apply.overrides) patch.date_slot_overrides = teacherPayloadFromForm(source).date_slot_overrides
+  if (apply.campus) {
+    const preferred = Number(source.preferred_campus)
+    patch.campus_priority = preferred < 0 ? [] : [preferred, preferred === 0 ? 1 : 0]
+  }
+  if (apply.allowedCampuses) patch.allowed_campuses = source.allowed_campuses
+  if (apply.room) patch.default_room = source.default_room
+  return patch
 }
 
 export const emptyLessonForm = () => ({

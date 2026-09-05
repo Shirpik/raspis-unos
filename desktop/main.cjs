@@ -60,9 +60,9 @@ function upgradePristineLegacySeed(seedRoot, targetData, targetDatabase) {
   } catch {
     // Старые версии могли не иметь маркера; для них остаётся проверка хэша.
   }
-  const isUrgentPreviousRelease = installedSeedVersion === '1.3.0'
-  if (!isUrgentPreviousRelease &&
-      !REPLACEABLE_SEED_DATABASE_HASHES.has(fileSha256(targetDatabase))) return false
+  // Even an urgent release must not replace a database edited by its owner.
+  // The version marker alone says nothing about whether the data is pristine.
+  if (!REPLACEABLE_SEED_DATABASE_HASHES.has(fileSha256(targetDatabase))) return false
 
   const backupRoot = path.join(workspaceRoot, 'update-backups', `before-seed-${SEED_VERSION}-${timestampForPath()}`)
   fs.mkdirSync(backupRoot, { recursive: true })

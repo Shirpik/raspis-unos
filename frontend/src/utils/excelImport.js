@@ -87,24 +87,39 @@ export async function parseVkleyki(file, current, semester = 1) {
       const subgroup = subgroupOf(rawName, group.id)
       const indexValue = text(rows[r]?.[cols.index])
       const subjectKey = `${key(group.name)}|${key(indexValue || nameClean.replace(/^ЛПЗ[.\s]+/i, ''))}`
-      if (!subjectIds.has(subjectKey)) subjectIds.set(subjectKey, nextSubjectId++)
+      const identity = { group: group.id, subgroup, teacher, name: nameClean }
+      const previousLesson = oldLessonByKey.get(lessonKey(identity))
+      if (!subjectIds.has(subjectKey)) {
+        const previousFamily = oldLessons.find(l => l.group === group.id && l.source_index === indexValue && indexValue && l.subject_id >= 0)
+        subjectIds.set(subjectKey, previousLesson?.subject_id >= 0 ? previousLesson.subject_id : previousFamily?.subject_id ?? nextSubjectId++)
+      }
+      const transfer = oldLessons.find(l => l.group === group.id && key(l.name) === key(nameClean) && l.subgroup === subgroup && l.teacher !== teacher && l.curriculum_active !== false)
+      if (!previousLesson && transfer) errors.push({ sheet: sheetName, message: `Строка ${transfer.id} «${nameClean}»: изменился преподаватель. Сначала согласуйте перенос оставшихся часов; дублирование плана запрещено.` })
+      // Import academic hours, not a full-semester quota into a one-day model.
+      // All room/calendar/quota settings of an existing row belong to the user.
       const draft = {
         group: group.id, subgroup, teacher, name: nameClean,
-        total_hours: Math.round(hours), total_slots: Math.max(1, Math.ceil(hours / (isBlock ? 6 : 2))),
-        subject_id: /^(КП|УП|ВУП)[.\s]/i.test(nameClean) ? -1 : subjectIds.get(subjectKey),
-        is_lab: /^ЛПЗ[.\s]/i.test(nameClean), is_block: isBlock, is_pp: /^ПП\./i.test(nameClean),
+        total_hours: Math.round(hours), total_slots: 0, generation_active: false,
+        subject_id: previousLesson?.subject_id ?? (/^(КП|УП|ВУП)[.\s]/i.test(nameClean) ? -1 : subjectIds.get(subjectKey)),
+        is_lab: /лпз/i.test(nameClean), is_block: isBlock, is_pp: /^ПП\./i.test(nameClean),
         allowed_campuses: [0, 1], week_parity: 'all', fixed_room: -1,
-        allow_room_substitution: true, required_room_type: 1,
+        allow_room_substitution: true, required_room_type: 0,
         required_capacity: group.size || 0, required_equipment: []
       }
-      const previousLesson = oldLessonByKey.get(lessonKey(draft))
-      lessons.push({ ...(previousLesson || {}), ...draft, plan_active: true, id: previousLesson?.id ?? nextLessonId++ })
+      lessons.push({ ...draft, ...(previousLesson || {}), total_hours: Math.round(hours),
+        curriculum_active: true, source_index: indexValue, id: previousLesson?.id ?? nextLessonId++ })
     }
   }
 
   for(const teacher of oldTeachers) if(!teachers.some(t=>t.id===teacher.id)) teachers.push({...teacher})
   for(const group of oldGroups) if(!groups.some(g=>g.id===group.id)) groups.push({...group})
-  for(const lesson of oldLessons) if(!lessons.some(l=>l.id===lesson.id)) lessons.push({...lesson,plan_active:false})
+  for(const lesson of oldLessons) if(!lessons.some(l=>l.id===lesson.id)) {
+    // Do not silently delete approved quotas/history if a workbook renames or
+    // transfers a subject. Require explicit reconciliation of unmatched rows.
+    lessons.push({...lesson})
+    if (lesson.curriculum_active !== false && (lesson.total_hours || lesson.total_slots))
+      warnings.push(`Не сопоставлена существующая строка ${lesson.id}: ${lesson.name}. Сохранена без изменений; требуется сверка.`)
+  }
   teachers.sort((a,b) => a.id - b.id); groups.sort((a,b) => a.id - b.id); lessons.sort((a,b) => a.id - b.id)
   if (vacancyCount) warnings.push(`${vacancyCount} строк без назначенного преподавателя (вакансии)`)
   if (skippedRows) warnings.push(`${skippedRows} строк без часов выбранного семестра пропущено`)

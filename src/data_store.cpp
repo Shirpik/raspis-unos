@@ -1,4 +1,5 @@
 #include "data_store.h"
+#include "semester_plan.h"
 
 #include <algorithm>
 #include <chrono>
@@ -634,8 +635,8 @@ void NormalizeDataRoot(JsonValue& root) {
         if (!item.At("class_hour_campus").IsNumber()) item.At("class_hour_campus") = JsonValue::MakeNumber(-1);
         item.At("class_hour_weekday") = JsonValue::MakeNumber(1);
         item.At("class_hour_slot") = JsonValue::MakeNumber(0);
-        item.At("class_hour_from") = JsonValue::MakeString("07:50");
-        item.At("class_hour_to") = JsonValue::MakeString("09:15");
+        if (!item.At("class_hour_from").IsString()) item.At("class_hour_from") = JsonValue::MakeString("08:15");
+        if (!item.At("class_hour_to").IsString()) item.At("class_hour_to") = JsonValue::MakeString("08:55");
         NormalizeWorkSchedule(item);
     }
 
@@ -719,6 +720,12 @@ void NormalizeDataRoot(JsonValue& root) {
     for (const std::string& array_name : {"unavailable", "teacher_unavailable"}) {
         for (JsonValue& item : root.At(array_name).array_value) {
             if (!item.IsObject()) continue;
+            // Accept the legacy dispatcher-import spelling once, before both
+            // auditing and solving. Never silently drop a persisted absence.
+            if (JsonString(item, "from", "").empty() && item.At("from_date").IsString())
+                item.At("from") = item.At("from_date");
+            if (JsonString(item, "to", "").empty() && item.At("to_date").IsString())
+                item.At("to") = item.At("to_date");
             const std::string key = std::to_string(JsonInt(item, "group", JsonInt(item, "teacher", -1))) + ":" +
                 JsonString(item, "from", JsonString(item, "date", "")) + ":" +
                 JsonString(item, "to", "") + ":" + JsonString(item, "text", "");
@@ -818,11 +825,15 @@ bool SaveDataJson(const JsonValue& root, std::string& error, const std::string& 
 
 bool ParseDateIso(const std::string& text, Date& date) {
     if (text.size() != 10 || text[4] != '-' || text[7] != '-') return false;
+    for (size_t index = 0; index < text.size(); ++index)
+        if (index != 4 && index != 7 && (text[index] < '0' || text[index] > '9')) return false;
     try {
         date.year = std::stoi(text.substr(0, 4));
         date.month = std::stoi(text.substr(5, 2));
         date.day = std::stoi(text.substr(8, 2));
-        return date.month >= 1 && date.month <= 12 && date.day >= 1 && date.day <= 31;
+        return date.year >= 1900 && date.year <= 9999 &&
+            date.month >= 1 && date.month <= 12 &&
+            date.day >= 1 && date.day <= DaysInMonth(date.month, date.year);
     } catch (...) {
         return false;
     }
@@ -858,7 +869,12 @@ bool LoadScheduleInputData(ScheduleInputData& data, std::string& error) {
         return false;
     }
 
-    const JsonValue& root = parsed.value;
+    return LoadScheduleInputDataFromRoot(parsed.value, data, error);
+}
+
+bool LoadScheduleInputDataFromRoot(const JsonValue& source, ScheduleInputData& data, std::string& error, bool update_runtime) {
+    JsonValue root = source;
+    NormalizeDataRoot(root);
     if (!root.IsObject()) {
         error = "Файл данных должен быть JSON-объектом";
         return false;
@@ -867,8 +883,9 @@ bool LoadScheduleInputData(ScheduleInputData& data, std::string& error) {
     const JsonValue& settings = root.At("settings");
     ParseDateIso(JsonString(settings, "start_date", "2026-01-12"), data.start_date);
     ParseDateIso(JsonString(settings, "end_date", "2026-06-19"), data.end_date);
-    LoadSolverConfigFromJson(settings.At("solver_config"));
+    if (update_runtime) LoadSolverConfigFromJson(settings.At("solver_config"));
 
+    data.require_class_hours = JsonBool(settings, "require_class_hours", false);
     data.teacher_period_targets.clear();
     const JsonValue& teacher_period_targets = settings.At("teacher_period_targets");
     if (teacher_period_targets.IsArray()) {
@@ -915,6 +932,7 @@ bool LoadScheduleInputData(ScheduleInputData& data, std::string& error) {
         group.curator_teacher = JsonInt(item, "curator_teacher", -1);
         group.class_hour_enabled = JsonBool(item, "class_hour_enabled", true);
         group.class_hour_campus = JsonInt(item, "class_hour_campus", -1);
+        group.class_hour_room = JsonInt(item, "class_hour_room", -1);
         group.work_schedule = ParseWorkSchedule(item);
         data.groups.push_back(group);
     }
@@ -928,6 +946,11 @@ bool LoadScheduleInputData(ScheduleInputData& data, std::string& error) {
     for (const JsonValue& item : teachers.array_value) {
         if (!item.IsObject()) continue;
         TeacherData teacher;
+        teacher.scheduling_active = JsonBool(item, "scheduling_active", true);
+        for (const auto& value : item.At("class_hour_available_dates").array_value) {
+            Date date{};
+            if (value.IsString() && ParseDateIso(value.string_value, date)) teacher.class_hour_available_dates.insert(date);
+        }
         teacher.id = JsonInt(item, "id", static_cast<int>(data.teachers.size()));
         teacher.uid = JsonString(item, "uid", "");
         teacher.name = JsonString(item, "name", "Преподаватель " + std::to_string(teacher.id));
@@ -936,6 +959,11 @@ bool LoadScheduleInputData(ScheduleInputData& data, std::string& error) {
         teacher.room_responsibility = JsonString(item, "room_responsibility", "");
         teacher.max_work_days_per_week = std::max(0, JsonInt(item, "max_work_days_per_week", 0));
         teacher.max_pairs_per_day = std::max(0, JsonInt(item, "max_pairs_per_day", 0));
+        for (const JsonValue& target : item.At("date_load_targets").array_value) {
+            Date date{};
+            if (ParseDateIso(JsonString(target, "date", ""), date))
+                teacher.date_minimum_pairs[date] = std::max(0, JsonInt(target, "minimum_pairs", 0));
+        }
         const JsonValue& priority = item.At("campus_priority");
         if (priority.IsArray()) {
             for (const JsonValue& value : priority.array_value) {
@@ -966,7 +994,10 @@ bool LoadScheduleInputData(ScheduleInputData& data, std::string& error) {
     if (rooms.IsArray()) {
         for (const JsonValue& item : rooms.array_value) {
             if (!item.IsObject()) continue;
-            RoomData room;
+        RoomData room;
+        room.class_hour_open = JsonBool(item, "class_hour_open", false);
+        room.class_hour_zero_blocked = JsonBool(item, "class_hour_zero_blocked", false);
+        room.class_hour_fallback = JsonBool(item, "class_hour_fallback", false);
             room.id = JsonInt(item, "id", static_cast<int>(data.rooms.size()));
             room.uid = JsonString(item, "uid", "");
             room.name = JsonString(item, "name", "Кабинет " + std::to_string(room.id));
@@ -1097,6 +1128,11 @@ bool LoadScheduleInputData(ScheduleInputData& data, std::string& error) {
         if (!item.IsObject()) continue;
         if (!JsonBool(item, "plan_active", true)) continue;
         if (!JsonBool(item, "generation_active", true)) continue;
+        const int source_teacher = JsonInt(item, "teacher", -1);
+        const auto inactive_teacher = std::find_if(data.teachers.begin(), data.teachers.end(), [&](const auto& teacher) {
+            return teacher.id == source_teacher && !teacher.scheduling_active;
+        });
+        if (inactive_teacher != data.teachers.end()) continue;
         Lesson lesson;
         lesson.id = JsonInt(item, "id", static_cast<int>(data.lessons.size()));
         lesson.uid = JsonString(item, "uid", "");
@@ -1169,7 +1205,7 @@ bool LoadScheduleInputData(ScheduleInputData& data, std::string& error) {
         data.lessons.push_back(lesson);
     }
 
-    SetRuntimeNames(NamesFromGroups(data.groups), NamesFromTeachers(data.teachers));
+    if (update_runtime) SetRuntimeNames(NamesFromGroups(data.groups), NamesFromTeachers(data.teachers));
     std::vector<int> curator_teachers;
     std::vector<int> home_campuses;
     std::vector<int> class_hour_campuses;
@@ -1184,7 +1220,8 @@ bool LoadScheduleInputData(ScheduleInputData& data, std::string& error) {
         class_hour_campuses.push_back(group.class_hour_campus);
         class_hour_enabled.push_back(group.class_hour_enabled);
     }
-    SetRuntimeGroupMetadata(curator_teachers, home_campuses, class_hour_campuses, class_hour_enabled);
+    if (update_runtime) SetRuntimeGroupMetadata(curator_teachers, home_campuses, class_hour_campuses, class_hour_enabled);
+    PrepareSemesterRequirements(root, data);
     return true;
 }
 
@@ -1303,6 +1340,24 @@ JsonValue BuildDataAudit(const JsonValue& source_root) {
         if (!name.empty() && !teacher_names.insert(name).second)
             AddIssue(issues, "warning", "duplicate_teacher_name", "Повторяется ФИО преподавателя: " + name, "teacher", id);
         audit_work_schedule(teacher, "teacher", id);
+        for (const auto& target : teacher.At("date_load_targets").array_value) {
+            Date date{};
+            if (!ParseDateIso(JsonString(target, "date", ""), date) ||
+                JsonInt(target, "minimum_pairs", -1) < 0 || JsonInt(target, "minimum_pairs", 0) > 7)
+                AddIssue(issues, "error", "date_load_target_invalid", "Некорректная нагрузка на дату (допустимо 0–7 пар)", "teacher", id);
+        }
+        for (const auto& rule : teacher.At("desired_load_rules").array_value) {
+            Date deadline{};
+            const auto text = JsonString(rule, "deadline", "");
+            const int weekly = JsonInt(rule, "minimum_pairs_per_week", 0);
+            const int course = JsonInt(rule, "course_year", 0);
+            if ((!text.empty() && !ParseDateIso(text, deadline)) || (text.empty() && weekly == 0) ||
+                weekly < 0 || weekly > 42 || course < 0 || course > 4)
+                AddIssue(issues, "error", "desired_load_rule_invalid", "Задайте срок или минимум 1–42 пары и курс 1–4 либо все курсы", "teacher", id);
+            for (const auto& group_id : rule.At("group_ids").array_value)
+                if (!group_id.IsNumber() || !group_ids.count(static_cast<int>(group_id.number_value)))
+                    AddIssue(issues, "error", "desired_load_group_missing", "В желаемой нагрузке выбрана отсутствующая группа", "teacher", id);
+        }
     }
 
     std::unordered_map<int, int> curator_group;
@@ -1316,10 +1371,9 @@ JsonValue BuildDataAudit(const JsonValue& source_root) {
         } else if (!teacher_ids.count(curator)) {
             AddIssue(issues, "error", "group_curator_missing_teacher",
                 "Куратор группы ссылается на отсутствующего преподавателя", "group", group_id);
-        } else if (curator_group.count(curator)) {
-            AddIssue(issues, "error", "curator_class_hour_conflict",
-                "Один куратор назначен двум группам на понедельник 07:50–09:15", "group", group_id);
         } else {
+            // Several groups may share a curator. Their actual intervals and
+            // rooms must be checked by the class-hour scheduling stage.
             curator_group[curator] = group_id;
         }
         const int campus = JsonInt(group, "class_hour_campus", -1);
@@ -1640,7 +1694,7 @@ JsonValue BuildHoursReport(const JsonValue& source_root, const std::string& sche
         const int id = JsonInt(lesson, "id", -1);
         const int group = JsonInt(lesson, "group", -1);
         const int teacher = JsonInt(lesson, "teacher", -1);
-        const int planned_hours = JsonBool(lesson, "plan_active", true)
+        const int planned_hours = JsonBool(lesson, "curriculum_active", true)
             ? JsonInt(lesson, "total_hours",
                 JsonInt(lesson, "total_slots", 0) * (JsonBool(lesson, "is_block", false) ? 4 : 2))
             : 0;
@@ -1873,6 +1927,8 @@ JsonValue BuildHoursReport(const JsonValue& source_root, const std::string& sche
     result.At("groups") = group_rows;
     result.At("teachers") = teacher_rows;
     result.At("schedule_found") = JsonValue::MakeBool(std::filesystem::exists(schedule_file));
+    result.At("credit_is_projection") = JsonValue::MakeBool(true);
+    result.At("accounting_basis") = JsonValue::MakeString("Полный учебный план базы; поставлено и зачтено — проекция текущего расписания с заменами, не журнал фактически проведённых часов. Контроль вычитки: /api/semester/readout.");
     return result;
 }
 

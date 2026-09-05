@@ -9,6 +9,7 @@ namespace timetable {
 namespace {
 
 constexpr int kKalchevskaya = 49;
+constexpr int kPodchinennov = 57;
 constexpr int kLimonova = 55;
 constexpr int kSamtsov = 59;
 constexpr int kSamtsovWorkshopA = 64;
@@ -55,7 +56,7 @@ bool OperationalRoomPolicyAllows(
             ? room.id == kSamtsovWorkshopA || room.id == kSamtsovWorkshopB
             : IsOrdinaryLesnayaClassroom(room);
     }
-    if (lesson.teacher == kKalchevskaya && is_lpz) {
+    if ((lesson.teacher == kKalchevskaya || lesson.teacher == kPodchinennov) && is_lpz) {
         return room.id == kCpde;
     }
     return true;

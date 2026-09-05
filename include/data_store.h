@@ -42,6 +42,7 @@ struct GroupData {
     int curator_teacher = -1;
     bool class_hour_enabled = true;
     int class_hour_campus = -1;
+    int class_hour_room = -1;
     WorkSchedule work_schedule;
 };
 
@@ -63,6 +64,9 @@ struct TeacherData {
     int max_work_days_per_week = 0;
     // 0 = без ограничения; иначе жёсткий максимум проведённых пар за день.
     int max_pairs_per_day = 0;
+    std::map<Date, int> date_minimum_pairs;
+    bool scheduling_active = true;
+    std::set<Date> class_hour_available_dates;
 };
 
 struct RoomData {
@@ -88,6 +92,10 @@ struct RoomData {
     // Пустая строка = обычная аудитория; sports_hall = только физкультура.
     std::string purpose;
     bool active = true;
+    // An explicit class-hour opening never opens the room for regular lessons.
+    bool class_hour_open = false;
+    bool class_hour_zero_blocked = false;
+    bool class_hour_fallback = false;
 };
 
 struct SpecialDayData {
@@ -98,9 +106,19 @@ struct SpecialDayData {
     std::string text;
 };
 
+struct LoadRequirement {
+    int teacher = -1;
+    std::set<int> lesson_ids;
+    int minimum_pairs = 0;
+    std::string label;
+};
+
 struct ScheduleInputData {
     Date start_date{2026, 1, 12};
     Date end_date{2026, 6, 19};
+    bool require_class_hours = false;
+    std::vector<LoadRequirement> load_requirements;
+    JsonValue semester_readout_report;
     // Минимальная физическая нагрузка преподавателя (в парах) на весь
     // выбранный период генерации. Это не недельная цель.
     std::map<int, int> teacher_period_targets;
@@ -122,6 +140,7 @@ void EnsureDataFileExists();
 JsonValue DefaultDataJson();
 
 bool LoadScheduleInputData(ScheduleInputData& data, std::string& error);
+bool LoadScheduleInputDataFromRoot(const JsonValue& root, ScheduleInputData& data, std::string& error, bool update_runtime = true);
 bool SaveDataJson(const JsonValue& root, std::string& error, const std::string& reason = "Изменение данных");
 std::string ReadDataJsonText();
 

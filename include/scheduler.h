@@ -23,6 +23,7 @@ struct LockedAssignment {
 };
 
 struct GenerationOptions {
+    bool draft_semester_risk = false; // CLI-only diagnostic artifact, never approved publication.
     std::vector<LockedAssignment> locked;
     std::string lock_source;  // "none" | "manual" | "auto" — для диагностики
 };

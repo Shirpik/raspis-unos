@@ -42,6 +42,10 @@ int main() {
     const auto cpde = Room(68, "ЦПДЭ", timetable::LESNAYA, "exclusive");
 
     bool ok = true;
+    ok &= Expect(OperationalRoomPolicyAllows(cpde, Lesson(57, "МДК лПз"), saturday),
+        "Podchinennov LPZ must use CPDE irrespective of marker case");
+    ok &= Expect(!OperationalRoomPolicyAllows(ordinary, Lesson(57, "МДК ЛПЗ"), saturday),
+        "Podchinennov LPZ must not use an ordinary classroom");
     ok &= Expect(OperationalRoomPolicyAllows(
         limonova_workshop, Lesson(55, "Материаловедение"), friday),
         "approved Friday must stay unchanged");

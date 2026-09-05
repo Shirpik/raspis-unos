@@ -258,7 +258,8 @@ try {
         throw 'Room type catalog endpoint is invalid'
     }
 
-    $oneSlotDays = 1..7 | ForEach-Object { @{day=$_;enabled=($_ -eq 1);start_slot=2;end_slot=2} }
+    # Zero class hour must continue immediately into the first regular pair.
+    $oneSlotDays = 1..7 | ForEach-Object { @{day=$_;enabled=($_ -eq 1);start_slot=1;end_slot=1} }
     $conflictData = @{
         schema_version = 4
         settings = @{start_date='2026-09-07';end_date='2026-09-07';solver_config=@{week_time_limit_seconds=5;quality_improvement_seconds=0;solver_workers=2}}
@@ -266,7 +267,7 @@ try {
         room_types = $roomTypes
         groups = @(
             @{id=0;name='ROOM-A';parts=1;size=20;home_campus=0;curator_teacher=0;class_hour_enabled=$true;class_hour_campus=-1;work_period=@{from='2026-09-07';to='2026-09-07'};work_days=$oneSlotDays},
-            @{id=1;name='ROOM-B';parts=1;size=20;home_campus=0;curator_teacher=1;class_hour_enabled=$true;class_hour_campus=1;work_period=@{from='2026-09-07';to='2026-09-07'};work_days=$oneSlotDays}
+            @{id=1;name='ROOM-B';parts=1;size=20;home_campus=0;curator_teacher=1;class_hour_enabled=$true;class_hour_campus=0;work_period=@{from='2026-09-07';to='2026-09-07'};work_days=$oneSlotDays}
         )
         teachers = @(
             @{id=0;name='Teacher A';default_room=0;campus_priority=@(0);work_period=@{from='2026-09-07';to='2026-09-07'};work_days=$oneSlotDays},
@@ -302,9 +303,16 @@ try {
         throw "Automatic room replacement details are invalid: $($change | ConvertTo-Json -Depth 8)"
     }
     $replacementSchedule = Invoke-RestMethod "$baseUrl/api/schedule"
+    $ordinarySlots = @($replacementSchedule.groups.days.slots | Where-Object { $_.slot -gt 0 -and $_.lessons.Count -gt 0 })
+    if ($ordinarySlots.Count -ne 2 -or @($ordinarySlots | Where-Object { $_.slot -ne 1 }).Count -gt 0) {
+        throw 'Ordinary lessons must immediately follow zero class hours'
+    }
     $zeroSlots = @($replacementSchedule.groups.days.slots | Where-Object { $_.slot -eq 0 -and $_.lessons[0].is_class_hour })
-    if ($zeroSlots.Count -ne 2 -or @($zeroSlots | Where-Object { $_.time -match '07:50-09:15' }).Count -ne 2) {
+    if ($zeroSlots.Count -ne 2 -or @($zeroSlots | Where-Object { $_.time -match '08:15-08:55' }).Count -ne 2) {
         throw "Fixed Monday class hours are missing: $($zeroSlots | ConvertTo-Json -Depth 8)"
+    }
+    if (@($zeroSlots | Where-Object { $null -eq $_.lessons[0].room_id }).Count -ne 0) {
+        throw 'Class hours must have actual rooms, not decorative entries'
     }
     $replacedLessons = @($replacementSchedule.groups.days.slots.lessons | Where-Object { $_.room_substituted })
     if ($replacedLessons.Count -ne 1 -or $replacedLessons[0].requested_room_id -ne 0 -or $replacedLessons[0].room_id -ne 1) {
@@ -312,6 +320,16 @@ try {
     }
     Write-Host 'Fake grid: audit, weekly solver, room types, automatic room replacement, quality, hours and publication passed.'
 } finally {
-    if ($process -and !$process.HasExited) { Stop-Process -Id $process.Id -Force }
-    if (Test-Path -LiteralPath $testRoot) { Remove-Item -LiteralPath $testRoot -Recurse -Force }
+    if ($process -and !$process.HasExited) {
+        Stop-Process -Id $process.Id -Force
+        if (!$process.WaitForExit(5000)) { throw 'Test API did not exit; temporary directory retained' }
+    }
+    if (Test-Path -LiteralPath $testRoot) {
+        $resolvedTestRoot = [IO.Path]::GetFullPath($testRoot)
+        $expectedPrefix = [IO.Path]::Combine([IO.Path]::GetTempPath(), 'raspis-fake-grid-')
+        if (!$resolvedTestRoot.StartsWith($expectedPrefix, [StringComparison]::OrdinalIgnoreCase)) {
+            throw 'Refusing cleanup outside the test-specific temporary directory'
+        }
+        Remove-Item -LiteralPath $resolvedTestRoot -Recurse -Force
+    }
 }

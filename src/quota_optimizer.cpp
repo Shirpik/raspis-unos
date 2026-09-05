@@ -50,6 +50,9 @@ struct VariableData {
     int part_weight = 1;
     bool whole_group = false;
     bool sports_room = false;
+    int consecutive_pairs = 1;
+    int restricted_room = -1;
+    bool avoid_lunch_split = false;
     std::string subject;
     std::vector<int> parts;
     std::set<int> allowed_slots;
@@ -129,6 +132,9 @@ int main(int argc, char** argv) {
         data.part_weight = std::max(1, JsonInt(item, "part_weight", 1));
         data.whole_group = JsonBool(item, "whole_group", false);
         data.sports_room = JsonBool(item, "sports_room", false);
+        data.consecutive_pairs = JsonInt(item, "consecutive_pairs", 1);
+        data.restricted_room = JsonInt(item, "restricted_room", -1);
+        data.avoid_lunch_split = JsonBool(item, "avoid_lunch_split", false);
         data.subject = JsonString(item, "subject", "-1");
         const JsonValue& parts_json = item.At("parts");
         const JsonValue& allowed_slots_json = item.At("allowed_slots");
@@ -173,8 +179,28 @@ int main(int argc, char** argv) {
             }
         }
         model.AddEquality(quota[index], placed_count);
+        if (variables[index].consecutive_pairs == 2) {
+            for (int day = 0; day < day_count; ++day) {
+                std::vector<std::vector<BoolVar>> cover(slots_per_day);
+                for (int slot = 0; slot + 1 < slots_per_day; ++slot) {
+                    if (variables[index].avoid_lunch_split && slot == 1) continue;
+                    auto block = model.NewBoolVar();
+                    cover[slot].push_back(block); cover[slot + 1].push_back(block);
+                }
+                for (int slot = 0; slot < slots_per_day; ++slot)
+                    model.AddEquality(placed[index][day * slots_per_day + slot], LinearExpr::Sum(cover[slot]));
+            }
+        }
     }
 
+    std::map<int, std::vector<int>> restricted_rooms;
+    for (int index = 0; index < static_cast<int>(variables.size()); ++index)
+        if (variables[index].restricted_room >= 0) restricted_rooms[variables[index].restricted_room].push_back(index);
+    for (const auto& entry : restricted_rooms) for (int time = 0; time < total_time_slots; ++time) {
+        LinearExpr occupied;
+        for (int index : entry.second) occupied += placed[index][time];
+        model.AddLessOrEqual(occupied, 1);
+    }
     // Optional manual placements.  Quota selection is accepted only when the
     // exact fixed cells can coexist with every other hard rule; malformed
     // references fail closed instead of being ignored.
@@ -297,7 +323,9 @@ int main(int argc, char** argv) {
                 model.AddLessOrEqual(slot_load[slot], 1);
                 day_load += slot_load[slot];
             }
-            model.AddGreaterOrEqual(day_load, min_student_pairs);
+            auto active_day = model.NewBoolVar();
+            model.AddGreaterOrEqual(day_load, active_day * std::max(1, min_student_pairs));
+            model.AddLessOrEqual(day_load, active_day * max_student_pairs);
             model.AddLessOrEqual(day_load, max_student_pairs);
             if (no_student_windows) {
                 for (int left = 0; left < slots_per_day; ++left) {
@@ -430,6 +458,15 @@ int main(int argc, char** argv) {
             model.AddGreaterOrEqual(load, minimum);
         }
         model.AddLessOrEqual(load, JsonInt(teacher, "maximum", 0));
+        for (int day = 0; day < day_count; ++day) {
+            LinearExpr day_load;
+            for (int index : teacher_indices[teacher_id])
+                for (int slot = 0; slot < slots_per_day; ++slot) day_load += placed[index][day * slots_per_day + slot];
+            const int maximum_daily = JsonInt(teacher, "maximum_daily", slots_per_day);
+            if (maximum_daily > 0) model.AddLessOrEqual(day_load, maximum_daily);
+            for (const auto& target : teacher.At("day_targets").array_value)
+                if (JsonInt(target, "day", -1) == day) model.AddGreaterOrEqual(day_load, JsonInt(target, "minimum", 0));
+        }
         const int max_work_days = JsonInt(teacher, "max_work_days", 0);
         if (max_work_days > 0) {
             LinearExpr active_days;
@@ -451,6 +488,14 @@ int main(int argc, char** argv) {
         }
     }
 
+    for (const auto& target : root.At("lesson_load_targets").array_value) {
+        LinearExpr load;
+        for (const auto& id : target.At("lesson_ids").array_value) {
+            const auto found = index_by_id.find(static_cast<int>(id.number_value));
+            if (found != index_by_id.end()) load += quota[found->second];
+        }
+        model.AddGreaterOrEqual(load, JsonInt(target, "minimum", 0));
+    }
     const JsonValue& lab_rules = root.At("lab_rules");
     if (!lab_rules.IsArray()) {
         WriteResult(ErrorResult("MODEL_ERROR", "lab_rules must be an array"));
@@ -501,7 +546,7 @@ int main(int argc, char** argv) {
     LinearExpr objective = 1000000000000LL * teacher_shortfall_objective;
     if (maximize_part_load) objective -= 1000000000LL * total_part_load;
     objective -= 1000000 * preferred_reward;
-    constexpr int kDistributionWeeks = 17;
+    const int kDistributionWeeks = std::max(1, JsonInt(root, "distribution_weeks", 16));
     for (int index = 0; index < static_cast<int>(variables.size()); ++index) {
         const int upper = std::max(
             variables[index].semester_total,

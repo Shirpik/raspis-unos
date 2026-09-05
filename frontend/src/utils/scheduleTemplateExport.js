@@ -159,7 +159,7 @@ const expectedLessonCount = schedule => (schedule?.groups || []).reduce((groupTo
     dayTotal + (day.slots || []).reduce((slotTotal, slot) =>
       slotTotal + (Array.isArray(slot.lessons) ? slot.lessons.length : splitSlotText(slot.text).length), 0), 0), 0)
 
-export const scheduleExcelFilename = schedule => `Расписание_${filenameDateRange(schedule)}.xlsx`
+export const scheduleExcelFilename = schedule => `${schedule?.status === 'draft_semester_risk' ? 'ПРОЕКТ_' : ''}Расписание_${filenameDateRange(schedule)}.xlsx`
 
 export async function buildScheduleExcelWorkbook(schedule, templateBuffer) {
   if (!schedule?.groups?.length) throw new Error('Нет данных расписания для экспорта')
@@ -178,10 +178,24 @@ export async function buildScheduleExcelWorkbook(schedule, templateBuffer) {
   }
 
   const scheduleDates = collectDates(schedule.groups)
+  const datesByWeekday = new Map()
+  for (const day of scheduleDates) {
+    const weekday = String(day.weekday || '').trim().toUpperCase()
+    if (datesByWeekday.has(weekday)) {
+      throw new Error('В образец одной недели нельзя записать несколько одинаковых дней недели. Выберите одну неделю для экспорта.')
+    }
+    datesByWeekday.set(weekday, dateIso(day))
+  }
   const templateGroupNames = new Set()
   let insertedLessons = 0
 
   for (const sheet of workbook.worksheets) {
+    if (schedule.status === 'draft_semester_risk') {
+      sheet.headerFooter ||= {}
+      sheet.headerFooter.oddHeader = '&CПРОЕКТ: недельная сетка; вычитка часов за 16 недель пока не подтверждена'
+      sheet.headerFooter.oddFooter = '&LПроверьте отдельный отчёт рисков вычитки&R&P / &N'
+      sheet.getCell('A1').note = 'ПРОЕКТ. Проверки недельной сетки выполнены отдельно от проверки полного срока вычитки. Есть нерешённые семестровые риски.'
+    }
     // ExcelJS otherwise removes the escaped dot from the custom date format.
     // Keeping it makes the exported headers render exactly like the supplied
     // workbook (31.8, 1.9, ...), including in non-Microsoft viewers.
@@ -194,10 +208,35 @@ export async function buildScheduleExcelWorkbook(schedule, templateBuffer) {
       const layout = DAY_LAYOUT[weekday]
       if (!layout) throw new Error(`День «${targetDay.weekday || targetDay.date}» не поддерживается Excel-образцом`)
       sheet.getCell(layout.headerRow, 1).value = excelDate(targetDay)
+      if (weekday === 'ПН') {
+        sheet.getCell(2, 2).value = '8.15-8.55'
+        sheet.getCell(2, 3).value = 0
+        sheet.getCell(2, 2).note = '07:55 — поднятие флага. 08:15–08:55 — классный час.'
+        const bells = ['9.15-9.55', '10.00-10.40', '10.50-11.30', '11.35-12.15',
+          '13.10-13.50', '13.55-14.35', '14.45-15.25', '15.30-16.10',
+          '16.20-17.40', '', '17.50-19.10', '', '19.20-20.40', '']
+        bells.forEach((value, index) => { sheet.getCell(index + 3, 2).value = value || null })
+      }
 
       for (const { name, column } of groups) {
         const group = groupsByName.get(name)
         const day = findDay(group, targetDay)
+
+        if (weekday === 'ПН') {
+          const cell = sheet.getCell(2, column)
+          cell.value = null
+          const zero = (day?.slots || []).find(item => Number(item.slot) === 0)
+          const entries = slotLessonEntries(zero, group?.group_index)
+          if (entries.length > 1 || entries.some(entry => !entry.lesson?.is_class_hour))
+            throw new Error(`${name}: в нулевой строке допустим только один классный час`)
+          if (entries.length) {
+            const value = lessonTemplateValue(entries[0].lesson, entries[0].segment, group?.group_index)
+            cell.value = value.text
+            cell.alignment = { horizontal: 'center', vertical: 'middle', wrapText: true }
+            applyCampusFill(cell, value.campus)
+            insertedLessons++
+          }
+        }
 
         for (let slotNumber = 1; slotNumber <= MAX_TEMPLATE_SLOT; slotNumber += 1) {
           const firstRow = layout.firstLessonRow + (slotNumber - 1) * 2
@@ -220,9 +259,16 @@ export async function buildScheduleExcelWorkbook(schedule, templateBuffer) {
 
           if (wholeGroup.length === 1) {
             const value = lessonTemplateValue(wholeGroup[0].lesson, wholeGroup[0].segment, group?.group_index)
-            mergeCellPair(sheet, column, firstRow, secondRow)
-            first.value = value.text
-            applyCampusFill(first, value.campus)
+            if (wholeGroup[0].lesson?.is_class_hour) {
+              if (weekday !== 'ПН' || slotNumber < 2 || wholeGroup[0].lesson.half !== 2)
+                throw new Error(`${name}: поздний классный час должен занимать вторую половину пары 2–7 понедельника`)
+              second.value = value.text
+              applyCampusFill(second, value.campus)
+            } else {
+              mergeCellPair(sheet, column, firstRow, secondRow)
+              first.value = value.text
+              applyCampusFill(first, value.campus)
+            }
             insertedLessons += 1
             continue
           }

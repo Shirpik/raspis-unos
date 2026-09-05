@@ -25,6 +25,8 @@ add_executable(timetable_solver
     src/runtime_config.cpp
     src/scheduler_rules.cpp
     src/schedule_validator.cpp
+    src/class_hours.cpp
+    src/semester_plan.cpp
     src/room_allocator.cpp
     src/room_policy.cpp
     src/auth.cpp
@@ -64,6 +66,8 @@ if (BUILD_TESTING)
     add_executable(schedule_validator_test
         tests/schedule_validator_test.cpp
         src/schedule_validator.cpp
+        src/class_hours.cpp
+        src/semester_plan.cpp
         src/runtime_config.cpp
         src/json_utils.cpp
         src/data_store.cpp

@@ -35,16 +35,28 @@
 
     <!-- Semester dates -->
     <section class="card settings-card">
-      <div class="card-title">📆 Даты семестра</div>
+      <div class="card-title">📆 Период генерации</div>
       <div class="form-row">
         <div class="form-group">
-          <label class="form-label">Начало семестра</label>
+          <label class="form-label">Начало периода расписания</label>
           <input v-model="sForm.start_date" type="date" class="form-input" />
         </div>
         <div class="form-group">
-          <label class="form-label">Конец семестра</label>
+          <label class="form-label">Конец периода расписания</label>
           <input v-model="sForm.end_date" type="date" class="form-input" />
         </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label class="form-label">Начало учебного плана (не периода генерации)</label><input v-model="sForm.semester_start_date" type="date" class="form-input" /></div>
+        <div class="form-group"><label class="form-label">Недель для вычитки</label><input v-model.number="sForm.semester_weeks" type="number" min="1" max="52" class="form-input" /></div>
+      </div>
+      <label class="form-checkbox"><input v-model="sForm.enforce_semester_readout" type="checkbox" /> Проверять темп вычитки всех преподавателей перед генерацией</label>
+      <p class="settings-hint">Учёт опирается на полный план базы и подтверждённый журнал. Запланированные занятия не считаются проведёнными. При нехватке времени или квот генерация будет остановлена с объяснением.</p>
+      <button v-if="!demoMode" class="btn btn-secondary" @click="checkSemester">Проверить темп по базе</button>
+      <div v-if="semesterReport" class="settings-hint">
+        <p>Это предварительный контроль ёмкости календарей, не доказательство выполнимости общей сетки.</p>
+        <p v-for="(issue, index) in semesterReport.issues" :key="index">{{ issue.message }}</p>
+        <p v-if="!semesterReport.issues?.length">Предварительных противоречий не найдено. Необходима полная проверка расписания.</p>
       </div>
       <div style="margin-top:14px;display:flex;gap:10px;align-items:center">
         <button class="btn btn-primary" :disabled="savingSettings" @click="saveSettings">
@@ -255,9 +267,15 @@ const schedStore = useScheduleStore()
 const toast = useToast()
 const auth = useAuthStore()
 
-const sForm = reactive({ start_date: '', end_date: '' })
+const sForm = reactive({ start_date: '', end_date: '', semester_start_date: '', semester_weeks: 16, enforce_semester_readout: false })
 const savingSettings = ref(false)
 const settingsSaved = ref(false)
+const semesterReport = ref(null)
+async function checkSemester() {
+  const result = await api.data.semesterReadout()
+  if (result.ok) semesterReport.value = result.data
+  else toast.error(result.data?.message || 'Не удалось проверить учебный план')
+}
 const generating = computed(() => schedStore.generating)
 const unavailModal = ref(false)
 const savingUnavail = ref(false)
@@ -393,12 +411,15 @@ async function loadSettings() {
   if (res.ok) {
     sForm.start_date = res.data.start_date || ''
     sForm.end_date = res.data.end_date || ''
+    sForm.semester_start_date = res.data.semester_start_date || ''
+    sForm.semester_weeks = res.data.semester_weeks ?? 16
+    sForm.enforce_semester_readout = res.data.enforce_semester_readout === true
   }
 }
 
 async function saveSettings() {
   savingSettings.value = true
-  const r = await store.saveSettings({ start_date: sForm.start_date, end_date: sForm.end_date })
+  const r = await store.saveSettings({ ...sForm })
   savingSettings.value = false
   if (r.ok) {
     settingsSaved.value = true

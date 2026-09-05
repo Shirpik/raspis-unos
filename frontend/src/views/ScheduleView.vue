@@ -438,14 +438,9 @@ function compareDMY(a, b) {
 }
 
 function detectCourseYear(name) {
-  const m4 = name.match(/[^\d]2(\d)\d{2}/)
-  if (m4) {
-    const d = parseInt(m4[1])
-    const enrollYear = 2020 + d
-    const year = 2025 - enrollYear + 1
-    if (year >= 1 && year <= 4) return year
-  }
-  const m1 = name.match(/-(\d)/)
+  const explicit = store.groups.find(g => g.group_name === name)?.course_year
+  if (Number(explicit) >= 1 && Number(explicit) <= 4) return Number(explicit)
+  const m1 = name.match(/-([1-4])\d/)
   if (m1) {
     const d = parseInt(m1[1])
     if (d >= 1 && d <= 4) return d
@@ -634,13 +629,19 @@ const filteredGroups = computed(() => {
 // ── Cell helpers ─────────────────────────────────────────────────────────
 
 function getSlotTimeForSlot(slotNum) {
+  const found = new Map()
   for (const dateStr of weekDates.value) {
     for (const g of store.groups) {
       const s = slotLookup.value[g.group_index]?.[dateStr]?.slots[slotNum]
-      if (s?.time) return s.time
+      if (s?.time) {
+        const day = slotLookup.value[g.group_index][dateStr].weekday
+        if (!found.has(s.time)) found.set(s.time, day)
+        break
+      }
     }
   }
-  return ''
+  if (found.size === 1) return [...found.keys()][0]
+  return [...found].map(([time, day]) => `${day}: ${time}`).join(' / ')
 }
 
 function getCellText(groupIndex, dateStr, slotNum) {

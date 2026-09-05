@@ -15,7 +15,7 @@
       <span><b>{{ summary.warnings ?? 0 }}</b> рекомендаций</span>
       <span><b>{{ summary.events ?? 0 }}</b> событий</span>
       <span><b>{{ summary.scheduled_occurrences ?? 0 }}/{{ summary.planned_occurrences ?? 0 }}</b> квот</span>
-      <span><b>{{ summary.remaining_hours ?? 0 }}</b> часов осталось</span>
+      <span><b>{{ summary.remaining_hours ?? 0 }}</b> часов осталось в квоте периода</span>
     </div>
 
     <div class="validation-categories">

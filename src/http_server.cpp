@@ -1439,6 +1439,16 @@ std::string HandleRequest(const std::string& request, const std::string& output_
         return OkJson(BuildHoursReport(parsed.value, (out_dir / "schedule_all.json").string()));
     }
 
+    if (method == "GET" && path == "/api/semester/readout") {
+        const auto parsed = LoadRoot();
+        if (!parsed.ok) return ErrorJson(500, "Internal Server Error", parsed.error);
+        ScheduleInputData input;
+        std::string error;
+        if (!LoadScheduleInputDataFromRoot(parsed.value, input, error, false))
+            return ErrorJson(422, "Unprocessable Entity", error);
+        return OkJson(input.semester_readout_report);
+    }
+
     if (method == "GET" && path == "/api/accounting/teacher-occupancy") {
         JsonParseResult parsed = LoadRoot();
         if (!parsed.ok) return ErrorJson(500, "Internal Server Error", parsed.error);
@@ -1989,9 +1999,14 @@ std::string HandleRequest(const std::string& request, const std::string& output_
         int group = GroupIndexFromPathValue(value);
         if (group < 0) return ErrorJson(404, "Not Found", "Группа не найдена");
 
-        std::filesystem::path file = out_dir / "groups" / ("group_" + std::to_string(group) + ".json");
+        const std::filesystem::path file = out_dir / "schedule_all.json";
         if (!FileExists(file)) return ErrorJson(404, "Not Found", "Расписание ещё не сгенерировано. Вызови POST /api/schedule/regenerate.");
-        return JsonResponse(200, "OK", ReadFileUtf8(file));
+        const auto parsed = ParseJson(ReadFileUtf8(file));
+        if (!parsed.ok || !parsed.value.At("groups").IsArray())
+            return ErrorJson(500, "Internal Server Error", "Общее расписание повреждено");
+        for (const auto& item : parsed.value.At("groups").array_value)
+            if (JsonInt(item, "group_index", -1) == group) return OkJson(item);
+        return ErrorJson(404, "Not Found", "В текущем расписании нет этой группы");
     }
 
     return ErrorJson(404, "Not Found", "Неизвестный endpoint");

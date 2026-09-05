@@ -63,6 +63,8 @@
         <div class="form-group"><label class="form-label">Максимум пар в день</label><input v-model.number="form.max_pairs_per_day" type="number" min="0" max="7" class="form-input" /><small>0 — без отдельного ограничения.</small></div>
       </div>
       <WorkScheduleEditor :schedule="form" />
+      <label class="form-checkbox"><input v-model="form.scheduling_active" type="checkbox" /> Включать преподавателя в генерацию (часы при отключении сохраняются)</label>
+      <DesiredLoadEditor v-model="form.desired_load_rules" :groups="store.groups" />
       <template #footer>
         <button class="btn btn-ghost" @click="modalOpen = false">Отмена</button>
         <button class="btn btn-primary" :disabled="saving || !form.name.trim()" @click="save">
@@ -81,6 +83,7 @@
       <div class="bulk-options">
         <label><input v-model="bulkApply.period" type="checkbox" /> Рабочие даты</label>
         <label><input v-model="bulkApply.days" type="checkbox" /> Дни и пары</label>
+        <label><input v-model="bulkApply.overrides" type="checkbox" /> Заменить исключения по датам</label>
         <label><input v-model="bulkApply.campus" type="checkbox" /> Приоритет площадки</label>
         <label><input v-model="bulkApply.allowedCampuses" type="checkbox" /> Разрешённые площадки</label>
         <label><input v-model="bulkApply.room" type="checkbox" /> Закреплённый кабинет</label>
@@ -88,7 +91,7 @@
       <div v-if="bulkApply.campus" class="form-group"><label class="form-label">Приоритет площадки</label><select v-model.number="bulkForm.preferred_campus" class="form-select"><option :value="-1">Без приоритета</option><option :value="0">Лесная</option><option :value="1">Кривоусова, 53</option></select></div>
       <div v-if="bulkApply.allowedCampuses" class="form-group"><label class="form-label">Разрешённые площадки (жёстко)</label><div class="campus-checks"><label class="form-checkbox"><input v-model="bulkForm.allowed_campuses" type="checkbox" :value="0" /> Лесная</label><label class="form-checkbox"><input v-model="bulkForm.allowed_campuses" type="checkbox" :value="1" /> Кривоусова, 53</label></div></div>
       <div v-if="bulkApply.room" class="form-group"><label class="form-label">Закреплённый кабинет</label><select v-model.number="bulkForm.default_room" class="form-select"><option :value="-1">Не задан</option><option v-for="r in availableRooms" :key="r.id" :value="r.id">{{ r.name }} — {{ campusName(r.campus) }}</option></select></div>
-      <WorkScheduleEditor v-if="bulkApply.period || bulkApply.days" :schedule="bulkForm" />
+      <WorkScheduleEditor v-if="bulkApply.period || bulkApply.days || bulkApply.overrides" :schedule="bulkForm" />
       <template #footer><button class="btn btn-ghost" @click="bulkModal=false">Отмена</button><button class="btn btn-primary" :disabled="saving || !hasBulkChanges" @click="saveBulk">Применить к {{ selected.length }}</button></template>
     </Modal>
 
@@ -110,7 +113,8 @@
 import { computed, ref, onMounted } from 'vue'
 import Modal from '../components/Modal.vue'
 import WorkScheduleEditor from '../components/WorkScheduleEditor.vue'
-import { emptyTeacherForm, teacherFormFromEntity, teacherPayloadFromForm } from '../utils/entityPayloads.js'
+import DesiredLoadEditor from '../components/DesiredLoadEditor.vue'
+import { emptyTeacherForm, teacherFormFromEntity, teacherPayloadFromForm, teacherBulkPayload } from '../utils/entityPayloads.js'
 import { useDataStore } from '../stores/data.js'
 import { useToast } from '../composables/useToast.js'
 
@@ -137,7 +141,7 @@ const hasBulkChanges=computed(()=>Object.values(bulkApply.value).some(Boolean))
 
 onMounted(async () => {
   loading.value = true
-  await Promise.all([store.loadTeachers(),store.loadRooms()])
+  await Promise.all([store.loadTeachers(),store.loadRooms(),store.loadGroups()])
   loading.value = false
 })
 
@@ -158,7 +162,7 @@ function openEdit(t) {
 }
 function toggleVisible(){const visible=filteredTeachers.value.map(t=>t.id);selected.value=allVisibleSelected.value?selected.value.filter(id=>!visible.includes(id)):[...new Set([...selected.value,...visible])]}
 function openBulk(){if(!selected.value.length)return;bulkForm.value={preferred_campus:-1,allowed_campuses:[0,1],default_room:-1,...baseSchedule()};bulkApply.value={period:true,days:true,campus:false,allowedCampuses:false,room:false};bulkTemplateId.value=-1;bulkModal.value=true}
-function loadBulkTemplate(){const t=store.teachers.find(x=>x.id===bulkTemplateId.value);if(!t)return;bulkForm.value={preferred_campus:t.campus_priority?.[0]??-1,allowed_campuses:t.allowed_campuses?.length?[...t.allowed_campuses]:[0,1],default_room:t.default_room??-1,work_period:{from:t.work_period?.from||'',to:t.work_period?.to||''},work_days:(t.work_days||defaultDays()).map(d=>({...d}))};toast.success('График загружен как шаблон')}
+function loadBulkTemplate(){const t=store.teachers.find(x=>x.id===bulkTemplateId.value);if(!t)return;bulkForm.value=teacherFormFromEntity(t);toast.success('График загружен как шаблон')}
 const campusName=id=>id===0?'Лесная':id===1?'Кривоусова, 53':'без приоритета'
 const allowedCampusSummary=t=>{const c=t.allowed_campuses?.length?t.allowed_campuses:[0,1];return c.map(campusName).join(' + ')}
 const workSummary=t=>t.work_period?.from&&t.work_period?.to?`${t.work_period.from} — ${t.work_period.to}`:'весь семестр'
@@ -187,7 +191,7 @@ async function save() {
   }
 }
 function teacherPayload(){return teacherPayloadFromForm(form.value)}
-async function saveBulk(){if(!hasBulkChanges.value)return;const patch={};if(bulkApply.value.period)patch.work_period={...bulkForm.value.work_period};if(bulkApply.value.days)patch.work_days=bulkForm.value.work_days.map(d=>({...d}));if(bulkApply.value.campus){const p=bulkForm.value.preferred_campus;patch.campus_priority=p<0?[]:[p,p===0?1:0]}if(bulkApply.value.allowedCampuses)patch.allowed_campuses=[...bulkForm.value.allowed_campuses];if(bulkApply.value.room)patch.default_room=bulkForm.value.default_room;saving.value=true;const count=selected.value.length;const r=await store.bulkUpdateTeachers(selected.value,patch);saving.value=false;if(r.ok){toast.success(`Настройки применены к ${count} преподавателям`);bulkModal.value=false}else toast.error(r.data?.message||'Ошибка')}
+async function saveBulk(){if(!hasBulkChanges.value)return;const patch=teacherBulkPayload(bulkForm.value,bulkApply.value);saving.value=true;const count=selected.value.length;const r=await store.bulkUpdateTeachers(selected.value,patch);saving.value=false;if(r.ok){toast.success(`Настройки применены к ${count} преподавателям`);bulkModal.value=false}else toast.error(r.data?.message||'Ошибка')}
 
 async function doDelete() {
   saving.value = true

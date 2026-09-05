@@ -1,0 +1,2412 @@
+{
+  "file": "C:\\Users\\Student\\Desktop\\raspis-unos\\output\\week-2026-09-07-contiguous\\delivery\\ПРОЕКТ_Расписание_07-12.09.2026_без_окон.xlsx",
+  "sheets": 4,
+  "groups": 46,
+  "dates": 6,
+  "exported": 980,
+  "ordinary": 934,
+  "class_hours": 46,
+  "days": {
+    "2026-09-08": 151,
+    "2026-09-09": 163,
+    "2026-09-10": 139,
+    "2026-09-11": 176,
+    "2026-09-12": 172,
+    "2026-09-07": 133
+  },
+  "semester_status": "not_confirmed",
+  "errors": [],
+  "warnings": [
+    {
+      "category": "semester_plan",
+      "code": "semester_capacity_shortfall",
+      "context": {
+        "code": "semester_capacity_shortfall",
+        "message": "Никонова Антонина Олеговна / до 2026-12-22: нужно 280 пар, доступно не более 276",
+        "teacher": 3
+      },
+      "message": "Никонова Антонина Олеговна / до 2026-12-22: нужно 280 пар, доступно не более 276",
+      "severity": "warning"
+    },
+    {
+      "category": "semester_plan",
+      "code": "semester_quota_shortfall",
+      "context": {
+        "code": "semester_quota_shortfall",
+        "message": "Никонова Антонина Олеговна / до 2026-12-22: квота периода 18 пар меньше требуемого темпа 19",
+        "teacher": 3
+      },
+      "message": "Никонова Антонина Олеговна / до 2026-12-22: квота периода 18 пар меньше требуемого темпа 19",
+      "severity": "warning"
+    },
+    {
+      "category": "semester_plan",
+      "code": "semester_capacity_shortfall",
+      "context": {
+        "code": "semester_capacity_shortfall",
+        "message": "Сутягин Артём Борисович / до 2026-12-22: нужно 173 пар, доступно не более 105",
+        "teacher": 9
+      },
+      "message": "Сутягин Артём Борисович / до 2026-12-22: нужно 173 пар, доступно не более 105",
+      "severity": "warning"
+    },
+    {
+      "category": "semester_plan",
+      "code": "semester_quota_shortfall",
+      "context": {
+        "code": "semester_quota_shortfall",
+        "message": "Сутягин Артём Борисович / до 2026-12-22: квота периода 7 пар меньше требуемого темпа 12",
+        "teacher": 9
+      },
+      "message": "Сутягин Артём Борисович / до 2026-12-22: квота периода 7 пар меньше требуемого темпа 12",
+      "severity": "warning"
+    },
+    {
+      "category": "semester_plan",
+      "code": "practice_calendar_required",
+      "context": {
+        "code": "practice_calendar_required",
+        "message": "Семенова Лилиана Ивановна / до 2026-12-22: отдельно требуется календарь УП/ПП на 360 ч; полная вычитка пока не доказана",
+        "teacher": 10
+      },
+      "message": "Семенова Лилиана Ивановна / до 2026-12-22: отдельно требуется календарь УП/ПП на 360 ч; полная вычитка пока не доказана",
+      "severity": "warning"
+    },
+    {
+      "category": "semester_plan",
+      "code": "semester_capacity_shortfall",
+      "context": {
+        "code": "semester_capacity_shortfall",
+        "message": "Рабенок Мария Александровна / до 2026-12-22: нужно 99 пар, доступно не более 86",
+        "teacher": 12
+      },
+      "message": "Рабенок Мария Александровна / до 2026-12-22: нужно 99 пар, доступно не более 86",
+      "severity": "warning"
+    },
+    {
+      "category": "semester_plan",
+      "code": "semester_quota_shortfall",
+      "context": {
+        "code": "semester_quota_shortfall",
+        "message": "Рабенок Мария Александровна / до 2026-12-22: квота периода 2 пар меньше требуемого темпа 3",
+        "teacher": 12
+      },
+      "message": "Рабенок Мария Александровна / до 2026-12-22: квота периода 2 пар меньше требуемого темпа 3",
+      "severity": "warning"
+    },
+    {
+      "category": "semester_plan",
+      "code": "practice_calendar_required",
+      "context": {
+        "code": "practice_calendar_required",
+        "message": "Дорохова Евгения Владимировна / до 2026-12-22: отдельно требуется календарь УП/ПП на 72 ч; полная вычитка пока не доказана",
+        "teacher": 36
+      },
+      "message": "Дорохова Евгения Владимировна / до 2026-12-22: отдельно требуется календарь УП/ПП на 72 ч; полная вычитка пока не доказана",
+      "severity": "warning"
+    },
+    {
+      "category": "semester_plan",
+      "code": "practice_calendar_required",
+      "context": {
+        "code": "practice_calendar_required",
+        "message": "Сивилькаев Вадим Михайлович / до 2026-12-22: отдельно требуется календарь УП/ПП на 234 ч; полная вычитка пока не доказана",
+        "teacher": 40
+      },
+      "message": "Сивилькаев Вадим Михайлович / до 2026-12-22: отдельно требуется календарь УП/ПП на 234 ч; полная вычитка пока не доказана",
+      "severity": "warning"
+    },
+    {
+      "category": "semester_plan",
+      "code": "semester_capacity_shortfall",
+      "context": {
+        "code": "semester_capacity_shortfall",
+        "message": "Осипчук Александр Александрович / до 2026-12-22: нужно 118 пар, доступно не более 105",
+        "teacher": 42
+      },
+      "message": "Осипчук Александр Александрович / до 2026-12-22: нужно 118 пар, доступно не более 105",
+      "severity": "warning"
+    },
+    {
+      "category": "semester_plan",
+      "code": "semester_quota_shortfall",
+      "context": {
+        "code": "semester_quota_shortfall",
+        "message": "Осипчук Александр Александрович / до 2026-12-22: квота периода 7 пар меньше требуемого темпа 8",
+        "teacher": 42
+      },
+      "message": "Осипчук Александр Александрович / до 2026-12-22: квота периода 7 пар меньше требуемого темпа 8",
+      "severity": "warning"
+    },
+    {
+      "category": "semester_plan",
+      "code": "practice_calendar_required",
+      "context": {
+        "code": "practice_calendar_required",
+        "message": "Попова Татьяна Вильевна / до 2026-12-22: отдельно требуется календарь УП/ПП на 72 ч; полная вычитка пока не доказана",
+        "teacher": 43
+      },
+      "message": "Попова Татьяна Вильевна / до 2026-12-22: отдельно требуется календарь УП/ПП на 72 ч; полная вычитка пока не доказана",
+      "severity": "warning"
+    },
+    {
+      "category": "semester_plan",
+      "code": "practice_calendar_required",
+      "context": {
+        "code": "practice_calendar_required",
+        "message": "Письмак Владимир Николаевич / до 2026-12-22: отдельно требуется календарь УП/ПП на 216 ч; полная вычитка пока не доказана",
+        "teacher": 44
+      },
+      "message": "Письмак Владимир Николаевич / до 2026-12-22: отдельно требуется календарь УП/ПП на 216 ч; полная вычитка пока не доказана",
+      "severity": "warning"
+    },
+    {
+      "category": "semester_plan",
+      "code": "practice_calendar_required",
+      "context": {
+        "code": "practice_calendar_required",
+        "message": "Кошелев Дмитрий Александрович / до 2026-12-22: отдельно требуется календарь УП/ПП на 72 ч; полная вычитка пока не доказана",
+        "teacher": 51
+      },
+      "message": "Кошелев Дмитрий Александрович / до 2026-12-22: отдельно требуется календарь УП/ПП на 72 ч; полная вычитка пока не доказана",
+      "severity": "warning"
+    },
+    {
+      "category": "semester_plan",
+      "code": "practice_calendar_required",
+      "context": {
+        "code": "practice_calendar_required",
+        "message": "Чадова Марина Александровна / до 2026-12-22: отдельно требуется календарь УП/ПП на 90 ч; полная вычитка пока не доказана",
+        "teacher": 52
+      },
+      "message": "Чадова Марина Александровна / до 2026-12-22: отдельно требуется календарь УП/ПП на 90 ч; полная вычитка пока не доказана",
+      "severity": "warning"
+    },
+    {
+      "category": "semester_plan",
+      "code": "practice_calendar_required",
+      "context": {
+        "code": "practice_calendar_required",
+        "message": "Конева Кристина Сергеевна / до 2026-12-22: отдельно требуется календарь УП/ПП на 180 ч; полная вычитка пока не доказана",
+        "teacher": 53
+      },
+      "message": "Конева Кристина Сергеевна / до 2026-12-22: отдельно требуется календарь УП/ПП на 180 ч; полная вычитка пока не доказана",
+      "severity": "warning"
+    },
+    {
+      "category": "semester_plan",
+      "code": "practice_calendar_required",
+      "context": {
+        "code": "practice_calendar_required",
+        "message": "Кузнецова Елизавета Олеговна / до 2026-12-22: отдельно требуется календарь УП/ПП на 342 ч; полная вычитка пока не доказана",
+        "teacher": 54
+      },
+      "message": "Кузнецова Елизавета Олеговна / до 2026-12-22: отдельно требуется календарь УП/ПП на 342 ч; полная вычитка пока не доказана",
+      "severity": "warning"
+    },
+    {
+      "category": "semester_plan",
+      "code": "practice_calendar_required",
+      "context": {
+        "code": "practice_calendar_required",
+        "message": "Лимонова Евгения Николаевна / до 2026-12-22: отдельно требуется календарь УП/ПП на 54 ч; полная вычитка пока не доказана",
+        "teacher": 55
+      },
+      "message": "Лимонова Евгения Николаевна / до 2026-12-22: отдельно требуется календарь УП/ПП на 54 ч; полная вычитка пока не доказана",
+      "severity": "warning"
+    },
+    {
+      "category": "semester_plan",
+      "code": "practice_calendar_required",
+      "context": {
+        "code": "practice_calendar_required",
+        "message": "Ахметов Артур Фанависович / до 2026-12-22: отдельно требуется календарь УП/ПП на 108 ч; полная вычитка пока не доказана",
+        "teacher": 56
+      },
+      "message": "Ахметов Артур Фанависович / до 2026-12-22: отдельно требуется календарь УП/ПП на 108 ч; полная вычитка пока не доказана",
+      "severity": "warning"
+    },
+    {
+      "category": "semester_plan",
+      "code": "practice_calendar_required",
+      "context": {
+        "code": "practice_calendar_required",
+        "message": "Подчиненнов Александр Юрьевич / до 2026-12-22: отдельно требуется календарь УП/ПП на 288 ч; полная вычитка пока не доказана",
+        "teacher": 57
+      },
+      "message": "Подчиненнов Александр Юрьевич / до 2026-12-22: отдельно требуется календарь УП/ПП на 288 ч; полная вычитка пока не доказана",
+      "severity": "warning"
+    },
+    {
+      "category": "semester_plan",
+      "code": "practice_calendar_required",
+      "context": {
+        "code": "practice_calendar_required",
+        "message": "Самцов Андрей Евгеньевич / до 2026-12-22: отдельно требуется календарь УП/ПП на 252 ч; полная вычитка пока не доказана",
+        "teacher": 59
+      },
+      "message": "Самцов Андрей Евгеньевич / до 2026-12-22: отдельно требуется календарь УП/ПП на 252 ч; полная вычитка пока не доказана",
+      "severity": "warning"
+    },
+    {
+      "category": "semester_plan",
+      "code": "practice_calendar_required",
+      "context": {
+        "code": "practice_calendar_required",
+        "message": "Тимеров Валерий Вагизович / 3 курс / до 2026-10-31: отдельно требуется календарь УП/ПП на 72 ч; полная вычитка пока не доказана",
+        "teacher": 60
+      },
+      "message": "Тимеров Валерий Вагизович / 3 курс / до 2026-10-31: отдельно требуется календарь УП/ПП на 72 ч; полная вычитка пока не доказана",
+      "severity": "warning"
+    },
+    {
+      "category": "semester_plan",
+      "code": "practice_calendar_required",
+      "context": {
+        "code": "practice_calendar_required",
+        "message": "Тимеров Валерий Вагизович / до 2026-12-22: отдельно требуется календарь УП/ПП на 108 ч; полная вычитка пока не доказана",
+        "teacher": 60
+      },
+      "message": "Тимеров Валерий Вагизович / до 2026-12-22: отдельно требуется календарь УП/ПП на 108 ч; полная вычитка пока не доказана",
+      "severity": "warning"
+    },
+    {
+      "category": "semester_plan",
+      "code": "practice_calendar_required",
+      "context": {
+        "code": "practice_calendar_required",
+        "message": "Вальдиянов Ян Мансурович / до 2026-12-22: отдельно требуется календарь УП/ПП на 18 ч; полная вычитка пока не доказана",
+        "teacher": 62
+      },
+      "message": "Вальдиянов Ян Мансурович / до 2026-12-22: отдельно требуется календарь УП/ПП на 18 ч; полная вычитка пока не доказана",
+      "severity": "warning"
+    },
+    {
+      "category": "semester_plan",
+      "code": "practice_calendar_required",
+      "context": {
+        "code": "practice_calendar_required",
+        "message": "Клабуков Василий Витальевич / до 2026-12-22: отдельно требуется календарь УП/ПП на 288 ч; полная вычитка пока не доказана",
+        "teacher": 63
+      },
+      "message": "Клабуков Василий Витальевич / до 2026-12-22: отдельно требуется календарь УП/ПП на 288 ч; полная вычитка пока не доказана",
+      "severity": "warning"
+    },
+    {
+      "category": "semester_plan",
+      "code": "semester_capacity_shortfall",
+      "context": {
+        "code": "semester_capacity_shortfall",
+        "message": "Михайлова Татьяна Алексеевна / до 2026-12-22: нужно 338 пар, доступно не более 304",
+        "teacher": 65
+      },
+      "message": "Михайлова Татьяна Алексеевна / до 2026-12-22: нужно 338 пар, доступно не более 304",
+      "severity": "warning"
+    },
+    {
+      "category": "semester_plan",
+      "code": "semester_quota_shortfall",
+      "context": {
+        "code": "semester_quota_shortfall",
+        "message": "Михайлова Татьяна Алексеевна / до 2026-12-22: квота периода 16 пар меньше требуемого темпа 18",
+        "teacher": 65
+      },
+      "message": "Михайлова Татьяна Алексеевна / до 2026-12-22: квота периода 16 пар меньше требуемого темпа 18",
+      "severity": "warning"
+    },
+    {
+      "category": "semester_plan",
+      "code": "practice_calendar_required",
+      "context": {
+        "code": "practice_calendar_required",
+        "message": "Гарбузов Андрей Евгеньевич / до 2026-12-22: отдельно требуется календарь УП/ПП на 72 ч; полная вычитка пока не доказана",
+        "teacher": 67
+      },
+      "message": "Гарбузов Андрей Евгеньевич / до 2026-12-22: отдельно требуется календарь УП/ПП на 72 ч; полная вычитка пока не доказана",
+      "severity": "warning"
+    },
+    {
+      "category": "semester_plan",
+      "code": "practice_calendar_required",
+      "context": {
+        "code": "practice_calendar_required",
+        "message": "Рахматулина Наталья Владимировна / до 2026-12-22: отдельно требуется календарь УП/ПП на 432 ч; полная вычитка пока не доказана",
+        "teacher": 81
+      },
+      "message": "Рахматулина Наталья Владимировна / до 2026-12-22: отдельно требуется календарь УП/ПП на 432 ч; полная вычитка пока не доказана",
+      "severity": "warning"
+    },
+    {
+      "category": "semester_plan",
+      "code": "practice_calendar_required",
+      "context": {
+        "code": "practice_calendar_required",
+        "message": "Усков Алексей Николаевич / до 2026-12-22: отдельно требуется календарь УП/ПП на 144 ч; полная вычитка пока не доказана",
+        "teacher": 82
+      },
+      "message": "Усков Алексей Николаевич / до 2026-12-22: отдельно требуется календарь УП/ПП на 144 ч; полная вычитка пока не доказана",
+      "severity": "warning"
+    },
+    {
+      "category": "campus",
+      "code": "teacher_campus_not_preferred",
+      "context": {
+        "campus": 1,
+        "date": "2026-09-07",
+        "preferred_campus": 0,
+        "teacher": 1
+      },
+      "message": "Вагайская Татьяна Александровна находится не на приоритетной площадке",
+      "severity": "warning"
+    },
+    {
+      "category": "campus",
+      "code": "teacher_campus_not_preferred",
+      "context": {
+        "campus": 1,
+        "date": "2026-09-11",
+        "preferred_campus": 0,
+        "teacher": 1
+      },
+      "message": "Вагайская Татьяна Александровна находится не на приоритетной площадке",
+      "severity": "warning"
+    },
+    {
+      "category": "campus",
+      "code": "teacher_campus_not_preferred",
+      "context": {
+        "campus": 0,
+        "date": "2026-09-07",
+        "preferred_campus": 1,
+        "teacher": 8
+      },
+      "message": "Потапова Регина Александровна находится не на приоритетной площадке",
+      "severity": "warning"
+    },
+    {
+      "category": "campus",
+      "code": "teacher_campus_not_preferred",
+      "context": {
+        "campus": 0,
+        "date": "2026-09-08",
+        "preferred_campus": 1,
+        "teacher": 8
+      },
+      "message": "Потапова Регина Александровна находится не на приоритетной площадке",
+      "severity": "warning"
+    },
+    {
+      "category": "campus",
+      "code": "teacher_campus_not_preferred",
+      "context": {
+        "campus": 0,
+        "date": "2026-09-09",
+        "preferred_campus": 1,
+        "teacher": 8
+      },
+      "message": "Потапова Регина Александровна находится не на приоритетной площадке",
+      "severity": "warning"
+    },
+    {
+      "category": "campus",
+      "code": "teacher_campus_not_preferred",
+      "context": {
+        "campus": 0,
+        "date": "2026-09-12",
+        "preferred_campus": 1,
+        "teacher": 8
+      },
+      "message": "Потапова Регина Александровна находится не на приоритетной площадке",
+      "severity": "warning"
+    },
+    {
+      "category": "semester_plan",
+      "code": "desired_load_not_met",
+      "context": {
+        "actual": 18,
+        "required": 19,
+        "teacher": 3
+      },
+      "message": "Никонова Антонина Олеговна / до 2026-12-22",
+      "severity": "warning"
+    },
+    {
+      "category": "semester_plan",
+      "code": "desired_load_not_met",
+      "context": {
+        "actual": 7,
+        "required": 12,
+        "teacher": 9
+      },
+      "message": "Сутягин Артём Борисович / до 2026-12-22",
+      "severity": "warning"
+    },
+    {
+      "category": "semester_plan",
+      "code": "desired_load_not_met",
+      "context": {
+        "actual": 2,
+        "required": 3,
+        "teacher": 12
+      },
+      "message": "Рабенок Мария Александровна / до 2026-12-22",
+      "severity": "warning"
+    },
+    {
+      "category": "semester_plan",
+      "code": "desired_load_not_met",
+      "context": {
+        "actual": 7,
+        "required": 8,
+        "teacher": 42
+      },
+      "message": "Осипчук Александр Александрович / до 2026-12-22",
+      "severity": "warning"
+    },
+    {
+      "category": "semester_plan",
+      "code": "desired_load_not_met",
+      "context": {
+        "actual": 16,
+        "required": 18,
+        "teacher": 65
+      },
+      "message": "Михайлова Татьяна Алексеевна / до 2026-12-22",
+      "severity": "warning"
+    },
+    {
+      "category": "daily_load",
+      "code": "student_daily_minimum_fallback",
+      "context": {
+        "count": 1,
+        "date": "2026-09-07",
+        "group": 32,
+        "max": 5,
+        "min": 2,
+        "part": 1
+      },
+      "message": "Дневной минимум ослаблен резервным режимом решателя",
+      "severity": "warning"
+    },
+    {
+      "category": "daily_load",
+      "code": "student_daily_minimum_fallback",
+      "context": {
+        "count": 1,
+        "date": "2026-09-09",
+        "group": 32,
+        "max": 5,
+        "min": 2,
+        "part": 2
+      },
+      "message": "Дневной минимум ослаблен резервным режимом решателя",
+      "severity": "warning"
+    },
+    {
+      "category": "daily_load",
+      "code": "student_daily_minimum_fallback",
+      "context": {
+        "count": 1,
+        "date": "2026-09-11",
+        "group": 32,
+        "max": 5,
+        "min": 2,
+        "part": 2
+      },
+      "message": "Дневной минимум ослаблен резервным режимом решателя",
+      "severity": "warning"
+    },
+    {
+      "category": "windows",
+      "code": "teacher_window",
+      "context": {
+        "date": "2026-09-10",
+        "slots": [
+          3,
+          5,
+          7
+        ],
+        "teacher": 0
+      },
+      "message": "У преподавателя есть окно между занятиями",
+      "severity": "warning"
+    },
+    {
+      "category": "windows",
+      "code": "teacher_window",
+      "context": {
+        "date": "2026-09-08",
+        "slots": [
+          4,
+          7
+        ],
+        "teacher": 1
+      },
+      "message": "У преподавателя есть окно между занятиями",
+      "severity": "warning"
+    },
+    {
+      "category": "windows",
+      "code": "teacher_window",
+      "context": {
+        "date": "2026-09-10",
+        "slots": [
+          1,
+          5
+        ],
+        "teacher": 1
+      },
+      "message": "У преподавателя есть окно между занятиями",
+      "severity": "warning"
+    },
+    {
+      "category": "windows",
+      "code": "teacher_window",
+      "context": {
+        "date": "2026-09-09",
+        "slots": [
+          2,
+          4
+        ],
+        "teacher": 2
+      },
+      "message": "У преподавателя есть окно между занятиями",
+      "severity": "warning"
+    },
+    {
+      "category": "windows",
+      "code": "teacher_window",
+      "context": {
+        "date": "2026-09-07",
+        "slots": [
+          3,
+          4,
+          7
+        ],
+        "teacher": 4
+      },
+      "message": "У преподавателя есть окно между занятиями",
+      "severity": "warning"
+    },
+    {
+      "category": "windows",
+      "code": "teacher_window",
+      "context": {
+        "date": "2026-09-09",
+        "slots": [
+          2,
+          4
+        ],
+        "teacher": 4
+      },
+      "message": "У преподавателя есть окно между занятиями",
+      "severity": "warning"
+    },
+    {
+      "category": "windows",
+      "code": "teacher_window",
+      "context": {
+        "date": "2026-09-12",
+        "slots": [
+          1,
+          2,
+          3,
+          4,
+          6,
+          7
+        ],
+        "teacher": 4
+      },
+      "message": "У преподавателя есть окно между занятиями",
+      "severity": "warning"
+    },
+    {
+      "category": "windows",
+      "code": "teacher_window",
+      "context": {
+        "date": "2026-09-10",
+        "slots": [
+          4,
+          6
+        ],
+        "teacher": 6
+      },
+      "message": "У преподавателя есть окно между занятиями",
+      "severity": "warning"
+    },
+    {
+      "category": "windows",
+      "code": "teacher_window",
+      "context": {
+        "date": "2026-09-09",
+        "slots": [
+          1,
+          2,
+          3,
+          5,
+          6
+        ],
+        "teacher": 8
+      },
+      "message": "У преподавателя есть окно между занятиями",
+      "severity": "warning"
+    },
+    {
+      "category": "windows",
+      "code": "teacher_window",
+      "context": {
+        "date": "2026-09-08",
+        "slots": [
+          2,
+          5
+        ],
+        "teacher": 10
+      },
+      "message": "У преподавателя есть окно между занятиями",
+      "severity": "warning"
+    },
+    {
+      "category": "windows",
+      "code": "teacher_window",
+      "context": {
+        "date": "2026-09-09",
+        "slots": [
+          1,
+          3,
+          5
+        ],
+        "teacher": 10
+      },
+      "message": "У преподавателя есть окно между занятиями",
+      "severity": "warning"
+    },
+    {
+      "category": "windows",
+      "code": "teacher_window",
+      "context": {
+        "date": "2026-09-11",
+        "slots": [
+          2,
+          3,
+          5
+        ],
+        "teacher": 11
+      },
+      "message": "У преподавателя есть окно между занятиями",
+      "severity": "warning"
+    },
+    {
+      "category": "windows",
+      "code": "teacher_window",
+      "context": {
+        "date": "2026-09-09",
+        "slots": [
+          2,
+          4
+        ],
+        "teacher": 12
+      },
+      "message": "У преподавателя есть окно между занятиями",
+      "severity": "warning"
+    },
+    {
+      "category": "windows",
+      "code": "teacher_window",
+      "context": {
+        "date": "2026-09-07",
+        "slots": [
+          2,
+          3,
+          4,
+          6
+        ],
+        "teacher": 13
+      },
+      "message": "У преподавателя есть окно между занятиями",
+      "severity": "warning"
+    },
+    {
+      "category": "windows",
+      "code": "teacher_window",
+      "context": {
+        "date": "2026-09-08",
+        "slots": [
+          3,
+          5
+        ],
+        "teacher": 13
+      },
+      "message": "У преподавателя есть окно между занятиями",
+      "severity": "warning"
+    },
+    {
+      "category": "windows",
+      "code": "teacher_window",
+      "context": {
+        "date": "2026-09-09",
+        "slots": [
+          2,
+          3,
+          6
+        ],
+        "teacher": 13
+      },
+      "message": "У преподавателя есть окно между занятиями",
+      "severity": "warning"
+    },
+    {
+      "category": "windows",
+      "code": "teacher_window",
+      "context": {
+        "date": "2026-09-10",
+        "slots": [
+          1,
+          2,
+          6
+        ],
+        "teacher": 13
+      },
+      "message": "У преподавателя есть окно между занятиями",
+      "severity": "warning"
+    },
+    {
+      "category": "windows",
+      "code": "teacher_window",
+      "context": {
+        "date": "2026-09-11",
+        "slots": [
+          2,
+          6,
+          7
+        ],
+        "teacher": 13
+      },
+      "message": "У преподавателя есть окно между занятиями",
+      "severity": "warning"
+    },
+    {
+      "category": "windows",
+      "code": "teacher_window",
+      "context": {
+        "date": "2026-09-07",
+        "slots": [
+          2,
+          3,
+          5
+        ],
+        "teacher": 14
+      },
+      "message": "У преподавателя есть окно между занятиями",
+      "severity": "warning"
+    },
+    {
+      "category": "windows",
+      "code": "teacher_window",
+      "context": {
+        "date": "2026-09-09",
+        "slots": [
+          1,
+          3,
+          4
+        ],
+        "teacher": 14
+      },
+      "message": "У преподавателя есть окно между занятиями",
+      "severity": "warning"
+    },
+    {
+      "category": "windows",
+      "code": "teacher_window",
+      "context": {
+        "date": "2026-09-10",
+        "slots": [
+          2,
+          3,
+          4,
+          5,
+          7
+        ],
+        "teacher": 14
+      },
+      "message": "У преподавателя есть окно между занятиями",
+      "severity": "warning"
+    },
+    {
+      "category": "windows",
+      "code": "teacher_window",
+      "context": {
+        "date": "2026-09-12",
+        "slots": [
+          1,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "teacher": 14
+      },
+      "message": "У преподавателя есть окно между занятиями",
+      "severity": "warning"
+    },
+    {
+      "category": "windows",
+      "code": "teacher_window",
+      "context": {
+        "date": "2026-09-07",
+        "slots": [
+          1,
+          2,
+          3,
+          5,
+          7
+        ],
+        "teacher": 15
+      },
+      "message": "У преподавателя есть окно между занятиями",
+      "severity": "warning"
+    },
+    {
+      "category": "windows",
+      "code": "teacher_window",
+      "context": {
+        "date": "2026-09-08",
+        "slots": [
+          2,
+          4,
+          6
+        ],
+        "teacher": 15
+      },
+      "message": "У преподавателя есть окно между занятиями",
+      "severity": "warning"
+    },
+    {
+      "category": "windows",
+      "code": "teacher_window",
+      "context": {
+        "date": "2026-09-10",
+        "slots": [
+          2,
+          5
+        ],
+        "teacher": 15
+      },
+      "message": "У преподавателя есть окно между занятиями",
+      "severity": "warning"
+    },
+    {
+      "category": "windows",
+      "code": "teacher_window",
+      "context": {
+        "date": "2026-09-11",
+        "slots": [
+          2,
+          4,
+          5,
+          6,
+          7
+        ],
+        "teacher": 16
+      },
+      "message": "У преподавателя есть окно между занятиями",
+      "severity": "warning"
+    },
+    {
+      "category": "windows",
+      "code": "teacher_window",
+      "context": {
+        "date": "2026-09-07",
+        "slots": [
+          1,
+          3,
+          4,
+          5,
+          6
+        ],
+        "teacher": 17
+      },
+      "message": "У преподавателя есть окно между занятиями",
+      "severity": "warning"
+    },
+    {
+      "category": "windows",
+      "code": "teacher_window",
+      "context": {
+        "date": "2026-09-08",
+        "slots": [
+          2,
+          4,
+          5,
+          6
+        ],
+        "teacher": 17
+      },
+      "message": "У преподавателя есть окно между занятиями",
+      "severity": "warning"
+    },
+    {
+      "category": "windows",
+      "code": "teacher_window",
+      "context": {
+        "date": "2026-09-09",
+        "slots": [
+          1,
+          2,
+          3,
+          5,
+          6
+        ],
+        "teacher": 17
+      },
+      "message": "У преподавателя есть окно между занятиями",
+      "severity": "warning"
+    },
+    {
+      "category": "windows",
+      "code": "teacher_window",
+      "context": {
+        "date": "2026-09-10",
+        "slots": [
+          1,
+          2,
+          3,
+          4,
+          6
+        ],
+        "teacher": 17
+      },
+      "message": "У преподавателя есть окно между занятиями",
+      "severity": "warning"
+    },
+    {
+      "category": "windows",
+      "code": "teacher_window",
+      "context": {
+        "date": "2026-09-12",
+        "slots": [
+          2,
+          3,
+          6
+        ],
+        "teacher": 17
+      },
+      "message": "У преподавателя есть окно между занятиями",
+      "severity": "warning"
+    },
+    {
+      "category": "windows",
+      "code": "teacher_window",
+      "context": {
+        "date": "2026-09-08",
+        "slots": [
+          3,
+          6,
+          7
+        ],
+        "teacher": 19
+      },
+      "message": "У преподавателя есть окно между занятиями",
+      "severity": "warning"
+    },
+    {
+      "category": "windows",
+      "code": "teacher_window",
+      "context": {
+        "date": "2026-09-09",
+        "slots": [
+          3,
+          5,
+          6
+        ],
+        "teacher": 19
+      },
+      "message": "У преподавателя есть окно между занятиями",
+      "severity": "warning"
+    },
+    {
+      "category": "windows",
+      "code": "teacher_window",
+      "context": {
+        "date": "2026-09-09",
+        "slots": [
+          1,
+          2,
+          4,
+          6,
+          7
+        ],
+        "teacher": 20
+      },
+      "message": "У преподавателя есть окно между занятиями",
+      "severity": "warning"
+    },
+    {
+      "category": "windows",
+      "code": "teacher_window",
+      "context": {
+        "date": "2026-09-10",
+        "slots": [
+          4,
+          6
+        ],
+        "teacher": 20
+      },
+      "message": "У преподавателя есть окно между занятиями",
+      "severity": "warning"
+    },
+    {
+      "category": "windows",
+      "code": "teacher_window",
+      "context": {
+        "date": "2026-09-11",
+        "slots": [
+          2,
+          3,
+          4,
+          6,
+          7
+        ],
+        "teacher": 20
+      },
+      "message": "У преподавателя есть окно между занятиями",
+      "severity": "warning"
+    },
+    {
+      "category": "windows",
+      "code": "teacher_window",
+      "context": {
+        "date": "2026-09-10",
+        "slots": [
+          4,
+          6
+        ],
+        "teacher": 21
+      },
+      "message": "У преподавателя есть окно между занятиями",
+      "severity": "warning"
+    },
+    {
+      "category": "windows",
+      "code": "teacher_window",
+      "context": {
+        "date": "2026-09-12",
+        "slots": [
+          3,
+          5,
+          6
+        ],
+        "teacher": 21
+      },
+      "message": "У преподавателя есть окно между занятиями",
+      "severity": "warning"
+    },
+    {
+      "category": "windows",
+      "code": "teacher_window",
+      "context": {
+        "date": "2026-09-07",
+        "slots": [
+          1,
+          3,
+          4,
+          5
+        ],
+        "teacher": 22
+      },
+      "message": "У преподавателя есть окно между занятиями",
+      "severity": "warning"
+    },
+    {
+      "category": "windows",
+      "code": "teacher_window",
+      "context": {
+        "date": "2026-09-08",
+        "slots": [
+          1,
+          4,
+          5
+        ],
+        "teacher": 22
+      },
+      "message": "У преподавателя есть окно между занятиями",
+      "severity": "warning"
+    },
+    {
+      "category": "windows",
+      "code": "teacher_window",
+      "context": {
+        "date": "2026-09-10",
+        "slots": [
+          5,
+          7
+        ],
+        "teacher": 22
+      },
+      "message": "У преподавателя есть окно между занятиями",
+      "severity": "warning"
+    },
+    {
+      "category": "windows",
+      "code": "teacher_window",
+      "context": {
+        "date": "2026-09-11",
+        "slots": [
+          1,
+          3,
+          4,
+          5,
+          7
+        ],
+        "teacher": 22
+      },
+      "message": "У преподавателя есть окно между занятиями",
+      "severity": "warning"
+    },
+    {
+      "category": "windows",
+      "code": "teacher_window",
+      "context": {
+        "date": "2026-09-07",
+        "slots": [
+          1,
+          3,
+          4,
+          5
+        ],
+        "teacher": 23
+      },
+      "message": "У преподавателя есть окно между занятиями",
+      "severity": "warning"
+    },
+    {
+      "category": "windows",
+      "code": "teacher_window",
+      "context": {
+        "date": "2026-09-09",
+        "slots": [
+          1,
+          3,
+          4,
+          5
+        ],
+        "teacher": 23
+      },
+      "message": "У преподавателя есть окно между занятиями",
+      "severity": "warning"
+    },
+    {
+      "category": "windows",
+      "code": "teacher_window",
+      "context": {
+        "date": "2026-09-10",
+        "slots": [
+          3,
+          4,
+          6
+        ],
+        "teacher": 23
+      },
+      "message": "У преподавателя есть окно между занятиями",
+      "severity": "warning"
+    },
+    {
+      "category": "windows",
+      "code": "teacher_window",
+      "context": {
+        "date": "2026-09-12",
+        "slots": [
+          5,
+          7
+        ],
+        "teacher": 23
+      },
+      "message": "У преподавателя есть окно между занятиями",
+      "severity": "warning"
+    },
+    {
+      "category": "windows",
+      "code": "teacher_window",
+      "context": {
+        "date": "2026-09-07",
+        "slots": [
+          1,
+          4,
+          6
+        ],
+        "teacher": 27
+      },
+      "message": "У преподавателя есть окно между занятиями",
+      "severity": "warning"
+    },
+    {
+      "category": "windows",
+      "code": "teacher_window",
+      "context": {
+        "date": "2026-09-08",
+        "slots": [
+          2,
+          4,
+          5
+        ],
+        "teacher": 27
+      },
+      "message": "У преподавателя есть окно между занятиями",
+      "severity": "warning"
+    },
+    {
+      "category": "windows",
+      "code": "teacher_window",
+      "context": {
+        "date": "2026-09-09",
+        "slots": [
+          1,
+          2,
+          3,
+          5,
+          6
+        ],
+        "teacher": 27
+      },
+      "message": "У преподавателя есть окно между занятиями",
+      "severity": "warning"
+    },
+    {
+      "category": "windows",
+      "code": "teacher_window",
+      "context": {
+        "date": "2026-09-10",
+        "slots": [
+          3,
+          4,
+          7
+        ],
+        "teacher": 27
+      },
+      "message": "У преподавателя есть окно между занятиями",
+      "severity": "warning"
+    },
+    {
+      "category": "windows",
+      "code": "teacher_window",
+      "context": {
+        "date": "2026-09-11",
+        "slots": [
+          2,
+          5,
+          6
+        ],
+        "teacher": 27
+      },
+      "message": "У преподавателя есть окно между занятиями",
+      "severity": "warning"
+    },
+    {
+      "category": "windows",
+      "code": "teacher_window",
+      "context": {
+        "date": "2026-09-09",
+        "slots": [
+          1,
+          2,
+          4
+        ],
+        "teacher": 28
+      },
+      "message": "У преподавателя есть окно между занятиями",
+      "severity": "warning"
+    },
+    {
+      "category": "windows",
+      "code": "teacher_window",
+      "context": {
+        "date": "2026-09-12",
+        "slots": [
+          1,
+          3,
+          4
+        ],
+        "teacher": 29
+      },
+      "message": "У преподавателя есть окно между занятиями",
+      "severity": "warning"
+    },
+    {
+      "category": "windows",
+      "code": "teacher_window",
+      "context": {
+        "date": "2026-09-09",
+        "slots": [
+          1,
+          2,
+          3,
+          4,
+          6,
+          7
+        ],
+        "teacher": 30
+      },
+      "message": "У преподавателя есть окно между занятиями",
+      "severity": "warning"
+    },
+    {
+      "category": "windows",
+      "code": "teacher_window",
+      "context": {
+        "date": "2026-09-10",
+        "slots": [
+          3,
+          5
+        ],
+        "teacher": 30
+      },
+      "message": "У преподавателя есть окно между занятиями",
+      "severity": "warning"
+    },
+    {
+      "category": "windows",
+      "code": "teacher_window",
+      "context": {
+        "date": "2026-09-12",
+        "slots": [
+          3,
+          5,
+          7
+        ],
+        "teacher": 30
+      },
+      "message": "У преподавателя есть окно между занятиями",
+      "severity": "warning"
+    },
+    {
+      "category": "windows",
+      "code": "teacher_window",
+      "context": {
+        "date": "2026-09-09",
+        "slots": [
+          1,
+          2,
+          3,
+          5,
+          7
+        ],
+        "teacher": 31
+      },
+      "message": "У преподавателя есть окно между занятиями",
+      "severity": "warning"
+    },
+    {
+      "category": "windows",
+      "code": "teacher_window",
+      "context": {
+        "date": "2026-09-10",
+        "slots": [
+          3,
+          5
+        ],
+        "teacher": 31
+      },
+      "message": "У преподавателя есть окно между занятиями",
+      "severity": "warning"
+    },
+    {
+      "category": "windows",
+      "code": "teacher_window",
+      "context": {
+        "date": "2026-09-11",
+        "slots": [
+          1,
+          2,
+          3,
+          4,
+          6
+        ],
+        "teacher": 31
+      },
+      "message": "У преподавателя есть окно между занятиями",
+      "severity": "warning"
+    },
+    {
+      "category": "windows",
+      "code": "teacher_window",
+      "context": {
+        "date": "2026-09-12",
+        "slots": [
+          2,
+          3,
+          5,
+          7
+        ],
+        "teacher": 31
+      },
+      "message": "У преподавателя есть окно между занятиями",
+      "severity": "warning"
+    },
+    {
+      "category": "windows",
+      "code": "teacher_window",
+      "context": {
+        "date": "2026-09-11",
+        "slots": [
+          1,
+          5
+        ],
+        "teacher": 32
+      },
+      "message": "У преподавателя есть окно между занятиями",
+      "severity": "warning"
+    },
+    {
+      "category": "windows",
+      "code": "teacher_window",
+      "context": {
+        "date": "2026-09-12",
+        "slots": [
+          4,
+          6
+        ],
+        "teacher": 32
+      },
+      "message": "У преподавателя есть окно между занятиями",
+      "severity": "warning"
+    },
+    {
+      "category": "windows",
+      "code": "teacher_window",
+      "context": {
+        "date": "2026-09-07",
+        "slots": [
+          1,
+          3,
+          4,
+          6,
+          7
+        ],
+        "teacher": 34
+      },
+      "message": "У преподавателя есть окно между занятиями",
+      "severity": "warning"
+    },
+    {
+      "category": "windows",
+      "code": "teacher_window",
+      "context": {
+        "date": "2026-09-08",
+        "slots": [
+          2,
+          4,
+          5,
+          6
+        ],
+        "teacher": 36
+      },
+      "message": "У преподавателя есть окно между занятиями",
+      "severity": "warning"
+    },
+    {
+      "category": "windows",
+      "code": "teacher_window",
+      "context": {
+        "date": "2026-09-07",
+        "slots": [
+          1,
+          2,
+          4,
+          5
+        ],
+        "teacher": 38
+      },
+      "message": "У преподавателя есть окно между занятиями",
+      "severity": "warning"
+    },
+    {
+      "category": "windows",
+      "code": "teacher_window",
+      "context": {
+        "date": "2026-09-10",
+        "slots": [
+          2,
+          4,
+          5
+        ],
+        "teacher": 38
+      },
+      "message": "У преподавателя есть окно между занятиями",
+      "severity": "warning"
+    },
+    {
+      "category": "windows",
+      "code": "teacher_window",
+      "context": {
+        "date": "2026-09-10",
+        "slots": [
+          1,
+          3,
+          4
+        ],
+        "teacher": 39
+      },
+      "message": "У преподавателя есть окно между занятиями",
+      "severity": "warning"
+    },
+    {
+      "category": "windows",
+      "code": "teacher_window",
+      "context": {
+        "date": "2026-09-08",
+        "slots": [
+          1,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "teacher": 40
+      },
+      "message": "У преподавателя есть окно между занятиями",
+      "severity": "warning"
+    },
+    {
+      "category": "windows",
+      "code": "teacher_window",
+      "context": {
+        "date": "2026-09-09",
+        "slots": [
+          1,
+          3,
+          5,
+          6
+        ],
+        "teacher": 40
+      },
+      "message": "У преподавателя есть окно между занятиями",
+      "severity": "warning"
+    },
+    {
+      "category": "windows",
+      "code": "teacher_window",
+      "context": {
+        "date": "2026-09-09",
+        "slots": [
+          2,
+          3,
+          6,
+          7
+        ],
+        "teacher": 41
+      },
+      "message": "У преподавателя есть окно между занятиями",
+      "severity": "warning"
+    },
+    {
+      "category": "windows",
+      "code": "teacher_window",
+      "context": {
+        "date": "2026-09-11",
+        "slots": [
+          2,
+          4
+        ],
+        "teacher": 41
+      },
+      "message": "У преподавателя есть окно между занятиями",
+      "severity": "warning"
+    },
+    {
+      "category": "windows",
+      "code": "teacher_window",
+      "context": {
+        "date": "2026-09-07",
+        "slots": [
+          1,
+          2,
+          3,
+          4,
+          6,
+          7
+        ],
+        "teacher": 43
+      },
+      "message": "У преподавателя есть окно между занятиями",
+      "severity": "warning"
+    },
+    {
+      "category": "windows",
+      "code": "teacher_window",
+      "context": {
+        "date": "2026-09-07",
+        "slots": [
+          2,
+          5,
+          6,
+          7
+        ],
+        "teacher": 45
+      },
+      "message": "У преподавателя есть окно между занятиями",
+      "severity": "warning"
+    },
+    {
+      "category": "windows",
+      "code": "teacher_window",
+      "context": {
+        "date": "2026-09-12",
+        "slots": [
+          1,
+          2,
+          3,
+          7
+        ],
+        "teacher": 45
+      },
+      "message": "У преподавателя есть окно между занятиями",
+      "severity": "warning"
+    },
+    {
+      "category": "windows",
+      "code": "teacher_window",
+      "context": {
+        "date": "2026-09-07",
+        "slots": [
+          1,
+          3,
+          4
+        ],
+        "teacher": 46
+      },
+      "message": "У преподавателя есть окно между занятиями",
+      "severity": "warning"
+    },
+    {
+      "category": "windows",
+      "code": "teacher_window",
+      "context": {
+        "date": "2026-09-10",
+        "slots": [
+          2,
+          3,
+          5
+        ],
+        "teacher": 46
+      },
+      "message": "У преподавателя есть окно между занятиями",
+      "severity": "warning"
+    },
+    {
+      "category": "windows",
+      "code": "teacher_window",
+      "context": {
+        "date": "2026-09-09",
+        "slots": [
+          2,
+          4
+        ],
+        "teacher": 47
+      },
+      "message": "У преподавателя есть окно между занятиями",
+      "severity": "warning"
+    },
+    {
+      "category": "windows",
+      "code": "teacher_window",
+      "context": {
+        "date": "2026-09-12",
+        "slots": [
+          1,
+          2,
+          3,
+          5,
+          6
+        ],
+        "teacher": 48
+      },
+      "message": "У преподавателя есть окно между занятиями",
+      "severity": "warning"
+    },
+    {
+      "category": "windows",
+      "code": "teacher_window",
+      "context": {
+        "date": "2026-09-07",
+        "slots": [
+          2,
+          5
+        ],
+        "teacher": 50
+      },
+      "message": "У преподавателя есть окно между занятиями",
+      "severity": "warning"
+    },
+    {
+      "category": "windows",
+      "code": "teacher_window",
+      "context": {
+        "date": "2026-09-12",
+        "slots": [
+          3,
+          5
+        ],
+        "teacher": 51
+      },
+      "message": "У преподавателя есть окно между занятиями",
+      "severity": "warning"
+    },
+    {
+      "category": "windows",
+      "code": "teacher_window",
+      "context": {
+        "date": "2026-09-07",
+        "slots": [
+          1,
+          3
+        ],
+        "teacher": 52
+      },
+      "message": "У преподавателя есть окно между занятиями",
+      "severity": "warning"
+    },
+    {
+      "category": "windows",
+      "code": "teacher_window",
+      "context": {
+        "date": "2026-09-08",
+        "slots": [
+          2,
+          3,
+          5,
+          6
+        ],
+        "teacher": 52
+      },
+      "message": "У преподавателя есть окно между занятиями",
+      "severity": "warning"
+    },
+    {
+      "category": "windows",
+      "code": "teacher_window",
+      "context": {
+        "date": "2026-09-09",
+        "slots": [
+          3,
+          6
+        ],
+        "teacher": 52
+      },
+      "message": "У преподавателя есть окно между занятиями",
+      "severity": "warning"
+    },
+    {
+      "category": "windows",
+      "code": "teacher_window",
+      "context": {
+        "date": "2026-09-07",
+        "slots": [
+          2,
+          4,
+          6
+        ],
+        "teacher": 53
+      },
+      "message": "У преподавателя есть окно между занятиями",
+      "severity": "warning"
+    },
+    {
+      "category": "windows",
+      "code": "teacher_window",
+      "context": {
+        "date": "2026-09-10",
+        "slots": [
+          4,
+          6
+        ],
+        "teacher": 53
+      },
+      "message": "У преподавателя есть окно между занятиями",
+      "severity": "warning"
+    },
+    {
+      "category": "windows",
+      "code": "teacher_window",
+      "context": {
+        "date": "2026-09-08",
+        "slots": [
+          3,
+          6
+        ],
+        "teacher": 54
+      },
+      "message": "У преподавателя есть окно между занятиями",
+      "severity": "warning"
+    },
+    {
+      "category": "windows",
+      "code": "teacher_window",
+      "context": {
+        "date": "2026-09-07",
+        "slots": [
+          1,
+          3,
+          4,
+          5
+        ],
+        "teacher": 55
+      },
+      "message": "У преподавателя есть окно между занятиями",
+      "severity": "warning"
+    },
+    {
+      "category": "windows",
+      "code": "teacher_window",
+      "context": {
+        "date": "2026-09-08",
+        "slots": [
+          3,
+          6,
+          7
+        ],
+        "teacher": 55
+      },
+      "message": "У преподавателя есть окно между занятиями",
+      "severity": "warning"
+    },
+    {
+      "category": "windows",
+      "code": "teacher_window",
+      "context": {
+        "date": "2026-09-10",
+        "slots": [
+          3,
+          5,
+          6
+        ],
+        "teacher": 55
+      },
+      "message": "У преподавателя есть окно между занятиями",
+      "severity": "warning"
+    },
+    {
+      "category": "windows",
+      "code": "teacher_window",
+      "context": {
+        "date": "2026-09-07",
+        "slots": [
+          2,
+          3,
+          4,
+          5,
+          7
+        ],
+        "teacher": 56
+      },
+      "message": "У преподавателя есть окно между занятиями",
+      "severity": "warning"
+    },
+    {
+      "category": "windows",
+      "code": "teacher_window",
+      "context": {
+        "date": "2026-09-10",
+        "slots": [
+          2,
+          3,
+          4,
+          5,
+          7
+        ],
+        "teacher": 56
+      },
+      "message": "У преподавателя есть окно между занятиями",
+      "severity": "warning"
+    },
+    {
+      "category": "windows",
+      "code": "teacher_window",
+      "context": {
+        "date": "2026-09-12",
+        "slots": [
+          1,
+          2,
+          4,
+          5,
+          6,
+          7
+        ],
+        "teacher": 59
+      },
+      "message": "У преподавателя есть окно между занятиями",
+      "severity": "warning"
+    },
+    {
+      "category": "windows",
+      "code": "teacher_window",
+      "context": {
+        "date": "2026-09-07",
+        "slots": [
+          2,
+          3,
+          5,
+          6,
+          7
+        ],
+        "teacher": 60
+      },
+      "message": "У преподавателя есть окно между занятиями",
+      "severity": "warning"
+    },
+    {
+      "category": "windows",
+      "code": "teacher_window",
+      "context": {
+        "date": "2026-09-11",
+        "slots": [
+          1,
+          6,
+          7
+        ],
+        "teacher": 60
+      },
+      "message": "У преподавателя есть окно между занятиями",
+      "severity": "warning"
+    },
+    {
+      "category": "windows",
+      "code": "teacher_window",
+      "context": {
+        "date": "2026-09-12",
+        "slots": [
+          1,
+          2,
+          3,
+          4,
+          6
+        ],
+        "teacher": 60
+      },
+      "message": "У преподавателя есть окно между занятиями",
+      "severity": "warning"
+    },
+    {
+      "category": "windows",
+      "code": "teacher_window",
+      "context": {
+        "date": "2026-09-08",
+        "slots": [
+          2,
+          4,
+          5,
+          6,
+          7
+        ],
+        "teacher": 61
+      },
+      "message": "У преподавателя есть окно между занятиями",
+      "severity": "warning"
+    },
+    {
+      "category": "windows",
+      "code": "teacher_window",
+      "context": {
+        "date": "2026-09-11",
+        "slots": [
+          2,
+          3,
+          5,
+          6
+        ],
+        "teacher": 61
+      },
+      "message": "У преподавателя есть окно между занятиями",
+      "severity": "warning"
+    },
+    {
+      "category": "windows",
+      "code": "teacher_window",
+      "context": {
+        "date": "2026-09-08",
+        "slots": [
+          1,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "teacher": 62
+      },
+      "message": "У преподавателя есть окно между занятиями",
+      "severity": "warning"
+    },
+    {
+      "category": "windows",
+      "code": "teacher_window",
+      "context": {
+        "date": "2026-09-11",
+        "slots": [
+          2,
+          3,
+          4,
+          6,
+          7
+        ],
+        "teacher": 62
+      },
+      "message": "У преподавателя есть окно между занятиями",
+      "severity": "warning"
+    },
+    {
+      "category": "windows",
+      "code": "teacher_window",
+      "context": {
+        "date": "2026-09-09",
+        "slots": [
+          2,
+          4,
+          5,
+          6
+        ],
+        "teacher": 63
+      },
+      "message": "У преподавателя есть окно между занятиями",
+      "severity": "warning"
+    },
+    {
+      "category": "windows",
+      "code": "teacher_window",
+      "context": {
+        "date": "2026-09-11",
+        "slots": [
+          2,
+          3,
+          5
+        ],
+        "teacher": 66
+      },
+      "message": "У преподавателя есть окно между занятиями",
+      "severity": "warning"
+    },
+    {
+      "category": "windows",
+      "code": "teacher_window",
+      "context": {
+        "date": "2026-09-07",
+        "slots": [
+          1,
+          2,
+          4
+        ],
+        "teacher": 81
+      },
+      "message": "У преподавателя есть окно между занятиями",
+      "severity": "warning"
+    },
+    {
+      "category": "windows",
+      "code": "teacher_window",
+      "context": {
+        "date": "2026-09-12",
+        "slots": [
+          3,
+          4,
+          6,
+          7
+        ],
+        "teacher": 81
+      },
+      "message": "У преподавателя есть окно между занятиями",
+      "severity": "warning"
+    },
+    {
+      "category": "windows",
+      "code": "teacher_window",
+      "context": {
+        "date": "2026-09-10",
+        "slots": [
+          3,
+          5
+        ],
+        "teacher": 82
+      },
+      "message": "У преподавателя есть окно между занятиями",
+      "severity": "warning"
+    }
+  ],
+  "class_hour_placements": [
+    [
+      "ТАКХС-Пф-1203",
+      0,
+      "Габец Н.Е.",
+      "201"
+    ],
+    [
+      "ТМ-1419",
+      0,
+      "Азарян Карине Айказовна",
+      "311"
+    ],
+    [
+      "ТМ-1420",
+      7,
+      "Вальдиянов Ян Мансурович",
+      "315"
+    ],
+    [
+      "МЦМ-Пф-103",
+      0,
+      "Черепанова Татьяна Михайловна",
+      "69"
+    ],
+    [
+      "СП-Пф-1605",
+      2,
+      "Журавский Константин Сергеевич",
+      "69"
+    ],
+    [
+      "СП-Пф-1606п",
+      0,
+      "Ахметов Артур Фанависович",
+      "64"
+    ],
+    [
+      "ЭОЭ-Пф-151",
+      5,
+      "Федорова М.В.",
+      "401"
+    ],
+    [
+      "РУП-1301п",
+      2,
+      "Домарева Ирина Вячеславовна",
+      "319"
+    ],
+    [
+      "ПКД-1809",
+      2,
+      "Кузнецова Елизавета Олеговна",
+      "322"
+    ],
+    [
+      "ТОиРА-1702",
+      0,
+      "Демина Екатерина Алексеевна",
+      "70"
+    ],
+    [
+      "ТОиРА-1703п",
+      0,
+      "Костарева Наталья Викторовна",
+      "48"
+    ],
+    [
+      "ТИК-212",
+      0,
+      "Хасанова Гузель Хамитовна",
+      "50"
+    ],
+    [
+      "ТЭиРП-2901",
+      3,
+      "Ланитина Елена Сергеевна",
+      "324"
+    ],
+    [
+      "ОСА-491",
+      0,
+      "Ланитина Елена Сергеевна",
+      "68"
+    ],
+    [
+      "МЦМ-Пф-202",
+      0,
+      "Попова Татьяна Вильевна",
+      "65"
+    ],
+    [
+      "МЦМ-Пф-301",
+      7,
+      "Силенок Марина Юрьевна",
+      "22"
+    ],
+    [
+      "МЦМ-408",
+      2,
+      "Черепанова Татьяна Михайловна",
+      "16"
+    ],
+    [
+      "ТАКХС-Пф-2202",
+      0,
+      "Семенова Лилиана Ивановна",
+      "54"
+    ],
+    [
+      "ТАКХС-3201",
+      0,
+      "Кальчевская Наталья Владимировна",
+      "47"
+    ],
+    [
+      "ТАКХС-4202",
+      5,
+      "Соболева Любовь Анатольевна",
+      "324"
+    ],
+    [
+      "ТЭО-Пф-3501",
+      0,
+      "Вагайская Татьяна Александровна",
+      "60"
+    ],
+    [
+      "ПКД-2808п",
+      0,
+      "Чадова Марина Александровна",
+      "57"
+    ],
+    [
+      "ПКД-380607п",
+      0,
+      "Конева Кристина Сергеевна",
+      "61"
+    ],
+    [
+      "ПКД-4805п",
+      3,
+      "Елагина Ольга Александровна",
+      "50"
+    ],
+    [
+      "СП-Пф-2603",
+      3,
+      "Цимфер Татьяна Ивановна",
+      "201"
+    ],
+    [
+      "СП-Пф-2604п",
+      0,
+      "Дроговейко Дарья Юрьевна",
+      "209"
+    ],
+    [
+      "СП-Пф-3601",
+      6,
+      "Ахметов Артур Фанависович",
+      "201"
+    ],
+    [
+      "СП-Пф-3602п",
+      4,
+      "Сидельникова А.А.",
+      "319"
+    ],
+    [
+      "СП-4611",
+      0,
+      "Дроговейко Дарья Юрьевна",
+      "209"
+    ],
+    [
+      "СП-4612п",
+      0,
+      "Кузнецова Елизавета Олеговна",
+      "21"
+    ],
+    [
+      "ТОиРА-2701п",
+      0,
+      "Потапова Регина Александровна",
+      "207"
+    ],
+    [
+      "ТОРД-3706",
+      3,
+      "Цимфер Татьяна Ивановна",
+      "201"
+    ],
+    [
+      "ТОРД-3707п",
+      4,
+      "Шадрина Елена Федоровна",
+      "317"
+    ],
+    [
+      "ТОРД-4705п",
+      0,
+      "Цимфер Татьяна Ивановна",
+      "31"
+    ],
+    [
+      "ТМ-2417",
+      5,
+      "Рабенок Т.С.",
+      "319"
+    ],
+    [
+      "ТМ-2418п",
+      7,
+      "Ермолина Ирина Павловна",
+      "311"
+    ],
+    [
+      "ТМ-3415",
+      2,
+      "Ермолина Ирина Павловна",
+      "315"
+    ],
+    [
+      "ТМ-3416п",
+      5,
+      "Костарева Наталья Викторовна",
+      "318"
+    ],
+    [
+      "ТМ-4413",
+      0,
+      "Костарева Наталья Викторовна",
+      "48"
+    ],
+    [
+      "ТМ-4414п",
+      0,
+      "Ермолина Ирина Павловна",
+      "Актовый зал"
+    ],
+    [
+      "ИСП-2308",
+      0,
+      "Кропотова Анастасия Андреевна",
+      "205"
+    ],
+    [
+      "ИСП-2309п",
+      0,
+      "Габец Н.Е.",
+      "201"
+    ],
+    [
+      "ИСП-3306п",
+      2,
+      "Нифонтова Ирина Геннадьевна",
+      "311"
+    ],
+    [
+      "ИСП-3307п",
+      7,
+      "Комарова Яна Николаевна",
+      "201"
+    ],
+    [
+      "ИСП-4304",
+      4,
+      "Комарова Яна Николаевна",
+      "209"
+    ],
+    [
+      "ИСП-4305п",
+      0,
+      "Кибардина Татьяна Леонидовна",
+      "204"
+    ]
+  ]
+}

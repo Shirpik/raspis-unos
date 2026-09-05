@@ -27,6 +27,8 @@
 
 #include "config.h"
 #include "data_store.h"
+#include "class_hours.h"
+#include "semester_plan.h"
 #include "date_utils.h"
 #include "diagnostics.h"
 #include "format_utils.h"
@@ -297,6 +299,8 @@ GenerationResult GenerateSchedule(const std::string& output_dir, const Generatio
         return {false, "INPUT_ERROR", "Не удалось загрузить data/timetable_data.json: " + input_error, output_dir};
     }
 
+    if (!CheckSemesterPreflight(input_data, output_dir, input_error) && !options.draft_semester_risk)
+        return {false, "SEMESTER_PLAN_BLOCKED", input_error, output_dir};
     Date start_date = input_data.start_date;
     Date end_date = input_data.end_date;
     std::map<int, std::vector<std::pair<Date, Date>>> unavailable = input_data.unavailable;
@@ -873,6 +877,17 @@ GenerationResult GenerateSchedule(const std::string& output_dir, const Generatio
         }
     }
 
+    for (const TeacherData& teacher : input_data.teachers) {
+        if (teacher.id < 0 || teacher.id >= TEACHERS) continue;
+        for (int d = 0; d < num_days; ++d) {
+            const auto target = teacher.date_minimum_pairs.find(all_days[d]);
+            if (target == teacher.date_minimum_pairs.end()) continue;
+            LinearExpr load;
+            for (int s = 0; s < SLOTS_PER_DAY; ++s) load += teacher_busy[teacher.id][d * SLOTS_PER_DAY + s];
+            model.AddGreaterOrEqual(load, target->second);
+        }
+    }
+
     // Ограничение числа рабочих дней преподавателя в каждой учебной неделе.
     std::vector<std::vector<BoolVar>> teacher_day_has(
         TEACHERS, std::vector<BoolVar>(num_days));
@@ -1140,6 +1155,14 @@ GenerationResult GenerateSchedule(const std::string& output_dir, const Generatio
             teacher_day_campus[teacher][d] = model.NewIntVar(Domain(0, 1));
         }
     }
+
+    for (const auto& group : input_data.groups) {
+        if (group.id < 0 || group.id >= GROUPS || !group.class_hour_enabled || group.class_hour_campus < 0) continue;
+        for (int d = 0; d < num_days; ++d) if (DayOfWeek(all_days[d]) == 1)
+            model.AddEquality(group_day_campus[group.id][d], group.class_hour_campus);
+    }
+    AddClassHourTimeConstraints(model, input_data, all_days,
+        part_busy, teacher_busy, group_day_campus, teacher_day_campus);
 
     for (int l = 0; l < num_lessons; l++) {
         int group = lessons[l].group;
@@ -1494,6 +1517,9 @@ GenerationResult GenerateSchedule(const std::string& output_dir, const Generatio
         std::cout << "  " << (std::filesystem::path(output_dir) / "raspisanie_groups.csv").string() << "\n";
         std::cout << "  " << (std::filesystem::path(output_dir) / "raspisanie_teachers.txt").string() << "\n";
 
+        std::string finalize_error;
+        if (!FinalizeSchedule(input_data, output_dir, finalize_error, options.draft_semester_risk))
+            return {false, "FINAL_VALIDATION_FAILED", finalize_error, output_dir};
         return {true, CpSolverStatus_Name(response.status()), "Расписание найдено", output_dir};
 
     } else if (response.status() == CpSolverStatus::INFEASIBLE) {
@@ -2898,6 +2924,17 @@ static WeekSolveResult SolveOneWeek(
         }
     }
 
+    for (const TeacherData& teacher : teachers) {
+        if (teacher.id < 0 || teacher.id >= TEACHERS) continue;
+        for (int ld = 0; ld < W; ++ld) {
+            const auto target = teacher.date_minimum_pairs.find(week_days[ld]);
+            if (target == teacher.date_minimum_pairs.end()) continue;
+            LinearExpr load;
+            for (int s = 0; s < SLOTS_PER_DAY; ++s) load += teacher_busy[teacher.id][ld * SLOTS_PER_DAY + s];
+            model.AddGreaterOrEqual(load, target->second);
+        }
+    }
+
     for (int l = 0; l < num_lessons; l++) {
             if (quotas[l] == 0) continue;
             int g = lessons[l].group;
@@ -2917,6 +2954,23 @@ static WeekSolveResult SolveOneWeek(
                 }
             }
     }
+
+    // A configured class-hour campus also constrains the group's ordinary
+    // Monday: students cannot transfer campuses between the two activities.
+    for (const auto& group : groups) {
+        if (group.id < 0 || group.id >= GROUPS || !group.class_hour_enabled || group.class_hour_campus < 0) continue;
+        for (int ld = 0; ld < W; ++ld) if (DayOfWeek(week_days[ld]) == 1)
+            model.AddEquality(group_day_campus[group.id][ld], group.class_hour_campus);
+    }
+
+    ScheduleInputData class_hour_data;
+    class_hour_data.groups = groups;
+    class_hour_data.teachers = teachers;
+    class_hour_data.rooms = rooms;
+    class_hour_data.unavailable = unavailable;
+    class_hour_data.teacher_unavailable = teacher_unavailable;
+    AddClassHourTimeConstraints(model, class_hour_data, week_days,
+        part_busy, teacher_busy, group_day_campus, teacher_day_campus);
 
     // ── Вместимость аудиторного фонда по корпусу ────────────────────────
     // Кабинеты назначаются после CP-SAT, но без этих ограничений модель могла
@@ -3239,6 +3293,8 @@ GenerationResult GenerateScheduleWeekly(
             "Не удалось загрузить data/timetable_data.json: " + input_error, output_dir};
     }
 
+    if (!CheckSemesterPreflight(input_data, output_dir, input_error) && !options.draft_semester_risk)
+        return {false, "SEMESTER_PLAN_BLOCKED", input_error, output_dir};
     const Date start_date = input_data.start_date;
     const Date end_date   = input_data.end_date;
     const auto& unavailable = input_data.unavailable;
@@ -3772,10 +3828,15 @@ GenerationResult GenerateScheduleWeekly(
         std::filesystem::path(output_dir), solver_week_metrics, "done", total_elapsed);
 
     // Финальная запись со статистикой
-    WriteScheduleFiles(output_dir, global_x_vals, num_days,
+    if (!WriteScheduleFiles(output_dir, global_x_vals, num_days,
         lessons, all_days, global_group_day_campus,
         input_data.groups, input_data.rooms,
-        unavailable, unavailable_day_texts, true);
+        unavailable, unavailable_day_texts, true))
+        return {false, "OUTPUT_ERROR", "Не удалось записать итоговое расписание", output_dir};
+
+    std::string finalize_error;
+    if (!FinalizeSchedule(input_data, output_dir, finalize_error, options.draft_semester_risk))
+        return {false, "FINAL_VALIDATION_FAILED", finalize_error, output_dir};
 
     std::cout << "\nФайлы созданы в: " << output_dir << "\n";
 

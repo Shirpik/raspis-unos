@@ -15,8 +15,8 @@ if errorlevel 1 exit /b %errorlevel%
 set "CMAKE=%VSROOT%\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe"
 if not exist "%CMAKE%" set "CMAKE=cmake"
 if not defined ORTOOLS_ROOT set "ORTOOLS_ROOT=C:\or-tools"
-if not exist "build\CMakeCache.txt" (
-  "%CMAKE%" -S . -B build -DCMAKE_PREFIX_PATH="%ORTOOLS_ROOT%" -DBUILD_TESTING=ON
-  if errorlevel 1 exit /b %errorlevel%
-)
+rem Re-discover the bundled CMake modules after Visual Studio updates. Keep
+rem other cached project options intact; do not delete the build directory.
+"%CMAKE%" -U CMAKE_ROOT -S . -B build -DCMAKE_PREFIX_PATH="%ORTOOLS_ROOT%" -DBUILD_TESTING=ON
+if errorlevel 1 exit /b %errorlevel%
 "%CMAKE%" --build build --config Release --target timetable_solver quota_optimizer scheduler_rules_test schedule_validator_test room_policy_test

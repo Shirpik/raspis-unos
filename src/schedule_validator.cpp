@@ -12,6 +12,8 @@
 #include "date_utils.h"
 #include "scheduler_rules.h"
 #include "room_policy.h"
+#include "class_hours.h"
+#include "semester_plan.h"
 
 namespace timetable {
 namespace {
@@ -147,6 +149,8 @@ JsonValue CategoriesJson(const IssueCollector& collector) {
         {"availability", "Доступность"},
         {"conflicts", "Пересечения"},
         {"rooms", "Аудиторный фонд"},
+        {"class_hours", "Классные часы"},
+        {"semester_plan", "Темп вычитки учебного плана"},
         {"campus", "Площадки"},
         {"daily_load", "Суточная и недельная нагрузка"},
         {"windows", "Окна"},
@@ -180,6 +184,14 @@ ScheduleValidationResult ValidateScheduleJson(
     ScheduleValidationResult result;
     result.checked = true;
     IssueCollector collector;
+    if (JsonString(schedule, "status", "") == "draft_semester_risk" && !options.draft_semester_risk)
+        collector.Add("error", "semester_plan", "draft_not_publishable", "Черновик с нерешёнными рисками вычитки не может быть опубликован как утверждённый");
+    for (const auto& issue : data.semester_readout_report.At("issues").array_value)
+        collector.Add(options.draft_semester_risk ? "warning" : "error", "semester_plan", JsonString(issue, "code", "semester_readout_error"),
+            JsonString(issue, "message", "Ошибка плана вычитки"), issue);
+    for (const auto& issue : ValidateClassHours(data, schedule).array_value)
+        collector.Add("error", "class_hours", JsonString(issue, "code", "class_hour_invalid"),
+            JsonString(issue, "message", "Ошибка классного часа"), issue);
 
     const std::vector<Date> expected_dates = ExpectedDates(data.start_date, data.end_date);
     const std::set<Date> expected_date_set(expected_dates.begin(), expected_dates.end());
@@ -253,6 +265,7 @@ ScheduleValidationResult ValidateScheduleJson(
                         continue;
                     }
                     for (const JsonValue& rendered : rendered_lessons.array_value) {
+                        if (JsonBool(rendered, "is_class_hour", false)) continue;
                         const int lesson_id = JsonInt(rendered, "id", -1);
                         const Lesson* lesson = FindLesson(data, lesson_id);
                         if (!lesson) {
@@ -453,6 +466,17 @@ ScheduleValidationResult ValidateScheduleJson(
                       "У физической подгруппы несколько занятий одновременно", ctx);
     }
 
+    for (const auto& requirement : data.load_requirements) {
+        std::set<std::pair<Date, int>> actual;
+        for (const auto& event : events)
+            if (requirement.lesson_ids.count(event.lesson)) actual.insert({event.date, event.pair});
+        if (actual.size() < static_cast<size_t>(requirement.minimum_pairs)) {
+            JsonValue ctx = Context(); Put(ctx, "teacher", requirement.teacher);
+            Put(ctx, "required", requirement.minimum_pairs); Put(ctx, "actual", static_cast<int>(actual.size()));
+            collector.Add(options.draft_semester_risk ? "warning" : "error", "semester_plan", "desired_load_not_met", requirement.label, ctx);
+        }
+    }
+
     // Проверяем не только количество ЛПЗ, но и их форму. Это независимый
     // fail-closed барьер: даже импортированное или вручную собранное
     // расписание не будет опубликовано с разорванной двойной парой.
@@ -488,6 +512,18 @@ ScheduleValidationResult ValidateScheduleJson(
                 collector.Add("error", "structure", "lesson_pair_crosses_lunch",
                               "Занятие не должно продолжаться с 2-й на 3-ю пару через обед", ctx);
             }
+        }
+    }
+
+    for (const TeacherData& teacher : data.teachers) {
+        for (const auto& [date, minimum] : teacher.date_minimum_pairs) {
+            if (!expected_date_set.count(date)) continue;
+            const int actual = static_cast<int>(teacher_day_slots[{teacher.id, date}].size());
+            if (actual >= minimum) continue;
+            JsonValue ctx = Context(); Put(ctx, "teacher", teacher.id); Put(ctx, "date", DateLabel(date));
+            Put(ctx, "minimum", minimum); Put(ctx, "actual", actual);
+            collector.Add("error", "daily_load", "teacher_date_minimum_not_met",
+                "Не выполнена обязательная нагрузка преподавателя на дату", ctx);
         }
     }
 

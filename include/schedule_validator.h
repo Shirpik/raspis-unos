@@ -9,6 +9,7 @@
 namespace timetable {
 
 struct ScheduleValidationOptions {
+    bool draft_semester_risk = false;
     std::string source = "auto";
     bool require_full_period = true;
     bool require_exact_quotas = true;

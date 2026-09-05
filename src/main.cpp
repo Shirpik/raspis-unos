@@ -1,4 +1,6 @@
 #include <clocale>
+#include <chrono>
+#include <filesystem>
 #include <fstream>
 #include <iostream>
 #include <sstream>
@@ -9,9 +11,24 @@
 #include "json_utils.h"
 #include "schedule_validator.h"
 #include "scheduler.h"
+#include "class_hours.h"
 
 int main(int argc, char* argv[]) {
     std::setlocale(LC_ALL, "ru_RU.UTF-8");
+
+    // Finalize a saved candidate on a new copy, never overwrite approved output.
+    if (argc == 4 && std::string(argv[1]) == "--finalize-draft") {
+        const auto source = std::filesystem::absolute(argv[2]).lexically_normal();
+        const auto target = std::filesystem::absolute(argv[3]).lexically_normal();
+        if (!std::filesystem::is_regular_file(source / "schedule_all.json") || std::filesystem::exists(target)) return 2;
+        timetable::ScheduleInputData input;
+        std::string error;
+        if (!timetable::LoadScheduleInputData(input, error)) { std::cerr << error; return 2; }
+        std::filesystem::copy(source, target, std::filesystem::copy_options::recursive);
+        if (!timetable::FinalizeSchedule(input, target.string(), error, true)) { std::cerr << error << "\n"; return 1; }
+        std::cout << "Verified weekly draft: " << target.string() << "\n";
+        return 0;
+    }
 
     if (argc > 1 && std::string(argv[1]) == "--validate") {
         std::string schedule_path = "output/latest/schedule_all.json";
@@ -67,6 +84,7 @@ int main(int argc, char* argv[]) {
         options.lock_source = "none";
         for (int index = 2; index < argc; ++index) {
             const std::string argument = argv[index];
+            if (argument == "--draft-semester") { options.draft_semester_risk = true; continue; }
             if (argument == "--output" && index + 1 < argc) {
                 output_dir = argv[++index];
                 continue;
@@ -100,10 +118,33 @@ int main(int argc, char* argv[]) {
             std::cerr << "Неизвестный аргумент генерации: " << argument << "\n";
             return 2;
         }
+        const std::filesystem::path requested = std::filesystem::absolute(output_dir).lexically_normal();
+        const auto cwd = std::filesystem::current_path().lexically_normal();
+        for (auto parent = cwd; !parent.empty(); parent = parent.parent_path()) {
+            if (parent == requested) { std::cerr << "Каталог вывода не может быть рабочим каталогом или его предком\n"; return 2; }
+            if (parent == parent.parent_path()) break;
+        }
+        const bool replacing = std::filesystem::exists(requested);
+        const std::string stamp = std::to_string(std::chrono::system_clock::now().time_since_epoch().count());
+        const auto candidate = replacing ? std::filesystem::path(requested.string() + ".candidate-" + stamp) : requested;
         const timetable::GenerationResult result =
-            timetable::GenerateScheduleWeekly(output_dir, options);
+            timetable::GenerateScheduleWeekly(candidate.string(), options);
         if (!result.success) {
             std::cerr << result.status << ": " << result.message << "\n";
+            std::cerr << "Диагностика: " << candidate.string() << "; прежний результат не заменён\n";
+        } else if (replacing) {
+            const auto backup = std::filesystem::path(requested.string() + ".backup-" + stamp);
+            std::error_code ec;
+            std::filesystem::rename(requested, backup, ec);
+            if (ec) { std::cerr << "Не удалось сохранить предыдущий результат: " << ec.message() << "\n"; return 1; }
+            std::filesystem::rename(candidate, requested, ec);
+            if (ec) {
+                std::error_code rollback;
+                std::filesystem::rename(backup, requested, rollback);
+                std::cerr << "Не удалось установить проверенный результат. Резерв: " << backup.string() << "\n";
+                return 1;
+            }
+            std::cout << "Предыдущий результат сохранён: " << backup.string() << "\n";
         }
         return result.success ? 0 : 1;
     }

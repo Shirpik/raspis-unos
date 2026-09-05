@@ -29,6 +29,7 @@ export const api = {
     replace: (d) => request('PUT', '/data', d),
     audit: (d = null) => d === null ? request('GET', '/audit') : request('POST', '/audit', d),
     hours: () => request('GET', '/hours'),
+    semesterReadout: () => request('GET', '/semester/readout'),
     teacherOccupancy: () => request('GET', '/accounting/teacher-occupancy'),
     versions: () => request('GET', '/versions'),
     restore: (filename) => request('POST', `/versions/${encodeURIComponent(filename)}/restore`),
