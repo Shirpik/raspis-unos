@@ -1,246 +1,136 @@
 {
-  "group_index": 34,
-  "group_name": "ТМ-2417",
   "days": [
     {
-      "date": "04.09.2026",
-      "date_iso": "2026-09-04",
+      "date": "12.09.2026",
+      "date_iso": "2026-09-12",
       "day_index": 0,
-      "weekday": "ПТ",
       "slots": [
         {
+          "lessons": [],
           "slot": 1,
-          "time": "1 пара (08:30-09:55)",
           "text": "-",
-          "lessons": []
+          "time": "1 пара (08:30-09:45)"
         },
         {
+          "lessons": [],
           "slot": 2,
-          "time": "2 пара (10:05-11:30)",
           "text": "-",
-          "lessons": []
+          "time": "2 пара (09:55-11:10)"
         },
         {
+          "lessons": [],
           "slot": 3,
-          "time": "3 пара (12:25-13:50)",
           "text": "-",
-          "lessons": []
+          "time": "3 пара (11:30-12:45)"
         },
         {
-          "slot": 4,
-          "time": "4 пара (14:00-15:25)",
-          "text": "Технологическая оснастка — вся группа, Саламатина Вера Викторовна, Лесная",
           "lessons": [
             {
-              "id": 758,
-              "uid": "lesson-58185a6ed340a12b",
-              "name": "Технологическая оснастка",
-              "teacher_id": 61,
-              "subgroup": -1,
-              "is_lab": false,
-              "is_block": false,
-              "consecutive_pairs": 1,
               "avoid_lunch_split": false,
-              "week_parity": "all",
-              "room_id": 40,
-              "room_name": "322",
-              "room_type": 0,
-              "room_substituted": false,
+              "consecutive_pairs": 1,
+              "id": 747,
+              "is_block": false,
+              "is_lab": false,
+              "name": "География",
               "requested_room_id": null,
               "requested_room_name": null,
-              "room_substitution_reason": null
-            }
-          ]
-        },
-        {
-          "slot": 5,
-          "time": "5 пара (15:35-16:55)",
-          "text": "География — вся группа, Кропотова Анастасия Андреевна, Лесная",
-          "lessons": [
-            {
-              "id": 747,
-              "uid": "lesson-c897c50ae47b574c",
-              "name": "География",
-              "teacher_id": 15,
-              "subgroup": -1,
-              "is_lab": false,
-              "is_block": false,
-              "consecutive_pairs": 1,
-              "avoid_lunch_split": false,
-              "week_parity": "all",
               "room_id": 33,
               "room_name": "209",
-              "room_type": 0,
               "room_substituted": false,
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_substitution_reason": null
-            }
-          ]
-        },
-        {
-          "slot": 6,
-          "time": "6 пара (17:05-18:25)",
-          "text": "Технологическая оснастка — вся группа, Саламатина Вера Викторовна, Лесная",
-          "lessons": [
-            {
-              "id": 758,
-              "uid": "lesson-58185a6ed340a12b",
-              "name": "Технологическая оснастка",
-              "teacher_id": 61,
+              "room_substitution_reason": null,
+              "room_type": 0,
               "subgroup": -1,
-              "is_lab": false,
-              "is_block": false,
-              "consecutive_pairs": 1,
-              "avoid_lunch_split": false,
-              "week_parity": "all",
-              "room_id": 40,
-              "room_name": "322",
-              "room_type": 0,
-              "room_substituted": false,
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_substitution_reason": null
+              "teacher_id": 15,
+              "uid": "lesson-c897c50ae47b574c",
+              "week_parity": "all"
             }
-          ]
-        },
-        {
-          "slot": 7,
-          "time": "7 пара (18:35-19:55)",
-          "text": "-",
-          "lessons": []
-        }
-      ]
-    },
-    {
-      "date": "05.09.2026",
-      "date_iso": "2026-09-05",
-      "day_index": 1,
-      "weekday": "СБ",
-      "slots": [
-        {
-          "slot": 1,
-          "time": "1 пара (08:30-09:45)",
-          "text": "-",
-          "lessons": []
-        },
-        {
-          "slot": 2,
-          "time": "2 пара (09:55-11:10)",
-          "text": "-",
-          "lessons": []
-        },
-        {
-          "slot": 3,
-          "time": "3 пара (11:30-12:45)",
-          "text": "-",
-          "lessons": []
-        },
-        {
+          ],
           "slot": 4,
-          "time": "4 пара (12:55-14:10)",
-          "text": "Иностранный язык в профессиональной деятельности — 2 п/г, Давыдова Валентина Алексеевна, Лесная",
-          "lessons": [
-            {
-              "id": 750,
-              "uid": "lesson-591eeb542e3c4409",
-              "name": "Иностранный язык в профессиональной деятельности",
-              "teacher_id": 4,
-              "subgroup": 69,
-              "is_lab": false,
-              "is_block": false,
-              "consecutive_pairs": 1,
-              "avoid_lunch_split": false,
-              "week_parity": "all",
-              "room_id": 43,
-              "room_name": "401",
-              "room_type": 0,
-              "room_substituted": false,
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_substitution_reason": null
-            }
-          ]
+          "text": "География — вся группа, Кропотова Анастасия Андреевна, Лесная",
+          "time": "4 пара (12:55-14:10)"
         },
         {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "id": 754,
+              "is_block": false,
+              "is_lab": false,
+              "name": "Материаловедение",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 40,
+              "room_name": "322",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": -1,
+              "teacher_id": 61,
+              "uid": "lesson-1bdb0a7d456d6da1",
+              "week_parity": "all"
+            }
+          ],
           "slot": 5,
-          "time": "5 пара (14:20-15:30)",
-          "text": "ВМДК.07.01 Технология обработки на металлорежущих станках — вся группа, Саламатина Вера Викторовна, Лесная",
-          "lessons": [
-            {
-              "id": 762,
-              "uid": "lesson-16a1d9fe5155d7f2",
-              "name": "ВМДК.07.01 Технология обработки на металлорежущих станках",
-              "teacher_id": 61,
-              "subgroup": -1,
-              "is_lab": false,
-              "is_block": false,
-              "consecutive_pairs": 1,
-              "avoid_lunch_split": false,
-              "week_parity": "all",
-              "room_id": 40,
-              "room_name": "322",
-              "room_type": 0,
-              "room_substituted": false,
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_substitution_reason": null
-            }
-          ]
+          "text": "Материаловедение — вся группа, Саламатина Вера Викторовна, Лесная",
+          "time": "5 пара (14:20-15:30)"
         },
         {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "id": 759,
+              "is_block": false,
+              "is_lab": false,
+              "name": "МДК.01.02 Оформление технологической документации по процессам изготовления деталей машин",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 48,
+              "room_name": "413",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": -1,
+              "teacher_id": 62,
+              "uid": "lesson-c6075887b83f0d21",
+              "week_parity": "all"
+            }
+          ],
           "slot": 6,
-          "time": "6 пара (15:40-16:50)",
-          "text": "Технология машиностроения — вся группа, Саламатина Вера Викторовна, Лесная",
-          "lessons": [
-            {
-              "id": 756,
-              "uid": "lesson-11eddd2113230e48",
-              "name": "Технология машиностроения",
-              "teacher_id": 61,
-              "subgroup": -1,
-              "is_lab": false,
-              "is_block": false,
-              "consecutive_pairs": 1,
-              "avoid_lunch_split": false,
-              "week_parity": "all",
-              "room_id": 40,
-              "room_name": "322",
-              "room_type": 0,
-              "room_substituted": false,
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_substitution_reason": null
-            }
-          ]
+          "text": "МДК.01.02 Оформление технологической документации по процессам изготовления деталей машин — вся группа, Вальдиянов Ян Мансурович, Лесная",
+          "time": "6 пара (15:40-16:50)"
         },
         {
-          "slot": 7,
-          "time": "7 пара (17:00-18:10)",
-          "text": "Иностранный язык в профессиональной деятельности — 1 п/г, Давыдова Валентина Алексеевна, Лесная",
           "lessons": [
             {
-              "id": 749,
-              "uid": "lesson-3a42481f0391ce14",
-              "name": "Иностранный язык в профессиональной деятельности",
-              "teacher_id": 4,
-              "subgroup": 68,
-              "is_lab": false,
-              "is_block": false,
-              "consecutive_pairs": 1,
               "avoid_lunch_split": false,
-              "week_parity": "all",
-              "room_id": 43,
-              "room_name": "401",
-              "room_type": 0,
-              "room_substituted": false,
+              "consecutive_pairs": 1,
+              "id": 758,
+              "is_block": false,
+              "is_lab": false,
+              "name": "Технологическая оснастка",
               "requested_room_id": null,
               "requested_room_name": null,
-              "room_substitution_reason": null
+              "room_id": 40,
+              "room_name": "322",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": -1,
+              "teacher_id": 61,
+              "uid": "lesson-58185a6ed340a12b",
+              "week_parity": "all"
             }
-          ]
+          ],
+          "slot": 7,
+          "text": "Технологическая оснастка — вся группа, Саламатина Вера Викторовна, Лесная",
+          "time": "7 пара (17:00-18:10)"
         }
-      ]
+      ],
+      "weekday": "СБ"
     }
-  ]
+  ],
+  "group_index": 34,
+  "group_name": "ТМ-2417"
 }

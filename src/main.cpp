@@ -16,6 +16,48 @@
 int main(int argc, char* argv[]) {
     std::setlocale(LC_ALL, "ru_RU.UTF-8");
 
+    if (argc > 1 && std::string(argv[1]) == "--audit-data") {
+        std::string data_path = timetable::DataFilePath();
+        if (argc == 4 && std::string(argv[2]) == "--data") data_path = argv[3];
+        else if (argc != 2) { std::cerr << "Использование: --audit-data [--data файл]\n"; return 2; }
+        std::ifstream input(data_path, std::ios::binary);
+        std::ostringstream buffer;
+        buffer << input.rdbuf();
+        const auto parsed = timetable::ParseJson(buffer.str());
+        if (!input || !parsed.ok || !parsed.value.IsObject()) { std::cerr << "Не удалось прочитать базу: " << data_path << "\n"; return 2; }
+        const auto report = timetable::BuildDataAudit(parsed.value);
+        std::cout << timetable::ToJson(report, 2) << "\n";
+        return timetable::JsonBool(report, "ok", false) ? 0 : 1;
+    }
+
+    if (argc > 1 && std::string(argv[1]) == "--hours-report") {
+        std::string schedule_path = "output/latest/schedule_all.json";
+        if (argc == 4 && std::string(argv[2]) == "--schedule") schedule_path = argv[3];
+        else if (argc != 2) { std::cerr << "Использование: --hours-report [--schedule файл]\n"; return 2; }
+        std::ifstream input(timetable::DataFilePath(), std::ios::binary);
+        std::ostringstream buffer;
+        buffer << input.rdbuf();
+        const auto parsed = timetable::ParseJson(buffer.str());
+        if (!input || !parsed.ok || !parsed.value.IsObject()) { std::cerr << "Не удалось прочитать базу\n"; return 2; }
+        std::cout << timetable::ToJson(timetable::BuildHoursReport(parsed.value, schedule_path), 2) << "\n";
+        return 0;
+    }
+
+    if (argc > 1 && std::string(argv[1]) == "--semester-readout") {
+        std::string path = timetable::DataFilePath();
+        if (argc == 4 && std::string(argv[2]) == "--data") path = argv[3];
+        else if (argc != 2) { std::cerr << "Использование: --semester-readout [--data файл]\n"; return 2; }
+        std::ifstream source(path, std::ios::binary);
+        std::ostringstream buffer; buffer << source.rdbuf();
+        const auto parsed = timetable::ParseJson(buffer.str());
+        if (!source || !parsed.ok) { std::cerr << "Не удалось прочитать базу\n"; return 2; }
+        timetable::ScheduleInputData input;
+        std::string error;
+        if (!timetable::LoadScheduleInputDataFromRoot(parsed.value, input, error)) { std::cerr << error << "\n"; return 2; }
+        std::cout << timetable::ToJson(input.semester_readout_report, 2) << "\n";
+        return timetable::JsonBool(input.semester_readout_report, "ok", false) ? 0 : 1;
+    }
+
     // Finalize a saved candidate on a new copy, never overwrite approved output.
     if (argc == 4 && std::string(argv[1]) == "--finalize-draft") {
         const auto source = std::filesystem::absolute(argv[2]).lexically_normal();
@@ -76,7 +118,7 @@ int main(int argc, char* argv[]) {
     }
 
     // Headless fail-closed generation is useful for repeatable production
-    // builds and independent validation; the desktop/API mode remains the
+    // builds and independent validation; the website API mode remains the
     // default for a numeric port argument.
     if (argc > 1 && std::string(argv[1]) == "--generate") {
         std::string output_dir = "output/latest";

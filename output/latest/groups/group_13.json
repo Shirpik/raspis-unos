@@ -1,326 +1,215 @@
 {
-  "group_index": 13,
-  "group_name": "ОСА-491",
   "days": [
     {
-      "date": "04.09.2026",
-      "date_iso": "2026-09-04",
+      "date": "12.09.2026",
+      "date_iso": "2026-09-12",
       "day_index": 0,
-      "weekday": "ПТ",
       "slots": [
         {
-          "slot": 1,
-          "time": "1 пара (08:30-09:55)",
-          "text": "МДК.03.01 Планирование материально-технического обеспечения работ по монтажу, наладке и техническому обслуживанию систем и средств автоматизации — вся группа, Сивилькаев Вадим Михайлович, Кривоусова",
           "lessons": [
             {
-              "id": 265,
-              "uid": "lesson-72cac0e5bd3f7cc3",
-              "name": "МДК.03.01 Планирование материально-технического обеспечения работ по монтажу, наладке и техническому обслуживанию систем и средств автоматизации",
-              "teacher_id": 40,
-              "subgroup": -1,
-              "is_lab": false,
-              "is_block": false,
-              "consecutive_pairs": 1,
               "avoid_lunch_split": false,
-              "week_parity": "all",
-              "room_id": 61,
-              "room_name": "70",
-              "room_type": 0,
-              "room_substituted": false,
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_substitution_reason": null
-            }
-          ]
-        },
-        {
-          "slot": 2,
-          "time": "2 пара (10:05-11:30)",
-          "text": "МДК.03.02 Разработка, организация и контроль качества работ по монтажу, наладке и техническому обслуживанию систем и средств автоматизации — вся группа, Сивилькаев Вадим Михайлович, Кривоусова",
-          "lessons": [
-            {
-              "id": 268,
-              "uid": "lesson-95de3ff736de43b0",
-              "name": "МДК.03.02 Разработка, организация и контроль качества работ по монтажу, наладке и техническому обслуживанию систем и средств автоматизации",
-              "teacher_id": 40,
-              "subgroup": -1,
-              "is_lab": false,
-              "is_block": false,
               "consecutive_pairs": 1,
-              "avoid_lunch_split": false,
-              "week_parity": "all",
-              "room_id": 61,
-              "room_name": "70",
-              "room_type": 0,
-              "room_substituted": false,
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_substitution_reason": null
-            }
-          ]
-        },
-        {
-          "slot": 3,
-          "time": "3 пара (12:25-13:50)",
-          "text": "МДК.03.01 Планирование материально-технического обеспечения работ по монтажу, наладке и техническому обслуживанию систем и средств автоматизации — вся группа, Сивилькаев Вадим Михайлович, Кривоусова",
-          "lessons": [
-            {
-              "id": 265,
-              "uid": "lesson-72cac0e5bd3f7cc3",
-              "name": "МДК.03.01 Планирование материально-технического обеспечения работ по монтажу, наладке и техническому обслуживанию систем и средств автоматизации",
-              "teacher_id": 40,
-              "subgroup": -1,
-              "is_lab": false,
-              "is_block": false,
-              "consecutive_pairs": 1,
-              "avoid_lunch_split": false,
-              "week_parity": "all",
-              "room_id": 61,
-              "room_name": "70",
-              "room_type": 0,
-              "room_substituted": false,
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_substitution_reason": null
-            }
-          ]
-        },
-        {
-          "slot": 4,
-          "time": "4 пара (14:00-15:25)",
-          "text": "ЛПЗ ВМДК.05.01 Технология сборки, регулировки и ремонта контрольно-измерительных приборов и систем автоматики — 1 п/г, Сивилькаев Вадим Михайлович, Кривоусова",
-          "lessons": [
-            {
-              "id": 274,
-              "uid": "lesson-2fde5ee5a5cbe72b",
-              "name": "ЛПЗ ВМДК.05.01 Технология сборки, регулировки и ремонта контрольно-измерительных приборов и систем автоматики",
-              "teacher_id": 40,
-              "subgroup": 26,
-              "is_lab": true,
-              "is_block": false,
-              "consecutive_pairs": 1,
-              "avoid_lunch_split": false,
-              "week_parity": "all",
-              "room_id": 61,
-              "room_name": "70",
-              "room_type": 0,
-              "room_substituted": false,
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_substitution_reason": null
-            }
-          ]
-        },
-        {
-          "slot": 5,
-          "time": "5 пара (15:35-16:55)",
-          "text": "-",
-          "lessons": []
-        },
-        {
-          "slot": 6,
-          "time": "6 пара (17:05-18:25)",
-          "text": "-",
-          "lessons": []
-        },
-        {
-          "slot": 7,
-          "time": "7 пара (18:35-19:55)",
-          "text": "-",
-          "lessons": []
-        }
-      ]
-    },
-    {
-      "date": "05.09.2026",
-      "date_iso": "2026-09-05",
-      "day_index": 1,
-      "weekday": "СБ",
-      "slots": [
-        {
-          "slot": 1,
-          "time": "1 пара (08:30-09:45)",
-          "text": "ЛПЗ МДК.03.02 Разработка, организация и контроль качества работ по монтажу, наладке и техническому обслуживанию систем и средств автоматизации — 1 п/г, Осипчук Александр Александрович, Кривоусова",
-          "lessons": [
-            {
-              "id": 269,
-              "uid": "lesson-8f89dcd1211cbbe9",
-              "name": "ЛПЗ МДК.03.02 Разработка, организация и контроль качества работ по монтажу, наладке и техническому обслуживанию систем и средств автоматизации",
-              "teacher_id": 42,
-              "subgroup": 26,
-              "is_lab": true,
-              "is_block": false,
-              "consecutive_pairs": 1,
-              "avoid_lunch_split": false,
-              "week_parity": "all",
-              "room_id": 55,
-              "room_name": "63",
-              "room_type": 0,
-              "room_substituted": false,
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_substitution_reason": null
-            }
-          ]
-        },
-        {
-          "slot": 2,
-          "time": "2 пара (09:55-11:10)",
-          "text": "ЛПЗ МДК.03.01 Планирование материально-технического обеспечения работ по монтажу, наладке и техническому обслуживанию систем и средств автоматизации — 1 п/г, Осипчук Александр Александрович, Кривоусова",
-          "lessons": [
-            {
               "id": 266,
+              "is_block": false,
+              "is_lab": true,
+              "name": "ЛПЗ МДК.03.01 Планирование материально-технического обеспечения работ по монтажу, наладке и техническому обслуживанию систем и средств автоматизации",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 54,
+              "room_name": "57",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 26,
+              "teacher_id": 42,
               "uid": "lesson-974e9ce70280f140",
-              "name": "ЛПЗ МДК.03.01 Планирование материально-технического обеспечения работ по монтажу, наладке и техническому обслуживанию систем и средств автоматизации",
-              "teacher_id": 42,
-              "subgroup": 26,
-              "is_lab": true,
-              "is_block": false,
-              "consecutive_pairs": 1,
-              "avoid_lunch_split": false,
-              "week_parity": "all",
-              "room_id": 55,
-              "room_name": "63",
-              "room_type": 0,
-              "room_substituted": false,
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_substitution_reason": null
+              "week_parity": "all"
             }
-          ]
+          ],
+          "slot": 1,
+          "text": "ЛПЗ МДК.03.01 Планирование материально-технического обеспечения работ по монтажу, наладке и техническому обслуживанию систем и средств автоматизации — 1 п/г, Осипчук Александр Александрович, Кривоусова",
+          "time": "1 пара (08:30-09:45)"
         },
         {
-          "slot": 3,
-          "time": "3 пара (11:30-12:45)",
-          "text": "ЛПЗ ВМДК.05.02 Технология выполнения слесарных и слесарно-сборочных работ — 1 п/г, Осипчук Александр Александрович, Кривоусова",
           "lessons": [
             {
-              "id": 277,
-              "uid": "lesson-635a92e49b36896e",
-              "name": "ЛПЗ ВМДК.05.02 Технология выполнения слесарных и слесарно-сборочных работ",
-              "teacher_id": 42,
-              "subgroup": 26,
-              "is_lab": true,
-              "is_block": false,
-              "consecutive_pairs": 1,
               "avoid_lunch_split": false,
-              "week_parity": "all",
-              "room_id": 55,
-              "room_name": "63",
-              "room_type": 0,
-              "room_substituted": false,
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_substitution_reason": null
-            }
-          ]
-        },
-        {
-          "slot": 4,
-          "time": "4 пара (12:55-14:10)",
-          "text": "ЛПЗ МДК.03.02 Разработка, организация и контроль качества работ по монтажу, наладке и техническому обслуживанию систем и средств автоматизации — 2 п/г, Осипчук Александр Александрович, Кривоусова",
-          "lessons": [
-            {
-              "id": 270,
-              "uid": "lesson-826dd93b108af040",
+              "consecutive_pairs": 1,
+              "id": 269,
+              "is_block": false,
+              "is_lab": true,
               "name": "ЛПЗ МДК.03.02 Разработка, организация и контроль качества работ по монтажу, наладке и техническому обслуживанию систем и средств автоматизации",
-              "teacher_id": 42,
-              "subgroup": 27,
-              "is_lab": true,
-              "is_block": false,
-              "consecutive_pairs": 1,
-              "avoid_lunch_split": false,
-              "week_parity": "all",
-              "room_id": 55,
-              "room_name": "63",
-              "room_type": 0,
-              "room_substituted": false,
               "requested_room_id": null,
               "requested_room_name": null,
-              "room_substitution_reason": null
-            }
-          ]
-        },
-        {
-          "slot": 5,
-          "time": "5 пара (14:20-15:30)",
-          "text": "ЛПЗ МДК.02.02 Испытания модели элементов систем автоматизации в реальных условиях и их оптимизация — 2 п/г, Осипчук Александр Александрович, Кривоусова",
-          "lessons": [
-            {
-              "id": 262,
-              "uid": "lesson-468553c9bd0f6c04",
-              "name": "ЛПЗ МДК.02.02 Испытания модели элементов систем автоматизации в реальных условиях и их оптимизация",
-              "teacher_id": 42,
-              "subgroup": 27,
-              "is_lab": true,
-              "is_block": false,
-              "consecutive_pairs": 1,
-              "avoid_lunch_split": false,
-              "week_parity": "all",
               "room_id": 55,
               "room_name": "63",
-              "room_type": 0,
               "room_substituted": false,
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_substitution_reason": null
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 26,
+              "teacher_id": 42,
+              "uid": "lesson-8f89dcd1211cbbe9",
+              "week_parity": "all"
             }
-          ]
+          ],
+          "slot": 2,
+          "text": "ЛПЗ МДК.03.02 Разработка, организация и контроль качества работ по монтажу, наладке и техническому обслуживанию систем и средств автоматизации — 1 п/г, Осипчук Александр Александрович, Кривоусова",
+          "time": "2 пара (09:55-11:10)"
         },
         {
-          "slot": 6,
-          "time": "6 пара (15:40-16:50)",
-          "text": "ЛПЗ ВМДК.05.02 Технология выполнения слесарных и слесарно-сборочных работ — 2 п/г, Осипчук Александр Александрович, Кривоусова",
           "lessons": [
             {
-              "id": 278,
-              "uid": "lesson-a74028f841981ee9",
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "id": 277,
+              "is_block": false,
+              "is_lab": true,
               "name": "ЛПЗ ВМДК.05.02 Технология выполнения слесарных и слесарно-сборочных работ",
-              "teacher_id": 42,
-              "subgroup": 27,
-              "is_lab": true,
-              "is_block": false,
-              "consecutive_pairs": 1,
-              "avoid_lunch_split": false,
-              "week_parity": "all",
-              "room_id": 55,
-              "room_name": "63",
-              "room_type": 0,
-              "room_substituted": false,
               "requested_room_id": null,
               "requested_room_name": null,
-              "room_substitution_reason": null
+              "room_id": 55,
+              "room_name": "63",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 26,
+              "teacher_id": 42,
+              "uid": "lesson-635a92e49b36896e",
+              "week_parity": "all"
             }
-          ]
+          ],
+          "slot": 3,
+          "text": "ЛПЗ ВМДК.05.02 Технология выполнения слесарных и слесарно-сборочных работ — 1 п/г, Осипчук Александр Александрович, Кривоусова",
+          "time": "3 пара (11:30-12:45)"
         },
         {
-          "slot": 7,
-          "time": "7 пара (17:00-18:10)",
-          "text": "ЛПЗ МДК.03.01 Планирование материально-технического обеспечения работ по монтажу, наладке и техническому обслуживанию систем и средств автоматизации — 2 п/г, Осипчук Александр Александрович, Кривоусова",
           "lessons": [
             {
-              "id": 267,
-              "uid": "lesson-2d9963a6c7734dbc",
-              "name": "ЛПЗ МДК.03.01 Планирование материально-технического обеспечения работ по монтажу, наладке и техническому обслуживанию систем и средств автоматизации",
-              "teacher_id": 42,
-              "subgroup": 27,
-              "is_lab": true,
-              "is_block": false,
-              "consecutive_pairs": 1,
               "avoid_lunch_split": false,
-              "week_parity": "all",
-              "room_id": 55,
-              "room_name": "63",
-              "room_type": 0,
-              "room_substituted": false,
+              "consecutive_pairs": 1,
+              "id": 259,
+              "is_block": false,
+              "is_lab": true,
+              "name": "ЛПЗ МДК.02.01 Осуществление выбора оборудования, элементной базы, монтажа и наладка модели элементов систем автоматизации на основе разработанной технической документации",
               "requested_room_id": null,
               "requested_room_name": null,
-              "room_substitution_reason": null
+              "room_id": 61,
+              "room_name": "70",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 27,
+              "teacher_id": 40,
+              "uid": "lesson-c330229560e488fe",
+              "week_parity": "all"
+            },
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "id": 277,
+              "is_block": false,
+              "is_lab": true,
+              "name": "ЛПЗ ВМДК.05.02 Технология выполнения слесарных и слесарно-сборочных работ",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 55,
+              "room_name": "63",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 26,
+              "teacher_id": 42,
+              "uid": "lesson-635a92e49b36896e",
+              "week_parity": "all"
             }
-          ]
+          ],
+          "slot": 4,
+          "text": "ЛПЗ МДК.02.01 Осуществление выбора оборудования, элементной базы, монтажа и наладка модели элементов систем автоматизации на основе разработанной технической документации — 2 п/г, Сивилькаев Вадим Михайлович, Кривоусова | ЛПЗ ВМДК.05.02 Технология выполнения слесарных и слесарно-сборочных работ — 1 п/г, Осипчук Александр Александрович, Кривоусова",
+          "time": "4 пара (12:55-14:10)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "id": 278,
+              "is_block": false,
+              "is_lab": true,
+              "name": "ЛПЗ ВМДК.05.02 Технология выполнения слесарных и слесарно-сборочных работ",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 55,
+              "room_name": "63",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 27,
+              "teacher_id": 42,
+              "uid": "lesson-a74028f841981ee9",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 5,
+          "text": "ЛПЗ ВМДК.05.02 Технология выполнения слесарных и слесарно-сборочных работ — 2 п/г, Осипчук Александр Александрович, Кривоусова",
+          "time": "5 пара (14:20-15:30)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "id": 270,
+              "is_block": false,
+              "is_lab": true,
+              "name": "ЛПЗ МДК.03.02 Разработка, организация и контроль качества работ по монтажу, наладке и техническому обслуживанию систем и средств автоматизации",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 55,
+              "room_name": "63",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 27,
+              "teacher_id": 42,
+              "uid": "lesson-826dd93b108af040",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 6,
+          "text": "ЛПЗ МДК.03.02 Разработка, организация и контроль качества работ по монтажу, наладке и техническому обслуживанию систем и средств автоматизации — 2 п/г, Осипчук Александр Александрович, Кривоусова",
+          "time": "6 пара (15:40-16:50)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "id": 267,
+              "is_block": false,
+              "is_lab": true,
+              "name": "ЛПЗ МДК.03.01 Планирование материально-технического обеспечения работ по монтажу, наладке и техническому обслуживанию систем и средств автоматизации",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 55,
+              "room_name": "63",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 27,
+              "teacher_id": 42,
+              "uid": "lesson-2d9963a6c7734dbc",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 7,
+          "text": "ЛПЗ МДК.03.01 Планирование материально-технического обеспечения работ по монтажу, наладке и техническому обслуживанию систем и средств автоматизации — 2 п/г, Осипчук Александр Александрович, Кривоусова",
+          "time": "7 пара (17:00-18:10)"
         }
-      ]
+      ],
+      "weekday": "СБ"
     }
-  ]
+  ],
+  "group_index": 13,
+  "group_name": "ОСА-491"
 }

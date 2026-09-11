@@ -134,6 +134,16 @@
           УП-блок
         </label>
       </div>
+      <div v-if="form.consecutive_pairs===2" class="form-group">
+        <label class="form-label">Допустимое начало блока</label>
+        <div class="campus-checks">
+          <label v-for="start in 6" :key="start" class="form-checkbox">
+            <input type="checkbox" :checked="form.block_start_slots.includes(start-1)" @change="toggleBlockStart(start-1)" />
+            {{ start }}–{{ start+1 }} пары
+          </label>
+        </div>
+        <small>Если ничего не выбрано, решатель может начать блок с любой пары.</small>
+      </div>
       <div class="form-row">
         <label class="form-checkbox">
           <input v-model.number="form.consecutive_pairs" type="checkbox" :true-value="2" :false-value="1" />
@@ -234,6 +244,13 @@ function toggleCampus(c) {
   const idx = arr.indexOf(c)
   if (idx >= 0) arr.splice(idx, 1)
   else arr.push(c)
+}
+
+function toggleBlockStart(start) {
+  const values = form.value.block_start_slots
+  const index = values.indexOf(start)
+  if (index >= 0) values.splice(index, 1)
+  else values.push(start)
 }
 
 function onGroupChange() { form.value.subgroup = -1 }

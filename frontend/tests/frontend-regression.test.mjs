@@ -57,10 +57,12 @@ test('teacher edit round-trip preserves every solver availability limit', () => 
     work_period: { from: '2026-09-01', to: '2026-12-31' },
     work_days: [{ day: 4, enabled: true, slots: [2, 4], start_slot: 2, end_slot: 4 }],
     date_slot_overrides: [{ date: '2026-09-07', slots: [] }],
+    date_load_targets: [{ date: '2026-09-09', minimum_pairs: 4 }, { date: '2026-09-10', minimum_pairs: 6, maximum_same_subject_pairs: 4 }],
     future_server_field: { preserve: true },
   }
   const payload = teacherPayloadFromForm(teacherFormFromEntity(original))
 
+  assert.deepEqual(payload.date_load_targets, original.date_load_targets)
   assert.equal(payload.max_work_days_per_week, 3)
   assert.equal(payload.max_pairs_per_day, 4)
   assert.deepEqual(payload.date_slot_overrides, original.date_slot_overrides)

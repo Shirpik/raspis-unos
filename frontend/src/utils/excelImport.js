@@ -17,6 +17,18 @@ function cleanSubject(name) {
 }
 function lessonKey(l) { return [l.group, key(l.name), l.subgroup, l.teacher ?? -1].join('|') }
 
+function accountingTitle(rows, headerRow, groupName) {
+  for (let row = 0; row < headerRow; row++) {
+    for (const value of rows[row] || []) {
+      const candidate = text(value)
+      if (/\b\d{2}\.\d{2}\.\d{2}\b/u.test(candidate)) {
+        return key(candidate).includes(key(groupName)) ? candidate : `${candidate} - ${groupName}`
+      }
+    }
+  }
+  return groupName
+}
+
 function findColumns(rows, semester) {
   let headerRow = -1, subject = -1, teacher = -1, index = 1
   for (let r = 0; r < Math.min(rows.length, 18); r++) {
@@ -53,6 +65,7 @@ export async function parseVkleyki(file, current, semester = 1) {
   let nextSubjectId = Math.max(-1, ...oldLessons.map(x => x.subject_id ?? -1)) + 1
   const groups = [], teachers = [], lessons = []
   const subjectIds = new Map()
+  const claimedSubjectIds = new Map()
   let vacancyCount = 0, skippedRows = 0
 
   const getTeacher = raw => {
@@ -74,6 +87,7 @@ export async function parseVkleyki(file, current, semester = 1) {
     const name = text(sheetName)
     const previous = groupByName.get(key(name))
     const group = previous ? { ...previous } : { id: nextGroupId++, name, parts: 2, size: 0, home_campus: 0 }
+    group.accounting_title = accountingTitle(rows, cols.headerRow, name)
     groups.push(group)
 
     for (let r = cols.headerRow + 1; r < rows.length; r++) {
@@ -86,28 +100,34 @@ export async function parseVkleyki(file, current, semester = 1) {
       const teacher = getTeacher(rows[r]?.[cols.teacher])
       const subgroup = subgroupOf(rawName, group.id)
       const indexValue = text(rows[r]?.[cols.index])
-      const subjectKey = `${key(group.name)}|${key(indexValue || nameClean.replace(/^ЛПЗ[.\s]+/i, ''))}`
+      const familyName = key(nameClean.replace(/^ЛПЗ[.\s]+/i, ''))
+      const subjectKey = `${key(group.name)}|${key(indexValue)}|${familyName}`
       const identity = { group: group.id, subgroup, teacher, name: nameClean }
-      const previousLesson = oldLessonByKey.get(lessonKey(identity))
+      const exactLesson = oldLessonByKey.get(lessonKey(identity))
+      const transferredLesson = oldLessons.find(l => l.group === group.id && key(l.name) === key(nameClean) && l.subgroup === subgroup && l.teacher !== teacher && l.curriculum_active !== false)
+      const previousLesson = exactLesson || transferredLesson
       if (!subjectIds.has(subjectKey)) {
-        const previousFamily = oldLessons.find(l => l.group === group.id && l.source_index === indexValue && indexValue && l.subject_id >= 0)
-        subjectIds.set(subjectKey, previousLesson?.subject_id >= 0 ? previousLesson.subject_id : previousFamily?.subject_id ?? nextSubjectId++)
+        const previousFamily = oldLessons.find(l => l.group === group.id && l.source_index === indexValue &&
+          key(String(l.name || '').replace(/^ЛПЗ[.\s]+/i, '')) === familyName && l.subject_id >= 0)
+        let candidate = previousLesson?.subject_id >= 0 ? previousLesson.subject_id : previousFamily?.subject_id
+        if (candidate === undefined || claimedSubjectIds.has(candidate) && claimedSubjectIds.get(candidate) !== subjectKey) candidate = nextSubjectId++
+        subjectIds.set(subjectKey, candidate)
+        claimedSubjectIds.set(candidate, subjectKey)
       }
-      const transfer = oldLessons.find(l => l.group === group.id && key(l.name) === key(nameClean) && l.subgroup === subgroup && l.teacher !== teacher && l.curriculum_active !== false)
-      if (!previousLesson && transfer) errors.push({ sheet: sheetName, message: `Строка ${transfer.id} «${nameClean}»: изменился преподаватель. Сначала согласуйте перенос оставшихся часов; дублирование плана запрещено.` })
+      if (transferredLesson && !exactLesson) warnings.push(`Строка ${transferredLesson.id} «${nameClean}»: преподаватель обновлён по новой таблице нагрузки.`)
       // Import academic hours, not a full-semester quota into a one-day model.
       // All room/calendar/quota settings of an existing row belong to the user.
       const draft = {
         group: group.id, subgroup, teacher, name: nameClean,
         total_hours: Math.round(hours), total_slots: 0, generation_active: false,
-        subject_id: previousLesson?.subject_id ?? (/^(КП|УП|ВУП)[.\s]/i.test(nameClean) ? -1 : subjectIds.get(subjectKey)),
+        subject_id: /^(КП|УП|ВУП)[.\s]/i.test(nameClean) ? -1 : subjectIds.get(subjectKey),
         is_lab: /лпз/i.test(nameClean), is_block: isBlock, is_pp: /^ПП\./i.test(nameClean),
         allowed_campuses: [0, 1], week_parity: 'all', fixed_room: -1,
         allow_room_substitution: true, required_room_type: 0,
         required_capacity: group.size || 0, required_equipment: []
       }
-      lessons.push({ ...draft, ...(previousLesson || {}), total_hours: Math.round(hours),
-        curriculum_active: true, source_index: indexValue, id: previousLesson?.id ?? nextLessonId++ })
+      lessons.push({ ...draft, ...(previousLesson || {}), teacher, total_hours: Math.round(hours),
+        curriculum_active: true, plan_active: true, source_index: indexValue, id: previousLesson?.id ?? nextLessonId++ })
     }
   }
 

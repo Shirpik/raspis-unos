@@ -169,7 +169,7 @@ def quota_optimizer_path() -> Path:
     executable = "quota_optimizer.exe" if __import__("os").name == "nt" else "quota_optimizer"
     candidates = (
         ROOT / "build" / executable,
-        ROOT / "build-desktop" / executable,
+        ROOT / "build-site" / executable,
         ROOT / executable,
     )
     for candidate in candidates:

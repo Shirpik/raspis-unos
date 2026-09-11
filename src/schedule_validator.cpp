@@ -187,7 +187,7 @@ ScheduleValidationResult ValidateScheduleJson(
     if (JsonString(schedule, "status", "") == "draft_semester_risk" && !options.draft_semester_risk)
         collector.Add("error", "semester_plan", "draft_not_publishable", "Черновик с нерешёнными рисками вычитки не может быть опубликован как утверждённый");
     for (const auto& issue : data.semester_readout_report.At("issues").array_value)
-        collector.Add(options.draft_semester_risk ? "warning" : "error", "semester_plan", JsonString(issue, "code", "semester_readout_error"),
+        collector.Add(options.draft_semester_risk ? "warning" : JsonString(issue, "severity", "error"), "semester_plan", JsonString(issue, "code", "semester_readout_error"),
             JsonString(issue, "message", "Ошибка плана вычитки"), issue);
     for (const auto& issue : ValidateClassHours(data, schedule).array_value)
         collector.Add("error", "class_hours", JsonString(issue, "code", "class_hour_invalid"),
@@ -315,6 +315,7 @@ ScheduleValidationResult ValidateScheduleJson(
     std::map<std::tuple<int, int, Date>, std::set<int>> part_day_slots;
     std::map<std::tuple<int, Date, std::string>, int> whole_day_subject;
     std::map<std::tuple<int, int, Date, std::string>, int> part_day_subject;
+    std::map<std::tuple<int, int, Date, std::string>, int> part_day_subject_limit;
     std::map<std::pair<int, Date>, std::set<int>> teacher_day_campuses;
     std::map<std::tuple<int, int, Date>, std::set<int>> part_day_campuses;
     std::set<std::tuple<int, Date, int, int>> teacher_nonpreferred_campuses;
@@ -326,6 +327,12 @@ ScheduleValidationResult ValidateScheduleJson(
         const TeacherData* teacher = FindTeacher(data, event.teacher);
         if (!lesson || !group) continue;
         raw_occurrences[event.lesson]++;
+        if (!LessonCalendarAllows(*lesson, event.date)) {
+            JsonValue ctx = Context(); Put(ctx, "lesson", event.lesson); Put(ctx, "group", event.group);
+            Put(ctx, "date", DateLabel(event.date));
+            collector.Add("error", "availability", "group_teaching_deadline",
+                "Обычное занятие вне учебного календаря или после срока вычитки: " + group->name, ctx);
+        }
         events_by_lesson[event.lesson].push_back(event);
         if (lesson->is_block) block_slots[{event.lesson, event.date}].insert(event.pair);
 
@@ -364,6 +371,15 @@ ScheduleValidationResult ValidateScheduleJson(
             part_slot[{event.date, event.pair, event.group, part}].push_back(event.lesson);
             part_day_slots[{event.group, part, event.date}].insert(event.pair);
             part_day_subject[{event.group, part, event.date, subject}]++;
+            const auto key = std::make_tuple(event.group, part, event.date, subject);
+            int limit = config.max_same_subject_pairs_per_day;
+            if (teacher) {
+                const auto found = teacher->date_same_subject_maximum.find(event.date);
+                if (found != teacher->date_same_subject_maximum.end()) limit = found->second;
+            }
+            const auto existing = part_day_subject_limit.find(key);
+            if (existing == part_day_subject_limit.end()) part_day_subject_limit[key] = limit;
+            else existing->second = std::min(existing->second, limit);
         }
         if (lesson->subgroup == -1) whole_day_subject[{event.group, event.date, subject}]++;
 
@@ -490,7 +506,8 @@ ScheduleValidationResult ValidateScheduleJson(
                 bool valid = ordered.size() % 2 == 0;
                 bool crosses_lunch = false;
                 for (size_t index = 0; valid && index < ordered.size(); index += 2) {
-                    valid = ordered[index + 1] == ordered[index] + 1;
+                    valid = ordered[index + 1] == ordered[index] + 1 &&
+                        (lesson.block_start_slots.empty() || lesson.block_start_slots.count(ordered[index] - 1));
                     crosses_lunch = crosses_lunch ||
                         (lesson.avoid_lunch_split && ordered[index] == 2);
                 }
@@ -666,8 +683,9 @@ ScheduleValidationResult ValidateScheduleJson(
                           "Слишком много общегрупповых пар одного предмета за день", ctx);
         }
         for (const auto& item : part_day_subject) {
-            if (item.second <= config.max_same_subject_pairs_per_day) continue;
-            JsonValue ctx = Context(); Put(ctx, "group", std::get<0>(item.first)); Put(ctx, "part", std::get<1>(item.first) + 1); Put(ctx, "date", DateLabel(std::get<2>(item.first))); Put(ctx, "subject", std::get<3>(item.first)); Put(ctx, "count", item.second); Put(ctx, "max", config.max_same_subject_pairs_per_day);
+            const int limit = part_day_subject_limit.at(item.first);
+            if (item.second <= limit) continue;
+            JsonValue ctx = Context(); Put(ctx, "group", std::get<0>(item.first)); Put(ctx, "part", std::get<1>(item.first) + 1); Put(ctx, "date", DateLabel(std::get<2>(item.first))); Put(ctx, "subject", std::get<3>(item.first)); Put(ctx, "count", item.second); Put(ctx, "max", limit);
             collector.Add("error", "subject_repeat", "physical_subgroup_same_subject_daily_limit",
                           "Слишком много пар одного предмета у физической подгруппы за день", ctx);
         }

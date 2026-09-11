@@ -5,6 +5,8 @@
       <div class="header-actions"><button v-if="store.groups.length" class="btn btn-secondary" @click="toggleAll">{{ allSelected ? 'Снять выделение' : 'Выделить все' }}</button><button v-if="selected.length" class="btn btn-secondary" @click="openBulk">⏱ Рабочее время ({{ selected.length }})</button><button class="btn btn-primary" @click="openAdd">+ Добавить</button></div>
     </div>
 
+    <PracticeCalendarImport @updated="calendarUpdated" />
+    <PracticeReadout :refresh-key="readoutRevision" />
     <div v-if="loading" class="center-load"><span class="spinner spinner-lg" style="color:var(--accent)"/></div>
 
     <div v-else-if="store.groups.length === 0" class="empty-state">
@@ -27,6 +29,8 @@
           <span class="chip">{{ curatorName(g.curator_teacher) }}</span>
           <span v-if="g.curator_teacher >= 0 && g.class_hour_enabled !== false" class="chip class-hour-chip">ПН 07:50 · классный час</span>
           <span class="chip">{{ workSummary(g) }}</span>
+          <span v-for="(period,index) in g.practice_periods || []" :key="index" class="chip">ПП: {{ period.from }} — {{ period.to }}</span>
+          <span v-if="g.teaching_deadline" class="chip">Вычитать до {{ g.teaching_deadline }}</span>
         </div>
         <div class="gc-actions">
           <button class="btn btn-ghost btn-sm" @click="openEdit(g)">✏️ Изменить</button>
@@ -41,6 +45,9 @@
         <input v-model="form.name" class="form-input" placeholder="Например: ИСП-3306" />
       </div>
       <WorkScheduleEditor :schedule="form" />
+      <PracticeCalendarEditor v-model="form.practice_periods" />
+      <details v-if="form.academic_calendar?.length"><summary>Учебные недели из XLSX ({{ form.academic_calendar.length }})</summary><p class="bulk-note">ПП из исходного календаря также ограничивает срок вычитки. Для переноса этих дат загрузите исправленный календарь. Ручной срок может ускорить вычитку.</p><div class="table-wrap" style="max-height:240px"><table><thead><tr><th>Неделя</th><th>Теория/ЛПЗ, ч</th><th>УП, ч</th><th>ПП, ч</th><th>Экзамены, ч</th><th>Каникулы</th></tr></thead><tbody><tr v-for="w in form.academic_calendar" :key="w.from"><td>{{ w.from }} — {{ w.to }}</td><td>{{ w.theory_hours }}</td><td>{{ w.up_hours }}</td><td>{{ w.pp_hours }}</td><td>{{ w.exam_hours }}</td><td>{{ w.vacation?'Да':'' }}</td></tr></tbody></table></div></details>
+      <div class="form-group"><label class="form-label">Дополнительный срок вычитки (необязательно)</label><input v-model="form.teaching_deadline" type="date" class="form-input" /><small>Используется самый ранний срок: эта дата, начало практики или конец семестра.</small></div>
       <div class="form-group">
         <label class="form-label">Численность группы</label>
         <input v-model.number="form.size" type="number" min="0" class="form-input" placeholder="0 — пока неизвестна" />
@@ -102,6 +109,9 @@
 import { computed, ref, onMounted } from 'vue'
 import Modal from '../components/Modal.vue'
 import WorkScheduleEditor from '../components/WorkScheduleEditor.vue'
+import PracticeCalendarEditor from '../components/PracticeCalendarEditor.vue'
+import PracticeReadout from '../components/PracticeReadout.vue'
+import PracticeCalendarImport from '../components/PracticeCalendarImport.vue'
 import { useDataStore } from '../stores/data.js'
 import { useToast } from '../composables/useToast.js'
 
@@ -109,6 +119,7 @@ const store = useDataStore()
 const toast = useToast()
 const loading = ref(false)
 const saving = ref(false)
+const readoutRevision = ref(0)
 const modalOpen = ref(false)
 const deleteModal = ref(false)
 const editItem = ref(null)
@@ -119,12 +130,13 @@ const baseSchedule=()=>({work_period:{from:'',to:''},work_days:defaultDays()})
 const form = ref({ name: '', parts: 2, size: 0, home_campus: 0, curator_teacher: -1, class_hour_enabled: true, class_hour_campus: -1, ...baseSchedule() })
 const bulkForm=ref(baseSchedule())
 const allSelected=computed(()=>store.groups.length>0&&selected.value.length===store.groups.length)
+async function calendarUpdated(){await store.loadGroups();readoutRevision.value++;toast.success('Календарь обновлён. Предыдущая версия базы сохранена.')}
 
 onMounted(async () => { loading.value = true; await Promise.all([store.loadGroups(), store.loadTeachers()]); loading.value = false })
 
 const scheduleOf=e=>({work_period:{from:e.work_period?.from||'',to:e.work_period?.to||''},work_days:(e.work_days||defaultDays()).map(d=>({...d}))})
-function openAdd() { editItem.value = null; form.value = { name: '', parts: 2, size: 0, home_campus: 0, curator_teacher: -1, class_hour_enabled: true, class_hour_campus: -1, ...baseSchedule() }; modalOpen.value = true }
-function openEdit(g) { editItem.value = g; form.value = { name: g.name, parts: g.parts, size: g.size || 0, home_campus: g.home_campus ?? 0, curator_teacher: g.curator_teacher ?? -1, class_hour_enabled: g.class_hour_enabled !== false, class_hour_campus: g.class_hour_campus ?? -1, ...scheduleOf(g) }; modalOpen.value = true }
+function openAdd() { editItem.value = null; form.value = { name: '', parts: 2, size: 0, home_campus: 0, curator_teacher: -1, class_hour_enabled: true, class_hour_campus: -1, practice_periods: [], teaching_deadline: '', ...baseSchedule() }; modalOpen.value = true }
+function openEdit(g) { editItem.value = g; form.value = { ...JSON.parse(JSON.stringify(g)), ...scheduleOf(g), practice_periods: (g.practice_periods||[]).map(p=>({...p})), teaching_deadline: g.teaching_deadline || '' }; modalOpen.value = true }
 function toggleAll(){selected.value=allSelected.value?[]:store.groups.map(g=>g.id)}
 function openBulk(){bulkForm.value=baseSchedule();bulkModal.value=true}
 const workSummary=g=>g.work_period?.from&&g.work_period?.to?`${g.work_period.from} — ${g.work_period.to}`:'весь семестр'
@@ -133,11 +145,15 @@ function confirmDelete(g) { deleteTarget.value = g; deleteModal.value = true }
 
 async function save() {
   if (!form.value.name.trim()) return
+  if ((form.value.practice_periods||[]).some(p=>!p.from||!p.to||p.to<p.from)) { toast.error('Укажите корректные даты практики'); return }
   saving.value = true
   const d = { name: form.value.name.trim(), parts: form.value.parts, size: form.value.size || 0, home_campus: form.value.home_campus, curator_teacher: form.value.curator_teacher, class_hour_enabled: form.value.class_hour_enabled, class_hour_campus: form.value.class_hour_campus, class_hour_weekday: 1, class_hour_slot: 0, class_hour_from: '07:50', class_hour_to: '09:15', work_period:form.value.work_period, work_days:form.value.work_days }
+  d.practice_periods = form.value.practice_periods || []
+  d.teaching_deadline = form.value.teaching_deadline || ''
+  d.date_slot_overrides = form.value.date_slot_overrides || []
   const r = editItem.value ? await store.updateGroup(editItem.value.id, d) : await store.createGroup(d)
   saving.value = false
-  if (r.ok) { toast.success(editItem.value ? 'Группа обновлена' : 'Группа добавлена'); modalOpen.value = false }
+  if (r.ok) { toast.success(editItem.value ? 'Группа обновлена' : 'Группа добавлена'); modalOpen.value = false; readoutRevision.value++ }
   else toast.error(r.data?.message || 'Ошибка')
 }
 async function saveBulk(){saving.value=true;const r=await store.bulkUpdateGroups(selected.value,{work_period:bulkForm.value.work_period,work_days:bulkForm.value.work_days});saving.value=false;if(r.ok){toast.success(`Рабочее время применено к ${selected.value.length} группам`);bulkModal.value=false}else toast.error(r.data?.message||'Ошибка')}

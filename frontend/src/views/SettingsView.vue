@@ -48,15 +48,17 @@
       </div>
       <div class="form-row">
         <div class="form-group"><label class="form-label">Начало учебного плана (не периода генерации)</label><input v-model="sForm.semester_start_date" type="date" class="form-input" /></div>
-        <div class="form-group"><label class="form-label">Недель для вычитки</label><input v-model.number="sForm.semester_weeks" type="number" min="1" max="52" class="form-input" /></div>
+        <div class="form-group"><label class="form-label">Последний день вычитки</label><input v-model="sForm.semester_end_date" type="date" class="form-input" /></div>
       </div>
       <label class="form-checkbox"><input v-model="sForm.enforce_semester_readout" type="checkbox" /> Проверять темп вычитки всех преподавателей перед генерацией</label>
+      <label class="form-checkbox"><input v-model="sForm.automatic_period_quotas" type="checkbox" /> Рассчитывать квоты периода автоматически из оставшихся часов и срока</label>
       <p class="settings-hint">Учёт опирается на полный план базы и подтверждённый журнал. Запланированные занятия не считаются проведёнными. При нехватке времени или квот генерация будет остановлена с объяснением.</p>
       <button v-if="!demoMode" class="btn btn-secondary" @click="checkSemester">Проверить темп по базе</button>
       <div v-if="semesterReport" class="settings-hint">
         <p>Это предварительный контроль ёмкости календарей, не доказательство выполнимости общей сетки.</p>
         <p v-for="(issue, index) in semesterReport.issues" :key="index">{{ issue.message }}</p>
         <p v-if="!semesterReport.issues?.length">Предварительных противоречий не найдено. Необходима полная проверка расписания.</p>
+        <div v-if="semesterReport.rows?.length" class="table-wrap readout-table"><table><thead><tr><th>Преподаватель / условие</th><th>План</th><th>Проведено</th><th>Остаток обычных</th><th>Остаток 2–4 курс</th><th>УП/ПП</th><th>Доступно до срока</th><th>Результат</th></tr></thead><tbody><tr v-for="(row,index) in semesterReport.rows" :key="`${row.teacher}-${index}`"><td>{{ row.label }}</td><td>{{ row.planned_hours }} ч</td><td>{{ row.confirmed_hours }} ч</td><td>{{ row.remaining_regular_hours }} ч</td><td>{{ row.remaining_regular_hours_course_2_4 }} ч</td><td>{{ row.practice_hours_needing_calendar }} ч</td><td>{{ row.capacity_pairs_until_deadline }} пар</td><td><span :class="['badge',readoutStatus(row).class]">{{ readoutStatus(row).label }}</span></td></tr></tbody></table></div>
       </div>
       <div style="margin-top:14px;display:flex;gap:10px;align-items:center">
         <button class="btn btn-primary" :disabled="savingSettings" @click="saveSettings">
@@ -267,7 +269,7 @@ const schedStore = useScheduleStore()
 const toast = useToast()
 const auth = useAuthStore()
 
-const sForm = reactive({ start_date: '', end_date: '', semester_start_date: '', semester_weeks: 16, enforce_semester_readout: false })
+const sForm = reactive({ start_date: '', end_date: '', semester_start_date: '', semester_end_date: '', semester_weeks: 16, enforce_semester_readout: false, automatic_period_quotas: true })
 const savingSettings = ref(false)
 const settingsSaved = ref(false)
 const semesterReport = ref(null)
@@ -412,8 +414,10 @@ async function loadSettings() {
     sForm.start_date = res.data.start_date || ''
     sForm.end_date = res.data.end_date || ''
     sForm.semester_start_date = res.data.semester_start_date || ''
+    sForm.semester_end_date = res.data.semester_end_date || ''
     sForm.semester_weeks = res.data.semester_weeks ?? 16
     sForm.enforce_semester_readout = res.data.enforce_semester_readout === true
+    sForm.automatic_period_quotas = res.data.automatic_period_quotas !== false
   }
 }
 
@@ -426,6 +430,12 @@ async function saveSettings() {
     toast.success('Настройки сохранены')
     setTimeout(() => { settingsSaved.value = false }, 3000)
   } else toast.error(r.data?.message || 'Ошибка сохранения')
+}
+
+function readoutStatus(row) {
+  if (Math.ceil((row.remaining_regular_hours || 0) / 2) > (row.capacity_pairs_until_deadline || 0)) return { label: 'Не успевает', class: 'badge-error' }
+  if ((row.practice_hours_needing_calendar || 0) > 0) return { label: 'Нужен календарь практики', class: 'badge-warning' }
+  return { label: 'По календарю успевает', class: 'badge-success' }
 }
 
 async function saveCredentials() {

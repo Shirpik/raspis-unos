@@ -1,9 +1,25 @@
 {
-  "status": "filtered_validated_schedule",
-  "generated_at": "2026-09-03T19:41:06",
-  "period": {
-    "from": "2026-09-04",
-    "to": "2026-09-05"
-  },
-  "source": "C:\\Users\\Student\\Desktop\\raspis-unos\\output\\saturday-revision-candidate\\schedule_all.json"
+  "mode": "weekly",
+  "quality_improvement_seconds": 0,
+  "state": "done",
+  "total_seconds": 0.9369392,
+  "weeks": [
+    {
+      "adaptive_quality_stop": false,
+      "branches": 0,
+      "conflicts": 0,
+      "constraints": 21003,
+      "date_from": "12.09.2026",
+      "date_to": "12.09.2026",
+      "feasibility_seconds": 0.049481,
+      "model_build_seconds": 0.0303519,
+      "quality_seconds": 0,
+      "relaxed_daily_min_groups": [],
+      "solve_seconds": 0.049481,
+      "status": "OPTIMAL",
+      "variables": 4732,
+      "warm_start_hints": 0,
+      "week": 1
+    }
+  ]
 }

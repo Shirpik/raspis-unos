@@ -365,17 +365,13 @@ FodyWeavers.xsd
 output/
 dist/
 
-# Project-local state and generated artefacts.  The checked-in `output/latest`
-# folder is the verified schedule supplied with the project; all older
-# candidates and backups remain local.
+# Project-local state and generated artefacts. The checked-in `output/latest`
+# folder is the last saved result; the server rejects it after relevant source
+# data changes until a fresh generation is completed.
 /.codex*/
 /.claude/
 /build/
-/build-desktop/
-/desktop/node_modules/
-/desktop/release/
-/desktop/release-backups/
-/desktop/*.tgz
+/build-site/
 /deadline-tracker/build/
 /deadline-tracker/dist/
 /frontend/node_modules/
@@ -389,6 +385,7 @@ dist/
 /deploy/release-*/
 /data/auth_config.json
 /data/.one_week_generation_state.json
+/data/timetable_data.before-*.json
 /data/history/
 !output/
 output/*

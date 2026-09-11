@@ -28,10 +28,10 @@ export const useScheduleStore = defineStore('schedule', () => {
   async function fetchPublished() {
     loading.value = true
     error.value = null
-    let res = await api.schedule.getPublished()
-    if (!res.ok && res.status === 404) res = await api.schedule.get()
+    const res = await api.schedule.getPublished()
     loading.value = false
     if (res.ok) scheduleData.value = res.data
+    else if (res.status === 404) scheduleData.value = null
     else error.value = res.data?.message || 'Опубликованное расписание недоступно'
   }
 
@@ -66,6 +66,12 @@ export const useScheduleStore = defineStore('schedule', () => {
   async function regenerate(opts = {}) {
     generating.value = true
     progress.value = null
+
+    const capability = await api.data.semesterReadout()
+    if (!capability.ok || capability.data?.rules_version !== 2) {
+      generating.value = false
+      return { ok: false, message: capability.data?.message || 'Перезапустите сайт с новой сборкой сервера: текущая версия не поддерживает полный контроль календаря практики.' }
+    }
 
     const res = await api.schedule.regenerate(opts)
 

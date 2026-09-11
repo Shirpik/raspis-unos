@@ -6,7 +6,7 @@
         <span>Расписание</span>
       </RouterLink>
 
-      <div class="nav-links desktop-only">
+      <div class="nav-links wide-only">
         <RouterLink v-for="l in links" :key="l.to" :to="l.to" class="nav-link">
           {{ l.label }}
         </RouterLink>
@@ -138,11 +138,11 @@ async function logout() {
 .drawer-link-icon { font-size: 18px; width: 24px; text-align: center; }
 .drawer-logout { border: 0; width: 100%; background: transparent; cursor: pointer; text-align: left; color: var(--error); }
 
-.desktop-only { display: flex; }
+.wide-only { display: flex; }
 .mobile-only  { display: none; }
 
 @media (max-width: 768px) {
-  .desktop-only { display: none; }
+  .wide-only { display: none; }
   .mobile-only  { display: flex; }
 }
 

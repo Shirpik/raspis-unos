@@ -1,264 +1,175 @@
 {
-  "group_index": 31,
-  "group_name": "ТОРД-3706",
   "days": [
     {
-      "date": "04.09.2026",
-      "date_iso": "2026-09-04",
+      "date": "12.09.2026",
+      "date_iso": "2026-09-12",
       "day_index": 0,
-      "weekday": "ПТ",
       "slots": [
         {
+          "lessons": [],
           "slot": 1,
-          "time": "1 пара (08:30-09:55)",
           "text": "-",
-          "lessons": []
+          "time": "1 пара (08:30-09:45)"
         },
         {
-          "slot": 2,
-          "time": "2 пара (10:05-11:30)",
-          "text": "-",
-          "lessons": []
-        },
-        {
-          "slot": 3,
-          "time": "3 пара (12:25-13:50)",
-          "text": "ЛПЗ ВМДК.04.01 Слесарное дело и технические измерения — 1 п/г, Самцов Андрей Евгеньевич, Лесная",
           "lessons": [
             {
-              "id": 692,
-              "uid": "lesson-06e03726d1c178bc",
-              "name": "ЛПЗ ВМДК.04.01 Слесарное дело и технические измерения",
-              "teacher_id": 59,
-              "subgroup": 62,
-              "is_lab": true,
-              "is_block": false,
-              "consecutive_pairs": 2,
-              "avoid_lunch_split": true,
-              "week_parity": "all",
-              "room_id": 64,
-              "room_name": "115-116",
-              "room_type": 0,
-              "room_substituted": false,
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_substitution_reason": null
-            }
-          ]
-        },
-        {
-          "slot": 4,
-          "time": "4 пара (14:00-15:25)",
-          "text": "Автоматизация автомастерской в компьютерной программе \"1С предприятие 8: \"Автосервис\" — 2 п/г, Азарян Карине Айказовна, Лесная | ЛПЗ ВМДК.04.01 Слесарное дело и технические измерения — 1 п/г, Самцов Андрей Евгеньевич, Лесная",
-          "lessons": [
-            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
               "id": 685,
+              "is_block": false,
+              "is_lab": false,
+              "name": "Автоматизация автомастерской в компьютерной программе \"1С предприятие 8: \"Автосервис\"",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 34,
+              "room_name": "210",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 63,
+              "teacher_id": 47,
               "uid": "lesson-3a01d5ca310fc083",
-              "name": "Автоматизация автомастерской в компьютерной программе \"1С предприятие 8: \"Автосервис\"",
-              "teacher_id": 47,
-              "subgroup": 63,
-              "is_lab": false,
-              "is_block": false,
-              "consecutive_pairs": 1,
-              "avoid_lunch_split": false,
-              "week_parity": "all",
-              "room_id": 34,
-              "room_name": "210",
-              "room_type": 0,
-              "room_substituted": false,
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_substitution_reason": null
-            },
-            {
-              "id": 692,
-              "uid": "lesson-06e03726d1c178bc",
-              "name": "ЛПЗ ВМДК.04.01 Слесарное дело и технические измерения",
-              "teacher_id": 59,
-              "subgroup": 62,
-              "is_lab": true,
-              "is_block": false,
-              "consecutive_pairs": 2,
-              "avoid_lunch_split": true,
-              "week_parity": "all",
-              "room_id": 64,
-              "room_name": "115-116",
-              "room_type": 0,
-              "room_substituted": false,
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_substitution_reason": null
+              "week_parity": "all"
             }
-          ]
-        },
-        {
-          "slot": 5,
-          "time": "5 пара (15:35-16:55)",
-          "text": "Автоматизация автомастерской в компьютерной программе \"1С предприятие 8: \"Автосервис\" — 1 п/г, Азарян Карине Айказовна, Лесная | ЛПЗ ВМДК.04.01 Слесарное дело и технические измерения — 2 п/г, Самцов Андрей Евгеньевич, Лесная",
-          "lessons": [
-            {
-              "id": 684,
-              "uid": "lesson-112bcde94085e932",
-              "name": "Автоматизация автомастерской в компьютерной программе \"1С предприятие 8: \"Автосервис\"",
-              "teacher_id": 47,
-              "subgroup": 62,
-              "is_lab": false,
-              "is_block": false,
-              "consecutive_pairs": 1,
-              "avoid_lunch_split": false,
-              "week_parity": "all",
-              "room_id": 34,
-              "room_name": "210",
-              "room_type": 0,
-              "room_substituted": false,
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_substitution_reason": null
-            },
-            {
-              "id": 693,
-              "uid": "lesson-318773e9f0310300",
-              "name": "ЛПЗ ВМДК.04.01 Слесарное дело и технические измерения",
-              "teacher_id": 59,
-              "subgroup": 63,
-              "is_lab": true,
-              "is_block": false,
-              "consecutive_pairs": 2,
-              "avoid_lunch_split": true,
-              "week_parity": "all",
-              "room_id": 64,
-              "room_name": "115-116",
-              "room_type": 0,
-              "room_substituted": false,
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_substitution_reason": null
-            }
-          ]
-        },
-        {
-          "slot": 6,
-          "time": "6 пара (17:05-18:25)",
-          "text": "ЛПЗ ВМДК.04.01 Слесарное дело и технические измерения — 2 п/г, Самцов Андрей Евгеньевич, Лесная",
-          "lessons": [
-            {
-              "id": 693,
-              "uid": "lesson-318773e9f0310300",
-              "name": "ЛПЗ ВМДК.04.01 Слесарное дело и технические измерения",
-              "teacher_id": 59,
-              "subgroup": 63,
-              "is_lab": true,
-              "is_block": false,
-              "consecutive_pairs": 2,
-              "avoid_lunch_split": true,
-              "week_parity": "all",
-              "room_id": 64,
-              "room_name": "115-116",
-              "room_type": 0,
-              "room_substituted": false,
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_substitution_reason": null
-            }
-          ]
-        },
-        {
-          "slot": 7,
-          "time": "7 пара (18:35-19:55)",
-          "text": "-",
-          "lessons": []
-        }
-      ]
-    },
-    {
-      "date": "05.09.2026",
-      "date_iso": "2026-09-05",
-      "day_index": 1,
-      "weekday": "СБ",
-      "slots": [
-        {
-          "slot": 1,
-          "time": "1 пара (08:30-09:45)",
-          "text": "-",
-          "lessons": []
-        },
-        {
+          ],
           "slot": 2,
-          "time": "2 пара (09:55-11:10)",
-          "text": "-",
-          "lessons": []
+          "text": "Автоматизация автомастерской в компьютерной программе \"1С предприятие 8: \"Автосервис\" — 2 п/г, Азарян Карине Айказовна, Лесная",
+          "time": "2 пара (09:55-11:10)"
         },
         {
-          "slot": 3,
-          "time": "3 пара (11:30-12:45)",
-          "text": "-",
-          "lessons": []
-        },
-        {
-          "slot": 4,
-          "time": "4 пара (12:55-14:10)",
-          "text": "-",
-          "lessons": []
-        },
-        {
-          "slot": 5,
-          "time": "5 пара (14:20-15:30)",
-          "text": "-",
-          "lessons": []
-        },
-        {
-          "slot": 6,
-          "time": "6 пара (15:40-16:50)",
-          "text": "Физическая культура — вся группа, Потапова Регина Александровна, Лесная",
           "lessons": [
             {
-              "id": 681,
-              "uid": "lesson-50a64e96fb60622d",
-              "name": "Физическая культура",
-              "teacher_id": 8,
-              "subgroup": -1,
-              "is_lab": false,
-              "is_block": false,
-              "consecutive_pairs": 1,
               "avoid_lunch_split": false,
-              "week_parity": "all",
+              "consecutive_pairs": 1,
+              "id": 681,
+              "is_block": false,
+              "is_lab": false,
+              "name": "Физическая культура",
+              "requested_room_id": null,
+              "requested_room_name": null,
               "room_id": 42,
               "room_name": "330",
-              "room_type": 0,
               "room_substituted": false,
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_substitution_reason": null
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": -1,
+              "teacher_id": 8,
+              "uid": "lesson-50a64e96fb60622d",
+              "week_parity": "all"
             }
-          ]
+          ],
+          "slot": 3,
+          "text": "Физическая культура — вся группа, Потапова Регина Александровна, Лесная",
+          "time": "3 пара (11:30-12:45)"
         },
         {
-          "slot": 7,
-          "time": "7 пара (17:00-18:10)",
-          "text": "ВМДК.05.05 Транспортная логистика и безопасность дорожного движения — вся группа, Самцов Андрей Евгеньевич, Лесная",
           "lessons": [
             {
-              "id": 701,
-              "uid": "lesson-77af1a6f7a6833e6",
-              "name": "ВМДК.05.05 Транспортная логистика и безопасность дорожного движения",
-              "teacher_id": 59,
-              "subgroup": -1,
-              "is_lab": false,
-              "is_block": false,
-              "consecutive_pairs": 1,
               "avoid_lunch_split": false,
-              "week_parity": "all",
-              "room_id": 44,
-              "room_name": "405",
-              "room_type": 0,
+              "consecutive_pairs": 1,
+              "id": 691,
+              "is_block": false,
+              "is_lab": false,
+              "name": "ВМДК.04.01 Слесарное дело и технические измерения",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 39,
+              "room_name": "319",
               "room_substituted": false,
-              "requested_room_id": 44,
-              "requested_room_name": "405",
-              "room_substitution_reason": null
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": -1,
+              "teacher_id": 59,
+              "uid": "lesson-7f79b2488e019075",
+              "week_parity": "all"
             }
-          ]
+          ],
+          "slot": 4,
+          "text": "ВМДК.04.01 Слесарное дело и технические измерения — вся группа, Самцов Андрей Евгеньевич, Лесная",
+          "time": "4 пара (12:55-14:10)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "id": 685,
+              "is_block": false,
+              "is_lab": false,
+              "name": "Автоматизация автомастерской в компьютерной программе \"1С предприятие 8: \"Автосервис\"",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 34,
+              "room_name": "210",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 63,
+              "teacher_id": 47,
+              "uid": "lesson-3a01d5ca310fc083",
+              "week_parity": "all"
+            },
+            {
+              "avoid_lunch_split": true,
+              "consecutive_pairs": 2,
+              "id": 687,
+              "is_block": false,
+              "is_lab": true,
+              "name": "ЛПЗ МДК.01.01 Устройство автомобилей",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 32,
+              "room_name": "207",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 62,
+              "teacher_id": 60,
+              "uid": "lesson-a440301f2d54e9b5",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 5,
+          "text": "Автоматизация автомастерской в компьютерной программе \"1С предприятие 8: \"Автосервис\" — 2 п/г, Азарян Карине Айказовна, Лесная | ЛПЗ МДК.01.01 Устройство автомобилей — 1 п/г, Тимеров Валерий Вагизович, Лесная",
+          "time": "5 пара (14:20-15:30)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": true,
+              "consecutive_pairs": 2,
+              "id": 687,
+              "is_block": false,
+              "is_lab": true,
+              "name": "ЛПЗ МДК.01.01 Устройство автомобилей",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 32,
+              "room_name": "207",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 62,
+              "teacher_id": 60,
+              "uid": "lesson-a440301f2d54e9b5",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 6,
+          "text": "ЛПЗ МДК.01.01 Устройство автомобилей — 1 п/г, Тимеров Валерий Вагизович, Лесная",
+          "time": "6 пара (15:40-16:50)"
+        },
+        {
+          "lessons": [],
+          "slot": 7,
+          "text": "-",
+          "time": "7 пара (17:00-18:10)"
         }
-      ]
+      ],
+      "weekday": "СБ"
     }
-  ]
+  ],
+  "group_index": 31,
+  "group_name": "ТОРД-3706"
 }

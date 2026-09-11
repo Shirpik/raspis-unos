@@ -34,6 +34,7 @@
 #include "config.h"
 #include "auth.h"
 #include "data_store.h"
+#include "date_utils.h"
 #include "json_utils.h"
 #include "runtime_config.h"
 #include "schedule_validator.h"
@@ -327,6 +328,10 @@ FinalOutputValidation ValidateFinalOutput(const std::filesystem::path& output_di
     FinalOutputValidation result;
     result.checked = true;
     const auto schedule_file = output_dir / "schedule_all.json";
+    if (!ScheduleFileIsCurrent(schedule_file.string())) {
+        result.message = "Итоговая проверка: база изменилась после генерации. Запусти генерацию заново";
+        return result;
+    }
     JsonParseResult schedule = ParseJson(ReadFileUtf8(schedule_file));
     if (!schedule.ok || !schedule.value.IsObject() || !schedule.value.At("groups").IsArray()) {
         result.message = "Итоговая проверка: schedule_all.json отсутствует или повреждён";
@@ -459,6 +464,7 @@ JsonValue BuildTransferBundle(const std::filesystem::path& out_dir, const std::s
         summary.At("lessons") = JsonValue::MakeNumber(JsonArraySize(data.value, "lessons"));
         summary.At("rooms") = JsonValue::MakeNumber(JsonArraySize(data.value, "rooms"));
         summary.At("substitutions") = JsonValue::MakeNumber(JsonArraySize(data.value, "substitutions"));
+        summary.At("teaching_ledger") = JsonValue::MakeNumber(JsonArraySize(data.value, "teaching_ledger"));
         summary.At("accounting_adjustments") =
             JsonValue::MakeNumber(JsonArraySize(data.value, "accounting_adjustments"));
     }
@@ -526,6 +532,7 @@ bool WriteScheduleSnapshot(const std::filesystem::path& directory, const JsonVal
     std::error_code ec;
     if (value.IsNull()) {
         std::filesystem::remove(schedule_file, ec);
+        std::filesystem::remove(directory / "data_revision.txt", ec);
         RemoveGroupJsonFiles(groups_dir);
         return true;
     }
@@ -549,7 +556,7 @@ bool WriteScheduleSnapshot(const std::filesystem::path& directory, const JsonVal
             return false;
         }
     }
-    return true;
+    return WriteScheduleDataRevision(directory.string(), error);
 }
 
 bool WriteOptionalReport(const std::filesystem::path& path, const JsonValue& value, std::string& error) {
@@ -1306,7 +1313,7 @@ std::string HandleRequest(const std::string& request, const std::string& output_
     }
 
     if (method == "GET" && path == "/api/transfer/export") {
-        JsonValue bundle = BuildTransferBundle(out_dir, "local-desktop");
+        JsonValue bundle = BuildTransferBundle(out_dir, "local-site");
         if (!bundle.At("data").IsObject()) {
             return ErrorJson(500, "Internal Server Error", "Не удалось прочитать базу для экспорта");
         }
@@ -1383,7 +1390,7 @@ std::string HandleRequest(const std::string& request, const std::string& output_
             return ErrorJson(500, "Internal Server Error", "Не удалось создать резервную копию: " + error);
         }
 
-        if (!SaveDataJson(imported_data, error, "Импорт полного пакета с desktop-приложения")) {
+        if (!SaveDataJson(imported_data, error, "Импорт полной резервной копии сайта")) {
             return ErrorJson(500, "Internal Server Error", error);
         }
         if (!WriteScheduleSnapshot(out_dir, selected_schedule, error) ||
@@ -1439,14 +1446,59 @@ std::string HandleRequest(const std::string& request, const std::string& output_
         return OkJson(BuildHoursReport(parsed.value, (out_dir / "schedule_all.json").string()));
     }
 
-    if (method == "GET" && path == "/api/semester/readout") {
-        const auto parsed = LoadRoot();
+    if ((method == "GET" || method == "POST") && path == "/api/semester/readout") {
+        auto parsed = LoadRoot();
         if (!parsed.ok) return ErrorJson(500, "Internal Server Error", parsed.error);
+        if (method == "POST") {
+            const auto request = ParseJson(body);
+            Date first{}, last{};
+            if (!request.ok || !ParseDateIso(JsonString(request.value, "as_of_date", ""), first) ||
+                !ParseDateIso(JsonString(request.value, "period_end_date", ""), last) || last < first || DaysBetween(first, last) > 366)
+                return ErrorJson(400, "Bad Request", "Укажите корректные даты прогноза (период не более года)");
+            parsed.value.At("settings").At("start_date") = JsonValue::MakeString(DateToIso(first));
+            parsed.value.At("settings").At("end_date") = JsonValue::MakeString(DateToIso(last));
+            parsed.value.At("settings").At("automatic_period_quotas") = JsonValue::MakeBool(true);
+        }
         ScheduleInputData input;
         std::string error;
         if (!LoadScheduleInputDataFromRoot(parsed.value, input, error, false))
             return ErrorJson(422, "Unprocessable Entity", error);
         return OkJson(input.semester_readout_report);
+    }
+
+    if (method == "POST" && path == "/api/groups/calendar") {
+        if (g_gen.running.load()) return ErrorJson(409, "Conflict", "Дождитесь завершения генерации перед импортом календаря");
+        auto parsed = LoadRoot();
+        const auto request = ParseJson(body);
+        if (!parsed.ok) return ErrorJson(500, "Internal Server Error", parsed.error);
+        if (!request.ok || !request.value.At("groups").IsArray() ||
+            request.value.At("groups").array_value.size() != parsed.value.At("groups").array_value.size())
+            return ErrorJson(400, "Bad Request", "Нужен однозначный календарь для всех групп");
+        std::set<int> seen;
+        for (const auto& entry : request.value.At("groups").array_value) {
+            const int id = JsonInt(entry, "id", -1);
+            auto* group = FindObjectById(parsed.value.At("groups"), id);
+            if (!group || !seen.insert(id).second || JsonString(entry, "name", "") != JsonString(*group, "name", ""))
+                return ErrorJson(409, "Conflict", "Список групп изменился или содержит повтор. Загрузите файл заново");
+            for (const std::string field : {"practice_periods", "academic_calendar", "practice_calendar_source"}) {
+                auto current = group->At(field);
+                if (current.IsNull()) current = field == "practice_calendar_source" ? JsonValue::MakeObject() : JsonValue::MakeArray();
+                if (ToJson(current) != ToJson(entry.At("expected_calendar").At(field)))
+                    return ErrorJson(409, "Conflict", "Календарь уже изменён другим действием. Загрузите файл заново");
+            }
+            if (!entry.At("academic_calendar").IsArray() || entry.At("academic_calendar").array_value.size() != 52 ||
+                !entry.At("practice_periods").IsArray())
+                return ErrorJson(400, "Bad Request", "Для каждой группы нужны 52 последовательные недели");
+            for (const std::string field : {"practice_periods", "academic_calendar", "practice_calendar_source", "calendar_theory_semester_hours"})
+                group->At(field) = entry.At(field);
+        }
+        ScheduleInputData checked;
+        std::string error;
+        if (!LoadScheduleInputDataFromRoot(parsed.value, checked, error, false))
+            return ErrorJson(422, "Unprocessable Entity", error);
+        if (!SaveDataJson(parsed.value, error, "Импорт календаря учебного времени групп"))
+            return ErrorJson(500, "Internal Server Error", error);
+        return OkJson(checked.semester_readout_report);
     }
 
     if (method == "GET" && path == "/api/accounting/teacher-occupancy") {
@@ -1920,6 +1972,7 @@ std::string HandleRequest(const std::string& request, const std::string& output_
         std::lock_guard<std::mutex> lock(g_schedule_mutex);
         std::filesystem::path file = out_dir / "schedule_all.json";
         if (!FileExists(file)) return ErrorJson(404, "Not Found", "Расписание ещё не сгенерировано. Вызови POST /api/schedule/regenerate.");
+        if (!ScheduleFileIsCurrent(file.string())) return ErrorJson(409, "Conflict", "База изменилась после генерации. Запусти генерацию заново.");
         return JsonResponse(200, "OK", ReadFileUtf8(file));
     }
 
@@ -1928,6 +1981,7 @@ std::string HandleRequest(const std::string& request, const std::string& output_
         std::lock_guard<std::mutex> lock(g_schedule_mutex);
         std::filesystem::path file = std::filesystem::path("output") / "manual" / "schedule_all.json";
         if (!FileExists(file)) return ErrorJson(404, "Not Found", "Ручное расписание пусто. Скопируй из автогенерации или начни с нуля.");
+        if (!ScheduleFileIsCurrent(file.string())) return ErrorJson(409, "Conflict", "База изменилась после сохранения ручного расписания. Скопируй свежую генерацию или начни заново.");
         return JsonResponse(200, "OK", ReadFileUtf8(file));
     }
 
@@ -1958,6 +2012,10 @@ std::string HandleRequest(const std::string& request, const std::string& output_
             }
         }
 
+        std::string revision_error;
+        if (!WriteScheduleDataRevision(manual_dir.string(), revision_error))
+            return ErrorJson(500, "Internal Server Error", revision_error);
+
         return OkJson(ResponseEnvelope(true, "Ручное расписание сохранено."));
     }
 
@@ -1979,6 +2037,9 @@ std::string HandleRequest(const std::string& request, const std::string& output_
         if (!FileExists(src_all)) {
             return ErrorJson(404, "Not Found", "Автогенерации ещё нет. Сначала сгенерируй расписание.");
         }
+        if (!ScheduleFileIsCurrent(src_all.string())) {
+            return ErrorJson(409, "Conflict", "База изменилась после автогенерации. Сначала сгенерируй расписание заново.");
+        }
         std::filesystem::copy_file(src_all, manual_dir / "schedule_all.json", std::filesystem::copy_options::overwrite_existing, ec);
         if (ec) return ErrorJson(500, "Internal Server Error", "Не удалось скопировать schedule_all.json: " + ec.message());
 
@@ -1989,6 +2050,9 @@ std::string HandleRequest(const std::string& request, const std::string& output_
                 std::filesystem::copy_file(entry.path(), groups_dir / entry.path().filename(), std::filesystem::copy_options::overwrite_existing, ec);
             }
         }
+        std::string revision_error;
+        if (!WriteScheduleDataRevision(manual_dir.string(), revision_error))
+            return ErrorJson(500, "Internal Server Error", revision_error);
         return OkJson(ResponseEnvelope(true, "Расписание скопировано из автогенерации в Конструктор."));
     }
 
@@ -2001,6 +2065,7 @@ std::string HandleRequest(const std::string& request, const std::string& output_
 
         const std::filesystem::path file = out_dir / "schedule_all.json";
         if (!FileExists(file)) return ErrorJson(404, "Not Found", "Расписание ещё не сгенерировано. Вызови POST /api/schedule/regenerate.");
+        if (!ScheduleFileIsCurrent(file.string())) return ErrorJson(409, "Conflict", "База изменилась после генерации. Запусти генерацию заново.");
         const auto parsed = ParseJson(ReadFileUtf8(file));
         if (!parsed.ok || !parsed.value.At("groups").IsArray())
             return ErrorJson(500, "Internal Server Error", "Общее расписание повреждено");

@@ -25,6 +25,7 @@ try {
         unavailable = @()
         teacher_unavailable = @()
         substitutions = @(@{id=0;lesson_id=0;date='2026-09-07';slot=1;absent_teacher=0;substitute_teacher=1;hours=2;reason='Transfer test';status='active'})
+        teaching_ledger = @(@{id=0;lesson_id=0;date='2026-09-07';slot=1;hours=2;status='confirmed';actual_teacher=1;room='101';source_file='fixture.xlsx'})
         accounting_adjustments = @(@{id=0;teacher_id=1;hours=1;reason='Test adjustment'})
     }
     $autoSchedule = @{
@@ -73,7 +74,28 @@ try {
     $backups = @(Get-ChildItem -File (Join-Path $testRoot 'output/transfer_backups') -Filter '*.raspis.json')
     if ($backups.Count -ne 1) { throw 'A full pre-import backup was not created' }
 
-    Write-Host 'Transfer bundle: full data, schedules, reports, substitutions, accounting and backup passed.'
+    # Calendar import is a narrow, atomic update; it must not replace curricula,
+    # confirmed journal entries, or a concurrent calendar edit.
+    $weeks = @(0..51 | ForEach-Object {
+        $first = ([datetime]'2026-08-31').AddDays(7 * $_)
+        @{from=$first.ToString('yyyy-MM-dd');to=$first.AddDays(6).ToString('yyyy-MM-dd');theory_hours=36;up_hours=0;pp_hours=0;exam_hours=0;vacation=$false}
+    })
+    $calendarEntry = @{id=0;name='TEST-101';expected_calendar=@{practice_periods=@();academic_calendar=@();practice_calendar_source=@{}};practice_periods=@();academic_calendar=$weeks;calendar_theory_semester_hours=576;practice_calendar_source=@{sha256='test-source'}}
+    $calendarBody = @{groups=@($calendarEntry)} | ConvertTo-Json -Depth 30
+    $beforeCalendar = Invoke-RestMethod "$baseUrl/api/data"
+    $calendarReport = Invoke-RestMethod "$baseUrl/api/groups/calendar" -Method Post -ContentType 'application/json' -Body $calendarBody
+    $afterCalendar = Invoke-RestMethod "$baseUrl/api/data"
+    if ($afterCalendar.groups[0].academic_calendar.Count -ne 52) { throw 'Calendar weeks were not saved' }
+    if (($beforeCalendar.lessons | ConvertTo-Json -Depth 20 -Compress) -ne ($afterCalendar.lessons | ConvertTo-Json -Depth 20 -Compress) -or
+        ($beforeCalendar.teaching_ledger | ConvertTo-Json -Depth 20 -Compress) -ne ($afterCalendar.teaching_ledger | ConvertTo-Json -Depth 20 -Compress)) { throw 'Calendar import changed hours or confirmed facts' }
+    $staleRejected = $false
+    try { $null = Invoke-RestMethod "$baseUrl/api/groups/calendar" -Method Post -ContentType 'application/json' -Body $calendarBody }
+    catch { if ([int]$_.Exception.Response.StatusCode -eq 409) { $staleRejected=$true } else { throw } }
+    if (!$staleRejected) { throw 'Stale calendar preview overwrote a newer calendar' }
+    $null = Invoke-RestMethod "$baseUrl/api/semester/readout" -Method Post -ContentType 'application/json' -Body '{"as_of_date":"2026-09-21","period_end_date":"2026-09-26"}'
+    $afterForecast = Invoke-RestMethod "$baseUrl/api/data"
+    if (($afterCalendar | ConvertTo-Json -Depth 40 -Compress) -ne ($afterForecast | ConvertTo-Json -Depth 40 -Compress)) { throw 'Forecast changed live generation settings or data' }
+    Write-Host 'Transfer, atomic calendar import, stale preview protection, immutable hours and read-only forecast passed.'
 } finally {
     if ($process -and !$process.HasExited) {
         Stop-Process -Id $process.Id -Force

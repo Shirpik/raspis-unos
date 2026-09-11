@@ -63,6 +63,7 @@
         <div class="form-group"><label class="form-label">Максимум пар в день</label><input v-model.number="form.max_pairs_per_day" type="number" min="0" max="7" class="form-input" /><small>0 — без отдельного ограничения.</small></div>
       </div>
       <WorkScheduleEditor :schedule="form" />
+      <DateLoadEditor v-model="form.date_load_targets" />
       <label class="form-checkbox"><input v-model="form.scheduling_active" type="checkbox" /> Включать преподавателя в генерацию (часы при отключении сохраняются)</label>
       <DesiredLoadEditor v-model="form.desired_load_rules" :groups="store.groups" />
       <template #footer>
@@ -114,6 +115,7 @@ import { computed, ref, onMounted } from 'vue'
 import Modal from '../components/Modal.vue'
 import WorkScheduleEditor from '../components/WorkScheduleEditor.vue'
 import DesiredLoadEditor from '../components/DesiredLoadEditor.vue'
+import DateLoadEditor from '../components/DateLoadEditor.vue'
 import { emptyTeacherForm, teacherFormFromEntity, teacherPayloadFromForm, teacherBulkPayload } from '../utils/entityPayloads.js'
 import { useDataStore } from '../stores/data.js'
 import { useToast } from '../composables/useToast.js'

@@ -1,246 +1,156 @@
 {
-  "group_index": 1,
-  "group_name": "ТМ-1419",
   "days": [
     {
-      "date": "04.09.2026",
-      "date_iso": "2026-09-04",
+      "date": "12.09.2026",
+      "date_iso": "2026-09-12",
       "day_index": 0,
-      "weekday": "ПТ",
       "slots": [
         {
-          "slot": 1,
-          "time": "1 пара (08:30-09:55)",
-          "text": "-",
-          "lessons": []
-        },
-        {
-          "slot": 2,
-          "time": "2 пара (10:05-11:30)",
-          "text": "иностранный язык — 2 п/г, Буркова Елена Владимировна, Кривоусова",
           "lessons": [
             {
-              "id": 25,
-              "uid": "lesson-7ca55ad9ead6fed2",
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "id": 24,
+              "is_block": false,
+              "is_lab": false,
               "name": "иностранный язык",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 18,
+              "room_name": "37",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 2,
               "teacher_id": 16,
-              "subgroup": 3,
-              "is_lab": false,
-              "is_block": false,
-              "consecutive_pairs": 1,
-              "avoid_lunch_split": false,
-              "week_parity": "all",
-              "room_id": 20,
-              "room_name": "41",
-              "room_type": 0,
-              "room_substituted": false,
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_substitution_reason": null
+              "uid": "lesson-5bdc715376f09ab7",
+              "week_parity": "all"
             }
-          ]
+          ],
+          "slot": 1,
+          "text": "иностранный язык — 1 п/г, Буркова Елена Владимировна, Кривоусова",
+          "time": "1 пара (08:30-09:45)"
         },
         {
-          "slot": 3,
-          "time": "3 пара (12:25-13:50)",
-          "text": "обществознание — вся группа, Цимфер Татьяна Ивановна, Кривоусова",
           "lessons": [
             {
-              "id": 22,
-              "uid": "lesson-883ab546721d3ce3",
-              "name": "обществознание",
-              "teacher_id": 11,
-              "subgroup": -1,
-              "is_lab": false,
-              "is_block": false,
-              "consecutive_pairs": 1,
               "avoid_lunch_split": false,
-              "week_parity": "all",
-              "room_id": 14,
-              "room_name": "31",
-              "room_type": 0,
-              "room_substituted": false,
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_substitution_reason": null
-            }
-          ]
-        },
-        {
-          "slot": 4,
-          "time": "4 пара (14:00-15:25)",
-          "text": "физика — вся группа, Силенок Марина Юрьевна, Кривоусова",
-          "lessons": [
-            {
+              "consecutive_pairs": 1,
               "id": 32,
-              "uid": "lesson-73fb4309cbd49c19",
-              "name": "физика",
-              "teacher_id": 19,
-              "subgroup": -1,
-              "is_lab": false,
               "is_block": false,
-              "consecutive_pairs": 1,
-              "avoid_lunch_split": false,
-              "week_parity": "all",
+              "is_lab": false,
+              "name": "физика",
+              "requested_room_id": null,
+              "requested_room_name": null,
               "room_id": 9,
               "room_name": "22",
-              "room_type": 0,
               "room_substituted": false,
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_substitution_reason": null
-            }
-          ]
-        },
-        {
-          "slot": 5,
-          "time": "5 пара (15:35-16:55)",
-          "text": "иностранный язык — 1 п/г, Буркова Елена Владимировна, Кривоусова",
-          "lessons": [
-            {
-              "id": 24,
-              "uid": "lesson-5bdc715376f09ab7",
-              "name": "иностранный язык",
-              "teacher_id": 16,
-              "subgroup": 2,
-              "is_lab": false,
-              "is_block": false,
-              "consecutive_pairs": 1,
-              "avoid_lunch_split": false,
-              "week_parity": "all",
-              "room_id": 20,
-              "room_name": "41",
+              "room_substitution_reason": null,
               "room_type": 0,
-              "room_substituted": false,
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_substitution_reason": null
-            }
-          ]
-        },
-        {
-          "slot": 6,
-          "time": "6 пара (17:05-18:25)",
-          "text": "-",
-          "lessons": []
-        },
-        {
-          "slot": 7,
-          "time": "7 пара (18:35-19:55)",
-          "text": "-",
-          "lessons": []
-        }
-      ]
-    },
-    {
-      "date": "05.09.2026",
-      "date_iso": "2026-09-05",
-      "day_index": 1,
-      "weekday": "СБ",
-      "slots": [
-        {
-          "slot": 1,
-          "time": "1 пара (08:30-09:45)",
-          "text": "-",
-          "lessons": []
-        },
-        {
-          "slot": 2,
-          "time": "2 пара (09:55-11:10)",
-          "text": "-",
-          "lessons": []
-        },
-        {
-          "slot": 3,
-          "time": "3 пара (11:30-12:45)",
-          "text": "-",
-          "lessons": []
-        },
-        {
-          "slot": 4,
-          "time": "4 пара (12:55-14:10)",
-          "text": "русский язык — вся группа, Хасанова Гузель Хамитовна, Кривоусова",
-          "lessons": [
-            {
-              "id": 19,
-              "uid": "lesson-ab76b2ba49bb8db5",
-              "name": "русский язык",
-              "teacher_id": 0,
               "subgroup": -1,
-              "is_lab": false,
-              "is_block": false,
-              "consecutive_pairs": 1,
+              "teacher_id": 19,
+              "uid": "lesson-73fb4309cbd49c19",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 2,
+          "text": "физика — вся группа, Силенок Марина Юрьевна, Кривоусова",
+          "time": "2 пара (09:55-11:10)"
+        },
+        {
+          "lessons": [
+            {
               "avoid_lunch_split": false,
-              "week_parity": "all",
+              "consecutive_pairs": 1,
+              "id": 36,
+              "is_block": false,
+              "is_lab": false,
+              "name": "техника бесконфликтного общения",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 59,
+              "room_name": "68",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": -1,
+              "teacher_id": 12,
+              "uid": "lesson-5862b47336782011",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 3,
+          "text": "техника бесконфликтного общения — вся группа, Рабенок Мария Александровна, Кривоусова",
+          "time": "3 пара (11:30-12:45)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "id": 19,
+              "is_block": false,
+              "is_lab": false,
+              "name": "русский язык",
+              "requested_room_id": null,
+              "requested_room_name": null,
               "room_id": 10,
               "room_name": "23",
-              "room_type": 0,
               "room_substituted": false,
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_substitution_reason": null
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": -1,
+              "teacher_id": 0,
+              "uid": "lesson-ab76b2ba49bb8db5",
+              "week_parity": "all"
             }
-          ]
+          ],
+          "slot": 4,
+          "text": "русский язык — вся группа, Хасанова Гузель Хамитовна, Кривоусова",
+          "time": "4 пара (12:55-14:10)"
         },
         {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "id": 25,
+              "is_block": false,
+              "is_lab": false,
+              "name": "иностранный язык",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 18,
+              "room_name": "37",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 3,
+              "teacher_id": 16,
+              "uid": "lesson-7ca55ad9ead6fed2",
+              "week_parity": "all"
+            }
+          ],
           "slot": 5,
-          "time": "5 пара (14:20-15:30)",
-          "text": "химия — вся группа, Соболева Любовь Анатольевна, Кривоусова",
-          "lessons": [
-            {
-              "id": 33,
-              "uid": "lesson-fc6d3960f5550c84",
-              "name": "химия",
-              "teacher_id": 20,
-              "subgroup": -1,
-              "is_lab": false,
-              "is_block": false,
-              "consecutive_pairs": 1,
-              "avoid_lunch_split": false,
-              "week_parity": "all",
-              "room_id": 4,
-              "room_name": "15",
-              "room_type": 0,
-              "room_substituted": false,
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_substitution_reason": null
-            }
-          ]
+          "text": "иностранный язык — 2 п/г, Буркова Елена Владимировна, Кривоусова",
+          "time": "5 пара (14:20-15:30)"
         },
         {
+          "lessons": [],
           "slot": 6,
-          "time": "6 пара (15:40-16:50)",
-          "text": "физика — вся группа, Силенок Марина Юрьевна, Кривоусова",
-          "lessons": [
-            {
-              "id": 32,
-              "uid": "lesson-73fb4309cbd49c19",
-              "name": "физика",
-              "teacher_id": 19,
-              "subgroup": -1,
-              "is_lab": false,
-              "is_block": false,
-              "consecutive_pairs": 1,
-              "avoid_lunch_split": false,
-              "week_parity": "all",
-              "room_id": 9,
-              "room_name": "22",
-              "room_type": 0,
-              "room_substituted": false,
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_substitution_reason": null
-            }
-          ]
+          "text": "-",
+          "time": "6 пара (15:40-16:50)"
         },
         {
+          "lessons": [],
           "slot": 7,
-          "time": "7 пара (17:00-18:10)",
           "text": "-",
-          "lessons": []
+          "time": "7 пара (17:00-18:10)"
         }
-      ]
+      ],
+      "weekday": "СБ"
     }
-  ]
+  ],
+  "group_index": 1,
+  "group_name": "ТМ-1419"
 }

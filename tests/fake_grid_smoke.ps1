@@ -127,8 +127,28 @@ try {
     if (!$quotaBalance.success) {
         throw "Quota balancing failed: $($quotaBalance | ConvertTo-Json -Depth 8)"
     }
+    $currentData = Invoke-RestMethod "$baseUrl/api/data"
+    $ledger = @()
+    foreach ($day in $schedule.groups[0].days) {
+        foreach ($slot in $day.slots) {
+            foreach ($lesson in $slot.lessons) {
+                $ledger += @{id=$ledger.Count;lesson_id=$lesson.id;date=$day.date_iso;slot=$slot.slot;hours=2;status='confirmed';room=$lesson.room_name;source_file='fake-grid.xlsx'}
+            }
+        }
+    }
+    $currentData | Add-Member -NotePropertyName teaching_ledger -NotePropertyValue $ledger -Force
+    $null = Invoke-RestMethod "$baseUrl/api/data" -Method Put -ContentType 'application/json' -Body ($currentData | ConvertTo-Json -Depth 30)
+    $staleScheduleBlocked = $false
+    try {
+        $null = Invoke-RestMethod "$baseUrl/api/schedule"
+    } catch {
+        $staleScheduleBlocked = [int]$_.Exception.Response.StatusCode -eq 409
+    }
+    if (!$staleScheduleBlocked) { throw 'Schedule generated against an older workload remained available' }
     $hours = Invoke-RestMethod "$baseUrl/api/hours"
-    if (!$hours.schedule_found -or $hours.groups.Count -ne 1) { throw 'Hours report was not built' }
+    if (!$hours.schedule_found -or $hours.schedule_current -or !$hours.projection_stale -or $hours.groups.Count -ne 1) {
+        throw 'Hours report did not mark the pre-import projection as stale'
+    }
     if ($hours.weeks.Count -ne 2 -or $hours.weeks[0].from -ne '2026-09-07' -or $hours.weeks[1].to -ne '2026-09-19') {
         throw "Semester week grid is invalid: $($hours.weeks | ConvertTo-Json -Depth 4)"
     }
@@ -136,9 +156,10 @@ try {
         throw 'Lesson accounting metadata is missing'
     }
     $teacherHours = $hours.teachers | Where-Object teacher_id -eq 0
-    if (@($teacherHours.scheduled_occurrences).Count -ne 4 -or
+    if ($teacherHours.scheduled_hours -ne 8 -or $teacherHours.projected_hours -ne 0 -or
+        @($teacherHours.scheduled_occurrences).Count -ne 4 -or
         @($teacherHours.scheduled_occurrences | Where-Object { !$_.date -or $_.slot -lt 2 -or $_.slot -gt 4 }).Count -ne 0) {
-        throw "Scheduled occurrence dates are invalid: $($teacherHours | ConvertTo-Json -Depth 8)"
+        throw "Confirmed hours were not separated from the stale projection: $($teacherHours | ConvertTo-Json -Depth 8)"
     }
 
     # A short-period quota is total_slots; semester total_hours must not make a
@@ -167,9 +188,6 @@ try {
         Start-Sleep -Milliseconds 250
     }
     if (!$shortQuotaAccepted) { throw 'Short quota validation timeout' }
-    $lessonForGate | Add-Member -NotePropertyName total_hours -NotePropertyValue $originalHours -Force
-    $null = Invoke-RestMethod "$baseUrl/api/lessons/$($lessonForGate.id)" -Method Put -ContentType 'application/json' -Body ($lessonForGate | ConvertTo-Json -Depth 15)
-
     # Publication independently rejects a quality report with a positive remainder.
     $qualityReportPath = Join-Path $testRoot 'output/latest/quality_report.json'
     $savedQualityReport = [IO.File]::ReadAllText($qualityReportPath)
@@ -252,6 +270,9 @@ try {
         [IO.File]::WriteAllText($roomReportPath, $savedRoomReport, (New-Object Text.UTF8Encoding($false)))
     }
     if (!$roomGateBlocked) { throw 'Schedule with an unassigned room was published' }
+
+    $lessonForGate | Add-Member -NotePropertyName total_hours -NotePropertyValue $originalHours -Force
+    $null = Invoke-RestMethod "$baseUrl/api/lessons/$($lessonForGate.id)" -Method Put -ContentType 'application/json' -Body ($lessonForGate | ConvertTo-Json -Depth 15)
 
     $roomTypes = Invoke-RestMethod "$baseUrl/api/room-types"
     if ($roomTypes.Count -ne 3 -or ($roomTypes | Where-Object id -eq 2).name -ne 'Workshop') {

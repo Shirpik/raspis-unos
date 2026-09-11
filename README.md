@@ -1,6 +1,26 @@
-# Timetable Solver
+# Сайт генерации расписания
 
-Код из одного большого `main.cpp` разнесён по модулям.
+Проект состоит из Vue-сайта и C++/OR-Tools backend. Поддерживаемый пользовательский интерфейс — браузер.
+
+## Запуск сайта
+
+Соберите frontend и backend, затем запустите единый веб-сервер:
+
+```powershell
+cd frontend
+npm install
+npm run build
+cd ..
+cmake -S . -B build -DCMAKE_PREFIX_PATH=<путь-к-OR-Tools>
+cmake --build build --config Release --target timetable_solver
+powershell -ExecutionPolicy Bypass -File scripts/start_site.ps1 -BackendPath build/Release/timetable_solver.exe
+```
+
+Сайт откроется по адресу `http://127.0.0.1:4173`. Веб-сервер запускает backend на `127.0.0.1:8080` и передаёт ему запросы `/api`. Данные остаются в `data/timetable_data.json`, а результаты — в `output/`.
+
+Порядок импорта данных, настройки ограничений, генерации и публикации описан в [инструкции диспетчера](docs/OPERATION_GUIDE.md). Технические требования и критерии приёмки находятся в [техническом задании](docs/FINALIZATION_TZ.md).
+
+Для разработки запустите backend с аргументом `8080`, затем `npm run dev` в `frontend`.
 
 ## Структура
 
@@ -20,7 +40,7 @@ src/
   *.cpp             # реализации модулей
 ```
 
-## Сборка
+## Сборка backend
 
 Пример:
 

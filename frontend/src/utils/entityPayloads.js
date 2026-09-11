@@ -49,6 +49,7 @@ export const emptyTeacherForm = () => ({
   max_work_days_per_week: 0, max_pairs_per_day: 0,
   work_period: { from: '', to: '' }, work_days: defaultWorkDays(),
   date_slot_overrides: [],
+  date_load_targets: [],
   desired_load_rules: [],
   scheduling_active: true,
 })
@@ -83,6 +84,10 @@ export function teacherPayloadFromForm(form) {
   payload.default_room = Number(payload.default_room ?? -1)
   payload.max_work_days_per_week = Math.max(0, Number(payload.max_work_days_per_week || 0))
   payload.max_pairs_per_day = Math.max(0, Number(payload.max_pairs_per_day || 0))
+  payload.date_load_targets = (payload.date_load_targets || [])
+    .filter(item => item?.date)
+    .map(item => ({ date: item.date, minimum_pairs: Number(item.minimum_pairs || 0),
+      ...(Number(item.maximum_same_subject_pairs) > 0 ? { maximum_same_subject_pairs: Number(item.maximum_same_subject_pairs) } : {}) }))
   // Если пользователь не менял приоритет, сохраняем исходный массив точно:
   // [1] не должен самопроизвольно превращаться в [1, 0]. При реальном
   // изменении выбранная площадка переносится в начало существующего порядка.
@@ -118,7 +123,7 @@ export function teacherBulkPayload(form, apply) {
 export const emptyLessonForm = () => ({
   name: '', group: 0, subgroup: -1, teacher: 0,
   total_slots: 10, total_hours: 20, is_lab: false, is_block: false,
-  consecutive_pairs: 1, avoid_lunch_split: false,
+  consecutive_pairs: 1, avoid_lunch_split: false, block_start_slots: [],
   allowed_campuses: [0, 1], subject_id: -1, week_parity: 'all', fixed_room: -1,
   allow_room_substitution: true, required_room_type: 0,
   required_room_purpose: '',
@@ -135,6 +140,7 @@ export function lessonFormFromEntity(lesson = null) {
     allowed_campuses: [...(source.allowed_campuses || [])],
     allow_room_substitution: source.allow_room_substitution !== false,
     required_equipment: [...(source.required_equipment || [])],
+    block_start_slots: [...(source.block_start_slots || [])],
     required_equipment_text: (source.required_equipment || []).join(', '),
   }
 }
@@ -151,6 +157,9 @@ export function lessonPayloadFromForm(form) {
   payload.required_room_type = Math.max(0, Number(payload.required_room_type || 0))
   payload.consecutive_pairs = Number(payload.consecutive_pairs) === 2 ? 2 : 1
   payload.avoid_lunch_split = payload.avoid_lunch_split === true
+  payload.block_start_slots = payload.consecutive_pairs === 2
+    ? [...new Set((payload.block_start_slots || []).map(Number).filter(slot => slot >= 0 && slot <= 5))].sort((a, b) => a - b)
+    : []
   if (payload.consecutive_pairs === 2 && payload.total_slots % 2 !== 0) payload.total_slots++
   payload.required_equipment = stringList(equipmentText ?? payload.required_equipment)
   return payload

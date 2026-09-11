@@ -29,7 +29,7 @@ export const api = {
     replace: (d) => request('PUT', '/data', d),
     audit: (d = null) => d === null ? request('GET', '/audit') : request('POST', '/audit', d),
     hours: () => request('GET', '/hours'),
-    semesterReadout: () => request('GET', '/semester/readout'),
+    semesterReadout: (dates = null) => dates ? request('POST', '/semester/readout', dates) : request('GET', '/semester/readout'),
     teacherOccupancy: () => request('GET', '/accounting/teacher-occupancy'),
     versions: () => request('GET', '/versions'),
     restore: (filename) => request('POST', `/versions/${encodeURIComponent(filename)}/restore`),
@@ -60,6 +60,7 @@ export const api = {
     copyFromAuto: () => request('POST', '/schedule/manual/copy-from-auto'),
   },
   groups: {
+    importCalendar: (groups) => request('POST', '/groups/calendar', { groups }),
     list: () => request('GET', '/groups'),
     create: (d) => request('POST', '/groups', d),
     update: (id, d) => request('PUT', `/groups/${id}`, d),

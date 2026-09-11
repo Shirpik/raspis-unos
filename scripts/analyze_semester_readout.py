@@ -22,7 +22,6 @@ ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_DATA = ROOT / "data" / "timetable_data.json"
 DEFAULT_SCHEDULE = ROOT / "output" / "latest" / "schedule_all.json"
 DEFAULT_REPORT = ROOT / "output" / "latest" / "semester_readout_report.json"
-SEMESTER_DEADLINE = date(2026, 12, 26)
 SLOTS_PER_DAY = 7
 
 
@@ -365,9 +364,13 @@ def build_report(
         raise ValueError("data.settings: expected an object")
     period_start = parse_iso(settings.get("start_date"), "settings.start_date")
     period_end = parse_iso(settings.get("end_date"), "settings.end_date")
+    semester_deadline = optional_iso(settings.get("semester_end_date"))
+    if semester_deadline is None:
+        semester_start = parse_iso(settings.get("semester_start_date"), "settings.semester_start_date")
+        semester_deadline = semester_start + timedelta(days=max(1, integer(settings.get("semester_weeks"), 16)) * 7 - 1)
     if period_end < period_start:
         raise ValueError("settings.end_date is earlier than settings.start_date")
-    if period_end > SEMESTER_DEADLINE:
+    if period_end > semester_deadline:
         raise ValueError("generation period ends after the semester deadline")
 
     raw_teachers = data.get("teachers", [])
@@ -446,7 +449,7 @@ def build_report(
             teacher,
             raw_unavailable,
             period_start,
-            SEMESTER_DEADLINE,
+            semester_deadline,
             period_start,
         )
         current_capacity = teacher_capacity_between(
@@ -457,7 +460,7 @@ def build_report(
             teacher,
             raw_unavailable,
             future_start,
-            SEMESTER_DEADLINE,
+            semester_deadline,
             period_start,
         )
         must_now = max(0, regular_need - future_capacity)
@@ -575,7 +578,7 @@ def build_report(
         "period": {
             "from": period_start.isoformat(),
             "to": period_end.isoformat(),
-            "semester_deadline": SEMESTER_DEADLINE.isoformat(),
+            "semester_deadline": semester_deadline.isoformat(),
             "future_from": (period_end + timedelta(days=1)).isoformat(),
         },
         "conversion": {

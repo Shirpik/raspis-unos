@@ -184,7 +184,9 @@ static void AddMaxSameSubjectPerDay(
     int num_days,
     const std::vector<bool>& active,
     int whole_group_max_pairs,
-    int part_max_pairs
+    int part_max_pairs,
+    const std::vector<timetable::TeacherData>& teachers,
+    const std::vector<Date>& dates
 ) {
     using PartSubjectKey = std::tuple<int, int, std::string>;
     using WholeSubjectKey = std::pair<int, std::string>;
@@ -205,23 +207,37 @@ static void AddMaxSameSubjectPerDay(
         }
     }
 
-    const auto add_daily_limits = [&](const auto& families, int configured_max) {
+    const auto add_daily_limits = [&](const auto& families, int configured_max, bool allow_teacher_override) {
         const int limit = std::clamp(configured_max, 1, SLOTS_PER_DAY);
         for (const auto& [key, indices] : families) {
             (void)key;
             for (int day = 0; day < num_days; day++) {
+                int day_limit = limit;
+                if (allow_teacher_override && day < static_cast<int>(dates.size())) {
+                    int shared_limit = SLOTS_PER_DAY;
+                    for (int l : indices) {
+                        int teacher_limit = limit;
+                        for (const auto& teacher : teachers) if (teacher.id == lessons[l].teacher) {
+                            const auto found = teacher.date_same_subject_maximum.find(dates[day]);
+                            if (found != teacher.date_same_subject_maximum.end()) teacher_limit = found->second;
+                            break;
+                        }
+                        shared_limit = std::min(shared_limit, teacher_limit);
+                    }
+                    day_limit = shared_limit;
+                }
                 LinearExpr daily_subject_pairs;
                 for (int slot = 0; slot < SLOTS_PER_DAY; slot++) {
                     const int t = day * SLOTS_PER_DAY + slot;
                     for (int l : indices) daily_subject_pairs += x[l][t];
                 }
-                model.AddLessOrEqual(daily_subject_pairs, limit);
+                model.AddLessOrEqual(daily_subject_pairs, day_limit);
             }
         }
     };
 
-    add_daily_limits(whole_subject_lessons, whole_group_max_pairs);
-    add_daily_limits(part_subject_lessons, part_max_pairs);
+    add_daily_limits(whole_subject_lessons, whole_group_max_pairs, false);
+    add_daily_limits(part_subject_lessons, part_max_pairs, true);
 }
 
 static void WriteBackendReports(
@@ -638,7 +654,7 @@ GenerationResult GenerateSchedule(const std::string& output_dir, const Generatio
                     WorkScheduleAllows(*group_work[group], all_days[d], s);
                 const bool teacher_allowed = teacher < 0 || !teacher_work[teacher] ||
                     WorkScheduleAllows(*teacher_work[teacher], all_days[d], s);
-                if (!group_allowed || !teacher_allowed)
+                if (!group_allowed || !teacher_allowed || !LessonCalendarAllows(lessons[l], all_days[d]))
                     model.AddEquality(x[l][d * SLOTS_PER_DAY + s], 0);
             }
         }
@@ -654,6 +670,7 @@ GenerationResult GenerateSchedule(const std::string& output_dir, const Generatio
                 std::vector<std::vector<BoolVar>> covers(SLOTS_PER_DAY);
                 for (int s = 0; s < SLOTS_PER_DAY - 1; s++) {
                     if (lessons[l].avoid_lunch_split && s == 1) continue;
+                    if (!lessons[l].block_start_slots.empty() && !lessons[l].block_start_slots.count(s)) continue;
                     BoolVar start = model.NewBoolVar();
                     starts.push_back(start);
                     covers[s].push_back(start);
@@ -786,7 +803,7 @@ GenerationResult GenerateSchedule(const std::string& output_dir, const Generatio
         AddMaxSameSubjectPerDay(
             model, lessons, x, num_days, active_subject_lessons,
             MAX_WHOLE_GROUP_SAME_SUBJECT_PAIRS_PER_DAY,
-            MAX_SAME_SUBJECT_PAIRS_PER_DAY);
+            MAX_SAME_SUBJECT_PAIRS_PER_DAY, input_data.teachers, all_days);
     }
 
     for (int g = 0; g < GROUPS; g++) {
@@ -1510,6 +1527,10 @@ GenerationResult GenerateSchedule(const std::string& output_dir, const Generatio
             );
         }
 
+        std::string revision_error;
+        if (!WriteScheduleDataRevision(output_dir, revision_error))
+            return {false, "DATA_REVISION_FAILED", revision_error, output_dir};
+
         std::cout << "\nФайлы созданы:\n";
         std::cout << "  " << (std::filesystem::path(output_dir) / "raspisanie_all.txt").string() << "\n";
         std::cout << "  " << (std::filesystem::path(output_dir) / "schedule_all.json").string() << "\n";
@@ -1670,13 +1691,14 @@ static WeeklyPreflightResult BuildWeeklyPreflight(
             int possible_positions = 0;
             for (int gd : week_day_indices[w]) {
                 const Date& date = all_days[gd];
-                if (!IsAvailable(date, lesson.group, unavailable)) continue;
+                if (!IsAvailable(date, lesson.group, unavailable) || !LessonCalendarAllows(lesson, date)) continue;
                 if (lesson.teacher >= 0 &&
                     DateInUnavailableRanges(date, lesson.teacher, teacher_unavailable)) continue;
                 if (lesson.is_block || lesson.consecutive_pairs == 2) {
                     for (int s = 0; s < SLOTS_PER_DAY - 1; s++) {
                         if (lesson.is_block && !IsAllowedUpStartSlot(date, s)) continue;
                         if (!lesson.is_block && lesson.avoid_lunch_split && s == 1) continue;
+                        if (!lesson.block_start_slots.empty() && !lesson.block_start_slots.count(s)) continue;
                         const bool group_ok = !group_work[lesson.group] ||
                             (WorkScheduleAllows(*group_work[lesson.group], date, s) &&
                              WorkScheduleAllows(*group_work[lesson.group], date, s + 1));
@@ -1877,13 +1899,14 @@ static QuotaBalanceResult BalanceWeeklyQuotas(
             if (!lessons[l].is_pp && lesson_week_allowed[l][w]) {
                 for (int gd : week_day_indices[w]) {
                     const Date& date = all_days[gd];
-                    if (!IsAvailable(date, lessons[l].group, unavailable)) continue;
+                    if (!IsAvailable(date, lessons[l].group, unavailable) || !LessonCalendarAllows(lessons[l], date)) continue;
                     if (lessons[l].teacher >= 0 && DateInUnavailableRanges(
                             date, lessons[l].teacher, teacher_unavailable)) continue;
                     if (lessons[l].is_block || lessons[l].consecutive_pairs == 2) {
                         for (int s = 0; s < SLOTS_PER_DAY - 1; s++) {
                             if (lessons[l].is_block && !IsAllowedUpStartSlot(date, s)) continue;
                             if (!lessons[l].is_block && lessons[l].avoid_lunch_split && s == 1) continue;
+                            if (!lessons[l].block_start_slots.empty() && !lessons[l].block_start_slots.count(s)) continue;
                             const bool group_ok = !group_work[lessons[l].group] ||
                                 (WorkScheduleAllows(*group_work[lessons[l].group], date, s) &&
                                  WorkScheduleAllows(*group_work[lessons[l].group], date, s + 1));
@@ -2316,6 +2339,12 @@ static bool WriteScheduleFiles(
             room_assignments);
     }
 
+    std::string revision_error;
+    if (!WriteScheduleDataRevision(output_dir, revision_error)) {
+        std::cerr << "WriteScheduleFiles: " << revision_error << "\n";
+        return false;
+    }
+
     return true;
 }
 
@@ -2452,7 +2481,7 @@ static WeekSolveResult SolveOneWeek(
                     WorkScheduleAllows(*group_work[group], week_days[ld], s);
                 const bool teacher_allowed = teacher < 0 || teacher >= TEACHERS || !teacher_work[teacher] ||
                     WorkScheduleAllows(*teacher_work[teacher], week_days[ld], s);
-                if (!group_allowed || !teacher_allowed)
+                if (!group_allowed || !teacher_allowed || !LessonCalendarAllows(lessons[l], week_days[ld]))
                     model.AddEquality(x[l][ld * SLOTS_PER_DAY + s], 0);
             }
         }
@@ -2466,6 +2495,7 @@ static WeekSolveResult SolveOneWeek(
                 std::vector<std::vector<BoolVar>> covers(SLOTS_PER_DAY);
                 for (int s = 0; s < SLOTS_PER_DAY - 1; s++) {
                     if (lessons[l].avoid_lunch_split && s == 1) continue;
+                    if (!lessons[l].block_start_slots.empty() && !lessons[l].block_start_slots.count(s)) continue;
                     BoolVar start = model.NewBoolVar();
                     covers[s].push_back(start);
                     covers[s + 1].push_back(start);
@@ -2660,7 +2690,7 @@ static WeekSolveResult SolveOneWeek(
         AddMaxSameSubjectPerDay(
             model, lessons, x, W, active_subject_lessons,
             MAX_WHOLE_GROUP_SAME_SUBJECT_PAIRS_PER_DAY,
-            MAX_SAME_SUBJECT_PAIRS_PER_DAY);
+            MAX_SAME_SUBJECT_PAIRS_PER_DAY, teachers, week_days);
     }
 
     // ── Правило УП-день ───────────────────────────────────────────────────

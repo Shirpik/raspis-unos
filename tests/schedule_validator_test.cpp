@@ -5,6 +5,7 @@
 #include "schedule_validator.h"
 #include "class_hours.h"
 #include "semester_plan.h"
+#include "date_utils.h"
 #include "ortools/sat/cp_model_solver.h"
 
 namespace {
@@ -138,6 +139,21 @@ int main() {
     auto valid = timetable::ValidateScheduleJson(input, config, Schedule());
     Require(valid.ok, "valid schedule must pass");
     Require(valid.scheduled_occurrences == 1, "quota count must be exact");
+    auto repeated = input;
+    repeated.lessons[0].subgroup = 0;
+    repeated.lessons[0].total_slots = 4;
+    auto repeated_schedule = Schedule();
+    auto& repeated_slots = repeated_schedule.At("groups").array_value[0].At("days").array_value[0].At("slots").array_value;
+    for (int slot = 1; slot < 4; ++slot) repeated_slots[slot].At("lessons").array_value.push_back(RenderedLesson());
+    Require(HasCode(timetable::ValidateScheduleJson(repeated, config, repeated_schedule).report, "physical_subgroup_same_subject_daily_limit"),
+        "four same-subject subgroup pairs need an explicit exception");
+    repeated.teachers[0].date_same_subject_maximum[{2026,9,3}] = 4;
+    Require(!HasCode(timetable::ValidateScheduleJson(repeated, config, repeated_schedule).report, "physical_subgroup_same_subject_daily_limit"),
+        "matching teacher/date exception allows four subject pairs");
+    repeated.teachers[0].date_same_subject_maximum.clear();
+    repeated.teachers[0].date_same_subject_maximum[{2026,9,4}] = 4;
+    Require(HasCode(timetable::ValidateScheduleJson(repeated, config, repeated_schedule).report, "physical_subgroup_same_subject_daily_limit"),
+        "exception on another date must not relax this date");
 
     timetable::Date parsed_date{};
     Require(!timetable::ParseDateIso("2026-02-29", parsed_date), "invalid leap day must fail");
@@ -240,7 +256,12 @@ int main() {
     timetable::PrepareSemesterRequirements(semester_root, semester_data);
     Require(semester_data.load_requirements.size() == 1 && semester_data.load_requirements[0].minimum_pairs == 5,
         "deadline must use full curriculum minus confirmed hours, regardless of period-active flags");
-    Require(HasCode(semester_data.semester_readout_report, "semester_quota_shortfall"), "low selected quota must block accelerated readout");
+    const auto& semester_row = semester_data.semester_readout_report.At("rows").array_value[0];
+    Require(!HasCode(semester_data.semester_readout_report, "semester_quota_shortfall") &&
+            timetable::JsonInt(semester_row, "selected_period_pairs", -1) >=
+                timetable::JsonInt(semester_row, "minimum_period_pairs", 999) &&
+            timetable::JsonInt(semester_row, "automatic_quota_added_pairs", 0) > 0,
+        "automatic quota calculation must raise the current period to the required readout pace");
     semester_root.At("teaching_ledger").array_value.push_back(semester_root.At("teaching_ledger").array_value[0]);
     timetable::PrepareSemesterRequirements(semester_root, semester_data);
     Require(HasCode(semester_data.semester_readout_report, "ledger_record_invalid"), "duplicate confirmed occurrence must fail");
@@ -248,6 +269,108 @@ int main() {
     const auto hours = timetable::BuildHoursReport(semester_root, "nonexistent-schedule-test.json");
     Require(timetable::JsonInt(hours.At("lessons").array_value[0], "planned_hours", -1) == 12,
         "API full curriculum cannot disappear when period plan_active is false");
+    Require(timetable::JsonInt(hours.At("lessons").array_value[0], "scheduled_hours", -1) == 2 &&
+            timetable::JsonInt(hours.At("lessons").array_value[0], "projected_hours", -1) == 0,
+        "confirmed ledger hours and generated projection must be separated");
+
+    auto completed_lesson_root = timetable::ParseJson(R"({
+      "settings":{"start_date":"2026-09-09","end_date":"2026-09-11","semester_start_date":"2026-09-02","semester_end_date":"2026-09-11","automatic_period_quotas":true},
+      "teachers":[{"id":0,"name":"Teacher"}],
+      "groups":[{"id":0,"name":"GROUP-1605"}],
+      "rooms":[],
+      "lessons":[
+        {"id":10,"teacher":0,"group":0,"name":"Theory","total_hours":10,"total_slots":2,"generation_active":true,"curriculum_active":true},
+        {"id":11,"teacher":0,"group":0,"name":"Practice","total_hours":10,"total_slots":2,"generation_active":true,"curriculum_active":true}
+      ],
+      "teaching_ledger":[
+        {"id":0,"lesson_id":10,"date":"2026-09-02","slot":1,"hours":2,"status":"confirmed"},
+        {"id":1,"lesson_id":10,"date":"2026-09-03","slot":1,"hours":2,"status":"confirmed"},
+        {"id":2,"lesson_id":10,"date":"2026-09-04","slot":1,"hours":2,"status":"confirmed"},
+        {"id":3,"lesson_id":10,"date":"2026-09-07","slot":1,"hours":2,"status":"confirmed"},
+        {"id":4,"lesson_id":10,"date":"2026-09-08","slot":1,"hours":2,"status":"confirmed"}
+      ]})").value;
+    timetable::ScheduleInputData completed_lesson_data;
+    std::string completed_lesson_error;
+    Require(timetable::LoadScheduleInputDataFromRoot(
+                completed_lesson_root, completed_lesson_data, completed_lesson_error, false),
+        "automatic quotas must load completed-hours fixture");
+    Require(std::none_of(completed_lesson_data.lessons.begin(), completed_lesson_data.lessons.end(),
+                [](const auto& lesson) { return lesson.id == 10; }),
+        "a lesson whose confirmed hours equal its curriculum must be removed from the solver");
+    Require(std::any_of(completed_lesson_data.lessons.begin(), completed_lesson_data.lessons.end(),
+                [](const auto& lesson) { return lesson.id == 11 && lesson.total_slots > 0; }),
+        "unfinished lessons must remain available to the solver");
+
+    auto practice_root = completed_lesson_root;
+    practice_root.At("settings").At("semester_end_date") = JsonValue::MakeString("2026-12-19");
+    practice_root.At("settings").At("start_date") = JsonValue::MakeString("2026-09-12");
+    practice_root.At("settings").At("end_date") = JsonValue::MakeString("2026-09-12");
+    practice_root.At("groups").array_value[0].At("practice_periods") = timetable::ParseJson(
+        R"([{"from":"2026-09-14","to":"2026-10-04"},{"from":"2027-01-11","to":"2027-02-07"}])").value;
+    timetable::ScheduleInputData practice_data;
+    const int saved_student_max = timetable::g_solver_config.max_student_pairs_per_day;
+    timetable::g_solver_config.max_student_pairs_per_day = 4;
+    Require(timetable::LoadScheduleInputDataFromRoot(practice_root, practice_data, completed_lesson_error, false),
+        "practice calendar fixture must load");
+    const auto& practice_group = practice_data.semester_readout_report.At("groups").array_value[0];
+    Require(timetable::JsonString(practice_group, "deadline", "") == "2026-09-13",
+        "earliest practice in the semester must advance the readout deadline");
+    Require(timetable::JsonInt(practice_group, "capacity_hours_per_subgroup", -1) == 8,
+        "one available Saturday has at most four student pairs");
+    Require(HasCode(practice_data.semester_readout_report, "group_deadline_shortfall"),
+        "ten remaining hours cannot fit into eight available hours");
+    Require(!timetable::IsAvailable({2026,9,14}, 0, practice_data.unavailable) &&
+            !timetable::IsAvailable({2026,10,4}, 0, practice_data.unavailable) &&
+            timetable::IsAvailable({2026,10,5}, 0, practice_data.unavailable),
+        "practice must block both interval endpoints and allow return afterwards");
+    practice_root.At("groups").array_value[0].At("practice_periods").array_value.erase(
+        practice_root.At("groups").array_value[0].At("practice_periods").array_value.begin());
+    Require(timetable::LoadScheduleInputDataFromRoot(practice_root, practice_data, completed_lesson_error, false),
+        "next semester practice must be accepted");
+    Require(timetable::JsonString(practice_data.semester_readout_report.At("groups").array_value[0], "deadline", "") == "2026-12-19",
+        "next semester practice must not move the current semester deadline");
+    auto calendar_root = practice_root;
+    calendar_root.At("settings").At("solver_config").At("max_student_pairs_per_day") = JsonValue::MakeNumber(4);
+    calendar_root.At("groups").array_value[0].At("academic_calendar") = timetable::ParseJson(R"([
+      {"from":"2026-09-07","to":"2026-09-13","theory_hours":24,"up_hours":12},
+      {"from":"2026-09-14","to":"2026-09-20","vacation":true},
+      {"from":"2026-09-21","to":"2026-09-27","up_hours":36}
+    ])").value;
+    timetable::ScheduleInputData calendar_data;
+    Require(timetable::LoadScheduleInputDataFromRoot(calendar_root, calendar_data, completed_lesson_error, false),
+        "weekly theory, vacation and UP calendar must load");
+    timetable::g_solver_config.max_student_pairs_per_day = 7;
+    Require(timetable::GroupTeachingCapacity(calendar_data, calendar_data.groups[0], {2026,9,12}, {2026,9,12}) == 4,
+        "read-only API forecast must use database daily limit even when global runtime differs");
+    timetable::g_solver_config.max_student_pairs_per_day = 4;
+    Require(!calendar_data.lessons.empty() && timetable::LessonCalendarAllows(calendar_data.lessons[0], {2026,9,12}) &&
+        !timetable::LessonCalendarAllows(calendar_data.lessons[0], {2026,9,14}) &&
+        !timetable::LessonCalendarAllows(calendar_data.lessons[0], {2026,9,21}) &&
+        !timetable::LessonCalendarAllows(calendar_data.lessons[0], {2026,9,28}),
+        "ordinary lessons allowed in mixed theory/UP weeks, forbidden in vacation, UP-only or uncovered dates");
+    auto deadline_lesson = calendar_data.lessons[0];
+    deadline_lesson.teaching_windows = {{{2026,9,7},{2026,9,13}}};
+    Require(!timetable::LessonCalendarAllows(deadline_lesson, {2026,10,5}),
+        "ordinary hours cannot be pushed beyond an early deadline after return from PP");
+    deadline_lesson.is_block = true;
+    Require(timetable::LessonCalendarAllows(deadline_lesson, {2026,9,21}), "ordinary calendar must not block UP itself");
+    calendar_root.At("groups").array_value[0].At("academic_calendar").array_value[1].At("from") = JsonValue::MakeString("2026-09-07");
+    Require(!timetable::LoadScheduleInputDataFromRoot(calendar_root, calendar_data, completed_lesson_error, false),
+        "overlapping calendar weeks must be rejected");
+    auto manual_completed_root = completed_lesson_root;
+    manual_completed_root.At("settings").At("automatic_period_quotas") = JsonValue::MakeBool(false);
+    Require(timetable::LoadScheduleInputDataFromRoot(manual_completed_root, calendar_data, completed_lesson_error, false) &&
+        std::none_of(calendar_data.lessons.begin(), calendar_data.lessons.end(), [](const auto& l) { return l.id == 10; }),
+        "manual quotas also cannot resurrect already credited theory");
+    auto blocked_calendar = input;
+    blocked_calendar.lessons[0].calendar_restricted = true;
+    Require(HasCode(timetable::ValidateScheduleJson(blocked_calendar, config, Schedule()).report, "group_teaching_deadline"),
+        "independent validator rejects ordinary lessons outside teaching windows");
+    practice_root.At("groups").array_value[0].At("practice_periods").array_value[0].At("to") = JsonValue::MakeString("2026-01-01");
+    Require(!timetable::LoadScheduleInputDataFromRoot(practice_root, practice_data, completed_lesson_error, false),
+        "reversed practice dates must reject loading");
+    timetable::g_solver_config.max_student_pairs_per_day = saved_student_max;
+
     semester_data.teachers[0].scheduling_active = false;
     timetable::PrepareSemesterRequirements(semester_root, semester_data);
     Require(semester_data.load_requirements.empty(), "paused teacher is not assigned a readout requirement");

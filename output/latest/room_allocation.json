@@ -1,9 +1,9 @@
 {
-  "events": 349,
-  "assigned": 349,
-  "unassigned": 0,
+  "assigned": 217,
   "conflicts": [],
+  "events": 217,
+  "inventory_configured": true,
   "substituted": 0,
   "substitutions": [],
-  "inventory_configured": true
+  "unassigned": 0
 }

@@ -1,6 +1,10 @@
 #pragma once
 #include "data_store.h"
 namespace timetable {
+Date GroupTeachingDeadline(const GroupData& group, Date semester_first, Date semester_last);
+bool GroupRegularCalendarAllows(const GroupData& group, const Date& date);
+int GroupTeachingCapacity(const ScheduleInputData& data, const GroupData& group,
+                          Date first, Date last, const TeacherData* teacher = nullptr, int student_streams = 1);
 // Derives load from curriculum hours and confirmed journal records, never from API totals.
 void PrepareSemesterRequirements(const JsonValue& root, ScheduleInputData& data);
 std::string LoadRequirementError(const ScheduleInputData& data);

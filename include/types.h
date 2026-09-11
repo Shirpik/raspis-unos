@@ -56,6 +56,7 @@ struct Lesson {
     // Для обычного занятия total_slots по-прежнему хранит число пар. Значение
     // 2 требует раскладывать их только соседними двухпарными блоками.
     int consecutive_pairs = 1;
+    std::set<int> block_start_slots; // Zero-based permitted starts; empty means unrestricted.
     // Запрещает считать 2-ю и 3-ю пары одним непрерывным блоком: между ними обед.
     bool avoid_lunch_split = false;
     std::set<Campus> allowed_campuses;
@@ -70,6 +71,9 @@ struct Lesson {
     // Пустая строка = обычная учебная аудитория. Специальное назначение
     // (например, sports_hall) является жёстким требованием занятия.
     std::string required_room_purpose;
+    // Derived from the active semester and group calendar, never user quotas.
+    bool calendar_restricted = false;
+    std::vector<std::pair<Date, Date>> teaching_windows;
 };
 
 struct BlockInfo {
@@ -85,5 +89,6 @@ struct TimeInterval {
 
 std::string SubjectFamilyKey(const Lesson& lesson);
 bool LessonAffectsPart(const Lesson& lesson, int group, int part);
+bool LessonCalendarAllows(const Lesson& lesson, const Date& date);
 
 }  // namespace timetable

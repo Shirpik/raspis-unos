@@ -1,6 +1,12 @@
 {
-  "status": "validated_source_slice",
+  "adjustment_count": 0,
+  "adjustments": [],
+  "cancelled": false,
+  "constraints": 921,
+  "feasibility_seconds": 0.0078294,
+  "quality_seconds": 0.0017683,
+  "solve_seconds": 0.0095977,
+  "status": "OPTIMAL",
   "success": true,
-  "planned_occurrences": 349,
-  "scheduled_occurrences": 349
+  "variables": 374
 }

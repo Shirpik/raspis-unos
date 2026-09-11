@@ -26,12 +26,33 @@ test('workload reimport updates hours without replacing period quotas and room r
   const result = await parseVkleyki(makeFile('Иванов'), current)
   assert.deepEqual(result.errors, [])
   assert.deepEqual(result.data.lessons[0], { ...current.lessons[0], is_lab: false, is_block: false, is_pp: false,
-    week_parity: 'all', required_capacity: 0, required_equipment: [], total_hours: 12, curriculum_active: true })
+    week_parity: 'all', required_capacity: 0, required_equipment: [], total_hours: 12, curriculum_active: true, plan_active: true })
   assert.equal(result.data.lessons[1].total_slots, 0)
   assert.equal(result.data.lessons[1].generation_active, false)
   assert.equal(result.data.lessons[1].subject_id, 42)
   const transfer = await parseVkleyki(makeFile('Петров'), current)
-  assert.ok(transfer.errors.some(error => /изменился преподаватель/.test(error.message)))
+  assert.deepEqual(transfer.errors, [])
+  assert.equal(transfer.data.lessons[0].id, 0)
+  assert.equal(transfer.data.lessons[0].teacher, 1)
+  assert.ok(transfer.warnings.some(message => /преподаватель обновлён/.test(message)))
+})
+
+test('workload import keeps different subjects with the same index separate and preserves one subgroup family', async () => {
+  const workbook = XLSX.utils.book_new()
+  XLSX.utils.book_append_sheet(workbook, XLSX.utils.aoa_to_sheet([
+    ['15.02.19 Сварочное производство - ТЕСТ-2202'],
+    ['Индекс', 'Наименование', 'Преподаватель', '', '1 сем'],
+    ['ВОП.00', 'Введение в специальность', 'Иванов', '', 18],
+    ['ВОП.00', 'Техника бесконфликтного общения', 'Иванов', '', 18],
+    ['ОУП.08', 'Информатика 1 п/г', 'Иванов', '', 24],
+    ['ОУП.08', 'Информатика 2 п/г', 'Иванов', '', 24],
+  ]), 'ТЕСТ-2202')
+  const bytes = XLSX.write(workbook, { type: 'buffer', bookType: 'xlsx' })
+  const result = await parseVkleyki({ name: 'fixture.xlsx', arrayBuffer: async () => bytes }, { groups: [], teachers: [], lessons: [] })
+  assert.deepEqual(result.errors, [])
+  assert.equal(result.data.groups[0].accounting_title, '15.02.19 Сварочное производство - ТЕСТ-2202')
+  assert.notEqual(result.data.lessons[0].subject_id, result.data.lessons[1].subject_id)
+  assert.equal(result.data.lessons[2].subject_id, result.data.lessons[3].subject_id)
 })
 
 test('teacher deadlines and bulk date overrides survive frontend payloads', () => {
@@ -83,4 +104,16 @@ test('two Mondays cannot overwrite one another in single-week template', async (
   const schedule = makeSchedule([])
   schedule.groups[0].days.push({ date: '14.09.2026', date_iso: '2026-09-14', weekday: 'ПН', slots: [] })
   await assert.rejects(() => buildScheduleExcelWorkbook(schedule, template), /одной недели/)
+})
+
+test('ordinary lessons preserve separate template cells after Excel round-trip', async () => {
+  const lesson = { id: 1, name: 'Математика', teacher_name: 'Иванов Иван Иванович', room_name: '57', subgroup: -1 }
+  const result = await buildScheduleExcelWorkbook(makeSchedule([{ slot: 1, lessons: [lesson] }]), template)
+  const restored = new ExcelJS.Workbook()
+  await restored.xlsx.load(await result.workbook.xlsx.writeBuffer())
+  const sheet = restored.worksheets[0]
+  assert.equal(sheet.getCell(3, 4).isMerged, false)
+  assert.equal(sheet.getCell(4, 4).isMerged, false)
+  assert.match(sheet.getCell(3, 4).text, /Математика/)
+  assert.equal(sheet.getCell(4, 4).value, null)
 })

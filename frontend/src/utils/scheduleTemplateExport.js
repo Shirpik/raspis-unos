@@ -121,9 +121,6 @@ const prepareCellPair = (sheet, column, firstRow, secondRow) => {
   return { first, second }
 }
 
-const mergeCellPair = (sheet, column, firstRow, secondRow) => {
-  sheet.mergeCells(cellPairAddress(sheet, column, firstRow, secondRow))
-}
 
 const lessonTemplateValue = (lesson, segment, groupIndex) => {
   const details = lessonDetailsFromSegment(segment)
@@ -246,7 +243,6 @@ export async function buildScheduleExcelWorkbook(schedule, templateBuffer) {
           const entries = slotLessonEntries(slot, group?.group_index)
 
           if (!entries.length) {
-            mergeCellPair(sheet, column, firstRow, secondRow)
             continue
           }
           if (entries.length > 2) throw new Error(`${name}, ${targetDay.date}, ${slotNumber} пара: более двух занятий`)
@@ -265,8 +261,7 @@ export async function buildScheduleExcelWorkbook(schedule, templateBuffer) {
               second.value = value.text
               applyCampusFill(second, value.campus)
             } else {
-              mergeCellPair(sheet, column, firstRow, secondRow)
-              first.value = value.text
+                first.value = value.text
               applyCampusFill(first, value.campus)
             }
             insertedLessons += 1
@@ -291,6 +286,19 @@ export async function buildScheduleExcelWorkbook(schedule, templateBuffer) {
     }
   }
 
+  // Keep the template cells separate and fit text into each populated row.
+  for (const sheet of workbook.worksheets) {
+    sheet.eachRow(row => {
+      let height = row.height || 15.75
+      row.eachCell((cell, column) => {
+        if (column < FIRST_GROUP_COLUMN || !cell.value) return
+        const capacity = Math.max(15, Math.floor((sheet.getColumn(column).width || 16) * 1.15))
+        const lines = String(cell.value).split('\n').reduce((sum, line) => sum + Math.max(1, Math.ceil(line.length / capacity)), 0)
+        height = Math.max(height, lines * 11 + 8)
+      })
+      row.height = height
+    })
+  }
   const extraGroups = [...groupsByName.keys()].filter(name => !templateGroupNames.has(name))
   if (extraGroups.length) throw new Error(`В Excel-образце нет групп: ${extraGroups.join(', ')}`)
 

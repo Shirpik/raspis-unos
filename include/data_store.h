@@ -32,6 +32,12 @@ struct WorkSchedule {
     std::map<Date, std::set<int>> date_slot_overrides;
 };
 
+struct AcademicWeek {
+    Date from{}, to{};
+    int theory_hours = 0, up_hours = 0, pp_hours = 0, exam_hours = 0;
+    bool vacation = false;
+};
+
 struct GroupData {
     int id = 0;
     std::string uid;
@@ -44,6 +50,9 @@ struct GroupData {
     int class_hour_campus = -1;
     int class_hour_room = -1;
     WorkSchedule work_schedule;
+    std::vector<std::pair<Date, Date>> practice_periods;
+    std::string teaching_deadline;
+    std::vector<AcademicWeek> academic_calendar;
 };
 
 struct TeacherData {
@@ -65,6 +74,7 @@ struct TeacherData {
     // 0 = без ограничения; иначе жёсткий максимум проведённых пар за день.
     int max_pairs_per_day = 0;
     std::map<Date, int> date_minimum_pairs;
+    std::map<Date, int> date_same_subject_maximum;
     bool scheduling_active = true;
     std::set<Date> class_hour_available_dates;
 };
@@ -114,6 +124,9 @@ struct LoadRequirement {
 };
 
 struct ScheduleInputData {
+    // Read-only forecasts must use this request's settings, not the last
+    // generation's global runtime configuration.
+    int student_daily_limit = 0;
     Date start_date{2026, 1, 12};
     Date end_date{2026, 6, 19};
     bool require_class_hours = false;
@@ -136,6 +149,8 @@ struct ScheduleInputData {
 };
 
 std::string DataFilePath();
+bool ScheduleFileIsCurrent(const std::string& schedule_file);
+bool WriteScheduleDataRevision(const std::string& schedule_directory, std::string& error);
 void EnsureDataFileExists();
 JsonValue DefaultDataJson();
 
