@@ -395,6 +395,30 @@ int main() {
     Require(!campus.ok && HasCode(campus.report, "teacher_campus_mismatch"),
             "teacher campus restriction must be enforced");
 
+    auto reservation_root = timetable::ParseJson(R"({"teaching_ledger":[
+        {"lesson_id":10,"date":"2026-09-14","slot":1,"hours":2,"status":"confirmed"},
+        {"lesson_id":10,"date":"2026-09-14","slot":1,"hours":2,"status":"planned"},
+        {"lesson_id":10,"date":"2026-09-17","slot":2,"hours":2,"status":"planned"},
+        {"lesson_id":10,"date":"2026-09-17","slot":2,"hours":2,"status":"planned"},
+        {"lesson_id":10,"date":"2026-09-18","slot":3,"hours":2,"status":"planned"},
+        {"lesson_id":10,"date":"2026-09-17","slot":0,"hours":2,"status":"confirmed"}
+    ]})").value;
+    auto balance = timetable::ReadTeachingBalances(reservation_root, {2026,9,18});
+    Require(balance.confirmed[10] == 2 && balance.reserved[10] == 2,
+        "planned prior dates reserve hours once; regeneration dates and class hours do not consume balance");
+    GroupData course_one;
+    course_one.semester_end_date = "2026-12-26";
+    Require(timetable::GroupTeachingDeadline(course_one, {2026,9,1}, {2026,12,19}) == Date{2026,12,26},
+        "first-year semester extends beyond senior default");
+    course_one.teaching_deadline = "2026-12-05";
+    Require(timetable::GroupTeachingDeadline(course_one, {2026,9,1}, {2026,12,19}) == Date{2026,12,5},
+        "manual earlier deadline takes precedence");
+    GroupData before_up;
+    before_up.semester_end_date = "2026-12-19";
+    before_up.academic_calendar = {{{2026,10,26},{2026,11,1},30,6,0,0,false},
+        {{2026,11,2},{2026,11,8},0,36,0,0,false}, {{2026,11,9},{2026,12,20},0,0,36,0,false}};
+    Require(timetable::GroupTeachingDeadline(before_up, {2026,9,1}, {2026,12,19}) == Date{2026,11,1},
+        "ordinary lessons must finish before final full-time UP and PP interval");
     std::cout << "schedule validator regression passed\n";
     return 0;
 }

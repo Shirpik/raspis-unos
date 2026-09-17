@@ -4,6 +4,9 @@ const text = value => String(value ?? '').replace(/\r/g, '').trim()
 const normalized = value => text(value)
   .toLocaleLowerCase('ru')
   .replaceAll('ё', 'е')
+  // Common typo in the source workbook.  Treat it as the canonical subject
+  // name so a completed lesson reduces the correct curriculum balance.
+  .replaceAll('жизнидеятельности', 'жизнедеятельности')
   .replace(/лпз/giu, ' ')
   .replace(/(?:^|\s)(?:1|2)\s*(?:п\s*\/?\s*г|подгрупп[а-яё]*)(?=\s|$)/giu, ' ')
   .replace(/[^a-zа-я0-9]+/giu, ' ')
@@ -155,6 +158,7 @@ export async function parseCompletedSchedule(file, current, options = {}) {
     if (!surname) continue
     teacherIdBySurname.set(surname, teacherIdBySurname.has(surname) ? -1 : id)
   }
+  const status = options.status === 'planned' ? 'planned' : 'confirmed'
   const rowsToImport = []
   const errors = [], warnings = []
   let excludedClassHours = 0, ignoredCells = 0
@@ -208,7 +212,7 @@ export async function parseCompletedSchedule(file, current, options = {}) {
             date: block.date,
             slot,
             hours: 2,
-            status: 'confirmed',
+            status,
             source_file: file.name,
             source_sheet: sheetName,
             group_id: Number(entry.group.id),

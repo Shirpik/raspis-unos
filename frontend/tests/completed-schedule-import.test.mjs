@@ -59,3 +59,24 @@ test('an unmarked whole-group lesson is not assigned to subgroup one', async () 
   const informatics = result.data.teaching_ledger.find(row => row.date === '2026-09-07' && row.slot === 3)
   assert.equal(informatics.lesson_id, 13)
 })
+
+test('normalizes the common safety-subject spelling typo from source workbooks', async () => {
+  const safetyData = {
+    groups: [{ id: 7, name: 'ИСП-2308' }],
+    teachers: [{ id: 3, name: 'Иванова Анна Олеговна' }],
+    lessons: [{ id: 20, group: 7, subgroup: -1, teacher: 3, name: 'Безопасность жизнедеятельности', total_hours: 16 }],
+    teaching_ledger: [],
+  }
+  const workbook = XLSX.utils.book_new()
+  XLSX.utils.book_append_sheet(workbook, XLSX.utils.aoa_to_sheet([
+    ['07.09.2026', '', '', 'ИСП-2308'],
+    ['ПОНЕДЕЛЬНИК', '8.30-9.10', 1, 'Безопасность жизнидеятельности\nИванова 16_К'],
+  ]), '1 курс')
+  const bytes = XLSX.write(workbook, { type: 'buffer', bookType: 'xlsx' })
+  const result = await parseCompletedSchedule({ name: 'typo.xlsx', arrayBuffer: async () => bytes }, safetyData, {
+    dateFrom: '2026-09-07', dateTo: '2026-09-07',
+  })
+  assert.equal(result.imported, 1)
+  assert.deepEqual(result.errors, [])
+  assert.equal(result.data.teaching_ledger[0].lesson_id, 20)
+})

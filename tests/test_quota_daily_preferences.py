@@ -74,4 +74,15 @@ exception['variables'][0].update(minimum=4,maximum=4,whole_group=False,daily_sub
 assert run(exe,exception)['success']
 exception['variables'][0]['daily_subject_limits']=[dict(day=1,maximum=4)]
 assert run(exe,exception)['status']=='INFEASIBLE'
-print('19 daily load/window/room/deadline/dated subject limit regression checks passed')
+scaled=copy.deepcopy(deadline)
+scaled['variables'][0]['target_pairs_milli']=3000
+assert run(exe,scaled)['quotas']['0']==3
+scaled['lesson_load_targets']=[dict(lesson_ids=[0],maximum=2)]
+assert run(exe,scaled)['quotas']['0']==2
+scaled['placement_hints']={'0':[0,1,2]}
+assert run(exe,scaled)['quotas']['0']==2  # A conflicting old hint must not become a lock.
+scaled['feasibility_only']=True
+assert run(exe,scaled)['quotas']['0']==2
+scaled['lesson_load_targets'][0]['maximum']=1
+assert run(exe,scaled)['status']=='INFEASIBLE'
+print('Daily load/window/room/deadline/dated subject limit and scaled quota/aggregate cap regressions passed')

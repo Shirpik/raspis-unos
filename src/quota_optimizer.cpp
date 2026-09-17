@@ -46,6 +46,7 @@ struct VariableData {
     int maximum = 0;
     int semester_total = 0;
     int distribution_periods = 0;
+    int target_pairs_milli = -1;
     int priority_weight = 1;
     std::map<int, int> daily_subject_limits;
     int teacher = -1;
@@ -133,6 +134,7 @@ int main(int argc, char** argv) {
         data.maximum = JsonInt(item, "maximum", 0);
         data.semester_total = JsonInt(item, "semester_total", 0);
         data.distribution_periods = std::max(0, JsonInt(item, "distribution_weeks", 0));
+        data.target_pairs_milli = JsonInt(item, "target_pairs_milli", -1);
         data.priority_weight = std::clamp(JsonInt(item, "priority_weight", 1), 1, 1000);
         for (const auto& override_value : item.At("daily_subject_limits").array_value)
             data.daily_subject_limits[JsonInt(override_value, "day", -1)] = std::clamp(JsonInt(override_value, "maximum", 3), 1, 7);
@@ -206,6 +208,20 @@ int main(int argc, char** argv) {
                 for (int slot = 0; slot < slots_per_day; ++slot)
                     model.AddEquality(placed[index][day * slots_per_day + slot], LinearExpr::Sum(cover[slot]));
             }
+        }
+    }
+
+    // A previous draft is only a search hint: new hard constraints still win.
+    const auto& hints = root.At("placement_hints");
+    if (hints.IsObject()) {
+        for (int index = 0; index < static_cast<int>(variables.size()); ++index) {
+            std::set<int> times;
+            const auto& saved = hints.At(std::to_string(variables[index].id));
+            if (!saved.IsArray()) continue;
+            for (const auto& time : saved.array_value)
+                if (time.IsNumber()) times.insert(static_cast<int>(time.number_value));
+            for (int time = 0; time < total_time_slots; ++time)
+                model.AddHint(placed[index][time], times.count(time) != 0);
         }
     }
 
@@ -576,6 +592,7 @@ int main(int argc, char** argv) {
             if (found != index_by_id.end()) load += quota[found->second];
         }
         model.AddGreaterOrEqual(load, JsonInt(target, "minimum", 0));
+        if (target.At("maximum").IsNumber()) model.AddLessOrEqual(load, JsonInt(target, "maximum", 0));
     }
     const JsonValue& lab_rules = root.At("lab_rules");
     if (!lab_rules.IsArray()) {
@@ -640,6 +657,13 @@ int main(int argc, char** argv) {
     objective -= 1000000 * preferred_reward;
     const int kDistributionWeeks = std::max(1, JsonInt(root, "distribution_weeks", 16));
     for (int index = 0; index < static_cast<int>(variables.size()); ++index) {
+        if (variables[index].target_pairs_milli >= 0) {
+            const int target = variables[index].target_pairs_milli;
+            IntVar deviation = model.NewIntVar(Domain(0, std::max(target, 1000 * variables[index].maximum)));
+            model.AddAbsEquality(deviation, 1000 * quota[index] - target);
+            objective += variables[index].part_weight * variables[index].priority_weight * deviation;
+            continue;
+        }
         const int periods = variables[index].distribution_periods > 0
             ? variables[index].distribution_periods : kDistributionWeeks;
         const int upper = std::max(
@@ -652,14 +676,19 @@ int main(int argc, char** argv) {
             deviation, variables[index].semester_total - periods * quota[index]);
         objective += variables[index].part_weight * variables[index].priority_weight * deviation;
     }
-    model.Minimize(objective);
+    const bool feasibility_only = JsonBool(root, "feasibility_only", false);
+    if (!feasibility_only) model.Minimize(objective);
 
     SatParameters parameters;
     parameters.set_num_search_workers(std::clamp(JsonInt(root, "workers", 4), 1, 8));
     parameters.set_max_time_in_seconds(std::max(1, JsonInt(root, "time_limit_seconds", 30)));
     parameters.set_random_seed(JsonInt(root, "random_seed", 37));
-    parameters.set_stop_after_first_solution(false);
-    parameters.set_linearization_level(2);
+    parameters.set_stop_after_first_solution(JsonBool(root, "stop_after_first_solution", false));
+    if (hints.IsObject()) {
+        parameters.set_repair_hint(true);
+        parameters.set_hint_conflict_limit(1000);
+    }
+    parameters.set_linearization_level(feasibility_only ? 0 : 2);
     parameters.set_symmetry_level(2);
 
     Model sat_model;

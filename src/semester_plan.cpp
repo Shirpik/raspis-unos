@@ -41,11 +41,35 @@ int Course(const JsonValue& root, int group) {
 }
 }
 
+TeachingBalances ReadTeachingBalances(const JsonValue& root, Date before) {
+    TeachingBalances result;
+    std::map<std::string, std::pair<int, const JsonValue*>> records;
+    for (const auto& entry : root.At("teaching_ledger").array_value) {
+        const auto status = JsonString(entry, "status", "");
+        Date day{};
+        const int id = JsonInt(entry, "lesson_id", -1), slot = JsonInt(entry, "slot", 0);
+        if ((status != "confirmed" && status != "planned") ||
+            !ParseDateIso(JsonString(entry, "date", ""), day) || !(day < before) ||
+            id < 0 || slot < 1 || slot > 7 || JsonInt(entry, "hours", 0) <= 0 ||
+            JsonBool(entry, "is_class_hour", false)) continue;
+        const auto key = std::to_string(id) + "|" + DateToIso(day) + "|" + std::to_string(slot);
+        const int priority = status == "confirmed" ? 2 : 1;
+        if (!records.count(key) || priority > records[key].first) records[key] = {priority, &entry};
+    }
+    for (const auto& [key, record] : records) {
+        const auto& entry = *record.second;
+        auto& totals = record.first == 2 ? result.confirmed : result.reserved;
+        totals[JsonInt(entry, "lesson_id", -1)] += JsonInt(entry, "hours", 0);
+    }
+    return result;
+}
+
 Date GroupTeachingDeadline(const GroupData& group, Date semester_first, Date semester_last) {
     Date result = semester_last, manual{};
+    if (ParseDateIso(group.semester_end_date, manual)) result = manual;
     if (ParseDateIso(group.teaching_deadline, manual)) result = std::min(result, manual);
     for (const auto& period : group.practice_periods) {
-        if (period.second < semester_first || semester_last < period.first) continue;
+        if (period.second < semester_first || result < period.first) continue;
         Date before = period.first;
         if (--before.day == 0) {
             if (--before.month == 0) { before.month = 12; --before.year; }
@@ -56,13 +80,27 @@ Date GroupTeachingDeadline(const GroupData& group, Date semester_first, Date sem
     // Imported PP weeks also protect the deadline if a manual period is
     // accidentally removed. A weekly calendar cannot specify a later day.
     for (const auto& week : group.academic_calendar) {
-        if (week.pp_hours <= 0 || week.to < semester_first || semester_last < week.from) continue;
+        if (week.pp_hours <= 0 || week.to < semester_first || result < week.from) continue;
         Date before = week.from;
         if (--before.day == 0) {
             if (--before.month == 0) { before.month = 12; --before.year; }
             before.day = DaysInMonth(before.month, before.year);
         }
         result = std::min(result, before);
+    }
+    // A trailing UP/exam-only interval is unavailable for ordinary subjects.
+    // Mixed theory/UP weeks remain available. Never infer beyond calendar coverage.
+    if (!group.academic_calendar.empty()) {
+        Date last_theory = semester_first;
+        bool found = false;
+        for (const auto& week : group.academic_calendar) {
+            if (week.theory_hours <= 0 || week.vacation || week.pp_hours > 0 ||
+                week.to < semester_first || result < week.from) continue;
+            const auto last = std::min(result, week.to);
+            if (!found || last_theory < last) last_theory = last;
+            found = true;
+        }
+        if (found) result = last_theory;
     }
     return result;
 }
@@ -103,7 +141,7 @@ void PrepareSemesterRequirements(const JsonValue& root, ScheduleInputData& data)
     data.load_requirements.clear();
     auto& report = data.semester_readout_report;
     report = JsonValue::MakeObject();
-    report.At("rules_version") = JsonValue::MakeNumber(2);
+    report.At("rules_version") = JsonValue::MakeNumber(3);
     auto rows = JsonValue::MakeArray();
     auto deferred = JsonValue::MakeArray();
     auto issues = JsonValue::MakeArray();
@@ -128,6 +166,9 @@ void PrepareSemesterRequirements(const JsonValue& root, ScheduleInputData& data)
     const bool explicit_end_valid = !explicit_end.empty() && ParseDateIso(explicit_end, semester_last) && configured && semester_first <= semester_last;
     if (!explicit_end_valid && configured && weeks >= 1 && weeks <= 52)
         for (int n = 1; n < weeks * 7; ++n) semester_last = NextDay(semester_last);
+    Date first_course_end{};
+    if (ParseDateIso(JsonString(settings, "first_course_semester_end_date", ""), first_course_end))
+        semester_last = std::max(semester_last, first_course_end);
     if (semester_enabled && (!configured || (!explicit_end_valid && (weeks < 1 || weeks > 52))))
         issue("semester_dates_missing", "Задайте начало и корректный конец учебного плана отдельно от периода генерации", -1);
 
@@ -162,6 +203,9 @@ void PrepareSemesterRequirements(const JsonValue& root, ScheduleInputData& data)
         confirmed[lesson] += hours;
     }
     report.At("today") = JsonValue::MakeString(DateToIso(today));
+    const auto balances = ReadTeachingBalances(root, data.start_date);
+    confirmed = balances.confirmed;
+    auto reserved = balances.reserved;
     report.At("future_confirmed_hours") = JsonValue::MakeNumber(future_confirmed_hours);
     if (future_confirmed_hours)
         issue("future_confirmed_ledger", "В журнале отмечены проведёнными " + std::to_string(future_confirmed_hours) +
@@ -205,7 +249,7 @@ void PrepareSemesterRequirements(const JsonValue& root, ScheduleInputData& data)
             int hours = 0;
             for (const auto& lesson : root.At("lessons").array_value)
                 if (JsonInt(lesson, "teacher", -1) == teacher.id && JsonBool(lesson, "curriculum_active", true))
-                    hours += std::max(0, JsonInt(lesson, "total_hours", 0) - confirmed[JsonInt(lesson, "id", -1)]);
+                    hours += std::max(0, JsonInt(lesson, "total_hours", 0) - confirmed[JsonInt(lesson, "id", -1)] - reserved[JsonInt(lesson, "id", -1)]);
             auto row = JsonValue::MakeObject();
             row.At("teacher") = JsonValue::MakeNumber(teacher.id);
             row.At("teacher_name") = JsonValue::MakeString(teacher.name);
@@ -252,7 +296,7 @@ void PrepareSemesterRequirements(const JsonValue& root, ScheduleInputData& data)
             std::set<int> groups;
             for (const auto& id : rule.At("group_ids").array_value) if (id.IsNumber()) groups.insert(static_cast<int>(id.number_value));
             const int course = JsonInt(rule, "course_year", 0);
-            int remaining = 0, practice_hours = 0, planned = 0, already_taught = 0;
+            int remaining = 0, practice_hours = 0, planned = 0, already_taught = 0, already_reserved = 0;
             int remaining_course_2_4 = 0, planned_course_2_4 = 0, confirmed_course_2_4 = 0;
             std::map<int, int> remaining_pairs_by_lesson;
             LoadRequirement requirement;
@@ -266,8 +310,8 @@ void PrepareSemesterRequirements(const JsonValue& root, ScheduleInputData& data)
                 const int id = JsonInt(lesson, "id", -1);
                 const int hours = std::max(0, JsonInt(lesson, "total_hours", 0));
                 if (confirmed[id] > hours) issue("ledger_exceeds_curriculum", "Подтверждённые часы превышают учебный план", teacher.id);
-                const int left = std::max(0, hours - confirmed[id]);
-                planned += hours; already_taught += confirmed[id];
+                const int left = std::max(0, hours - confirmed[id] - reserved[id]);
+                planned += hours; already_taught += confirmed[id]; already_reserved += reserved[id];
                 if (group_course >= 2 && group_course <= 4) {
                     planned_course_2_4 += hours;
                     confirmed_course_2_4 += confirmed[id];
@@ -319,6 +363,10 @@ void PrepareSemesterRequirements(const JsonValue& root, ScheduleInputData& data)
             row.At("label") = JsonValue::MakeString(requirement.label);
             row.At("planned_hours") = JsonValue::MakeNumber(planned);
             row.At("confirmed_hours") = JsonValue::MakeNumber(already_taught);
+            row.At("reserved_hours") = JsonValue::MakeNumber(already_reserved);
+            const double remaining_weeks = std::max(0, DaysBetween(data.start_date, deadline) + 1) / 7.0;
+            row.At("remaining_weeks") = JsonValue::MakeNumber(remaining_weeks);
+            row.At("required_hours_per_week") = remaining_weeks > 0 ? JsonValue::MakeNumber(remaining / remaining_weeks) : JsonValue::MakeNull();
             row.At("remaining_regular_hours") = JsonValue::MakeNumber(remaining);
             row.At("planned_hours_course_2_4") = JsonValue::MakeNumber(planned_course_2_4);
             row.At("confirmed_hours_course_2_4") = JsonValue::MakeNumber(confirmed_course_2_4);
@@ -364,7 +412,7 @@ void PrepareSemesterRequirements(const JsonValue& root, ScheduleInputData& data)
                 const int subgroup = JsonInt(lesson, "subgroup", -1);
                 if (subgroup >= 0 && subgroup % 2 != part) continue;
                 const int id = JsonInt(lesson, "id", -1), total = std::max(0, JsonInt(lesson, "total_hours", 0));
-                const int rest = std::max(0, total - confirmed[id]);
+                const int rest = std::max(0, total - confirmed[id] - reserved[id]);
                 if (JsonBool(lesson, "is_pp", false)) continue;
                 if (JsonBool(lesson, "is_block", false)) { up += rest; continue; }
                 planned += total; taught += confirmed[id]; left += rest;
@@ -469,7 +517,7 @@ void PrepareSemesterRequirements(const JsonValue& root, ScheduleInputData& data)
             if (JsonInt(source, "group", -1) != group_id || !JsonBool(source, "curriculum_active", true)) continue;
             const int id = JsonInt(source, "id", -1), teacher_id = JsonInt(source, "teacher", -1);
             const int total = std::max(0, JsonInt(source, "total_hours", 0));
-            const int left = std::max(0, total - confirmed[id]);
+            const int left = std::max(0, total - confirmed[id] - reserved[id]);
             const bool practice = JsonBool(source, "is_block", false) || JsonBool(source, "is_pp", false);
             if (practice) { practice_left += left; continue; }
             const auto t = std::find_if(data.teachers.begin(), data.teachers.end(), [&](const auto& x) { return x.id == teacher_id; });
@@ -477,6 +525,9 @@ void PrepareSemesterRequirements(const JsonValue& root, ScheduleInputData& data)
             const int available = t == data.teachers.end() ? 0 : GroupTeachingCapacity(data, group, data.start_date, deadline, &*t);
             const std::string label = group.name + " / " + teacher_name + " / " + JsonString(source, "name", "Предмет");
             std::string status = left == 0 ? "completed" : "capacity_upper_bound_ok";
+            if (confirmed[id] + reserved[id] > total)
+                issue("ledger_and_reservations_exceed_curriculum", label + ": факт и уже запланированные часы превышают вклейку на " +
+                    std::to_string(confirmed[id] + reserved[id] - total) + " ч", teacher_id, "error", group_id, id);
             if (left > 0) {
                 teacher_demand[teacher_id] += left;
                 if (t == data.teachers.end() || !t->scheduling_active || !JsonBool(source, "plan_active", true)) {
@@ -503,11 +554,14 @@ void PrepareSemesterRequirements(const JsonValue& root, ScheduleInputData& data)
             row.At("subgroup") = JsonValue::MakeNumber(JsonInt(source, "subgroup", -1));
             row.At("planned_hours") = JsonValue::MakeNumber(total);
             row.At("confirmed_hours") = JsonValue::MakeNumber(confirmed[id]);
+            row.At("reserved_hours") = JsonValue::MakeNumber(reserved[id]);
+            row.At("remaining_before_reservations_hours") = JsonValue::MakeNumber(std::max(0, total - confirmed[id]));
             row.At("remaining_hours") = JsonValue::MakeNumber(left);
             row.At("deadline") = JsonValue::MakeString(DateToIso(deadline));
             row.At("shared_capacity_hours") = JsonValue::MakeNumber(available * 2);
             row.At("shortfall_hours") = JsonValue::MakeNumber(std::max(0, left - available * 2));
             row.At("required_hours_per_week") = teaching_days ? JsonValue::MakeNumber(left * 6.0 / teaching_days) : JsonValue::MakeNull();
+            row.At("remaining_teaching_weeks") = JsonValue::MakeNumber(teaching_days / 6.0);
             row.At("status") = JsonValue::MakeString(status);
             details.array_value.push_back(row);
             if (status != "completed" && status != "capacity_upper_bound_ok") group_row.At("status") = JsonValue::MakeString("shortfall");

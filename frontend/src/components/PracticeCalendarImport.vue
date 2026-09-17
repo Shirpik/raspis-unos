@@ -21,7 +21,7 @@ async function preview(event){
   const file=event.target.files?.[0];entries.value=[];error.value='';if(!file)return
   busy.value=true
   try{
-    const capability=await api.data.semesterReadout();if(!capability.ok||capability.data?.rules_version!==2)throw new Error('Для импорта календаря перезапустите сайт с новой сборкой сервера')
+    const capability=await api.data.semesterReadout();if(!capability.ok||!(capability.data?.rules_version>=3))throw new Error('Для импорта календаря перезапустите сайт с новой сборкой сервера')
     const response=await api.groups.list();if(!response.ok)throw new Error(response.data?.message||'Не удалось загрузить группы')
     const XLSX=await import('xlsx'),buffer=await file.arrayBuffer()
     const sha=Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256',buffer)),b=>b.toString(16).padStart(2,'0')).join('')

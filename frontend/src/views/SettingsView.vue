@@ -48,11 +48,12 @@
       </div>
       <div class="form-row">
         <div class="form-group"><label class="form-label">Начало учебного плана (не периода генерации)</label><input v-model="sForm.semester_start_date" type="date" class="form-input" /></div>
-        <div class="form-group"><label class="form-label">Последний день вычитки</label><input v-model="sForm.semester_end_date" type="date" class="form-input" /></div>
+        <div class="form-group"><label class="form-label">Последний день вычитки 2–4 курсов</label><input v-model="sForm.semester_end_date" type="date" class="form-input" /></div>
+        <div class="form-group"><label class="form-label">Последний день вычитки 1 курса</label><input v-model="sForm.first_course_semester_end_date" type="date" class="form-input" /><small>Начало практики и календарь группы могут сократить этот срок.</small></div>
       </div>
       <label class="form-checkbox"><input v-model="sForm.enforce_semester_readout" type="checkbox" /> Проверять темп вычитки всех преподавателей перед генерацией</label>
       <label class="form-checkbox"><input v-model="sForm.automatic_period_quotas" type="checkbox" /> Рассчитывать квоты периода автоматически из оставшихся часов и срока</label>
-      <p class="settings-hint">Учёт опирается на полный план базы и подтверждённый журнал. Запланированные занятия не считаются проведёнными. При нехватке времени или квот генерация будет остановлена с объяснением.</p>
+      <p class="settings-hint">Остаток для генерации = часы по вклейкам − проведённые часы − часы занятий, запланированных до начала генерации. Запланированные часы резервируются отдельно и не становятся фактом. Нужный темп рассчитывается по оставшемуся сроку каждой группы и совместной доступности преподавателя и студентов.</p>
       <button v-if="!demoMode" class="btn btn-secondary" @click="checkSemester">Проверить темп по базе</button>
       <div v-if="semesterReport" class="settings-hint">
         <p>Это предварительный контроль ёмкости календарей, не доказательство выполнимости общей сетки.</p>
@@ -269,7 +270,7 @@ const schedStore = useScheduleStore()
 const toast = useToast()
 const auth = useAuthStore()
 
-const sForm = reactive({ start_date: '', end_date: '', semester_start_date: '', semester_end_date: '', semester_weeks: 16, enforce_semester_readout: false, automatic_period_quotas: true })
+const sForm = reactive({ start_date: '', end_date: '', semester_start_date: '', semester_end_date: '', first_course_semester_end_date: '', semester_weeks: 16, enforce_semester_readout: false, automatic_period_quotas: true })
 const savingSettings = ref(false)
 const settingsSaved = ref(false)
 const semesterReport = ref(null)
@@ -415,6 +416,7 @@ async function loadSettings() {
     sForm.end_date = res.data.end_date || ''
     sForm.semester_start_date = res.data.semester_start_date || ''
     sForm.semester_end_date = res.data.semester_end_date || ''
+    sForm.first_course_semester_end_date = res.data.first_course_semester_end_date || res.data.semester_end_date || ''
     sForm.semester_weeks = res.data.semester_weeks ?? 16
     sForm.enforce_semester_readout = res.data.enforce_semester_readout === true
     sForm.automatic_period_quotas = res.data.automatic_period_quotas !== false

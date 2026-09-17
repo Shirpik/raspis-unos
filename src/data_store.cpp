@@ -942,6 +942,12 @@ bool LoadScheduleInputDataFromRoot(const JsonValue& source, ScheduleInputData& d
     const JsonValue& settings = root.At("settings");
     ParseDateIso(JsonString(settings, "start_date", "2026-01-12"), data.start_date);
     ParseDateIso(JsonString(settings, "end_date", "2026-06-19"), data.end_date);
+    Date first_course_end_check{};
+    const auto first_course_end_text = JsonString(settings, "first_course_semester_end_date", "");
+    if (!first_course_end_text.empty() && !ParseDateIso(first_course_end_text, first_course_end_check)) {
+        error = "Некорректная дата окончания семестра 1 курса";
+        return false;
+    }
     if (update_runtime) LoadSolverConfigFromJson(settings.At("solver_config"));
     data.student_daily_limit = std::clamp(JsonInt(settings.At("solver_config"), "max_student_pairs_per_day", MAX_STUDENT_PAIRS_PER_DAY), 1, 7);
 
@@ -974,6 +980,10 @@ bool LoadScheduleInputDataFromRoot(const JsonValue& source, ScheduleInputData& d
         const auto key = std::to_string(id) + "|" + DateToIso(date) + "|" + std::to_string(slot);
         if (confirmed_occurrences.insert(key).second) confirmed_lesson_hours[id] += hours;
     }
+    const auto teaching_balances = ReadTeachingBalances(root, data.start_date);
+    confirmed_lesson_hours.clear();
+    for (const auto& [id, hours] : teaching_balances.confirmed) confirmed_lesson_hours[id] += hours;
+    for (const auto& [id, hours] : teaching_balances.reserved) confirmed_lesson_hours[id] += hours;
 
     data.require_class_hours = JsonBool(settings, "require_class_hours", false);
     data.teacher_period_targets.clear();
@@ -1025,6 +1035,11 @@ bool LoadScheduleInputDataFromRoot(const JsonValue& source, ScheduleInputData& d
         group.class_hour_room = JsonInt(item, "class_hour_room", -1);
         group.work_schedule = ParseWorkSchedule(item);
         group.teaching_deadline = JsonString(item, "teaching_deadline", "");
+        int course_year = JsonInt(item, "course_year", 0);
+        if (!course_year) for (size_t i = 1; i < group.name.size(); ++i)
+            if (group.name[i - 1] == '-' && group.name[i] >= '1' && group.name[i] <= '4') { course_year = group.name[i] - '0'; break; }
+        group.semester_end_date = JsonString(settings, course_year == 1 ? "first_course_semester_end_date" : "semester_end_date", "");
+        if (group.semester_end_date.empty()) group.semester_end_date = JsonString(settings, "semester_end_date", "");
         Date manual_deadline{};
         if (!group.teaching_deadline.empty() && !ParseDateIso(group.teaching_deadline, manual_deadline)) {
             error = group.name + ": некорректная дата завершения занятий";
@@ -1320,14 +1335,12 @@ bool LoadScheduleInputDataFromRoot(const JsonValue& source, ScheduleInputData& d
                 const auto teacher_it = std::find_if(data.teachers.begin(), data.teachers.end(),
                     [&](const auto& teacher) { return teacher.id == lesson.teacher; });
                 const auto teacher = teacher_it == data.teachers.end() ? nullptr : &*teacher_it;
-                available_days = GroupTeachingCapacity(data, *group_it, semester_start, deadline, teacher);
-                elapsed_days = GroupTeachingCapacity(data, *group_it, semester_start, std::min(data.end_date, deadline), teacher);
+                available_days = GroupTeachingCapacity(data, *group_it, data.start_date, deadline, teacher);
                 period_capacity = teacher ? GroupTeachingCapacity(data, *group_it, data.start_date, std::min(data.end_date, deadline), teacher) : 0;
             }
-            const int expected_by_period_end = available_days > 0 ? static_cast<int>(
-                (static_cast<long long>(total_pairs) * elapsed_days) / available_days) : total_pairs;
-            lesson.total_slots = std::min(std::max(0, total_pairs - confirmed_pairs),
-                std::max(0, expected_by_period_end - confirmed_pairs));
+            const int remaining_pairs = std::max(0, total_pairs - confirmed_pairs);
+            lesson.total_slots = available_days > 0 ? std::min(remaining_pairs, static_cast<int>(
+                (static_cast<long long>(remaining_pairs) * period_capacity + available_days - 1) / available_days)) : 0;
             if (lesson.consecutive_pairs == 2 && lesson.total_slots % 2 != 0)
                 lesson.total_slots = std::min(total_pairs - confirmed_pairs, lesson.total_slots + 1);
             lesson.total_slots = std::min(lesson.total_slots, period_capacity);
@@ -2193,6 +2206,7 @@ JsonValue BuildHoursReport(const JsonValue& source_root, const std::string& sche
     result.At("projection_stale") = JsonValue::MakeBool(schedule_found && !schedule_current);
     result.At("credit_is_projection") = JsonValue::MakeBool(false);
     result.At("accounting_source_links") = root.At("settings").At("accounting_source_links");
+    result.At("accounting_import_warnings") = root.At("settings").At("accounting_import_warnings");
     result.At("accounting_basis") = JsonValue::MakeString(
         schedule_found && !schedule_current
             ? "Проведено и зачтено — подтверждённый журнал. Проект скрыт до новой генерации, потому что база изменилась. Классные часы в учебную нагрузку не входят."

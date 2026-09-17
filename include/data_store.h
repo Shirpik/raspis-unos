@@ -52,6 +52,7 @@ struct GroupData {
     WorkSchedule work_schedule;
     std::vector<std::pair<Date, Date>> practice_periods;
     std::string teaching_deadline;
+    std::string semester_end_date;
     std::vector<AcademicWeek> academic_calendar;
 };
 

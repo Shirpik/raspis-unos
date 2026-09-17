@@ -68,7 +68,7 @@ export const useScheduleStore = defineStore('schedule', () => {
     progress.value = null
 
     const capability = await api.data.semesterReadout()
-    if (!capability.ok || capability.data?.rules_version !== 2) {
+    if (!capability.ok || !(capability.data?.rules_version >= 3)) {
       generating.value = false
       return { ok: false, message: capability.data?.message || 'Перезапустите сайт с новой сборкой сервера: текущая версия не поддерживает полный контроль календаря практики.' }
     }
