@@ -1913,7 +1913,7 @@ static QuotaBalanceResult BalanceWeeklyQuotas(
                 for (int gd : week_day_indices[w]) {
                     const Date& date = all_days[gd];
                     if (!IsAvailable(date, lessons[l].group, unavailable) || !LessonCalendarAllows(lessons[l], date)) continue;
-                    if (lessons[l].teacher >= 0 && DateInUnavailableRanges(
+                    if (lessons[l].teacher >= 0 && DateInTeacherUnavailable(
                             date, lessons[l].teacher, teacher_unavailable)) continue;
                     if (lessons[l].is_block || lessons[l].consecutive_pairs == 2) {
                         for (int s = 0; s < SLOTS_PER_DAY - 1; s++) {
