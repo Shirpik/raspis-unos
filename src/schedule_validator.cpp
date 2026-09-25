@@ -75,12 +75,12 @@ std::vector<Date> ExpectedDates(const Date& from, const Date& to) {
 }
 
 bool DateInRanges(const Date& date,
-                  const std::map<int, std::vector<std::pair<Date, Date>>>& ranges,
+                  const std::map<int, std::vector<UnavailabilityPeriod>>& ranges,
                   int id) {
     const auto it = ranges.find(id);
     if (it == ranges.end()) return false;
-    for (const auto& range : it->second) {
-        if (range.first <= date && date <= range.second) return true;
+    for (const auto& period : it->second) {
+        if (period.from <= date && date <= period.to) return true;
     }
     return false;
 }

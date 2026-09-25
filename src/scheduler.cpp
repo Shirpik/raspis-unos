@@ -320,7 +320,7 @@ GenerationResult GenerateSchedule(const std::string& output_dir, const Generatio
     Date start_date = input_data.start_date;
     Date end_date = input_data.end_date;
     std::map<int, std::vector<std::pair<Date, Date>>> unavailable = input_data.unavailable;
-    std::map<int, std::vector<std::pair<Date, Date>>> teacher_unavailable = input_data.teacher_unavailable;
+    std::map<int, std::vector<UnavailabilityPeriod>> teacher_unavailable = input_data.teacher_unavailable;
     const auto& unavailable_day_texts = input_data.unavailable_day_texts;
 
     auto all_days = GenerateSchoolDays(start_date, end_date);
@@ -1629,7 +1629,7 @@ static WeeklyPreflightResult BuildWeeklyPreflight(
     const std::vector<std::vector<int>>& week_day_indices,
     const std::vector<std::vector<int>>& lesson_week_quota,
     const std::map<int, std::vector<std::pair<Date, Date>>>& unavailable,
-    const std::map<int, std::vector<std::pair<Date, Date>>>& teacher_unavailable
+    const std::map<int, std::vector<UnavailabilityPeriod>>& teacher_unavailable
 ) {
     WeeklyPreflightResult result;
     JsonValue issues = JsonValue::MakeArray();
@@ -1839,7 +1839,7 @@ static QuotaBalanceResult BalanceWeeklyQuotas(
     const std::vector<std::vector<int>>& week_day_indices,
     const std::vector<std::vector<bool>>& lesson_week_allowed,
     const std::map<int, std::vector<std::pair<Date, Date>>>& unavailable,
-    const std::map<int, std::vector<std::pair<Date, Date>>>& teacher_unavailable,
+    const std::map<int, std::vector<UnavailabilityPeriod>>& teacher_unavailable,
     const std::vector<LockedAssignment>& locked,
     std::vector<std::vector<int>>& quotas,
     std::atomic<bool>* cancel_flag
@@ -2360,7 +2360,7 @@ static WeekSolveResult SolveOneWeek(
     const std::vector<TeacherData>& teachers,
     const std::vector<RoomData>& rooms,
     const std::map<int, std::vector<std::pair<Date, Date>>>& unavailable,
-    const std::map<int, std::vector<std::pair<Date, Date>>>& teacher_unavailable,
+    const std::map<int, std::vector<UnavailabilityPeriod>>& teacher_unavailable,
     const std::vector<int>& quotas,
     const std::vector<LockedAssignment>& locked,
     const std::map<std::pair<int, int>, int>& initial_prior_theory,
@@ -3371,7 +3371,7 @@ GenerationResult GenerateScheduleWeekly(
             bool any_slot = false;
             for (int slot = 0; slot < SLOTS_PER_DAY; slot++)
                 any_slot = any_slot || WorkScheduleAllows(teacher.work_schedule, date, slot);
-            if (!any_slot) teacher_unavailable_model[teacher.id].push_back({date, date});
+            if (!any_slot) teacher_unavailable_model[teacher.id].push_back({date, date, "", ""});
         }
     }
 
