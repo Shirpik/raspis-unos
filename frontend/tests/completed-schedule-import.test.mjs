@@ -80,3 +80,54 @@ test('normalizes the common safety-subject spelling typo from source workbooks',
   assert.deepEqual(result.errors, [])
   assert.equal(result.data.teaching_ledger[0].lesson_id, 20)
 })
+
+test('uses the weekday when a source repeats the previous date and excludes administrative cells', async () => {
+  const workbook = XLSX.utils.book_new()
+  XLSX.utils.book_append_sheet(workbook, XLSX.utils.aoa_to_sheet([
+    ['22.09.2026', '', '', 'ИСП-2308'],
+    ['ВТОРНИК', '8.30-9.10', 1, 'ВПР'],
+    ['22.09.2026', '', '', 'ИСП-2308'],
+    ['СР', '8.30-9.10', 1, 'Кл. час\nИванова 16_К'],
+    ['', '10.00-11.30', 2, 'Математика\nИванова 16_К'],
+  ]), '2 курс')
+  const bytes = XLSX.write(workbook, { type: 'buffer', bookType: 'xlsx' })
+  const result = await parseCompletedSchedule({ name: 'weekday.xlsx', arrayBuffer: async () => bytes }, data, {
+    dateFrom: '2026-09-22', dateTo: '2026-09-23',
+  })
+  assert.deepEqual(result.errors, [])
+  assert.deepEqual(result.importedDates, ['2026-09-23'])
+  assert.equal(result.imported, 1)
+  assert.equal(result.excludedClassHours, 2)
+})
+
+test('recognizes subgroup labels before a colon', async () => {
+  const workbook = XLSX.utils.book_new()
+  XLSX.utils.book_append_sheet(workbook, XLSX.utils.aoa_to_sheet([
+    ['21.09.2026', '', '', 'ИСП-2308'],
+    ['ПОНЕДЕЛЬНИК', '8.30-9.10', 1, '1 п/г: ЛПЗ Информатика\nИванова 60_К'],
+    ['', '9.15-9.55', '', '2 п/г: ЛПЗ Информатика\nПетров 64_К'],
+  ]), '2 курс')
+  const bytes = XLSX.write(workbook, { type: 'buffer', bookType: 'xlsx' })
+  const result = await parseCompletedSchedule({ name: 'subgroups.xlsx', arrayBuffer: async () => bytes }, data)
+  assert.deepEqual(result.errors, [])
+  assert.deepEqual(result.data.teaching_ledger.slice(1).map(row => row.lesson_id), [11, 12])
+})
+
+test('uses the dispatcher-confirmed subject mapping for ИСП-3306п', async () => {
+  const aliasData = {
+    groups: [{ id: 42, name: 'ИСП-3306п' }],
+    teachers: [{ id: 41, name: 'Садриева Татьяна Геннадьевна' }],
+    lessons: [{ id: 900, group: 42, subgroup: -1, teacher: 41, name: 'Стандартизация, серификация и техническое документоведение', total_hours: 48 }],
+    teaching_ledger: [],
+  }
+  const workbook = XLSX.utils.book_new()
+  XLSX.utils.book_append_sheet(workbook, XLSX.utils.aoa_to_sheet([
+    ['21.09.2026', '', '', 'ИСП-3306п'],
+    ['ПОНЕДЕЛЬНИК', '12.25-13.50', 3, 'Метрология, стандартизация и сертификация\nСадриева 207_Л'],
+  ]), '3 курс')
+  const bytes = XLSX.write(workbook, { type: 'buffer', bookType: 'xlsx' })
+  const result = await parseCompletedSchedule({ name: 'alias.xlsx', arrayBuffer: async () => bytes }, aliasData)
+  assert.deepEqual(result.errors, [])
+  assert.equal(result.data.teaching_ledger[0].lesson_id, 900)
+  assert.equal(result.data.teaching_ledger[0].source_subject, 'Метрология, стандартизация и сертификация')
+})

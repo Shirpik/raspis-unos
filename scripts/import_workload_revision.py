@@ -78,9 +78,8 @@ def prepare(source,out):
                       allowed_campuses=[0,1],week_parity='all',fixed_room=-1,preferred_room=-1,
                       allow_room_substitution=True,required_room_type=0,required_capacity=0,
                       required_equipment=[],consecutive_pairs=1)
-            # All new rows in this revision are ordinary whole-group AI theory.
-            assert 'ии ' in norm(row['name']) or 'искусственного интел' in norm(row['name']), row
-            assert row['subgroup']==-1 and tid==-1, row
+            # New curriculum rows are accepted from the source as-is.  Their
+            # source index/subgroup identity is retained for the next audit.
             next_id+=1; next_subject+=1
         values=dict(name=row['name'],teacher=tid,total_hours=row['total_hours'],source_index=row['source_index'])
         diff={k:[previous.get(k),v] for k,v in values.items() if previous and previous.get(k)!=v}

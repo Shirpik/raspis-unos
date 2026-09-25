@@ -13,7 +13,11 @@ const normalized = value => text(value)
   .replace(/\s+/g, ' ')
   .trim()
 
-const isClassHour = value => /класс[а-яё]*\s+час/iu.test(text(value))
+// Class hours and practice/administrative markers occupy timetable cells but
+// are not teaching hours.  They must remain visible in the source workbook,
+// while being excluded from the teaching ledger used by hours accounting.
+const isClassHour = value => /(?:класс[а-яё]*|кл\.?)[\s.]*час/iu.test(text(value))
+const isNonTeachingMarker = value => /^впр$/iu.test(text(value))
 
 const parseExcelDate = (value, fallbackYear = 2026) => {
   if (value instanceof Date && !Number.isNaN(value.valueOf())) {
@@ -39,8 +43,22 @@ const nextIsoDate = iso => {
   return date.toISOString().slice(0, 10)
 }
 
+const weekdayIndex = value => {
+  const key = normalized(value)
+  if (/^пон/u.test(key)) return 1
+  if (/^втор/u.test(key)) return 2
+  if (/^ср/u.test(key)) return 3
+  if (/^чет/u.test(key)) return 4
+  if (/^пят/u.test(key)) return 5
+  if (/^суб/u.test(key)) return 6
+  if (/^воск/u.test(key)) return 0
+  return -1
+}
+
+const isoWeekday = iso => new Date(`${iso}T12:00:00Z`).getUTCDay()
+
 const subgroupOrdinal = value => {
-  const match = text(value).match(/(?:^|\s)([12])\s*(?:п\s*\/?\s*г|подгрупп[а-яё]*)(?=\s|$)/iu)
+  const match = text(value).match(/(?:^|\s)([12])\s*(?:п\s*\/?\s*г|подгрупп[а-яё]*)(?=\s|:|$)/iu)
   return match ? Number(match[1]) : 0
 }
 
@@ -63,6 +81,7 @@ const parseCell = raw => {
   const lines = source.split('\n').map(line => line.trim()).filter(Boolean)
   if (!lines.length) return null
   if (isClassHour(lines.join(' '))) return { excludedClassHour: true }
+  if (lines.length === 1 && isNonTeachingMarker(lines[0])) return { excludedNonTeaching: true }
   const last = lines.at(-1)
   const hasTeacherLine = /^[А-ЯЁA-Z][А-Яа-яЁёA-Za-z-]+(?:\s+[А-ЯЁA-Z]\.)?/u.test(last)
   const subject = (hasTeacherLine && lines.length > 1 ? lines.slice(0, -1) : lines).join(' ')
@@ -90,7 +109,25 @@ const nameScore = (a, b) => {
   return union ? Math.round(70 * intersection / union) : 0
 }
 
+// Confirmed by the dispatcher for the 21 September source: this timetable
+// title is the same workload row for ИСП-3306п, despite its different wording.
+const confirmedSubjectAliases = [
+  {
+    group: 'ИСП-3306п',
+    source: 'Метрология, стандартизация и сертификация',
+    target: 'Стандартизация, серификация и техническое документоведение',
+  },
+]
+
 function chooseLesson(cell, groupId, inferredSubgroup, current, teachersById) {
+  const groupName = (current.groups || []).find(group => Number(group.id) === Number(groupId))?.name || ''
+  const alias = confirmedSubjectAliases.find(item =>
+    normalized(item.group) === normalized(groupName) && normalized(item.source) === cell.subjectKey)
+  if (alias) {
+    const lesson = (current.lessons || []).find(item =>
+      Number(item.group) === Number(groupId) && item.curriculum_active !== false && normalized(item.name) === normalized(alias.target))
+    if (lesson) return { lesson, teacherMismatch: Boolean(cell.teacherSurname && !normalized(teachersById.get(Number(lesson.teacher))).startsWith(cell.teacherSurname)) }
+  }
   const candidates = (current.lessons || [])
     .filter(lesson => Number(lesson.group) === Number(groupId) && lesson.curriculum_active !== false)
     .map(lesson => {
@@ -123,7 +160,7 @@ function inferredSubgroupForCell(rows, rowIndex, column, half, blockEnd) {
   const next = rows[rowIndex + 1] || []
   if (text(next[2]) !== '') return 0
   const continuation = parseCell(next[column])
-  return continuation && !continuation.excludedClassHour ? 1 : 0
+  return continuation && !continuation.excludedClassHour && !continuation.excludedNonTeaching ? 1 : 0
 }
 
 function sheetBlocks(rows, knownGroups) {
@@ -138,6 +175,15 @@ function sheetBlocks(rows, knownGroups) {
     })
     if (!columns.length) continue
     let date = parseExcelDate(row[0])
+    const labelDay = weekdayIndex(rows[rowIndex + 1]?.[0])
+    // Some exported sheets repeat the previous date in the next block's
+    // header.  Prefer the visible weekday label when it disagrees, so the
+    // completed ledger keeps Wednesday/Thursday on their actual calendar day.
+    if (previousDate && labelDay >= 0 && isoWeekday(date || previousDate) !== labelDay) {
+      let candidate = nextIsoDate(previousDate)
+      for (let step = 0; step < 7 && isoWeekday(candidate) !== labelDay; step++) candidate = nextIsoDate(candidate)
+      date = candidate
+    }
     if (!date && previousDate) date = nextIsoDate(previousDate)
     const nextHeader = rows.findIndex((candidate, index) => index > rowIndex && (candidate || []).some(value => knownGroups.has(normalized(value))))
     blocks.push({ header: rowIndex, from: rowIndex + 1, to: nextHeader < 0 ? rows.length : nextHeader, date, columns })
@@ -185,14 +231,14 @@ export async function parseCompletedSchedule(file, current, options = {}) {
         if (slot <= 0) {
           for (const entry of block.columns) {
             const cell = parseCell(row[entry.column])
-            if (cell?.excludedClassHour) excludedClassHours++
+            if (cell?.excludedClassHour || cell?.excludedNonTeaching) excludedClassHours++
           }
           continue
         }
         for (const entry of block.columns) {
           const cell = parseCell(row[entry.column])
           if (!cell) { ignoredCells++; continue }
-          if (cell.excludedClassHour) { excludedClassHours++; continue }
+          if (cell.excludedClassHour || cell.excludedNonTeaching) { excludedClassHours++; continue }
           // A numbered row is also the first visual half of a split pair, but it
           // must not automatically mean "1 subgroup".  Whole-group lessons use
           // that same row.  Infer subgroup 1 only when the following half-row

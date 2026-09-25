@@ -1,6 +1,6 @@
 #!/usr/bin/env node
-/* Refresh the teaching ledger from the three user-supplied Google exports.
- * Future timetable rows stay planned until their date. One explicitly
+/* Refresh the teaching ledger from the four user-supplied Google exports.
+ * The selected dates are confirmed by the dispatcher. One explicitly
  * confirmed fact-only Biology record is maintained below because its source
  * workload row was omitted from the supplied вклейки.
  */
@@ -12,8 +12,8 @@ import { parseCompletedSchedule } from '../frontend/src/utils/completedScheduleI
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 const input = new Map()
 for (let index = 2; index < process.argv.length; index += 2) input.set(process.argv[index], process.argv[index + 1])
-const required = ['--previous', '--current', '--third']
-if (required.some(flag => !input.get(flag))) throw new Error('Usage: node scripts/refresh_completed_schedules.mjs --previous <xlsx> --current <xlsx> --third <xlsx> [--commit yes]')
+const required = ['--previous', '--current', '--third', '--fourth']
+if (required.some(flag => !input.get(flag))) throw new Error('Usage: node scripts/refresh_completed_schedules.mjs --previous <xlsx> --current <xlsx> --third <xlsx> --fourth <xlsx> [--commit]')
 const commit = process.argv.includes('--commit')
 const dataPath = path.join(root, 'data', 'timetable_data.json')
 const fileLike = async filePath => {
@@ -24,7 +24,8 @@ const jobs = [
   { flag: '--previous', from: '2026-09-02', to: '2026-09-05', status: 'confirmed', label: 'Расписание занятий 02.09–05.09', url: 'https://docs.google.com/spreadsheets/d/1I_7Pv07cp2A829x_Rw5aJ3rA6SM-3ICaLOLAFTUXxAM/edit?usp=sharing' },
   { flag: '--current', from: '2026-09-07', to: '2026-09-12', status: 'confirmed', label: 'Расписание занятий 07.09–12.09', url: 'https://docs.google.com/spreadsheets/d/1gHRTdbbjte1tqb4AFm91AQiHig3wO1HDoMevYXNvlX8/edit?usp=sharing' },
   { flag: '--third', from: '2026-09-14', to: '2026-09-14', status: 'confirmed', label: 'Расписание занятий 14.09', url: 'https://docs.google.com/spreadsheets/d/1vlRcwNR0gbhoNCmBEfp-5cIv3U9dxRtxXAP1n53v-to/edit?usp=sharing' },
-  { flag: '--third', from: '2026-09-15', to: '2026-09-19', status: 'planned', label: 'Расписание занятий 15.09–19.09 (план)', url: 'https://docs.google.com/spreadsheets/d/1vlRcwNR0gbhoNCmBEfp-5cIv3U9dxRtxXAP1n53v-to/edit?usp=sharing' },
+  { flag: '--third', from: '2026-09-15', to: '2026-09-19', status: 'confirmed', label: 'Расписание занятий 15.09–19.09', url: 'https://docs.google.com/spreadsheets/d/1vlRcwNR0gbhoNCmBEfp-5cIv3U9dxRtxXAP1n53v-to/edit?usp=sharing' },
+  { flag: '--fourth', from: '2026-09-21', to: '2026-09-24', status: 'confirmed', label: 'Расписание занятий 21.09–24.09', url: 'https://docs.google.com/spreadsheets/d/1MikCATSfxd4IWwvfUOJb9Cp5Gxxu98Vnlt9IXOYb7_o/edit?usp=sharing' },
 ]
 let data = JSON.parse(await fs.readFile(dataPath, 'utf8'))
 const ensureConfirmedBiology = value => {
@@ -83,11 +84,11 @@ const summary = {
     planned_hours: ledger.filter(row => row.status === 'planned').reduce((total, row) => total + Number(row.hours || 0), 0),
   },
 }
-const outputDir = path.join(root, 'outputs', 'refresh-20260914')
+const outputDir = path.join(root, 'outputs', 'refresh-20260924')
 await fs.mkdir(outputDir, { recursive: true })
 await fs.writeFile(path.join(outputDir, 'ledger-refresh-report.json'), `${JSON.stringify(summary, null, 2)}\n`, 'utf8')
 if (commit) {
-  const backup = path.join(root, 'data', 'timetable_data.before-ledger-refresh-20260914.json')
+  const backup = path.join(root, 'data', 'timetable_data.before-ledger-refresh-20260924.json')
   await fs.copyFile(dataPath, backup)
   const temporary = `${dataPath}.tmp-ledger-refresh`
   await fs.writeFile(temporary, `${JSON.stringify(data, null, 2)}\n`, 'utf8')
