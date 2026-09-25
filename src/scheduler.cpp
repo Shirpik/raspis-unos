@@ -164,6 +164,19 @@ static bool DateInUnavailableRanges(
     return false;
 }
 
+static bool DateInTeacherUnavailable(
+    const Date& date,
+    int teacher_id,
+    const std::map<int, std::vector<UnavailabilityPeriod>>& teacher_unavailable
+) {
+    auto it = teacher_unavailable.find(teacher_id);
+    if (it == teacher_unavailable.end()) return false;
+    for (const auto& period : it->second) {
+        if (period.from <= date && date <= period.to) return true;
+    }
+    return false;
+}
+
 static bool LessonAllowsWeek(const Lesson& lesson, int dense_week_index) {
     if (lesson.week_parity == "odd") return ((dense_week_index + 1) % 2) == 1;
     if (lesson.week_parity == "even") return ((dense_week_index + 1) % 2) == 0;
@@ -636,7 +649,7 @@ GenerationResult GenerateSchedule(const std::string& output_dir, const Generatio
         for (int d = 0; d < num_days; d++) {
             const int w = week_pos[week_index[d]];
             const bool blocked_teacher = lessons[l].teacher >= 0 &&
-                DateInUnavailableRanges(all_days[d], lessons[l].teacher, teacher_unavailable);
+                DateInTeacherUnavailable(all_days[d], lessons[l].teacher, teacher_unavailable);
             if (!blocked_teacher && LessonAllowsWeek(lessons[l], w)) continue;
             for (int s = 0; s < SLOTS_PER_DAY; s++) {
                 model.AddEquality(x[l][d * SLOTS_PER_DAY + s], 0);
@@ -1693,7 +1706,7 @@ static WeeklyPreflightResult BuildWeeklyPreflight(
                 const Date& date = all_days[gd];
                 if (!IsAvailable(date, lesson.group, unavailable) || !LessonCalendarAllows(lesson, date)) continue;
                 if (lesson.teacher >= 0 &&
-                    DateInUnavailableRanges(date, lesson.teacher, teacher_unavailable)) continue;
+                    DateInTeacherUnavailable(date, lesson.teacher, teacher_unavailable)) continue;
                 if (lesson.is_block || lesson.consecutive_pairs == 2) {
                     for (int s = 0; s < SLOTS_PER_DAY - 1; s++) {
                         if (lesson.is_block && !IsAllowedUpStartSlot(date, s)) continue;
@@ -1749,7 +1762,7 @@ static WeeklyPreflightResult BuildWeeklyPreflight(
             if (teacher_demand[teacher] == 0) continue;
             int capacity = 0;
             for (int gd : week_day_indices[w]) {
-                if (DateInUnavailableRanges(all_days[gd], teacher, teacher_unavailable)) continue;
+                if (DateInTeacherUnavailable(all_days[gd], teacher, teacher_unavailable)) continue;
                 for (int s = 0; s < SLOTS_PER_DAY; s++)
                     if (!teacher_work[teacher] || WorkScheduleAllows(*teacher_work[teacher], all_days[gd], s)) capacity++;
             }
@@ -1982,7 +1995,7 @@ static QuotaBalanceResult BalanceWeeklyQuotas(
         for (int teacher = 0; teacher < TEACHERS; teacher++) {
             int capacity = 0;
             for (int gd : week_day_indices[w])
-                if (!DateInUnavailableRanges(all_days[gd], teacher, teacher_unavailable))
+                if (!DateInTeacherUnavailable(all_days[gd], teacher, teacher_unavailable))
                     for (int s = 0; s < SLOTS_PER_DAY; s++)
                         if (!teacher_work[teacher] || WorkScheduleAllows(*teacher_work[teacher], all_days[gd], s)) capacity++;
             LinearExpr demand;
@@ -2576,7 +2589,7 @@ static WeekSolveResult SolveOneWeek(
     for (int l = 0; l < num_lessons; l++) {
         if (quotas[l] == 0 || lessons[l].teacher < 0) continue;
         for (int ld = 0; ld < W; ld++) {
-            if (!DateInUnavailableRanges(week_days[ld], lessons[l].teacher, teacher_unavailable)) continue;
+            if (!DateInTeacherUnavailable(week_days[ld], lessons[l].teacher, teacher_unavailable)) continue;
             for (int s = 0; s < SLOTS_PER_DAY; s++) {
                 model.AddEquality(x[l][ld * SLOTS_PER_DAY + s], 0);
             }

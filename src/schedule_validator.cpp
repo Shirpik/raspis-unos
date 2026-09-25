@@ -75,8 +75,19 @@ std::vector<Date> ExpectedDates(const Date& from, const Date& to) {
 }
 
 bool DateInRanges(const Date& date,
-                  const std::map<int, std::vector<UnavailabilityPeriod>>& ranges,
+                  const std::map<int, std::vector<std::pair<Date, Date>>>& ranges,
                   int id) {
+    const auto it = ranges.find(id);
+    if (it == ranges.end()) return false;
+    for (const auto& range : it->second) {
+        if (range.first <= date && date <= range.second) return true;
+    }
+    return false;
+}
+
+bool DateInTeacherUnavailable(const Date& date,
+                              const std::map<int, std::vector<UnavailabilityPeriod>>& ranges,
+                              int id) {
     const auto it = ranges.find(id);
     if (it == ranges.end()) return false;
     for (const auto& period : it->second) {
@@ -356,7 +367,7 @@ ScheduleValidationResult ValidateScheduleJson(
             JsonValue ctx = Context(); Put(ctx, "teacher", event.teacher); Put(ctx, "lesson", event.lesson);
             collector.Add("error", "availability", "unknown_teacher",
                           "У занятия отсутствует действующий преподаватель", ctx);
-        } else if (DateInRanges(event.date, data.teacher_unavailable, event.teacher) ||
+        } else if (DateInTeacherUnavailable(event.date, data.teacher_unavailable, event.teacher) ||
                    !WorkScheduleAllows(teacher->work_schedule, event.date, event.pair - 1)) {
             JsonValue ctx = Context(); Put(ctx, "teacher", event.teacher); Put(ctx, "date", DateLabel(event.date)); Put(ctx, "pair", event.pair);
             collector.Add("error", "availability", "teacher_unavailable",
