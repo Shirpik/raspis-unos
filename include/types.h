@@ -87,6 +87,13 @@ struct TimeInterval {
     int to_minute;
 };
 
+struct UnavailabilityPeriod {
+    Date from;
+    Date to;
+    std::string time_from;  // HH:MM format, empty if whole day
+    std::string time_to;    // HH:MM format, empty if whole day
+};
+
 std::string SubjectFamilyKey(const Lesson& lesson);
 bool LessonAffectsPart(const Lesson& lesson, int group, int part);
 bool LessonCalendarAllows(const Lesson& lesson, const Date& date);

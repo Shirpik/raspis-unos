@@ -121,6 +121,14 @@
               <input v-model="notification.dateTo" type="date" required class="form-input" />
             </div>
             <div class="form-group">
+              <label>Время начала (необязательно)</label>
+              <input v-model="notification.timeFrom" type="time" class="form-input" />
+            </div>
+            <div class="form-group">
+              <label>Время окончания (необязательно)</label>
+              <input v-model="notification.timeTo" type="time" class="form-input" />
+            </div>
+            <div class="form-group">
               <label>Причина</label>
               <textarea v-model="notification.reason" required class="form-textarea" rows="4"></textarea>
             </div>
@@ -168,6 +176,8 @@ const submitError = ref('')
 const notification = ref({
   dateFrom: '',
   dateTo: '',
+  timeFrom: '',
+  timeTo: '',
   reason: '',
   photo: null
 })
@@ -330,12 +340,16 @@ async function submitNotification() {
       teacher_name: selectedNotifyTeacher.value.name,
       dates: dates,
       reason: notification.value.reason,
-      photo: notification.value.photo
+      photo: notification.value.photo,
+      time_from: notification.value.timeFrom || null,
+      time_to: notification.value.timeTo || null
     })
     submitSuccess.value = true
     notification.value = {
       dateFrom: '',
       dateTo: '',
+      timeFrom: '',
+      timeTo: '',
       reason: '',
       photo: null
     }

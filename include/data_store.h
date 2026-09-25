@@ -144,7 +144,7 @@ struct ScheduleInputData {
     std::vector<RoomData> rooms;
     std::vector<Lesson> lessons;
     std::map<int, std::vector<std::pair<Date, Date>>> unavailable;
-    std::map<int, std::vector<std::pair<Date, Date>>> teacher_unavailable;
+    std::map<int, std::vector<UnavailabilityPeriod>> teacher_unavailable;
     std::map<int, std::map<Date, std::string>> unavailable_day_texts;
     std::vector<SpecialDayData> special_days;
 };

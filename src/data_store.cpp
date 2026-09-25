@@ -1247,14 +1247,26 @@ bool LoadScheduleInputDataFromRoot(const JsonValue& source, ScheduleInputData& d
             const int teacher = JsonInt(item, "teacher", -1);
             if (teacher < 0) continue;
             const std::vector<Date> exact_dates = DatesFromUnavailableItem(item);
+            const std::string time_from = JsonString(item, "time_from", "");
+            const std::string time_to = JsonString(item, "time_to", "");
             for (const Date& date : exact_dates) {
-                data.teacher_unavailable[teacher].push_back({date, date});
+                UnavailabilityPeriod period;
+                period.from = date;
+                period.to = date;
+                period.time_from = time_from;
+                period.time_to = time_to;
+                data.teacher_unavailable[teacher].push_back(period);
             }
             Date from;
             Date to;
             if (ParseDateIso(JsonString(item, "from", ""), from) &&
                 ParseDateIso(JsonString(item, "to", ""), to)) {
-                data.teacher_unavailable[teacher].push_back({from, to});
+                UnavailabilityPeriod period;
+                period.from = from;
+                period.to = to;
+                period.time_from = time_from;
+                period.time_to = time_to;
+                data.teacher_unavailable[teacher].push_back(period);
             }
         }
     }

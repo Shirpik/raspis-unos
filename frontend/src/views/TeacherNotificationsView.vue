@@ -28,6 +28,9 @@
 
         <div class="notif-dates">
           <strong>Даты:</strong> {{ formatDates(notif.dates) }}
+          <span v-if="notif.time_from || notif.time_to" class="notif-time">
+            ({{ formatTime(notif.time_from, notif.time_to) }})
+          </span>
         </div>
 
         <div class="notif-reason">
@@ -71,6 +74,16 @@
         </div>
 
         <div class="form-group">
+          <label>Время начала (необязательно, формат HH:MM)</label>
+          <input v-model="editForm.time_from" type="time" class="form-input" />
+        </div>
+
+        <div class="form-group">
+          <label>Время окончания (необязательно, формат HH:MM)</label>
+          <input v-model="editForm.time_to" type="time" class="form-input" />
+        </div>
+
+        <div class="form-group">
           <label>Причина</label>
           <textarea v-model="editForm.reason" class="form-textarea" rows="3"></textarea>
         </div>
@@ -107,6 +120,8 @@ const currentNotif = ref(null)
 const editForm = ref({
   teacher_name: '',
   datesStr: '',
+  time_from: '',
+  time_to: '',
   reason: ''
 })
 
@@ -149,6 +164,14 @@ function formatDate(timestamp) {
   return date.toLocaleString('ru-RU')
 }
 
+function formatTime(timeFrom, timeTo) {
+  if (!timeFrom && !timeTo) return ''
+  if (timeFrom && timeTo) return `${timeFrom} — ${timeTo}`
+  if (timeFrom) return `с ${timeFrom}`
+  if (timeTo) return `до ${timeTo}`
+  return ''
+}
+
 async function approveNotification(notif) {
   try {
     const response = await api.teacherNotifications.update(notif.id, { status: 'approved' })
@@ -158,11 +181,17 @@ async function approveNotification(notif) {
         const fromDate = notif.dates[0]
         const toDate = notif.dates[notif.dates.length - 1]
 
-        await api.teacherUnavailable.create({
+        const unavailableData = {
           teacher: notif.teacher_id,
           from: fromDate,
           to: toDate
-        })
+        }
+
+        // Добавляем время если указано
+        if (notif.time_from) unavailableData.time_from = notif.time_from
+        if (notif.time_to) unavailableData.time_to = notif.time_to
+
+        await api.teacherUnavailable.create(unavailableData)
       }
       await loadNotifications()
     } else {
@@ -203,6 +232,8 @@ function openEditDialog(notif) {
   editForm.value = {
     teacher_name: notif.teacher_name,
     datesStr: notif.dates ? notif.dates.join(', ') : '',
+    time_from: notif.time_from || '',
+    time_to: notif.time_to || '',
     reason: notif.reason
   }
   showEditDialog.value = true
@@ -217,11 +248,16 @@ async function saveEdit() {
   if (!currentNotif.value) return
   try {
     const dates = editForm.value.datesStr.split(',').map(d => d.trim()).filter(d => d)
-    const response = await api.teacherNotifications.update(currentNotif.value.id, {
+    const updateData = {
       teacher_name: editForm.value.teacher_name,
       dates: dates,
       reason: editForm.value.reason
-    })
+    }
+
+    if (editForm.value.time_from) updateData.time_from = editForm.value.time_from
+    if (editForm.value.time_to) updateData.time_to = editForm.value.time_to
+
+    const response = await api.teacherNotifications.update(currentNotif.value.id, updateData)
     if (response.ok) {
       await loadNotifications()
     }
@@ -257,6 +293,7 @@ async function saveEdit() {
 
 .notif-dates, .notif-reason { margin-bottom: 12px; color: #94A3B8; font-size: 14px; }
 .notif-dates strong, .notif-reason strong { color: #E2E8F0; }
+.notif-time { color: #38BDF8; margin-left: 8px; font-weight: 500; }
 
 .notif-photo { margin: 16px 0; }
 .notif-photo img { max-width: 300px; border-radius: 8px; }

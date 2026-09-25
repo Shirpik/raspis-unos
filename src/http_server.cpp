@@ -1277,6 +1277,14 @@ std::string HandleRequest(const std::string& request, const std::string& output_
         notification.At("status") = JsonValue::MakeString("pending");
         notification.At("created_at") = JsonValue::MakeString(std::to_string(std::time(nullptr)));
 
+        // Сохраняем time_from и time_to если указаны
+        if (parsed.value.Has("time_from") && !parsed.value.At("time_from").IsNull()) {
+            notification.At("time_from") = parsed.value.At("time_from");
+        }
+        if (parsed.value.Has("time_to") && !parsed.value.At("time_to").IsNull()) {
+            notification.At("time_to") = parsed.value.At("time_to");
+        }
+
         return PostArrayEndpoint("teacher_notifications", ToJson(notification, 0));
     }
 

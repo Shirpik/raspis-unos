@@ -279,6 +279,71 @@ bool IsAvailable(
     return true;
 }
 
+bool IsAvailable(
+    const Date& d,
+    int teacher,
+    const std::map<int, std::vector<UnavailabilityPeriod>>& teacher_unavailable
+) {
+    auto it = teacher_unavailable.find(teacher);
+    if (it == teacher_unavailable.end()) return true;
+
+    for (const auto& period : it->second) {
+        if (d >= period.from && d <= period.to) {
+            if (period.time_from.empty() && period.time_to.empty()) {
+                return false;
+            }
+        }
+    }
+
+    return true;
+}
+
+bool IsAvailable(
+    const Date& d,
+    int slot,
+    int teacher,
+    const std::map<int, std::vector<UnavailabilityPeriod>>& teacher_unavailable
+) {
+    auto it = teacher_unavailable.find(teacher);
+    if (it == teacher_unavailable.end()) return true;
+
+    for (const auto& period : it->second) {
+        if (d >= period.from && d <= period.to) {
+            if (period.time_from.empty() && period.time_to.empty()) {
+                return false;
+            }
+
+            if (!period.time_from.empty() || !period.time_to.empty()) {
+                TimeInterval slot_interval = PairSlotInterval(DayOfWeek(d), slot);
+
+                int unavail_from = 0;
+                int unavail_to = 1440;
+
+                if (!period.time_from.empty()) {
+                    int h = 0, m = 0;
+                    if (sscanf(period.time_from.c_str(), "%d:%d", &h, &m) == 2) {
+                        unavail_from = MakeMinute(h, m);
+                    }
+                }
+
+                if (!period.time_to.empty()) {
+                    int h = 0, m = 0;
+                    if (sscanf(period.time_to.c_str(), "%d:%d", &h, &m) == 2) {
+                        unavail_to = MakeMinute(h, m);
+                    }
+                }
+
+                TimeInterval unavail_interval = {unavail_from, unavail_to};
+                if (IntervalsOverlap(slot_interval, unavail_interval)) {
+                    return false;
+                }
+            }
+        }
+    }
+
+    return true;
+}
+
 std::string DateToString(const Date& d) {
     std::ostringstream ss;
     ss << std::setfill('0')

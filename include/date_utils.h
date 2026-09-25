@@ -40,6 +40,19 @@ bool IsAvailable(
     const std::map<int, std::vector<std::pair<Date, Date>>>& unavailable
 );
 
+bool IsAvailable(
+    const Date& d,
+    int teacher,
+    const std::map<int, std::vector<UnavailabilityPeriod>>& teacher_unavailable
+);
+
+bool IsAvailable(
+    const Date& d,
+    int slot,
+    int teacher,
+    const std::map<int, std::vector<UnavailabilityPeriod>>& teacher_unavailable
+);
+
 std::string DateToString(const Date& d);
 
 std::vector<std::vector<int>> BuildAvailableDayBuckets(

@@ -138,9 +138,9 @@
     </section>
 
     <section v-if="tab==='unavailable'" class="section">
-      <div class="card inline-form"><select v-model.number="unavailableForm.teacher" class="form-select"><option v-for="t in store.teachers" :key="t.id" :value="t.id">{{ t.name }}</option></select><input v-model="unavailableForm.from" type="date" class="form-input" /><input v-model="unavailableForm.to" type="date" class="form-input" /><input v-model="unavailableForm.reason" class="form-input" placeholder="Причина (необязательно)" /><button class="btn btn-primary" @click="addUnavailable">Добавить</button></div>
+      <div class="card inline-form"><select v-model.number="unavailableForm.teacher" class="form-select"><option v-for="t in store.teachers" :key="t.id" :value="t.id">{{ t.name }}</option></select><input v-model="unavailableForm.from" type="date" class="form-input" /><input v-model="unavailableForm.to" type="date" class="form-input" /><input v-model="unavailableForm.time_from" type="time" class="form-input" placeholder="С (время)" /><input v-model="unavailableForm.time_to" type="time" class="form-input" placeholder="До (время)" /><input v-model="unavailableForm.reason" class="form-input" placeholder="Причина (необязательно)" /><button class="btn btn-primary" @click="addUnavailable">Добавить</button></div>
       <div v-if="!store.teacherUnavailable.length" class="empty-state card"><h3>Нет ограничений преподавателей</h3><p>Укажите отпуск, больничный, методический день или любую недоступность диапазоном дат.</p></div>
-      <div v-else class="table-wrap"><table><thead><tr><th>Преподаватель</th><th>С</th><th>По</th><th>Причина</th><th></th></tr></thead><tbody><tr v-for="u in store.teacherUnavailable" :key="u.id"><td>{{ teacherName(u.teacher) }}</td><td>{{ u.from }}</td><td>{{ u.to }}</td><td>{{ u.reason || '—' }}</td><td><button class="btn btn-ghost btn-sm danger" @click="removeUnavailable(u)">Удалить</button></td></tr></tbody></table></div>
+      <div v-else class="table-wrap"><table><thead><tr><th>Преподаватель</th><th>С</th><th>По</th><th>Время</th><th>Причина</th><th></th></tr></thead><tbody><tr v-for="u in store.teacherUnavailable" :key="u.id"><td>{{ teacherName(u.teacher) }}</td><td>{{ u.from }}</td><td>{{ u.to }}</td><td>{{ formatTimeRange(u.time_from, u.time_to) }}</td><td>{{ u.reason || '—' }}</td><td><button class="btn btn-ghost btn-sm danger" @click="removeUnavailable(u)">Удалить</button></td></tr></tbody></table></div>
     </section>
 
     <section v-if="tab==='notifications'" class="section">
@@ -160,6 +160,9 @@
             </div>
             <div class="notification-dates">
               <strong>{{ notif.date_from }}</strong> — <strong>{{ notif.date_to }}</strong>
+              <span v-if="notif.time_from || notif.time_to" style="margin-left:8px;color:#94A3B8">
+                ({{ formatTimeRange(notif.time_from, notif.time_to) }})
+              </span>
             </div>
           </div>
           <div class="notification-body">
@@ -235,7 +238,7 @@ const occurrenceModal=ref(false),occurrenceTarget=ref(null),occurrenceKind=ref('
 const workloadModal=ref(false),workloadTarget=ref(null),workloadMode=ref('groups'),workloadSearch=ref(''),workloadStatus=ref('all')
 const tabLoading=ref(false),loadedTabs=new Set()
 const labels={groups:'Группы',teachers:'Преподаватели',lessons:'Занятия'}
-const unavailableForm=ref({teacher:0,from:'',to:'',reason:''})
+const unavailableForm=ref({teacher:0,from:'',to:'',time_from:'',time_to:'',reason:''})
 const replacementForm=ref({lesson_id:-1,date:'',slot:1,absent_teacher:-1,substitute_teacher:-1,hours:2,reason:'',comment:'',status:'active'})
 const occupancy=ref({entries:[]}), occupancyWeek=ref('')
 const occupancySlots=[0,1,2,3,4,5,6,7]
@@ -302,14 +305,15 @@ async function exportReferenceHours(){templateExporting.value=true;try{const {ex
 function syncAbsentTeacher(){const lesson=store.lessons.find(l=>l.id===replacementForm.value.lesson_id);if(lesson)replacementForm.value.absent_teacher=lesson.teacher}
 async function addSubstitution(){const f=replacementForm.value;if(f.lesson_id<0||!f.date||f.absent_teacher<0||f.substitute_teacher<0){toast.error('Заполните занятие, дату и обоих преподавателей');return}if(f.absent_teacher===f.substitute_teacher){toast.error('Заменяющий должен отличаться от отсутствующего');return}const r=await store.createSubstitution({...f});if(r.ok){toast.success('Замена добавлена, зачёт часов пересчитан');replacementForm.value={...f,lesson_id:-1,date:'',reason:''};loadedTabs.delete('hours');loadedTabs.delete('occupancy');await refreshAll()}else toast.error(r.data?.message||'Ошибка')}
 async function removeSubstitution(s){const r=await store.deleteSubstitution(s.id);if(r.ok){toast.success('Замена удалена');loadedTabs.delete('hours');loadedTabs.delete('occupancy');await refreshAll()}else toast.error(r.data?.message||'Ошибка')}
-async function addUnavailable(){const f=unavailableForm.value;if(!f.from||!f.to){toast.error('Укажите обе даты');return}if(f.to<f.from){toast.error('Дата окончания раньше начала');return}const r=await store.createTeacherUnavailable({...f});if(r.ok){toast.success('Недоступность добавлена');unavailableForm.value={...f,from:'',to:'',reason:''};await refreshAll()}else toast.error(r.data?.message||'Ошибка')}
+async function addUnavailable(){const f=unavailableForm.value;if(!f.from||!f.to){toast.error('Укажите обе даты');return}if(f.to<f.from){toast.error('Дата окончания раньше начала');return}const payload={teacher:f.teacher,from:f.from,to:f.to,reason:f.reason};if(f.time_from)payload.time_from=f.time_from;if(f.time_to)payload.time_to=f.time_to;const r=await store.createTeacherUnavailable(payload);if(r.ok){toast.success('Недоступность добавлена');unavailableForm.value={teacher:f.teacher,from:'',to:'',time_from:'',time_to:'',reason:''};await refreshAll()}else toast.error(r.data?.message||'Ошибка')}
 async function removeUnavailable(u){const r=await store.deleteTeacherUnavailable(u.id);if(r.ok){toast.success('Ограничение удалено');await refreshAll()}else toast.error(r.data?.message||'Ошибка')}
 async function restore(v){if(!confirm(`Откатить данные к версии ${formatDate(v.created_at)}?`))return;const r=await api.data.restore(v.filename);if(r.ok){toast.success('Версия восстановлена');loadedTabs.clear();await refreshAll()}else toast.error(r.data?.message||'Ошибка отката')}
 const formatDate=s=>s?new Date(s).toLocaleString('ru-RU'): '—'
+const formatTimeRange=(from,to)=>{if(!from&&!to)return'';if(from&&to)return`${from} — ${to}`;if(from)return`с ${from}`;if(to)return`до ${to}`;return''}
 async function loadNotifications(){notificationsLoading.value=true;try{const r=await api.teacherNotifications.listAll();if(r.ok)notifications.value=r.data||[]}catch(e){toast.error('Не удалось загрузить сообщения')}finally{notificationsLoading.value=false}}
 function statusLabel(status){return status==='pending'?'Ожидает':'status'==='approved'?'Принято':'Отклонено'}
 function editNotification(notif){editingNotification.value=notif}
-async function approveNotification(notif){if(!confirm(`Принять уведомление от ${notif.teacher_name}?`))return;const r=await api.teacherNotifications.update(notif.id,{status:'approved'});if(r.ok){await store.createTeacherUnavailable({teacher:notif.teacher_id,from:notif.date_from,to:notif.date_to,text:`Принято из уведомления: ${notif.reason}`});toast.success('Уведомление принято, недоступность добавлена');await loadNotifications()}else toast.error(r.data?.message||'Ошибка')}
+async function approveNotification(notif){if(!confirm(`Принять уведомление от ${notif.teacher_name}?`))return;const r=await api.teacherNotifications.update(notif.id,{status:'approved'});if(r.ok){const unavailableData={teacher:notif.teacher_id,from:notif.date_from,to:notif.date_to,text:`Принято из уведомления: ${notif.reason}`};if(notif.time_from)unavailableData.time_from=notif.time_from;if(notif.time_to)unavailableData.time_to=notif.time_to;await store.createTeacherUnavailable(unavailableData);toast.success('Уведомление принято, недоступность добавлена');await loadNotifications()}else toast.error(r.data?.message||'Ошибка')}
 async function rejectNotification(notif){if(!confirm(`Отклонить уведомление от ${notif.teacher_name}?`))return;const r=await api.teacherNotifications.update(notif.id,{status:'rejected'});if(r.ok){toast.success('Уведомление отклонено');await loadNotifications()}else toast.error(r.data?.message||'Ошибка')}
 
 </script>
