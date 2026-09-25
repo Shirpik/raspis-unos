@@ -1,9 +1,6 @@
 #include "http_server.h"
 
-#ifndef _WIN32
-#error "This simple API server is implemented for Windows/Winsock."
-#endif
-
+#ifdef _WIN32
 #ifndef NOMINMAX
 #define NOMINMAX
 #endif
@@ -12,6 +9,32 @@
 #endif
 #include <winsock2.h>
 #include <ws2tcpip.h>
+#else
+// POSIX-замена Winsock: даём тем же именам (SOCKET, closesocket,
+// WSAGetLastError, WSAStartup/WSACleanup, SD_SEND, SOCKADDR), которыми
+// пользуется остальной код ниже, POSIX-реализацию, чтобы не трогать
+// саму логику сервера.
+#include <sys/socket.h>
+#include <netinet/in.h>
+#include <arpa/inet.h>
+#include <unistd.h>
+#include <cerrno>
+#include <cstdint>
+
+using SOCKET = int;
+using SOCKADDR = struct sockaddr;
+constexpr SOCKET INVALID_SOCKET = -1;
+constexpr int SOCKET_ERROR = -1;
+constexpr int SD_SEND = SHUT_WR;
+
+inline int closesocket(SOCKET s) { return ::close(s); }
+inline int WSAGetLastError() { return errno; }
+
+struct WSADATA {};
+inline int WSAStartup(unsigned short, WSADATA*) { return 0; }
+inline void WSACleanup() {}
+#define MAKEWORD(a, b) 0
+#endif
 
 #include <algorithm>
 #include <atomic>
@@ -125,7 +148,11 @@ std::string TransferTimestamp(bool filename_safe = false) {
     const auto now = std::chrono::system_clock::now();
     const std::time_t value = std::chrono::system_clock::to_time_t(now);
     std::tm utc{};
+#ifdef _WIN32
     gmtime_s(&utc, &value);
+#else
+    gmtime_r(&value, &utc);  // у gmtime_r порядок аргументов обратный
+#endif
     std::ostringstream out;
     out << std::put_time(&utc, filename_safe ? "%Y%m%d-%H%M%S" : "%Y-%m-%dT%H:%M:%SZ");
     return out.str();
@@ -2150,7 +2177,7 @@ int RunApiServer(const std::string& host, int port, const std::string& output_di
 
     sockaddr_in service;
     service.sin_family = AF_INET;
-    service.sin_port = htons(static_cast<u_short>(port));
+    service.sin_port = htons(static_cast<uint16_t>(port));
     inet_pton(AF_INET, host.c_str(), &service.sin_addr);
 
     if (bind(listen_socket, reinterpret_cast<SOCKADDR*>(&service), sizeof(service)) == SOCKET_ERROR) {
