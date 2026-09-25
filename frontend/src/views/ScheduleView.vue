@@ -2,21 +2,34 @@
   <div class="page">
     <!-- Header -->
     <div class="page-header">
-      <h1 class="page-title">📅 Расписание</h1>
+      <h1 class="page-title">
+        <CalendarRange :size="28" />
+        <span>Расписание</span>
+      </h1>
       <div class="header-actions">
         <button class="btn btn-ghost" :disabled="!store.scheduleData || excelExporting" @click="downloadExcel">
-          <span v-if="excelExporting" class="spinner spinner-sm" />{{ excelExporting ? 'Собираю Excel…' : 'Excel по образцу' }}
+          <span v-if="excelExporting" class="spinner spinner-sm" />
+          <Download :size="16" />
+          <span>{{ excelExporting ? 'Собираю Excel…' : 'Excel' }}</span>
         </button>
-        <button class="btn btn-ghost" :disabled="!store.scheduleData" @click="downloadPdf">PDF</button>
+        <button class="btn btn-ghost" :disabled="!store.scheduleData" @click="downloadPdf">
+          <FileText :size="16" />
+          <span>PDF</span>
+        </button>
         <select v-model="validationSource" class="form-select validation-source" :disabled="validating">
           <option value="auto">Проверить автогенерацию</option>
           <option value="manual">Проверить Конструктор</option>
           <option value="published">Проверить публикацию</option>
         </select>
         <button class="btn btn-secondary" :disabled="validating" @click="runValidation">
-          <span v-if="validating" class="spinner spinner-sm" />{{ validating ? 'Проверяю…' : 'Проверить' }}
+          <span v-if="validating" class="spinner spinner-sm" />
+          <CheckCircle :size="16" />
+          <span>{{ validating ? 'Проверяю…' : 'Проверить' }}</span>
         </button>
-        <button class="btn btn-success" :disabled="!store.scheduleData || publishing" @click="publishSchedule">{{ publishing ? 'Публикую…' : 'Опубликовать' }}</button>
+        <button class="btn btn-success" :disabled="!store.scheduleData || publishing" @click="publishSchedule">
+          <Upload :size="16" />
+          <span>{{ publishing ? 'Публикую…' : 'Опубликовать' }}</span>
+        </button>
         <select v-if="!demoMode" v-model="lockMode" class="form-select lock-select" :disabled="store.generating">
           <option value="none">С нуля</option>
           <option value="manual">Зафиксировать Конструктор</option>
@@ -27,16 +40,19 @@
           <option value="monolithic">Весь период</option>
         </select>
         <button v-if="!demoMode && !store.generating" class="btn btn-primary" @click="onRegenerate">
-          Сгенерировать
+          <Sparkles :size="16" />
+          <span>Сгенерировать</span>
         </button>
         <button v-else-if="!demoMode" class="btn btn-danger" @click="onCancel" :disabled="cancelling">
-          {{ cancelling ? 'Отменяется…' : 'Отменить' }}
+          <X :size="16" />
+          <span>{{ cancelling ? 'Отменяется…' : 'Отменить' }}</span>
         </button>
       </div>
     </div>
 
     <div v-if="demoMode" class="notice demo-notice">
-      Демонстрационный режим: показано сохранённое тестовое расписание. Запуск решателя на сервере отключён.
+      <Info :size="18" />
+      <span>Демонстрационный режим: показано сохранённое тестовое расписание. Запуск решателя на сервере отключён.</span>
     </div>
 
     <!-- Generation progress panel -->
@@ -74,11 +90,11 @@
           :class="`gen-week-${w.status}`"
         >
           <span class="gen-week-icon">
-            <template v-if="w.status === 'done'">✓</template>
-            <template v-else-if="w.status === 'running'"><span class="spinner spinner-xs" /></template>
-            <template v-else-if="w.status === 'failed'">✕</template>
-            <template v-else-if="w.status === 'skipped'">—</template>
-            <template v-else>·</template>
+            <Check v-if="w.status === 'done'" :size="14" />
+            <span v-else-if="w.status === 'running'" class="spinner spinner-xs" />
+            <X v-else-if="w.status === 'failed'" :size="14" />
+            <Minus v-else-if="w.status === 'skipped'" :size="14" />
+            <Circle v-else :size="8" />
           </span>
           <span class="gen-week-label">Нед. {{ w.num }}</span>
           <span class="gen-week-dates">{{ w.date_from }}<template v-if="w.date_to"> – {{ w.date_to }}</template></span>
@@ -96,8 +112,14 @@
     <ValidationPanel :result="validationResult" />
 
     <div class="schedule-mode-bar">
-      <button class="mode-button" :class="{ active: viewMode === 'groups' }" @click="viewMode = 'groups'">🎓 По группам</button>
-      <button class="mode-button" :class="{ active: viewMode === 'teachers' }" @click="viewMode = 'teachers'">👤 По преподавателю</button>
+      <button class="mode-button" :class="{ active: viewMode === 'groups' }" @click="viewMode = 'groups'">
+        <Users :size="18" />
+        <span>По группам</span>
+      </button>
+      <button class="mode-button" :class="{ active: viewMode === 'teachers' }" @click="viewMode = 'teachers'">
+        <User :size="18" />
+        <span>По преподавателю</span>
+      </button>
       <div v-if="viewMode === 'teachers'" class="teacher-search-wrap">
         <input
           v-model.trim="teacherSearch"
@@ -354,6 +376,10 @@ import { demoMode } from '../config.js'
 import { api } from '../api/index.js'
 import { collectSlotNumbers, subgroupLabel } from '../utils/schedulePresentation.js'
 import ValidationPanel from '../components/ValidationPanel.vue'
+import {
+  CalendarRange, Download, FileText, CheckCircle, Upload, Sparkles, X,
+  Info, Check, Minus, Circle, Users, User
+} from 'lucide-vue-next'
 
 const store = useScheduleStore()
 const dataStore = useDataStore()
@@ -771,11 +797,13 @@ watch(() => store.progress?.state, (newState, oldState) => {
   border-radius: var(--radius); background: var(--bg-secondary);
 }
 .mode-button {
-  border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 8px 13px;
+  display: flex; align-items: center; gap: 8px;
+  border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 10px 16px;
   background: var(--bg-tertiary); color: var(--text-secondary); font: inherit;
-  font-size: 13px; font-weight: 600; cursor: pointer;
+  font-size: 14px; font-weight: 500; cursor: pointer;
+  transition: all var(--transition);
 }
-.mode-button:hover { border-color: var(--accent); color: var(--text-primary); }
+.mode-button:hover { border-color: var(--accent); color: var(--text-primary); background: var(--bg-elevated); }
 .mode-button.active { border-color: var(--accent); color: var(--accent); background: var(--accent-light); }
 .teacher-search-wrap { display: flex; align-items: center; gap: 8px; flex: 1; min-width: min(100%, 320px); }
 .teacher-search { min-width: 240px; flex: 1; }

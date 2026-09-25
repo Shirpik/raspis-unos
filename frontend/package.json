@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "exceljs": "4.4.0",
+    "lucide-vue-next": "^1.0.0",
     "pdfmake": "^0.3.11",
     "pinia": "^2.1.7",
     "vue": "^3.4.21",
