@@ -1,42 +1,109 @@
 <template>
   <div class="page">
     <div class="page-header">
-      <h1 class="page-title">🎓 Группы</h1>
-      <div class="header-actions"><button v-if="store.groups.length" class="btn btn-secondary" @click="toggleAll">{{ allSelected ? 'Снять выделение' : 'Выделить все' }}</button><button v-if="selected.length" class="btn btn-secondary" @click="openBulk">⏱ Рабочее время ({{ selected.length }})</button><button class="btn btn-primary" @click="openAdd">+ Добавить</button></div>
+      <div class="page-title-wrapper">
+        <GraduationCap :size="24" />
+        <h1 class="page-title">Группы</h1>
+      </div>
+      <div class="header-actions">
+        <button v-if="store.groups.length" class="btn btn-secondary" @click="toggleAll">
+          {{ allSelected ? 'Снять выделение' : 'Выделить все' }}
+        </button>
+        <button v-if="selected.length" class="btn btn-secondary" @click="openBulk">
+          <Clock :size="18" />
+          <span>Рабочее время ({{ selected.length }})</span>
+        </button>
+        <button class="btn btn-primary" @click="openAdd">
+          <Plus :size="18" />
+          <span>Добавить</span>
+        </button>
+      </div>
     </div>
 
     <PracticeCalendarImport @updated="calendarUpdated" />
     <PracticeReadout :refresh-key="readoutRevision" />
-    <div v-if="loading" class="center-load"><span class="spinner spinner-lg" style="color:var(--accent)"/></div>
+    <div v-if="loading" class="loading-state">
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th></th>
+              <th>Группа</th>
+              <th>Подгруппы</th>
+              <th>Численность</th>
+              <th>Корпус</th>
+              <th>Куратор</th>
+              <th>Рабочий период</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="i in 8" :key="i">
+              <td><Skeleton class="w-4 h-4" /></td>
+              <td><Skeleton class="w-32 h-4" /></td>
+              <td><Skeleton class="w-24 h-4" /></td>
+              <td><Skeleton class="w-20 h-4" /></td>
+              <td><Skeleton class="w-28 h-4" /></td>
+              <td><Skeleton class="w-36 h-4" /></td>
+              <td><Skeleton class="w-32 h-4" /></td>
+              <td><Skeleton class="w-20 h-4" /></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
 
-    <div v-else-if="store.groups.length === 0" class="empty-state">
-      <span class="icon">🎓</span>
+    <div v-else-if="store.groups.length === 0" class="empty-state card">
+      <GraduationCap :size="64" style="opacity: 0.3" />
       <h3>Нет групп</h3>
       <p>Добавьте первую группу</p>
     </div>
 
-    <div v-else class="cards-grid">
-      <div v-for="g in store.groups" :key="g.id" class="group-card card">
-        <div class="gc-top">
-          <input v-model="selected" type="checkbox" :value="g.id" class="entity-check" />
-          <span class="gc-name">{{ g.name }}</span>
-          <span class="badge badge-accent">ID {{ g.id }}</span>
-        </div>
-        <div class="gc-meta">
-          <span class="chip">{{ g.parts === 1 ? '1 подгруппа' : '2 подгруппы' }}</span>
-          <span class="chip">{{ g.size > 0 ? `${g.size} студентов` : 'численность не указана' }}</span>
-          <span class="chip">{{ g.home_campus === 1 ? 'Кривоусова, 53' : 'Лесная' }}</span>
-          <span class="chip">{{ curatorName(g.curator_teacher) }}</span>
-          <span v-if="g.curator_teacher >= 0 && g.class_hour_enabled !== false" class="chip class-hour-chip">ПН 07:50 · классный час</span>
-          <span class="chip">{{ workSummary(g) }}</span>
-          <span v-for="(period,index) in g.practice_periods || []" :key="index" class="chip">ПП: {{ period.from }} — {{ period.to }}</span>
-          <span v-if="g.teaching_deadline" class="chip">Вычитать до {{ g.teaching_deadline }}</span>
-        </div>
-        <div class="gc-actions">
-          <button class="btn btn-ghost btn-sm" @click="openEdit(g)">✏️ Изменить</button>
-          <button class="btn btn-ghost btn-sm" style="color:var(--error)" @click="confirmDelete(g)">🗑 Удалить</button>
-        </div>
-      </div>
+    <div v-else class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th><input v-model="allSelected" type="checkbox" @change="toggleAll" /></th>
+            <th>Группа</th>
+            <th>Подгруппы</th>
+            <th>Численность</th>
+            <th>Корпус</th>
+            <th>Куратор</th>
+            <th>Рабочий период</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="g in store.groups" :key="g.id">
+            <td><input v-model="selected" type="checkbox" :value="g.id" class="entity-check" /></td>
+            <td>
+              <strong>{{ g.name }}</strong>
+              <div class="muted">ID {{ g.id }}</div>
+            </td>
+            <td>{{ g.parts === 1 ? '1 подгруппа' : '2 подгруппы' }}</td>
+            <td>{{ g.size > 0 ? g.size : '—' }}</td>
+            <td>{{ g.home_campus === 1 ? 'Кривоусова, 53' : 'Лесная' }}</td>
+            <td>
+              <span v-if="g.curator_teacher >= 0">{{ store.teachers.find(t=>t.id===g.curator_teacher)?.name || `ID ${g.curator_teacher}` }}</span>
+              <span v-else class="muted">не назначен</span>
+              <small v-if="g.curator_teacher >= 0 && g.class_hour_enabled !== false" class="class-hour-note">классный час: ПН 07:50</small>
+            </td>
+            <td>
+              {{ workSummary(g) }}
+              <small v-for="(period,index) in g.practice_periods || []" :key="index" class="practice-note">ПП: {{ period.from }} — {{ period.to }}</small>
+              <small v-if="g.teaching_deadline" class="deadline-note">Вычитать до {{ g.teaching_deadline }}</small>
+            </td>
+            <td class="actions">
+              <button class="btn btn-ghost btn-sm" @click="openEdit(g)">
+                <Edit2 :size="16" />
+              </button>
+              <button class="btn btn-ghost btn-sm danger" @click="confirmDelete(g)">
+                <Trash2 :size="16" />
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
 
     <Modal v-model="modalOpen" :title="editItem ? 'Редактировать группу' : 'Добавить группу'">
@@ -107,11 +174,13 @@
 
 <script setup>
 import { computed, ref, onMounted } from 'vue'
+import { GraduationCap, Clock, Plus, Edit2, Trash2 } from 'lucide-vue-next'
 import Modal from '../components/Modal.vue'
 import WorkScheduleEditor from '../components/WorkScheduleEditor.vue'
 import PracticeCalendarEditor from '../components/PracticeCalendarEditor.vue'
 import PracticeReadout from '../components/PracticeReadout.vue'
 import PracticeCalendarImport from '../components/PracticeCalendarImport.vue'
+import Skeleton from '../components/ui/Skeleton.vue'
 import { useDataStore } from '../stores/data.js'
 import { useToast } from '../composables/useToast.js'
 
@@ -129,7 +198,10 @@ const defaultDays=()=>Array.from({length:7},(_,i)=>({day:i+1,enabled:i<6,start_s
 const baseSchedule=()=>({work_period:{from:'',to:''},work_days:defaultDays()})
 const form = ref({ name: '', parts: 2, size: 0, home_campus: 0, curator_teacher: -1, class_hour_enabled: true, class_hour_campus: -1, ...baseSchedule() })
 const bulkForm=ref(baseSchedule())
-const allSelected=computed(()=>store.groups.length>0&&selected.value.length===store.groups.length)
+const allSelected=computed({
+  get: ()=>store.groups.length>0&&selected.value.length===store.groups.length,
+  set: (val)=>{selected.value=val?store.groups.map(g=>g.id):[]}
+})
 async function calendarUpdated(){await store.loadGroups();readoutRevision.value++;toast.success('Календарь обновлён. Предыдущая версия базы сохранена.')}
 
 onMounted(async () => { loading.value = true; await Promise.all([store.loadGroups(), store.loadTeachers()]); loading.value = false })
@@ -140,7 +212,6 @@ function openEdit(g) { editItem.value = g; form.value = { ...JSON.parse(JSON.str
 function toggleAll(){selected.value=allSelected.value?[]:store.groups.map(g=>g.id)}
 function openBulk(){bulkForm.value=baseSchedule();bulkModal.value=true}
 const workSummary=g=>g.work_period?.from&&g.work_period?.to?`${g.work_period.from} — ${g.work_period.to}`:'весь семестр'
-const curatorName=id=>id>=0?`Куратор: ${store.teachers.find(t=>t.id===id)?.name||`ID ${id}`}`:'куратор не назначен'
 function confirmDelete(g) { deleteTarget.value = g; deleteModal.value = true }
 
 async function save() {
@@ -169,12 +240,12 @@ async function doDelete() {
 
 <style scoped>
 .center-load { display:flex; justify-content:center; padding:60px; }
-.cards-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 14px; }
-.group-card { display: flex; flex-direction: column; gap: 10px; }
-.header-actions{display:flex;gap:8px;flex-wrap:wrap}.gc-top { display: flex; align-items: center; gap:8px; }.gc-top .badge{margin-left:auto}.entity-check{width:17px;height:17px}.bulk-note{color:var(--text-secondary);font-size:14px}
-.gc-name { font-size: 18px; font-weight: 700; }
+.header-actions{display:flex;gap:8px;flex-wrap:wrap}.entity-check{width:17px;height:17px}.bulk-note{color:var(--text-secondary);font-size:14px}
 .class-hour-chip{color:#8b5cf6;border-color:rgba(139,92,246,.35)}
 .class-hour-box{padding:14px;border:1px solid rgba(139,92,246,.35);border-radius:12px;background:rgba(139,92,246,.07);margin:12px 0}.class-hour-box p{margin:8px 0 14px;color:var(--text-secondary);font-size:13px;line-height:1.45}.class-hour-head{display:flex;justify-content:space-between;gap:14px;align-items:center}.class-hour-head label{display:flex;gap:7px;align-items:center;font-size:13px;color:var(--text-secondary)}
-.gc-meta { }
-.gc-actions { display: flex; gap: 8px; border-top: 1px solid var(--border); padding-top: 10px; }
+.muted{color:var(--text-muted);font-size:12px}
+.class-hour-note{display:block;margin-top:3px;color:#8b5cf6;font-size:11px}
+.practice-note{display:block;margin-top:3px;color:var(--text-muted);font-size:11px}
+.deadline-note{display:block;margin-top:3px;color:var(--warning);font-size:11px}
+.actions{display:flex;gap:4px;margin-left:auto}.danger{color:var(--error)}
 </style>

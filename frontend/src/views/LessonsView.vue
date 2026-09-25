@@ -1,8 +1,14 @@
 <template>
   <div class="page">
     <div class="page-header">
-      <h1 class="page-title">📖 Пары / Занятия</h1>
-      <button class="btn btn-primary" @click="openAdd">+ Добавить</button>
+      <div class="page-title-wrapper">
+        <BookOpen :size="24" />
+        <h1 class="page-title">Пары / Занятия</h1>
+      </div>
+      <button class="btn btn-primary" @click="openAdd">
+        <Plus :size="18" />
+        <span>Добавить</span>
+      </button>
     </div>
 
     <!-- Filters -->
@@ -13,10 +19,41 @@
       </select>
     </div>
 
-    <div v-if="loading" class="center-load"><span class="spinner spinner-lg" style="color:var(--accent)"/></div>
+    <div v-if="loading" class="loading-state">
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Предмет</th>
+              <th>Группа</th>
+              <th>Подгруппа</th>
+              <th>Преподаватель</th>
+              <th>Часов</th><th>Недели</th><th>Аудитория / требования</th>
+              <th>Вид занятия</th>
+              <th>Кампусы</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="i in 8" :key="i">
+              <td><Skeleton class="w-32 h-4" /></td>
+              <td><Skeleton class="w-24 h-4" /></td>
+              <td><Skeleton class="w-20 h-4" /></td>
+              <td><Skeleton class="w-28 h-4" /></td>
+              <td><Skeleton class="w-12 h-4" /></td>
+              <td><Skeleton class="w-16 h-4" /></td>
+              <td><Skeleton class="w-36 h-4" /></td>
+              <td><Skeleton class="w-20 h-4" /></td>
+              <td><Skeleton class="w-24 h-4" /></td>
+              <td><Skeleton class="w-16 h-4" /></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
 
-    <div v-else-if="filteredLessons.length === 0" class="empty-state">
-      <span class="icon">📖</span>
+    <div v-else-if="filteredLessons.length === 0" class="empty-state card">
+      <BookOpen :size="64" style="opacity: 0.3" />
       <h3>Нет занятий</h3>
       <p>Добавьте первое занятие</p>
     </div>
@@ -37,15 +74,19 @@
         </thead>
         <tbody>
           <tr v-for="l in filteredLessons" :key="l.id">
-            <td><strong>{{ l.name }}</strong></td>
+            <td>
+              <strong>{{ l.name }}</strong>
+              <div class="muted">ID {{ l.id }}</div>
+            </td>
             <td>{{ groupName(l.group) }}</td>
             <td>{{ subgroupLabel(l.subgroup, l.group) }}</td>
             <td>{{ teacherName(l.teacher) }}</td>
             <td>{{ l.total_hours || l.total_slots * 2 }}</td>
             <td><span class="badge badge-accent">{{ parityLabel(l.week_parity) }}</span></td>
             <td>
-              {{ roomName(l.fixed_room) }}
-              <small v-if="l.allow_room_substitution !== false" class="auto-room">автозамена разрешена</small>
+              <span v-if="l.fixed_room >= 0">{{ roomName(l.fixed_room) }}</span>
+              <span v-else class="muted">не закреплена</span>
+              <small v-if="l.allow_room_substitution !== false && l.fixed_room >= 0" class="auto-room">автозамена разрешена</small>
               <small v-if="roomRequirementSummary(l)">{{ roomRequirementSummary(l) }}</small>
             </td>
             <td>
@@ -60,11 +101,13 @@
                 {{ c === 0 ? 'Лесная' : 'Кривоусова' }}
               </span>
             </td>
-            <td>
-              <div style="display:flex;gap:4px">
-                <button class="btn btn-ghost btn-sm btn-icon" @click="openEdit(l)" title="Изменить">✏️</button>
-                <button class="btn btn-ghost btn-sm btn-icon" style="color:var(--error)" @click="confirmDelete(l)" title="Удалить">🗑</button>
-              </div>
+            <td class="actions">
+              <button class="btn btn-ghost btn-sm" @click="openEdit(l)">
+                <Edit2 :size="16" />
+              </button>
+              <button class="btn btn-ghost btn-sm danger" @click="confirmDelete(l)">
+                <Trash2 :size="16" />
+              </button>
             </td>
           </tr>
         </tbody>
@@ -190,7 +233,9 @@
 
 <script setup>
 import { ref, computed, onMounted } from 'vue'
+import { BookOpen, Plus, Edit2, Trash2 } from 'lucide-vue-next'
 import Modal from '../components/Modal.vue'
+import Skeleton from '../components/ui/Skeleton.vue'
 import { useDataStore } from '../stores/data.js'
 import { useToast } from '../composables/useToast.js'
 import { emptyLessonForm, lessonFormFromEntity, lessonPayloadFromForm } from '../utils/entityPayloads.js'
@@ -300,5 +345,7 @@ async function doDelete() {
 .substitution-option { margin: 2px 0 14px; padding:10px 12px; border:1px solid var(--border); border-radius:8px; background:var(--bg-secondary); }
 .form-group small { display:block; color:var(--text-muted); font-size:12px; margin-top:4px; }
 .constraint-note { display:block; color:var(--text-muted); margin-top:3px; }
+.muted{color:var(--text-muted);font-size:12px}
+.actions{display:flex;gap:4px;margin-left:auto}.danger{color:var(--error)}
 @media (max-width: 500px) { .form-row { flex-direction: column; } }
 </style>

@@ -26,6 +26,7 @@ const routes = [
   { path: '/lessons', component: LessonsView, meta: { title: 'Пары' } },
   { path: '/rooms', component: RoomsView, meta: { title: 'Аудитории' } },
   { path: '/data-tools', component: DataToolsView, meta: { title: 'Данные и контроль' } },
+  { path: '/data', component: DataToolsView, meta: { title: 'Данные и контроль' } },
   { path: '/teacher-notifications', component: TeacherNotificationsView, meta: { title: 'Уведомления преподавателей' } },
   { path: '/settings', component: SettingsView, meta: { title: 'Настройки' } },
 ]

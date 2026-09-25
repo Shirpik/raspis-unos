@@ -1,38 +1,49 @@
 <template>
   <div class="home">
-    <div class="home-card">
-      <div class="home-logo">
-        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
-          <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
-          <path d="M16 2v4M8 2v4M3 10h18"/>
-        </svg>
-        <span class="home-logo-text">Расписание</span>
+    <div class="home-inner">
+      <div class="home-header">
+        <CalendarRange :size="32" />
+        <h1>Расписание</h1>
       </div>
-      <p class="home-subtitle">Выберите режим просмотра</p>
-      <div class="home-actions">
-        <RouterLink to="/student" class="entry-btn entry-student">
-          <GraduationCap :size="24" class="entry-icon" />
-          <div class="entry-content">
-            <span class="entry-label">Студентам</span>
-            <span class="entry-desc">Посмотреть расписание своей группы</span>
+
+      <div class="home-grid">
+        <RouterLink to="/student" class="mode-card">
+          <div class="mode-icon">
+            <GraduationCap :size="24" />
           </div>
-          <ChevronRight :size="20" class="entry-arrow" />
+          <div class="mode-text">
+            <span class="mode-title">Студентам</span>
+            <span class="mode-desc">Просмотр расписания группы</span>
+          </div>
+          <div class="mode-arrow">
+            <ArrowRight :size="18" />
+          </div>
         </RouterLink>
-        <RouterLink to="/teacher-portal" class="entry-btn entry-teacher">
-          <UserCheck :size="24" class="entry-icon" />
-          <div class="entry-content">
-            <span class="entry-label">Преподавателям</span>
-            <span class="entry-desc">Расписание, учет часов и уведомления</span>
+
+        <RouterLink to="/teacher-portal" class="mode-card">
+          <div class="mode-icon">
+            <UserCheck :size="24" />
           </div>
-          <ChevronRight :size="20" class="entry-arrow" />
+          <div class="mode-text">
+            <span class="mode-title">Преподавателям</span>
+            <span class="mode-desc">Нагрузка и уведомления</span>
+          </div>
+          <div class="mode-arrow">
+            <ArrowRight :size="18" />
+          </div>
         </RouterLink>
-        <RouterLink to="/schedule" class="entry-btn entry-admin">
-          <Wrench :size="24" class="entry-icon" />
-          <div class="entry-content">
-            <span class="entry-label">Диспетчеру</span>
-            <span class="entry-desc">Управление расписанием</span>
+
+        <RouterLink to="/schedule" class="mode-card">
+          <div class="mode-icon">
+            <Settings :size="24" />
           </div>
-          <ChevronRight :size="20" class="entry-arrow" />
+          <div class="mode-text">
+            <span class="mode-title">Диспетчеру</span>
+            <span class="mode-desc">Управление системой</span>
+          </div>
+          <div class="mode-arrow">
+            <ArrowRight :size="18" />
+          </div>
         </RouterLink>
       </div>
     </div>
@@ -40,7 +51,7 @@
 </template>
 
 <script setup>
-import { GraduationCap, UserCheck, Wrench, ChevronRight } from 'lucide-vue-next'
+import { GraduationCap, UserCheck, Settings, CalendarRange, ArrowRight } from 'lucide-vue-next'
 </script>
 
 <style scoped>
@@ -50,136 +61,171 @@ import { GraduationCap, UserCheck, Wrench, ChevronRight } from 'lucide-vue-next'
   align-items: center;
   justify-content: center;
   padding: 24px;
-  background:
-    radial-gradient(circle at 20% 30%, rgba(251, 146, 60, 0.03) 0%, transparent 50%),
-    radial-gradient(circle at 80% 70%, rgba(251, 146, 60, 0.02) 0%, transparent 50%),
-    var(--bg-primary);
+  background: var(--bg-primary);
 }
 
-.home-card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 28px;
-  max-width: 520px;
-  width: 100%;
-  background: var(--bg-secondary);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg, 16px);
-  padding: 52px 44px;
-  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.5);
-}
-
-.home-logo {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  color: var(--text-primary);
-}
-.home-logo svg {
-  color: var(--accent);
-}
-.home-logo-text {
-  font-size: 24px;
-  font-weight: 600;
-  color: var(--text-primary);
-  letter-spacing: -0.02em;
-}
-
-.home-subtitle {
-  margin: -8px 0 0;
-  font-size: 14px;
-  color: var(--text-muted);
-  font-weight: 500;
-}
-
-.home-actions {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
+.home-inner {
+  max-width: 800px;
   width: 100%;
 }
 
-.entry-btn {
+.home-header {
   display: flex;
   align-items: center;
   gap: 16px;
-  padding: 20px 20px;
-  border-radius: var(--radius);
+  margin-bottom: 64px;
+  justify-content: center;
+}
+.home-header svg {
+  color: var(--accent);
+}
+.home-header h1 {
+  font-size: 32px;
+  font-weight: 600;
+  color: var(--text-primary);
+  letter-spacing: -0.03em;
+  margin: 0;
+}
+
+.home-grid {
+  display: grid;
+  gap: 16px;
+}
+
+.mode-card {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 28px 32px;
+  background: var(--bg-secondary);
   border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
   text-decoration: none;
-  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-  background: var(--bg-tertiary);
+  transition: all var(--transition);
   position: relative;
   overflow: hidden;
 }
-.entry-btn::before {
+
+.mode-card::before {
   content: '';
   position: absolute;
-  inset: 0;
-  background: linear-gradient(135deg, var(--accent-light) 0%, transparent 60%);
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-.entry-btn:hover::before {
-  opacity: 1;
-}
-.entry-btn:hover {
-  border-color: var(--accent);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(251, 146, 60, 0.15);
-}
-.entry-btn:active {
-  transform: translateY(0);
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: var(--accent);
+  transform: scaleY(0);
+  transition: transform var(--transition);
+  transform-origin: bottom;
 }
 
-.entry-icon {
-  flex-shrink: 0;
-  color: var(--text-secondary);
-  transition: color 0.2s ease;
-  z-index: 1;
+.mode-card:hover::before {
+  transform: scaleY(1);
+  transform-origin: top;
 }
-.entry-btn:hover .entry-icon {
+
+.mode-card:hover {
+  border-color: var(--accent);
+  transform: translateX(4px);
+  background: var(--bg-tertiary);
+}
+
+.mode-card:active {
+  transform: translateX(2px);
+}
+
+.mode-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius);
+  background: rgba(251, 146, 60, 0.1);
+  flex-shrink: 0;
+  transition: all var(--transition);
+}
+
+.mode-card:hover .mode-icon {
+  background: rgba(251, 146, 60, 0.15);
+  transform: scale(1.05);
+}
+
+.mode-icon svg {
   color: var(--accent);
 }
 
-.entry-content {
+.mode-text {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 6px;
   flex: 1;
-  z-index: 1;
 }
-.entry-label {
-  font-size: 16px;
+
+.mode-title {
+  font-size: 18px;
   font-weight: 600;
   color: var(--text-primary);
   letter-spacing: -0.01em;
-  transition: color 0.2s ease;
-}
-.entry-desc {
-  font-size: 13px;
-  color: var(--text-muted);
-  line-height: 1.4;
 }
 
-.entry-arrow {
-  flex-shrink: 0;
+.mode-desc {
+  font-size: 14px;
   color: var(--text-muted);
-  opacity: 0;
-  transform: translateX(-8px);
-  transition: all 0.2s ease;
-  z-index: 1;
 }
-.entry-btn:hover .entry-arrow {
-  opacity: 1;
-  transform: translateX(0);
+
+.mode-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+  transition: all var(--transition);
+}
+
+.mode-card:hover .mode-arrow {
   color: var(--accent);
+  transform: translateX(4px);
 }
 
-@media (max-width: 580px) {
-  .home-card { padding: 40px 28px; max-width: 100%; }
-  .entry-btn { padding: 18px 18px; }
-  .home-logo-text { font-size: 22px; }
+@media (max-width: 640px) {
+  .home {
+    padding: 20px;
+  }
+
+  .home-header {
+    margin-bottom: 48px;
+  }
+
+  .home-header svg {
+    width: 28px;
+    height: 28px;
+  }
+
+  .home-header h1 {
+    font-size: 26px;
+  }
+
+  .mode-card {
+    padding: 20px 24px;
+    gap: 16px;
+  }
+
+  .mode-icon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .mode-icon svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .mode-title {
+    font-size: 16px;
+  }
+
+  .mode-desc {
+    font-size: 13px;
+  }
 }
 </style>

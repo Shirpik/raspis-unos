@@ -1,19 +1,29 @@
 <template>
   <div class="page">
     <div class="page-header">
-      <h1 class="page-title">🛠 Конструктор расписания</h1>
+      <h1 class="page-title">
+        <FileEdit :size="24" style="margin-right: 8px" />
+        Конструктор расписания
+      </h1>
       <div class="header-actions">
         <button class="btn btn-secondary btn-sm" :disabled="cstore.saving" @click="onCopyFromAuto">
-          <span v-if="cstore.saving" class="spinner spinner-sm"/>📥 Скопировать из автогенерации
+          <span v-if="cstore.saving" class="spinner spinner-sm"/>
+          <Download v-else :size="16" />
+          Скопировать из автогенерации
         </button>
         <button class="btn btn-ghost btn-sm" :disabled="cstore.saving" @click="onClear">
-          🗑 Очистить
+          <Trash2 :size="16" />
+          Очистить
         </button>
         <button class="btn btn-secondary btn-sm" :disabled="validating || !cstore.manualData" @click="onValidate">
-          <span v-if="validating" class="spinner spinner-sm" />{{ validating ? 'Проверяю…' : '✓ Проверить' }}
+          <span v-if="validating" class="spinner spinner-sm" />
+          <CheckCircle v-else :size="16" />
+          {{ validating ? 'Проверяю…' : 'Проверить' }}
         </button>
         <button class="btn btn-primary btn-sm" :disabled="cstore.saving || !cstore.dirty" @click="onSave">
-          <span v-if="cstore.saving" class="spinner spinner-sm"/>💾 Сохранить
+          <span v-if="cstore.saving" class="spinner spinner-sm"/>
+          <Save v-else :size="16" />
+          Сохранить
           <span v-if="cstore.dirty" class="badge badge-warning" style="margin-left:6px">●</span>
         </button>
       </div>
@@ -27,17 +37,23 @@
     </div>
 
     <div v-else-if="cstore.error" class="empty-state">
-      <span class="icon">⚠️</span>
+      <AlertCircle :size="48" style="color: var(--error)" />
       <h3>{{ cstore.error }}</h3>
     </div>
 
     <div v-else-if="groups.length === 0" class="empty-state">
-      <span class="icon">📋</span>
+      <FileEdit :size="48" style="color: var(--text-muted)" />
       <h3>Ручное расписание пусто</h3>
       <p>Скопируй из автогенерации, чтобы начать редактирование, или построй с нуля кликами по ячейкам.</p>
       <div style="margin-top:20px; display:flex; gap:10px; justify-content:center">
-        <button class="btn btn-primary" @click="onCopyFromAuto">📥 Скопировать из автогенерации</button>
-        <button class="btn btn-secondary" @click="initScratch">✏️ Начать с нуля</button>
+        <button class="btn btn-primary" @click="onCopyFromAuto">
+          <Download :size="18" />
+          Скопировать из автогенерации
+        </button>
+        <button class="btn btn-secondary" @click="initScratch">
+          <Copy :size="18" />
+          Начать с нуля
+        </button>
       </div>
     </div>
 
@@ -67,12 +83,12 @@
       </div>
 
       <div v-if="filteredGroups.length === 0" class="empty-state">
-        <span class="icon">🎓</span>
+        <GraduationCap :size="48" style="opacity: 0.3" />
         <h3>Нет групп для выбранного курса</h3>
       </div>
 
       <div v-else-if="weekDates.length === 0" class="empty-state">
-        <span class="icon">📅</span>
+        <CalendarX :size="48" style="opacity: 0.3" />
         <h3>Нет учебных дней на этой неделе</h3>
       </div>
 
@@ -81,7 +97,7 @@
           <thead>
             <tr>
               <th rowspan="2" class="th-slot sticky-col">
-                <span class="slot-header-icon">🕐</span>
+                <Clock :size="18" />
                 <span class="slot-header-text">Пара</span>
               </th>
               <th
@@ -145,7 +161,10 @@
 
       <!-- Прогресс уроков -->
       <section class="progress-card">
-        <div class="card-title">📊 Прогресс расстановки уроков</div>
+        <div class="card-title">
+          <BarChart3 :size="20" />
+          <span>Прогресс расстановки уроков</span>
+        </div>
         <div class="progress-grid">
           <div v-for="lp in lessonProgress" :key="lp.id" class="progress-item" :class="{
             'progress-complete': lp.placed >= lp.total_slots,
@@ -213,6 +232,7 @@ import { useDataStore } from '../stores/data.js'
 import { useToast } from '../composables/useToast.js'
 import { api } from '../api/index.js'
 import ValidationPanel from '../components/ValidationPanel.vue'
+import { AlertCircle, Download, Trash2, CheckCircle, Save, FileEdit, Copy, Clock, CalendarX, GraduationCap, BarChart3 } from 'lucide-vue-next'
 
 const cstore = useConstructorStore()
 const data = useDataStore()

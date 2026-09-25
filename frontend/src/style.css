@@ -108,7 +108,7 @@ a:hover { color: var(--accent-hover); }
   backdrop-filter: blur(12px); transition: all var(--transition);
 }
 .card:hover { border-color: var(--border-strong); }
-.card-title { font-size: 16px; font-weight: 600; margin-bottom: 12px; letter-spacing: -0.01em; color: var(--text-primary); }
+.card-title { display: flex; align-items: center; gap: 8px; font-size: 16px; font-weight: 600; margin-bottom: 12px; letter-spacing: -0.01em; color: var(--text-primary); }
 
 .badge { display: inline-flex; align-items: center; gap: 4px; padding: 3px 10px; border-radius: 6px; font-size: 12px; font-weight: 500; }
 .badge-accent { background: var(--accent-light); color: var(--accent); border: 1px solid rgba(251, 146, 60, 0.2); }

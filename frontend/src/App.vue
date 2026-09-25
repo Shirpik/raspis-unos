@@ -1,24 +1,29 @@
 <template>
   <div class="app-root">
-    <Navbar v-if="!route.meta.hideNav" />
-    <main class="main-content">
+    <component :is="layout">
       <RouterView />
-    </main>
+    </component>
     <Toast />
   </div>
 </template>
 
 <script setup>
-import { onMounted, onBeforeUnmount } from 'vue'
-import { useRoute } from 'vue-router'
-import { useRouter } from 'vue-router'
+import { computed, onMounted, onBeforeUnmount } from 'vue'
+import { useRoute, useRouter } from 'vue-router'
 import { useAuthStore } from './stores/auth.js'
-import Navbar from './components/Navbar.vue'
+import AdminLayout from './layouts/AdminLayout.vue'
 import Toast from './components/Toast.vue'
 
 const route = useRoute()
 const router = useRouter()
 const auth = useAuthStore()
+
+const layout = computed(() => {
+  if (route.meta.hideNav) {
+    return { template: '<main class="main-content"><slot /></main>' }
+  }
+  return AdminLayout
+})
 
 function onUnauthorized() {
   auth.authenticated = false

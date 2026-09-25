@@ -2,11 +2,17 @@
   <div class="page">
     <div class="page-header">
       <div>
-        <h1 class="page-title">🚪 Аудиторный фонд</h1>
+        <div class="page-title-wrapper">
+          <DoorOpen :size="24" />
+          <h1 class="page-title">Аудиторный фонд</h1>
+        </div>
         <p class="subtitle">Обычные аудитории доступны всем, персональные мастерские — только ответственным, закрытые помещения никогда не попадают в расписание.</p>
       </div>
       <div class="header-actions">
-        <button class="btn btn-primary" @click="openAdd">+ Добавить аудиторию</button>
+        <button class="btn btn-primary" @click="openAdd">
+          <Plus :size="18" />
+          <span>Добавить аудиторию</span>
+        </button>
       </div>
     </div>
 
@@ -42,9 +48,30 @@
       <p v-else class="subtitle report-note">Автоматических замен в последней генерации не было.</p>
     </section>
 
-    <div v-if="loading" class="center-load"><span class="spinner spinner-lg" /></div>
+    <div v-if="loading" class="loading-state">
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Кабинет</th><th>Корпус</th><th>Тип / оснащение</th><th>Назначение</th><th>Режим</th><th>Ответственные</th><th>Вместимость</th><th>Доступные пары</th><th>Статус</th><th></th></tr></thead>
+          <tbody>
+            <tr v-for="i in 8" :key="i">
+              <td><Skeleton class="w-24 h-4" /></td>
+              <td><Skeleton class="w-32 h-4" /></td>
+              <td><Skeleton class="w-28 h-4" /></td>
+              <td><Skeleton class="w-20 h-4" /></td>
+              <td><Skeleton class="w-24 h-4" /></td>
+              <td><Skeleton class="w-32 h-4" /></td>
+              <td><Skeleton class="w-16 h-4" /></td>
+              <td><Skeleton class="w-20 h-4" /></td>
+              <td><Skeleton class="w-20 h-4" /></td>
+              <td><Skeleton class="w-16 h-4" /></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
     <div v-else-if="!store.rooms.length" class="empty-state card">
-      <span class="icon">🏫</span><h3>Аудитории ещё не заполнены</h3>
+      <Building2 :size="64" style="opacity: 0.3" />
+      <h3>Аудитории ещё не заполнены</h3>
       <p>Добавьте известные кабинеты и укажите корпус. Закрепление за преподавателем задаётся в разделе «Преподаватели».</p>
     </div>
     <div v-else class="table-wrap">
@@ -61,7 +88,14 @@
             <td>{{ room.capacity || 'не указана' }}</td>
             <td><span v-if="room.available_slots?.length" class="badge badge-muted">{{ room.available_slots.join(', ') }}</span><span v-else class="muted">весь день</span></td>
             <td><span :class="['badge', room.active === false ? 'badge-muted' : 'badge-success']">{{ room.active === false ? 'не используется' : 'активна' }}</span></td>
-            <td class="actions"><button class="btn btn-ghost btn-sm" @click="openEdit(room)">✏️</button><button class="btn btn-ghost btn-sm danger" @click="remove(room)">🗑</button></td>
+            <td class="actions">
+              <button class="btn btn-ghost btn-sm" @click="openEdit(room)">
+                <Edit2 :size="16" />
+              </button>
+              <button class="btn btn-ghost btn-sm danger" @click="remove(room)">
+                <Trash2 :size="16" />
+              </button>
+            </td>
           </tr>
         </tbody>
       </table>
@@ -87,7 +121,9 @@
 
 <script setup>
 import { computed, onMounted, ref } from 'vue'
+import { DoorOpen, Building2, Plus, Edit2, Trash2 } from 'lucide-vue-next'
 import Modal from '../components/Modal.vue'
+import Skeleton from '../components/ui/Skeleton.vue'
 import { api } from '../api/index.js'
 import { useDataStore } from '../stores/data.js'
 import { useToast } from '../composables/useToast.js'

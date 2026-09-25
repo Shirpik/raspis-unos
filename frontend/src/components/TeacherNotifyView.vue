@@ -31,13 +31,13 @@
     </div>
 
     <div v-else-if="!selectedTeacher && searchQuery && filteredTeachers.length === 0" class="empty-state">
-      <span class="icon">🔍</span>
+      <Search :size="48" style="opacity: 0.3" />
       <h3>Преподаватель не найден</h3>
       <p>Измените строку поиска</p>
     </div>
 
     <div v-else-if="!selectedTeacher" class="empty-state">
-      <span class="icon">👤</span>
+      <User :size="48" style="opacity: 0.3" />
       <h3>Введите ФИО преподавателя</h3>
       <p>Используйте поиск выше</p>
     </div>
@@ -48,7 +48,10 @@
       </div>
 
       <div class="notify-form card">
-        <h3 class="form-title">📮 Сообщить о недоступности</h3>
+        <h3 class="form-title">
+          <Send :size="20" />
+          Сообщить о недоступности
+        </h3>
         <p class="form-help">Укажите даты и причину отсутствия. Диспетчер рассмотрит ваше сообщение.</p>
 
         <div class="form-row">
@@ -85,14 +88,13 @@
 
         <div class="form-group">
           <label class="form-label">Прикрепить документ (необязательно)</label>
-          <input
-            ref="fileInput"
-            type="file"
+          <FileUploader
+            ref="uploader"
             accept="image/*,.pdf"
-            class="form-file"
-            @change="onFileSelect"
+            accept-label="Изображение или PDF документ"
+            :show-upload-button="false"
+            @file-selected="onFileSelect"
           />
-          <p v-if="form.fileName" class="file-name">📎 {{ form.fileName }}</p>
         </div>
 
         <div class="form-actions">
@@ -105,14 +107,17 @@
       </div>
 
       <div class="history-section">
-        <h3 class="section-title">📋 История сообщений</h3>
+        <h3 class="section-title">
+          <History :size="20" />
+          История сообщений
+        </h3>
 
         <div v-if="loading" class="center-block">
           <span class="spinner spinner-lg" style="color: var(--accent)" />
         </div>
 
         <div v-else-if="notifications.length === 0" class="empty-state card">
-          <span class="icon">📭</span>
+          <Inbox :size="48" style="opacity: 0.3" />
           <h3>Сообщений пока нет</h3>
         </div>
 
@@ -136,7 +141,8 @@
               </p>
               <p class="notif-reason"><strong>Причина:</strong> {{ notif.reason }}</p>
               <p v-if="notif.attachment_url" class="notif-attachment">
-                📎 <a :href="notif.attachment_url" target="_blank">Просмотреть документ</a>
+                <Paperclip :size="16" />
+                <a :href="notif.attachment_url" target="_blank">Просмотреть документ</a>
               </p>
               <p v-if="notif.dispatcher_note" class="notif-note">
                 <strong>Комментарий диспетчера:</strong> {{ notif.dispatcher_note }}
@@ -152,6 +158,8 @@
 <script setup>
 import { ref, computed, watch } from 'vue'
 import { useDataStore } from '../stores/data.js'
+import { User, Search, Send, History, Inbox, Paperclip } from 'lucide-vue-next'
+import FileUploader from './FileUploader.vue'
 import { api } from '../api/index.js'
 import { useToast } from '../composables/useToast.js'
 
@@ -163,7 +171,7 @@ const selectedTeacher = ref(null)
 const notifications = ref([])
 const loading = ref(false)
 const saving = ref(false)
-const fileInput = ref(null)
+const uploader = ref(null)
 
 const form = ref({
   dateFrom: '',
@@ -211,11 +219,10 @@ function resetForm() {
     fileName: '',
     fileData: null,
   }
-  if (fileInput.value) fileInput.value.value = ''
+  uploader.value?.removeFile()
 }
 
-function onFileSelect(event) {
-  const file = event.target.files?.[0]
+function onFileSelect(file) {
   if (!file) {
     form.value.fileName = ''
     form.value.fileData = null
@@ -274,9 +281,9 @@ async function submitNotification() {
 
 function statusLabel(status) {
   const map = {
-    pending: '⏳ Ожидает рассмотрения',
-    approved: '✅ Принято',
-    rejected: '❌ Отклонено',
+    pending: 'Ожидает рассмотрения',
+    approved: 'Принято',
+    rejected: 'Отклонено',
   }
   return map[status] || status
 }

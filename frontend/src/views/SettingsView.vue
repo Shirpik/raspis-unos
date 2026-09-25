@@ -1,9 +1,15 @@
 <template>
   <div class="page">
-    <h1 class="page-title" style="margin-bottom:24px">⚙️ Настройки</h1>
+    <h1 class="page-title" style="margin-bottom:24px">
+      <Settings :size="28" />
+      <span>Настройки</span>
+    </h1>
 
     <section class="card settings-card">
-      <div class="card-title">🔐 Доступ диспетчера</div>
+      <div class="card-title">
+        <Lock :size="18" />
+        <span>Доступ диспетчера</span>
+      </div>
       <p class="settings-hint">Текущий пользователь: <strong>{{ auth.username }}</strong>. Для изменения требуется действующий пароль.</p>
       <form class="credentials-form" @submit.prevent="saveCredentials">
         <div class="form-row">
@@ -66,13 +72,19 @@
           <span v-if="savingSettings" class="spinner spinner-sm"/>
           Сохранить
         </button>
-        <span v-if="settingsSaved" class="badge badge-success">✓ Сохранено</span>
+        <span v-if="settingsSaved" class="badge badge-success">
+          <CheckCircle :size="14" />
+          Сохранено
+        </span>
       </div>
     </section>
 
     <!-- Regenerate -->
     <section v-if="!demoMode" class="card settings-card regen-card">
-      <div class="card-title">🚀 Генерация расписания</div>
+      <div class="card-title">
+        <Rocket :size="20" style="margin-right: 8px" />
+        Генерация расписания
+      </div>
       <p style="color:var(--text-secondary);font-size:14px;margin-bottom:16px">
         После изменения данных необходимо пересгенерировать расписание.
       </p>
@@ -264,6 +276,7 @@ import { useToast } from '../composables/useToast.js'
 import { api } from '../api/index.js'
 import { useAuthStore } from '../stores/auth.js'
 import { demoMode } from '../config.js'
+import { CheckCircle, Rocket, Settings, Lock } from 'lucide-vue-next'
 
 const store = useDataStore()
 const schedStore = useScheduleStore()
@@ -306,10 +319,10 @@ const applyingProfile = ref(false)
 let rootBuffer = ''
 
 const SECTION_TITLES = {
-  solver: '⚙️ Solver',
-  hard_soft: '🔒 Жёсткие/мягкие ограничения',
-  weights: '⚖️ Веса штрафов',
-  shape: '📐 Размерности',
+  solver: 'Solver',
+  hard_soft: 'Жёсткие/мягкие ограничения',
+  weights: 'Веса штрафов',
+  shape: 'Размерности',
 }
 
 const rootSections = computed(() => {

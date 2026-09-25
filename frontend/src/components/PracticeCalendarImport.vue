@@ -2,7 +2,15 @@
   <section class="card calendar-import">
     <h2>Календарь учебного времени</h2>
     <p>Загрузите XLSX из Google-таблицы. До применения проверьте группы и даты. Часы вклеек и журнал сохраняются.</p>
-    <input type="file" accept=".xlsx" :disabled="busy" @change="preview" />
+
+    <FileUploader
+      ref="uploader"
+      accept=".xlsx"
+      accept-label="XLSX файл из Google Таблиц"
+      :show-upload-button="false"
+      @file-selected="preview"
+    />
+
     <p v-if="error" class="error">{{ error }}</p>
     <template v-if="entries.length">
       <p>Однозначно сопоставлено {{ entries.length }} групп, по 52 недели. Источник: {{ filename }}.</p>
@@ -15,10 +23,13 @@
 import {ref} from 'vue'
 import {api} from '../api/index.js'
 import {parsePracticeCalendar} from '../utils/practiceCalendarImport.js'
+import FileUploader from './FileUploader.vue'
+
 const emit=defineEmits(['updated'])
-const entries=ref([]),error=ref(''),busy=ref(false),filename=ref('')
-async function preview(event){
-  const file=event.target.files?.[0];entries.value=[];error.value='';if(!file)return
+const entries=ref([]),error=ref(''),busy=ref(false),filename=ref(''),uploader=ref(null)
+
+async function preview(file){
+  entries.value=[];error.value='';if(!file)return
   busy.value=true
   try{
     const capability=await api.data.semesterReadout();if(!capability.ok||!(capability.data?.rules_version>=3))throw new Error('Для импорта календаря перезапустите сайт с новой сборкой сервера')
@@ -28,6 +39,16 @@ async function preview(event){
     entries.value=parsePracticeCalendar(XLSX.read(buffer,{type:'array'}),response.data,XLSX,sha);filename.value=file.name
   }catch(e){error.value=e.message}finally{busy.value=false}
 }
-async function apply(){busy.value=true;error.value='';try{const r=await api.groups.importCalendar(entries.value);if(!r.ok)throw new Error(r.data?.message||'Ошибка сохранения');entries.value=[];emit('updated')}catch(e){error.value=e.message}finally{busy.value=false}}
+
+async function apply(){
+  busy.value=true;error.value='';
+  try{
+    const r=await api.groups.importCalendar(entries.value);
+    if(!r.ok)throw new Error(r.data?.message||'Ошибка сохранения');
+    entries.value=[];
+    uploader.value?.removeFile();
+    emit('updated')
+  }catch(e){error.value=e.message}finally{busy.value=false}
+}
 </script>
 <style scoped>.calendar-import{padding:18px;margin-bottom:20px}.calendar-import h2{font-size:20px;margin:0}.calendar-import p{color:var(--text-secondary);font-size:13px}.calendar-import .error{color:var(--error)}.table-wrap{max-height:300px;margin:12px 0}</style>

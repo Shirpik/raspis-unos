@@ -1,8 +1,23 @@
 <template>
   <div class="page">
     <div class="page-header">
-      <div><h1 class="page-title">👤 Преподаватели</h1><p class="page-help">Выберите несколько преподавателей, чтобы назначить им общий рабочий график.</p></div>
-      <div class="header-actions"><button class="btn btn-secondary" :disabled="!selected.length" @click="openBulk">⏱ Рабочее время ({{ selected.length }})</button><button class="btn btn-primary" @click="openAdd">+ Добавить</button></div>
+      <div>
+        <div class="page-title-wrapper">
+          <Users :size="24" />
+          <h1 class="page-title">Преподаватели</h1>
+        </div>
+        <p class="page-help">Выберите несколько преподавателей, чтобы назначить им общий рабочий график.</p>
+      </div>
+      <div class="header-actions">
+        <button class="btn btn-secondary" :disabled="!selected.length" @click="openBulk">
+          <Clock :size="18" />
+          <span>Рабочее время ({{ selected.length }})</span>
+        </button>
+        <button class="btn btn-primary" @click="openAdd">
+          <Plus :size="18" />
+          <span>Добавить</span>
+        </button>
+      </div>
     </div>
 
     <div v-if="store.teachers.length" class="teacher-toolbar card">
@@ -16,35 +31,92 @@
       <strong>Выбрано: {{ selected.length }}</strong><span>Настройки применятся ко всем выбранным преподавателям одним сохранением.</span><button class="btn btn-primary btn-sm" @click="openBulk">Настроить рабочее время</button>
     </div>
 
-    <div v-if="loading" class="center-load"><span class="spinner spinner-lg" style="color:var(--accent)"/></div>
+    <div v-if="loading" class="loading-state">
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th></th>
+              <th>Преподаватель</th>
+              <th>Корпус</th>
+              <th>Разрешённые площадки</th>
+              <th>Закреплённый кабинет</th>
+              <th>Рабочий период</th>
+              <th>Рабочие дни</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="i in 8" :key="i">
+              <td><Skeleton class="w-4 h-4" /></td>
+              <td><Skeleton class="w-48 h-4" /></td>
+              <td><Skeleton class="w-28 h-4" /></td>
+              <td><Skeleton class="w-32 h-4" /></td>
+              <td><Skeleton class="w-24 h-4" /></td>
+              <td><Skeleton class="w-32 h-4" /></td>
+              <td><Skeleton class="w-36 h-4" /></td>
+              <td><Skeleton class="w-20 h-4" /></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
 
-    <div v-else-if="store.teachers.length === 0" class="empty-state">
-      <span class="icon">👤</span>
+    <div v-else-if="store.teachers.length === 0" class="empty-state card">
+      <Users :size="64" style="opacity: 0.3" />
       <h3>Нет преподавателей</h3>
       <p>Добавьте первого преподавателя</p>
     </div>
 
     <div v-else-if="!filteredTeachers.length" class="empty-state card"><h3>Ничего не найдено</h3><p>Измените строку поиска или фильтр площадки.</p></div>
 
-    <div v-else class="cards-grid">
-      <div v-for="t in filteredTeachers" :key="t.id" :class="['teacher-card','card',{selected:selected.includes(t.id)}]">
-        <div class="tc-body">
-          <input v-model="selected" type="checkbox" :value="t.id" class="entity-check" />
-          <div class="tc-avatar">{{ initials(t.name) }}</div>
-          <div class="tc-info">
-            <div class="tc-name">{{ t.name }}</div>
-            <div class="tc-id">ID: {{ t.id }}</div>
-            <div class="tc-id">{{ workSummary(t) }} · {{ campusName(t.campus_priority?.[0]) }}</div>
-            <div class="tc-id campus-lock">Разрешено: {{ allowedCampusSummary(t) }}</div>
-            <div class="tc-id">{{ workDaysSummary(t) }}</div>
-            <div v-if="t.availability_note" class="availability-note">{{ t.availability_note }}</div>
-          </div>
-        </div>
-        <div class="tc-actions">
-          <button class="btn btn-ghost btn-sm" @click="openEdit(t)">✏️ Изменить</button>
-          <button class="btn btn-ghost btn-sm" style="color:var(--error)" @click="confirmDelete(t)">🗑 Удалить</button>
-        </div>
-      </div>
+    <div v-else class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th><input v-model="allVisibleSelected" type="checkbox" @change="toggleVisible" /></th>
+            <th>Преподаватель</th>
+            <th>Корпус</th>
+            <th>Разрешённые площадки</th>
+            <th>Закреплённый кабинет</th>
+            <th>Рабочий период</th>
+            <th>Рабочие дни</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="t in filteredTeachers" :key="t.id" :class="{selected:selected.includes(t.id)}">
+            <td><input v-model="selected" type="checkbox" :value="t.id" class="entity-check" /></td>
+            <td>
+              <div class="teacher-info">
+                <div class="tc-avatar-sm">{{ initials(t.name) }}</div>
+                <div>
+                  <strong>{{ t.name }}</strong>
+                  <div class="muted">ID: {{ t.id }}</div>
+                  <div v-if="t.availability_note" class="availability-note-inline">{{ t.availability_note }}</div>
+                </div>
+              </div>
+            </td>
+            <td>{{ campusName(t.campus_priority?.[0]) }}</td>
+            <td>{{ allowedCampusSummary(t) }}</td>
+            <td>
+              <span v-if="t.default_room >= 0">{{ availableRooms.find(r=>r.id===t.default_room)?.name || `ID ${t.default_room}` }}</span>
+              <span v-else class="muted">не задан</span>
+              <small v-if="t.room_responsibility" class="room-note">{{ t.room_responsibility }}</small>
+            </td>
+            <td>{{ workSummary(t) }}</td>
+            <td><small>{{ workDaysSummary(t) }}</small></td>
+            <td class="actions">
+              <button class="btn btn-ghost btn-sm" @click="openEdit(t)">
+                <Edit2 :size="16" />
+              </button>
+              <button class="btn btn-ghost btn-sm danger" @click="confirmDelete(t)">
+                <Trash2 :size="16" />
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
 
     <!-- Add/Edit modal -->
@@ -112,10 +184,12 @@
 
 <script setup>
 import { computed, ref, onMounted } from 'vue'
+import { Users, Clock, Plus, Edit2, Trash2 } from 'lucide-vue-next'
 import Modal from '../components/Modal.vue'
 import WorkScheduleEditor from '../components/WorkScheduleEditor.vue'
 import DesiredLoadEditor from '../components/DesiredLoadEditor.vue'
 import DateLoadEditor from '../components/DateLoadEditor.vue'
+import Skeleton from '../components/ui/Skeleton.vue'
 import { emptyTeacherForm, teacherFormFromEntity, teacherPayloadFromForm, teacherBulkPayload } from '../utils/entityPayloads.js'
 import { useDataStore } from '../stores/data.js'
 import { useToast } from '../composables/useToast.js'
@@ -138,7 +212,10 @@ const bulkForm=ref({preferred_campus:-1,allowed_campuses:[0,1],default_room:-1,.
 const bulkApply=ref({period:true,days:true,campus:false,allowedCampuses:false,room:false})
 const filteredTeachers=computed(()=>{const q=search.value.toLocaleLowerCase('ru');return store.teachers.filter(t=>(campusFilter.value===-2||(t.campus_priority?.[0]??-1)===campusFilter.value)&&(!q||`${t.name} ${t.room_responsibility||''} ${t.availability_note||''}`.toLocaleLowerCase('ru').includes(q)))})
 const selectedTeachers=computed(()=>store.teachers.filter(t=>selected.value.includes(t.id)))
-const allVisibleSelected=computed(()=>filteredTeachers.value.length>0&&filteredTeachers.value.every(t=>selected.value.includes(t.id)))
+const allVisibleSelected=computed({
+  get: ()=>filteredTeachers.value.length>0&&filteredTeachers.value.every(t=>selected.value.includes(t.id)),
+  set: ()=>toggleVisible()
+})
 const hasBulkChanges=computed(()=>Object.values(bulkApply.value).some(Boolean))
 
 onMounted(async () => {
@@ -210,18 +287,13 @@ async function doDelete() {
 
 <style scoped>
 .center-load { display:flex; justify-content:center; padding:60px; }.header-actions{display:flex;gap:8px;flex-wrap:wrap}.entity-check{width:17px;height:17px;flex-shrink:0}.bulk-note,.page-help{color:var(--text-secondary);font-size:14px}.page-help{margin-top:4px}.teacher-toolbar{display:grid;grid-template-columns:minmax(260px,1fr) 200px auto auto;gap:8px;margin-bottom:12px}.selection-bar{position:sticky;top:8px;z-index:4;display:flex;align-items:center;gap:12px;padding:10px 14px;margin-bottom:12px;border:1px solid var(--accent);background:var(--accent-light);border-radius:10px}.selection-bar span{flex:1;color:var(--text-secondary);font-size:13px}.template-row{display:grid;grid-template-columns:1fr auto;gap:8px;margin-bottom:14px}.bulk-options{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:12px;background:var(--bg-secondary);border:1px solid var(--border);border-radius:9px;margin-bottom:14px}.bulk-options label{display:flex;gap:8px;align-items:center;font-size:14px}.form-row{display:grid;grid-template-columns:1fr 1fr;gap:10px}.form-group small{display:block;color:var(--text-muted);font-size:12px;margin-top:4px}
-.cards-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 14px; }
-.teacher-card { display: flex; flex-direction: column; gap: 12px; }.teacher-card.selected{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent)}
-.tc-body { display: flex; align-items: center; gap: 12px; }
-.tc-avatar {
-  width: 44px; height: 44px; border-radius: 50%;
-  background: var(--accent-light); color: var(--accent);
-  display: flex; align-items: center; justify-content: center;
-  font-size: 15px; font-weight: 700; flex-shrink: 0;
-}
-.tc-name { font-weight: 600; font-size: 15px; }
-.tc-id { font-size: 12px; color: var(--text-muted); }.campus-lock{color:var(--text-secondary)}.campus-checks{display:flex;gap:18px;flex-wrap:wrap}.campus-checks .form-checkbox{margin:0}
-.availability-note{margin-top:5px;font-size:11px;line-height:1.35;color:var(--warning)}
-.tc-actions { display: flex; gap: 8px; border-top: 1px solid var(--border); padding-top: 10px; }
+.muted{color:var(--text-muted);font-size:12px}
+.teacher-info{display:flex;align-items:center;gap:12px}
+.tc-avatar-sm{width:36px;height:36px;border-radius:50%;background:var(--accent-light);color:var(--accent);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0}
+.availability-note-inline{margin-top:3px;font-size:11px;line-height:1.35;color:var(--warning)}
+.room-note{display:block;margin-top:3px;color:var(--text-muted);font-size:11px}
+.actions{display:flex;gap:4px;margin-left:auto}.danger{color:var(--error)}
+.campus-checks{display:flex;gap:18px;flex-wrap:wrap}.campus-checks .form-checkbox{margin:0}
+tr.selected{background:var(--accent-light);border-color:var(--accent)}
 @media(max-width:850px){.teacher-toolbar{grid-template-columns:1fr}.selection-bar{align-items:flex-start;flex-direction:column}.template-row,.bulk-options{grid-template-columns:1fr}}
 </style>

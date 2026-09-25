@@ -31,13 +31,13 @@
     </div>
 
     <div v-else-if="!selectedTeacher && searchQuery && filteredTeachers.length === 0" class="empty-state">
-      <span class="icon">🔍</span>
+      <Search :size="48" style="opacity: 0.3" />
       <h3>Преподаватель не найден</h3>
       <p>Измените строку поиска</p>
     </div>
 
     <div v-else-if="!selectedTeacher" class="empty-state">
-      <span class="icon">👤</span>
+      <User :size="48" style="opacity: 0.3" />
       <h3>Введите ФИО преподавателя</h3>
       <p>Используйте поиск выше</p>
     </div>
@@ -47,7 +47,8 @@
         <h2>{{ selectedTeacher.name }}</h2>
         <button class="btn btn-primary" @click="downloadHours" :disabled="loading">
           <span v-if="loading" class="spinner spinner-sm" />
-          📥 Скачать учет часов
+          <Download :size="18" />
+          Скачать учет часов
         </button>
       </div>
 
@@ -57,7 +58,7 @@
       </div>
 
       <div v-else-if="error" class="empty-state">
-        <span class="icon">⚠️</span>
+        <AlertCircle :size="48" style="color: var(--error)" />
         <h3>{{ error }}</h3>
         <button class="btn btn-primary" style="margin-top:16px" @click="loadHours">
           Повторить
@@ -65,7 +66,7 @@
       </div>
 
       <div v-else-if="!hoursData || hoursData.length === 0" class="empty-state">
-        <span class="icon">📋</span>
+        <FileText :size="48" style="color: var(--text-muted)" />
         <h3>Данные по учету часов отсутствуют</h3>
       </div>
 
@@ -111,6 +112,7 @@
 import { ref, computed, watch } from 'vue'
 import { useDataStore } from '../stores/data.js'
 import { api } from '../api/index.js'
+import { AlertCircle, FileText, Search, User, Download } from 'lucide-vue-next'
 
 const dataStore = useDataStore()
 

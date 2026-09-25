@@ -163,7 +163,7 @@
 
     <!-- Error -->
     <div v-else-if="store.error" class="empty-state">
-      <span class="icon">⚠️</span>
+      <AlertCircle :size="48" style="color: var(--error)" />
       <h3>{{ store.error }}</h3>
       <p>Не удалось получить сохранённое расписание с сервера.</p>
       <div style="margin-top:20px; display:flex; gap:10px; justify-content:center">
@@ -176,12 +176,13 @@
 
     <!-- No schedule yet -->
     <div v-else-if="!store.scheduleData || store.groups.length === 0" class="empty-state">
-      <span class="icon">📋</span>
+      <FileText :size="48" style="color: var(--text-muted)" />
       <h3>{{ demoMode ? 'Тестовое расписание не загружено' : 'Расписание не сгенерировано' }}</h3>
       <p>{{ demoMode ? 'Обновите страницу или обратитесь к администратору демонстрации.' : 'Нажмите кнопку «Сгенерировать», чтобы создать расписание' }}</p>
       <button v-if="!demoMode" class="btn btn-primary btn-lg" style="margin-top:20px" :disabled="store.generating" @click="onRegenerate">
         <span v-if="store.generating" class="spinner spinner-sm" />
-        {{ store.generating ? 'Генерируется…' : '🚀 Сгенерировать расписание' }}
+        <Rocket v-else :size="18" />
+        {{ store.generating ? 'Генерируется…' : 'Сгенерировать расписание' }}
       </button>
     </div>
 
@@ -199,17 +200,17 @@
 
       <template v-if="viewMode === 'teachers'">
         <div v-if="!teacherSearch" class="empty-state compact-empty">
-          <span class="icon">🔎</span>
+          <Search :size="48" style="opacity: 0.3" />
           <h3>Найдите преподавателя</h3>
           <p>Введите фамилию, имя или полное ФИО в поле выше.</p>
         </div>
         <div v-else-if="!selectedTeacher" class="empty-state compact-empty">
-          <span class="icon">👤</span>
+          <User :size="48" style="opacity: 0.3" />
           <h3>Преподаватель не выбран</h3>
           <p>{{ teacherMatches.length ? 'Выберите ФИО из подсказок.' : 'Совпадений в справочнике преподавателей нет.' }}</p>
         </div>
         <div v-else-if="teacherWeekLessonCount === 0" class="empty-state compact-empty">
-          <span class="icon">📅</span>
+          <CalendarX :size="48" style="opacity: 0.3" />
           <h3>У {{ selectedTeacher.name }} нет занятий на этой неделе</h3>
           <p>Переключите неделю кнопками выше.</p>
         </div>
@@ -223,7 +224,7 @@
               <thead>
                 <tr>
                   <th class="th-slot sticky-col">
-                    <span class="slot-header-icon">🕐</span>
+                    <Clock :size="18" />
                     <span class="slot-header-text">Пара</span>
                   </th>
                   <th v-for="dateStr in weekDates" :key="dateStr" class="th-day">
@@ -267,14 +268,14 @@
 
       <!-- No groups for selected year -->
       <div v-if="filteredGroups.length === 0" class="empty-state">
-        <span class="icon">🎓</span>
+        <GraduationCap :size="48" style="opacity: 0.3" />
         <h3>Нет групп для {{ yearTabs.find(t => t.value === selectedYear)?.label }}</h3>
         <p>Попробуйте другой курс или выберите «Все группы»</p>
       </div>
 
       <!-- No data for week -->
       <div v-else-if="weekDates.length === 0" class="empty-state">
-        <span class="icon">📅</span>
+        <CalendarX :size="48" style="opacity: 0.3" />
         <h3>Нет занятий на этой неделе</h3>
       </div>
 
@@ -284,7 +285,7 @@
             <!-- Row 1: day names -->
             <tr>
               <th rowspan="2" class="th-slot sticky-col">
-                <span class="slot-header-icon">🕐</span>
+                <Clock :size="18" />
                 <span class="slot-header-text">Пара</span>
               </th>
               <th
@@ -378,7 +379,7 @@ import { collectSlotNumbers, subgroupLabel } from '../utils/schedulePresentation
 import ValidationPanel from '../components/ValidationPanel.vue'
 import {
   CalendarRange, Download, FileText, CheckCircle, Upload, Sparkles, X,
-  Info, Check, Minus, Circle, Users, User
+  Info, Check, Minus, Circle, Users, User, Search, CalendarX, Clock, GraduationCap
 } from 'lucide-vue-next'
 
 const store = useScheduleStore()

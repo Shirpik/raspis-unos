@@ -31,13 +31,13 @@
     </div>
 
     <div v-else-if="!selectedTeacher && searchQuery && filteredTeachers.length === 0" class="empty-state">
-      <span class="icon">🔍</span>
+      <Search :size="48" style="opacity: 0.3" />
       <h3>Преподаватель не найден</h3>
       <p>Измените строку поиска</p>
     </div>
 
     <div v-else-if="!selectedTeacher" class="empty-state">
-      <span class="icon">👤</span>
+      <User :size="48" style="opacity: 0.3" />
       <h3>Введите ФИО преподавателя</h3>
       <p>Используйте поиск выше</p>
     </div>
@@ -53,7 +53,7 @@
       </div>
 
       <div v-else-if="store.error" class="empty-state">
-        <span class="icon">⚠️</span>
+        <AlertCircle :size="48" style="color: var(--error)" />
         <h3>{{ store.error }}</h3>
         <button class="btn btn-primary" style="margin-top:16px" @click="store.fetchPublished()">
           Повторить
@@ -61,7 +61,7 @@
       </div>
 
       <div v-else-if="!store.scheduleData" class="empty-state">
-        <span class="icon">📋</span>
+        <Calendar :size="48" style="color: var(--text-muted)" />
         <h3>Расписание ещё не сформировано</h3>
       </div>
 
@@ -84,7 +84,7 @@
         </div>
 
         <div v-if="weekDates.length === 0" class="empty-state">
-          <span class="icon">📅</span>
+          <CalendarX :size="48" style="opacity: 0.3" />
           <h3>На этой неделе занятий нет</h3>
         </div>
 
@@ -93,7 +93,7 @@
             <thead>
               <tr>
                 <th rowspan="2" class="th-slot sticky-col">
-                  <span class="slot-header-icon">🕐</span>
+                  <Clock :size="18" />
                   <span class="slot-header-text">Пара</span>
                 </th>
                 <th v-for="dateStr in weekDates" :key="dateStr" class="th-day">
@@ -139,6 +139,7 @@
 import { ref, computed, onMounted, watch } from 'vue'
 import { useScheduleStore } from '../stores/schedule.js'
 import { useDataStore } from '../stores/data.js'
+import { AlertCircle, Calendar, Search, User, Clock, CalendarX } from 'lucide-vue-next'
 
 const store = useScheduleStore()
 const dataStore = useDataStore()

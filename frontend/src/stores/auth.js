@@ -5,12 +5,17 @@ import { api } from '../api/index.js'
 export const useAuthStore = defineStore('auth', () => {
   const authenticated = ref(false)
   const username = ref('')
+  const user = ref(null)
   const initialized = ref(false)
 
   async function check() {
     const result = await api.auth.status()
     authenticated.value = Boolean(result.ok && result.data?.authenticated)
     username.value = authenticated.value ? (result.data.username || '') : ''
+    user.value = authenticated.value ? {
+      name: result.data.username || '',
+      role: result.data.role || 'dispatcher'
+    } : null
     initialized.value = true
     return authenticated.value
   }
@@ -20,6 +25,10 @@ export const useAuthStore = defineStore('auth', () => {
     if (result.ok) {
       authenticated.value = true
       username.value = result.data.username || loginName
+      user.value = {
+        name: result.data.username || loginName,
+        role: result.data.role || 'dispatcher'
+      }
       initialized.value = true
     }
     return result
@@ -29,6 +38,7 @@ export const useAuthStore = defineStore('auth', () => {
     const result = await api.auth.logout()
     authenticated.value = false
     username.value = ''
+    user.value = null
     initialized.value = true
     return result
   }
@@ -39,5 +49,5 @@ export const useAuthStore = defineStore('auth', () => {
     return result
   }
 
-  return { authenticated, username, initialized, check, login, logout, changeCredentials }
+  return { authenticated, username, user, initialized, check, login, logout, changeCredentials }
 })

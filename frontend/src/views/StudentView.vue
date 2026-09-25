@@ -1,45 +1,84 @@
 <template>
   <div class="student-page">
     <div class="student-header">
-      <RouterLink to="/" class="back-link">← Назад</RouterLink>
-      <h1 class="page-title">📅 Расписание занятий</h1>
+      <RouterLink to="/" class="back-link">
+        <ArrowLeft :size="16" />
+        <span>Назад</span>
+      </RouterLink>
+      <h1 class="page-title">Расписание занятий</h1>
     </div>
 
     <!-- Group selector -->
-    <div class="selector-bar">
-      <div class="year-tabs">
-        <button
-          v-for="tab in yearTabs"
-          :key="tab.value"
-          class="year-tab"
-          :class="{ active: selectedYear === tab.value }"
-          @click="onYearSelect(tab.value)"
-        >
-          {{ tab.label }}
-          <span v-if="tab.count > 0" class="tab-count">{{ tab.count }}</span>
-        </button>
+    <div class="selector-card">
+      <div class="selector-section">
+        <div class="selector-label">
+          <GraduationCap :size="16" />
+          <span>Выберите курс</span>
+        </div>
+        <div class="year-grid">
+          <button
+            v-for="tab in yearTabs"
+            :key="tab.value"
+            class="year-card"
+            :class="{ active: selectedYear === tab.value }"
+            @click="onYearSelect(tab.value)"
+          >
+            <span class="year-number">{{ tab.value }}</span>
+            <span class="year-label">курс</span>
+            <span v-if="tab.count > 0" class="year-count">{{ tab.count }}</span>
+          </button>
+        </div>
       </div>
 
-      <div v-if="groupsForYear.length > 0" class="group-select-wrap">
-        <label class="group-label">Группа:</label>
-        <select v-model="selectedGroupIndex" class="form-select group-select">
-          <option v-if="selectedGroupIndex === null" :value="null" disabled>— выберите группу —</option>
-          <option v-for="g in groupsForYear" :key="g.group_index" :value="g.group_index">
+      <div v-if="groupsForYear.length > 0" class="selector-section">
+        <div class="selector-label">
+          <Users :size="16" />
+          <span>Выберите группу</span>
+        </div>
+        <div class="group-grid">
+          <button
+            v-for="g in groupsForYear"
+            :key="g.group_index"
+            class="group-card"
+            :class="{ active: selectedGroupIndex === g.group_index }"
+            @click="selectedGroupIndex = g.group_index"
+          >
             {{ g.group_name }}
-          </option>
-        </select>
+          </button>
+        </div>
       </div>
     </div>
 
     <!-- Loading -->
-    <div v-if="store.loading" class="center-block">
-      <span class="spinner spinner-lg" style="color: var(--accent)" />
-      <p style="margin-top:16px; color: var(--text-muted)">Загрузка расписания…</p>
+    <div v-if="store.loading" class="loading-state">
+      <div class="selector-card">
+        <div class="selector-section">
+          <Skeleton class="w-32 h-4 mb-3" />
+          <div class="year-grid">
+            <Skeleton v-for="i in 4" :key="i" class="h-24" />
+          </div>
+        </div>
+        <div class="selector-section">
+          <Skeleton class="w-32 h-4 mb-3" />
+          <div class="group-grid">
+            <Skeleton v-for="i in 6" :key="i" class="h-12" />
+          </div>
+        </div>
+      </div>
+      <div class="week-nav">
+        <Skeleton class="w-20 h-9" />
+        <div class="week-label">
+          <Skeleton class="w-24 h-4" />
+          <Skeleton class="w-32 h-3 mt-1" />
+        </div>
+        <Skeleton class="w-20 h-9" />
+      </div>
+      <Skeleton class="w-full h-96" />
     </div>
 
     <!-- Error -->
     <div v-else-if="store.error" class="empty-state">
-      <span class="icon">⚠️</span>
+      <AlertCircle :size="48" style="color: var(--error)" />
       <h3>{{ store.error }}</h3>
       <p>Убедитесь, что сервер запущен</p>
       <button class="btn btn-primary" style="margin-top:16px" @click="store.fetchPublished()">Повторить</button>
@@ -47,14 +86,14 @@
 
     <!-- No schedule -->
     <div v-else-if="!store.scheduleData || store.groups.length === 0" class="empty-state">
-      <span class="icon">📋</span>
+      <Calendar :size="48" style="color: var(--text-muted)" />
       <h3>Расписание ещё не сформировано</h3>
       <p>Обратитесь к диспетчеру учебного процесса</p>
     </div>
 
     <!-- Pick a group prompt -->
     <div v-else-if="selectedGroupIndex === null" class="empty-state">
-      <span class="icon">🎓</span>
+      <GraduationCap :size="48" style="color: var(--accent)" />
       <h3>Выберите курс и группу</h3>
       <p>Используйте панель выше для выбора</p>
     </div>
@@ -62,16 +101,22 @@
     <!-- Schedule -->
     <template v-else>
       <div class="week-nav">
-        <button class="btn btn-ghost btn-sm" :disabled="weekIndex <= 0" @click="weekIndex--">‹ Пред.</button>
-        <span class="week-label">
-          <strong>Неделя {{ weekIndex + 1 }}</strong>
+        <button class="btn btn-secondary btn-sm" :disabled="weekIndex <= 0" @click="weekIndex--">
+          <ChevronLeft :size="16" />
+          <span>Пред.</span>
+        </button>
+        <div class="week-label">
+          <span class="week-title">Неделя {{ weekIndex + 1 }}</span>
           <span class="week-dates">{{ weekLabel }}</span>
-        </span>
-        <button class="btn btn-ghost btn-sm" :disabled="weekIndex >= sortedWeeks.length - 1" @click="weekIndex++">След. ›</button>
+        </div>
+        <button class="btn btn-secondary btn-sm" :disabled="weekIndex >= sortedWeeks.length - 1" @click="weekIndex++">
+          <span>След.</span>
+          <ChevronRight :size="16" />
+        </button>
       </div>
 
       <div v-if="weekDates.length === 0" class="empty-state">
-        <span class="icon">📅</span>
+        <Calendar :size="48" style="color: var(--text-muted)" />
         <h3>На этой неделе занятий нет</h3>
       </div>
 
@@ -80,7 +125,7 @@
           <thead>
             <tr>
               <th rowspan="2" class="th-slot sticky-col">
-                <span class="slot-header-icon">🕐</span>
+                <Clock :size="18" style="margin-bottom: 4px" />
                 <span class="slot-header-text">Пара</span>
               </th>
               <th
@@ -140,6 +185,8 @@
 import { ref, computed, onMounted, watch } from 'vue'
 import { useScheduleStore } from '../stores/schedule.js'
 import { collectSlotNumbers, slotLessonEntries } from '../utils/schedulePresentation.js'
+import { GraduationCap, Users, ArrowLeft, Calendar, AlertCircle, ChevronLeft, ChevronRight, Clock } from 'lucide-vue-next'
+import Skeleton from '../components/ui/Skeleton.vue'
 
 const store = useScheduleStore()
 
@@ -391,44 +438,147 @@ function parseDetails(text) {
 }
 
 .back-link {
+  display: flex;
+  align-items: center;
+  gap: 6px;
   color: var(--text-secondary);
   text-decoration: none;
   font-size: 14px;
   font-weight: 500;
-  padding: 6px 12px;
+  padding: 8px 12px;
   border-radius: var(--radius-sm);
   border: 1px solid var(--border);
   background: var(--bg-secondary);
   transition: all var(--transition);
   white-space: nowrap;
 }
-.back-link:hover { color: var(--text-primary); border-color: var(--accent); }
+.back-link:hover { color: var(--text-primary); border-color: var(--accent); transform: translateX(-2px); }
 
-.page-title { font-size: 22px; font-weight: 700; margin: 0; }
+.page-title { font-size: 22px; font-weight: 700; margin: 0; letter-spacing: -0.02em; }
 
-/* ── Selector bar ─────────────────────────────────────────────────────── */
-.selector-bar {
+/* ── Selector card ─────────────────────────────────────────────────────── */
+.selector-card {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px;
+  margin-bottom: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.selector-section {
   display: flex;
   flex-direction: column;
   gap: 12px;
-  margin-bottom: 20px;
 }
 
-.year-tabs { display: flex; gap: 6px; flex-wrap: wrap; }
-.year-tab {
-  display: flex; align-items: center; gap: 6px;
-  padding: 7px 14px; border-radius: var(--radius-sm);
-  border: 1px solid var(--border); background: var(--bg-secondary);
-  color: var(--text-secondary); font-size: 13px; font-weight: 500;
-  cursor: pointer; transition: all var(--transition);
+.selector-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
-.year-tab:hover { border-color: var(--accent); color: var(--text-primary); }
-.year-tab.active { background: var(--accent-light); border-color: var(--accent); color: var(--accent); }
-.tab-count { background: var(--bg-tertiary); border-radius: 10px; padding: 0 6px; font-size: 11px; }
+.selector-label svg {
+  color: var(--accent);
+}
 
-.group-select-wrap { display: flex; align-items: center; gap: 10px; }
-.group-label { font-size: 13px; font-weight: 600; color: var(--text-secondary); white-space: nowrap; }
-.group-select { width: auto; min-width: 200px; padding: 7px 10px; font-size: 13px; }
+.year-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  gap: 12px;
+}
+
+.year-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 16px;
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: all var(--transition);
+}
+.year-card:hover {
+  border-color: var(--accent);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(251, 146, 60, 0.15);
+}
+.year-card.active {
+  background: var(--accent-light);
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(251, 146, 60, 0.1);
+}
+.year-number {
+  font-size: 32px;
+  font-weight: 800;
+  color: var(--text-primary);
+  line-height: 1;
+  margin-bottom: 4px;
+}
+.year-card.active .year-number {
+  color: var(--accent);
+}
+.year-label {
+  font-size: 12px;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+.year-count {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: var(--bg-primary);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 2px 8px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+.year-card.active .year-count {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+}
+
+.group-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 10px;
+}
+
+.group-card {
+  padding: 14px 16px;
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all var(--transition);
+  text-align: center;
+}
+.group-card:hover {
+  border-color: var(--accent);
+  color: var(--text-primary);
+  transform: translateY(-1px);
+}
+.group-card.active {
+  background: var(--accent-light);
+  border-color: var(--accent);
+  color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(251, 146, 60, 0.1);
+}
 
 /* ── Week nav ──────────────────────────────────────────────────────────── */
 .week-nav {
@@ -436,9 +586,22 @@ function parseDetails(text) {
   margin-bottom: 20px; background: var(--bg-secondary); border: 1px solid var(--border);
   border-radius: var(--radius); padding: 12px 16px;
 }
-.week-label { display: flex; flex-direction: column; align-items: center; gap: 2px; }
-.week-label strong { font-size: 14px; }
-.week-dates { font-size: 12px; color: var(--text-muted); }
+.week-label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  flex: 1;
+}
+.week-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+.week-dates {
+  font-size: 12px;
+  color: var(--text-muted);
+}
 
 /* ── Table ─────────────────────────────────────────────────────────────── */
 .sched-scroll {
@@ -456,8 +619,15 @@ function parseDetails(text) {
   background: var(--bg-secondary); border-right: 2px solid var(--border-strong);
   border-bottom: 2px solid var(--border-strong); z-index: 4 !important;
   text-align: center; width: 84px; min-width: 76px; padding: 10px 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
 }
-.slot-header-icon { display: block; font-size: 18px; line-height: 1; margin-bottom: 4px; }
+.th-slot svg {
+  color: var(--accent);
+}
 .slot-header-text {
   display: block; font-size: 10px; font-weight: 700;
   color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.08em;
@@ -524,6 +694,14 @@ function parseDetails(text) {
   .week-nav { flex-wrap: wrap; }
   .week-label { order: -1; width: 100%; align-items: center; }
   .th-slot { min-width: 68px; }
-  .group-select { min-width: 160px; }
+  .year-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .group-grid {
+    grid-template-columns: 1fr;
+  }
+  .selector-card {
+    padding: 16px;
+  }
 }
 </style>

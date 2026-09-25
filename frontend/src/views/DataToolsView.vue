@@ -1,9 +1,6 @@
 <template>
   <div class="page">
     <div class="page-header"><div><h1 class="page-title">📊 Данные и контроль</h1><p class="subtitle">Импорт, проверка конфликтов, часы, недоступность и откат изменений.</p></div><button class="btn btn-secondary" :disabled="tabLoading" @click="refreshAll">{{ tabLoading ? 'Обновляю…' : '↻ Обновить' }}</button></div>
-    <div class="tabs">
-      <button v-for="item in tabs" :key="item.id" :class="['tab', {active:tab===item.id}]" @click="tab=item.id">{{ item.label }}</button>
-    </div>
     <div v-if="tabLoading" class="notice loading-notice">Загружаю данные выбранного раздела…</div>
 
     <section v-if="tab==='transfer'" class="section">
