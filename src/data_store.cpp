@@ -586,7 +586,8 @@ void NormalizeDataRoot(JsonValue& root) {
 
     for (const std::string& key : {
         "groups", "teachers", "rooms", "lessons", "unavailable", "teacher_unavailable",
-        "substitutions", "accounting_adjustments", "workload_imports", "teaching_ledger"
+        "substitutions", "accounting_adjustments", "workload_imports", "teaching_ledger",
+        "teacher_notifications"
     }) {
         if (!root.At(key).IsArray()) root.At(key) = JsonValue::MakeArray();
     }

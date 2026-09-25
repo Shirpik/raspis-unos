@@ -120,4 +120,16 @@ export const api = {
     getSolverProfiles: () => request('GET', '/settings/solver-profiles'),
     applySolverProfile: (id) => request('POST', `/settings/solver-profile/${encodeURIComponent(id)}`),
   },
+  teacherNotifications: {
+    list: (teacherId) => request('GET', `/teacher-notifications?teacher_id=${teacherId}`),
+    listAll: () => request('GET', '/teacher-notifications'),
+    create: (d) => request('POST', '/teacher-notifications', d),
+    update: (id, d) => request('PATCH', `/teacher-notifications/${id}`, d),
+    remove: (id) => request('DELETE', `/teacher-notifications/${id}`),
+  },
+  teacher: {
+    auth: (password) => request('POST', '/teacher/auth', { password }),
+    submitNotification: (data) => request('POST', '/teacher/notifications', data),
+    getTeachersList: (password) => request('GET', '/teacher/list', { password })
+  }
 }

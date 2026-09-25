@@ -63,6 +63,7 @@ const links = [
   { to: '/groups',      label: 'Группы',        icon: '🎓' },
   { to: '/lessons',     label: 'Пары',          icon: '📖' },
   { to: '/rooms',       label: 'Аудитории',     icon: '🚪' },
+  { to: '/teacher-notifications', label: 'Уведомления', icon: '📬' },
   { to: '/data-tools',  label: 'Данные',         icon: '📊' },
   { to: '/settings',    label: 'Настройки',     icon: '⚙️' },
 ]

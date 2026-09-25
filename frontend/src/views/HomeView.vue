@@ -12,6 +12,11 @@
           <span class="entry-label">Студентам</span>
           <span class="entry-desc">Посмотреть расписание своей группы</span>
         </RouterLink>
+        <RouterLink to="/teacher-portal" class="entry-btn entry-teacher">
+          <span class="entry-icon">👨‍🏫</span>
+          <span class="entry-label">Преподавателям</span>
+          <span class="entry-desc">Расписание, учет часов и уведомления</span>
+        </RouterLink>
         <RouterLink to="/schedule" class="entry-btn entry-admin">
           <span class="entry-icon">🛠</span>
           <span class="entry-label">Диспетчеру</span>
@@ -102,6 +107,7 @@
 .entry-desc { font-size: 12px; color: var(--text-muted); }
 
 .entry-student:hover .entry-label { color: var(--accent); }
+.entry-teacher:hover .entry-label { color: var(--accent); }
 .entry-admin:hover .entry-label { color: var(--accent); }
 
 @media (max-width: 480px) {

@@ -1244,6 +1244,53 @@ std::string HandleRequest(const std::string& request, const std::string& output_
         return JsonResponse(200, "OK", ReadFileUtf8(file));
     }
 
+    // Эндпоинты для преподавателей с простой парольной защитой
+    if (path == "/api/teacher/auth") {
+        if (method == "POST") {
+            JsonParseResult parsed = ParseJson(body);
+            if (!parsed.ok || !parsed.value.IsObject())
+                return ErrorJson(400, "Bad Request", "Укажите пароль");
+            const std::string password = JsonString(parsed.value, "password", "");
+            if (password == "prepod") {
+                return JsonResponse(200, "OK", "{\"success\":true,\"role\":\"teacher\"}",
+                    {{"Cache-Control", "no-store"}});
+            }
+            return ErrorJson(401, "Unauthorized", "Неверный пароль");
+        }
+    }
+
+    // Публичные эндпоинты для преподавателей (POST для создания уведомлений)
+    if (method == "POST" && path == "/api/teacher/notifications") {
+        JsonParseResult parsed = ParseJson(body);
+        if (!parsed.ok || !parsed.value.IsObject())
+            return ErrorJson(400, "Bad Request", "Нужен JSON-объект");
+
+        // Проверяем пароль в теле запроса
+        const std::string password = JsonString(parsed.value, "password", "");
+        if (password != "prepod") {
+            return ErrorJson(401, "Unauthorized", "Неверный пароль преподавателя");
+        }
+
+        // Создаем уведомление
+        JsonValue notification = parsed.value;
+        notification.object_value.erase("password"); // Удаляем пароль из сохраненных данных
+        notification.At("status") = JsonValue::MakeString("pending");
+        notification.At("created_at") = JsonValue::MakeString(std::to_string(std::time(nullptr)));
+
+        return PostArrayEndpoint("teacher_notifications", ToJson(notification, 0));
+    }
+
+    // Получение списка преподавателей (публично для поиска)
+    if (method == "GET" && path == "/api/teacher/list") {
+        JsonParseResult parsed = ParseJson(body);
+        const std::string password = parsed.ok && parsed.value.IsObject()
+            ? JsonString(parsed.value, "password", "") : "";
+        if (password != "prepod") {
+            return ErrorJson(401, "Unauthorized", "Неверный пароль преподавателя");
+        }
+        return GetArrayEndpoint("teachers");
+    }
+
     std::string authenticated_username;
     if (!ValidateAuthSession(session_token, authenticated_username)) {
         return ErrorJson(401, "Unauthorized", "Требуется вход диспетчера");
@@ -1300,7 +1347,9 @@ std::string HandleRequest(const std::string& request, const std::string& output_
             "\"GET/PUT/PATCH/DELETE /api/unavailable/{id}\","
             "\"GET/POST /api/teacher-unavailable\","
             "\"GET/PUT/PATCH/DELETE /api/teacher-unavailable/{id}\","
-            "\"GET/POST /api/rooms\"," 
+            "\"GET/POST /api/teacher-notifications\","
+            "\"GET/PATCH/DELETE /api/teacher-notifications/{id}\","
+            "\"GET/POST /api/rooms\","
             "\"GET/PUT/PATCH/DELETE /api/rooms/{id}\"," 
             "\"GET/POST /api/room-types\"," 
             "\"GET/PUT/PATCH/DELETE /api/room-types/{id}\"," 
@@ -1616,6 +1665,8 @@ std::string HandleRequest(const std::string& request, const std::string& output_
     crud = HandleCrud(method, path, body, "/api/unavailable", "unavailable");
     if (!crud.empty()) return crud;
     crud = HandleCrud(method, path, body, "/api/teacher-unavailable", "teacher_unavailable");
+    if (!crud.empty()) return crud;
+    crud = HandleCrud(method, path, body, "/api/teacher-notifications", "teacher_notifications");
     if (!crud.empty()) return crud;
     crud = HandleCrud(method, path, body, "/api/rooms", "rooms");
     if (!crud.empty()) return crud;

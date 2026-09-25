@@ -10,11 +10,14 @@ import ConstructorView from '../views/ConstructorView.vue'
 import RoomsView from '../views/RoomsView.vue'
 import DataToolsView from '../views/DataToolsView.vue'
 import LoginView from '../views/LoginView.vue'
+import TeacherPortalView from '../views/TeacherPortalView.vue'
+import TeacherNotificationsView from '../views/TeacherNotificationsView.vue'
 import { useAuthStore } from '../stores/auth.js'
 
 const routes = [
   { path: '/', component: HomeView, meta: { title: 'Выбор режима', hideNav: true, public: true } },
   { path: '/student', component: StudentView, meta: { title: 'Расписание', hideNav: true, public: true } },
+  { path: '/teacher-portal', component: TeacherPortalView, meta: { title: 'Портал преподавателя', hideNav: true, public: true } },
   { path: '/login', component: LoginView, meta: { title: 'Вход диспетчера', hideNav: true, public: true } },
   { path: '/schedule', component: ScheduleView, meta: { title: 'Расписание' } },
   { path: '/constructor', component: ConstructorView, meta: { title: 'Конструктор' } },
@@ -23,6 +26,7 @@ const routes = [
   { path: '/lessons', component: LessonsView, meta: { title: 'Пары' } },
   { path: '/rooms', component: RoomsView, meta: { title: 'Аудитории' } },
   { path: '/data-tools', component: DataToolsView, meta: { title: 'Данные и контроль' } },
+  { path: '/teacher-notifications', component: TeacherNotificationsView, meta: { title: 'Уведомления преподавателей' } },
   { path: '/settings', component: SettingsView, meta: { title: 'Настройки' } },
 ]
 

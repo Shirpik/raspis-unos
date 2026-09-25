@@ -143,6 +143,41 @@
       <div v-else class="table-wrap"><table><thead><tr><th>Преподаватель</th><th>С</th><th>По</th><th>Причина</th><th></th></tr></thead><tbody><tr v-for="u in store.teacherUnavailable" :key="u.id"><td>{{ teacherName(u.teacher) }}</td><td>{{ u.from }}</td><td>{{ u.to }}</td><td>{{ u.reason || '—' }}</td><td><button class="btn btn-ghost btn-sm danger" @click="removeUnavailable(u)">Удалить</button></td></tr></tbody></table></div>
     </section>
 
+    <section v-if="tab==='notifications'" class="section">
+      <h2>Сообщения от преподавателей</h2>
+      <p class="help">Уведомления о недоступности от преподавателей. После принятия автоматически создаётся запись в разделе «Недоступность».</p>
+      <div v-if="notificationsLoading" class="notice loading-notice">Загружаю сообщения…</div>
+      <div v-else-if="!notifications.length" class="empty-state card">
+        <h3>Сообщений пока нет</h3>
+        <p>Преподаватели могут отправить уведомление через портал преподавателя.</p>
+      </div>
+      <div v-else class="notifications-list">
+        <article v-for="notif in notifications" :key="notif.id" class="notification-card card" :class="'status-' + notif.status">
+          <div class="notification-header">
+            <div>
+              <h3>{{ notif.teacher_name }}</h3>
+              <span :class="['status-badge', 'badge-' + notif.status]">{{ statusLabel(notif.status) }}</span>
+            </div>
+            <div class="notification-dates">
+              <strong>{{ notif.date_from }}</strong> — <strong>{{ notif.date_to }}</strong>
+            </div>
+          </div>
+          <div class="notification-body">
+            <p><strong>Причина:</strong> {{ notif.reason }}</p>
+            <img v-if="notif.photo" :src="notif.photo" alt="Приложение" class="notification-photo" />
+          </div>
+          <div v-if="notif.status === 'pending'" class="notification-actions">
+            <button class="btn btn-secondary btn-sm" @click="editNotification(notif)">Редактировать</button>
+            <button class="btn btn-success btn-sm" @click="approveNotification(notif)">Принять</button>
+            <button class="btn btn-ghost btn-sm danger" @click="rejectNotification(notif)">Отклонить</button>
+          </div>
+          <div v-else class="notification-result">
+            <small>{{ notif.status === 'approved' ? 'Принято' : 'Отклонено' }} {{ formatDate(notif.updated_at) }}</small>
+          </div>
+        </article>
+      </div>
+    </section>
+
     <section v-if="tab==='history'" class="section">
       <div class="notice">Хранятся последние 50 изменений. Откат также создаёт новую резервную версию.</div>
       <div v-if="!versions.length" class="empty-state card"><h3>История пока пуста</h3><p>Первая версия появится после изменения данных.</p></div>
@@ -187,7 +222,7 @@ import { useDataStore } from '../stores/data.js'
 import { useToast } from '../composables/useToast.js'
 
 const store=useDataStore(), toast=useToast(), route=useRoute(), router=useRouter()
-const tabs=[{id:'transfer',label:'Резервная копия'},{id:'import',label:'Нагрузка Excel'},{id:'facts',label:'Проведённые пары'},{id:'audit',label:'Аудит'},{id:'hours',label:'Учёт часов'},{id:'substitutions',label:'Замены'},{id:'occupancy',label:'Занятость'},{id:'unavailable',label:'Недоступность'},{id:'history',label:'История'}]
+const tabs=[{id:'transfer',label:'Резервная копия'},{id:'import',label:'Нагрузка Excel'},{id:'facts',label:'Проведённые пары'},{id:'audit',label:'Аудит'},{id:'hours',label:'Учёт часов'},{id:'substitutions',label:'Замены'},{id:'occupancy',label:'Занятость'},{id:'unavailable',label:'Недоступность'},{id:'notifications',label:'Сообщения от преподавателей'},{id:'history',label:'История'}]
 const requestedTab=String(route.query.tab||'')
 const tab=ref(tabs.some(item=>item.id===requestedTab)?requestedTab:'transfer'), semester=ref(1), selectedFile=ref(null), preview=ref(null), importing=ref(false), committing=ref(false)
 const factsFile=ref(null),factsDateFrom=ref(''),factsDateTo=ref(''),factsPreview=ref(null),factsLoading=ref(false),factsCommitting=ref(false)
@@ -204,6 +239,7 @@ const unavailableForm=ref({teacher:0,from:'',to:'',reason:''})
 const replacementForm=ref({lesson_id:-1,date:'',slot:1,absent_teacher:-1,substitute_teacher:-1,hours:2,reason:'',comment:'',status:'active'})
 const occupancy=ref({entries:[]}), occupancyWeek=ref('')
 const occupancySlots=[0,1,2,3,4,5,6,7]
+const notifications=ref([]), notificationsLoading=ref(false), editingNotification=ref(null)
 const transferSummary=computed(()=>{const data=transferBundle.value?.data||{},summary=transferBundle.value?.summary||{};return{groups:summary.groups??data.groups?.length??0,teachers:summary.teachers??data.teachers?.length??0,lessons:summary.lessons??data.lessons?.length??0,rooms:summary.rooms??data.rooms?.length??0,teachingLedger:summary.teaching_ledger??data.teaching_ledger?.length??0,substitutions:summary.substitutions??data.substitutions?.length??0}})
 const transferScheduleOptions=computed(()=>{const schedules=transferBundle.value?.schedules||{};return[{value:'manual',label:'Ручное из конструктора — с правками диспетчера'},{value:'auto',label:'Автоматически сгенерированное'},{value:'published',label:'Последнее опубликованное'}].filter(item=>schedules[item.value]&&Array.isArray(schedules[item.value].groups))})
 const hoursSourceRows=computed(()=>hours.value[hoursMode.value]||[])
@@ -231,7 +267,7 @@ watch(tab,value=>{loadTabData(value);if(route.query.tab!==value)router.replace({
 watch(()=>route.query.tab,value=>{if(tabs.some(item=>item.id===value)&&tab.value!==value)tab.value=value})
 watch([hoursMode,hoursSearch,hoursStatus,hoursSort,hoursPageSize],()=>{hoursPage.value=1})
 watch(hoursPageCount,count=>{if(hoursPage.value>count)hoursPage.value=count})
-async function loadTabData(target,force=false){if(!force&&loadedTabs.has(target))return;tabLoading.value=true;try{if(target==='audit'){const r=await api.data.audit();if(r.ok)audit.value=r.data}else if(target==='hours'){const r=await api.data.hours();if(r.ok)hours.value=r.data}else if(target==='history'){const r=await api.data.versions();if(r.ok)versions.value=r.data}else if(target==='occupancy'){const r=await api.data.teacherOccupancy();if(r.ok){occupancy.value=r.data;if(!occupancyWeeks.value.includes(occupancyWeek.value))occupancyWeek.value=occupancyWeeks.value[0]||''}}else if(target==='substitutions'){await Promise.all([store.loadTeachers(),store.loadGroups(),store.loadLessons(),store.loadSubstitutions()]);initTeacherForms()}else if(target==='unavailable'){await Promise.all([store.loadTeachers(),store.loadTeacherUnavailable()]);initTeacherForms()}loadedTabs.add(target)}finally{tabLoading.value=false}}
+async function loadTabData(target,force=false){if(!force&&loadedTabs.has(target))return;tabLoading.value=true;try{if(target==='audit'){const r=await api.data.audit();if(r.ok)audit.value=r.data}else if(target==='hours'){const r=await api.data.hours();if(r.ok)hours.value=r.data}else if(target==='history'){const r=await api.data.versions();if(r.ok)versions.value=r.data}else if(target==='occupancy'){const r=await api.data.teacherOccupancy();if(r.ok){occupancy.value=r.data;if(!occupancyWeeks.value.includes(occupancyWeek.value))occupancyWeek.value=occupancyWeeks.value[0]||''}}else if(target==='substitutions'){await Promise.all([store.loadTeachers(),store.loadGroups(),store.loadLessons(),store.loadSubstitutions()]);initTeacherForms()}else if(target==='unavailable'){await Promise.all([store.loadTeachers(),store.loadTeacherUnavailable()]);initTeacherForms()}else if(target==='notifications'){await loadNotifications()}loadedTabs.add(target)}finally{tabLoading.value=false}}
 function initTeacherForms(){if(store.teachers.length&&!store.teachers.some(t=>t.id===unavailableForm.value.teacher))unavailableForm.value.teacher=store.teachers[0].id;if(store.teachers.length&&replacementForm.value.substitute_teacher<0)replacementForm.value.substitute_teacher=store.teachers[0].id}
 async function refreshAll(){await loadTabData(tab.value,true)}
 async function exportTransferBundle(){transferExporting.value=true;try{const r=await api.transfer.exportBundle();if(!r.ok)throw new Error(r.data?.message||'Сервер не сформировал пакет');const blob=new Blob([JSON.stringify(r.data,null,2)],{type:'application/json;charset=utf-8'}),url=URL.createObjectURL(blob),link=document.createElement('a'),stamp=new Date().toISOString().slice(0,19).replaceAll(':','-');link.href=url;link.download=`raspis-full-${stamp}.raspis.json`;document.body.appendChild(link);link.click();link.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);toast.success('Полный пакет скачан. Его можно загрузить на сайт.')}catch(e){toast.error(`Не удалось скачать пакет: ${e.message}`)}finally{transferExporting.value=false}}
@@ -270,6 +306,12 @@ async function addUnavailable(){const f=unavailableForm.value;if(!f.from||!f.to)
 async function removeUnavailable(u){const r=await store.deleteTeacherUnavailable(u.id);if(r.ok){toast.success('Ограничение удалено');await refreshAll()}else toast.error(r.data?.message||'Ошибка')}
 async function restore(v){if(!confirm(`Откатить данные к версии ${formatDate(v.created_at)}?`))return;const r=await api.data.restore(v.filename);if(r.ok){toast.success('Версия восстановлена');loadedTabs.clear();await refreshAll()}else toast.error(r.data?.message||'Ошибка отката')}
 const formatDate=s=>s?new Date(s).toLocaleString('ru-RU'): '—'
+async function loadNotifications(){notificationsLoading.value=true;try{const r=await api.teacherNotifications.listAll();if(r.ok)notifications.value=r.data||[]}catch(e){toast.error('Не удалось загрузить сообщения')}finally{notificationsLoading.value=false}}
+function statusLabel(status){return status==='pending'?'Ожидает':'status'==='approved'?'Принято':'Отклонено'}
+function editNotification(notif){editingNotification.value=notif}
+async function approveNotification(notif){if(!confirm(`Принять уведомление от ${notif.teacher_name}?`))return;const r=await api.teacherNotifications.update(notif.id,{status:'approved'});if(r.ok){await store.createTeacherUnavailable({teacher:notif.teacher_id,from:notif.date_from,to:notif.date_to,text:`Принято из уведомления: ${notif.reason}`});toast.success('Уведомление принято, недоступность добавлена');await loadNotifications()}else toast.error(r.data?.message||'Ошибка')}
+async function rejectNotification(notif){if(!confirm(`Отклонить уведомление от ${notif.teacher_name}?`))return;const r=await api.teacherNotifications.update(notif.id,{status:'rejected'});if(r.ok){toast.success('Уведомление отклонено');await loadNotifications()}else toast.error(r.data?.message||'Ошибка')}
+
 </script>
 
 <style scoped>
@@ -278,4 +320,5 @@ const formatDate=s=>s?new Date(s).toLocaleString('ru-RU'): '—'
 .export-actions{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}
 .transfer-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}.transfer-card{display:flex;flex-direction:column;gap:14px;padding:22px}.transfer-card h2{margin:0 0 5px}.transfer-icon{display:grid;place-items:center;width:48px;height:48px;border-radius:12px;background:var(--accent-light);font-size:24px}.transfer-list{margin:0;padding-left:20px;color:var(--text-secondary);font-size:14px;line-height:1.7}.transfer-button{align-self:flex-start}.transfer-file{display:block}.transfer-metrics{grid-template-columns:repeat(5,minmax(90px,1fr));margin:0}.transfer-metrics .metric{padding:9px}.transfer-metrics .metric strong{font-size:18px}.transfer-check{display:flex;gap:9px;align-items:flex-start;color:var(--text-secondary);font-size:14px;cursor:pointer}.transfer-check input{margin-top:3px}.transfer-note{margin-top:18px}.transfer-confirm-summary{display:grid;gap:7px;margin:14px 0}.transfer-confirm-summary p{margin:0;color:var(--text-secondary)}
 @media(max-width:1000px){.transfer-grid{grid-template-columns:1fr}.transfer-metrics{grid-template-columns:repeat(3,1fr)}}
+.notifications-list{display:grid;gap:16px}.notification-card{padding:20px}.notification-card.status-pending{border-left:4px solid var(--warning)}.notification-card.status-approved{border-left:4px solid var(--success);opacity:0.7}.notification-card.status-rejected{border-left:4px solid var(--error);opacity:0.6}.notification-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:12px}.notification-header h3{margin:0 0 6px;font-size:17px}.status-badge{display:inline-block;padding:4px 10px;border-radius:6px;font-size:12px;font-weight:600}.badge-pending{background:var(--warning-light);color:var(--warning)}.badge-approved{background:var(--success-light);color:var(--success)}.badge-rejected{background:var(--error-light);color:var(--error)}.notification-dates{text-align:right;color:var(--text-secondary);font-size:14px}.notification-body p{margin:8px 0;color:var(--text-secondary)}.notification-photo{max-width:300px;border-radius:8px;margin-top:12px}.notification-actions{display:flex;gap:8px;margin-top:14px}.notification-result{color:var(--text-muted);font-size:13px;margin-top:10px}
 </style>
