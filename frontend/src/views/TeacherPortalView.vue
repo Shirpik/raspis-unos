@@ -203,9 +203,10 @@ function logout() {
 async function loadTeachers() {
   try {
     const response = await api.teacher.getTeachersList(password.value)
-    teachers.value = response.data || []
+    teachers.value = Array.isArray(response.data) ? response.data : []
   } catch (e) {
     console.error('Failed to load teachers:', e)
+    teachers.value = []
   }
 }
 

@@ -1281,7 +1281,7 @@ std::string HandleRequest(const std::string& request, const std::string& output_
     }
 
     // Получение списка преподавателей (публично для поиска)
-    if (method == "GET" && path == "/api/teacher/list") {
+    if (method == "POST" && path == "/api/teacher/list") {
         JsonParseResult parsed = ParseJson(body);
         const std::string password = parsed.ok && parsed.value.IsObject()
             ? JsonString(parsed.value, "password", "") : "";

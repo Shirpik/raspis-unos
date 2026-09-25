@@ -130,6 +130,6 @@ export const api = {
   teacher: {
     auth: (password) => request('POST', '/teacher/auth', { password }),
     submitNotification: (data) => request('POST', '/teacher/notifications', data),
-    getTeachersList: (password) => request('GET', '/teacher/list', { password })
+    getTeachersList: (password) => request('POST', '/teacher/list', { password })
   }
 }

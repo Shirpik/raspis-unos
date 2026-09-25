@@ -26,20 +26,20 @@ export const useDataStore = defineStore('data', () => {
       api.roomTypes.list(),
       api.settings.get(),
     ])
-    if (t.ok) teachers.value = t.data
-    if (g.ok) groups.value = g.data
-    if (l.ok) lessons.value = l.data
-    if (u.ok) unavailable.value = u.data
-    if (tu.ok) teacherUnavailable.value = tu.data
-    if (r.ok) rooms.value = r.data
-    if (rt.ok) roomTypes.value = rt.data
+    if (t.ok) teachers.value = Array.isArray(t.data) ? t.data : []
+    if (g.ok) groups.value = Array.isArray(g.data) ? g.data : []
+    if (l.ok) lessons.value = Array.isArray(l.data) ? l.data : []
+    if (u.ok) unavailable.value = Array.isArray(u.data) ? u.data : []
+    if (tu.ok) teacherUnavailable.value = Array.isArray(tu.data) ? tu.data : []
+    if (r.ok) rooms.value = Array.isArray(r.data) ? r.data : []
+    if (rt.ok) roomTypes.value = Array.isArray(rt.data) ? rt.data : []
     if (s.ok) settings.value = s.data
     loading.value = false
   }
 
   async function loadTeachers() {
     const r = await api.teachers.list()
-    if (r.ok) teachers.value = r.data
+    if (r.ok) teachers.value = Array.isArray(r.data) ? r.data : []
     return r
   }
   async function createTeacher(d) {
@@ -65,7 +65,7 @@ export const useDataStore = defineStore('data', () => {
 
   async function loadGroups() {
     const r = await api.groups.list()
-    if (r.ok) groups.value = r.data
+    if (r.ok) groups.value = Array.isArray(r.data) ? r.data : []
     return r
   }
   async function createGroup(d) {
@@ -91,7 +91,7 @@ export const useDataStore = defineStore('data', () => {
 
   async function loadLessons() {
     const r = await api.lessons.list()
-    if (r.ok) lessons.value = r.data
+    if (r.ok) lessons.value = Array.isArray(r.data) ? r.data : []
     return r
   }
   async function createLesson(d) {
@@ -112,7 +112,7 @@ export const useDataStore = defineStore('data', () => {
 
   async function loadUnavailable() {
     const r = await api.unavailable.list()
-    if (r.ok) unavailable.value = r.data
+    if (r.ok) unavailable.value = Array.isArray(r.data) ? r.data : []
     return r
   }
   async function createUnavailable(d) {
@@ -134,7 +134,7 @@ export const useDataStore = defineStore('data', () => {
 
   async function loadRooms() {
     const r = await api.rooms.list()
-    if (r.ok) rooms.value = r.data
+    if (r.ok) rooms.value = Array.isArray(r.data) ? r.data : []
     return r
   }
   async function createRoom(d) { const r = await api.rooms.create(d); if (r.ok) await loadRooms(); return r }
@@ -143,7 +143,7 @@ export const useDataStore = defineStore('data', () => {
 
   async function loadRoomTypes() {
     const r = await api.roomTypes.list()
-    if (r.ok) roomTypes.value = r.data
+    if (r.ok) roomTypes.value = Array.isArray(r.data) ? r.data : []
     return r
   }
   async function createRoomType(d) { const r = await api.roomTypes.create(d); if (r.ok) await loadRoomTypes(); return r }
@@ -152,13 +152,13 @@ export const useDataStore = defineStore('data', () => {
 
   async function loadTeacherUnavailable() {
     const r = await api.teacherUnavailable.list()
-    if (r.ok) teacherUnavailable.value = r.data
+    if (r.ok) teacherUnavailable.value = Array.isArray(r.data) ? r.data : []
     return r
   }
   async function createTeacherUnavailable(d) { const r = await api.teacherUnavailable.create(d); if (r.ok) await loadTeacherUnavailable(); return r }
   async function deleteTeacherUnavailable(id) { const r = await api.teacherUnavailable.remove(id); if (r.ok) await loadTeacherUnavailable(); return r }
 
-  async function loadSubstitutions() { const r = await api.substitutions.list(); if (r.ok) substitutions.value = r.data; return r }
+  async function loadSubstitutions() { const r = await api.substitutions.list(); if (r.ok) substitutions.value = Array.isArray(r.data) ? r.data : []; return r }
   async function createSubstitution(d) { const r = await api.substitutions.create(d); if (r.ok) await loadSubstitutions(); return r }
   async function updateSubstitution(id, d) { const r = await api.substitutions.update(id, d); if (r.ok) await loadSubstitutions(); return r }
   async function deleteSubstitution(id) { const r = await api.substitutions.remove(id); if (r.ok) await loadSubstitutions(); return r }
