@@ -203,7 +203,7 @@ function logout() {
 async function loadTeachers() {
   try {
     const response = await api.teacher.getTeachersList(password.value)
-    teachers.value = response || []
+    teachers.value = response.data || []
   } catch (e) {
     console.error('Failed to load teachers:', e)
   }
@@ -260,7 +260,7 @@ async function loadSchedule(teacherId) {
   loading.value = true
   try {
     const response = await api.schedule.get()
-    const scheduleData = response.schedule || response
+    const scheduleData = response.data?.schedule || response.data
     // Filter schedule for this teacher
     schedule.value = scheduleData
   } catch (e) {
