@@ -1,9 +1,6 @@
 #include "auth.h"
 
-#ifndef _WIN32
-#error "Authentication crypto currently uses Windows CNG."
-#endif
-
+#ifdef _WIN32
 #ifndef NOMINMAX
 #define NOMINMAX
 #endif
@@ -12,6 +9,15 @@
 #endif
 #include <windows.h>
 #include <bcrypt.h>
+#else
+// На Linux/macOS вместо Windows CNG используем OpenSSL: RAND_bytes для
+// криптостойких случайных байт и PKCS5_PBKDF2_HMAC для того же PBKDF2-
+// HMAC-SHA256, что и BCryptDeriveKeyPBKDF2 на винде. Формат salt/hash в
+// data/auth_config.json не меняется, поэтому существующие учётки останутся
+// рабочими при переносе между платформами.
+#include <openssl/rand.h>
+#include <openssl/evp.h>
+#endif
 
 #include <algorithm>
 #include <chrono>
@@ -87,8 +93,12 @@ bool Unhex(const std::string& text, std::vector<unsigned char>& bytes) {
 
 bool RandomBytes(size_t count, std::vector<unsigned char>& bytes) {
     bytes.resize(count);
+#ifdef _WIN32
     return BCryptGenRandom(nullptr, bytes.data(), static_cast<ULONG>(bytes.size()),
                            BCRYPT_USE_SYSTEM_PREFERRED_RNG) == 0;
+#else
+    return RAND_bytes(bytes.data(), static_cast<int>(bytes.size())) == 1;
+#endif
 }
 
 bool DerivePasswordHash(const std::string& password, const std::string& salt_hex,
@@ -96,11 +106,13 @@ bool DerivePasswordHash(const std::string& password, const std::string& salt_hex
     std::vector<unsigned char> salt;
     if (!Unhex(salt_hex, salt)) return false;
 
+    std::vector<unsigned char> hash(32);
+
+#ifdef _WIN32
     BCRYPT_ALG_HANDLE algorithm = nullptr;
     if (BCryptOpenAlgorithmProvider(&algorithm, BCRYPT_SHA256_ALGORITHM, nullptr,
                                     BCRYPT_ALG_HANDLE_HMAC_FLAG) != 0) return false;
 
-    std::vector<unsigned char> hash(32);
     NTSTATUS status = BCryptDeriveKeyPBKDF2(
         algorithm,
         reinterpret_cast<PUCHAR>(const_cast<char*>(password.data())),
@@ -108,6 +120,15 @@ bool DerivePasswordHash(const std::string& password, const std::string& salt_hex
         iterations, hash.data(), static_cast<ULONG>(hash.size()), 0);
     BCryptCloseAlgorithmProvider(algorithm, 0);
     if (status != 0) return false;
+#else
+    if (PKCS5_PBKDF2_HMAC(password.data(), static_cast<int>(password.size()),
+                          salt.data(), static_cast<int>(salt.size()),
+                          static_cast<int>(iterations), EVP_sha256(),
+                          static_cast<int>(hash.size()), hash.data()) != 1) {
+        return false;
+    }
+#endif
+
     hash_hex = Hex(hash);
     return true;
 }
