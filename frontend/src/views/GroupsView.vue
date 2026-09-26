@@ -86,7 +86,7 @@
             <td>
               <span v-if="g.curator_teacher >= 0">{{ store.teachers.find(t=>t.id===g.curator_teacher)?.name || `ID ${g.curator_teacher}` }}</span>
               <span v-else class="muted">не назначен</span>
-              <small v-if="g.curator_teacher >= 0 && g.class_hour_enabled !== false" class="class-hour-note">классный час: ПН 07:50</small>
+              <small v-if="g.curator_teacher >= 0 && g.class_hour_enabled !== false" class="class-hour-note">классный час: ПН 08:15</small>
             </td>
             <td>
               {{ workSummary(g) }}
@@ -125,7 +125,7 @@
       </div>
       <div class="class-hour-box">
         <div class="class-hour-head"><strong>Нулевой урок — классный час</strong><label><input v-model="form.class_hour_enabled" type="checkbox" /> включён</label></div>
-        <p>Фиксированно по понедельникам с 07:50 до 09:15. Обычные пары в понедельник начинаются с 09:15; решатель этот урок не рассчитывает.</p>
+        <p>Фиксированно по понедельникам с 08:15 до 08:55. Обычные пары в понедельник начинаются с 09:15; решатель этот урок не рассчитывает.</p>
         <div class="form-group">
           <label class="form-label">Куратор группы</label>
           <select v-model.number="form.curator_teacher" class="form-select">
@@ -218,16 +218,26 @@ async function save() {
   if (!form.value.name.trim()) return
   if ((form.value.practice_periods||[]).some(p=>!p.from||!p.to||p.to<p.from)) { toast.error('Укажите корректные даты практики'); return }
   saving.value = true
-  const d = { name: form.value.name.trim(), parts: form.value.parts, size: form.value.size || 0, home_campus: form.value.home_campus, curator_teacher: form.value.curator_teacher, class_hour_enabled: form.value.class_hour_enabled, class_hour_campus: form.value.class_hour_campus, class_hour_weekday: 1, class_hour_slot: 0, class_hour_from: '07:50', class_hour_to: '09:15', work_period:form.value.work_period, work_days:form.value.work_days }
-  d.practice_periods = form.value.practice_periods || []
-  d.teaching_deadline = form.value.teaching_deadline || ''
-  d.date_slot_overrides = form.value.date_slot_overrides || []
+  // PUT replaces the complete entity on the backend. Start with the current
+  // form snapshot so imported academic_calendar and other solver fields do not
+  // disappear when the user edits only the visible group name/settings.
+  const d = { ...JSON.parse(JSON.stringify(form.value)), name: form.value.name.trim(),
+    parts: form.value.parts, size: form.value.size || 0,
+    home_campus: form.value.home_campus, curator_teacher: form.value.curator_teacher,
+    class_hour_enabled: form.value.class_hour_enabled, class_hour_campus: form.value.class_hour_campus,
+    class_hour_weekday: 1, class_hour_slot: 0, class_hour_from: '08:15', class_hour_to: '08:55',
+    work_period: form.value.work_period, work_days: form.value.work_days,
+    practice_periods: form.value.practice_periods || [],
+    teaching_deadline: form.value.teaching_deadline || '',
+    date_slot_overrides: form.value.date_slot_overrides || [] }
+  delete d.id
+  delete d.uid
   const r = editItem.value ? await store.updateGroup(editItem.value.id, d) : await store.createGroup(d)
   saving.value = false
   if (r.ok) { toast.success(editItem.value ? 'Группа обновлена' : 'Группа добавлена'); modalOpen.value = false; readoutRevision.value++ }
   else toast.error(r.data?.message || 'Ошибка')
 }
-async function saveBulk(){saving.value=true;const r=await store.bulkUpdateGroups(selected.value,{work_period:bulkForm.value.work_period,work_days:bulkForm.value.work_days});saving.value=false;if(r.ok){toast.success(`Рабочее время применено к ${selected.value.length} группам`);bulkModal.value=false}else toast.error(r.data?.message||'Ошибка')}
+async function saveBulk(){saving.value=true;const r=await store.bulkUpdateGroups(selected.value,{work_period:bulkForm.value.work_period,work_days:bulkForm.value.work_days,date_slot_overrides:bulkForm.value.date_slot_overrides || []});saving.value=false;if(r.ok){toast.success(`Рабочее время применено к ${selected.value.length} группам`);bulkModal.value=false}else toast.error(r.data?.message||'Ошибка')}
 
 async function doDelete() {
   saving.value = true

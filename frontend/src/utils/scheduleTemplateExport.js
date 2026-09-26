@@ -122,7 +122,7 @@ const prepareCellPair = (sheet, column, firstRow, secondRow) => {
 }
 
 
-const lessonTemplateValue = (lesson, segment, groupIndex) => {
+const lessonTemplateValue = (lesson, segment, groupIndex, slotNumber = null) => {
   const details = lessonDetailsFromSegment(segment)
   const subject = String(lesson?.name || lessonSubjectFromSegment(segment) || '').trim()
   const teacher = String(lesson?.teacher_name || teacherFromDetails(details) || '').trim()
@@ -134,8 +134,11 @@ const lessonTemplateValue = (lesson, segment, groupIndex) => {
   const ordinal = subgroupOrdinal(lesson?.subgroup, groupIndex)
   const subjectLine = ordinal ? `${subject} ${ordinal} п/г` : subject
   const roomLine = room ? `${room}${campusSuffix(campus) ? `_${campusSuffix(campus)}` : ''}` : ''
+  const blockTime = lesson?.is_block
+    ? (Number(slotNumber) <= 2 ? '8:30-12:30' : '13:00-17:00')
+    : ''
   return {
-    text: [subjectLine, [surname, roomLine].filter(Boolean).join(' ')].filter(Boolean).join('\n'),
+    text: [subjectLine, blockTime, [surname, roomLine].filter(Boolean).join(' ')].filter(Boolean).join('\n'),
     campus,
   }
 }
@@ -151,10 +154,24 @@ const applyCampusFill = (cell, campus) => {
 const findDay = (group, targetDate) => (group?.days || []).find(day =>
   dateIso(day) === dateIso(targetDate) || day.date === targetDate.date)
 
-const expectedLessonCount = schedule => (schedule?.groups || []).reduce((groupTotal, group) =>
-  groupTotal + (group.days || []).reduce((dayTotal, day) =>
-    dayTotal + (day.slots || []).reduce((slotTotal, slot) =>
-      slotTotal + (Array.isArray(slot.lessons) ? slot.lessons.length : splitSlotText(slot.text).length), 0), 0), 0)
+const expectedLessonCount = schedule => {
+  const blocks = new Set()
+  return (schedule?.groups || []).reduce((groupTotal, group) =>
+    groupTotal + (group.days || []).reduce((dayTotal, day) =>
+      dayTotal + (day.slots || []).reduce((slotTotal, slot) => {
+        if (!Array.isArray(slot.lessons)) return slotTotal + splitSlotText(slot.text).length
+        let count = 0
+        for (const lesson of slot.lessons) {
+          if (lesson?.is_block) {
+            const key = `${group.group_index}|${dateIso(day)}|${lesson.uid || lesson.id}`
+            if (blocks.has(key)) continue
+            blocks.add(key)
+          }
+          count += 1
+        }
+        return slotTotal + count
+      }, 0), 0), 0)
+}
 
 export const scheduleExcelFilename = schedule => `${schedule?.status === 'draft_semester_risk' ? 'ПРОЕКТ_' : ''}Расписание_${filenameDateRange(schedule)}.xlsx`
 
@@ -218,6 +235,7 @@ export async function buildScheduleExcelWorkbook(schedule, templateBuffer) {
       for (const { name, column } of groups) {
         const group = groupsByName.get(name)
         const day = findDay(group, targetDay)
+        const displayedBlocks = new Set()
 
         if (weekday === 'ПН') {
           const cell = sheet.getCell(2, column)
@@ -240,7 +258,13 @@ export async function buildScheduleExcelWorkbook(schedule, templateBuffer) {
           const secondRow = firstRow + 1
           const { first, second } = prepareCellPair(sheet, column, firstRow, secondRow)
           const slot = (day?.slots || []).find(item => Number(item.slot) === slotNumber)
-          const entries = slotLessonEntries(slot, group?.group_index)
+          const entries = slotLessonEntries(slot, group?.group_index).filter(entry => {
+            if (!entry.lesson?.is_block) return true
+            const key = `${group?.group_index}|${dateIso(day || targetDay)}|${entry.lesson.uid || entry.lesson.id}`
+            if (displayedBlocks.has(key)) return false
+            displayedBlocks.add(key)
+            return true
+          })
 
           if (!entries.length) {
             continue
@@ -254,10 +278,10 @@ export async function buildScheduleExcelWorkbook(schedule, templateBuffer) {
           }
 
           if (wholeGroup.length === 1) {
-            const value = lessonTemplateValue(wholeGroup[0].lesson, wholeGroup[0].segment, group?.group_index)
+            const value = lessonTemplateValue(wholeGroup[0].lesson, wholeGroup[0].segment, group?.group_index, slotNumber)
             if (wholeGroup[0].lesson?.is_class_hour) {
-              if (weekday !== 'ПН' || slotNumber < 2 || wholeGroup[0].lesson.half !== 2)
-                throw new Error(`${name}: поздний классный час должен занимать вторую половину пары 2–7 понедельника`)
+              if (weekday !== 'ПН' || slotNumber < 2 || slotNumber > 4 || wholeGroup[0].lesson.half !== 2)
+                throw new Error(`${name}: поздний классный час должен занимать вторую половину пары 2–4 понедельника`)
               second.value = value.text
               applyCampusFill(second, value.campus)
             } else {
@@ -276,7 +300,7 @@ export async function buildScheduleExcelWorkbook(schedule, templateBuffer) {
             }
             seenOrdinals.add(ordinal)
             const cell = ordinal === 1 ? first : second
-            const value = lessonTemplateValue(entry.lesson, entry.segment, group?.group_index)
+            const value = lessonTemplateValue(entry.lesson, entry.segment, group?.group_index, slotNumber)
             cell.value = value.text
             applyCampusFill(cell, value.campus)
             insertedLessons += 1

@@ -39,12 +39,33 @@ test('completed schedule import filters dates, excludes class hours and keeps su
   const result = await parseCompletedSchedule(workbookFile(), data, { dateFrom: '2026-09-07', dateTo: '2026-09-07' })
   assert.deepEqual(result.errors, [])
   assert.equal(result.imported, 4)
+  assert.equal(result.importedHours, 8)
   assert.equal(result.excludedClassHours, 1)
   assert.deepEqual(result.importedDates, ['2026-09-07'])
   assert.deepEqual(result.data.teaching_ledger.map(row => row.lesson_id), [10, 10, 11, 12, 13])
   const subgroupTwo = result.data.teaching_ledger.find(row => row.lesson_id === 12)
   assert.equal(subgroupTwo.actual_teacher, 4)
   assert.equal(subgroupTwo.room, '64_К')
+})
+
+test('one displayed UP slot is six hours in the teaching ledger', async () => {
+  const practiceData = {
+    groups: [{ id: 7, name: 'ИСП-2308' }],
+    teachers: [{ id: 3, name: 'Иванова Анна Олеговна' }],
+    lessons: [{ id: 30, group: 7, subgroup: 14, teacher: 3, name: 'УП.02', is_block: true, total_hours: 36 }],
+    teaching_ledger: [],
+  }
+  const workbook = XLSX.utils.book_new()
+  XLSX.utils.book_append_sheet(workbook, XLSX.utils.aoa_to_sheet([
+    ['01.10.2026', '', '', 'ИСП-2308'],
+    ['ЧЕТВЕРГ', '8.30-12.30', 1, 'УП.02 1 п/г 8:30-12:30\nИванова 411_Л'],
+  ]), '2 курс')
+  const bytes = XLSX.write(workbook, { type: 'buffer', bookType: 'xlsx' })
+  const result = await parseCompletedSchedule({ name: 'up.xlsx', arrayBuffer: async () => bytes }, practiceData)
+  assert.deepEqual(result.errors, [])
+  assert.equal(result.imported, 1)
+  assert.equal(result.importedHours, 6)
+  assert.equal(result.data.teaching_ledger[0].hours, 6)
 })
 
 test('reimport replaces facts for the selected dates without duplicating old periods', async () => {

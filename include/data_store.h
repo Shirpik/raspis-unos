@@ -49,6 +49,8 @@ struct GroupData {
     bool class_hour_enabled = true;
     int class_hour_campus = -1;
     int class_hour_room = -1;
+    bool class_hour_room_required = false;
+    int class_hour_fixed_pair = -1;
     WorkSchedule work_schedule;
     std::vector<std::pair<Date, Date>> practice_periods;
     std::string teaching_deadline;
@@ -78,6 +80,8 @@ struct TeacherData {
     std::map<Date, int> date_same_subject_maximum;
     bool scheduling_active = true;
     std::set<Date> class_hour_available_dates;
+    int class_hour_max_groups = 2;
+    std::map<Date, std::set<int>> external_busy_slots;
 };
 
 struct RoomData {
@@ -131,6 +135,7 @@ struct ScheduleInputData {
     Date start_date{2026, 1, 12};
     Date end_date{2026, 6, 19};
     bool require_class_hours = false;
+    bool class_hour_zero_only = false;
     std::vector<LoadRequirement> load_requirements;
     JsonValue semester_readout_report;
     // Минимальная физическая нагрузка преподавателя (в парах) на весь

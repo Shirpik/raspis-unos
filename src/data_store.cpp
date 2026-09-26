@@ -703,7 +703,7 @@ void NormalizeDataRoot(JsonValue& root) {
         if (required_purpose != "sports_hall") required_purpose.clear();
         item.At("required_room_purpose") = JsonValue::MakeString(required_purpose);
         if (!item.At("total_hours").IsNumber()) {
-            const int multiplier = JsonBool(item, "is_block", false) ? 4 : 2;
+            const int multiplier = JsonBool(item, "is_block", false) ? 6 : 2;
             item.At("total_hours") = JsonValue::MakeNumber(JsonInt(item, "total_slots", 0) * multiplier);
         }
         if (!item.At("plan_active").IsBool()) item.At("plan_active") = JsonValue::MakeBool(true);
@@ -987,6 +987,7 @@ bool LoadScheduleInputDataFromRoot(const JsonValue& source, ScheduleInputData& d
     for (const auto& [id, hours] : teaching_balances.reserved) confirmed_lesson_hours[id] += hours;
 
     data.require_class_hours = JsonBool(settings, "require_class_hours", false);
+    data.class_hour_zero_only = JsonBool(settings, "class_hour_zero_only", false);
     data.teacher_period_targets.clear();
     const JsonValue& teacher_period_targets = settings.At("teacher_period_targets");
     if (teacher_period_targets.IsArray()) {
@@ -1034,6 +1035,8 @@ bool LoadScheduleInputDataFromRoot(const JsonValue& source, ScheduleInputData& d
         group.class_hour_enabled = JsonBool(item, "class_hour_enabled", true);
         group.class_hour_campus = JsonInt(item, "class_hour_campus", -1);
         group.class_hour_room = JsonInt(item, "class_hour_room", -1);
+        group.class_hour_room_required = JsonBool(item, "class_hour_room_required", false);
+        group.class_hour_fixed_pair = JsonInt(item, "class_hour_fixed_pair", -1);
         group.work_schedule = ParseWorkSchedule(item);
         group.teaching_deadline = JsonString(item, "teaching_deadline", "");
         int course_year = JsonInt(item, "course_year", 0);
@@ -1091,6 +1094,14 @@ bool LoadScheduleInputDataFromRoot(const JsonValue& source, ScheduleInputData& d
         if (!item.IsObject()) continue;
         TeacherData teacher;
         teacher.scheduling_active = JsonBool(item, "scheduling_active", true);
+        teacher.class_hour_max_groups = std::clamp(JsonInt(item, "class_hour_max_groups", 2), 1, 10);
+        for (const auto& row : item.At("external_busy_slots").array_value) {
+            Date date{};
+            if (!ParseDateIso(JsonString(row, "date", ""), date)) continue;
+            for (const auto& slot : row.At("slots").array_value)
+                if (slot.IsNumber() && slot.number_value >= 1 && slot.number_value <= 7)
+                    teacher.external_busy_slots[date].insert(static_cast<int>(slot.number_value));
+        }
         for (const auto& value : item.At("class_hour_available_dates").array_value) {
             Date date{};
             if (value.IsString() && ParseDateIso(value.string_value, date)) teacher.class_hour_available_dates.insert(date);
@@ -1986,7 +1997,7 @@ JsonValue BuildHoursReport(const JsonValue& source_root, const std::string& sche
         const int teacher = JsonInt(lesson, "teacher", -1);
         const int planned_hours = JsonBool(lesson, "curriculum_active", true)
             ? JsonInt(lesson, "total_hours",
-                JsonInt(lesson, "total_slots", 0) * (JsonBool(lesson, "is_block", false) ? 4 : 2))
+                JsonInt(lesson, "total_slots", 0) * (JsonBool(lesson, "is_block", false) ? 6 : 2))
             : 0;
         const int actual_hours = confirmed_hours[id];
         const int future_hours = projected_hours[id];

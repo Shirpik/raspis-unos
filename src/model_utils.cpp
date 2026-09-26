@@ -51,10 +51,12 @@ void AddMin2IfPositive(CpModelBuilder& model, const LinearExpr& day_sum) {
 void AddNoWindowsHard(
     CpModelBuilder& model,
     const std::vector<std::vector<BoolVar>>& busy_entities,
-    int num_days
+    int num_days,
+    const std::set<int>& skipped_days
 ) {
     for (const auto& busy : busy_entities) {
         for (int d = 0; d < num_days; d++) {
+            if (skipped_days.count(d)) continue;
             int base = d * SLOTS_PER_DAY;
 
             for (int left = 0; left < SLOTS_PER_DAY; left++) {

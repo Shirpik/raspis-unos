@@ -12,14 +12,18 @@ ScheduleLoadSummary ComputeScheduleLoadSummary(
 ) {
     ScheduleLoadSummary result;
     for (int l = 0; l < static_cast<int>(lessons.size()); ++l) {
-        const int planned_pairs = lessons[l].total_slots * (lessons[l].is_block ? 2 : 1);
+        const int planned_occurrences = lessons[l].total_slots;
         int scheduled_pairs = 0;
         if (l < static_cast<int>(x_values.size())) {
             scheduled_pairs = static_cast<int>(std::count_if(
                 x_values[l].begin(), x_values[l].end(), [](int value) { return value != 0; }));
         }
-        const int planned_lesson_hours = planned_pairs * 2;
-        const int scheduled_lesson_hours = scheduled_pairs * 2;
+        // УП занимает два внутренних парных слота, но в вычитке это один
+        // блок на 6 часов. Обычная пара остаётся двумя часами.
+        const int planned_lesson_hours = planned_occurrences * (lessons[l].is_block ? 6 : 2);
+        const int scheduled_occurrences = lessons[l].is_block
+            ? (scheduled_pairs + 1) / 2 : scheduled_pairs;
+        const int scheduled_lesson_hours = scheduled_occurrences * (lessons[l].is_block ? 6 : 2);
         result.planned_hours += planned_lesson_hours;
         result.scheduled_hours += scheduled_lesson_hours;
         if (scheduled_lesson_hours < planned_lesson_hours) {

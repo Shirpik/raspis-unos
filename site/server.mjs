@@ -16,9 +16,10 @@ const apiPort = Number(process.env.SITE_API_PORT || 8080)
 
 const backendCandidates = [
   process.env.SITE_BACKEND_PATH,
-  path.join(rootDir, '.tmp', 'build-sep7', 'Release', 'timetable_solver.exe'),
   path.join(rootDir, 'build-site', 'timetable_solver.exe'),
   path.join(rootDir, 'build', 'Release', 'timetable_solver.exe'),
+  // Historical temporary builds are a last resort only. They can be stale.
+  path.join(rootDir, '.tmp', 'build-sep7', 'Release', 'timetable_solver.exe'),
 ].filter(Boolean)
 const backendPath = backendCandidates.find(candidate => existsSync(candidate))
 

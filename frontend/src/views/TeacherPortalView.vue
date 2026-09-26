@@ -495,7 +495,7 @@ async function submitNotification() {
       dates.push(d.toISOString().split('T')[0])
     }
 
-    await api.teacher.submitNotification({
+    const response = await api.teacher.submitNotification({
       password: password.value,
       teacher_id: selectedNotifyTeacher.value.id,
       teacher_name: selectedNotifyTeacher.value.name,
@@ -505,6 +505,10 @@ async function submitNotification() {
       time_from: notification.value.timeFrom || null,
       time_to: notification.value.timeTo || null
     })
+    if (!response.ok) {
+      submitError.value = response.data?.message || 'Ошибка отправки уведомления'
+      return
+    }
     submitSuccess.value = true
     notification.value = {
       dateFrom: '',

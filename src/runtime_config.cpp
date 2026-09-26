@@ -21,8 +21,8 @@ RuntimeSolverConfig DefaultSolverConfig() {
     cfg.random_seed = 1;
     cfg.quality_improvement_seconds = 10.0;
 
-    cfg.hard_no_student_windows = false;
-    cfg.hard_no_teacher_windows = false;
+    cfg.hard_no_student_windows = true;
+    cfg.hard_no_teacher_windows = true;
     cfg.hard_min_study_days_per_week = false;
     cfg.hard_min_2_teacher_pairs_per_day = false;
     cfg.hard_max_one_two_pair_student_day = false;

@@ -85,14 +85,22 @@ const parseCell = raw => {
   const last = lines.at(-1)
   const hasTeacherLine = /^[А-ЯЁA-Z][А-Яа-яЁёA-Za-z-]+(?:\s+[А-ЯЁA-Z]\.)?/u.test(last)
   const subject = (hasTeacherLine && lines.length > 1 ? lines.slice(0, -1) : lines).join(' ')
+  const matchingSubject = subject
+    // Remove subgroup labels and display-only UP time ranges for catalogue matching.
+    .replace(/(?:^|\s)[12]\s*(?:п\s*\/?\s*г|подгрупп[а-яё]*)(?=\s|:|$)/iu, ' ')
+    .replace(/\s+\d{1,2}[:.]\d{2}\s*[–—-]\s*\d{1,2}[:.]\d{2}\s*$/u, '')
+    .replace(/\s+/gu, ' ')
+    .trim()
   return {
     raw: source,
     subject,
-    subjectKey: normalized(subject),
+    matchingSubject,
+    subjectKey: normalized(matchingSubject),
     subgroup: subgroupOrdinal(subject),
     teacherSurname: hasTeacherLine ? teacherSurname(last) : '',
     teacherLine: hasTeacherLine ? last : '',
     room: hasTeacherLine ? roomFromLine(last) : '',
+    isPractice: /^УП(?:\.|\s|$)/iu.test(matchingSubject),
     isLab: /лпз/iu.test(subject),
   }
 }
@@ -131,7 +139,7 @@ function chooseLesson(cell, groupId, inferredSubgroup, current, teachersById) {
   const candidates = (current.lessons || [])
     .filter(lesson => Number(lesson.group) === Number(groupId) && lesson.curriculum_active !== false)
     .map(lesson => {
-      let score = nameScore(cell.subject, lesson.name)
+      let score = nameScore(cell.matchingSubject || cell.subject, lesson.name)
       if (score < 35) return null
       const lessonTeacher = teachersById.get(Number(lesson.teacher)) || ''
       const surnameMatches = cell.teacherSurname && normalized(lessonTeacher).startsWith(cell.teacherSurname)
@@ -257,7 +265,10 @@ export async function parseCompletedSchedule(file, current, options = {}) {
             lesson_id: Number(match.lesson.id),
             date: block.date,
             slot,
-            hours: 2,
+            // A UP block is one timetable slot in the schedule, but accounts
+            // for six teaching hours (morning 08:30–12:30 or afternoon
+            // 13:00–17:00). Ordinary pairs remain two hours.
+            hours: cell.isPractice ? 6 : 2,
             status,
             source_file: file.name,
             source_sheet: sheetName,
@@ -296,6 +307,7 @@ export async function parseCompletedSchedule(file, current, options = {}) {
     sheetCount: workbook.SheetNames.length,
     importedDates: [...importedDates].sort(),
     imported: imported.length,
+    importedHours: imported.reduce((sum, item) => sum + item.hours, 0),
     replaced: (current.teaching_ledger || []).length - retained.length,
     duplicates,
     excludedClassHours,

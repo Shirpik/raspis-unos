@@ -367,7 +367,7 @@ ScheduleValidationResult ValidateScheduleJson(
             JsonValue ctx = Context(); Put(ctx, "teacher", event.teacher); Put(ctx, "lesson", event.lesson);
             collector.Add("error", "availability", "unknown_teacher",
                           "У занятия отсутствует действующий преподаватель", ctx);
-        } else if (DateInTeacherUnavailable(event.date, data.teacher_unavailable, event.teacher) ||
+        } else if (!IsAvailable(event.date, event.pair - 1, event.teacher, data.teacher_unavailable) ||
                    !WorkScheduleAllows(teacher->work_schedule, event.date, event.pair - 1)) {
             JsonValue ctx = Context(); Put(ctx, "teacher", event.teacher); Put(ctx, "date", DateLabel(event.date)); Put(ctx, "pair", event.pair);
             collector.Add("error", "availability", "teacher_unavailable",
@@ -568,6 +568,30 @@ ScheduleValidationResult ValidateScheduleJson(
                       "Подгруппа поставлена на разные площадки в один день", ctx);
     }
 
+    // Teaching loads exclude class hours. Continuity includes them, including
+    // zero period; external school work is occupied time for the teacher only.
+    auto part_continuity = part_day_slots;
+    auto teacher_continuity = teacher_day_slots;
+    for (const auto& group : schedule.At("groups").array_value) {
+        const auto* definition = FindGroup(data, JsonInt(group, "group_index", -1));
+        if (!definition) continue;
+        for (const auto& day : group.At("days").array_value) {
+            Date date{};
+            if (!ParseDateIso(JsonString(day, "date_iso", ""), date)) continue;
+            for (const auto& slot : day.At("slots").array_value)
+                for (const auto& lesson : slot.At("lessons").array_value) {
+                    if (!JsonBool(lesson, "is_class_hour", false)) continue;
+                    const int pair = JsonInt(slot, "slot", -1);
+                    for (int part = 0; part < definition->parts; ++part)
+                        part_continuity[{definition->id,part,date}].insert(pair);
+                    teacher_continuity[{JsonInt(lesson,"teacher_id",-1),date}].insert(pair);
+                }
+        }
+    }
+    for (const auto& teacher : data.teachers) for (const auto& external : teacher.external_busy_slots)
+        if (teacher_continuity.count({teacher.id,external.first}))
+            teacher_continuity[{teacher.id,external.first}].insert(external.second.begin(),external.second.end());
+
     for (const auto& item : part_day_slots) {
         const int group_id = std::get<0>(item.first);
         const int part = std::get<1>(item.first);
@@ -586,7 +610,7 @@ ScheduleValidationResult ValidateScheduleJson(
                               : "Суточная нагрузка подгруппы ниже заданного минимума",
                           ctx);
         }
-        if (!IsContiguous(item.second)) {
+        if (!IsContiguous(part_continuity[item.first])) {
             JsonValue ctx = Context(); Put(ctx, "group", group_id); Put(ctx, "part", part + 1); Put(ctx, "date", DateLabel(date)); ctx.At("slots") = SlotsJson(item.second);
             collector.Add(config.hard_no_student_windows ? "error" : "warning", "windows", "student_window",
                           "У подгруппы есть окно между занятиями", ctx);
@@ -670,7 +694,7 @@ ScheduleValidationResult ValidateScheduleJson(
             collector.Add("error", "daily_load", "teacher_daily_minimum",
                           "У работающего преподавателя меньше двух пар за день", ctx);
         }
-        if (!IsContiguous(item.second)) {
+        if (!IsContiguous(teacher_continuity[item.first])) {
             JsonValue ctx = Context(); Put(ctx, "teacher", teacher_id); Put(ctx, "date", DateLabel(date)); ctx.At("slots") = SlotsJson(item.second);
             collector.Add(config.hard_no_teacher_windows ? "error" : "warning", "windows", "teacher_window",
                           "У преподавателя есть окно между занятиями", ctx);
@@ -721,7 +745,7 @@ ScheduleValidationResult ValidateScheduleJson(
         JsonValue ctx = Context(); Put(ctx, "lesson", lesson.id); Put(ctx, "name", lesson.name); Put(ctx, "expected", lesson.total_slots); Put(ctx, "actual", actual);
         collector.Add("error", "quota", "lesson_quota_mismatch",
                       "Не совпадает квота занятия «" + lesson.name + "»", ctx);
-        const int hours_per_occurrence = lesson.is_block ? 4 : 2;
+        const int hours_per_occurrence = lesson.is_block ? 6 : 2;
         if (actual < lesson.total_slots) {
             result.incomplete_lessons++;
             result.remaining_hours += static_cast<long long>(lesson.total_slots - actual) * hours_per_occurrence;

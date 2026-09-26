@@ -98,28 +98,12 @@ TimeInterval UpIntervalForStartSlot(const Date& d, int start_slot) {
     int day_of_week = DayOfWeek(d);
     bool morning = (start_slot == UP_MORNING_MODEL_START_SLOT);
 
-    if (day_of_week == 1) {
-        if (morning) {
-            return {MakeMinute(9, 0), MakeMinute(13, 0)};
-        }
-
-        return {MakeMinute(13, 30), MakeMinute(17, 30)};
-    }
-
-    if (day_of_week >= 2 && day_of_week <= 5) {
+    if (day_of_week >= 1 && day_of_week <= 6) {
         if (morning) {
             return {MakeMinute(8, 30), MakeMinute(12, 30)};
         }
 
         return {MakeMinute(13, 0), MakeMinute(17, 0)};
-    }
-
-    if (day_of_week == 6) {
-        if (morning) {
-            return {MakeMinute(8, 30), MakeMinute(12, 0)};
-        }
-
-        return {MakeMinute(12, 30), MakeMinute(16, 30)};
     }
 
     return {0, 0};

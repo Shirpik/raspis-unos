@@ -301,7 +301,7 @@ FinalOutputValidation ValidateFinalOutputParts(
                 !JsonBool(lesson, "generation_active", true)) continue;
             const int lesson_id = JsonInt(lesson, "id", -1);
             const int expected = std::max(0, JsonInt(lesson, "total_slots", 0)) *
-                (JsonBool(lesson, "is_block", false) ? 4 : 2);
+                (JsonBool(lesson, "is_block", false) ? 6 : 2);
             const int scheduled = scheduled_events[lesson_id] * 2;
             if (scheduled < expected) {
                 result.remaining_hours += expected - scheduled;

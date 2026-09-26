@@ -2,6 +2,7 @@
 
 #include <atomic>
 #include <functional>
+#include <map>
 #include <string>
 #include <vector>
 
@@ -26,6 +27,7 @@ struct GenerationOptions {
     bool draft_semester_risk = false; // CLI-only diagnostic artifact, never approved publication.
     std::vector<LockedAssignment> locked;
     std::string lock_source;  // "none" | "manual" | "auto" — для диагностики
+    std::map<int, std::vector<int>> placement_hints; // lesson id -> week-local zero-based slots
 };
 
 // Колбэки для недельной генерации (прогресс + отмена)

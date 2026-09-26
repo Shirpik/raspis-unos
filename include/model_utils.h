@@ -1,6 +1,7 @@
 #pragma once
 
 #include <map>
+#include <set>
 #include <utility>
 #include <vector>
 
@@ -31,7 +32,8 @@ void AddMin2IfPositive(
 void AddNoWindowsHard(
     operations_research::sat::CpModelBuilder& model,
     const std::vector<std::vector<operations_research::sat::BoolVar>>& busy_entities,
-    int num_days
+    int num_days,
+    const std::set<int>& skipped_days = {}
 );
 
 std::vector<operations_research::sat::BoolVar> CreateWindowPenaltyVars(

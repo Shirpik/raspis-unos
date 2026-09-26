@@ -70,7 +70,7 @@
 
     <section v-if="tab==='facts'" class="card section">
       <h2>Импорт фактически проведённых занятий</h2>
-      <p class="help">Загрузите готовое расписание в Excel. Каждая найденная пара добавляется в подтверждённый журнал как 2 часа. Классные часы пропускаются. Повторный импорт заменяет факт выбранных дат.</p>
+      <p class="help">Загрузите готовое расписание в Excel. Обычная пара учитывается как 2 часа, один слот УП — как 6 часов. Классные часы пропускаются. Повторный импорт заменяет факт выбранных дат.</p>
       <div class="facts-controls">
         <label class="file-drop"><input type="file" accept=".xlsx,.xls" @change="selectFactsFile" /><span>📎 {{ factsFile?.name || 'Выбрать расписание Excel' }}</span></label>
         <label class="form-group"><span>С даты</span><input v-model="factsDateFrom" type="date" class="form-input" /></label>
@@ -80,7 +80,7 @@
       <div v-if="factsPreview" class="preview">
         <div class="metric-row">
           <div class="metric"><span>Проведено</span><strong>{{ factsPreview.imported }}</strong><small>пар</small></div>
-          <div class="metric"><span>Часов</span><strong>{{ factsPreview.imported * 2 }}</strong><small>без классных часов</small></div>
+          <div class="metric"><span>Часов</span><strong>{{ factsPreview.importedHours }}</strong><small>без классных часов</small></div>
           <div class="metric"><span>Заменено</span><strong>{{ factsPreview.replaced }}</strong><small>старых записей</small></div>
           <div class="metric"><span>Даты</span><strong>{{ factsPreview.importedDates.length }}</strong><small>{{ factsPreview.importedDates.join(', ') || 'нет' }}</small></div>
         </div>

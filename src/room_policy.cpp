@@ -45,6 +45,14 @@ bool OperationalRoomPolicyAllows(
 ) {
     if (date < kEffectiveFrom) return true;
 
+    // 01.10.2026 ЦПДЭ и мастерская 124 закрыты для обычных занятий.
+    // Учебная практика СП-Пф-3601 остаётся разрешённой в ЦПДЭ по служебной
+    // записке и закрепляется за кабинетом отдельно в данных недели.
+    if (date == Date{2026, 10, 1} && (room.id == kCpde || room.id == 63)) {
+        if (lesson.is_block && room.id == kCpde && lesson.teacher == kPodchinennov) return true;
+        return false;
+    }
+
     const bool is_lpz = ContainsLpz(lesson.name);
     if (lesson.teacher == kLimonova) {
         return is_lpz
@@ -56,7 +64,8 @@ bool OperationalRoomPolicyAllows(
             ? room.id == kSamtsovWorkshopA || room.id == kSamtsovWorkshopB
             : IsOrdinaryLesnayaClassroom(room);
     }
-    if ((lesson.teacher == kKalchevskaya || lesson.teacher == kPodchinennov) && is_lpz) {
+    if ((lesson.teacher == kKalchevskaya || lesson.teacher == kPodchinennov) &&
+        (is_lpz || lesson.is_block)) {
         return room.id == kCpde;
     }
     return true;

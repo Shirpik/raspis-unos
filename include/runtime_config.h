@@ -21,7 +21,7 @@ struct RuntimeSolverConfig {
     double quality_improvement_seconds = 10.0;
 
     bool hard_no_student_windows = true;
-    bool hard_no_teacher_windows = false;
+    bool hard_no_teacher_windows = true;
     bool hard_min_study_days_per_week = false;
     bool hard_min_2_teacher_pairs_per_day = false;
     bool hard_max_one_two_pair_student_day = false;

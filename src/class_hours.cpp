@@ -75,29 +75,45 @@ bool ContinuousStudentDay(const std::vector<AcademicEvent>& events,
     }
     return true;
 }
+void AddContinuousTimeline(operations_research::sat::CpModelBuilder& model,
+                           const std::vector<operations_research::sat::LinearExpr>& occupied) {
+    // Leading and trailing free slots are allowed. An occupied slot on each
+    // side of a free slot is a window, regardless of where the day starts.
+    for (int first = 0; first < static_cast<int>(occupied.size()); ++first)
+        for (int last = first + 2; last < static_cast<int>(occupied.size()); ++last)
+            for (int between = first + 1; between < last; ++between)
+                model.AddLessOrEqual(occupied[first] + occupied[last] - occupied[between], 1);
+}
 bool Fits(const ScheduleInputData& data, const std::vector<AcademicEvent>& events,
           const GroupData& group, const TeacherData& teacher, const RoomData& room,
           const Date& date, int pair) {
-    if (pair != 0 && (pair < 2 || pair > 7)) return false;
+    if (data.class_hour_zero_only && pair != 0) return false;
+    if (pair != 0 && (pair < 2 || pair > 4)) return false;
+    if (group.class_hour_fixed_pair >= 0 && pair != group.class_hour_fixed_pair) return false;
+    const auto external = teacher.external_busy_slots.find(date);
+    if (pair && external != teacher.external_busy_slots.end() && external->second.count(pair)) return false;
     const bool curator_exception = teacher.class_hour_available_dates.count(date) > 0;
     if (!teacher.scheduling_active) return false;
     if (!curator_exception && (!IsAvailable(date, teacher.id, data.teacher_unavailable) || !DateAvailable(teacher.work_schedule, date))) return false;
-    if (pair && ((!curator_exception && !WorkScheduleAllows(teacher.work_schedule, date, pair - 1)) ||
+    if (pair && ((!curator_exception && (!WorkScheduleAllows(teacher.work_schedule, date, pair - 1) ||
+                                         !IsAvailable(date, pair - 1, teacher.id, data.teacher_unavailable))) ||
                  !WorkScheduleAllows(group.work_schedule, date, pair - 1))) return false;
     if (!room.class_hour_open && (!room.active || room.access_mode != "general" ||
         (room.room_type != 0 && room.room_type != 1) || !room.purpose.empty())) return false;
     if (pair == 0 && room.class_hour_zero_blocked) return false;
-    if (!WorkScheduleAllows(room.work_schedule, date, std::max(0, pair - 1))) return false;
+    if (pair && !WorkScheduleAllows(room.work_schedule, date, pair - 1)) return false;
     if (pair && !room.available_slots.empty() && !room.available_slots.count(pair)) return false;
     if (room.access_mode == "exclusive" && !room.responsible_teacher_ids.count(teacher.id)) return false;
     if (room.capacity > 0 && group.size > room.capacity) return false;
-    if (group.class_hour_campus >= 0 && group.class_hour_campus != room.campus) return false;
+    const bool fixed_class_campus = group.class_hour_room_required || group.curator_teacher == 26;
+    if (fixed_class_campus && group.class_hour_campus >= 0 && group.class_hour_campus != room.campus) return false;
+    if (group.class_hour_room_required && group.class_hour_room != room.id) return false;
     int first = 8, last = 0;
     for (const auto& event : events) {
         if (!(event.date == date)) continue;
         if (event.group == group.id) {
             first = std::min(first, event.pair); last = std::max(last, event.pair);
-            if (event.campus >= 0 && event.campus != room.campus) return false;
+            if (event.campus >= 0 && event.campus != room.campus && pair != 0) return false;
             // Both halves are reserved, including the intentionally free first half.
             if (event.pair == pair) return false;
         }
@@ -188,13 +204,16 @@ void AddClassHourTimeConstraints(
     for (int day = 0; day < static_cast<int>(days.size()); ++day) {
         if (DayOfWeek(days[day]) != 1) continue;
         std::map<std::tuple<int,int,int>, std::vector<BoolVar>> sessions;
+        std::map<std::pair<int,int>, std::vector<BoolVar>> group_hours;
         for (const auto& group : data.groups) {
             if (!Required(data, group, days[day])) continue;
             const auto* teacher = Find(data.teachers, group.curator_teacher);
             std::vector<BoolVar> choices;
             if (teacher && group.id >= 0 && group.id < static_cast<int>(part_busy.size()) &&
                 teacher->id >= 0 && teacher->id < static_cast<int>(teacher_busy.size())) {
-                for (int pair : {0,2,3,4,5,6,7}) {
+                const std::vector<int> class_hour_pairs = data.class_hour_zero_only
+                    ? std::vector<int>{0} : std::vector<int>{0,2,3,4};
+                for (int pair : class_hour_pairs) {
                     std::set<int> campuses;
                     for (const auto& room : data.rooms)
                         if (Fits(data, {}, group, *teacher, room, days[day], pair)) campuses.insert(room.campus);
@@ -202,7 +221,9 @@ void AddClassHourTimeConstraints(
                         auto choice = model.NewBoolVar();
                         choices.push_back(choice);
                         sessions[{teacher->id,pair,campus}].push_back(choice);
-                        model.AddEquality(group_campus[group.id][day], campus).OnlyEnforceIf(choice);
+                        group_hours[{group.id,pair}].push_back(choice);
+                        if (pair != 0)
+                            model.AddEquality(group_campus[group.id][day], campus).OnlyEnforceIf(choice);
                         if (pair) {
                             model.AddEquality(teacher_busy[teacher->id][day*SLOTS_PER_DAY+pair-1],0).OnlyEnforceIf(choice);
                             model.AddEquality(teacher_campus[teacher->id][day], campus).OnlyEnforceIf(choice);
@@ -210,26 +231,63 @@ void AddClassHourTimeConstraints(
                         for (int part=0; part<std::min(group.parts,static_cast<int>(part_busy[group.id].size())); ++part) {
                             const auto& busy = part_busy[group.id][part];
                             if (pair) model.AddEquality(busy[day*SLOTS_PER_DAY+pair-1],0).OnlyEnforceIf(choice);
-                            // Every full pair between class hour and any regular
-                            // pair must be occupied by this physical subgroup.
-                            for (int other=1; other<=SLOTS_PER_DAY; ++other)
-                                for (int between=std::min(pair,other)+1; between<std::max(pair,other); ++between)
-                                    model.AddLessOrEqual(busy[day*SLOTS_PER_DAY+other-1],busy[day*SLOTS_PER_DAY+between-1]).OnlyEnforceIf(choice);
                         }
                     }
                 }
             }
             model.AddEquality(LinearExpr::Sum(choices),1);
         }
+        for (const auto& group : data.groups) {
+            if (!HARD_NO_STUDENT_WINDOWS && !Required(data, group, days[day])) continue;
+            if (group.id < 0 || group.id >= static_cast<int>(part_busy.size())) continue;
+            for (int part = 0; part < std::min(group.parts, static_cast<int>(part_busy[group.id].size())); ++part) {
+                std::vector<LinearExpr> occupied;
+                for (int pair = 0; pair <= SLOTS_PER_DAY; ++pair) {
+                    LinearExpr value;
+                    if (pair) value += part_busy[group.id][part][day*SLOTS_PER_DAY+pair-1];
+                    const auto hours = group_hours.find({group.id,pair});
+                    if (hours != group_hours.end()) value += LinearExpr::Sum(hours->second);
+                    occupied.push_back(value);
+                }
+                AddContinuousTimeline(model, occupied);
+            }
+        }
         std::map<std::pair<int,int>,std::vector<BoolVar>> teacher_sessions;
         for (const auto& entry : sessions) {
             const auto [teacher,pair,campus] = entry.first;
             auto session = model.NewBoolVar();
-            model.AddLessOrEqual(LinearExpr::Sum(entry.second),session*2);
+            const auto* teacher_data = Find(data.teachers, teacher);
+            model.AddLessOrEqual(LinearExpr::Sum(entry.second), session *
+                (teacher_data ? teacher_data->class_hour_max_groups : 2));
             model.AddGreaterOrEqual(LinearExpr::Sum(entry.second),session);
             teacher_sessions[{teacher,pair}].push_back(session);
         }
         for (const auto& entry : teacher_sessions) model.AddLessOrEqual(LinearExpr::Sum(entry.second),1);
+
+        // The generic no-window rule intentionally skips Monday because the
+        // class-hour slot is outside the regular seven-pair grid.  Reapply the
+        // same rule here for teachers, including external school occupancy and
+        // a late class-hour pair when one is selected.
+        if (HARD_NO_TEACHER_WINDOWS) for (const auto& teacher : data.teachers) {
+            if (teacher.id < 0 || teacher.id >= static_cast<int>(teacher_busy.size())) continue;
+            const auto external = teacher.external_busy_slots.find(days[day]);
+            const auto is_external = [&](int pair_number) {
+                return external != teacher.external_busy_slots.end() &&
+                    external->second.count(pair_number) > 0;
+            };
+            std::vector<LinearExpr> occupied;
+            for (int pair = 0; pair <= SLOTS_PER_DAY; ++pair) {
+                LinearExpr value;
+                if (is_external(pair)) {
+                    value = LinearExpr(1);
+                    if (pair) model.AddEquality(teacher_busy[teacher.id][day*SLOTS_PER_DAY+pair-1], 0);
+                } else if (pair) value += teacher_busy[teacher.id][day*SLOTS_PER_DAY+pair-1];
+                const auto hours = teacher_sessions.find({teacher.id,pair});
+                if (hours != teacher_sessions.end()) value += LinearExpr::Sum(hours->second);
+                occupied.push_back(value);
+            }
+            AddContinuousTimeline(model, occupied);
+        }
     }
 }
 
@@ -267,7 +325,9 @@ bool PlanClassHours(const ScheduleInputData& data, JsonValue& schedule, std::str
             const auto* teacher = Find(data.teachers, group.curator_teacher);
             if (!teacher) { error = "Не определён куратор группы " + group.name; return false; }
             std::vector<BoolVar> group_choices;
-            for (int pair : {0, 2, 3, 4, 5, 6, 7}) for (const auto& room : data.rooms) {
+            const std::vector<int> class_hour_pairs = data.class_hour_zero_only
+                ? std::vector<int>{0} : std::vector<int>{0, 2, 3, 4};
+            for (int pair : class_hour_pairs) for (const auto& room : data.rooms) {
                 if (!Fits(data, events, group, *teacher, room, date, pair)) continue;
                 auto var = model.NewBoolVar();
                 choices.push_back({group.id, teacher->id, room.id, pair, var});
@@ -288,7 +348,9 @@ bool PlanClassHours(const ScheduleInputData& data, JsonValue& schedule, std::str
         for (const auto& entry : sessions) {
             const auto [teacher, pair, room_id] = entry.first;
             auto session = model.NewBoolVar();
-            model.AddLessOrEqual(LinearExpr::Sum(entry.second), session * 2);
+            const auto* teacher_data = Find(data.teachers, teacher);
+            model.AddLessOrEqual(LinearExpr::Sum(entry.second), session *
+                (teacher_data ? teacher_data->class_hour_max_groups : 2));
             model.AddGreaterOrEqual(LinearExpr::Sum(entry.second), session);
             const auto* room = Find(data.rooms, room_id);
             if (room && room->capacity > 0) model.AddLessOrEqual(students[entry.first], room->capacity);
@@ -297,6 +359,22 @@ bool PlanClassHours(const ScheduleInputData& data, JsonValue& schedule, std::str
         }
         for (const auto& entry : teacher_rooms) model.AddLessOrEqual(LinearExpr::Sum(entry.second), 1);
         for (const auto& entry : room_teachers) model.AddLessOrEqual(LinearExpr::Sum(entry.second), 1);
+        if (HARD_NO_TEACHER_WINDOWS) for (const auto& teacher : data.teachers) {
+            std::set<int> academic_slots;
+            for (const auto& event : events)
+                if (event.date == date && event.teacher == teacher.id) academic_slots.insert(event.pair);
+            const auto external = teacher.external_busy_slots.find(date);
+            if (external != teacher.external_busy_slots.end())
+                academic_slots.insert(external->second.begin(), external->second.end());
+            std::vector<LinearExpr> occupied;
+            for (int pair = 0; pair <= SLOTS_PER_DAY; ++pair) {
+                LinearExpr value(academic_slots.count(pair) ? 1 : 0);
+                const auto hours = teacher_rooms.find({teacher.id,pair});
+                if (hours != teacher_rooms.end()) value += LinearExpr::Sum(hours->second);
+                occupied.push_back(value);
+            }
+            AddContinuousTimeline(model, occupied);
+        }
         if (choices.empty()) continue;
         model.Minimize(objective);
         Model solver;
@@ -381,7 +459,7 @@ JsonValue ValidateClassHours(const ScheduleInputData& data, const JsonValue& sch
                 counts[{group->id, date}]++;
                 const auto* teacher = Find(data.teachers, teacher_id);
                 const auto* room = Find(data.rooms, room_id);
-                if (pair >= 0 && pair <= 7 && !ContinuousStudentDay(academic, *group, date, pair))
+                if (pair >= 0 && pair <= 4 && !ContinuousStudentDay(academic, *group, date, pair))
                     Error(issues, "class_hour_student_window", "Между классным часом и занятиями подгруппы есть окно", group->id, date);
                 if (!Required(data, *group, date) || !teacher || teacher_id != group->curator_teacher || !room ||
                     !Fits(data, academic, *group, *teacher, *room, date, pair)) {
@@ -404,9 +482,13 @@ JsonValue ValidateClassHours(const ScheduleInputData& data, const JsonValue& sch
             Error(issues, "class_hour_count_mismatch", "У группы должен быть ровно один классный час в понедельник", group.id, date);
     for (const auto& entry : counts) if (entry.second > 1)
         Error(issues, "duplicate_class_hour", "Повторный классный час группы", entry.first.first, entry.first.second);
-    for (const auto& entry : teacher_rooms)
-        if (entry.second.size() > 2 || std::set<int>(entry.second.begin(), entry.second.end()).size() > 1)
-            Error(issues, "class_hour_teacher_conflict", "Куратор может вести не более двух групп одновременно в одном кабинете", -1, std::get<0>(entry.first));
+    for (const auto& entry : teacher_rooms) {
+        const auto* teacher = Find(data.teachers, std::get<2>(entry.first));
+        const int max_groups = teacher ? teacher->class_hour_max_groups : 2;
+        if (entry.second.size() > static_cast<size_t>(max_groups) ||
+            std::set<int>(entry.second.begin(), entry.second.end()).size() > 1)
+            Error(issues, "class_hour_teacher_conflict", "Превышено разрешённое число групп у куратора или назначены разные кабинеты одновременно", -1, std::get<0>(entry.first));
+    }
     for (const auto& entry : room_teachers) {
         const auto* room = Find(data.rooms, std::get<2>(entry.first));
         if (std::set<int>(entry.second.begin(), entry.second.end()).size() > 1 ||

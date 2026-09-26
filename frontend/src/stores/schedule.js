@@ -21,6 +21,9 @@ export const useScheduleStore = defineStore('schedule', () => {
     if (res.ok) {
       scheduleData.value = res.data
     } else {
+      // Do not keep showing an old schedule after the backend reports that
+      // the database revision changed.
+      scheduleData.value = null
       error.value = res.data?.message || 'Ошибка загрузки расписания'
     }
   }
@@ -32,7 +35,10 @@ export const useScheduleStore = defineStore('schedule', () => {
     loading.value = false
     if (res.ok) scheduleData.value = res.data
     else if (res.status === 404) scheduleData.value = null
-    else error.value = res.data?.message || 'Опубликованное расписание недоступно'
+    else {
+      scheduleData.value = null
+      error.value = res.data?.message || 'Опубликованное расписание недоступно'
+    }
   }
 
   function _stopPolling() {

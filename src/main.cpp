@@ -157,6 +157,28 @@ int main(int argc, char* argv[]) {
                 options.lock_source = timetable::JsonString(parsed.value, "source", "manual");
                 continue;
             }
+            if (argument == "--hints" && index + 1 < argc) {
+                const std::string path = argv[++index];
+                std::ifstream input(path, std::ios::binary);
+                std::ostringstream buffer;
+                buffer << input.rdbuf();
+                const auto parsed = timetable::ParseJson(buffer.str());
+                const auto& hints = parsed.value.At("placement_witness");
+                if (!input || !parsed.ok || !hints.IsObject()) {
+                    std::cerr << "Некорректный файл подсказок: " << path << "\n";
+                    return 2;
+                }
+                for (const auto& [lesson_id, slots] : hints.object_value) {
+                    if (!slots.IsArray()) continue;
+                    try {
+                        const int id = std::stoi(lesson_id);
+                        for (const auto& slot : slots.array_value)
+                            if (slot.IsNumber()) options.placement_hints[id].push_back(
+                                static_cast<int>(slot.number_value));
+                    } catch (...) { continue; }
+                }
+                continue;
+            }
             std::cerr << "Неизвестный аргумент генерации: " << argument << "\n";
             return 2;
         }

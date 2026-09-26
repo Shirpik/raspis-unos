@@ -16,8 +16,12 @@ int Capacity(const ScheduleInputData& data, const TeacherData& teacher, Date fir
     std::map<int, std::vector<int>> weeks;
     for (const auto& date : GenerateSchoolDays(first, last)) {
         int count = 0;
-        if (IsAvailable(date, teacher.id, data.teacher_unavailable))
-            for (int slot = 0; slot < 7; ++slot) if (WorkScheduleAllows(teacher.work_schedule, date, slot)) count++;
+        for (int slot = 0; slot < 7; ++slot) {
+            if (WorkScheduleAllows(teacher.work_schedule, date, slot) &&
+                IsAvailable(date, slot, teacher.id, data.teacher_unavailable)) {
+                count++;
+            }
+        }
         if (teacher.max_pairs_per_day > 0) count = std::min(count, teacher.max_pairs_per_day);
         weeks[(DaysBetween(first, date) + DayOfWeek(first) - 1) / 7].push_back(count);
     }
@@ -119,11 +123,16 @@ int GroupTeachingCapacity(const ScheduleInputData& data, const GroupData& group,
     std::map<int, std::vector<int>> weeks;
     for (const auto& day : GenerateSchoolDays(first, last)) {
         int count = 0;
-        if (GroupRegularCalendarAllows(group, day) && IsAvailable(day, group.id, data.unavailable) &&
-            (!teacher || (teacher->scheduling_active && IsAvailable(day, teacher->id, data.teacher_unavailable))))
-            for (int slot = 0; slot < 7; ++slot)
+        if (GroupRegularCalendarAllows(group, day) && IsAvailable(day, group.id, data.unavailable)) {
+            for (int slot = 0; slot < 7; ++slot) {
                 if (WorkScheduleAllows(group.work_schedule, day, slot) &&
-                    (!teacher || WorkScheduleAllows(teacher->work_schedule, day, slot))) ++count;
+                    (!teacher || (teacher->scheduling_active &&
+                                  WorkScheduleAllows(teacher->work_schedule, day, slot) &&
+                                  IsAvailable(day, slot, teacher->id, data.teacher_unavailable)))) {
+                    ++count;
+                }
+            }
+        }
         count = std::min(count, (data.student_daily_limit > 0 ? data.student_daily_limit : MAX_STUDENT_PAIRS_PER_DAY) * student_streams);
         if (teacher && teacher->max_pairs_per_day > 0) count = std::min(count, teacher->max_pairs_per_day);
         weeks[(DaysBetween(first, day) + DayOfWeek(first) - 1) / 7].push_back(count);

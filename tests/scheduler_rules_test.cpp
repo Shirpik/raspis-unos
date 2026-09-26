@@ -89,8 +89,8 @@ int main() {
         {1, 1, 1},
     };
     const auto incomplete = timetable::ComputeScheduleLoadSummary(load_lessons, incomplete_x);
-    ok &= Expect(incomplete.planned_hours == 22, "planned hours must use four hours per UP start");
-    ok &= Expect(incomplete.scheduled_hours == 20, "scheduled hours must count occupied pair slots");
+    ok &= Expect(incomplete.planned_hours == 26, "planned hours must use six hours per UP start");
+    ok &= Expect(incomplete.scheduled_hours == 24, "scheduled hours must count one six-hour UP occurrence");
     ok &= Expect(incomplete.remaining_hours == 2 && !incomplete.complete(),
         "truncated PP must be reported as an incomplete schedule");
 
