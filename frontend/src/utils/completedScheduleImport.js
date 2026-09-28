@@ -214,6 +214,8 @@ export async function parseCompletedSchedule(file, current, options = {}) {
   }
   const status = options.status === 'planned' ? 'planned' : 'confirmed'
   const rowsToImport = []
+  const detectedDates = new Set()
+  const detectedGroupIds = new Set()
   const errors = [], warnings = []
   let excludedClassHours = 0, ignoredCells = 0
 
@@ -227,6 +229,8 @@ export async function parseCompletedSchedule(file, current, options = {}) {
       }
       if (options.dateFrom && block.date < options.dateFrom) continue
       if (options.dateTo && block.date > options.dateTo) continue
+      detectedDates.add(block.date)
+      for (const entry of block.columns) detectedGroupIds.add(Number(entry.group.id))
       let slot = 0
       let half = 1
       for (let rowIndex = block.from; rowIndex < block.to; rowIndex++) {
@@ -306,6 +310,9 @@ export async function parseCompletedSchedule(file, current, options = {}) {
     fileName: file.name,
     sheetCount: workbook.SheetNames.length,
     importedDates: [...importedDates].sort(),
+    detectedDates: [...detectedDates].sort(),
+    detectedGroupIds: [...detectedGroupIds].sort((a, b) => a - b),
+    importedRows: imported,
     imported: imported.length,
     importedHours: imported.reduce((sum, item) => sum + item.hours, 0),
     replaced: (current.teaching_ledger || []).length - retained.length,

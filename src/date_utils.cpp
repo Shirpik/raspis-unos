@@ -168,13 +168,11 @@ std::string UpIntervalLabelForStartSlot(const Date& d, int start_slot) {
 }
 
 std::string UpShiftLabelForDisplaySlot(const Date& d, int slot) {
-    if (slot == UP_MORNING_MODEL_START_SLOT ||
-        slot == UP_MORNING_MODEL_START_SLOT + 1) {
+    if (slot == UP_MORNING_MODEL_START_SLOT) {
         return UpIntervalLabelForStartSlot(d, UP_MORNING_MODEL_START_SLOT);
     }
 
-    if (slot == UP_AFTERNOON_MODEL_START_SLOT ||
-        slot == UP_AFTERNOON_MODEL_START_SLOT + 1) {
+    if (slot == UP_AFTERNOON_MODEL_START_SLOT) {
         return UpIntervalLabelForStartSlot(d, UP_AFTERNOON_MODEL_START_SLOT);
     }
 

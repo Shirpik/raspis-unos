@@ -1,111 +1,102 @@
 {
   "days": [
     {
-      "date": "12.09.2026",
-      "date_iso": "2026-09-12",
+      "date": "29.09.2026",
+      "date_iso": "2026-09-29",
       "day_index": 0,
       "slots": [
         {
           "lessons": [],
           "slot": 1,
           "text": "-",
-          "time": "1 пара (08:30-09:45)"
+          "time": "1 пара (08:30-09:55)"
         },
         {
           "lessons": [],
           "slot": 2,
           "text": "-",
-          "time": "2 пара (09:55-11:10)"
+          "time": "2 пара (10:05-11:30)"
         },
         {
-          "lessons": [],
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 235,
+              "is_block": false,
+              "is_lab": true,
+              "name": "ЛПЗ ВМДК.02.01 Технология выполнения типовых парикмахерских услуг",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 11,
+              "room_name": "24",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 23,
+              "teacher_id": 36,
+              "uid": "lesson-50db7d88782c136f",
+              "week_parity": "all"
+            }
+          ],
           "slot": 3,
-          "text": "-",
-          "time": "3 пара (11:30-12:45)"
+          "text": "ЛПЗ ВМДК.02.01 Технология выполнения типовых парикмахерских услуг — 2 п/г, Дорохова Евгения Владимировна, Кривоусова",
+          "time": "3 пара (12:25-13:50)"
         },
         {
           "lessons": [
             {
               "avoid_lunch_split": false,
               "consecutive_pairs": 1,
-              "id": 228,
-              "is_block": false,
-              "is_lab": false,
-              "name": "МДК.01.03 Выполнение простых и сложных видов окрашивания волос",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 11,
-              "room_name": "24",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": -1,
-              "teacher_id": 36,
-              "uid": "lesson-78edc9ef3cb67fb5",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 4,
-          "text": "МДК.01.03 Выполнение простых и сложных видов окрашивания волос — вся группа, Дорохова Евгения Владимировна, Кривоусова",
-          "time": "4 пара (12:55-14:10)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "id": 220,
-              "is_block": false,
-              "is_lab": false,
-              "name": "Рисунок и живопись",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 11,
-              "room_name": "24",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": -1,
-              "teacher_id": 36,
-              "uid": "lesson-572f6fc9ee5c9665",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 5,
-          "text": "Рисунок и живопись — вся группа, Дорохова Евгения Владимировна, Кривоусова",
-          "time": "5 пара (14:20-15:30)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "id": 216,
+              "display_time": null,
+              "id": 218,
               "is_block": false,
               "is_lab": false,
               "name": "Информационное обеспечение профессиональной деятельности",
               "requested_room_id": null,
               "requested_room_name": null,
-              "room_id": 20,
-              "room_name": "41",
+              "room_id": 18,
+              "room_name": "37",
               "room_substituted": false,
               "room_substitution_reason": null,
               "room_type": 0,
-              "subgroup": -1,
+              "subgroup": 23,
               "teacher_id": 31,
-              "uid": "lesson-837c02cf696831ef",
+              "uid": "lesson-1d79cc15f3393df3",
+              "week_parity": "all"
+            },
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 234,
+              "is_block": false,
+              "is_lab": true,
+              "name": "ЛПЗ ВМДК.02.01 Технология выполнения типовых парикмахерских услуг",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 11,
+              "room_name": "24",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 22,
+              "teacher_id": 36,
+              "uid": "lesson-ebe320281f8639be",
               "week_parity": "all"
             }
           ],
-          "slot": 6,
-          "text": "Информационное обеспечение профессиональной деятельности — вся группа, Ланитина Елена Сергеевна, Кривоусова",
-          "time": "6 пара (15:40-16:50)"
+          "slot": 4,
+          "text": "Информационное обеспечение профессиональной деятельности — 2 п/г, Ланитина Елена Сергеевна, Кривоусова | ЛПЗ ВМДК.02.01 Технология выполнения типовых парикмахерских услуг — 1 п/г, Дорохова Евгения Владимировна, Кривоусова",
+          "time": "4 пара (14:00-15:25)"
         },
         {
           "lessons": [
             {
               "avoid_lunch_split": false,
               "consecutive_pairs": 1,
+              "display_time": null,
               "id": 212,
               "is_block": false,
               "is_lab": false,
@@ -125,29 +116,104 @@
             {
               "avoid_lunch_split": false,
               "consecutive_pairs": 1,
-              "id": 217,
+              "display_time": null,
+              "id": 229,
               "is_block": false,
-              "is_lab": false,
-              "name": "Информационное обеспечение профессиональной деятельности",
+              "is_lab": true,
+              "name": "ЛПЗ МДК.01.03 Выполнение простых и сложных видов окрашивания волос",
               "requested_room_id": null,
               "requested_room_name": null,
-              "room_id": 20,
-              "room_name": "41",
+              "room_id": 11,
+              "room_name": "24",
               "room_substituted": false,
               "room_substitution_reason": null,
               "room_type": 0,
               "subgroup": 22,
-              "teacher_id": 31,
-              "uid": "lesson-76f5aaeb650a1087",
+              "teacher_id": 36,
+              "uid": "lesson-f961ddee696152cc",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 5,
+          "text": "Иностранный язык в профессиональной деятельности — 2 п/г, Шадрина Елена Федоровна, Кривоусова | ЛПЗ МДК.01.03 Выполнение простых и сложных видов окрашивания волос — 1 п/г, Дорохова Евгения Владимировна, Кривоусова",
+          "time": "5 пара (15:35-16:55)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 212,
+              "is_block": false,
+              "is_lab": false,
+              "name": "Иностранный язык в профессиональной деятельности",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 17,
+              "room_name": "34",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 23,
+              "teacher_id": 33,
+              "uid": "lesson-39c6a0eb7b9c8d8d",
+              "week_parity": "all"
+            },
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 234,
+              "is_block": false,
+              "is_lab": true,
+              "name": "ЛПЗ ВМДК.02.01 Технология выполнения типовых парикмахерских услуг",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 11,
+              "room_name": "24",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 22,
+              "teacher_id": 36,
+              "uid": "lesson-ebe320281f8639be",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 6,
+          "text": "Иностранный язык в профессиональной деятельности — 2 п/г, Шадрина Елена Федоровна, Кривоусова | ЛПЗ ВМДК.02.01 Технология выполнения типовых парикмахерских услуг — 1 п/г, Дорохова Евгения Владимировна, Кривоусова",
+          "time": "6 пара (17:05-18:25)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 234,
+              "is_block": false,
+              "is_lab": true,
+              "name": "ЛПЗ ВМДК.02.01 Технология выполнения типовых парикмахерских услуг",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 11,
+              "room_name": "24",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 22,
+              "teacher_id": 36,
+              "uid": "lesson-ebe320281f8639be",
               "week_parity": "all"
             }
           ],
           "slot": 7,
-          "text": "Иностранный язык в профессиональной деятельности — 2 п/г, Шадрина Елена Федоровна, Кривоусова | Информационное обеспечение профессиональной деятельности — 1 п/г, Ланитина Елена Сергеевна, Кривоусова",
-          "time": "7 пара (17:00-18:10)"
+          "text": "ЛПЗ ВМДК.02.01 Технология выполнения типовых парикмахерских услуг — 1 п/г, Дорохова Евгения Владимировна, Кривоусова",
+          "time": "7 пара (18:35-19:55)"
         }
       ],
-      "weekday": "СБ"
+      "weekday": "ВТ"
     }
   ],
   "group_index": 11,

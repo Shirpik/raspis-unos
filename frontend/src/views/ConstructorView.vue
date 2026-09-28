@@ -6,6 +6,12 @@
         Конструктор расписания
       </h1>
       <div class="header-actions">
+        <input ref="scheduleImportInput" class="visually-hidden" type="file" accept=".xlsx,.xls" @change="onImportSchedule" />
+        <button class="btn btn-secondary btn-sm" :disabled="cstore.loading || cstore.saving || importingSchedule" @click="scheduleImportInput?.click()">
+          <span v-if="importingSchedule" class="spinner spinner-sm"/>
+          <Upload v-else :size="16" />
+          {{ importingSchedule ? 'Проверяю Excel…' : 'Восстановить неделю из Excel' }}
+        </button>
         <button class="btn btn-secondary btn-sm" :disabled="cstore.saving" @click="onCopyFromAuto">
           <span v-if="cstore.saving" class="spinner spinner-sm"/>
           <Download v-else :size="16" />
@@ -26,7 +32,19 @@
           Сохранить
           <span v-if="cstore.dirty" class="badge badge-warning" style="margin-left:6px">●</span>
         </button>
+        <button class="btn btn-success btn-sm" :disabled="cstore.saving || generating || placedLessonCount === 0" @click="onSaveAndGenerate">
+          <span v-if="generating" class="spinner spinner-sm"/>
+          <Sparkles v-else :size="16" />
+          {{ generating ? 'Запускаю…' : placedDates.length === 1 ? 'Сохранить и достроить день' : 'Сохранить и достроить' }}
+        </button>
       </div>
+    </div>
+
+    <div v-if="importReport" class="import-report" :class="importReport.ok ? 'import-report-ok' : 'import-report-error'">
+      <strong>{{ importReport.ok ? 'Неделя восстановлена' : 'Excel не импортирован' }}</strong>
+      <span v-if="importReport.ok">{{ importReport.dates[0] }} — {{ importReport.dates.at(-1) }}: {{ importReport.imported }} занятий, {{ importReport.groupCount }} групп.</span>
+      <ul v-if="importReport.errors?.length"><li v-for="message in importReport.errors.slice(0, 8)" :key="message">{{ message }}</li></ul>
+      <ul v-if="importReport.warnings?.length"><li v-for="message in importReport.warnings.slice(0, 8)" :key="message">{{ message }}</li></ul>
     </div>
 
     <ValidationPanel :result="validationResult" />
@@ -165,16 +183,33 @@
           <BarChart3 :size="20" />
           <span>Прогресс расстановки уроков</span>
         </div>
+        <p class="progress-help">
+          Счётчик показывает: <strong>закреплено вручную / требуется на период</strong>.
+          При генерации закреплённые пары останутся на выбранных местах, а остальные ячейки заполнятся автоматически.
+        </p>
+        <div class="progress-legend" aria-label="Обозначения прогресса">
+          <span><i class="legend-dot progress-none-dot" />Ещё не ставили</span>
+          <span><i class="legend-dot progress-partial-dot" />Часть закреплена</span>
+          <span><i class="legend-dot progress-complete-dot" />План закреплён полностью</span>
+          <span><i class="legend-dot progress-over-dot" />Поставлено больше текущего плана</span>
+        </div>
         <div class="progress-grid">
           <div v-for="lp in lessonProgress" :key="lp.id" class="progress-item" :class="{
-            'progress-complete': lp.placed >= lp.total_slots,
+            'progress-partial': lp.placed > 0 && lp.placed < lp.total_slots,
+            'progress-complete': lp.total_slots > 0 && lp.placed === lp.total_slots,
             'progress-over': lp.placed > lp.total_slots,
           }">
             <div class="progress-name">
               <span class="progress-group">{{ groupNameById(lp.group) }}</span>
               {{ lp.name }}
+              <small>
+                <template v-if="lp.total_slots === 0 && lp.placed > 0">не входит в текущий план · </template>
+                {{ subgroupLabel(lp.subgroup) }} · {{ teacherNameById(lp.teacher) }}
+              </small>
             </div>
-            <div class="progress-counts">{{ lp.placed }} / {{ lp.total_slots }}</div>
+            <div class="progress-counts" :title="`${lp.placed} закреплено вручную, ${lp.total_slots} требуется на период`">
+              {{ lp.placed }} / {{ lp.total_slots }}
+            </div>
           </div>
         </div>
       </section>
@@ -226,29 +261,35 @@
 
 <script setup>
 import { ref, computed, onMounted } from 'vue'
+import { useRouter } from 'vue-router'
 import Modal from '../components/Modal.vue'
 import { useConstructorStore } from '../stores/constructor.js'
 import { useDataStore } from '../stores/data.js'
+import { useScheduleStore } from '../stores/schedule.js'
 import { useToast } from '../composables/useToast.js'
 import { api } from '../api/index.js'
 import ValidationPanel from '../components/ValidationPanel.vue'
-import { AlertCircle, Download, Trash2, CheckCircle, Save, FileEdit, Copy, Clock, CalendarX, GraduationCap, BarChart3 } from 'lucide-vue-next'
+import { AlertCircle, Download, Upload, Trash2, CheckCircle, Save, FileEdit, Copy, Clock, CalendarX, GraduationCap, BarChart3, Sparkles } from 'lucide-vue-next'
 
 const cstore = useConstructorStore()
 const data = useDataStore()
+const scheduleStore = useScheduleStore()
+const router = useRouter()
 const toast = useToast()
 
 const selectedYear = ref(0)
 const weekIndex = ref(0)
 const validating = ref(false)
+const generating = ref(false)
 const validationResult = ref(null)
+const scheduleImportInput = ref(null)
+const importingSchedule = ref(false)
+const importReport = ref(null)
 
 onMounted(async () => {
   await Promise.all([
     cstore.load(),
-    data.loadGroups(),
-    data.loadLessons(),
-    data.loadTeachers(),
+    data.loadAll(),
   ])
 })
 
@@ -406,6 +447,10 @@ function groupNameById(gi) {
   return groups.value.find(g => g.group_index === gi)?.group_name || `Группа ${gi}`
 }
 
+function teacherNameById(id) {
+  return data.teachers.find(t => t.id === id)?.name || `преподаватель #${id}`
+}
+
 // ── Lesson progress ──
 const placementByLesson = computed(() => {
   const acc = {}
@@ -423,18 +468,37 @@ const placementByLesson = computed(() => {
 
 const lessonProgress = computed(() => {
   const items = []
+  const visibleGroups = new Set(filteredGroups.value.map(group => group.group_index))
   for (const lesson of data.lessons) {
+    if (!visibleGroups.has(lesson.group)) continue
+    const placed = placementByLesson.value[lesson.id] || 0
+    if (Number(lesson.total_slots || 0) <= 0 && placed === 0) continue
     items.push({
       id: lesson.id,
       group: lesson.group,
       name: lesson.name,
-      total_slots: lesson.total_slots,
-      placed: placementByLesson.value[lesson.id] || 0,
+      teacher: lesson.teacher,
+      total_slots: Number(lesson.total_slots || 0),
+      placed,
       subgroup: lesson.subgroup,
     })
   }
   items.sort((a, b) => a.group - b.group || a.id - b.id)
   return items
+})
+
+const placedLessonCount = computed(() =>
+  Object.values(placementByLesson.value).reduce((sum, count) => sum + count, 0)
+)
+
+const placedDates = computed(() => {
+  const dates = new Set()
+  for (const group of groups.value) {
+    for (const day of group.days || []) {
+      if ((day.slots || []).some(slot => (slot.lessons || []).length > 0)) dates.add(day.date_iso)
+    }
+  }
+  return [...dates].filter(Boolean).sort()
 })
 
 // ── Picker modal ──
@@ -469,7 +533,12 @@ function isoFromDmy(dateStr) {
 
 const pickerOptions = computed(() => {
   if (!pickerCell.value) return []
-  const sameGroup = data.lessons.filter(l => l.group === pickerCell.value.group_index)
+  const sameGroup = data.lessons.filter(l =>
+    l.group === pickerCell.value.group_index &&
+    l.plan_active !== false &&
+    l.generation_active !== false &&
+    Number(l.total_slots || 0) > 0
+  )
   return sameGroup.map(l => {
     const placed = placementByLesson.value[l.id] || 0
     let conflict = ''
@@ -543,6 +612,7 @@ function removeLessonFromCell(lessonId) {
 // ── Header actions ──
 
 async function onCopyFromAuto() {
+  if ((cstore.manualData?.groups || []).length && !confirm('Заменить весь Конструктор текущей автогенерацией? Сохранённые ручные недели будут перезаписаны.')) return
   const r = await cstore.copyFromAuto()
   if (r.ok) toast.success('Скопировано из автогенерации')
   else toast.error(r.data?.message || 'Ошибка копирования')
@@ -561,6 +631,83 @@ async function onSave() {
   else toast.error(r.data?.message || 'Ошибка сохранения')
 }
 
+async function onImportSchedule(event) {
+  const file = event.target.files?.[0]
+  event.target.value = ''
+  if (!file) return
+  if (cstore.error) {
+    toast.error('Сначала устраните ошибку загрузки Конструктора — импорт не будет перезаписывать недоступные данные')
+    return
+  }
+  importingSchedule.value = true
+  importReport.value = null
+  try {
+    const { importScheduleWeekFromExcel } = await import('../utils/scheduleTemplateImport.js')
+    const result = await importScheduleWeekFromExcel(file, {
+      groups: data.groups,
+      teachers: data.teachers,
+      lessons: data.lessons,
+      rooms: data.rooms,
+      settings: data.settings,
+      teaching_ledger: [],
+    }, cstore.manualData)
+    importReport.value = result
+    if (!result.ok) {
+      toast.error(result.errors[0] || 'Excel не удалось распознать')
+      return
+    }
+    const range = result.dates.length === 1 ? result.dates[0] : `${result.dates[0]} — ${result.dates.at(-1)}`
+    if (!confirm(`Восстановить в Конструкторе неделю ${range}? Будут заменены только эти даты; остальные недели сохранятся.`)) {
+      importReport.value = null
+      return
+    }
+    const previous = cstore.manualData
+    const previousDirty = cstore.dirty
+    cstore.manualData = result.manualData
+    cstore.dirty = true
+    const saved = await cstore.save()
+    if (!saved.ok) {
+      cstore.manualData = previous
+      cstore.dirty = previousDirty
+      importReport.value = { ...result, ok: false, errors: [saved.data?.message || 'Не удалось сохранить восстановленную неделю'] }
+      toast.error(importReport.value.errors[0])
+      return
+    }
+    await cstore.load()
+    toast.success(`Неделя ${range} восстановлена из Excel и сохранена`)
+  } catch (error) {
+    importReport.value = { ok: false, errors: [error.message], warnings: [], dates: [] }
+    toast.error(`Excel не прочитан: ${error.message}`)
+  } finally {
+    importingSchedule.value = false
+  }
+}
+
+async function onSaveAndGenerate() {
+  generating.value = true
+  const saved = await cstore.save()
+  if (!saved.ok) {
+    toast.error(saved.data?.message || 'Не удалось сохранить закреплённые пары')
+    generating.value = false
+    return
+  }
+  const options = { mode: 'weekly', lock_existing: 'manual' }
+  if (placedDates.value.length === 1) {
+    options.scope_from = placedDates.value[0]
+    options.scope_to = placedDates.value[0]
+  }
+  const result = await scheduleStore.regenerate(options)
+  generating.value = false
+  if (!result.ok && !result.async) {
+    toast.error(result.message || 'Не удалось запустить генерацию')
+    return
+  }
+  toast.success(placedDates.value.length === 1
+    ? `Закреплённые пары сохранены. Достраивается день ${placedDates.value[0]}.`
+    : 'Закреплённые пары сохранены. Генерация всего периода запущена.')
+  router.push('/schedule')
+}
+
 async function onValidate() {
   if (!cstore.manualData) return
   validating.value = true
@@ -575,15 +722,68 @@ async function onValidate() {
   else toast.error(`В ручном варианте нарушений: ${r.data?.summary?.hard_errors ?? 0}`)
 }
 
+function addDays(date, count) {
+  const result = new Date(date)
+  result.setDate(result.getDate() + count)
+  return result
+}
+
+function isoDate(date) {
+  return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`
+}
+
+function displayDate(date) {
+  return `${String(date.getDate()).padStart(2, '0')}.${String(date.getMonth() + 1).padStart(2, '0')}.${date.getFullYear()}`
+}
+
+const weekdayLabels = ['', 'ПН', 'ВТ', 'СР', 'ЧТ', 'ПТ', 'СБ']
+const slotTimes = [
+  '1 пара (08:30-09:55)', '2 пара (10:05-11:30)', '3 пара (12:25-13:50)',
+  '4 пара (14:00-15:25)', '5 пара (15:35-16:55)', '6 пара (17:05-18:25)',
+  '7 пара (18:35-19:55)',
+]
+
 function initScratch() {
-  cstore.manualData = { groups: [] }
+  const startIso = data.settings?.start_date
+  const endIso = data.settings?.end_date
+  const start = startIso ? new Date(`${startIso}T12:00:00`) : null
+  const end = endIso ? new Date(`${endIso}T12:00:00`) : null
+  if (!start || !end || Number.isNaN(start.getTime()) || Number.isNaN(end.getTime()) || start > end) {
+    toast.error('Сначала укажите корректные даты периода в настройках')
+    return
+  }
+  const days = []
+  for (let date = start, dayIndex = 0; date <= end; date = addDays(date, 1)) {
+    const weekday = date.getDay()
+    if (weekday === 0) continue
+    days.push({
+      date: displayDate(date),
+      date_iso: isoDate(date),
+      day_index: dayIndex++,
+      weekday: weekdayLabels[weekday],
+      slots: slotTimes.map((time, index) => ({ slot: index + 1, time, text: '-', lessons: [] })),
+    })
+  }
+  cstore.manualData = {
+    groups: data.groups.map(group => ({
+      group_index: group.id,
+      group_name: group.name,
+      days: days.map(day => ({ ...day, slots: day.slots.map(slot => ({ ...slot, lessons: [] })) })),
+    })),
+  }
   cstore.dirty = true
-  toast.info('Начни кликать по ячейкам, чтобы добавить занятия')
+  weekIndex.value = 0
+  toast.info('Пустая сетка создана. Нажимайте на ячейки, чтобы закрепить занятия.')
 }
 </script>
 
 <style scoped>
 .header-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+.visually-hidden { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
+.import-report { display:flex; flex-direction:column; gap:6px; margin-bottom:16px; padding:12px 14px; border:1px solid var(--border); border-radius:var(--radius); font-size:13px; }
+.import-report-ok { border-color:var(--success); background:var(--success-light); }
+.import-report-error { border-color:var(--error); background:var(--error-light); }
+.import-report ul { margin:0; padding-left:20px; }
 
 .year-tabs { display: flex; gap: 6px; margin-bottom: 16px; flex-wrap: wrap; }
 .year-tab {
@@ -678,6 +878,13 @@ function initScratch() {
   border-radius: var(--radius); padding: 16px; margin-bottom: 20px;
 }
 .card-title { font-size: 14px; font-weight: 700; margin-bottom: 10px; color: var(--text-primary); }
+.progress-help { margin: 0 0 10px; color: var(--text-secondary); font-size: 12px; line-height: 1.45; }
+.progress-legend { display:flex; flex-wrap:wrap; gap:8px 16px; margin-bottom:12px; color:var(--text-muted); font-size:11px; }
+.progress-legend span { display:inline-flex; align-items:center; gap:6px; }
+.legend-dot { width:9px; height:9px; border-radius:50%; background:var(--text-muted); }
+.progress-partial-dot { background:#f59e0b; }
+.progress-complete-dot { background:#10b981; }
+.progress-over-dot { background:#ef4444; }
 .progress-grid {
   display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 6px;
 }
@@ -685,9 +892,11 @@ function initScratch() {
   display: flex; justify-content: space-between; gap: 8px; padding: 6px 10px;
   background: var(--bg-tertiary); border-radius: var(--radius-sm); font-size: 12px;
 }
-.progress-name { color: var(--text-secondary); }
+.progress-name { color: var(--text-secondary); display:flex; flex-direction:column; }
+.progress-name small { margin-top:2px; color:var(--text-muted); font-size:10px; }
 .progress-group { color: var(--accent); font-weight: 600; margin-right: 6px; }
 .progress-counts { color: var(--text-primary); font-weight: 600; font-variant-numeric: tabular-nums; }
+.progress-partial .progress-counts { color: #f59e0b; }
 .progress-complete .progress-counts { color: #10b981; }
 .progress-over .progress-counts { color: #ef4444; }
 

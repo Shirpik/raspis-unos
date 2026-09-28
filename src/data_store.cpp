@@ -36,6 +36,11 @@ namespace {
 constexpr int kMaxDataVersions = 50;
 std::recursive_mutex g_data_file_mutex;
 
+bool IsUpSubjectName(const std::string& name) {
+    return name.rfind("УП.", 0) == 0 || name.rfind("УП ", 0) == 0 ||
+        name.rfind("ВУП.", 0) == 0 || name.rfind("ВУП ", 0) == 0;
+}
+
 std::string StableUid(const std::string& kind, const std::string& key) {
     // Детерминированный FNV-1a: одинаковая сущность получает одинаковый uid
     // после повторного импорта, даже если числовые id были пересобраны.
@@ -1327,7 +1332,7 @@ bool LoadScheduleInputDataFromRoot(const JsonValue& source, ScheduleInputData& d
         lesson.name = JsonString(item, "name", "Занятие");
         lesson.subject_id = JsonInt(item, "subject_id", -1);
         lesson.is_lab = JsonBool(item, "is_lab", false);
-        lesson.is_block = JsonBool(item, "is_block", false);
+        lesson.is_block = JsonBool(item, "is_block", false) || IsUpSubjectName(lesson.name);
         lesson.is_pp = JsonBool(item, "is_pp", false);
         lesson.consecutive_pairs = JsonInt(item, "consecutive_pairs", 1) == 2 ? 2 : 1;
         lesson.avoid_lunch_split = JsonBool(item, "avoid_lunch_split", false);
@@ -1882,6 +1887,7 @@ JsonValue BuildHoursReport(const JsonValue& source_root, const std::string& sche
     std::vector<Occurrence> occurrences;
     std::unordered_map<int, int> confirmed_hours;
     std::unordered_map<int, int> projected_hours;
+    std::set<std::string> projected_events;
     std::map<int, std::pair<std::string, std::string>> week_ranges;
     Date semester_start{};
     Date semester_end{};
@@ -1927,7 +1933,9 @@ JsonValue BuildHoursReport(const JsonValue& source_root, const std::string& sche
                             for (const JsonValue& lesson : slot.At("lessons").array_value) {
                                 const int id = JsonInt(lesson, "id", -1);
                                 if (id < 0) continue;
-                                projected_hours[id] += 2;
+                                const std::string key = std::to_string(id) + "|" + date_iso + "|" +
+                                    std::to_string(JsonInt(slot, "slot", 0));
+                                if (projected_events.insert(key).second) projected_hours[id] += 2;
                             }
                         }
                     }
@@ -1972,6 +1980,7 @@ JsonValue BuildHoursReport(const JsonValue& source_root, const std::string& sche
         if (range.first.empty() || date_iso < range.first) range.first = date_iso;
         if (range.second.empty() || date_iso > range.second) range.second = date_iso;
         confirmed_hours[lesson] += hours;
+        if (projected_events.count(key)) projected_hours[lesson] = std::max(0, projected_hours[lesson] - 2);
         occurrences.push_back({lesson, lesson_groups[lesson], lesson_teachers[lesson],
             JsonInt(entry, "actual_teacher", lesson_teachers[lesson]), date_iso, slot, week, hours,
             JsonString(entry, "room", ""), 0, false, "", ""});

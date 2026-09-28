@@ -1,63 +1,86 @@
 {
   "days": [
     {
-      "date": "12.09.2026",
-      "date_iso": "2026-09-12",
+      "date": "29.09.2026",
+      "date_iso": "2026-09-29",
       "day_index": 0,
       "slots": [
         {
           "lessons": [],
           "slot": 1,
           "text": "-",
-          "time": "1 пара (08:30-09:45)"
+          "time": "1 пара (08:30-09:55)"
         },
         {
           "lessons": [],
           "slot": 2,
           "text": "-",
-          "time": "2 пара (09:55-11:10)"
-        },
-        {
-          "lessons": [],
-          "slot": 3,
-          "text": "-",
-          "time": "3 пара (11:30-12:45)"
+          "time": "2 пара (10:05-11:30)"
         },
         {
           "lessons": [
             {
               "avoid_lunch_split": false,
               "consecutive_pairs": 1,
-              "id": 732,
+              "display_time": null,
+              "id": 734,
               "is_block": false,
               "is_lab": false,
-              "name": "Охрана труда",
+              "name": "Эффективное поведение на рынке труда",
               "requested_room_id": null,
               "requested_room_name": null,
-              "room_id": 38,
-              "room_name": "318",
+              "room_id": 33,
+              "room_name": "209",
               "room_substituted": false,
               "room_substitution_reason": null,
               "room_type": 0,
               "subgroup": -1,
-              "teacher_id": 13,
-              "uid": "lesson-6c312b19ae2b4a25",
+              "teacher_id": 15,
+              "uid": "lesson-8b64f8d19993c97b",
               "week_parity": "all"
             }
           ],
-          "slot": 4,
-          "text": "Охрана труда — вся группа, Костарева Наталья Викторовна, Лесная",
-          "time": "4 пара (12:55-14:10)"
+          "slot": 3,
+          "text": "Эффективное поведение на рынке труда — вся группа, Кропотова Анастасия Андреевна, Лесная",
+          "time": "3 пара (12:25-13:50)"
         },
         {
           "lessons": [
             {
               "avoid_lunch_split": false,
               "consecutive_pairs": 1,
-              "id": 744,
+              "display_time": null,
+              "id": 731,
               "is_block": false,
               "is_lab": false,
-              "name": "МДК.03.04 Производственное оборудование",
+              "name": "Правовое обеспечение профессиональной деятельности",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 45,
+              "room_name": "407",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": -1,
+              "teacher_id": 1,
+              "uid": "lesson-a03faf523648ef58",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 4,
+          "text": "Правовое обеспечение профессиональной деятельности — вся группа, Вагайская Татьяна Александровна, Лесная",
+          "time": "4 пара (14:00-15:25)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 741,
+              "is_block": false,
+              "is_lab": false,
+              "name": "МДК.03.03 Тюнинг автомобилей",
               "requested_room_id": null,
               "requested_room_name": null,
               "room_id": 35,
@@ -67,68 +90,28 @@
               "room_type": 0,
               "subgroup": -1,
               "teacher_id": 59,
-              "uid": "lesson-90852a515296c25c",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 5,
-          "text": "МДК.03.04 Производственное оборудование — вся группа, Самцов Андрей Евгеньевич, Лесная",
-          "time": "5 пара (14:20-15:30)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "id": 741,
-              "is_block": false,
-              "is_lab": false,
-              "name": "МДК.03.03 Тюнинг автомобилей",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 29,
-              "room_name": "201",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": -1,
-              "teacher_id": 59,
               "uid": "lesson-5879e1aaa089c74f",
               "week_parity": "all"
             }
           ],
-          "slot": 6,
+          "slot": 5,
           "text": "МДК.03.03 Тюнинг автомобилей — вся группа, Самцов Андрей Евгеньевич, Лесная",
-          "time": "6 пара (15:40-16:50)"
+          "time": "5 пара (15:35-16:55)"
         },
         {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "id": 744,
-              "is_block": false,
-              "is_lab": false,
-              "name": "МДК.03.04 Производственное оборудование",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 45,
-              "room_name": "407",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": -1,
-              "teacher_id": 59,
-              "uid": "lesson-90852a515296c25c",
-              "week_parity": "all"
-            }
-          ],
+          "lessons": [],
+          "slot": 6,
+          "text": "-",
+          "time": "6 пара (17:05-18:25)"
+        },
+        {
+          "lessons": [],
           "slot": 7,
-          "text": "МДК.03.04 Производственное оборудование — вся группа, Самцов Андрей Евгеньевич, Лесная",
-          "time": "7 пара (17:00-18:10)"
+          "text": "-",
+          "time": "7 пара (18:35-19:55)"
         }
       ],
-      "weekday": "СБ"
+      "weekday": "ВТ"
     }
   ],
   "group_index": 33,

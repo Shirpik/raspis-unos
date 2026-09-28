@@ -3,6 +3,7 @@
 #include <atomic>
 #include <functional>
 #include <map>
+#include <set>
 #include <string>
 #include <vector>
 
@@ -28,6 +29,10 @@ struct GenerationOptions {
     std::vector<LockedAssignment> locked;
     std::string lock_source;  // "none" | "manual" | "auto" — для диагностики
     std::map<int, std::vector<int>> placement_hints; // lesson id -> week-local zero-based slots
+    std::string scope_from; // ISO dates for an isolated day/week run
+    std::string scope_to;
+    std::map<int, int> reserved_hours; // generated placements outside selected range, excluding confirmed facts
+    std::set<Date> reserved_dates;
 };
 
 // Колбэки для недельной генерации (прогресс + отмена)

@@ -42,6 +42,11 @@ export const useDataStore = defineStore('data', () => {
     if (r.ok) teachers.value = Array.isArray(r.data) ? r.data : []
     return r
   }
+  async function loadSettings() {
+    const r = await api.settings.get()
+    if (r.ok) settings.value = r.data || { start_date: '', end_date: '' }
+    return r
+  }
   async function createTeacher(d) {
     const r = await api.teachers.create(d)
     if (r.ok) await loadTeachers()
@@ -174,6 +179,6 @@ export const useDataStore = defineStore('data', () => {
     loadRooms, createRoom, updateRoom, deleteRoom,
     loadRoomTypes, createRoomType, updateRoomType, deleteRoomType,
     loadSubstitutions, createSubstitution, updateSubstitution, deleteSubstitution,
-    saveSettings,
+    loadSettings, saveSettings,
   }
 })

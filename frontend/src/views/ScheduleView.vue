@@ -10,7 +10,7 @@
         <button class="btn btn-ghost" :disabled="!store.scheduleData || excelExporting" @click="downloadExcel">
           <span v-if="excelExporting" class="spinner spinner-sm" />
           <Download :size="16" />
-          <span>{{ excelExporting ? 'Собираю Excel…' : 'Excel' }}</span>
+          <span>{{ excelExporting ? 'Собираю Excel…' : 'Excel по образцу · эта неделя' }}</span>
         </button>
         <button class="btn btn-ghost" :disabled="!store.scheduleData" @click="downloadPdf">
           <FileText :size="16" />
@@ -31,17 +31,25 @@
           <span>{{ publishing ? 'Публикую…' : 'Опубликовать' }}</span>
         </button>
         <select v-if="!demoMode" v-model="lockMode" class="form-select lock-select" :disabled="store.generating">
-          <option value="none">С нуля</option>
-          <option value="manual">Зафиксировать Конструктор</option>
+          <option value="none">Не учитывать Конструктор</option>
+          <option value="manual">Достроить из Конструктора</option>
           <option value="auto">Зафиксировать прошлую автогенерацию</option>
         </select>
         <select v-if="!demoMode" v-model="generationMode" class="form-select generation-mode-select" :disabled="store.generating">
           <option value="weekly">По неделям</option>
           <option value="monolithic">Весь период</option>
         </select>
+        <select v-if="!demoMode && generationMode === 'weekly'" v-model="generationScope" class="form-select generation-mode-select" :disabled="store.generating">
+          <option value="week">Эту неделю</option>
+          <option value="day">Один день</option>
+          <option value="all">Весь период</option>
+        </select>
+        <select v-if="!demoMode && generationMode === 'weekly' && generationScope === 'day'" v-model="selectedDay" class="form-select generation-mode-select" :disabled="store.generating">
+          <option v-for="day in weekDates" :key="day" :value="day">{{ day }} · {{ getDayWeekday(day) }}</option>
+        </select>
         <button v-if="!demoMode && !store.generating" class="btn btn-primary" @click="onRegenerate">
           <Sparkles :size="16" />
-          <span>Сгенерировать</span>
+          <span>{{ generationScope === 'day' ? 'Сгенерировать день' : generationScope === 'week' ? 'Сгенерировать неделю' : 'Сгенерировать' }}</span>
         </button>
         <button v-else-if="!demoMode" class="btn btn-danger" @click="onCancel" :disabled="cancelling">
           <X :size="16" />
@@ -191,11 +199,17 @@
       <!-- Week navigation -->
       <div class="week-nav">
         <button class="btn btn-ghost btn-sm" :disabled="weekIndex <= 0" @click="weekIndex--">‹ Пред.</button>
-        <span class="week-label">
-          <strong>Неделя {{ weekIndex + 1 }}</strong>
-          <span class="week-dates">{{ weekLabel }}</span>
-        </span>
+        <label class="week-picker">
+          <span>Выбранная неделя</span>
+          <select v-model.number="weekIndex" class="form-select">
+            <option v-for="(week, index) in sortedWeeks" :key="week.iso" :value="index">
+              {{ weekOptionLabel(week, index) }}
+            </option>
+          </select>
+        </label>
         <button class="btn btn-ghost btn-sm" :disabled="weekIndex >= sortedWeeks.length - 1" @click="weekIndex++">След. ›</button>
+        <span v-if="weekConfirmedCount" class="week-fact-badge">✓ {{ weekConfirmedCount }} подтверждено</span>
+        <span v-if="weekGeneratedCount" class="week-plan-badge">✦ {{ weekGeneratedCount }} запланировано</span>
       </div>
 
       <template v-if="viewMode === 'teachers'">
@@ -250,6 +264,7 @@
                         <span class="cell-subject">{{ entry.subject }}</span>
                         <span class="teacher-group">{{ entry.groupName }}</span>
                         <span v-if="entry.subgroup" class="cell-detail">{{ entry.subgroup }}</span>
+                        <span v-if="entry.displayTime" class="cell-detail">{{ entry.displayTime }}</span>
                         <span class="cell-room" :class="{ 'cell-room-missing': !entry.roomName }">
                           {{ entry.roomName ? `каб. ${entry.roomName}` : 'кабинет не назначен' }}<template v-if="entry.campus"> · {{ entry.campus }}</template>
                         </span>
@@ -334,7 +349,9 @@
                         v-for="(lesson, lessonIndex) in getCellLessonRows(g.group_index, dateStr, slotNum)"
                         :key="`${lesson.id}-${lessonIndex}`"
                         class="cell-lesson"
+                        :class="{ 'confirmed-lesson': lesson.confirmed }"
                       >
+                        <span v-if="lesson.confirmed" class="fact-label">Проведено</span>
                         <span class="cell-subject">{{ lesson.subject }}</span>
                         <span v-if="lesson.subgroupLabel" class="cell-detail">{{ lesson.subgroupLabel }}</span>
                         <span v-for="(detail, i) in lesson.details" :key="i" class="cell-detail">{{ detail }}</span>
@@ -392,6 +409,8 @@ const teacherSearch = ref('')
 const weekIndex = ref(0)
 const lockMode = ref('none')
 const generationMode = ref('weekly')
+const generationScope = ref('week')
+const selectedDay = ref('')
 const publishing = ref(false)
 const validating = ref(false)
 const excelExporting = ref(false)
@@ -425,9 +444,16 @@ async function runValidation() {
 async function downloadExcel() {
   excelExporting.value = true
   try {
-    const { exportScheduleExcel } = await import('../utils/scheduleTemplateExport.js')
-    const result = await exportScheduleExcel(store.scheduleData)
-    toast.success(`Excel по образцу готов: ${result.insertedLessons} занятий`)
+    const { exportScheduleExcel, scheduleForDates } = await import('../utils/scheduleTemplateExport.js')
+    const selectedWeek = sortedWeeks.value[weekIndex.value]
+    const exportDates = selectedWeek ? Array.from({ length: 6 }, (_, offset) => {
+      const date = new Date(selectedWeek.mon)
+      date.setDate(date.getDate() + offset)
+      return fmtDate(date)
+    }) : weekDates.value
+    const weeklySchedule = scheduleForDates(store.scheduleData, exportDates)
+    const result = await exportScheduleExcel(weeklySchedule)
+    toast.success(`Excel за ${weekLabel.value} готов: ${result.insertedLessons} занятий`)
   } catch (error) {
     toast.error(`Не удалось собрать Excel: ${error.message}`)
   } finally {
@@ -531,6 +557,7 @@ const teacherLookup = computed(() => {
             subject: lesson.name || (separator >= 0 ? segment.slice(0, separator) : segment),
             groupName: group.group_name,
             subgroup: subgroupLabel(lesson.subgroup, group.group_index),
+            displayTime: lesson.display_time || '',
             roomName: lesson.room_name === null || lesson.room_name === undefined ? '' : String(lesson.room_name).trim(),
             campus,
           }
@@ -579,6 +606,16 @@ const sortedWeeks = computed(() => {
       weeksSet.add(mon.toISOString())
     }
   }
+  const from = store.semester?.semester_start_date
+  const to = store.semester?.first_course_semester_end_date || store.semester?.semester_end_date
+  if (from && to) {
+    const date = getMonday(new Date(`${from}T12:00:00`))
+    const end = new Date(`${to}T12:00:00`)
+    while (date <= end) {
+      weeksSet.add(date.toISOString())
+      date.setDate(date.getDate() + 7)
+    }
+  }
   return [...weeksSet].sort().map(iso => {
     const mon = new Date(iso)
     const sun = new Date(mon); sun.setDate(sun.getDate() + 6)
@@ -590,6 +627,22 @@ const weekLabel = computed(() => {
   const w = sortedWeeks.value[weekIndex.value]
   return w ? `${w.monStr} — ${w.sunStr}` : ''
 })
+
+function weekOptionLabel(week, index) {
+  let confirmed = 0
+  let generated = 0
+  for (const group of store.groups) {
+    for (const day of group.days || []) {
+      if (getMonday(parseDMY(day.date)).toISOString() !== week.iso) continue
+      for (const slot of day.slots || []) {
+        confirmed += (slot.lessons || []).filter(lesson => lesson.confirmed).length
+        generated += (slot.lessons || []).filter(lesson => !lesson.confirmed).length
+      }
+    }
+  }
+  const state = confirmed > 0 ? `проведено: ${confirmed}` : generated > 0 ? `план: ${generated}` : 'нет занятий'
+  return `Неделя ${index + 1} · ${week.monStr} — ${week.sunStr} · ${state}`
+}
 
 const weekDates = computed(() => {
   if (!sortedWeeks.value.length) return []
@@ -603,15 +656,34 @@ const weekDates = computed(() => {
       if (mon.toISOString() === w.iso) set.add(d.date)
     }
   }
+  const from = store.semester?.semester_start_date
+  const to = store.semester?.first_course_semester_end_date || store.semester?.semester_end_date
+  if (from && to) {
+    for (let offset = 0; offset < 6; offset++) {
+      const date = new Date(w.mon)
+      date.setDate(date.getDate() + offset)
+      const iso = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`
+      if (from <= iso && iso <= to) set.add(fmtDate(date))
+    }
+  }
   return [...set].sort(compareDMY)
 })
+
+watch(weekDates, days => { selectedDay.value = days[0] || '' }, { immediate: true })
+
+const weekConfirmedCount = computed(() => store.groups.reduce((sum, group) => sum + (group.days || [])
+  .filter(day => weekDates.value.includes(day.date))
+  .reduce((count, day) => count + (day.slots || []).reduce((n, slot) => n + (slot.lessons || []).filter(lesson => lesson.confirmed).length, 0), 0), 0))
+const weekGeneratedCount = computed(() => store.groups.reduce((sum, group) => sum + (group.days || [])
+  .filter(day => weekDates.value.includes(day.date))
+  .reduce((count, day) => count + (day.slots || []).reduce((n, slot) => n + (slot.lessons || []).filter(lesson => !lesson.confirmed).length, 0), 0), 0))
 
 function getDayWeekday(dateStr) {
   for (const g of store.groups) {
     const lookup = slotLookup.value[g.group_index]?.[dateStr]
     if (lookup) return lookup.weekday
   }
-  return ''
+  return ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'][parseDMY(dateStr).getDay()]
 }
 
 function jumpToCurrentWeek() {
@@ -700,8 +772,11 @@ function getCellLessonRows(groupIndex, dateStr, slotNum) {
       : []
     const campus = normalizedCampus(rawDetails.at(-1))
     const detailsWithoutCampus = campus ? rawDetails.slice(0, -1) : rawDetails
-    const details = detailsWithoutCampus.filter(detail =>
+    const parsedDetails = detailsWithoutCampus.filter(detail =>
       !/^(вся группа|[12]-?я?\s*(подгруппа|п\/?г)|подгруппа)/i.test(detail))
+    const details = lesson.display_time
+      ? [String(lesson.display_time), ...parsedDetails]
+      : parsedDetails
     const hasRoom = lesson.room_name !== null && lesson.room_name !== undefined && String(lesson.room_name).trim() !== ''
     const room = hasRoom ? `каб. ${lesson.room_name}` : 'кабинет не назначен'
 
@@ -713,6 +788,7 @@ function getCellLessonRows(groupIndex, dateStr, slotNum) {
       roomLabel: campus ? `${room} · ${campus}` : room,
       missingRoom: !hasRoom,
       substituted: lesson.room_substituted === true,
+      confirmed: lesson.confirmed === true,
       substitutionReason: lesson.room_substitution_reason,
     }
   })
@@ -746,6 +822,23 @@ const cancelling = ref(false)
 
 async function onRegenerate() {
   const opts = { mode: generationMode.value }
+  if (generationMode.value === 'weekly' && generationScope.value !== 'all') {
+    if (generationScope.value === 'day') {
+      if (!selectedDay.value) return toast.error('Выберите день')
+      const date = parseDMY(selectedDay.value)
+      opts.scope_from = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`
+      opts.scope_to = opts.scope_from
+    } else {
+      const week = sortedWeeks.value[weekIndex.value]
+      if (!week) return toast.error('Выберите неделю')
+      opts.scope_from = `${week.mon.getFullYear()}-${String(week.mon.getMonth() + 1).padStart(2, '0')}-${String(week.mon.getDate()).padStart(2, '0')}`
+      opts.scope_to = `${week.sun.getFullYear()}-${String(week.sun.getMonth() + 1).padStart(2, '0')}-${String(week.sun.getDate()).padStart(2, '0')}`
+      const start = store.semester?.semester_start_date
+      const end = store.semester?.first_course_semester_end_date || store.semester?.semester_end_date
+      if (start && opts.scope_from < start) opts.scope_from = start
+      if (end && opts.scope_to > end) opts.scope_to = end
+    }
+  }
   if (lockMode.value && lockMode.value !== 'none') opts.lock_existing = lockMode.value
   cancelling.value = false
   const r = await store.regenerate(opts)
@@ -770,11 +863,13 @@ async function onCancel() {
 watch(() => store.progress?.state, (newState, oldState) => {
   if (!oldState || oldState === newState) return
   if (newState === 'done') {
-    toast.success('Расписание по неделям сгенерировано!')
-    jumpToCurrentWeek()
+    toast.success(store.lastScoped ? 'Выбранные даты сгенерированы' : 'Расписание по неделям сгенерировано!')
+    if (!store.lastScoped) jumpToCurrentWeek()
     cancelling.value = false
-    validationSource.value = 'auto'
-    runValidation()
+    if (!store.lastScoped) {
+      validationSource.value = 'auto'
+      runValidation()
+    }
   } else if (newState === 'failed') {
     const msg = store.progress?.message || 'Ошибка генерации'
     toast.error(msg)
@@ -788,6 +883,11 @@ watch(() => store.progress?.state, (newState, oldState) => {
 </script>
 
 <style scoped>
+.week-fact-badge, .week-plan-badge { border-radius: 999px; padding: 5px 10px; font-size: 12px; font-weight: 700; white-space: nowrap; }
+.week-fact-badge { color: var(--success); background: var(--success-light); }
+.week-plan-badge { color: var(--accent); background: var(--accent-light); }
+.confirmed-lesson { border-left: 3px solid var(--success); padding-left: 6px; }
+.fact-label { display: inline-block; width: fit-content; margin-bottom: 3px; color: var(--success); font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: .04em; }
 .header-actions { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
 .lock-select { width: auto; min-width: 220px; padding: 7px 10px; font-size: 13px; }
 .validation-source { width: auto; min-width: 205px; padding: 7px 10px; font-size: 13px; }
@@ -883,6 +983,9 @@ watch(() => store.progress?.state, (newState, oldState) => {
 }
 .week-label strong { font-size: 14px; }
 .week-dates { font-size: 12px; color: var(--text-muted); }
+.week-picker { display:flex; flex-direction:column; gap:4px; flex:1; max-width:520px; }
+.week-picker > span { color:var(--text-muted); font-size:11px; }
+.week-picker .form-select { width:100%; }
 
 /* ── Table scroll wrapper ──────────────────────────────────────────────── */
 .sched-scroll {

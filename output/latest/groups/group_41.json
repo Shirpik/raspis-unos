@@ -1,28 +1,17 @@
 {
   "days": [
     {
-      "date": "12.09.2026",
-      "date_iso": "2026-09-12",
+      "date": "29.09.2026",
+      "date_iso": "2026-09-29",
       "day_index": 0,
       "slots": [
-        {
-          "lessons": [],
-          "slot": 1,
-          "text": "-",
-          "time": "1 пара (08:30-09:45)"
-        },
-        {
-          "lessons": [],
-          "slot": 2,
-          "text": "-",
-          "time": "2 пара (09:55-11:10)"
-        },
         {
           "lessons": [
             {
               "avoid_lunch_split": false,
               "consecutive_pairs": 1,
-              "id": 878,
+              "display_time": null,
+              "id": 879,
               "is_block": false,
               "is_lab": false,
               "name": "Иностранный язык в профессиональной деятельности",
@@ -33,25 +22,120 @@
               "room_substituted": false,
               "room_substitution_reason": null,
               "room_type": 0,
-              "subgroup": 82,
+              "subgroup": 83,
               "teacher_id": 4,
-              "uid": "lesson-4368da9ef01001cc",
+              "uid": "lesson-c9cff819457a65c5",
+              "week_parity": "all"
+            },
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 886,
+              "is_block": false,
+              "is_lab": true,
+              "name": "ЛПЗ Основы проектирования баз данных",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 46,
+              "room_name": "409",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 82,
+              "teacher_id": 65,
+              "uid": "lesson-236e307c5ca866d1",
               "week_parity": "all"
             }
           ],
-          "slot": 3,
-          "text": "Иностранный язык в профессиональной деятельности — 1 п/г, Давыдова Валентина Алексеевна, Лесная",
-          "time": "3 пара (11:30-12:45)"
+          "slot": 1,
+          "text": "Иностранный язык в профессиональной деятельности — 2 п/г, Давыдова Валентина Алексеевна, Лесная | ЛПЗ Основы проектирования баз данных — 1 п/г, Михайлова Татьяна Алексеевна, Лесная",
+          "time": "1 пара (08:30-09:55)"
         },
         {
           "lessons": [
             {
               "avoid_lunch_split": false,
               "consecutive_pairs": 1,
-              "id": 881,
+              "display_time": null,
+              "id": 888,
               "is_block": false,
               "is_lab": false,
-              "name": "Элементы высшей математики",
+              "name": "Компьютерные сети",
+              "requested_room_id": 49,
+              "requested_room_name": "411",
+              "room_id": 49,
+              "room_name": "411",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": -1,
+              "teacher_id": 66,
+              "uid": "lesson-aeeaac9198a083fa",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 2,
+          "text": "Компьютерные сети — вся группа, Колтышев Евгений Валерьевич, Лесная",
+          "time": "2 пара (10:05-11:30)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 887,
+              "is_block": false,
+              "is_lab": true,
+              "name": "ЛПЗ Основы проектирования баз данных",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 46,
+              "room_name": "409",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 83,
+              "teacher_id": 65,
+              "uid": "lesson-b1b88c6d4d46b727",
+              "week_parity": "all"
+            },
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 893,
+              "is_block": false,
+              "is_lab": true,
+              "name": "ЛПЗ МДК.03.02 Обеспечение качеств функционирования компьютерных систем",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 44,
+              "room_name": "405",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 82,
+              "teacher_id": 67,
+              "uid": "lesson-73cd1bc3638a35c8",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 3,
+          "text": "ЛПЗ Основы проектирования баз данных — 2 п/г, Михайлова Татьяна Алексеевна, Лесная | ЛПЗ МДК.03.02 Обеспечение качеств функционирования компьютерных систем — 1 п/г, Гарбузов Андрей Евгеньевич, Лесная",
+          "time": "3 пара (12:25-13:50)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 883,
+              "is_block": false,
+              "is_lab": false,
+              "name": "Теория вероятностей и математическая статистика",
               "requested_room_id": null,
               "requested_room_name": null,
               "room_id": 36,
@@ -61,94 +145,34 @@
               "room_type": 0,
               "subgroup": -1,
               "teacher_id": 17,
-              "uid": "lesson-9f2c9cbabc02601d",
+              "uid": "lesson-bb8ce3c3a7887fb0",
               "week_parity": "all"
             }
           ],
           "slot": 4,
-          "text": "Элементы высшей математики — вся группа, Нифонтова Ирина Геннадьевна, Лесная",
-          "time": "4 пара (12:55-14:10)"
+          "text": "Теория вероятностей и математическая статистика — вся группа, Нифонтова Ирина Геннадьевна, Лесная",
+          "time": "4 пара (14:00-15:25)"
         },
         {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "id": 876,
-              "is_block": false,
-              "is_lab": false,
-              "name": "Химия",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 29,
-              "room_name": "201",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": -1,
-              "teacher_id": 48,
-              "uid": "lesson-0695a849fc8a8622",
-              "week_parity": "all"
-            }
-          ],
+          "lessons": [],
           "slot": 5,
-          "text": "Химия — вся группа, Альшаева Алина Павловна, Лесная",
-          "time": "5 пара (14:20-15:30)"
+          "text": "-",
+          "time": "5 пара (15:35-16:55)"
         },
         {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "id": 876,
-              "is_block": false,
-              "is_lab": false,
-              "name": "Химия",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 45,
-              "room_name": "407",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": -1,
-              "teacher_id": 48,
-              "uid": "lesson-0695a849fc8a8622",
-              "week_parity": "all"
-            }
-          ],
+          "lessons": [],
           "slot": 6,
-          "text": "Химия — вся группа, Альшаева Алина Павловна, Лесная",
-          "time": "6 пара (15:40-16:50)"
+          "text": "-",
+          "time": "6 пара (17:05-18:25)"
         },
         {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "id": 891,
-              "is_block": false,
-              "is_lab": true,
-              "name": "ЛПЗ МДК.03.01 Внедрение и поддержка компьютерных систем",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 49,
-              "room_name": "411",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": 83,
-              "teacher_id": 67,
-              "uid": "lesson-b82a49d13af03a97",
-              "week_parity": "all"
-            }
-          ],
+          "lessons": [],
           "slot": 7,
-          "text": "ЛПЗ МДК.03.01 Внедрение и поддержка компьютерных систем — 2 п/г, Гарбузов Андрей Евгеньевич, Лесная",
-          "time": "7 пара (17:00-18:10)"
+          "text": "-",
+          "time": "7 пара (18:35-19:55)"
         }
       ],
-      "weekday": "СБ"
+      "weekday": "ВТ"
     }
   ],
   "group_index": 41,

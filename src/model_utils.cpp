@@ -387,34 +387,22 @@ int CountUpDayRuleViolations(
     for (int g = 0; g < GROUPS; g++) {
         for (int p = 0; p < PARTS_PER_GROUP; p++) {
             for (int d = 0; d < num_days; d++) {
-                int up_slots = 0;
-                int part_slots = 0;
-
+                bool invalid = false;
                 for (int s = 0; s < SLOTS_PER_DAY; s++) {
                     int t = d * SLOTS_PER_DAY + s;
-
-                    if (BoolValue(response, part_busy[g][p][t])) {
-                        part_slots++;
-                    }
-
                     for (int l = 0; l < static_cast<int>(lessons.size()); l++) {
-                        if (!lessons[l].is_block) {
-                            continue;
-                        }
-
-                        if (!LessonAffectsPart(lessons[l], g, p)) {
-                            continue;
-                        }
-
-                        if (BoolValue(response, x[l][t])) {
-                            up_slots++;
-                        }
+                        if (!lessons[l].is_block ||
+                            !LessonAffectsPart(lessons[l], g, p) ||
+                            !BoolValue(response, x[l][t])) continue;
+                        if (s != UP_MORNING_MODEL_START_SLOT &&
+                            s != UP_AFTERNOON_MODEL_START_SLOT) invalid = true;
+                        for (int later = s + 1; later < SLOTS_PER_DAY; ++later)
+                            if (BoolValue(response,
+                                part_busy[g][p][d * SLOTS_PER_DAY + later]))
+                                invalid = true;
                     }
                 }
-
-                if (up_slots > 0 && (up_slots != 2 || part_slots != 2)) {
-                    violations++;
-                }
+                if (invalid) violations++;
             }
         }
     }

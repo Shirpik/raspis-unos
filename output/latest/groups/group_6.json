@@ -1,73 +1,76 @@
 {
   "days": [
     {
-      "date": "12.09.2026",
-      "date_iso": "2026-09-12",
+      "date": "29.09.2026",
+      "date_iso": "2026-09-29",
       "day_index": 0,
       "slots": [
         {
           "lessons": [],
           "slot": 1,
           "text": "-",
-          "time": "1 пара (08:30-09:45)"
+          "time": "1 пара (08:30-09:55)"
         },
         {
           "lessons": [
             {
               "avoid_lunch_split": false,
               "consecutive_pairs": 1,
-              "id": 124,
+              "display_time": null,
+              "id": 115,
               "is_block": false,
               "is_lab": false,
-              "name": "информатика",
+              "name": "литература",
               "requested_room_id": null,
               "requested_room_name": null,
-              "room_id": 5,
-              "room_name": "16",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": 13,
-              "teacher_id": 21,
-              "uid": "lesson-1078125e21300641",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 2,
-          "text": "информатика — 2 п/г, Комарова Яна Николаевна, Кривоусова",
-          "time": "2 пара (09:55-11:10)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "id": 127,
-              "is_block": false,
-              "is_lab": false,
-              "name": "физика",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 60,
-              "room_name": "69",
+              "room_id": 16,
+              "room_name": "33",
               "room_substituted": false,
               "room_substitution_reason": null,
               "room_type": 0,
               "subgroup": -1,
-              "teacher_id": 9,
-              "uid": "lesson-51819c5948a6498d",
+              "teacher_id": 22,
+              "uid": "lesson-f95ac32c77d44a65",
               "week_parity": "all"
             }
           ],
-          "slot": 3,
-          "text": "физика — вся группа, Сутягин Артём Борисович, Кривоусова",
-          "time": "3 пара (11:30-12:45)"
+          "slot": 2,
+          "text": "литература — вся группа, Кибардина Татьяна Леонидовна, Кривоусова",
+          "time": "2 пара (10:05-11:30)"
         },
         {
           "lessons": [
             {
               "avoid_lunch_split": false,
               "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 115,
+              "is_block": false,
+              "is_lab": false,
+              "name": "литература",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 16,
+              "room_name": "33",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": -1,
+              "teacher_id": 22,
+              "uid": "lesson-f95ac32c77d44a65",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 3,
+          "text": "литература — вся группа, Кибардина Татьяна Леонидовна, Кривоусова",
+          "time": "3 пара (12:25-13:50)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
               "id": 116,
               "is_block": false,
               "is_lab": false,
@@ -87,13 +90,14 @@
           ],
           "slot": 4,
           "text": "история — вся группа, Дроговейко Дарья Юрьевна, Кривоусова",
-          "time": "4 пара (12:55-14:10)"
+          "time": "4 пара (14:00-15:25)"
         },
         {
           "lessons": [
             {
               "avoid_lunch_split": false,
               "consecutive_pairs": 1,
+              "display_time": null,
               "id": 116,
               "is_block": false,
               "is_lab": false,
@@ -113,42 +117,22 @@
           ],
           "slot": 5,
           "text": "история — вся группа, Дроговейко Дарья Юрьевна, Кривоусова",
-          "time": "5 пара (14:20-15:30)"
+          "time": "5 пара (15:35-16:55)"
         },
         {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "id": 123,
-              "is_block": false,
-              "is_lab": false,
-              "name": "информатика",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 5,
-              "room_name": "16",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": 12,
-              "teacher_id": 21,
-              "uid": "lesson-21df7d3a750c145e",
-              "week_parity": "all"
-            }
-          ],
+          "lessons": [],
           "slot": 6,
-          "text": "информатика — 1 п/г, Комарова Яна Николаевна, Кривоусова",
-          "time": "6 пара (15:40-16:50)"
+          "text": "-",
+          "time": "6 пара (17:05-18:25)"
         },
         {
           "lessons": [],
           "slot": 7,
           "text": "-",
-          "time": "7 пара (17:00-18:10)"
+          "time": "7 пара (18:35-19:55)"
         }
       ],
-      "weekday": "СБ"
+      "weekday": "ВТ"
     }
   ],
   "group_index": 6,

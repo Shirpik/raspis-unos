@@ -14,6 +14,7 @@ struct ScheduleValidationOptions {
     bool require_full_period = true;
     bool require_exact_quotas = true;
     bool include_soft_warnings = true;
+    bool require_weekly_study_days = true;
 };
 
 struct ScheduleValidationResult {

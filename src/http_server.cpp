@@ -586,6 +586,85 @@ bool WriteScheduleSnapshot(const std::filesystem::path& directory, const JsonVal
     return WriteScheduleDataRevision(directory.string(), error);
 }
 
+JsonValue MergeScheduleRange(const JsonValue& existing, const JsonValue& generated,
+                             const std::string& from, const std::string& to) {
+    JsonValue merged = generated;
+    merged.At("generation_scope") = JsonValue::MakeString("selected_dates");
+    merged.At("status") = JsonValue::MakeString("scoped");
+    if (!existing.IsObject() || !existing.At("groups").IsArray()) return merged;
+    for (JsonValue& group : merged.At("groups").array_value) {
+        const int id = JsonInt(group, "group_index", -1);
+        for (const JsonValue& old_group : existing.At("groups").array_value) {
+            if (JsonInt(old_group, "group_index", -2) != id) continue;
+            for (const JsonValue& day : old_group.At("days").array_value) {
+                const std::string date = JsonString(day, "date_iso", "");
+                if (!date.empty() && (date < from || date > to))
+                    group.At("days").array_value.push_back(day);
+            }
+            break;
+        }
+        auto& days = group.At("days").array_value;
+        std::sort(days.begin(), days.end(), [](const JsonValue& a, const JsonValue& b) {
+            return JsonString(a, "date_iso", "") < JsonString(b, "date_iso", "");
+        });
+    }
+    return merged;
+}
+
+bool PrepareGenerationScope(const JsonValue& data, const std::filesystem::path& schedule_file,
+                            const JsonValue& request, GenerationOptions& opts, std::string& error) {
+    const std::string from = JsonString(request, "scope_from", "");
+    const std::string to = JsonString(request, "scope_to", from);
+    Date first{}, last{}, semester_start{}, semester_end{}, first_course_end{};
+    const JsonValue& settings = data.At("settings");
+    ParseDateIso(JsonString(settings, "semester_end_date", ""), semester_end);
+    if (ParseDateIso(JsonString(settings, "first_course_semester_end_date", ""), first_course_end))
+        semester_end = std::max(semester_end, first_course_end);
+    if (!ParseDateIso(from, first) || !ParseDateIso(to, last) || last < first ||
+        DaysBetween(first, last) > 6 ||
+        !ParseDateIso(JsonString(settings, "semester_start_date", ""), semester_start) ||
+        semester_end.year == 0 ||
+        first < semester_start || semester_end < last ||
+        GenerateSchoolDays(first, last).empty()) {
+        error = "Выберите день или неделю внутри дат семестра (не более 7 дней).";
+        return false;
+    }
+    opts.scope_from = from;
+    opts.scope_to = to;
+    std::set<std::string> confirmed_events;
+    for (const JsonValue& entry : data.At("teaching_ledger").array_value) {
+        if (JsonString(entry, "status", "") != "confirmed") continue;
+        const std::string date = JsonString(entry, "date", "");
+        if (from <= date && date <= to) {
+            error = "Выбранный период содержит подтверждённые пары. Они защищены от перезаписи; выберите будущую дату без факта.";
+            return false;
+        }
+        confirmed_events.insert(std::to_string(JsonInt(entry, "lesson_id", -1)) + "|" + date + "|" +
+                                std::to_string(JsonInt(entry, "slot", 0)));
+    }
+    if (!ScheduleFileIsCurrent(schedule_file.string())) return true;
+    JsonParseResult previous = ParseJson(ReadFileUtf8(schedule_file));
+    if (!previous.ok || !previous.value.At("groups").IsArray()) return true;
+    std::set<std::string> seen;
+    for (const JsonValue& group : previous.value.At("groups").array_value)
+        for (const JsonValue& day : group.At("days").array_value) {
+            const std::string date = JsonString(day, "date_iso", "");
+            if (date.empty() || (from <= date && date <= to)) continue;
+            Date generated_date{};
+            if (ParseDateIso(date, generated_date)) opts.reserved_dates.insert(generated_date);
+            for (const JsonValue& slot : day.At("slots").array_value)
+                for (const JsonValue& lesson : slot.At("lessons").array_value) {
+                    const int id = JsonInt(lesson, "id", -1);
+                    if (id < 0) continue;
+                    const std::string key = std::to_string(id) + "|" + date + "|" +
+                                            std::to_string(JsonInt(slot, "slot", 0));
+                    if (!confirmed_events.count(key) && seen.insert(key).second)
+                        opts.reserved_hours[id] += 2;
+                }
+        }
+    return true;
+}
+
 bool WriteOptionalReport(const std::filesystem::path& path, const JsonValue& value, std::string& error) {
     if (value.IsNull()) {
         std::error_code ec;
@@ -1754,8 +1833,12 @@ std::string HandleRequest(const std::string& request, const std::string& output_
         GenerationOptions opts;
         opts.lock_source = "none";
         std::string gen_mode = "weekly";
+        JsonValue request = JsonValue::MakeObject();
         if (!body.empty()) {
             JsonParseResult parsed = ParseJson(body);
+            if (!parsed.ok || !parsed.value.IsObject())
+                return ErrorJson(400, "Bad Request", "Нужен JSON-объект параметров генерации");
+            request = parsed.value;
             if (parsed.ok && parsed.value.IsObject()) {
                 gen_mode = JsonString(parsed.value, "mode", "weekly");
                 std::string lock_existing = JsonString(parsed.value, "lock_existing", "none");
@@ -1816,6 +1899,28 @@ std::string HandleRequest(const std::string& request, const std::string& output_
                         lock_existing == "manual"
                             ? "Ручное расписание пусто. Открой Конструктор и сохрани хотя бы одно занятие."
                             : "Автогенерации ещё нет — сначала сгенерируй обычное расписание.");
+                }
+            }
+        }
+
+        if (request.Has("scope_from")) {
+            if (gen_mode != "weekly")
+                return ErrorJson(400, "Bad Request", "Выбор дат работает только в недельном режиме");
+            std::string scope_error;
+            if (!PrepareGenerationScope(audit_source.value, out_dir / "schedule_all.json",
+                                        request, opts, scope_error))
+                return ErrorJson(422, "Unprocessable Entity", scope_error);
+            if (opts.lock_source != "none") {
+                Date scope_first{}, scope_last{};
+                ParseDateIso(opts.scope_from, scope_first);
+                ParseDateIso(opts.scope_to, scope_last);
+                opts.locked.erase(std::remove_if(opts.locked.begin(), opts.locked.end(),
+                    [&](const LockedAssignment& assignment) {
+                        return assignment.date < scope_first || scope_last < assignment.date;
+                    }), opts.locked.end());
+                if (opts.locked.empty() && opts.lock_source == "manual") {
+                    return ErrorJson(422, "Unprocessable Entity",
+                        "В Конструкторе нет закреплённых пар на выбранную дату.");
                 }
             }
         }
@@ -1932,8 +2037,33 @@ std::string HandleRequest(const std::string& request, const std::string& output_
             FinalOutputValidation validation;
             if (result.success) {
                 std::lock_guard<std::mutex> schedule_lock(g_schedule_mutex);
-                validation = ValidateFinalOutput(cap_candidate);
-                ApplyFinalOutputGate(result, validation);
+                if (cap_opts.scope_from.empty()) {
+                    validation = ValidateFinalOutput(cap_candidate);
+                    ApplyFinalOutputGate(result, validation);
+                } else {
+                    const JsonValue quality = ReadOptionalJsonFile(cap_candidate / "quality_report.json");
+                    const JsonValue rooms = ReadOptionalJsonFile(cap_candidate / "room_allocation.json");
+                    validation.checked = true;
+                    validation.ok = JsonBool(quality, "load_matches_plan_exactly", false) &&
+                        JsonInt(rooms, "unassigned", -1) == 0;
+                    validation.message = validation.ok ? "Выбранный период проверен" :
+                        "Проверка выбранного периода: часы или кабинеты не совпали с планом";
+                    ApplyFinalOutputGate(result, validation);
+                    if (result.success) {
+                        const auto previous_path = std::filesystem::path(cap_output_dir) / "schedule_all.json";
+                        const JsonValue previous = ScheduleFileIsCurrent(previous_path.string())
+                            ? ReadOptionalJsonFile(previous_path) : JsonValue::MakeNull();
+                        const JsonValue generated = ReadOptionalJsonFile(cap_candidate / "schedule_all.json");
+                        const JsonValue merged = MergeScheduleRange(previous, generated,
+                            cap_opts.scope_from, cap_opts.scope_to);
+                        std::string write_error;
+                        if (!WriteScheduleSnapshot(cap_candidate, merged, write_error)) {
+                            result.success = false;
+                            result.status = "MERGE_FAILED";
+                            result.message = write_error;
+                        }
+                    }
+                }
                 if (result.success) {
                     std::string promotion_error;
                     if (!PromoteValidatedCandidate(cap_candidate, cap_output_dir, promotion_error)) {
@@ -1970,7 +2100,8 @@ std::string HandleRequest(const std::string& request, const std::string& output_
         std::ostringstream rb;
         rb << "{\"started\":true,\"async\":true,\"mode\":\"weekly\""
            << ",\"lock_source\":\"" << JsonEscape(opts.lock_source) << "\""
-           << ",\"locked_count\":" << opts.locked.size() << "}";
+           << ",\"locked_count\":" << opts.locked.size()
+           << ",\"scope_from\":\"" << JsonEscape(opts.scope_from) << "\"}";
         return JsonResponse(202, "Accepted", rb.str());
     }
 

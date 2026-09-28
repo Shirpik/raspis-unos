@@ -1,7 +1,7 @@
 import test from 'node:test'
 import assert from 'node:assert/strict'
 import { readFile } from 'node:fs/promises'
-import { buildScheduleExcelWorkbook } from '../src/utils/scheduleTemplateExport.js'
+import { buildScheduleExcelWorkbook, scheduleForDates } from '../src/utils/scheduleTemplateExport.js'
 import { teacherBulkPayload, teacherFormFromEntity, teacherPayloadFromForm } from '../src/utils/entityPayloads.js'
 import ExcelJS from 'exceljs'
 import * as XLSX from 'xlsx'
@@ -106,6 +106,28 @@ test('two Mondays cannot overwrite one another in single-week template', async (
   await assert.rejects(() => buildScheduleExcelWorkbook(schedule, template), /одной недели/)
 })
 
+test('weekly Excel slice keeps only the selected week and creates its empty weekdays', () => {
+  const schedule = makeSchedule([])
+  schedule.groups[0].days[0].weekday = 'ВТ'
+  schedule.groups[0].days.push({ date: '14.09.2026', date_iso: '2026-09-14', weekday: 'ПН', slots: [] })
+  const selected = scheduleForDates(schedule, [
+    '07.09.2026', '08.09.2026', '09.09.2026', '10.09.2026', '11.09.2026', '12.09.2026',
+  ])
+  assert.deepEqual(selected.groups[0].days.map(day => day.date_iso), [
+    '2026-09-07', '2026-09-08', '2026-09-09', '2026-09-10', '2026-09-11', '2026-09-12',
+  ])
+  assert.equal(selected.groups[0].days[0].weekday, 'ПН')
+  assert.equal(selected.groups[0].days[5].weekday, 'СБ')
+})
+
+test('template derives weekdays from dates when stored weekday labels are stale', async () => {
+  const schedule = makeSchedule([])
+  schedule.groups[0].days[0].weekday = 'ВТ'
+  schedule.groups[0].days.push({ date: '08.09.2026', date_iso: '2026-09-08', weekday: 'ВТ', slots: [] })
+  const result = await buildScheduleExcelWorkbook(schedule, template)
+  assert.equal(result.dates, 2)
+})
+
 test('ordinary lessons preserve separate template cells after Excel round-trip', async () => {
   const lesson = { id: 1, name: 'Математика', teacher_name: 'Иванов Иван Иванович', room_name: '57', subgroup: -1 }
   const result = await buildScheduleExcelWorkbook(makeSchedule([{ slot: 1, lessons: [lesson] }]), template)
@@ -116,4 +138,10 @@ test('ordinary lessons preserve separate template cells after Excel round-trip',
   assert.equal(sheet.getCell(4, 4).isMerged, false)
   assert.match(sheet.getCell(3, 4).text, /Математика/)
   assert.equal(sheet.getCell(4, 4).value, null)
+})
+
+test('Lesnaya lessons receive a visible gray fill in the template export', async () => {
+  const lesson = { id: 1, name: 'Математика', teacher_name: 'Иванов Иван Иванович', room_name: '57_Л', subgroup: -1 }
+  const result = await buildScheduleExcelWorkbook(makeSchedule([{ slot: 1, lessons: [lesson] }]), template)
+  assert.equal(result.workbook.worksheets[0].getCell(3, 4).fill.fgColor.argb, 'FFD9D9D9')
 })

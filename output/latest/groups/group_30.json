@@ -1,134 +1,117 @@
 {
   "days": [
     {
-      "date": "12.09.2026",
-      "date_iso": "2026-09-12",
+      "date": "29.09.2026",
+      "date_iso": "2026-09-29",
       "day_index": 0,
       "slots": [
         {
-          "lessons": [],
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 668,
+              "is_block": false,
+              "is_lab": false,
+              "name": "Техническая механика",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 29,
+              "room_name": "201",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": -1,
+              "teacher_id": 38,
+              "uid": "lesson-95a34af506b0ca2c",
+              "week_parity": "all"
+            }
+          ],
           "slot": 1,
-          "text": "-",
-          "time": "1 пара (08:30-09:45)"
-        },
-        {
-          "lessons": [],
-          "slot": 2,
-          "text": "-",
-          "time": "2 пара (09:55-11:10)"
+          "text": "Техническая механика — вся группа, Абрамчук Раида Филимазовна, Лесная",
+          "time": "1 пара (08:30-09:55)"
         },
         {
           "lessons": [
             {
               "avoid_lunch_split": false,
               "consecutive_pairs": 1,
-              "id": 666,
+              "display_time": null,
+              "id": 678,
               "is_block": false,
               "is_lab": false,
-              "name": "Основы финансовой грамотности",
+              "name": "ВМДК.05.02 Основы управления транспортными средствами",
               "requested_room_id": null,
               "requested_room_name": null,
-              "room_id": 13,
-              "room_name": "28",
+              "room_id": 32,
+              "room_name": "207",
               "room_substituted": false,
               "room_substitution_reason": null,
               "room_type": 0,
               "subgroup": -1,
-              "teacher_id": 2,
-              "uid": "lesson-2fc0604cd39db845",
+              "teacher_id": 60,
+              "uid": "lesson-69e61b101c0a02a6",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 2,
+          "text": "ВМДК.05.02 Основы управления транспортными средствами — вся группа, Тимеров Валерий Вагизович, Лесная",
+          "time": "2 пара (10:05-11:30)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 678,
+              "is_block": false,
+              "is_lab": false,
+              "name": "ВМДК.05.02 Основы управления транспортными средствами",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 32,
+              "room_name": "207",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": -1,
+              "teacher_id": 60,
+              "uid": "lesson-69e61b101c0a02a6",
               "week_parity": "all"
             }
           ],
           "slot": 3,
-          "text": "Основы финансовой грамотности — вся группа, Демина Екатерина Алексеевна, Кривоусова",
-          "time": "3 пара (11:30-12:45)"
+          "text": "ВМДК.05.02 Основы управления транспортными средствами — вся группа, Тимеров Валерий Вагизович, Лесная",
+          "time": "3 пара (12:25-13:50)"
         },
         {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "id": 666,
-              "is_block": false,
-              "is_lab": false,
-              "name": "Основы финансовой грамотности",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 13,
-              "room_name": "28",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": -1,
-              "teacher_id": 2,
-              "uid": "lesson-2fc0604cd39db845",
-              "week_parity": "all"
-            }
-          ],
+          "lessons": [],
           "slot": 4,
-          "text": "Основы финансовой грамотности — вся группа, Демина Екатерина Алексеевна, Кривоусова",
-          "time": "4 пара (12:55-14:10)"
+          "text": "-",
+          "time": "4 пара (14:00-15:25)"
         },
         {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "id": 661,
-              "is_block": false,
-              "is_lab": false,
-              "name": "Химия",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 4,
-              "room_name": "15",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": -1,
-              "teacher_id": 20,
-              "uid": "lesson-496a4615f46bd20e",
-              "week_parity": "all"
-            }
-          ],
+          "lessons": [],
           "slot": 5,
-          "text": "Химия — вся группа, Соболева Любовь Анатольевна, Кривоусова",
-          "time": "5 пара (14:20-15:30)"
+          "text": "-",
+          "time": "5 пара (15:35-16:55)"
         },
         {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "id": 661,
-              "is_block": false,
-              "is_lab": false,
-              "name": "Химия",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 4,
-              "room_name": "15",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": -1,
-              "teacher_id": 20,
-              "uid": "lesson-496a4615f46bd20e",
-              "week_parity": "all"
-            }
-          ],
+          "lessons": [],
           "slot": 6,
-          "text": "Химия — вся группа, Соболева Любовь Анатольевна, Кривоусова",
-          "time": "6 пара (15:40-16:50)"
+          "text": "-",
+          "time": "6 пара (17:05-18:25)"
         },
         {
           "lessons": [],
           "slot": 7,
           "text": "-",
-          "time": "7 пара (17:00-18:10)"
+          "time": "7 пара (18:35-19:55)"
         }
       ],
-      "weekday": "СБ"
+      "weekday": "ВТ"
     }
   ],
   "group_index": 30,

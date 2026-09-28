@@ -1,25 +1,106 @@
 {
   "days": [
     {
-      "date": "12.09.2026",
-      "date_iso": "2026-09-12",
+      "date": "29.09.2026",
+      "date_iso": "2026-09-29",
       "day_index": 0,
       "slots": [
         {
           "lessons": [],
           "slot": 1,
           "text": "-",
-          "time": "1 пара (08:30-09:45)"
+          "time": "1 пара (08:30-09:55)"
+        },
+        {
+          "lessons": [],
+          "slot": 2,
+          "text": "-",
+          "time": "2 пара (10:05-11:30)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": true,
+              "consecutive_pairs": 2,
+              "display_time": null,
+              "id": 461,
+              "is_block": false,
+              "is_lab": true,
+              "name": "ЛПЗ ВМДК.08.01 Технология приготовления, оформления и подготовка к реализации простых мучных кондитерских изделий разнообразного ассортимента",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 53,
+              "room_name": "56",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 42,
+              "teacher_id": 52,
+              "uid": "lesson-a5b0493237b920c1",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 3,
+          "text": "ЛПЗ ВМДК.08.01 Технология приготовления, оформления и подготовка к реализации простых мучных кондитерских изделий разнообразного ассортимента — 1 п/г, Чадова Марина Александровна, Кривоусова",
+          "time": "3 пара (12:25-13:50)"
         },
         {
           "lessons": [
             {
               "avoid_lunch_split": false,
               "consecutive_pairs": 1,
-              "id": 447,
+              "display_time": null,
+              "id": 440,
               "is_block": false,
               "is_lab": false,
-              "name": "МДК.01.01 Организация процессов приготовления, подготовки к реализации кулинарных полуфабрикатов",
+              "name": "Иностранный язык в профессиональной деятельности",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 17,
+              "room_name": "34",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 43,
+              "teacher_id": 33,
+              "uid": "lesson-8e5b0b268468bcca",
+              "week_parity": "all"
+            },
+            {
+              "avoid_lunch_split": true,
+              "consecutive_pairs": 2,
+              "display_time": null,
+              "id": 461,
+              "is_block": false,
+              "is_lab": true,
+              "name": "ЛПЗ ВМДК.08.01 Технология приготовления, оформления и подготовка к реализации простых мучных кондитерских изделий разнообразного ассортимента",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 53,
+              "room_name": "56",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 42,
+              "teacher_id": 52,
+              "uid": "lesson-a5b0493237b920c1",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 4,
+          "text": "Иностранный язык в профессиональной деятельности — 2 п/г, Шадрина Елена Федоровна, Кривоусова | ЛПЗ ВМДК.08.01 Технология приготовления, оформления и подготовка к реализации простых мучных кондитерских изделий разнообразного ассортимента — 1 п/г, Чадова Марина Александровна, Кривоусова",
+          "time": "4 пара (14:00-15:25)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": true,
+              "consecutive_pairs": 2,
+              "display_time": null,
+              "id": 448,
+              "is_block": false,
+              "is_lab": true,
+              "name": "ЛПЗ МДК.01.01 Организация процессов приготовления, подготовки к реализации кулинарных полуфабрикатов",
               "requested_room_id": null,
               "requested_room_name": null,
               "room_id": 28,
@@ -27,25 +108,19 @@
               "room_substituted": false,
               "room_substitution_reason": null,
               "room_type": 0,
-              "subgroup": -1,
+              "subgroup": 42,
               "teacher_id": 53,
-              "uid": "lesson-62f36f4fe10492fe",
+              "uid": "lesson-5c28b24b55d2589d",
               "week_parity": "all"
-            }
-          ],
-          "slot": 2,
-          "text": "МДК.01.01 Организация процессов приготовления, подготовки к реализации кулинарных полуфабрикатов — вся группа, Конева Кристина Сергеевна, Кривоусова",
-          "time": "2 пара (09:55-11:10)"
-        },
-        {
-          "lessons": [
+            },
             {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "id": 455,
+              "avoid_lunch_split": true,
+              "consecutive_pairs": 2,
+              "display_time": null,
+              "id": 457,
               "is_block": false,
-              "is_lab": false,
-              "name": "ВМДК.07.02 Термическая обработка теста и отделка поверхности хлебобулочных изделий",
+              "is_lab": true,
+              "name": "ЛПЗ ВМДК.07.02 Термическая обработка теста и отделка поверхности хлебобулочных изделий",
               "requested_room_id": null,
               "requested_room_name": null,
               "room_id": 53,
@@ -53,82 +128,92 @@
               "room_substituted": false,
               "room_substitution_reason": null,
               "room_type": 0,
-              "subgroup": -1,
+              "subgroup": 43,
               "teacher_id": 52,
-              "uid": "lesson-5422010b5e068e29",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 3,
-          "text": "ВМДК.07.02 Термическая обработка теста и отделка поверхности хлебобулочных изделий — вся группа, Чадова Марина Александровна, Кривоусова",
-          "time": "3 пара (11:30-12:45)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "id": 444,
-              "is_block": false,
-              "is_lab": false,
-              "name": "Организация хранения и контроль запасов и сырья",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 53,
-              "room_name": "56",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": -1,
-              "teacher_id": 52,
-              "uid": "lesson-9cd4fc4283490126",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 4,
-          "text": "Организация хранения и контроль запасов и сырья — вся группа, Чадова Марина Александровна, Кривоусова",
-          "time": "4 пара (12:55-14:10)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "id": 445,
-              "is_block": false,
-              "is_lab": false,
-              "name": "Техническое оснащение организаций питания",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 25,
-              "room_name": "50",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": -1,
-              "teacher_id": 45,
-              "uid": "lesson-952a2e105e1c1d76",
+              "uid": "lesson-ea06dc6fe37ddaf5",
               "week_parity": "all"
             }
           ],
           "slot": 5,
-          "text": "Техническое оснащение организаций питания — вся группа, Елагина Ольга Александровна, Кривоусова",
-          "time": "5 пара (14:20-15:30)"
+          "text": "ЛПЗ МДК.01.01 Организация процессов приготовления, подготовки к реализации кулинарных полуфабрикатов — 1 п/г, Конева Кристина Сергеевна, Кривоусова | ЛПЗ ВМДК.07.02 Термическая обработка теста и отделка поверхности хлебобулочных изделий — 2 п/г, Чадова Марина Александровна, Кривоусова",
+          "time": "5 пара (15:35-16:55)"
         },
         {
-          "lessons": [],
+          "lessons": [
+            {
+              "avoid_lunch_split": true,
+              "consecutive_pairs": 2,
+              "display_time": null,
+              "id": 448,
+              "is_block": false,
+              "is_lab": true,
+              "name": "ЛПЗ МДК.01.01 Организация процессов приготовления, подготовки к реализации кулинарных полуфабрикатов",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 28,
+              "room_name": "61",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 42,
+              "teacher_id": 53,
+              "uid": "lesson-5c28b24b55d2589d",
+              "week_parity": "all"
+            },
+            {
+              "avoid_lunch_split": true,
+              "consecutive_pairs": 2,
+              "display_time": null,
+              "id": 457,
+              "is_block": false,
+              "is_lab": true,
+              "name": "ЛПЗ ВМДК.07.02 Термическая обработка теста и отделка поверхности хлебобулочных изделий",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 53,
+              "room_name": "56",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 43,
+              "teacher_id": 52,
+              "uid": "lesson-ea06dc6fe37ddaf5",
+              "week_parity": "all"
+            }
+          ],
           "slot": 6,
-          "text": "-",
-          "time": "6 пара (15:40-16:50)"
+          "text": "ЛПЗ МДК.01.01 Организация процессов приготовления, подготовки к реализации кулинарных полуфабрикатов — 1 п/г, Конева Кристина Сергеевна, Кривоусова | ЛПЗ ВМДК.07.02 Термическая обработка теста и отделка поверхности хлебобулочных изделий — 2 п/г, Чадова Марина Александровна, Кривоусова",
+          "time": "6 пара (17:05-18:25)"
         },
         {
-          "lessons": [],
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 440,
+              "is_block": false,
+              "is_lab": false,
+              "name": "Иностранный язык в профессиональной деятельности",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 17,
+              "room_name": "34",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 43,
+              "teacher_id": 33,
+              "uid": "lesson-8e5b0b268468bcca",
+              "week_parity": "all"
+            }
+          ],
           "slot": 7,
-          "text": "-",
-          "time": "7 пара (17:00-18:10)"
+          "text": "Иностранный язык в профессиональной деятельности — 2 п/г, Шадрина Елена Федоровна, Кривоусова",
+          "time": "7 пара (18:35-19:55)"
         }
       ],
-      "weekday": "СБ"
+      "weekday": "ВТ"
     }
   ],
   "group_index": 21,

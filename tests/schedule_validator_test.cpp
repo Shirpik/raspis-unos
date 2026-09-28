@@ -138,6 +138,46 @@ int main() {
     ScheduleInputData input = Input();
     auto valid = timetable::ValidateScheduleJson(input, config, Schedule());
     Require(valid.ok, "valid schedule must pass");
+
+    auto up_input = Input();
+    up_input.lessons[0].is_block = true;
+    up_input.lessons[0].subgroup = 0;
+    auto one_slot_up = timetable::ValidateScheduleJson(up_input, config, Schedule());
+    Require(one_slot_up.ok, "one UP occurrence on pair 1 must occupy exactly one displayed slot");
+
+    auto wrong_up_slot = Schedule();
+    auto& wrong_slots = wrong_up_slot.At("groups").array_value[0]
+        .At("days").array_value[0].At("slots").array_value;
+    wrong_slots[1].At("lessons") = wrong_slots[0].At("lessons");
+    wrong_slots[0].At("lessons") = JsonValue::MakeArray();
+    auto wrong_up_result = timetable::ValidateScheduleJson(up_input, config, wrong_up_slot);
+    Require(!wrong_up_result.ok && HasCode(wrong_up_result.report, "up_display_slot"),
+        "UP outside pair 1 or pair 3 must be rejected");
+
+    auto after_up_input = up_input;
+    Lesson after_up = after_up_input.lessons[0];
+    after_up.id = 1;
+    after_up.uid = "lesson-1";
+    after_up.name = "After UP";
+    after_up.subject_id = 1;
+    after_up.is_block = false;
+    after_up_input.lessons.push_back(after_up);
+    auto after_up_schedule = Schedule();
+    JsonValue after_up_rendered = RenderedLesson();
+    after_up_rendered.At("id") = JsonValue::MakeNumber(1);
+    after_up_schedule.At("groups").array_value[0].At("days").array_value[0]
+        .At("slots").array_value[1].At("lessons").array_value.push_back(after_up_rendered);
+    auto after_up_result = timetable::ValidateScheduleJson(after_up_input, config, after_up_schedule);
+    Require(!after_up_result.ok && HasCode(after_up_result.report, "lesson_after_up"),
+        "a subgroup must not have another lesson after its UP");
+
+    auto transferred_up_input = up_input;
+    transferred_up_input.teachers[0].name = "вынесена на ПП";
+    transferred_up_input.lessons[0].is_block = false;
+    transferred_up_input.lessons[0].name = "УП.02";
+    auto transferred_up = timetable::ValidateScheduleJson(transferred_up_input, config, Schedule());
+    Require(!transferred_up.ok && HasCode(transferred_up.report, "up_transferred_to_pp"),
+        "UP transferred to PP must be rejected even when its is_block flag is malformed");
     Require(valid.scheduled_occurrences == 1, "quota count must be exact");
     auto repeated = input;
     repeated.lessons[0].subgroup = 0;
@@ -280,7 +320,8 @@ int main() {
       "rooms":[],
       "lessons":[
         {"id":10,"teacher":0,"group":0,"name":"Theory","total_hours":10,"total_slots":2,"generation_active":true,"curriculum_active":true},
-        {"id":11,"teacher":0,"group":0,"name":"Practice","total_hours":10,"total_slots":2,"generation_active":true,"curriculum_active":true}
+        {"id":11,"teacher":0,"group":0,"name":"Practice","total_hours":10,"total_slots":2,"generation_active":true,"curriculum_active":true},
+        {"id":12,"teacher":0,"group":0,"name":"УП.02","total_hours":6,"total_slots":1,"is_block":false,"generation_active":true,"curriculum_active":true}
       ],
       "teaching_ledger":[
         {"id":0,"lesson_id":10,"date":"2026-09-02","slot":1,"hours":2,"status":"confirmed"},
@@ -300,6 +341,9 @@ int main() {
     Require(std::any_of(completed_lesson_data.lessons.begin(), completed_lesson_data.lessons.end(),
                 [](const auto& lesson) { return lesson.id == 11 && lesson.total_slots > 0; }),
         "unfinished lessons must remain available to the solver");
+    Require(std::any_of(completed_lesson_data.lessons.begin(), completed_lesson_data.lessons.end(),
+                [](const auto& lesson) { return lesson.id == 12 && lesson.is_block; }),
+        "UP name must restore block semantics when imported is_block is malformed");
 
     auto practice_root = completed_lesson_root;
     practice_root.At("settings").At("semester_end_date") = JsonValue::MakeString("2026-12-19");

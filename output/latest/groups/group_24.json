@@ -1,42 +1,98 @@
 {
   "days": [
     {
-      "date": "12.09.2026",
-      "date_iso": "2026-09-12",
+      "date": "29.09.2026",
+      "date_iso": "2026-09-29",
       "day_index": 0,
       "slots": [
         {
           "lessons": [
             {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "id": 519,
+              "avoid_lunch_split": true,
+              "consecutive_pairs": 2,
+              "display_time": null,
+              "id": 541,
               "is_block": false,
-              "is_lab": false,
-              "name": "Иностранный язык в профессиональной деятельности",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 41,
-              "room_name": "324",
+              "is_lab": true,
+              "name": "ЛПЗ ВМДК.06.02 Технология ручной дуговой сварки неплавящимся электродом в защитном газе",
+              "requested_room_id": 66,
+              "requested_room_name": "120-121",
+              "room_id": 66,
+              "room_name": "120-121",
               "room_substituted": false,
               "room_substitution_reason": null,
               "room_type": 0,
               "subgroup": 48,
-              "teacher_id": 27,
-              "uid": "lesson-4de1854bc4e2738b",
+              "teacher_id": 55,
+              "uid": "lesson-a26ca4ae71c36a58",
               "week_parity": "all"
             }
           ],
           "slot": 1,
-          "text": "Иностранный язык в профессиональной деятельности — 1 п/г, Ермолина Ирина Павловна, Лесная",
-          "time": "1 пара (08:30-09:45)"
+          "text": "ЛПЗ ВМДК.06.02 Технология ручной дуговой сварки неплавящимся электродом в защитном газе — 1 п/г, Лимонова Евгения Николаевна, Лесная",
+          "time": "1 пара (08:30-09:55)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": true,
+              "consecutive_pairs": 2,
+              "display_time": null,
+              "id": 541,
+              "is_block": false,
+              "is_lab": true,
+              "name": "ЛПЗ ВМДК.06.02 Технология ручной дуговой сварки неплавящимся электродом в защитном газе",
+              "requested_room_id": 66,
+              "requested_room_name": "120-121",
+              "room_id": 66,
+              "room_name": "120-121",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 48,
+              "teacher_id": 55,
+              "uid": "lesson-a26ca4ae71c36a58",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 2,
+          "text": "ЛПЗ ВМДК.06.02 Технология ручной дуговой сварки неплавящимся электродом в защитном газе — 1 п/г, Лимонова Евгения Николаевна, Лесная",
+          "time": "2 пара (10:05-11:30)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": true,
+              "consecutive_pairs": 2,
+              "display_time": null,
+              "id": 536,
+              "is_block": false,
+              "is_lab": true,
+              "name": "ЛПЗ МДК.01.01 Технология сварочных работ",
+              "requested_room_id": 66,
+              "requested_room_name": "120-121",
+              "room_id": 66,
+              "room_name": "120-121",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 48,
+              "teacher_id": 55,
+              "uid": "lesson-adf86684d7b3229f",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 3,
+          "text": "ЛПЗ МДК.01.01 Технология сварочных работ — 1 п/г, Лимонова Евгения Николаевна, Лесная",
+          "time": "3 пара (12:25-13:50)"
         },
         {
           "lessons": [
             {
               "avoid_lunch_split": false,
               "consecutive_pairs": 1,
-              "id": 519,
+              "display_time": null,
+              "id": 520,
               "is_block": false,
               "is_lab": false,
               "name": "Иностранный язык в профессиональной деятельности",
@@ -47,103 +103,73 @@
               "room_substituted": false,
               "room_substitution_reason": null,
               "room_type": 0,
-              "subgroup": 48,
+              "subgroup": 49,
               "teacher_id": 27,
-              "uid": "lesson-4de1854bc4e2738b",
+              "uid": "lesson-6a722dfac5d9ff42",
               "week_parity": "all"
-            }
-          ],
-          "slot": 2,
-          "text": "Иностранный язык в профессиональной деятельности — 1 п/г, Ермолина Ирина Павловна, Лесная",
-          "time": "2 пара (09:55-11:10)"
-        },
-        {
-          "lessons": [
+            },
             {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "id": 531,
+              "avoid_lunch_split": true,
+              "consecutive_pairs": 2,
+              "display_time": null,
+              "id": 536,
               "is_block": false,
-              "is_lab": false,
-              "name": "Технология конструкционных материалов",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 31,
-              "room_name": "205",
+              "is_lab": true,
+              "name": "ЛПЗ МДК.01.01 Технология сварочных работ",
+              "requested_room_id": 66,
+              "requested_room_name": "120-121",
+              "room_id": 66,
+              "room_name": "120-121",
               "room_substituted": false,
               "room_substitution_reason": null,
               "room_type": 0,
-              "subgroup": -1,
-              "teacher_id": 56,
-              "uid": "lesson-04585925ed56bc8a",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 3,
-          "text": "Технология конструкционных материалов — вся группа, Ахметов Артур Фанависович, Лесная",
-          "time": "3 пара (11:30-12:45)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "id": 540,
-              "is_block": false,
-              "is_lab": false,
-              "name": "ВМДК.06.02 Технология ручной дуговой сварки неплавящимся электродом в защитном газе",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 29,
-              "room_name": "201",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": -1,
+              "subgroup": 48,
               "teacher_id": 55,
-              "uid": "lesson-b4ea8cc643dcc3f4",
+              "uid": "lesson-adf86684d7b3229f",
               "week_parity": "all"
             }
           ],
           "slot": 4,
-          "text": "ВМДК.06.02 Технология ручной дуговой сварки неплавящимся электродом в защитном газе — вся группа, Лимонова Евгения Николаевна, Лесная",
-          "time": "4 пара (12:55-14:10)"
+          "text": "Иностранный язык в профессиональной деятельности — 2 п/г, Ермолина Ирина Павловна, Лесная | ЛПЗ МДК.01.01 Технология сварочных работ — 1 п/г, Лимонова Евгения Николаевна, Лесная",
+          "time": "4 пара (14:00-15:25)"
         },
         {
           "lessons": [
             {
-              "avoid_lunch_split": true,
-              "consecutive_pairs": 2,
-              "id": 537,
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 520,
               "is_block": false,
-              "is_lab": true,
-              "name": "ЛПЗ МДК.01.01 Технология сварочных работ",
-              "requested_room_id": 66,
-              "requested_room_name": "120-121",
-              "room_id": 66,
-              "room_name": "120-121",
+              "is_lab": false,
+              "name": "Иностранный язык в профессиональной деятельности",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 41,
+              "room_name": "324",
               "room_substituted": false,
               "room_substitution_reason": null,
               "room_type": 0,
               "subgroup": 49,
-              "teacher_id": 55,
-              "uid": "lesson-131f522ec5030c7c",
+              "teacher_id": 27,
+              "uid": "lesson-6a722dfac5d9ff42",
               "week_parity": "all"
             }
           ],
           "slot": 5,
-          "text": "ЛПЗ МДК.01.01 Технология сварочных работ — 2 п/г, Лимонова Евгения Николаевна, Лесная",
-          "time": "5 пара (14:20-15:30)"
+          "text": "Иностранный язык в профессиональной деятельности — 2 п/г, Ермолина Ирина Павловна, Лесная",
+          "time": "5 пара (15:35-16:55)"
         },
         {
           "lessons": [
             {
               "avoid_lunch_split": true,
               "consecutive_pairs": 2,
-              "id": 537,
+              "display_time": null,
+              "id": 542,
               "is_block": false,
               "is_lab": true,
-              "name": "ЛПЗ МДК.01.01 Технология сварочных работ",
+              "name": "ЛПЗ ВМДК.06.02 Технология ручной дуговой сварки неплавящимся электродом в защитном газе",
               "requested_room_id": 66,
               "requested_room_name": "120-121",
               "room_id": 66,
@@ -153,22 +179,43 @@
               "room_type": 0,
               "subgroup": 49,
               "teacher_id": 55,
-              "uid": "lesson-131f522ec5030c7c",
+              "uid": "lesson-ef61c5bb126da203",
               "week_parity": "all"
             }
           ],
           "slot": 6,
-          "text": "ЛПЗ МДК.01.01 Технология сварочных работ — 2 п/г, Лимонова Евгения Николаевна, Лесная",
-          "time": "6 пара (15:40-16:50)"
+          "text": "ЛПЗ ВМДК.06.02 Технология ручной дуговой сварки неплавящимся электродом в защитном газе — 2 п/г, Лимонова Евгения Николаевна, Лесная",
+          "time": "6 пара (17:05-18:25)"
         },
         {
-          "lessons": [],
+          "lessons": [
+            {
+              "avoid_lunch_split": true,
+              "consecutive_pairs": 2,
+              "display_time": null,
+              "id": 542,
+              "is_block": false,
+              "is_lab": true,
+              "name": "ЛПЗ ВМДК.06.02 Технология ручной дуговой сварки неплавящимся электродом в защитном газе",
+              "requested_room_id": 66,
+              "requested_room_name": "120-121",
+              "room_id": 66,
+              "room_name": "120-121",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 49,
+              "teacher_id": 55,
+              "uid": "lesson-ef61c5bb126da203",
+              "week_parity": "all"
+            }
+          ],
           "slot": 7,
-          "text": "-",
-          "time": "7 пара (17:00-18:10)"
+          "text": "ЛПЗ ВМДК.06.02 Технология ручной дуговой сварки неплавящимся электродом в защитном газе — 2 п/г, Лимонова Евгения Николаевна, Лесная",
+          "time": "7 пара (18:35-19:55)"
         }
       ],
-      "weekday": "СБ"
+      "weekday": "ВТ"
     }
   ],
   "group_index": 24,

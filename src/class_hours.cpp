@@ -338,7 +338,28 @@ bool PlanClassHours(const ScheduleInputData& data, JsonValue& schedule, std::str
                 objective += var * ((room.class_hour_fallback ? 100000 : 0) + (pair ? 1000 + pair : 0) +
                     (group.class_hour_room >= 0 && group.class_hour_room != room.id ? 10 : 0));
             }
-            if (group_choices.empty()) { error = "Нет допустимого времени/кабинета для классного часа: " + group.name + " (" + teacher->name + ")"; return false; }
+            if (group_choices.empty()) {
+                int eligible_rooms = 0, zero_conflicts = 0;
+                for (const auto& room : data.rooms) {
+                    if (!room.class_hour_open && (!room.active || room.access_mode != "general" ||
+                        (room.room_type != 0 && room.room_type != 1) || !room.purpose.empty())) continue;
+                    if (room.class_hour_zero_blocked ||
+                        (room.access_mode == "exclusive" && !room.responsible_teacher_ids.count(teacher->id)) ||
+                        (room.capacity > 0 && group.size > room.capacity)) continue;
+                    eligible_rooms++;
+                    bool conflict = false;
+                    for (const auto& event : events)
+                        if (event.date == date &&
+                            (event.group == group.id || event.teacher == teacher->id || event.room == room.id) &&
+                            IntervalsOverlap(event.time, ClassTime(0))) conflict = true;
+                    if (conflict) zero_conflicts++;
+                }
+                error = "Нет допустимого времени/кабинета для классного часа: " + group.name + " (" + teacher->name +
+                    "), дата " + DateToIso(date) + ", доступных кабинетов для 0-й пары " +
+                    std::to_string(eligible_rooms) + ", конфликтов " + std::to_string(zero_conflicts) +
+                    ", непрерывность " + (ContinuousStudentDay(events, group, date, 0) ? "да" : "нет");
+                return false;
+            }
             const auto required = model.NewBoolVar();
             assumption_groups[required.index()] = group.id;
             model.AddAssumption(required);
@@ -498,7 +519,8 @@ JsonValue ValidateClassHours(const ScheduleInputData& data, const JsonValue& sch
     return issues;
 }
 
-bool FinalizeSchedule(const ScheduleInputData& data, const std::string& output_dir, std::string& error, bool draft_semester_risk) {
+bool FinalizeSchedule(const ScheduleInputData& data, const std::string& output_dir, std::string& error,
+                      bool draft_semester_risk, bool scoped_day) {
     const std::filesystem::path directory(output_dir);
     std::ifstream stream(directory / "schedule_all.json", std::ios::binary);
     std::ostringstream buffer; buffer << stream.rdbuf();
@@ -507,6 +529,7 @@ bool FinalizeSchedule(const ScheduleInputData& data, const std::string& output_d
     if (!PlanClassHours(data, parsed.value, error)) return false;
     ScheduleValidationOptions options;
     options.draft_semester_risk = draft_semester_risk;
+    options.require_weekly_study_days = !scoped_day;
     if (draft_semester_risk) {
         parsed.value.At("status") = JsonValue::MakeString("draft_semester_risk");
         parsed.value.At("semester_readout") = data.semester_readout_report;

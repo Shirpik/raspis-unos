@@ -1,12 +1,15 @@
 import { defineStore } from 'pinia'
 import { ref, computed } from 'vue'
 import { api } from '../api/index.js'
+import { mergeConfirmedSchedule } from '../utils/scheduleLedger.js'
 
 export const useScheduleStore = defineStore('schedule', () => {
   const scheduleData = ref(null)
   const loading = ref(false)
   const error = ref(null)
+  const semester = ref(null)
   const generating = ref(false)
+  const lastScoped = ref(false)
 
   // Прогресс недельной генерации
   const progress = ref(null)   // null | { state, total_weeks, current_week, solved_weeks, weeks, message, total_elapsed }
@@ -16,9 +19,14 @@ export const useScheduleStore = defineStore('schedule', () => {
   async function fetchSchedule() {
     loading.value = true
     error.value = null
-    const res = await api.schedule.get()
+    const [res, raw] = await Promise.all([api.schedule.get(), api.data.get()])
     loading.value = false
-    if (res.ok) {
+    if (raw.ok) {
+      semester.value = raw.data?.settings || null
+      scheduleData.value = mergeConfirmedSchedule(res.ok ? res.data : null, raw.data)
+      if (!res.ok && res.status !== 404 && res.status !== 409)
+        error.value = res.data?.message || 'Авторасписание недоступно'
+    } else if (res.ok) {
       scheduleData.value = res.data
     } else {
       // Do not keep showing an old schedule after the backend reports that
@@ -71,6 +79,7 @@ export const useScheduleStore = defineStore('schedule', () => {
 
   async function regenerate(opts = {}) {
     generating.value = true
+    lastScoped.value = Boolean(opts.scope_from)
     progress.value = null
 
     const capability = await api.data.semesterReadout()
@@ -113,7 +122,7 @@ export const useScheduleStore = defineStore('schedule', () => {
   const groups = computed(() => scheduleData.value?.groups || [])
 
   return {
-    scheduleData, loading, error, generating,
+    scheduleData, loading, error, generating, semester, lastScoped,
     progress,
     groups,
     fetchSchedule, fetchPublished, regenerate, cancelGeneration,

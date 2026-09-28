@@ -1,191 +1,180 @@
 {
   "days": [
     {
-      "date": "12.09.2026",
-      "date_iso": "2026-09-12",
+      "date": "29.09.2026",
+      "date_iso": "2026-09-29",
       "day_index": 0,
       "slots": [
         {
           "lessons": [
             {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "id": 380,
+              "avoid_lunch_split": true,
+              "consecutive_pairs": 2,
+              "display_time": null,
+              "id": 382,
               "is_block": false,
-              "is_lab": false,
-              "name": "МДК.01.01 Основы аналитической химии и физико-химических методов анализа",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 58,
-              "room_name": "67",
+              "is_lab": true,
+              "name": "ЛПЗ МДК.01.01 Основы аналитической химии и физико-химических методов анализа",
+              "requested_room_id": 68,
+              "requested_room_name": "ЦПДЭ",
+              "room_id": 68,
+              "room_name": "ЦПДЭ",
               "room_substituted": false,
               "room_substitution_reason": null,
               "room_type": 0,
-              "subgroup": -1,
+              "subgroup": 37,
               "teacher_id": 81,
-              "uid": "lesson-586fd954fb29729a",
+              "uid": "lesson-33b84c16ed75fa58",
               "week_parity": "all"
             }
           ],
           "slot": 1,
-          "text": "МДК.01.01 Основы аналитической химии и физико-химических методов анализа — вся группа, Рахматулина Наталья Владимировна, Кривоусова",
-          "time": "1 пара (08:30-09:45)"
+          "text": "ЛПЗ МДК.01.01 Основы аналитической химии и физико-химических методов анализа — 2 п/г, Рахматулина Наталья Владимировна, Лесная",
+          "time": "1 пара (08:30-09:55)"
         },
         {
           "lessons": [
             {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "id": 373,
-              "is_block": false,
-              "is_lab": false,
-              "name": "Иностранный язык в профессиональной деятельности",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 7,
-              "room_name": "18/2",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": 36,
-              "teacher_id": 30,
-              "uid": "lesson-24f06ed51733ee99",
-              "week_parity": "all"
-            },
-            {
-              "avoid_lunch_split": false,
+              "avoid_lunch_split": true,
               "consecutive_pairs": 2,
-              "id": 987,
+              "display_time": null,
+              "id": 382,
               "is_block": false,
               "is_lab": true,
-              "name": "ЛПЗ МДК.04.01 Выполнение работ по профессии Лаборант химического анализа",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 10,
-              "room_name": "23",
+              "name": "ЛПЗ МДК.01.01 Основы аналитической химии и физико-химических методов анализа",
+              "requested_room_id": 68,
+              "requested_room_name": "ЦПДЭ",
+              "room_id": 68,
+              "room_name": "ЦПДЭ",
               "room_substituted": false,
               "room_substitution_reason": null,
               "room_type": 0,
               "subgroup": 37,
               "teacher_id": 81,
-              "uid": "lesson-8d93e0e8c8e621b8",
+              "uid": "lesson-33b84c16ed75fa58",
               "week_parity": "all"
             }
           ],
           "slot": 2,
-          "text": "Иностранный язык в профессиональной деятельности — 1 п/г, Синельникова Елена Владимировна, Кривоусова | ЛПЗ МДК.04.01 Выполнение работ по профессии Лаборант химического анализа — 2 п/г, Рахматулина Наталья Владимировна, Кривоусова",
-          "time": "2 пара (09:55-11:10)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": true,
-              "consecutive_pairs": 2,
-              "id": 386,
-              "is_block": false,
-              "is_lab": true,
-              "name": "ЛПЗ МДК.02.01 Основы качественного и количественного анализа природных и промышленных материалов",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 52,
-              "room_name": "54",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": 36,
-              "teacher_id": 10,
-              "uid": "lesson-05f1264d778f22a4",
-              "week_parity": "all"
-            },
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 2,
-              "id": 987,
-              "is_block": false,
-              "is_lab": true,
-              "name": "ЛПЗ МДК.04.01 Выполнение работ по профессии Лаборант химического анализа",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 10,
-              "room_name": "23",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": 37,
-              "teacher_id": 81,
-              "uid": "lesson-8d93e0e8c8e621b8",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 3,
-          "text": "ЛПЗ МДК.02.01 Основы качественного и количественного анализа природных и промышленных материалов — 1 п/г, Семенова Лилиана Ивановна, Кривоусова | ЛПЗ МДК.04.01 Выполнение работ по профессии Лаборант химического анализа — 2 п/г, Рахматулина Наталья Владимировна, Кривоусова",
-          "time": "3 пара (11:30-12:45)"
+          "text": "ЛПЗ МДК.01.01 Основы аналитической химии и физико-химических методов анализа — 2 п/г, Рахматулина Наталья Владимировна, Лесная",
+          "time": "2 пара (10:05-11:30)"
         },
         {
           "lessons": [
             {
               "avoid_lunch_split": false,
               "consecutive_pairs": 1,
-              "id": 374,
+              "display_time": null,
+              "id": 372,
               "is_block": false,
               "is_lab": false,
-              "name": "Иностранный язык в профессиональной деятельности",
+              "name": "Основы философии",
               "requested_room_id": null,
               "requested_room_name": null,
-              "room_id": 7,
-              "room_name": "18/2",
+              "room_id": 37,
+              "room_name": "317",
               "room_substituted": false,
               "room_substitution_reason": null,
               "room_type": 0,
-              "subgroup": 37,
-              "teacher_id": 30,
-              "uid": "lesson-897f74e5f58f1d16",
+              "subgroup": -1,
+              "teacher_id": 14,
+              "uid": "lesson-03300b194b80c34e",
               "week_parity": "all"
-            },
+            }
+          ],
+          "slot": 3,
+          "text": "Основы философии — вся группа, Лучинин Александр Васильевич, Лесная",
+          "time": "3 пара (12:25-13:50)"
+        },
+        {
+          "lessons": [
             {
-              "avoid_lunch_split": true,
-              "consecutive_pairs": 2,
-              "id": 386,
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 372,
               "is_block": false,
-              "is_lab": true,
-              "name": "ЛПЗ МДК.02.01 Основы качественного и количественного анализа природных и промышленных материалов",
+              "is_lab": false,
+              "name": "Основы философии",
               "requested_room_id": null,
               "requested_room_name": null,
-              "room_id": 52,
-              "room_name": "54",
+              "room_id": 37,
+              "room_name": "317",
               "room_substituted": false,
               "room_substitution_reason": null,
               "room_type": 0,
-              "subgroup": 36,
-              "teacher_id": 10,
-              "uid": "lesson-05f1264d778f22a4",
+              "subgroup": -1,
+              "teacher_id": 14,
+              "uid": "lesson-03300b194b80c34e",
               "week_parity": "all"
             }
           ],
           "slot": 4,
-          "text": "Иностранный язык в профессиональной деятельности — 2 п/г, Синельникова Елена Владимировна, Кривоусова | ЛПЗ МДК.02.01 Основы качественного и количественного анализа природных и промышленных материалов — 1 п/г, Семенова Лилиана Ивановна, Кривоусова",
-          "time": "4 пара (12:55-14:10)"
+          "text": "Основы философии — вся группа, Лучинин Александр Васильевич, Лесная",
+          "time": "4 пара (14:00-15:25)"
         },
         {
-          "lessons": [],
+          "lessons": [
+            {
+              "avoid_lunch_split": true,
+              "consecutive_pairs": 2,
+              "display_time": null,
+              "id": 381,
+              "is_block": false,
+              "is_lab": true,
+              "name": "ЛПЗ МДК.01.01 Основы аналитической химии и физико-химических методов анализа",
+              "requested_room_id": 68,
+              "requested_room_name": "ЦПДЭ",
+              "room_id": 68,
+              "room_name": "ЦПДЭ",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 36,
+              "teacher_id": 81,
+              "uid": "lesson-cb30ce6ca94dba0f",
+              "week_parity": "all"
+            }
+          ],
           "slot": 5,
-          "text": "-",
-          "time": "5 пара (14:20-15:30)"
+          "text": "ЛПЗ МДК.01.01 Основы аналитической химии и физико-химических методов анализа — 1 п/г, Рахматулина Наталья Владимировна, Лесная",
+          "time": "5 пара (15:35-16:55)"
         },
         {
-          "lessons": [],
+          "lessons": [
+            {
+              "avoid_lunch_split": true,
+              "consecutive_pairs": 2,
+              "display_time": null,
+              "id": 381,
+              "is_block": false,
+              "is_lab": true,
+              "name": "ЛПЗ МДК.01.01 Основы аналитической химии и физико-химических методов анализа",
+              "requested_room_id": 68,
+              "requested_room_name": "ЦПДЭ",
+              "room_id": 68,
+              "room_name": "ЦПДЭ",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 36,
+              "teacher_id": 81,
+              "uid": "lesson-cb30ce6ca94dba0f",
+              "week_parity": "all"
+            }
+          ],
           "slot": 6,
-          "text": "-",
-          "time": "6 пара (15:40-16:50)"
+          "text": "ЛПЗ МДК.01.01 Основы аналитической химии и физико-химических методов анализа — 1 п/г, Рахматулина Наталья Владимировна, Лесная",
+          "time": "6 пара (17:05-18:25)"
         },
         {
           "lessons": [],
           "slot": 7,
           "text": "-",
-          "time": "7 пара (17:00-18:10)"
+          "time": "7 пара (18:35-19:55)"
         }
       ],
-      "weekday": "СБ"
+      "weekday": "ВТ"
     }
   ],
   "group_index": 18,

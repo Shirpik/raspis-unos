@@ -134,6 +134,19 @@ std::string TeacherLabel(const TeacherData* teacher, int id) {
     return teacher ? teacher->name : "преподаватель #" + std::to_string(id);
 }
 
+bool IsTransferredToPpTeacher(const TeacherData* teacher) {
+    if (!teacher) return false;
+    const bool transferred = teacher->name.find("вынес") != std::string::npos ||
+        teacher->name.find("Вынес") != std::string::npos;
+    return transferred && (teacher->name.find("ПП") != std::string::npos ||
+        teacher->name.find("пп") != std::string::npos);
+}
+
+bool IsUpLessonName(const std::string& name) {
+    return name.rfind("УП.", 0) == 0 || name.rfind("УП ", 0) == 0 ||
+        name.rfind("ВУП.", 0) == 0 || name.rfind("ВУП ", 0) == 0;
+}
+
 std::string GroupLabel(const GroupData* group, int id) {
     return group ? group->name : "группа #" + std::to_string(id);
 }
@@ -318,12 +331,13 @@ ScheduleValidationResult ValidateScheduleJson(
     }
 
     std::map<int, int> raw_occurrences;
-    std::map<std::pair<int, Date>, std::set<int>> block_slots;
     std::map<std::tuple<Date, int, int>, std::vector<int>> teacher_slot;
     std::map<std::tuple<Date, int, int>, std::vector<int>> room_slot;
     std::map<std::tuple<Date, int, int, int>, std::vector<int>> part_slot;
     std::map<std::pair<int, Date>, std::set<int>> teacher_day_slots;
+    std::set<std::pair<int, Date>> teacher_days_with_up;
     std::map<std::tuple<int, int, Date>, std::set<int>> part_day_slots;
+    std::set<std::tuple<int, int, Date>> part_days_with_up;
     std::map<std::tuple<int, Date, std::string>, int> whole_day_subject;
     std::map<std::tuple<int, int, Date, std::string>, int> part_day_subject;
     std::map<std::tuple<int, int, Date, std::string>, int> part_day_subject_limit;
@@ -345,7 +359,26 @@ ScheduleValidationResult ValidateScheduleJson(
                 "Обычное занятие вне учебного календаря или после срока вычитки: " + group->name, ctx);
         }
         events_by_lesson[event.lesson].push_back(event);
-        if (lesson->is_block) block_slots[{event.lesson, event.date}].insert(event.pair);
+        const bool is_up = lesson->is_block || IsUpLessonName(lesson->name);
+        if (is_up) {
+            teacher_days_with_up.insert({event.teacher, event.date});
+            if (event.pair != UP_MORNING_MODEL_START_SLOT + 1 &&
+                event.pair != UP_AFTERNOON_MODEL_START_SLOT + 1) {
+                JsonValue ctx = Context(); Put(ctx, "lesson", event.lesson);
+                Put(ctx, "date", DateLabel(event.date)); Put(ctx, "pair", event.pair);
+                collector.Add("error", "structure", "up_display_slot",
+                    "УП должно находиться только на 1-й или 3-й паре", ctx);
+            }
+            if (IsTransferredToPpTeacher(teacher)) {
+                JsonValue ctx = Context(); Put(ctx, "lesson", event.lesson);
+                Put(ctx, "teacher", event.teacher); Put(ctx, "date", DateLabel(event.date));
+                collector.Add("error", "availability", "up_transferred_to_pp",
+                    "УП с преподавателем «вынесена на ПП» нельзя ставить в расписание", ctx);
+            }
+            for (int part = 0; part < std::max(1, group->parts); ++part)
+                if (LessonAffectsPart(*lesson, event.group, part))
+                    part_days_with_up.insert({event.group, part, event.date});
+        }
 
         if (!expected_date_set.count(event.date)) {
             JsonValue ctx = Context(); Put(ctx, "lesson", event.lesson); Put(ctx, "date", DateLabel(event.date));
@@ -493,6 +526,25 @@ ScheduleValidationResult ValidateScheduleJson(
                       "У физической подгруппы несколько занятий одновременно", ctx);
     }
 
+    std::set<std::tuple<int, int, Date, int>> reported_up_tails;
+    for (const Event& event : events) {
+        const Lesson* lesson = FindLesson(data, event.lesson);
+        const GroupData* group = FindGroup(data, event.group);
+        if (!lesson || !group || !(lesson->is_block || IsUpLessonName(lesson->name))) continue;
+        for (int part = 0; part < std::max(1, group->parts); ++part) {
+            if (!LessonAffectsPart(*lesson, event.group, part)) continue;
+            const auto found = part_day_slots.find({event.group, part, event.date});
+            if (found == part_day_slots.end() || found->second.upper_bound(event.pair) == found->second.end())
+                continue;
+            if (!reported_up_tails.insert({event.group, part, event.date, event.pair}).second)
+                continue;
+            JsonValue ctx = Context(); Put(ctx, "group", event.group); Put(ctx, "part", part + 1);
+            Put(ctx, "date", DateLabel(event.date)); Put(ctx, "up_pair", event.pair);
+            collector.Add("error", "daily_load", "lesson_after_up",
+                "После УП у этой подгруппы не может быть других пар в тот же день", ctx);
+        }
+    }
+
     for (const auto& requirement : data.load_requirements) {
         std::set<std::pair<Date, int>> actual;
         for (const auto& event : events)
@@ -601,7 +653,8 @@ ScheduleValidationResult ValidateScheduleJson(
             JsonValue ctx = Context(); Put(ctx, "group", group_id); Put(ctx, "part", part + 1); Put(ctx, "date", DateLabel(date)); Put(ctx, "count", count); Put(ctx, "min", config.min_student_pairs_per_study_day); Put(ctx, "max", config.max_student_pairs_per_day);
             collector.Add("error", "daily_load", "student_daily_load",
                           "Суточная нагрузка подгруппы выходит за заданные границы", ctx);
-        } else if (count < config.min_student_pairs_per_study_day) {
+        } else if (!part_days_with_up.count(item.first) &&
+                   count < config.min_student_pairs_per_study_day) {
             JsonValue ctx = Context(); Put(ctx, "group", group_id); Put(ctx, "part", part + 1); Put(ctx, "date", DateLabel(date)); Put(ctx, "count", count); Put(ctx, "min", config.min_student_pairs_per_study_day); Put(ctx, "max", config.max_student_pairs_per_day);
             collector.Add(config.allow_single_pair_day_fallback ? "warning" : "error",
                           "daily_load", "student_daily_minimum_fallback",
@@ -633,7 +686,7 @@ ScheduleValidationResult ValidateScheduleJson(
         for (const GroupData& group : data.groups) {
             for (int part = 0; part < std::max(1, group.parts); ++part) {
                 for (int week : weeks) {
-                    if (config.hard_min_study_days_per_week) {
+                    if (config.hard_min_study_days_per_week && options.require_weekly_study_days) {
                         int available_days = 0;
                         for (const Date& date : expected_dates) {
                             if (MondaySerial(data.start_date, date) != week) continue;
@@ -689,7 +742,8 @@ ScheduleValidationResult ValidateScheduleJson(
             collector.Add("error", "daily_load", "teacher_daily_limit",
                           "Превышен суточный максимум преподавателя", ctx);
         }
-        if (config.hard_min_2_teacher_pairs_per_day && count < 2) {
+        if (config.hard_min_2_teacher_pairs_per_day && count < 2 &&
+            !teacher_days_with_up.count(item.first)) {
             JsonValue ctx = Context(); Put(ctx, "teacher", teacher_id); Put(ctx, "date", DateLabel(date)); Put(ctx, "count", count);
             collector.Add("error", "daily_load", "teacher_daily_minimum",
                           "У работающего преподавателя меньше двух пар за день", ctx);
@@ -727,15 +781,6 @@ ScheduleValidationResult ValidateScheduleJson(
     }
 
     std::map<int, int> scheduled_occurrences = raw_occurrences;
-    for (const Lesson& lesson : data.lessons) {
-        if (!lesson.is_block) continue;
-        int starts = 0;
-        for (const auto& item : block_slots) {
-            if (item.first.first != lesson.id) continue;
-            for (int pair : item.second) if (!item.second.count(pair - 1)) starts++;
-        }
-        scheduled_occurrences[lesson.id] = starts;
-    }
     for (const Lesson& lesson : data.lessons) {
         result.planned_occurrences += std::max(0, lesson.total_slots);
         const int actual = scheduled_occurrences[lesson.id];

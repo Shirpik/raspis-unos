@@ -7,6 +7,7 @@
 #include <string>
 
 #include "data_store.h"
+#include "date_utils.h"
 #include "http_server.h"
 #include "json_utils.h"
 #include "schedule_validator.h"
@@ -127,6 +128,14 @@ int main(int argc, char* argv[]) {
         for (int index = 2; index < argc; ++index) {
             const std::string argument = argv[index];
             if (argument == "--draft-semester") { options.draft_semester_risk = true; continue; }
+            if (argument == "--scope-from" && index + 1 < argc) {
+                options.scope_from = argv[++index];
+                continue;
+            }
+            if (argument == "--scope-to" && index + 1 < argc) {
+                options.scope_to = argv[++index];
+                continue;
+            }
             if (argument == "--output" && index + 1 < argc) {
                 output_dir = argv[++index];
                 continue;
@@ -183,6 +192,16 @@ int main(int argc, char* argv[]) {
             return 2;
         }
         const std::filesystem::path requested = std::filesystem::absolute(output_dir).lexically_normal();
+        if (!options.scope_from.empty()) {
+            timetable::Date first{}, last{};
+            if (options.scope_to.empty()) options.scope_to = options.scope_from;
+            if (!timetable::ParseDateIso(options.scope_from, first) ||
+                !timetable::ParseDateIso(options.scope_to, last) || last < first ||
+                timetable::DaysBetween(first, last) > 6) {
+                std::cerr << "Некорректный период выборочной генерации\n";
+                return 2;
+            }
+        }
         const auto cwd = std::filesystem::current_path().lexically_normal();
         for (auto parent = cwd; !parent.empty(); parent = parent.parent_path()) {
             if (parent == requested) { std::cerr << "Каталог вывода не может быть рабочим каталогом или его предком\n"; return 2; }

@@ -121,6 +121,7 @@
                     >
                       <span class="cell-subject">{{ lesson.subject }}</span>
                       <span class="cell-detail">{{ lesson.group }}</span>
+                      <span v-if="lesson.displayTime" class="cell-detail">{{ lesson.displayTime }}</span>
                       <span v-if="lesson.room" class="cell-room">каб. {{ lesson.room }}</span>
                     </div>
                   </div>
@@ -220,6 +221,7 @@ const teacherLessons = computed(() => {
               subject: lesson.name || '',
               group: group.group_name || '',
               room: lesson.room_name || '',
+              displayTime: lesson.display_time || '',
             })
           }
         }

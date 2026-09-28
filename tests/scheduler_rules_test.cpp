@@ -60,15 +60,15 @@ int main() {
     ok &= Expect(timetable::EffectiveStudentStudyDays(3, 2, 2, 6) == 2,
         "study-day requirement must respect available dates");
 
-    // Общее занятие потребляет слот каждой существующей части; УП — два слота
-    // только той части, которой принадлежит.
+    // Общее занятие потребляет слот каждой существующей части; каждое УП
+    // занимает одну отображаемую строку только своей части.
     std::vector<Lesson> mixed = {
         MakeLesson(2, 0, -1, 2),
         MakeLesson(3, 0, 0, 2, true),
     };
     const auto mixed_load = timetable::ComputeGroupPartWeeklyOccupiedPairs(
         mixed, {2, 2}, 1, {2});
-    ok &= Expect(mixed_load[0][0] == 6, "whole 2 + two UP starts * 2 must give part 1 load 6");
+    ok &= Expect(mixed_load[0][0] == 4, "whole 2 + two one-slot UP starts must give part 1 load 4");
     ok &= Expect(mixed_load[0][1] == 2, "whole lesson must add two pairs to part 2 only");
 
     ok &= Expect(timetable::EffectiveTeacherMaxPairsPerDay(0) == 0,
@@ -85,7 +85,7 @@ int main() {
     std::vector<Lesson> load_lessons = {ordinary, block, pp};
     std::vector<std::vector<int>> incomplete_x = {
         {1, 1, 1},
-        {1, 1, 1, 1},
+        {1, 1},
         {1, 1, 1},
     };
     const auto incomplete = timetable::ComputeScheduleLoadSummary(load_lessons, incomplete_x);

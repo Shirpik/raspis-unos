@@ -74750,10 +74750,10 @@
       "consecutive_pairs": 1,
       "curriculum_active": true,
       "fixed_room": -1,
-      "generation_active": true,
+      "generation_active": false,
       "group": 13,
       "id": 1019,
-      "is_block": false,
+      "is_block": true,
       "is_lab": false,
       "is_pp": false,
       "name": "УП.02",
@@ -74765,10 +74765,10 @@
       "required_room_type": 0,
       "source_index": "УП.02",
       "subgroup": 27,
-      "subject_id": 10012,
+      "subject_id": -1,
       "teacher": 88,
       "total_hours": 36,
-      "total_slots": 5,
+      "total_slots": 0,
       "uid": "lesson-ce8cea072c1b83f0",
       "week_parity": "all",
       "week_quota_source": "exact_quota_optimizer_20260928",
@@ -92418,33 +92418,33 @@
       "group_week_missing_day_weight": 300,
       "hard_max_one_two_pair_student_day": false,
       "hard_max_two_same_subject_per_day": true,
-      "hard_min_2_teacher_pairs_per_day": false,
-      "hard_min_study_days_per_week": false,
-      "hard_no_student_windows": false,
+      "hard_min_2_teacher_pairs_per_day": true,
+      "hard_min_study_days_per_week": true,
+      "hard_no_student_windows": true,
       "hard_no_teacher_windows": false,
       "linearization_level": 0,
       "max_same_subject_pairs_per_day": 3,
       "max_student_pairs_per_day": 4,
       "max_whole_group_same_subject_pairs_per_day": 2,
-      "min_initial_theory_slots_before_labs": 2,
-      "min_student_pairs_per_study_day": 0,
-      "min_student_study_days_per_week": 2,
+      "min_initial_theory_slots_before_labs": 1,
+      "min_student_pairs_per_study_day": 2,
+      "min_student_study_days_per_week": 1,
       "min_subject_spread_total_slots": 9999,
       "normal_subject_active_bucket_unit": 2,
-      "optimize_student_windows": false,
+      "optimize_student_windows": true,
       "optimize_teacher_windows": true,
-      "quality_improvement_seconds": 0,
+      "profile": "balanced",
+      "quality_improvement_seconds": 15,
       "random_seed": 38,
-      "require_class_hours": false,
       "solver_max_memory_mb": 8072,
       "solver_time_limit_seconds": 180,
-      "solver_workers": 8,
-      "stop_after_first_solution": true,
+      "solver_workers": 4,
+      "stop_after_first_solution": false,
       "strict_all_theory_before_labs": false,
       "student_five_pair_day_weight": 100000,
       "student_late_slot_weight": 20,
       "student_two_pair_day_weight": 4000,
-      "student_window_weight": 1000,
+      "student_window_weight": 600,
       "subject_bucket_extra_slots": 8,
       "subject_bucket_min_capacity": 2,
       "subject_bucket_overload_weight": 0,
@@ -92452,32 +92452,18 @@
       "subject_missing_segment_weight": 0,
       "subject_spread_bucket_available_days": 12,
       "symmetry_level": 2,
-      "teacher_campus_preference_weight": 1500,
+      "teacher_campus_preference_weight": 500,
       "teacher_late_slot_weight": 0,
-      "teacher_window_weight": 12000,
-      "use_quality_objective": false,
-      "week_time_limit_seconds": 180
+      "teacher_window_weight": 4000,
+      "use_quality_objective": true,
+      "week_time_limit_seconds": 90
     },
     "start_date": "2026-09-28",
     "teacher_period_targets": [],
     "week_fixed_assignments": 29,
     "week_source": "Вклейки 2026-2027 (6).xlsx + Google Sheets 02.09–26.09.2026"
   },
-  "substitutions": [
-    {
-      "absent_teacher": 24,
-      "comment": "",
-      "date": "2026-09-02",
-      "hours": 2,
-      "id": 0,
-      "lesson_id": 103,
-      "reason": "",
-      "slot": 1,
-      "status": "active",
-      "substitute_teacher": 28,
-      "uid": "substitution-a1444fc99c582b34"
-    }
-  ],
+  "substitutions": [],
   "teacher_notifications": [],
   "teacher_unavailable": [
     {
@@ -93783,11 +93769,13 @@
       "date_load_targets": [],
       "date_slot_overrides": [],
       "default_room": 22,
+      "desired_load_rules": [],
       "id": 7,
       "max_pairs_per_day": 0,
       "max_work_days_per_week": 0,
       "name": "Кобылянская Татьяна Александровна",
       "room_responsibility": "Спортзал (Кривоусова, 53)",
+      "scheduling_active": true,
       "uid": "teacher-52dbdbec7128b285",
       "work_days": [
         {
@@ -93808,15 +93796,10 @@
         {
           "day": 2,
           "enabled": true,
-          "end_slot": 7,
+          "end_slot": 2,
           "slots": [
             1,
-            2,
-            3,
-            4,
-            5,
-            6,
-            7
+            2
           ],
           "start_slot": 1
         },
@@ -93926,11 +93909,13 @@
         }
       ],
       "default_room": 22,
+      "desired_load_rules": [],
       "id": 8,
       "max_pairs_per_day": 0,
       "max_work_days_per_week": 0,
       "name": "Потапова Регина Александровна",
       "room_responsibility": "Спортзал (Кривоусова, 53); 330 (Лесная, 1)",
+      "scheduling_active": true,
       "uid": "teacher-46ac6e915b7a1b1a",
       "work_days": [
         {
@@ -93950,17 +93935,9 @@
         },
         {
           "day": 2,
-          "enabled": true,
+          "enabled": false,
           "end_slot": 7,
-          "slots": [
-            1,
-            2,
-            3,
-            4,
-            5,
-            6,
-            7
-          ],
+          "slots": [],
           "start_slot": 1
         },
         {
@@ -94037,7 +94014,10 @@
       }
     },
     {
-      "allowed_campuses": [],
+      "allowed_campuses": [
+        0,
+        1
+      ],
       "availability_note": "",
       "campus_priority": [],
       "date_load_targets": [
@@ -94084,39 +94064,73 @@
         }
       ],
       "default_room": -1,
+      "desired_load_rules": [],
       "id": 9,
       "max_pairs_per_day": 0,
       "max_work_days_per_week": 0,
       "name": "Сутягин Артём Борисович",
       "room_responsibility": "",
+      "scheduling_active": true,
       "uid": "teacher-a980d6fce0258423",
       "work_days": [
         {
           "day": 1,
-          "enabled": false,
+          "enabled": true,
           "end_slot": 7,
-          "slots": [],
+          "slots": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
           "start_slot": 1
         },
         {
           "day": 2,
-          "enabled": false,
+          "enabled": true,
           "end_slot": 7,
-          "slots": [],
+          "slots": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
           "start_slot": 1
         },
         {
           "day": 3,
-          "enabled": false,
+          "enabled": true,
           "end_slot": 7,
-          "slots": [],
+          "slots": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
           "start_slot": 1
         },
         {
           "day": 4,
-          "enabled": false,
+          "enabled": true,
           "end_slot": 7,
-          "slots": [],
+          "slots": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
           "start_slot": 1
         },
         {
@@ -94136,9 +94150,17 @@
         },
         {
           "day": 6,
-          "enabled": false,
+          "enabled": true,
           "end_slot": 7,
-          "slots": [],
+          "slots": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
           "start_slot": 1
         },
         {
@@ -94737,11 +94759,13 @@
         }
       ],
       "default_room": 38,
+      "desired_load_rules": [],
       "id": 13,
       "max_pairs_per_day": 0,
       "max_work_days_per_week": 0,
       "name": "Костарева Наталья Викторовна",
       "room_responsibility": "318 (Лесная, 1)",
+      "scheduling_active": true,
       "uid": "teacher-4df49d767d08cc85",
       "work_days": [
         {
@@ -94761,17 +94785,9 @@
         },
         {
           "day": 2,
-          "enabled": true,
+          "enabled": false,
           "end_slot": 7,
-          "slots": [
-            1,
-            2,
-            3,
-            4,
-            5,
-            6,
-            7
-          ],
+          "slots": [],
           "start_slot": 1
         },
         {
@@ -94863,11 +94879,13 @@
       ],
       "date_slot_overrides": [],
       "default_room": 37,
+      "desired_load_rules": [],
       "id": 14,
       "max_pairs_per_day": 0,
       "max_work_days_per_week": 0,
       "name": "Лучинин Александр Васильевич",
       "room_responsibility": "317 (Лесная, 1)",
+      "scheduling_active": true,
       "uid": "teacher-21d3ba09b2c72453",
       "work_days": [
         {
@@ -94890,15 +94908,13 @@
           "enabled": true,
           "end_slot": 7,
           "slots": [
-            1,
-            2,
             3,
             4,
             5,
             6,
             7
           ],
-          "start_slot": 1
+          "start_slot": 3
         },
         {
           "day": 3,
@@ -95931,6 +95947,7 @@
         }
       ],
       "default_room": 19,
+      "desired_load_rules": [],
       "external_busy_slots": [
         {
           "date": "2026-09-28",
@@ -95947,6 +95964,7 @@
       "max_work_days_per_week": 0,
       "name": "Комарова Яна Николаевна",
       "room_responsibility": "38 (Кривоусова, 53)",
+      "scheduling_active": true,
       "school_schedule_2026_2027": {
         "blocked_pairs": {
           "1": [
@@ -95994,65 +96012,37 @@
         },
         {
           "day": 2,
-          "enabled": true,
+          "enabled": false,
           "end_slot": 7,
-          "slots": [
-            4,
-            5,
-            6,
-            7
-          ],
-          "start_slot": 4
+          "slots": [],
+          "start_slot": 1
         },
         {
           "day": 3,
-          "enabled": true,
+          "enabled": false,
           "end_slot": 7,
-          "slots": [
-            4,
-            5,
-            6,
-            7
-          ],
-          "start_slot": 4
+          "slots": [],
+          "start_slot": 1
         },
         {
           "day": 4,
-          "enabled": true,
+          "enabled": false,
           "end_slot": 7,
-          "slots": [
-            4,
-            5,
-            6,
-            7
-          ],
-          "start_slot": 4
+          "slots": [],
+          "start_slot": 1
         },
         {
           "day": 5,
-          "enabled": true,
+          "enabled": false,
           "end_slot": 7,
-          "slots": [
-            4,
-            5,
-            6,
-            7
-          ],
-          "start_slot": 4
+          "slots": [],
+          "start_slot": 1
         },
         {
           "day": 6,
-          "enabled": true,
+          "enabled": false,
           "end_slot": 7,
-          "slots": [
-            1,
-            2,
-            3,
-            4,
-            5,
-            6,
-            7
-          ],
+          "slots": [],
           "start_slot": 1
         },
         {
@@ -96449,101 +96439,85 @@
         }
       ],
       "default_room": -1,
+      "desired_load_rules": [],
       "id": 24,
       "max_pairs_per_day": 0,
       "max_work_days_per_week": 0,
       "name": "Круглова Юлия Петровна",
       "room_responsibility": "",
+      "scheduling_active": true,
       "uid": "teacher-e34c06ce8beb0b0e",
       "work_days": [
         {
           "day": 1,
           "enabled": true,
-          "end_slot": 7,
+          "end_slot": 5,
           "slots": [
             1,
             2,
             3,
             4,
-            5,
-            6,
-            7
+            5
           ],
           "start_slot": 1
         },
         {
           "day": 2,
           "enabled": true,
-          "end_slot": 7,
+          "end_slot": 5,
           "slots": [
             1,
             2,
             3,
             4,
-            5,
-            6,
-            7
+            5
           ],
           "start_slot": 1
         },
         {
           "day": 3,
           "enabled": true,
-          "end_slot": 7,
+          "end_slot": 5,
           "slots": [
             1,
             2,
             3,
             4,
-            5,
-            6,
-            7
+            5
           ],
           "start_slot": 1
         },
         {
           "day": 4,
           "enabled": true,
-          "end_slot": 7,
+          "end_slot": 5,
           "slots": [
             1,
             2,
             3,
             4,
-            5,
-            6,
-            7
+            5
           ],
           "start_slot": 1
         },
         {
           "day": 5,
           "enabled": true,
-          "end_slot": 7,
+          "end_slot": 5,
           "slots": [
             1,
             2,
             3,
             4,
-            5,
-            6,
-            7
+            5
           ],
           "start_slot": 1
         },
         {
           "day": 6,
-          "enabled": true,
+          "enabled": false,
           "end_slot": 7,
-          "slots": [
-            1,
-            2,
-            3,
-            4,
-            5,
-            6,
-            7
-          ],
+          "slots": [],
           "start_slot": 1
         },
         {
@@ -100052,7 +100026,10 @@
       }
     },
     {
-      "allowed_campuses": [],
+      "allowed_campuses": [
+        0,
+        1
+      ],
       "availability_note": "",
       "campus_priority": [],
       "date_load_targets": [
@@ -100064,46 +100041,88 @@
       ],
       "date_slot_overrides": [],
       "default_room": -1,
+      "desired_load_rules": [],
       "id": 51,
       "max_pairs_per_day": 0,
       "max_work_days_per_week": 0,
       "name": "Кошелев Дмитрий Александрович",
       "room_responsibility": "",
+      "scheduling_active": true,
       "uid": "teacher-34c4cc756898f07a",
       "work_days": [
         {
           "day": 1,
-          "enabled": false,
+          "enabled": true,
           "end_slot": 7,
-          "slots": [],
+          "slots": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
           "start_slot": 1
         },
         {
           "day": 2,
-          "enabled": false,
+          "enabled": true,
           "end_slot": 7,
-          "slots": [],
+          "slots": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
           "start_slot": 1
         },
         {
           "day": 3,
-          "enabled": false,
+          "enabled": true,
           "end_slot": 7,
-          "slots": [],
+          "slots": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
           "start_slot": 1
         },
         {
           "day": 4,
-          "enabled": false,
+          "enabled": true,
           "end_slot": 7,
-          "slots": [],
+          "slots": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
           "start_slot": 1
         },
         {
           "day": 5,
-          "enabled": false,
+          "enabled": true,
           "end_slot": 7,
-          "slots": [],
+          "slots": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
           "start_slot": 1
         },
         {
@@ -101795,17 +101814,22 @@
       }
     },
     {
-      "allowed_campuses": [],
+      "allowed_campuses": [
+        0,
+        1
+      ],
       "availability_note": "",
       "campus_priority": [],
       "date_load_targets": [],
       "date_slot_overrides": [],
       "default_room": -1,
+      "desired_load_rules": [],
       "id": 63,
       "max_pairs_per_day": 0,
       "max_work_days_per_week": 0,
       "name": "Клабуков Василий Витальевич",
       "room_responsibility": "",
+      "scheduling_active": true,
       "uid": "teacher-2206efebbea3c58b",
       "work_days": [
         {
@@ -101817,17 +101841,9 @@
         },
         {
           "day": 2,
-          "enabled": true,
+          "enabled": false,
           "end_slot": 7,
-          "slots": [
-            1,
-            2,
-            3,
-            4,
-            5,
-            6,
-            7
-          ],
+          "slots": [],
           "start_slot": 1
         },
         {
@@ -102187,7 +102203,13 @@
       ],
       "availability_note": "Работает только по вторникам, пары 1–3",
       "campus_priority": [],
-      "date_load_targets": [],
+      "date_load_targets": [
+        {
+          "date": "2026-09-29",
+          "maximum_same_subject_pairs": 3,
+          "minimum_pairs": 3
+        }
+      ],
       "date_slot_overrides": [
         {
           "date": "2026-09-04",
@@ -102219,11 +102241,13 @@
         }
       ],
       "default_room": 49,
+      "desired_load_rules": [],
       "id": 66,
       "max_pairs_per_day": 3,
       "max_work_days_per_week": 1,
       "name": "Колтышев Евгений Валерьевич",
       "room_responsibility": "",
+      "scheduling_active": true,
       "uid": "teacher-a3efe477ad428445",
       "work_days": [
         {
@@ -102428,7 +102452,10 @@
       }
     },
     {
-      "allowed_campuses": [],
+      "allowed_campuses": [
+        0,
+        1
+      ],
       "availability_note": "",
       "campus_priority": [],
       "date_load_targets": [],
@@ -102447,62 +102474,49 @@
         }
       ],
       "default_room": -1,
+      "desired_load_rules": [],
       "id": 68,
       "max_pairs_per_day": 0,
       "max_work_days_per_week": 0,
       "name": "Ханьжина Ксения Владимировна",
       "room_responsibility": "",
+      "scheduling_active": true,
       "uid": "teacher-ee222cdf909964e2",
       "work_days": [
         {
           "day": 1,
-          "enabled": true,
+          "enabled": false,
           "end_slot": 7,
-          "slots": [
-            6,
-            7
-          ],
-          "start_slot": 6
+          "slots": [],
+          "start_slot": 1
         },
         {
           "day": 2,
-          "enabled": true,
+          "enabled": false,
           "end_slot": 7,
-          "slots": [
-            6,
-            7
-          ],
-          "start_slot": 6
+          "slots": [],
+          "start_slot": 1
         },
         {
           "day": 3,
-          "enabled": true,
+          "enabled": false,
           "end_slot": 7,
-          "slots": [
-            6,
-            7
-          ],
-          "start_slot": 6
+          "slots": [],
+          "start_slot": 1
         },
         {
           "day": 4,
-          "enabled": true,
+          "enabled": false,
           "end_slot": 7,
-          "slots": [
-            6,
-            7
-          ],
-          "start_slot": 6
+          "slots": [],
+          "start_slot": 1
         },
         {
           "day": 5,
-          "enabled": true,
+          "enabled": false,
           "end_slot": 7,
-          "slots": [
-            6,
-            7
-          ],
-          "start_slot": 6
+          "slots": [],
+          "start_slot": 1
         },
         {
           "day": 6,

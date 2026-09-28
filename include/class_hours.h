@@ -15,5 +15,6 @@ void AddClassHourTimeConstraints(
 // Plans on a copy; caller publishes only after independent validation.
 bool PlanClassHours(const ScheduleInputData& data, JsonValue& schedule, std::string& error);
 JsonValue ValidateClassHours(const ScheduleInputData& data, const JsonValue& schedule);
-bool FinalizeSchedule(const ScheduleInputData& data, const std::string& output_dir, std::string& error, bool draft_semester_risk = false);
+bool FinalizeSchedule(const ScheduleInputData& data, const std::string& output_dir, std::string& error,
+                      bool draft_semester_risk = false, bool scoped_day = false);
 }

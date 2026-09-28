@@ -381,9 +381,12 @@ function getCellLessonRows(dateStr, slotNum) {
     const rawDetails = separator >= 0
       ? segment.slice(separator + 3).split(', ').filter(Boolean)
       : []
-    const details = rawDetails.filter(detail =>
+    const parsedDetails = rawDetails.filter(detail =>
       !/^(вся группа|[12]-?я?\s*(подгруппа|п\/?г)|подгруппа)/i.test(detail))
     const lesson = entry.lesson
+    const details = lesson?.display_time
+      ? [String(lesson.display_time), ...parsedDetails]
+      : parsedDetails
     const roomName = lesson?.room_name === null || lesson?.room_name === undefined
       ? ''
       : String(lesson.room_name).trim()

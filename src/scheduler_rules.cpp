@@ -18,11 +18,10 @@ ScheduleLoadSummary ComputeScheduleLoadSummary(
             scheduled_pairs = static_cast<int>(std::count_if(
                 x_values[l].begin(), x_values[l].end(), [](int value) { return value != 0; }));
         }
-        // УП занимает два внутренних парных слота, но в вычитке это один
-        // блок на 6 часов. Обычная пара остаётся двумя часами.
+        // УП занимает одну отображаемую строку расписания, но в вычитке это
+        // один блок на 6 часов. Обычная пара остаётся двумя часами.
         const int planned_lesson_hours = planned_occurrences * (lessons[l].is_block ? 6 : 2);
-        const int scheduled_occurrences = lessons[l].is_block
-            ? (scheduled_pairs + 1) / 2 : scheduled_pairs;
+        const int scheduled_occurrences = scheduled_pairs;
         const int scheduled_lesson_hours = scheduled_occurrences * (lessons[l].is_block ? 6 : 2);
         result.planned_hours += planned_lesson_hours;
         result.scheduled_hours += scheduled_lesson_hours;
@@ -59,7 +58,7 @@ std::vector<std::vector<int>> ComputeGroupPartWeeklyOccupiedPairs(
         const int parts = lesson.group < static_cast<int>(group_part_count.size())
             ? std::clamp(group_part_count[lesson.group], 1, PARTS_PER_GROUP)
             : PARTS_PER_GROUP;
-        const int occupied_pairs = quotas[l] * (lesson.is_block ? 2 : 1);
+        const int occupied_pairs = quotas[l];
         for (int part = 0; part < parts; ++part) {
             if (LessonAffectsPart(lesson, lesson.group, part)) {
                 result[lesson.group][part] += occupied_pairs;

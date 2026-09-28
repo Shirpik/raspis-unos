@@ -16,8 +16,9 @@ const DAY_LAYOUT = {
 }
 
 const normalizeCampus = value => {
-  if (/кривоус/i.test(value || '')) return 'Кривоусова'
-  if (/лесн/i.test(value || '')) return 'Лесная'
+  const source = String(value || '').trim().toLocaleLowerCase('ru')
+  if (source.includes('кривоус') || source.endsWith('_к')) return 'Кривоусова'
+  if (source.includes('лесн') || source.endsWith('_л')) return 'Лесная'
   return ''
 }
 
@@ -75,6 +76,42 @@ const collectDates = groups => {
   return [...dates.values()].sort((a, b) => compareDMY(a.date, b.date))
 }
 
+const weekdayFromIso = iso => {
+  const day = new Date(`${iso}T12:00:00`).getDay()
+  return ['', 'ПН', 'ВТ', 'СР', 'ЧТ', 'ПТ', 'СБ'][day] || ''
+}
+
+const displayDateFromIso = iso => `${iso.slice(8, 10)}.${iso.slice(5, 7)}.${iso.slice(0, 4)}`
+
+export function scheduleForDates(schedule, selectedDates) {
+  const dates = [...new Set((selectedDates || []).map(value => {
+    if (/^\d{4}-\d{2}-\d{2}$/.test(String(value || ''))) return String(value)
+    const parts = dateParts(value)
+    if (!parts.day || !parts.month || !parts.year) return ''
+    return `${parts.year}-${String(parts.month).padStart(2, '0')}-${String(parts.day).padStart(2, '0')}`
+  }).filter(Boolean))].sort()
+  const wanted = new Set(dates)
+  return {
+    ...(schedule || {}),
+    groups: (schedule?.groups || []).map(group => {
+      const existing = new Map((group.days || []).map(day => [dateIso(day), day]))
+      return {
+        ...group,
+        days: dates.map(iso => {
+          const day = existing.get(iso)
+          return {
+            ...(day || {}),
+            date_iso: iso,
+            date: displayDateFromIso(iso),
+            weekday: weekdayFromIso(iso),
+            slots: [...(day?.slots || [])],
+          }
+        }).filter(day => wanted.has(dateIso(day))),
+      }
+    }),
+  }
+}
+
 const filenameDateRange = schedule => {
   const dates = collectDates(schedule?.groups).map(day => dateParts(day.date))
   if (!dates.length) return new Date().toISOString().slice(0, 10)
@@ -115,8 +152,11 @@ const prepareCellPair = (sheet, column, firstRow, secondRow) => {
   first.value = null
   second.value = null
   for (const cell of [first, second]) {
-    cell.alignment = { ...cell.alignment, horizontal: 'center', vertical: 'middle', wrapText: true }
-    cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFFFFFFF' } }
+    cell.style = {
+      ...cell.style,
+      alignment: { ...cell.alignment, horizontal: 'center', vertical: 'middle', wrapText: true },
+      fill: { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFFFFFFF' } },
+    }
   }
   return { first, second }
 }
@@ -130,10 +170,11 @@ const lessonTemplateValue = (lesson, segment, groupIndex, slotNumber = null) => 
   const room = lesson?.room_name === null || lesson?.room_name === undefined
     ? ''
     : String(lesson.room_name).trim()
-  const campus = normalizeCampus(details.at(-1))
+  const campus = normalizeCampus([segment, room].filter(Boolean).join(' '))
   const ordinal = subgroupOrdinal(lesson?.subgroup, groupIndex)
   const subjectLine = ordinal ? `${subject} ${ordinal} п/г` : subject
-  const roomLine = room ? `${room}${campusSuffix(campus) ? `_${campusSuffix(campus)}` : ''}` : ''
+  const suffix = campusSuffix(campus)
+  const roomLine = room ? `${room}${suffix && !/_[кКлЛ]\s*$/.test(room) ? `_${suffix}` : ''}` : ''
   const blockTime = lesson?.is_block
     ? (Number(slotNumber) <= 2 ? '8:30-12:30' : '13:00-17:00')
     : ''
@@ -143,11 +184,15 @@ const lessonTemplateValue = (lesson, segment, groupIndex, slotNumber = null) => 
   }
 }
 
-const applyCampusFill = (cell, campus) => {
-  cell.fill = {
-    type: 'pattern',
-    pattern: 'solid',
-    fgColor: { argb: campus === 'Лесная' ? 'FFEFEFEF' : 'FFFFFFFF' },
+const applyCampusFill = (cell, campus, content = '') => {
+  const isLesnaya = campus === 'Лесная' || normalizeCampus(content) === 'Лесная'
+  cell.style = {
+    ...cell.style,
+    fill: {
+      type: 'pattern',
+      pattern: 'solid',
+      fgColor: { argb: isLesnaya ? 'FFD9D9D9' : 'FFFFFFFF' },
+    },
   }
 }
 
@@ -194,7 +239,7 @@ export async function buildScheduleExcelWorkbook(schedule, templateBuffer) {
   const scheduleDates = collectDates(schedule.groups)
   const datesByWeekday = new Map()
   for (const day of scheduleDates) {
-    const weekday = String(day.weekday || '').trim().toUpperCase()
+    const weekday = weekdayFromIso(dateIso(day)) || String(day.weekday || '').trim().toUpperCase()
     if (datesByWeekday.has(weekday)) {
       throw new Error('В образец одной недели нельзя записать несколько одинаковых дней недели. Выберите одну неделю для экспорта.')
     }
@@ -218,7 +263,7 @@ export async function buildScheduleExcelWorkbook(schedule, templateBuffer) {
     groups.forEach(group => templateGroupNames.add(group.name))
 
     for (const targetDay of scheduleDates) {
-      const weekday = String(targetDay.weekday || '').trim().toUpperCase()
+      const weekday = weekdayFromIso(dateIso(targetDay)) || String(targetDay.weekday || '').trim().toUpperCase()
       const layout = DAY_LAYOUT[weekday]
       if (!layout) throw new Error(`День «${targetDay.weekday || targetDay.date}» не поддерживается Excel-образцом`)
       sheet.getCell(layout.headerRow, 1).value = excelDate(targetDay)
@@ -248,7 +293,7 @@ export async function buildScheduleExcelWorkbook(schedule, templateBuffer) {
             const value = lessonTemplateValue(entries[0].lesson, entries[0].segment, group?.group_index)
             cell.value = value.text
             cell.alignment = { horizontal: 'center', vertical: 'middle', wrapText: true }
-            applyCampusFill(cell, value.campus)
+            applyCampusFill(cell, value.campus, value.text)
             insertedLessons++
           }
         }
@@ -283,10 +328,10 @@ export async function buildScheduleExcelWorkbook(schedule, templateBuffer) {
               if (weekday !== 'ПН' || slotNumber < 2 || slotNumber > 4 || wholeGroup[0].lesson.half !== 2)
                 throw new Error(`${name}: поздний классный час должен занимать вторую половину пары 2–4 понедельника`)
               second.value = value.text
-              applyCampusFill(second, value.campus)
+              applyCampusFill(second, value.campus, value.text)
             } else {
                 first.value = value.text
-              applyCampusFill(first, value.campus)
+              applyCampusFill(first, value.campus, value.text)
             }
             insertedLessons += 1
             continue
@@ -302,7 +347,7 @@ export async function buildScheduleExcelWorkbook(schedule, templateBuffer) {
             const cell = ordinal === 1 ? first : second
             const value = lessonTemplateValue(entry.lesson, entry.segment, group?.group_index, slotNumber)
             cell.value = value.text
-            applyCampusFill(cell, value.campus)
+            applyCampusFill(cell, value.campus, value.text)
             insertedLessons += 1
           }
         }

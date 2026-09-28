@@ -91,10 +91,11 @@
       <div class="form-group" style="max-width:420px">
         <label class="form-label">Режим генерации</label>
         <select v-model="lockMode" class="form-select" :disabled="generating">
-          <option value="none">С нуля</option>
-          <option value="manual">Зафиксировать Конструктор</option>
+          <option value="none">Не учитывать Конструктор</option>
+          <option value="manual">Достроить из Конструктора</option>
           <option value="auto">Зафиксировать прошлую автогенерацию</option>
         </select>
+        <small class="form-hint">«Достроить из Конструктора» сохраняет точные даты и пары, которые вы закрепили вручную.</small>
       </div>
       <div class="form-group" style="max-width:420px">
         <label class="form-label">Алгоритм периода</label>

@@ -7,7 +7,7 @@
   "max_student_pairs_per_day": 4,
   "mismatched_lessons": 0,
   "missing_hours": 0,
-  "planned_hours": 450,
+  "planned_hours": 478,
   "remaining_hours": 0,
   "rooms": {
     "assigned": 217,
@@ -18,10 +18,10 @@
     "substitutions": [],
     "unassigned": 0
   },
-  "scheduled_hours": 450,
-  "student_days_at_daily_limit": 92,
+  "scheduled_hours": 478,
+  "student_days_at_daily_limit": 56,
   "student_windows": 0,
-  "teacher_windows": 0,
+  "teacher_windows": 12,
   "up_day_rule_violations": 0,
   "up_teacher_lock_violations": 0
 }

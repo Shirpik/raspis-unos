@@ -80,8 +80,6 @@ std::string BuildTeacherSlotText(
     std::vector<std::string> items;
 
     int campus = IntValue(response, teacher_day_campus[teacher][day]);
-    TimeInterval pair_interval = PairSlotInterval(DayOfWeek(all_days[day]), slot);
-
     for (int l = 0; l < static_cast<int>(lessons.size()); l++) {
         if (lessons[l].teacher != teacher) continue;
         if (lessons[l].is_block) continue;
@@ -118,9 +116,7 @@ std::string BuildTeacherSlotText(
                 continue;
             }
 
-            TimeInterval up_interval = UpIntervalForStartSlot(all_days[day], start_slot);
-
-            if (!IntervalsOverlap(up_interval, pair_interval)) {
+            if (start_slot != slot) {
                 continue;
             }
 
@@ -554,6 +550,7 @@ void WriteSlotLessonsJson(
     int group,
     int day,
     int slot,
+    const Date& date,
     const RoomAssignmentMap* room_assignments
 ) {
     int t = day * SLOTS_PER_DAY + slot;
@@ -584,6 +581,9 @@ void WriteSlotLessonsJson(
             << ",\"subgroup\":" << lessons[l].subgroup
             << ",\"is_lab\":" << (lessons[l].is_lab ? "true" : "false")
             << ",\"is_block\":" << (lessons[l].is_block ? "true" : "false")
+            << ",\"display_time\":" << (lessons[l].is_block
+                ? "\"" + JsonEscape(IntervalToString(UpIntervalForStartSlot(date, slot))) + "\""
+                : "null")
             << ",\"consecutive_pairs\":" << lessons[l].consecutive_pairs
             << ",\"avoid_lunch_split\":" << (lessons[l].avoid_lunch_split ? "true" : "false")
             << ",\"week_parity\":\"" << JsonEscape(lessons[l].week_parity) << "\""
@@ -673,7 +673,7 @@ void WriteGroupJsonBody(
                 << ", \"time\": \"" << JsonEscape(PairSlotLabel(dt, s))
                 << "\", \"text\": \"" << JsonEscape(text) << "\""
                 << ", \"lessons\": ";
-            WriteSlotLessonsJson(out, response, lessons, x, group, d, s, room_assignments);
+            WriteSlotLessonsJson(out, response, lessons, x, group, d, s, dt, room_assignments);
             out << "}";
 
             if (s + 1 < SLOTS_PER_DAY) {
