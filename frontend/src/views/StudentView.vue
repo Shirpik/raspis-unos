@@ -797,14 +797,6 @@ function parseDetails(text) {
   background: var(--bg-tertiary);
 }
 
-.cell-lab {
-  background: rgba(34, 197, 94, 0.05);
-}
-
-.slot-row:hover .cell-lab {
-  background: rgba(34, 197, 94, 0.08) !important;
-}
-
 .cell-practice {
   background: rgba(251, 146, 60, 0.05);
 }
@@ -844,14 +836,16 @@ function parseDetails(text) {
 
 .cell-subgroup-1 {
   border-left: 2px solid rgba(59, 130, 246, 0.5);
+  order: 1;
 }
 
 .cell-subgroup-2 {
   border-left: 2px solid rgba(168, 85, 247, 0.5);
+  order: 2;
 }
 
 .subgroup-badge {
-  font-size: 9px;
+  font-size: 10px;
   font-weight: 700;
   color: var(--text-muted);
   text-transform: uppercase;
@@ -862,17 +856,17 @@ function parseDetails(text) {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 5px;
+  gap: 6px;
 }
 
 .cell-lesson + .cell-lesson {
-  margin-top: 8px;
-  padding-top: 8px;
+  margin-top: 10px;
+  padding-top: 10px;
   border-top: 1px solid var(--border);
 }
 
 .cell-subject {
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 600;
   color: var(--text-primary);
   line-height: 1.4;
@@ -881,23 +875,23 @@ function parseDetails(text) {
 .cell-meta {
   display: flex;
   flex-wrap: wrap;
-  gap: 4px;
+  gap: 5px;
   align-items: center;
 }
 
 .cell-detail {
-  font-size: 10px;
+  font-size: 11px;
   color: var(--text-secondary);
   background: var(--bg-tertiary);
   border: 1px solid var(--border);
   border-radius: 4px;
-  padding: 2px 6px;
+  padding: 3px 7px;
   display: inline-block;
   white-space: nowrap;
 }
 
 .cell-room {
-  font-size: 11px;
+  font-size: 12px;
   color: var(--accent);
   font-weight: 600;
 }
