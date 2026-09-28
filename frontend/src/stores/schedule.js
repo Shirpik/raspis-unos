@@ -68,7 +68,8 @@ export const useScheduleStore = defineStore('schedule', () => {
     const res = await api.schedule.getPublishedGroup(groupIndex)
     loading.value = false
     if (res.ok) {
-      scheduleData.value = res.data
+      // Backend returns single group object, wrap it in groups array
+      scheduleData.value = { groups: [res.data] }
       return res.data
     } else if (res.status === 404) {
       scheduleData.value = null
