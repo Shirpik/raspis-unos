@@ -31,8 +31,7 @@ FROM ubuntu:24.04 AS runtime
 ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update && apt-get install -y --no-install-recommends \
     ca-certificates curl libpq5 libssl3t64 \
-    && rm -rf /var/lib/apt/lists/* \
-    && useradd --uid 1000 --create-home --shell /usr/sbin/nologin timetable
+    && rm -rf /var/lib/apt/lists/*
 
 COPY --from=backend-build /opt/or-tools /opt/or-tools
 COPY --from=backend-build /src/build/timetable_solver /usr/local/bin/timetable_solver
@@ -41,6 +40,6 @@ COPY --from=frontend-build /frontend/dist /opt/frontend-dist
 ENV LD_LIBRARY_PATH=/opt/or-tools/lib
 ENV TIMETABLE_HOST=0.0.0.0
 WORKDIR /app
-USER timetable
+USER ubuntu
 EXPOSE 8080
 ENTRYPOINT ["/usr/local/bin/timetable_solver"]

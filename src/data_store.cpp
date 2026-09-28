@@ -974,12 +974,16 @@ void EnsureDataFileExists() {
         if (!PostgresHasState(has_state, error))
             throw std::runtime_error("PostgreSQL initialization failed: " + error);
         if (!has_state) {
-            JsonValue initial;
             std::ifstream source(DataFilePath(), std::ios::binary);
             std::ostringstream buffer;
             buffer << source.rdbuf();
             JsonParseResult parsed = ParseJson(buffer.str());
-            initial = parsed.ok && parsed.value.IsObject() ? parsed.value : DefaultDataJson();
+            if (!source || !parsed.ok || !parsed.value.IsObject()) {
+                throw std::runtime_error(
+                    "PostgreSQL is empty and no valid JSON migration source exists at " +
+                    DataFilePath());
+            }
+            JsonValue initial = parsed.value;
             NormalizeDataRoot(initial);
             if (!PostgresInsertInitialState(ToJson(initial, 2), error))
                 throw std::runtime_error("PostgreSQL data import failed: " + error);
