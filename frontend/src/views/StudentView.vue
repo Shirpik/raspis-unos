@@ -704,18 +704,69 @@ function parseDetails(text) {
 .center-block { display: flex; flex-direction: column; align-items: center; padding: 80px 20px; }
 
 @media (max-width: 640px) {
+  .student-page { padding: 16px 12px 32px; }
   .student-header { gap: 12px; }
-  .week-nav { flex-wrap: wrap; }
-  .week-label { order: -1; width: 100%; align-items: center; }
-  .th-slot { min-width: 68px; }
-  .year-grid {
-    grid-template-columns: repeat(2, 1fr);
+  .page-title { font-size: 18px; }
+
+  .selector-card { padding: 16px; }
+  .year-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+  .year-card { padding: 16px 12px; }
+  .year-number { font-size: 28px; }
+  .group-grid { grid-template-columns: 1fr; gap: 8px; }
+  .group-card { padding: 12px; font-size: 13px; }
+
+  .week-nav { flex-wrap: wrap; padding: 10px 12px; }
+  .week-label { order: -1; width: 100%; align-items: center; margin-bottom: 8px; }
+  .week-title { font-size: 14px; }
+  .week-dates { font-size: 11px; }
+
+  .sched-scroll {
+    border-radius: 8px;
+    margin: 0 -12px;
+    border-left: none;
+    border-right: none;
   }
-  .group-grid {
-    grid-template-columns: 1fr;
+
+  .sched-table { font-size: 11px; }
+
+  .th-slot {
+    min-width: 60px;
+    width: 60px;
+    padding: 8px 4px;
+    gap: 2px;
   }
-  .selector-card {
-    padding: 16px;
+  .th-slot svg { width: 14px; height: 14px; }
+  .slot-header-text { font-size: 9px; }
+
+  .th-day { padding: 8px 10px; }
+  .day-name { font-size: 10px; }
+  .day-date-sub { font-size: 9px; margin-top: 2px; }
+
+  .th-group {
+    font-size: 9px;
+    padding: 5px 8px;
+    min-width: 140px;
   }
+
+  .slot-label {
+    padding: 8px 4px;
+    min-height: 48px;
+    gap: 2px;
+  }
+  .slot-num { font-size: 18px; }
+  .slot-time { font-size: 8px; }
+
+  .slot-cell { padding: 6px 8px; }
+  .cell-inner { gap: 3px; }
+  .cell-lesson { gap: 3px; }
+  .cell-lesson + .cell-lesson { margin-top: 6px; padding-top: 6px; }
+  .cell-subject { font-size: 11px; line-height: 1.3; }
+  .cell-detail {
+    font-size: 9px;
+    padding: 1px 4px;
+    border-radius: 2px;
+  }
+  .cell-room { font-size: 9px; }
+  .cell-empty { font-size: 12px; min-height: 32px; }
 }
 </style>
