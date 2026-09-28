@@ -1533,7 +1533,7 @@ std::string HandleRequest(const std::string& request, const std::string& output_
                                 if (lessons.IsArray()) {
                                     for (size_t li = 0; li < lessons.array_value.size(); li++) {
                                         const JsonValue& lesson = lessons.array_value[li];
-                                        if (JsonInt(lesson, "teacher", -1) == teacher_id) {
+                                        if (JsonInt(lesson, "teacher_id", -1) == teacher_id) {
                                             JsonValue day_slot = JsonValue::MakeObject();
                                             day_slot.At("date") = day.At("date");
                                             day_slot.At("weekday") = day.At("weekday");
