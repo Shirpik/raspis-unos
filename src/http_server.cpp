@@ -2264,11 +2264,6 @@ std::string HandleRequest(const std::string& request, const std::string& output_
         const std::filesystem::path source = out_dir / "schedule_all.json";
         if (!FileExists(source)) return ErrorJson(404, "Not Found", "Сначала сгенерируй расписание");
         const FinalOutputValidation validation = ValidateFinalOutput(out_dir);
-        if (!validation.ok) {
-            JsonValue details = validation.ToJsonValue();
-            JsonValue envelope = ResponseEnvelope(false, validation.message, &details);
-            return JsonResponse(409, "Conflict", ToJson(envelope, 2));
-        }
         const std::filesystem::path published = std::filesystem::path("output") / "published";
         JsonParseResult snapshot = ParseJson(ReadFileUtf8(source));
         std::string publish_error;
@@ -2276,7 +2271,16 @@ std::string HandleRequest(const std::string& request, const std::string& output_
             return ErrorJson(500, "Internal Server Error",
                 publish_error.empty() ? "Не удалось прочитать итоговое расписание" : publish_error);
         }
-        return OkJson(ResponseEnvelope(true, "Студенческая версия опубликована."));
+        JsonValue result = JsonValue::MakeObject();
+        result.At("success") = JsonValue::MakeBool(true);
+        result.At("validation") = validation.ToJsonValue();
+        if (validation.ok) {
+            result.At("message") = JsonValue::MakeString("Студенческая версия опубликована.");
+        } else {
+            result.At("message") = JsonValue::MakeString("Студенческая версия опубликована с предупреждениями: " + validation.message);
+            result.At("warning") = JsonValue::MakeString(validation.message);
+        }
+        return OkJson(result);
     }
 
     if (method == "GET" && path == "/api/schedule/published") {
