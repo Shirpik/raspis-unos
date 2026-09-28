@@ -19,7 +19,7 @@ export const useScheduleStore = defineStore('schedule', () => {
   async function fetchSchedule() {
     loading.value = true
     error.value = null
-    const [res, raw] = await Promise.all([api.schedule.get(), api.data.get()])
+    const [res, raw] = await Promise.all([api.schedule.get(), api.schedule.context()])
     loading.value = false
     if (raw.ok) {
       semester.value = raw.data?.settings || null

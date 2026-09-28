@@ -45,6 +45,7 @@ inline void WSACleanup() {}
 #include <cstdlib>
 #include <filesystem>
 #include <fstream>
+#include <functional>
 #include <iomanip>
 #include <iostream>
 #include <mutex>
@@ -546,6 +547,42 @@ void RemoveGroupJsonFiles(const std::filesystem::path& groups_dir) {
             ec.clear();
         }
     }
+}
+
+JsonValue ProjectArray(const JsonValue& source, std::initializer_list<const char*> fields,
+                       const std::function<bool(const JsonValue&)>& include = {}) {
+    JsonValue result = JsonValue::MakeArray();
+    if (!source.IsArray()) return result;
+    for (const JsonValue& item : source.array_value) {
+        if (!item.IsObject() || (include && !include(item))) continue;
+        JsonValue projected = JsonValue::MakeObject();
+        for (const char* field : fields) projected.At(field) = item.At(field);
+        result.array_value.push_back(std::move(projected));
+    }
+    return result;
+}
+
+JsonValue BuildScheduleContext(const JsonValue& data) {
+    JsonValue result = JsonValue::MakeObject();
+    result.At("settings") = data.At("settings");
+    result.At("groups") = ProjectArray(data.At("groups"), {"id", "name"});
+    result.At("teachers") = ProjectArray(data.At("teachers"), {"id", "name"});
+    result.At("rooms") = ProjectArray(data.At("rooms"), {"id", "name"});
+    result.At("lessons") = ProjectArray(data.At("lessons"), {
+        "id", "uid", "name", "subgroup", "teacher", "is_lab", "is_block", "is_class_hour"});
+    result.At("teaching_ledger") = ProjectArray(data.At("teaching_ledger"), {
+        "lesson_id", "group_id", "date", "slot", "status", "actual_teacher", "room", "hours"},
+        [](const JsonValue& item) { return JsonString(item, "status", "") == "confirmed"; });
+    return result;
+}
+
+JsonValue BuildFrontendBootstrap(const JsonValue& data) {
+    JsonValue result = JsonValue::MakeObject();
+    for (const char* key : {"teachers", "groups", "lessons", "unavailable",
+                            "teacher_unavailable", "rooms", "room_types", "settings"}) {
+        result.At(key) = data.At(key);
+    }
+    return result;
 }
 
 std::string ScheduleArtifactKey(const std::filesystem::path& directory) {
@@ -1510,6 +1547,20 @@ std::string HandleRequest(const std::string& request, const std::string& output_
             "\"GET /api/schedule/group/{id-or-name}\""
             "]}"
         );
+    }
+
+    if (method == "GET" && path == "/api/bootstrap") {
+        const JsonParseResult parsed = ParseJson(ReadDataJsonText());
+        if (!parsed.ok || !parsed.value.IsObject())
+            return ErrorJson(500, "Internal Server Error", "Не удалось прочитать данные");
+        return JsonResponse(200, "OK", ToJson(BuildFrontendBootstrap(parsed.value), 0));
+    }
+
+    if (method == "GET" && path == "/api/schedule/context") {
+        const JsonParseResult parsed = ParseJson(ReadDataJsonText());
+        if (!parsed.ok || !parsed.value.IsObject())
+            return ErrorJson(500, "Internal Server Error", "Не удалось прочитать данные");
+        return JsonResponse(200, "OK", ToJson(BuildScheduleContext(parsed.value), 0));
     }
 
     if (method == "GET" && path == "/api/data") {

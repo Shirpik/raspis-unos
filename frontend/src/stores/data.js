@@ -16,25 +16,18 @@ export const useDataStore = defineStore('data', () => {
 
   async function loadAll() {
     loading.value = true
-    const [t, g, l, u, tu, r, rt, s] = await Promise.all([
-      api.teachers.list(),
-      api.groups.list(),
-      api.lessons.list(),
-      api.unavailable.list(),
-      api.teacherUnavailable.list(),
-      api.rooms.list(),
-      api.roomTypes.list(),
-      api.settings.get(),
-    ])
-    if (t.ok) teachers.value = Array.isArray(t.data) ? t.data : []
-    if (g.ok) groups.value = Array.isArray(g.data) ? g.data : []
-    if (l.ok) lessons.value = Array.isArray(l.data) ? l.data : []
-    if (u.ok) unavailable.value = Array.isArray(u.data) ? u.data : []
-    if (tu.ok) teacherUnavailable.value = Array.isArray(tu.data) ? tu.data : []
-    if (r.ok) rooms.value = Array.isArray(r.data) ? r.data : []
-    if (rt.ok) roomTypes.value = Array.isArray(rt.data) ? rt.data : []
-    if (s.ok) settings.value = s.data
+    const response = await api.data.bootstrap()
+    const payload = response.ok ? response.data : {}
+    teachers.value = Array.isArray(payload.teachers) ? payload.teachers : []
+    groups.value = Array.isArray(payload.groups) ? payload.groups : []
+    lessons.value = Array.isArray(payload.lessons) ? payload.lessons : []
+    unavailable.value = Array.isArray(payload.unavailable) ? payload.unavailable : []
+    teacherUnavailable.value = Array.isArray(payload.teacher_unavailable) ? payload.teacher_unavailable : []
+    rooms.value = Array.isArray(payload.rooms) ? payload.rooms : []
+    roomTypes.value = Array.isArray(payload.room_types) ? payload.room_types : []
+    if (payload.settings) settings.value = payload.settings
     loading.value = false
+    return response
   }
 
   async function loadTeachers() {

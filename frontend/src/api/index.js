@@ -26,6 +26,7 @@ export const api = {
   },
   data: {
     get: () => request('GET', '/data'),
+    bootstrap: () => request('GET', '/bootstrap'),
     replace: (d) => request('PUT', '/data', d),
     audit: (d = null) => d === null ? request('GET', '/audit') : request('POST', '/audit', d),
     hours: () => request('GET', '/hours'),
@@ -44,6 +45,7 @@ export const api = {
   },
   schedule: {
     get: () => request('GET', '/schedule'),
+    context: () => request('GET', '/schedule/context'),
     getGroup: (id) => request('GET', `/schedule/group/${encodeURIComponent(id)}`),
     regenerate: (opts = {}) => request('POST', '/schedule/regenerate', opts),
     progress: () => request('GET', '/schedule/progress'),

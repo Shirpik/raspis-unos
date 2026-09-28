@@ -50,6 +50,8 @@ bool PostgreSqlEnabled() {
 
 #ifdef TIMETABLE_HAS_POSTGRESQL
 PGconn* g_postgres_connection = nullptr;
+bool g_postgres_initialized = false;
+std::string g_postgres_json_cache;
 
 bool PgCommandOk(PGresult* result, std::string& error) {
     if (result != nullptr) {
@@ -137,10 +139,15 @@ bool PostgresInsertInitialState(const std::string& json, std::string& error) {
         1, nullptr, values, nullptr, nullptr, 0);
     const bool ok = PgCommandOk(result, error);
     PQclear(result);
+    if (ok) g_postgres_json_cache = json;
     return ok;
 }
 
 bool PostgresRead(std::string& json, std::string& error) {
+    if (!g_postgres_json_cache.empty()) {
+        json = g_postgres_json_cache;
+        return true;
+    }
     if (!EnsurePostgresSchema(error)) return false;
     PGresult* result = PQexec(g_postgres_connection,
         "SELECT data::text FROM timetable_state WHERE singleton = true");
@@ -151,6 +158,7 @@ bool PostgresRead(std::string& json, std::string& error) {
         return false;
     }
     json = PQgetvalue(result, 0, 0);
+    g_postgres_json_cache = json;
     PQclear(result);
     return true;
 }
@@ -195,7 +203,9 @@ bool PostgresSave(const std::string& json, const std::string& reason, std::strin
             "SELECT id FROM timetable_state_history ORDER BY id DESC OFFSET 500)", error);
     }
     if (!success) { std::string ignored; PgExec("ROLLBACK", ignored); return false; }
-    return PgExec("COMMIT", error);
+    const bool committed = PgExec("COMMIT", error);
+    if (committed) g_postgres_json_cache = json;
+    return committed;
 }
 #endif
 
@@ -981,6 +991,7 @@ void EnsureDataFileExists() {
     std::lock_guard<std::recursive_mutex> lock(g_data_file_mutex);
     if (PostgreSqlEnabled()) {
 #ifdef TIMETABLE_HAS_POSTGRESQL
+        if (g_postgres_initialized) return;
         std::string error;
         bool has_state = false;
         if (!PostgresHasState(has_state, error))
@@ -1011,6 +1022,7 @@ void EnsureDataFileExists() {
         const std::string after = ToJson(parsed.value, 2);
         if (before != after && !PostgresSave(after, "Automatic data schema migration", error))
             throw std::runtime_error("PostgreSQL schema migration failed: " + error);
+        g_postgres_initialized = true;
         return;
 #else
         throw std::runtime_error(
@@ -1184,7 +1196,7 @@ bool SaveDataJson(const JsonValue& root, std::string& error, const std::string& 
         bool has_state = false;
         if (!PostgresHasState(has_state, error)) return false;
         if (!has_state && !PostgresInsertInitialState(next_text, error)) return false;
-        if (!has_state) return true;
+        if (!has_state) { g_postgres_initialized = true; return true; }
         return PostgresSave(next_text, reason, error);
 #else
         error = "PostgreSQL support is not available in this build";
