@@ -161,14 +161,38 @@
               >
                 <div class="cell-inner" v-if="getCellLessonRows(dateStr, slotNum).length">
                   <div
-                    v-for="(lesson, lessonIndex) in getCellLessonRows(dateStr, slotNum)"
-                    :key="lesson.key || lessonIndex"
-                    class="cell-lesson"
+                    v-if="getCellLayoutType(dateStr, slotNum) === 'merged'"
+                    class="cell-merged"
                   >
-                    <span class="cell-subject">{{ lesson.subject }}</span>
-                    <span v-if="lesson.subgroupLabel" class="cell-detail">{{ lesson.subgroupLabel }}</span>
-                    <span v-for="(detail, i) in lesson.details" :key="i" class="cell-detail">{{ detail }}</span>
-                    <span v-if="lesson.roomLabel" class="cell-room">{{ lesson.roomLabel }}</span>
+                    <div
+                      v-for="(lesson, lessonIndex) in getCellLessonRows(dateStr, slotNum)"
+                      :key="lesson.key || lessonIndex"
+                      class="cell-lesson"
+                    >
+                      <span class="cell-subject">{{ lesson.subject }}</span>
+                      <div class="cell-meta">
+                        <span v-for="(detail, i) in lesson.details" :key="i" class="cell-detail">{{ detail }}</span>
+                        <span v-if="lesson.roomLabel" class="cell-room">{{ lesson.roomLabel }}</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    v-else
+                    class="cell-split"
+                  >
+                    <div
+                      v-for="(lesson, lessonIndex) in getCellLessonRows(dateStr, slotNum)"
+                      :key="lesson.key || lessonIndex"
+                      class="cell-subgroup"
+                      :class="'cell-subgroup-' + (lesson.subgroupOrdinal || 0)"
+                    >
+                      <span class="subgroup-badge">{{ lesson.subgroupLabel || 'подгр.' }}</span>
+                      <span class="cell-subject">{{ lesson.subject }}</span>
+                      <div class="cell-meta">
+                        <span v-for="(detail, i) in lesson.details" :key="i" class="cell-detail">{{ detail }}</span>
+                        <span v-if="lesson.roomLabel" class="cell-room">{{ lesson.roomLabel }}</span>
+                      </div>
+                    </div>
                   </div>
                 </div>
                 <span v-else class="cell-empty">—</span>
@@ -405,10 +429,18 @@ function getCellLessonRows(dateStr, slotNum) {
       key: lesson ? `${lesson.uid || lesson.id}-${index}` : `legacy-${index}-${segment}`,
       subject: lesson?.name || (separator >= 0 ? segment.slice(0, separator) : segment),
       subgroupLabel: entry.subgroupLabel,
+      subgroupOrdinal: entry.subgroupOrdinal,
       details,
       roomLabel: roomName ? `каб. ${roomName}` : '',
     }
   })
+}
+
+function getCellLayoutType(dateStr, slotNum) {
+  const lessons = getCellLessonRows(dateStr, slotNum)
+  if (lessons.length === 0) return 'empty'
+  const hasSubgroups = lessons.some(l => l.subgroupOrdinal)
+  return hasSubgroups ? 'split' : 'merged'
 }
 
 function getCellClass(dateStr, slotNum) {
@@ -781,10 +813,49 @@ function parseDetails(text) {
   background: rgba(251, 146, 60, 0.08) !important;
 }
 
+/* ── Cell layouts ─────────────────────────────────────────────────────── */
 .cell-inner {
   display: flex;
   flex-direction: column;
+  gap: 0;
+}
+
+.cell-merged {
+  display: flex;
+  flex-direction: column;
   gap: 8px;
+}
+
+.cell-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.cell-subgroup {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 8px;
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+}
+
+.cell-subgroup-1 {
+  border-left: 2px solid rgba(59, 130, 246, 0.5);
+}
+
+.cell-subgroup-2 {
+  border-left: 2px solid rgba(168, 85, 247, 0.5);
+}
+
+.subgroup-badge {
+  font-size: 9px;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
 .cell-lesson {
@@ -807,6 +878,13 @@ function parseDetails(text) {
   line-height: 1.4;
 }
 
+.cell-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  align-items: center;
+}
+
 .cell-detail {
   font-size: 10px;
   color: var(--text-secondary);
@@ -815,7 +893,6 @@ function parseDetails(text) {
   border-radius: 4px;
   padding: 2px 6px;
   display: inline-block;
-  width: fit-content;
   white-space: nowrap;
 }
 
@@ -896,10 +973,15 @@ function parseDetails(text) {
   .slot-time { font-size: 8px; }
 
   .slot-cell { padding: 10px 12px; }
-  .cell-inner { gap: 6px; }
+  .cell-inner { gap: 0; }
+  .cell-merged { gap: 6px; }
+  .cell-split { gap: 6px; grid-template-columns: 1fr; }
+  .cell-subgroup { padding: 6px; gap: 4px; }
+  .subgroup-badge { font-size: 8px; }
   .cell-lesson { gap: 4px; }
   .cell-lesson + .cell-lesson { margin-top: 6px; padding-top: 6px; }
   .cell-subject { font-size: 11px; line-height: 1.3; }
+  .cell-meta { gap: 3px; }
   .cell-detail {
     font-size: 9px;
     padding: 2px 5px;
