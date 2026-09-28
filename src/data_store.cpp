@@ -5,6 +5,8 @@
 #include <chrono>
 #include <cmath>
 #include <cstdint>
+#include <cstring>
+#include <cstdlib>
 #include <ctime>
 #include <filesystem>
 #include <fstream>
@@ -12,8 +14,13 @@
 #include <mutex>
 #include <set>
 #include <sstream>
+#include <stdexcept>
 #include <unordered_map>
 #include <unordered_set>
+
+#ifdef TIMETABLE_HAS_POSTGRESQL
+#include <libpq-fe.h>
+#endif
 
 #ifdef _WIN32
 #ifndef NOMINMAX
@@ -35,6 +42,150 @@ namespace {
 
 constexpr int kMaxDataVersions = 50;
 std::recursive_mutex g_data_file_mutex;
+
+bool PostgreSqlEnabled() {
+    const char* value = std::getenv("TIMETABLE_DATABASE_URL");
+    return value != nullptr && value[0] != '\0';
+}
+
+#ifdef TIMETABLE_HAS_POSTGRESQL
+PGconn* g_postgres_connection = nullptr;
+
+bool PgCommandOk(PGresult* result, std::string& error) {
+    if (result != nullptr) {
+        const ExecStatusType status = PQresultStatus(result);
+        if (status == PGRES_COMMAND_OK || status == PGRES_TUPLES_OK) return true;
+        error = PQresultErrorMessage(result);
+    } else if (g_postgres_connection != nullptr) {
+        error = PQerrorMessage(g_postgres_connection);
+    } else {
+        error = "PostgreSQL returned an empty result";
+    }
+    return false;
+}
+
+bool EnsurePostgresConnection(std::string& error) {
+    if (g_postgres_connection != nullptr && PQstatus(g_postgres_connection) == CONNECTION_OK) return true;
+    if (g_postgres_connection != nullptr) {
+        PQfinish(g_postgres_connection);
+        g_postgres_connection = nullptr;
+    }
+    g_postgres_connection = PQconnectdb(std::getenv("TIMETABLE_DATABASE_URL"));
+    if (g_postgres_connection == nullptr || PQstatus(g_postgres_connection) != CONNECTION_OK) {
+        error = g_postgres_connection == nullptr
+            ? "Could not allocate a PostgreSQL connection"
+            : PQerrorMessage(g_postgres_connection);
+        return false;
+    }
+    PGresult* result = PQexec(g_postgres_connection, "SET application_name = 'raspis-unos'");
+    const bool ok = PgCommandOk(result, error);
+    PQclear(result);
+    return ok;
+}
+
+bool PgExec(const char* query, std::string& error) {
+    PGresult* result = PQexec(g_postgres_connection, query);
+    const bool ok = PgCommandOk(result, error);
+    PQclear(result);
+    return ok;
+}
+
+bool EnsurePostgresSchema(std::string& error) {
+    if (!EnsurePostgresConnection(error)) return false;
+    return PgExec(
+        "CREATE TABLE IF NOT EXISTS timetable_state ("
+        "singleton boolean PRIMARY KEY DEFAULT true CHECK (singleton),"
+        "data jsonb NOT NULL, revision bigint NOT NULL DEFAULT 1,"
+        "updated_at timestamptz NOT NULL DEFAULT now())", error) &&
+        PgExec(
+        "CREATE TABLE IF NOT EXISTS timetable_state_history ("
+        "id bigserial PRIMARY KEY, revision bigint NOT NULL,"
+        "reason text NOT NULL, data jsonb NOT NULL,"
+        "created_at timestamptz NOT NULL DEFAULT now())", error) &&
+        PgExec(
+        "CREATE INDEX IF NOT EXISTS timetable_state_history_created_idx "
+        "ON timetable_state_history (created_at DESC)", error);
+}
+
+bool PostgresHasState(bool& has_state, std::string& error) {
+    if (!EnsurePostgresSchema(error)) return false;
+    PGresult* result = PQexec(g_postgres_connection,
+        "SELECT 1 FROM timetable_state WHERE singleton = true");
+    if (!PgCommandOk(result, error)) { PQclear(result); return false; }
+    has_state = PQntuples(result) == 1;
+    PQclear(result);
+    return true;
+}
+
+bool PostgresInsertInitialState(const std::string& json, std::string& error) {
+    const char* values[] = {json.c_str()};
+    PGresult* result = PQexecParams(g_postgres_connection,
+        "INSERT INTO timetable_state(singleton, data, revision) "
+        "VALUES(true, $1::jsonb, 1) ON CONFLICT (singleton) DO NOTHING",
+        1, nullptr, values, nullptr, nullptr, 0);
+    const bool ok = PgCommandOk(result, error);
+    PQclear(result);
+    return ok;
+}
+
+bool PostgresRead(std::string& json, std::string& error) {
+    if (!EnsurePostgresSchema(error)) return false;
+    PGresult* result = PQexec(g_postgres_connection,
+        "SELECT data::text FROM timetable_state WHERE singleton = true");
+    if (!PgCommandOk(result, error)) { PQclear(result); return false; }
+    if (PQntuples(result) != 1) {
+        error = "PostgreSQL timetable state is not initialized";
+        PQclear(result);
+        return false;
+    }
+    json = PQgetvalue(result, 0, 0);
+    PQclear(result);
+    return true;
+}
+
+bool PostgresSave(const std::string& json, const std::string& reason, std::string& error) {
+    if (!EnsurePostgresSchema(error) || !PgExec("BEGIN", error)) return false;
+    bool success = false;
+    PGresult* current = PQexec(g_postgres_connection,
+        "SELECT data::text, revision FROM timetable_state WHERE singleton = true FOR UPDATE");
+    if (!PgCommandOk(current, error) || PQntuples(current) != 1) {
+        if (error.empty()) error = "PostgreSQL timetable state is not initialized";
+        PQclear(current);
+        PgExec("ROLLBACK", error);
+        return false;
+    }
+    const std::string current_json = PQgetvalue(current, 0, 0);
+    JsonParseResult parsed = ParseJson(current_json);
+    if (parsed.ok && ToJson(parsed.value, 2) == json) {
+        PQclear(current);
+        return PgExec("COMMIT", error);
+    }
+    const char* history_values[] = {reason.c_str()};
+    PGresult* history = PQexecParams(g_postgres_connection,
+        "INSERT INTO timetable_state_history(revision, reason, data) "
+        "SELECT revision, $1, data FROM timetable_state WHERE singleton = true",
+        1, nullptr, history_values, nullptr, nullptr, 0);
+    if (!PgCommandOk(history, error)) {
+        PQclear(history); PQclear(current); PgExec("ROLLBACK", error); return false;
+    }
+    PQclear(history);
+    const char* update_values[] = {json.c_str()};
+    PGresult* update = PQexecParams(g_postgres_connection,
+        "UPDATE timetable_state SET data = $1::jsonb, revision = revision + 1, "
+        "updated_at = now() WHERE singleton = true",
+        1, nullptr, update_values, nullptr, nullptr, 0);
+    success = PgCommandOk(update, error);
+    PQclear(update);
+    PQclear(current);
+    if (success) {
+        success = PgExec(
+            "DELETE FROM timetable_state_history WHERE id IN ("
+            "SELECT id FROM timetable_state_history ORDER BY id DESC OFFSET 500)", error);
+    }
+    if (!success) { std::string ignored; PgExec("ROLLBACK", ignored); return false; }
+    return PgExec("COMMIT", error);
+}
+#endif
 
 bool IsUpSubjectName(const std::string& name) {
     return name.rfind("УП.", 0) == 0 || name.rfind("УП ", 0) == 0 ||
@@ -816,6 +967,40 @@ bool WriteScheduleDataRevision(const std::string& schedule_directory, std::strin
 
 void EnsureDataFileExists() {
     std::lock_guard<std::recursive_mutex> lock(g_data_file_mutex);
+    if (PostgreSqlEnabled()) {
+#ifdef TIMETABLE_HAS_POSTGRESQL
+        std::string error;
+        bool has_state = false;
+        if (!PostgresHasState(has_state, error))
+            throw std::runtime_error("PostgreSQL initialization failed: " + error);
+        if (!has_state) {
+            JsonValue initial;
+            std::ifstream source(DataFilePath(), std::ios::binary);
+            std::ostringstream buffer;
+            buffer << source.rdbuf();
+            JsonParseResult parsed = ParseJson(buffer.str());
+            initial = parsed.ok && parsed.value.IsObject() ? parsed.value : DefaultDataJson();
+            NormalizeDataRoot(initial);
+            if (!PostgresInsertInitialState(ToJson(initial, 2), error))
+                throw std::runtime_error("PostgreSQL data import failed: " + error);
+        }
+        std::string current;
+        if (!PostgresRead(current, error))
+            throw std::runtime_error("PostgreSQL read failed: " + error);
+        JsonParseResult parsed = ParseJson(current);
+        if (!parsed.ok || !parsed.value.IsObject())
+            throw std::runtime_error("PostgreSQL contains invalid timetable JSON");
+        const std::string before = ToJson(parsed.value, 2);
+        NormalizeDataRoot(parsed.value);
+        const std::string after = ToJson(parsed.value, 2);
+        if (before != after && !PostgresSave(after, "Automatic data schema migration", error))
+            throw std::runtime_error("PostgreSQL schema migration failed: " + error);
+        return;
+#else
+        throw std::runtime_error(
+            "TIMETABLE_DATABASE_URL is set, but this binary was built without PostgreSQL support");
+#endif
+    }
     std::filesystem::path path(DataFilePath());
     std::error_code ec;
     if (std::filesystem::exists(path, ec)) {
@@ -846,6 +1031,16 @@ void EnsureDataFileExists() {
 std::string ReadDataJsonText() {
     std::lock_guard<std::recursive_mutex> lock(g_data_file_mutex);
     EnsureDataFileExists();
+    if (PostgreSqlEnabled()) {
+#ifdef TIMETABLE_HAS_POSTGRESQL
+        std::string json;
+        std::string error;
+        if (!PostgresRead(json, error)) throw std::runtime_error("PostgreSQL read failed: " + error);
+        return json;
+#else
+        throw std::runtime_error("PostgreSQL support is not available in this build");
+#endif
+    }
     std::ifstream in(DataFilePath(), std::ios::binary);
     std::ostringstream ss;
     ss << in.rdbuf();
@@ -854,13 +1049,26 @@ std::string ReadDataJsonText() {
 
 bool SaveDataJson(const JsonValue& root, std::string& error, const std::string& reason) {
     std::lock_guard<std::recursive_mutex> lock(g_data_file_mutex);
-    std::filesystem::path path(DataFilePath());
-    std::error_code ec;
-    std::filesystem::create_directories(path.parent_path(), ec);
-
     JsonValue normalized = root;
     NormalizeDataRoot(normalized);
     const std::string next_text = ToJson(normalized, 2);
+
+    if (PostgreSqlEnabled()) {
+#ifdef TIMETABLE_HAS_POSTGRESQL
+        bool has_state = false;
+        if (!PostgresHasState(has_state, error)) return false;
+        if (!has_state && !PostgresInsertInitialState(next_text, error)) return false;
+        if (!has_state) return true;
+        return PostgresSave(next_text, reason, error);
+#else
+        error = "PostgreSQL support is not available in this build";
+        return false;
+#endif
+    }
+
+    std::filesystem::path path(DataFilePath());
+    std::error_code ec;
+    std::filesystem::create_directories(path.parent_path(), ec);
 
     if (std::filesystem::exists(path, ec)) {
         std::ifstream current_in(path, std::ios::binary);
@@ -2363,6 +2571,32 @@ std::string BuildSubstitutionsCsv(const JsonValue& source_root) {
 JsonValue ListDataVersions() {
     std::lock_guard<std::recursive_mutex> lock(g_data_file_mutex);
     JsonValue result = JsonValue::MakeArray();
+    if (PostgreSqlEnabled()) {
+#ifdef TIMETABLE_HAS_POSTGRESQL
+        std::string error;
+        if (!EnsurePostgresSchema(error)) throw std::runtime_error("PostgreSQL history read failed: " + error);
+        PGresult* rows = PQexec(g_postgres_connection,
+            "SELECT id, to_char(created_at AT TIME ZONE 'UTC', 'YYYY-MM-DD\"T\"HH24:MI:SS\"Z\"'), "
+            "reason, pg_column_size(data) FROM timetable_state_history ORDER BY id DESC LIMIT 500");
+        if (!PgCommandOk(rows, error)) {
+            PQclear(rows);
+            throw std::runtime_error("PostgreSQL history read failed: " + error);
+        }
+        for (int row = 0; row < PQntuples(rows); ++row) {
+            JsonValue item = JsonValue::MakeObject();
+            item.At("filename") = JsonValue::MakeString(
+                "postgres_version_" + std::string(PQgetvalue(rows, row, 0)) + ".json");
+            item.At("created_at") = JsonValue::MakeString(PQgetvalue(rows, row, 1));
+            item.At("reason") = JsonValue::MakeString(PQgetvalue(rows, row, 2));
+            item.At("size") = JsonValue::MakeNumber(std::stod(PQgetvalue(rows, row, 3)));
+            result.array_value.push_back(std::move(item));
+        }
+        PQclear(rows);
+        return result;
+#else
+        throw std::runtime_error("PostgreSQL support is not available in this build");
+#endif
+    }
     std::error_code ec;
     const auto dir = VersionsDir();
     if (!std::filesystem::exists(dir, ec)) return result;
@@ -2390,6 +2624,37 @@ JsonValue ListDataVersions() {
 
 bool RestoreDataVersion(const std::string& filename, std::string& error) {
     std::lock_guard<std::recursive_mutex> lock(g_data_file_mutex);
+    if (PostgreSqlEnabled()) {
+#ifdef TIMETABLE_HAS_POSTGRESQL
+        constexpr const char* prefix = "postgres_version_";
+        constexpr const char* suffix = ".json";
+        if (filename.rfind(prefix, 0) != 0 || filename.size() <= std::strlen(prefix) + std::strlen(suffix) ||
+            filename.substr(filename.size() - std::strlen(suffix)) != suffix) {
+            error = "Invalid PostgreSQL version name";
+            return false;
+        }
+        const std::string id = filename.substr(
+            std::strlen(prefix), filename.size() - std::strlen(prefix) - std::strlen(suffix));
+        if (id.find_first_not_of("0123456789") != std::string::npos) {
+            error = "Invalid PostgreSQL version id";
+            return false;
+        }
+        if (!EnsurePostgresSchema(error)) return false;
+        const char* values[] = {id.c_str()};
+        PGresult* row = PQexecParams(g_postgres_connection,
+            "SELECT data::text FROM timetable_state_history WHERE id = $1::bigint",
+            1, nullptr, values, nullptr, nullptr, 0);
+        if (!PgCommandOk(row, error)) { PQclear(row); return false; }
+        if (PQntuples(row) != 1) { PQclear(row); error = "Version not found"; return false; }
+        JsonParseResult parsed = ParseJson(PQgetvalue(row, 0, 0));
+        PQclear(row);
+        if (!parsed.ok || !parsed.value.IsObject()) { error = "Stored version is corrupted"; return false; }
+        return SaveDataJson(parsed.value, error, "Rollback to " + filename);
+#else
+        error = "PostgreSQL support is not available in this build";
+        return false;
+#endif
+    }
     if (!IsSafeVersionFilename(filename)) {
         error = "Некорректное имя версии";
         return false;

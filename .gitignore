@@ -382,6 +382,8 @@ dist/
 /outputs/
 /x64/
 /deploy/*.tar.gz
+/deploy/.env
+/deploy/backups/
 /deploy/release-*/
 /data/auth_config.json
 /data/.one_week_generation_state.json

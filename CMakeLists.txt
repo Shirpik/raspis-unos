@@ -7,6 +7,10 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 # OR-Tools должен быть установлен в системе или доступен через CMAKE_PREFIX_PATH.
 find_package(ortools CONFIG REQUIRED)
 
+# PostgreSQL is optional for local/Windows builds. Production images install
+# libpq and enable the durable PostgreSQL-backed data store automatically.
+find_package(PostgreSQL QUIET)
+
 # auth.cpp использует OpenSSL (RAND_bytes, PKCS5_PBKDF2_HMAC) на всех платформах,
 # кроме Windows, где вместо этого используется встроенный Windows CNG (bcrypt.lib).
 if (NOT WIN32)
@@ -51,6 +55,11 @@ target_link_libraries(quota_optimizer PRIVATE ortools::ortools)
 target_include_directories(timetable_solver PRIVATE include)
 target_link_libraries(timetable_solver PRIVATE ortools::ortools)
 
+if (PostgreSQL_FOUND)
+    target_link_libraries(timetable_solver PRIVATE PostgreSQL::PostgreSQL)
+    target_compile_definitions(timetable_solver PRIVATE TIMETABLE_HAS_POSTGRESQL=1)
+endif()
+
 if (WIN32)
     target_link_libraries(timetable_solver PRIVATE ws2_32 bcrypt)
 else()
@@ -85,6 +94,10 @@ if (BUILD_TESTING)
     )
     target_include_directories(schedule_validator_test PRIVATE include)
     target_link_libraries(schedule_validator_test PRIVATE ortools::ortools)
+    if (PostgreSQL_FOUND)
+        target_link_libraries(schedule_validator_test PRIVATE PostgreSQL::PostgreSQL)
+        target_compile_definitions(schedule_validator_test PRIVATE TIMETABLE_HAS_POSTGRESQL=1)
+    endif()
     if (WIN32)
         target_link_libraries(schedule_validator_test PRIVATE bcrypt)
     endif()

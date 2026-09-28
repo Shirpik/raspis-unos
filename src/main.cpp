@@ -1,5 +1,6 @@
 #include <clocale>
 #include <chrono>
+#include <cstdlib>
 #include <filesystem>
 #include <fstream>
 #include <iostream>
@@ -232,7 +233,9 @@ int main(int argc, char* argv[]) {
         return result.success ? 0 : 1;
     }
 
-    const std::string host = "127.0.0.1";
+    const char* configured_host = std::getenv("TIMETABLE_HOST");
+    const std::string host = configured_host != nullptr && configured_host[0] != '\0'
+        ? configured_host : "127.0.0.1";
     int port = 8080;
     if (argc > 1) {
         try {
