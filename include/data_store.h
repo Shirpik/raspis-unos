@@ -165,6 +165,15 @@ bool LoadScheduleInputDataFromRoot(const JsonValue& root, ScheduleInputData& dat
 bool SaveDataJson(const JsonValue& root, std::string& error, const std::string& reason = "Изменение данных");
 std::string ReadDataJsonText();
 
+// Durable JSON artifacts (generated/manual/published schedules) live in
+// PostgreSQL in production. Files under output/ are only materialized copies
+// used by the solver and legacy exporters.
+bool JsonArtifactStorageEnabled();
+bool ReadJsonArtifact(const std::string& key, JsonValue& value, bool& found, std::string& error);
+bool SaveJsonArtifact(const std::string& key, const JsonValue& value,
+                      const std::string& reason, std::string& error);
+bool DeleteJsonArtifact(const std::string& key, const std::string& reason, std::string& error);
+
 void NormalizeDataRoot(JsonValue& root);
 JsonValue BuildDataAudit(const JsonValue& root);
 JsonValue BuildHoursReport(const JsonValue& root, const std::string& schedule_file);

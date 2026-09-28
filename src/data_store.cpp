@@ -104,7 +104,19 @@ bool EnsurePostgresSchema(std::string& error) {
         "created_at timestamptz NOT NULL DEFAULT now())", error) &&
         PgExec(
         "CREATE INDEX IF NOT EXISTS timetable_state_history_created_idx "
-        "ON timetable_state_history (created_at DESC)", error);
+        "ON timetable_state_history (created_at DESC)", error) &&
+        PgExec(
+        "CREATE TABLE IF NOT EXISTS timetable_artifacts ("
+        "key text PRIMARY KEY, data jsonb NOT NULL, revision bigint NOT NULL DEFAULT 1,"
+        "updated_at timestamptz NOT NULL DEFAULT now())", error) &&
+        PgExec(
+        "CREATE TABLE IF NOT EXISTS timetable_artifact_history ("
+        "id bigserial PRIMARY KEY, key text NOT NULL, revision bigint NOT NULL,"
+        "reason text NOT NULL, data jsonb NOT NULL,"
+        "created_at timestamptz NOT NULL DEFAULT now())", error) &&
+        PgExec(
+        "CREATE INDEX IF NOT EXISTS timetable_artifact_history_key_created_idx "
+        "ON timetable_artifact_history (key, created_at DESC)", error);
 }
 
 bool PostgresHasState(bool& has_state, std::string& error) {
@@ -1049,6 +1061,116 @@ std::string ReadDataJsonText() {
     std::ostringstream ss;
     ss << in.rdbuf();
     return ss.str();
+}
+
+bool JsonArtifactStorageEnabled() {
+#ifdef TIMETABLE_HAS_POSTGRESQL
+    return PostgreSqlEnabled();
+#else
+    return false;
+#endif
+}
+
+bool ReadJsonArtifact(const std::string& key, JsonValue& value, bool& found, std::string& error) {
+    std::lock_guard<std::recursive_mutex> lock(g_data_file_mutex);
+    found = false;
+    value = JsonValue::MakeNull();
+    if (!PostgreSqlEnabled()) return true;
+#ifdef TIMETABLE_HAS_POSTGRESQL
+    if (!EnsurePostgresSchema(error)) return false;
+    const char* values[] = {key.c_str()};
+    PGresult* result = PQexecParams(g_postgres_connection,
+        "SELECT data::text FROM timetable_artifacts WHERE key = $1",
+        1, nullptr, values, nullptr, nullptr, 0);
+    if (!PgCommandOk(result, error)) { PQclear(result); return false; }
+    if (PQntuples(result) == 0) { PQclear(result); return true; }
+    JsonParseResult parsed = ParseJson(PQgetvalue(result, 0, 0));
+    PQclear(result);
+    if (!parsed.ok) { error = "PostgreSQL contains an invalid JSON artifact: " + key; return false; }
+    value = std::move(parsed.value);
+    found = true;
+    return true;
+#else
+    error = "PostgreSQL support is not available in this build";
+    return false;
+#endif
+}
+
+bool SaveJsonArtifact(const std::string& key, const JsonValue& value,
+                      const std::string& reason, std::string& error) {
+    std::lock_guard<std::recursive_mutex> lock(g_data_file_mutex);
+    if (!PostgreSqlEnabled()) return true;
+#ifdef TIMETABLE_HAS_POSTGRESQL
+    if (!EnsurePostgresSchema(error) || !PgExec("BEGIN", error)) return false;
+    const std::string json = ToJson(value, 2);
+    const char* select_values[] = {key.c_str(), json.c_str()};
+    PGresult* current = PQexecParams(g_postgres_connection,
+        "SELECT revision, data = $2::jsonb FROM timetable_artifacts WHERE key = $1 FOR UPDATE",
+        2, nullptr, select_values, nullptr, nullptr, 0);
+    if (!PgCommandOk(current, error)) {
+        PQclear(current); std::string ignored; PgExec("ROLLBACK", ignored); return false;
+    }
+    const bool exists = PQntuples(current) == 1;
+    const bool unchanged = exists && std::strcmp(PQgetvalue(current, 0, 1), "t") == 0;
+    PQclear(current);
+    if (unchanged) return PgExec("COMMIT", error);
+
+    if (exists) {
+        const char* history_values[] = {key.c_str(), reason.c_str()};
+        PGresult* history = PQexecParams(g_postgres_connection,
+            "INSERT INTO timetable_artifact_history(key, revision, reason, data) "
+            "SELECT key, revision, $2, data FROM timetable_artifacts WHERE key = $1",
+            2, nullptr, history_values, nullptr, nullptr, 0);
+        if (!PgCommandOk(history, error)) {
+            PQclear(history); std::string ignored; PgExec("ROLLBACK", ignored); return false;
+        }
+        PQclear(history);
+    }
+    const char* upsert_values[] = {key.c_str(), json.c_str()};
+    PGresult* upsert = PQexecParams(g_postgres_connection,
+        "INSERT INTO timetable_artifacts(key, data, revision) VALUES($1, $2::jsonb, 1) "
+        "ON CONFLICT (key) DO UPDATE SET data = EXCLUDED.data, "
+        "revision = timetable_artifacts.revision + 1, updated_at = now()",
+        2, nullptr, upsert_values, nullptr, nullptr, 0);
+    const bool saved = PgCommandOk(upsert, error);
+    PQclear(upsert);
+    if (!saved) { std::string ignored; PgExec("ROLLBACK", ignored); return false; }
+    const char* prune_values[] = {key.c_str()};
+    PGresult* prune = PQexecParams(g_postgres_connection,
+        "DELETE FROM timetable_artifact_history WHERE id IN ("
+        "SELECT id FROM timetable_artifact_history WHERE key = $1 "
+        "ORDER BY id DESC OFFSET 500)",
+        1, nullptr, prune_values, nullptr, nullptr, 0);
+    const bool pruned = PgCommandOk(prune, error);
+    PQclear(prune);
+    if (!pruned) { std::string ignored; PgExec("ROLLBACK", ignored); return false; }
+    return PgExec("COMMIT", error);
+#else
+    error = "PostgreSQL support is not available in this build";
+    return false;
+#endif
+}
+
+bool DeleteJsonArtifact(const std::string& key, const std::string& reason, std::string& error) {
+    std::lock_guard<std::recursive_mutex> lock(g_data_file_mutex);
+    if (!PostgreSqlEnabled()) return true;
+#ifdef TIMETABLE_HAS_POSTGRESQL
+    if (!EnsurePostgresSchema(error) || !PgExec("BEGIN", error)) return false;
+    const char* values[] = {key.c_str(), reason.c_str()};
+    PGresult* archived = PQexecParams(g_postgres_connection,
+        "WITH old AS (DELETE FROM timetable_artifacts WHERE key = $1 "
+        "RETURNING key, revision, data) "
+        "INSERT INTO timetable_artifact_history(key, revision, reason, data) "
+        "SELECT key, revision, $2, data FROM old",
+        2, nullptr, values, nullptr, nullptr, 0);
+    const bool ok = PgCommandOk(archived, error);
+    PQclear(archived);
+    if (!ok) { std::string ignored; PgExec("ROLLBACK", ignored); return false; }
+    return PgExec("COMMIT", error);
+#else
+    error = "PostgreSQL support is not available in this build";
+    return false;
+#endif
 }
 
 bool SaveDataJson(const JsonValue& root, std::string& error, const std::string& reason) {

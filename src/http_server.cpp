@@ -548,6 +548,16 @@ void RemoveGroupJsonFiles(const std::filesystem::path& groups_dir) {
     }
 }
 
+std::string ScheduleArtifactKey(const std::filesystem::path& directory) {
+    const auto normalized = directory.lexically_normal();
+    if (normalized.parent_path().filename() != "output") return "";
+    const std::string name = normalized.filename().string();
+    if (name == "latest") return "schedule.auto";
+    if (name == "manual") return "schedule.manual";
+    if (name == "published") return "schedule.published";
+    return "";
+}
+
 bool IsScheduleSnapshot(const JsonValue& value) {
     return value.IsNull() || (value.IsObject() && value.At("groups").IsArray());
 }
@@ -556,8 +566,11 @@ bool WriteScheduleSnapshot(const std::filesystem::path& directory, const JsonVal
                            std::string& error) {
     const auto schedule_file = directory / "schedule_all.json";
     const auto groups_dir = directory / "groups";
+    const std::string artifact_key = ScheduleArtifactKey(directory);
     std::error_code ec;
     if (value.IsNull()) {
+        if (!artifact_key.empty() &&
+            !DeleteJsonArtifact(artifact_key, "Schedule removed", error)) return false;
         std::filesystem::remove(schedule_file, ec);
         std::filesystem::remove(directory / "data_revision.txt", ec);
         RemoveGroupJsonFiles(groups_dir);
@@ -583,7 +596,44 @@ bool WriteScheduleSnapshot(const std::filesystem::path& directory, const JsonVal
             return false;
         }
     }
-    return WriteScheduleDataRevision(directory.string(), error);
+    if (!WriteScheduleDataRevision(directory.string(), error)) return false;
+    return artifact_key.empty() ||
+        SaveJsonArtifact(artifact_key, value, "Schedule snapshot saved", error);
+}
+
+bool PersistScheduleDirectory(const std::filesystem::path& directory,
+                              const std::string& reason, std::string& error) {
+    const std::string key = ScheduleArtifactKey(directory);
+    if (key.empty()) return true;
+    const JsonValue snapshot = ReadOptionalJsonFile(directory / "schedule_all.json");
+    if (!snapshot.IsObject()) {
+        error = "Schedule snapshot is missing or invalid: " + directory.string();
+        return false;
+    }
+    return SaveJsonArtifact(key, snapshot, reason, error);
+}
+
+bool SynchronizeScheduleArtifacts(const std::filesystem::path& out_dir, std::string& error) {
+    if (!JsonArtifactStorageEnabled()) return true;
+    const std::vector<std::pair<std::string, std::filesystem::path>> artifacts = {
+        {"schedule.auto", out_dir},
+        {"schedule.manual", std::filesystem::path("output") / "manual"},
+        {"schedule.published", std::filesystem::path("output") / "published"},
+    };
+    for (const auto& item : artifacts) {
+        JsonValue stored;
+        bool found = false;
+        if (!ReadJsonArtifact(item.first, stored, found, error)) return false;
+        if (found) {
+            if (!WriteScheduleSnapshot(item.second, stored, error)) return false;
+            continue;
+        }
+        const JsonValue file_value = ReadOptionalJsonFile(item.second / "schedule_all.json");
+        if (file_value.IsObject()) {
+            if (!WriteScheduleSnapshot(item.second, file_value, error)) return false;
+        }
+    }
+    return true;
 }
 
 JsonValue MergeScheduleRange(const JsonValue& existing, const JsonValue& generated,
@@ -1942,6 +1992,11 @@ std::string HandleRequest(const std::string& request, const std::string& output_
                         result.success = false;
                         result.status = "PROMOTION_FAILED";
                         result.message = promotion_error;
+                    } else if (!PersistScheduleDirectory(
+                                   out_dir, "Validated automatic schedule generated", promotion_error)) {
+                        result.success = false;
+                        result.status = "DATABASE_PERSIST_FAILED";
+                        result.message = promotion_error;
                     }
                 }
             }
@@ -2069,6 +2124,11 @@ std::string HandleRequest(const std::string& request, const std::string& output_
                     if (!PromoteValidatedCandidate(cap_candidate, cap_output_dir, promotion_error)) {
                         result.success = false;
                         result.status = "PROMOTION_FAILED";
+                        result.message = promotion_error;
+                    } else if (!PersistScheduleDirectory(
+                                   cap_output_dir, "Validated automatic schedule generated", promotion_error)) {
+                        result.success = false;
+                        result.status = "DATABASE_PERSIST_FAILED";
                         result.message = promotion_error;
                     }
                 }
@@ -2208,29 +2268,9 @@ std::string HandleRequest(const std::string& request, const std::string& output_
         if (!parsed.ok || !parsed.value.IsObject()) {
             return ErrorJson(400, "Bad Request", parsed.error.empty() ? "Нужен JSON-объект" : parsed.error);
         }
-        std::filesystem::path manual_dir = std::filesystem::path("output") / "manual";
-        std::filesystem::path groups_dir = manual_dir / "groups";
-        std::error_code ec;
-        std::filesystem::create_directories(groups_dir, ec);
-
-        std::ofstream out_all(manual_dir / "schedule_all.json", std::ios::binary);
-        if (!out_all) return ErrorJson(500, "Internal Server Error", "Не удалось открыть output/manual/schedule_all.json");
-        out_all << ToJson(parsed.value, 2);
-        out_all.close();
-
-        const JsonValue& groups_arr = parsed.value.At("groups");
-        if (groups_arr.IsArray()) {
-            for (const JsonValue& group : groups_arr.array_value) {
-                if (!group.IsObject()) continue;
-                int gi = JsonInt(group, "group_index", -1);
-                if (gi < 0) continue;
-                std::ofstream go(groups_dir / ("group_" + std::to_string(gi) + ".json"), std::ios::binary);
-                if (go) go << ToJson(group, 2);
-            }
-        }
-
+        const std::filesystem::path manual_dir = std::filesystem::path("output") / "manual";
         std::string revision_error;
-        if (!WriteScheduleDataRevision(manual_dir.string(), revision_error))
+        if (!WriteScheduleSnapshot(manual_dir, parsed.value, revision_error))
             return ErrorJson(500, "Internal Server Error", revision_error);
 
         return OkJson(ResponseEnvelope(true, "Ручное расписание сохранено."));
@@ -2238,18 +2278,16 @@ std::string HandleRequest(const std::string& request, const std::string& output_
 
     if (method == "DELETE" && path == "/api/schedule/manual") {
         std::lock_guard<std::mutex> lock(g_schedule_mutex);
-        std::filesystem::path manual_dir = std::filesystem::path("output") / "manual";
-        std::error_code ec;
-        std::filesystem::remove_all(manual_dir, ec);
+        const std::filesystem::path manual_dir = std::filesystem::path("output") / "manual";
+        std::string error;
+        if (!WriteScheduleSnapshot(manual_dir, JsonValue::MakeNull(), error))
+            return ErrorJson(500, "Internal Server Error", error);
         return OkJson(ResponseEnvelope(true, "Ручное расписание очищено."));
     }
 
     if (method == "POST" && path == "/api/schedule/manual/copy-from-auto") {
         std::lock_guard<std::mutex> lock(g_schedule_mutex);
-        std::filesystem::path manual_dir = std::filesystem::path("output") / "manual";
-        std::filesystem::path groups_dir = manual_dir / "groups";
-        std::error_code ec;
-        std::filesystem::create_directories(groups_dir, ec);
+        const std::filesystem::path manual_dir = std::filesystem::path("output") / "manual";
         std::filesystem::path src_all = out_dir / "schedule_all.json";
         if (!FileExists(src_all)) {
             return ErrorJson(404, "Not Found", "Автогенерации ещё нет. Сначала сгенерируй расписание.");
@@ -2257,18 +2295,9 @@ std::string HandleRequest(const std::string& request, const std::string& output_
         if (!ScheduleFileIsCurrent(src_all.string())) {
             return ErrorJson(409, "Conflict", "База изменилась после автогенерации. Сначала сгенерируй расписание заново.");
         }
-        std::filesystem::copy_file(src_all, manual_dir / "schedule_all.json", std::filesystem::copy_options::overwrite_existing, ec);
-        if (ec) return ErrorJson(500, "Internal Server Error", "Не удалось скопировать schedule_all.json: " + ec.message());
-
-        std::filesystem::path src_groups = out_dir / "groups";
-        if (std::filesystem::exists(src_groups, ec)) {
-            for (const auto& entry : std::filesystem::directory_iterator(src_groups, ec)) {
-                if (!entry.is_regular_file()) continue;
-                std::filesystem::copy_file(entry.path(), groups_dir / entry.path().filename(), std::filesystem::copy_options::overwrite_existing, ec);
-            }
-        }
+        const JsonValue source = ReadOptionalJsonFile(src_all);
         std::string revision_error;
-        if (!WriteScheduleDataRevision(manual_dir.string(), revision_error))
+        if (!source.IsObject() || !WriteScheduleSnapshot(manual_dir, source, revision_error))
             return ErrorJson(500, "Internal Server Error", revision_error);
         return OkJson(ResponseEnvelope(true, "Расписание скопировано из автогенерации в Конструктор."));
     }
@@ -2350,6 +2379,12 @@ int RunApiServer(const std::string& host, int port, const std::string& output_di
         std::cerr << "Authentication initialization failed: " << auth_error << "\n";
         return 1;
     }
+    std::filesystem::create_directories(output_dir);
+    std::string artifact_error;
+    if (!SynchronizeScheduleArtifacts(output_dir, artifact_error)) {
+        std::cerr << "Schedule artifact synchronization failed: " << artifact_error << "\n";
+        return 1;
+    }
 
     WSADATA wsa_data;
     int startup_result = WSAStartup(MAKEWORD(2, 2), &wsa_data);
@@ -2383,8 +2418,6 @@ int RunApiServer(const std::string& host, int port, const std::string& output_di
         WSACleanup();
         return 1;
     }
-
-    std::filesystem::create_directories(output_dir);
 
     std::cout << "API запущено: http://" << host << ":" << port << "\n";
     std::cout << "Генерация НЕ запускается автоматически. Запусти POST /api/schedule/regenerate\n";
