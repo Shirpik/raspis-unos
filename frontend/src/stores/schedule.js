@@ -49,6 +49,38 @@ export const useScheduleStore = defineStore('schedule', () => {
     }
   }
 
+  async function fetchPublishedGroups() {
+    loading.value = true
+    error.value = null
+    const res = await api.schedule.getPublishedGroups()
+    loading.value = false
+    if (res.ok) return res.data
+    else if (res.status === 404) return []
+    else {
+      error.value = res.data?.message || 'Список групп недоступен'
+      return []
+    }
+  }
+
+  async function fetchPublishedGroup(groupIndex) {
+    loading.value = true
+    error.value = null
+    const res = await api.schedule.getPublishedGroup(groupIndex)
+    loading.value = false
+    if (res.ok) {
+      scheduleData.value = res.data
+      return res.data
+    } else if (res.status === 404) {
+      scheduleData.value = null
+      error.value = 'Группа не найдена'
+      return null
+    } else {
+      scheduleData.value = null
+      error.value = res.data?.message || 'Ошибка загрузки расписания группы'
+      return null
+    }
+  }
+
   function _stopPolling() {
     if (_pollTimer) { clearInterval(_pollTimer); _pollTimer = null }
   }
@@ -125,6 +157,6 @@ export const useScheduleStore = defineStore('schedule', () => {
     scheduleData, loading, error, generating, semester, lastScoped,
     progress,
     groups,
-    fetchSchedule, fetchPublished, regenerate, cancelGeneration,
+    fetchSchedule, fetchPublished, fetchPublishedGroups, fetchPublishedGroup, regenerate, cancelGeneration,
   }
 })

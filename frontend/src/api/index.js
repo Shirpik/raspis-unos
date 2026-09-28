@@ -53,6 +53,8 @@ export const api = {
     validate: (data = { source: 'auto' }) => request('POST', '/schedule/validate', data),
     publish: () => request('POST', '/schedule/publish'),
     getPublished: () => request('GET', '/schedule/published'),
+    getPublishedGroup: (id) => request('GET', `/schedule/published/group/${encodeURIComponent(id)}`),
+    getPublishedGroups: () => request('GET', '/schedule/published/groups'),
     rooms: () => request('GET', '/schedule/rooms'),
   },
   constructor: {
@@ -132,6 +134,7 @@ export const api = {
   teacher: {
     auth: (password) => request('POST', '/teacher/auth', { password }),
     submitNotification: (data) => request('POST', '/teacher/notifications', data),
-    getTeachersList: (password) => request('POST', '/teacher/list', { password })
+    getTeachersList: (password) => request('POST', '/teacher/list', { password }),
+    getSchedule: (password, teacherId) => request('POST', '/teacher/schedule', { password, teacher_id: teacherId })
   }
 }

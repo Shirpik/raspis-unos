@@ -85,7 +85,7 @@
     </div>
 
     <!-- No schedule -->
-    <div v-else-if="!store.scheduleData || store.groups.length === 0" class="empty-state">
+    <div v-else-if="!store.scheduleData || availableGroups.length === 0" class="empty-state">
       <Calendar :size="48" style="color: var(--text-muted)" />
       <h3>Расписание ещё не сформировано</h3>
       <p>Обратитесь к диспетчеру учебного процесса</p>
@@ -193,10 +193,11 @@ const store = useScheduleStore()
 const selectedYear = ref(0)
 const selectedGroupIndex = ref(null)
 const weekIndex = ref(0)
+const availableGroups = ref([])
 
 onMounted(async () => {
-  await store.fetchPublished()
-  jumpToCurrentWeek()
+  availableGroups.value = await store.fetchPublishedGroups()
+  // Auto-jump to current week will happen when group is selected
 })
 
 // ── Helpers ──────────────────────────────────────────────────────────────
@@ -247,7 +248,7 @@ function detectCourseYear(name) {
 
 const yearTabs = computed(() => {
   const counts = [0, 0, 0, 0]
-  for (const g of store.groups) {
+  for (const g of availableGroups.value) {
     const y = detectCourseYear(g.group_name)
     if (y && y >= 1 && y <= 4) counts[y - 1]++
   }
@@ -260,12 +261,12 @@ const yearTabs = computed(() => {
 })
 
 const groupsForYear = computed(() => {
-  if (selectedYear.value === 0) return store.groups
-  return store.groups.filter(g => detectCourseYear(g.group_name) === selectedYear.value)
+  if (selectedYear.value === 0) return availableGroups.value
+  return availableGroups.value.filter(g => detectCourseYear(g.group_name) === selectedYear.value)
 })
 
 const selectedGroupName = computed(() => {
-  return store.groups.find(g => g.group_index === selectedGroupIndex.value)?.group_name || ''
+  return availableGroups.value.find(g => g.group_index === selectedGroupIndex.value)?.group_name || ''
 })
 
 function onYearSelect(year) {
@@ -277,6 +278,16 @@ function onYearSelect(year) {
 watch(groupsForYear, (list) => {
   if (list.length === 1) selectedGroupIndex.value = list[0].group_index
   else if (!list.find(g => g.group_index === selectedGroupIndex.value)) selectedGroupIndex.value = null
+})
+
+// Load schedule when group is selected
+watch(selectedGroupIndex, async (newIndex) => {
+  if (newIndex !== null) {
+    await store.fetchPublishedGroup(newIndex)
+    jumpToCurrentWeek()
+  } else {
+    store.scheduleData = null
+  }
 })
 
 // ── Slot lookup for selected group ────────────────────────────────────────

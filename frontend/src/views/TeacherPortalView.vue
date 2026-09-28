@@ -86,13 +86,13 @@
               <div class="spinner spinner-lg"></div>
               <span>Загрузка расписания...</span>
             </div>
-            <div v-else-if="schedule" class="schedule-grid">
-              <div v-for="(daySlots, day) in groupedSchedule" :key="day" class="day-column">
+            <div v-else-if="schedule && schedule.length > 0" class="schedule-grid">
+              <div v-for="(dayData, date) in groupedSchedule" :key="date" class="day-column">
                 <div class="day-header">
                   <Calendar :size="16" />
-                  <span>{{ dayName(day) }}</span>
+                  <span>{{ dayName(date) }} ({{ date }})</span>
                 </div>
-                <div v-for="slot in daySlots" :key="`${day}-${slot.slot}`" class="lesson-card">
+                <div v-for="slot in dayData.slots" :key="`${date}-${slot.slot}`" class="lesson-card">
                   <div class="lesson-time">
                     <Clock :size="14" />
                     <span>{{ slot.time }}</span>
@@ -108,6 +108,10 @@
                   </div>
                 </div>
               </div>
+            </div>
+            <div v-else class="no-selection">
+              <Calendar :size="48" style="opacity: 0.3" />
+              <p>Расписание не найдено для выбранного преподавателя</p>
             </div>
           </div>
           <div v-else class="no-selection">
@@ -415,12 +419,16 @@ watch(notifyTeacherSearch, (query) => {
 async function loadSchedule(teacherId) {
   loading.value = true
   try {
-    const response = await api.schedule.get()
-    const scheduleData = response.data?.schedule || response.data
-    // Filter schedule for this teacher
-    schedule.value = scheduleData
+    const response = await api.teacher.getSchedule(password.value, teacherId)
+    if (response.ok) {
+      schedule.value = response.data?.schedule || []
+    } else {
+      console.error('Failed to load schedule:', response.data)
+      schedule.value = []
+    }
   } catch (e) {
     console.error('Failed to load schedule:', e)
+    schedule.value = []
   } finally {
     loading.value = false
   }
@@ -442,14 +450,39 @@ async function loadHours(teacherId) {
 }
 
 const groupedSchedule = computed(() => {
-  if (!schedule.value) return {}
-  // Group schedule by day - implementation similar to StudentView
-  return {}
+  if (!schedule.value || !Array.isArray(schedule.value)) return {}
+  const grouped = {}
+  for (const item of schedule.value) {
+    const date = item.date
+    if (!grouped[date]) {
+      grouped[date] = {
+        weekday: item.weekday,
+        slots: []
+      }
+    }
+    grouped[date].slots.push({
+      slot: item.slot,
+      time: item.time,
+      subject: item.subject,
+      groups: item.group,
+      room: item.room || ''
+    })
+  }
+  // Sort slots by slot number
+  for (const date in grouped) {
+    grouped[date].slots.sort((a, b) => a.slot - b.slot)
+  }
+  return grouped
 })
 
-function dayName(day) {
-  const names = ['Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота']
-  return names[day - 1] || ''
+function dayName(dateStr) {
+  // dateStr is in format DD.MM.YYYY
+  if (!dateStr) return ''
+  const [d, m, y] = dateStr.split('.')
+  if (!d || !m || !y) return dateStr
+  const date = new Date(+y, +m - 1, +d)
+  const days = ['Воскресенье', 'Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота']
+  return days[date.getDay()] || dateStr
 }
 
 function handleFileUpload(e) {

@@ -1400,6 +1400,28 @@ std::string HandleRequest(const std::string& request, const std::string& output_
         if (!FileExists(file)) return ErrorJson(404, "Not Found", "Студенческая версия ещё не опубликована");
         return JsonResponse(200, "OK", ReadFileUtf8(file));
     }
+
+    if (method == "GET" && path == "/api/schedule/published/groups") {
+        const auto file = std::filesystem::path("output") / "published" / "schedule_all.json";
+        if (!FileExists(file)) return ErrorJson(404, "Not Found", "Студенческая версия ещё не опубликована");
+        const JsonParseResult parsed = ParseJson(ReadFileUtf8(file));
+        if (!parsed.ok || !parsed.value.IsObject())
+            return ErrorJson(500, "Internal Server Error", "Не удалось прочитать расписание");
+
+        JsonValue result = JsonValue::MakeArray();
+        const JsonValue& groups_arr = parsed.value.At("groups");
+        if (groups_arr.IsArray()) {
+            for (size_t i = 0; i < groups_arr.array_value.size(); i++) {
+                const JsonValue& g = groups_arr.array_value[i];
+                JsonValue item = JsonValue::MakeObject();
+                item.At("group_index") = g.At("group_index");
+                item.At("group_name") = g.At("group_name");
+                result.array_value.push_back(item);
+            }
+        }
+        return OkJson(result);
+    }
+
     const std::string public_group_prefix = "/api/schedule/published/group/";
     if (method == "GET" && path.rfind(public_group_prefix, 0) == 0) {
         const int group = GroupIndexFromPathValue(path.substr(public_group_prefix.size()));
@@ -1463,6 +1485,76 @@ std::string HandleRequest(const std::string& request, const std::string& output_
             return ErrorJson(401, "Unauthorized", "Неверный пароль преподавателя");
         }
         return GetArrayEndpoint("teachers");
+    }
+
+    // Получение расписания конкретного преподавателя
+    if (method == "POST" && path == "/api/teacher/schedule") {
+        JsonParseResult parsed = ParseJson(body);
+        if (!parsed.ok || !parsed.value.IsObject())
+            return ErrorJson(400, "Bad Request", "Укажите пароль и ID преподавателя");
+        const std::string password = JsonString(parsed.value, "password", "");
+        if (password != "prepod") {
+            return ErrorJson(401, "Unauthorized", "Неверный пароль преподавателя");
+        }
+
+        const int teacher_id = JsonInt(parsed.value, "teacher_id", -1);
+        if (teacher_id < 0) {
+            return ErrorJson(400, "Bad Request", "Укажите корректный teacher_id");
+        }
+
+        const auto file = std::filesystem::path("output") / "published" / "schedule_all.json";
+        if (!FileExists(file)) {
+            return ErrorJson(404, "Not Found", "Расписание ещё не опубликовано");
+        }
+
+        const JsonParseResult schedule_parsed = ParseJson(ReadFileUtf8(file));
+        if (!schedule_parsed.ok || !schedule_parsed.value.IsObject()) {
+            return ErrorJson(500, "Internal Server Error", "Не удалось прочитать расписание");
+        }
+
+        // Фильтруем расписание для данного преподавателя
+        JsonValue result = JsonValue::MakeObject();
+        result.At("teacher_id") = JsonValue::MakeNumber(teacher_id);
+        JsonValue days_array = JsonValue::MakeArray();
+
+        const JsonValue& groups_arr = schedule_parsed.value.At("groups");
+        if (groups_arr.IsArray()) {
+            for (size_t gi = 0; gi < groups_arr.array_value.size(); gi++) {
+                const JsonValue& group = groups_arr.array_value[gi];
+                const JsonValue& group_days = group.At("days");
+                if (group_days.IsArray()) {
+                    for (size_t di = 0; di < group_days.array_value.size(); di++) {
+                        const JsonValue& day = group_days.array_value[di];
+                        const JsonValue& slots = day.At("slots");
+                        if (slots.IsArray()) {
+                            for (size_t si = 0; si < slots.array_value.size(); si++) {
+                                const JsonValue& slot = slots.array_value[si];
+                                const JsonValue& lessons = slot.At("lessons");
+                                if (lessons.IsArray()) {
+                                    for (size_t li = 0; li < lessons.array_value.size(); li++) {
+                                        const JsonValue& lesson = lessons.array_value[li];
+                                        if (JsonInt(lesson, "teacher", -1) == teacher_id) {
+                                            JsonValue day_slot = JsonValue::MakeObject();
+                                            day_slot.At("date") = day.At("date");
+                                            day_slot.At("weekday") = day.At("weekday");
+                                            day_slot.At("slot") = slot.At("slot");
+                                            day_slot.At("time") = slot.At("time");
+                                            day_slot.At("subject") = lesson.At("name");
+                                            day_slot.At("group") = group.At("group_name");
+                                            day_slot.At("room") = lesson.At("room_name");
+                                            days_array.array_value.push_back(day_slot);
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        result.At("schedule") = days_array;
+        return OkJson(result);
     }
 
     std::string authenticated_username;
