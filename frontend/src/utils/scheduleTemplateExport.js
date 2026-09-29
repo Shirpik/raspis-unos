@@ -6,6 +6,14 @@ const TEMPLATE_GROUP_HEADER_ROW = 62
 const FIRST_GROUP_COLUMN = 4
 const MAX_TEMPLATE_SLOT = 7
 
+// The supplied workbook has a few group labels with punctuation omitted
+// (for example, "ПКД-380607п" instead of "ПКД-3806/07п"). Match labels by
+// their letters and digits so a harmless formatting difference does not make
+// the whole weekly export fail.
+const groupKey = value => String(value || '')
+  .toLocaleLowerCase('ru')
+  .replace(/[^0-9a-zа-яё]/giu, '')
+
 const DAY_LAYOUT = {
   ПН: { headerRow: 1, firstLessonRow: 3 },
   ВТ: { headerRow: 17, firstLessonRow: 18 },
@@ -231,9 +239,13 @@ export async function buildScheduleExcelWorkbook(schedule, templateBuffer) {
   workbook.calcProperties.fullCalcOnLoad = true
 
   const groupsByName = new Map()
+  const groupsByKey = new Map()
   for (const group of schedule.groups) {
     if (groupsByName.has(group.group_name)) throw new Error(`Группа «${group.group_name}» повторяется в расписании`)
+    const key = groupKey(group.group_name)
+    if (groupsByKey.has(key)) throw new Error(`Группы «${groupsByKey.get(key).group_name}» и «${group.group_name}» неразличимы для Excel-образца`)
     groupsByName.set(group.group_name, group)
+    groupsByKey.set(key, group)
   }
 
   const scheduleDates = collectDates(schedule.groups)
@@ -245,7 +257,7 @@ export async function buildScheduleExcelWorkbook(schedule, templateBuffer) {
     }
     datesByWeekday.set(weekday, dateIso(day))
   }
-  const templateGroupNames = new Set()
+  const templateGroupKeys = new Set()
   let insertedLessons = 0
 
   for (const sheet of workbook.worksheets) {
@@ -260,7 +272,7 @@ export async function buildScheduleExcelWorkbook(schedule, templateBuffer) {
     // workbook (31.8, 1.9, ...), including in non-Microsoft viewers.
     for (const { headerRow } of Object.values(DAY_LAYOUT)) sheet.getCell(headerRow, 1).numFmt = 'd\\.m'
     const groups = templateGroupColumns(sheet)
-    groups.forEach(group => templateGroupNames.add(group.name))
+    groups.forEach(group => templateGroupKeys.add(groupKey(group.name)))
 
     for (const targetDay of scheduleDates) {
       const weekday = weekdayFromIso(dateIso(targetDay)) || String(targetDay.weekday || '').trim().toUpperCase()
@@ -278,7 +290,7 @@ export async function buildScheduleExcelWorkbook(schedule, templateBuffer) {
       }
 
       for (const { name, column } of groups) {
-        const group = groupsByName.get(name)
+        const group = groupsByName.get(name) || groupsByKey.get(groupKey(name))
         const day = findDay(group, targetDay)
         const displayedBlocks = new Set()
 
@@ -368,7 +380,7 @@ export async function buildScheduleExcelWorkbook(schedule, templateBuffer) {
       row.height = height
     })
   }
-  const extraGroups = [...groupsByName.keys()].filter(name => !templateGroupNames.has(name))
+  const extraGroups = [...groupsByName.keys()].filter(name => !templateGroupKeys.has(groupKey(name)))
   if (extraGroups.length) throw new Error(`В Excel-образце нет групп: ${extraGroups.join(', ')}`)
 
   const expected = expectedLessonCount(schedule)

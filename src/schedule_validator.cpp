@@ -624,6 +624,19 @@ ScheduleValidationResult ValidateScheduleJson(
     // zero period; external school work is occupied time for the teacher only.
     auto part_continuity = part_day_slots;
     auto teacher_continuity = teacher_day_slots;
+    // An UP occurrence is rendered only in its start row, but it occupies the
+    // complete 08:30-12:30 or 13:00-17:00 interval. Expand only the continuity
+    // calendar here. Conflict checks keep using exact event intervals, because
+    // the two adjacent UP shifts both touch the coarse third pair row while
+    // remaining disjoint in real time.
+    for (const Event& event : events) {
+        const Lesson* lesson = FindLesson(data, event.lesson);
+        if (!lesson || !(lesson->is_block || IsUpLessonName(lesson->name))) continue;
+        const TimeInterval up = UpIntervalForStartSlot(event.date, event.pair - 1);
+        for (int slot = 0; slot < SLOTS_PER_DAY; ++slot)
+            if (IntervalsOverlap(up, PairSlotInterval(DayOfWeek(event.date), slot)))
+                teacher_continuity[{event.teacher, event.date}].insert(slot + 1);
+    }
     for (const auto& group : schedule.At("groups").array_value) {
         const auto* definition = FindGroup(data, JsonInt(group, "group_index", -1));
         if (!definition) continue;
@@ -656,9 +669,11 @@ ScheduleValidationResult ValidateScheduleJson(
         } else if (!part_days_with_up.count(item.first) &&
                    count < config.min_student_pairs_per_study_day) {
             JsonValue ctx = Context(); Put(ctx, "group", group_id); Put(ctx, "part", part + 1); Put(ctx, "date", DateLabel(date)); Put(ctx, "count", count); Put(ctx, "min", config.min_student_pairs_per_study_day); Put(ctx, "max", config.max_student_pairs_per_day);
-            collector.Add(config.allow_single_pair_day_fallback ? "warning" : "error",
+            const bool fallback_allowed = config.allow_single_pair_day_fallback ||
+                                          options.allow_daily_minimum_fallback;
+            collector.Add(fallback_allowed ? "warning" : "error",
                           "daily_load", "student_daily_minimum_fallback",
-                          config.allow_single_pair_day_fallback
+                          fallback_allowed
                               ? "Дневной минимум ослаблен резервным режимом решателя"
                               : "Суточная нагрузка подгруппы ниже заданного минимума",
                           ctx);

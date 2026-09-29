@@ -196,6 +196,272 @@
         }
       ],
       "weekday": "ВТ"
+    },
+    {
+      "date": "30.09.2026",
+      "date_iso": "2026-09-30",
+      "day_index": 0,
+      "slots": [
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 948,
+              "is_block": false,
+              "is_lab": true,
+              "name": "ЛПЗ МДК.02.03 Математическое моделирование",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 29,
+              "room_name": "201",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 89,
+              "teacher_id": 38,
+              "uid": "lesson-0c0d17a1b36563af",
+              "week_parity": "all"
+            },
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 956,
+              "is_block": false,
+              "is_lab": true,
+              "name": "ЛПЗ ВМДК.05.02 Сертификация информационных систем",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 30,
+              "room_name": "204",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 88,
+              "teacher_id": 64,
+              "uid": "lesson-a0c8874688115160",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 1,
+          "text": "ЛПЗ МДК.02.03 Математическое моделирование — 2 п/г, Абрамчук Раида Филимазовна, Лесная | ЛПЗ ВМДК.05.02 Сертификация информационных систем — 1 п/г, Меренчуков Иван Александрович, Лесная",
+          "time": "1 пара (08:30-09:55)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 950,
+              "is_block": false,
+              "is_lab": true,
+              "name": "ЛПЗ МДК.04.01 Технология разработки и защиты баз данных",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 46,
+              "room_name": "409",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 88,
+              "teacher_id": 65,
+              "uid": "lesson-ae2daaac8d711b8e",
+              "week_parity": "all"
+            },
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 954,
+              "is_block": false,
+              "is_lab": true,
+              "name": "ЛПЗ ВМДК.05.01 Управление и автоматизация баз данных",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 49,
+              "room_name": "411",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 89,
+              "teacher_id": 67,
+              "uid": "lesson-62e2f10bc6bed6da",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 2,
+          "text": "ЛПЗ МДК.04.01 Технология разработки и защиты баз данных — 1 п/г, Михайлова Татьяна Алексеевна, Лесная | ЛПЗ ВМДК.05.01 Управление и автоматизация баз данных — 2 п/г, Гарбузов Андрей Евгеньевич, Лесная",
+          "time": "2 пара (10:05-11:30)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 948,
+              "is_block": false,
+              "is_lab": true,
+              "name": "ЛПЗ МДК.02.03 Математическое моделирование",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 29,
+              "room_name": "201",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 89,
+              "teacher_id": 38,
+              "uid": "lesson-0c0d17a1b36563af",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 3,
+          "text": "ЛПЗ МДК.02.03 Математическое моделирование — 2 п/г, Абрамчук Раида Филимазовна, Лесная",
+          "time": "3 пара (12:25-13:50)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 957,
+              "is_block": false,
+              "is_lab": true,
+              "name": "ЛПЗ ВМДК.05.02 Сертификация информационных систем",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 30,
+              "room_name": "204",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 89,
+              "teacher_id": 64,
+              "uid": "lesson-e55f3cd9abc0db20",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 4,
+          "text": "ЛПЗ ВМДК.05.02 Сертификация информационных систем — 2 п/г, Меренчуков Иван Александрович, Лесная",
+          "time": "4 пара (14:00-15:25)"
+        },
+        {
+          "lessons": [],
+          "slot": 5,
+          "text": "-",
+          "time": "5 пара (15:35-16:55)"
+        },
+        {
+          "lessons": [],
+          "slot": 6,
+          "text": "-",
+          "time": "6 пара (17:05-18:25)"
+        },
+        {
+          "lessons": [],
+          "slot": 7,
+          "text": "-",
+          "time": "7 пара (18:35-19:55)"
+        }
+      ],
+      "weekday": "СР"
+    },
+    {
+      "date": "01.10.2026",
+      "date_iso": "2026-10-01",
+      "day_index": 1,
+      "slots": [
+        {
+          "lessons": [],
+          "slot": 1,
+          "text": "-",
+          "time": "1 пара (08:30-09:55)"
+        },
+        {
+          "lessons": [],
+          "slot": 2,
+          "text": "-",
+          "time": "2 пара (10:05-11:30)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 949,
+              "is_block": false,
+              "is_lab": false,
+              "name": "МДК.04.01 Технология разработки и защиты баз данных",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 46,
+              "room_name": "409",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": -1,
+              "teacher_id": 65,
+              "uid": "lesson-22491a225713bacd",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 3,
+          "text": "МДК.04.01 Технология разработки и защиты баз данных — вся группа, Михайлова Татьяна Алексеевна, Лесная",
+          "time": "3 пара (12:25-13:50)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 949,
+              "is_block": false,
+              "is_lab": false,
+              "name": "МДК.04.01 Технология разработки и защиты баз данных",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 46,
+              "room_name": "409",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": -1,
+              "teacher_id": 65,
+              "uid": "lesson-22491a225713bacd",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 4,
+          "text": "МДК.04.01 Технология разработки и защиты баз данных — вся группа, Михайлова Татьяна Алексеевна, Лесная",
+          "time": "4 пара (14:00-15:25)"
+        },
+        {
+          "lessons": [],
+          "slot": 5,
+          "text": "-",
+          "time": "5 пара (15:35-16:55)"
+        },
+        {
+          "lessons": [],
+          "slot": 6,
+          "text": "-",
+          "time": "6 пара (17:05-18:25)"
+        },
+        {
+          "lessons": [],
+          "slot": 7,
+          "text": "-",
+          "time": "7 пара (18:35-19:55)"
+        }
+      ],
+      "weekday": "ЧТ"
     }
   ],
   "group_index": 44,

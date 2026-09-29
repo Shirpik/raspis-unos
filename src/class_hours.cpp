@@ -530,6 +530,7 @@ bool FinalizeSchedule(const ScheduleInputData& data, const std::string& output_d
     ScheduleValidationOptions options;
     options.draft_semester_risk = draft_semester_risk;
     options.require_weekly_study_days = !scoped_day;
+    options.allow_daily_minimum_fallback = scoped_day;
     if (draft_semester_risk) {
         parsed.value.At("status") = JsonValue::MakeString("draft_semester_risk");
         parsed.value.At("semester_readout") = data.semester_readout_report;

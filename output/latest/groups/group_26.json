@@ -175,6 +175,160 @@
         }
       ],
       "weekday": "ВТ"
+    },
+    {
+      "date": "30.09.2026",
+      "date_iso": "2026-09-30",
+      "day_index": 0,
+      "slots": [
+        {
+          "lessons": [],
+          "slot": 1,
+          "text": "-",
+          "time": "1 пара (08:30-09:55)"
+        },
+        {
+          "lessons": [],
+          "slot": 2,
+          "text": "-",
+          "time": "2 пара (10:05-11:30)"
+        },
+        {
+          "lessons": [],
+          "slot": 3,
+          "text": "-",
+          "time": "3 пара (12:25-13:50)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 569,
+              "is_block": false,
+              "is_lab": false,
+              "name": "Иностранный язык в профессиональной деятельности",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 41,
+              "room_name": "324",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 52,
+              "teacher_id": 27,
+              "uid": "lesson-99479ddc617ad769",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 4,
+          "text": "Иностранный язык в профессиональной деятельности — 1 п/г, Ермолина Ирина Павловна, Лесная",
+          "time": "4 пара (14:00-15:25)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 592,
+              "is_block": false,
+              "is_lab": false,
+              "name": "ВМДК.06.01 Технология выполнения газовой сварки и резки",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 31,
+              "room_name": "205",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": -1,
+              "teacher_id": 56,
+              "uid": "lesson-c604322898bf7f78",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 5,
+          "text": "ВМДК.06.01 Технология выполнения газовой сварки и резки — вся группа, Ахметов Артур Фанависович, Лесная",
+          "time": "5 пара (15:35-16:55)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 570,
+              "is_block": false,
+              "is_lab": false,
+              "name": "Иностранный язык в профессиональной деятельности",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 41,
+              "room_name": "324",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 53,
+              "teacher_id": 27,
+              "uid": "lesson-a21f9c7ebd930160",
+              "week_parity": "all"
+            },
+            {
+              "avoid_lunch_split": true,
+              "consecutive_pairs": 2,
+              "display_time": null,
+              "id": 585,
+              "is_block": false,
+              "is_lab": true,
+              "name": "ЛПЗ МДК.05.01 Электросварочные работы на автоматических и полуавтоматических машинах",
+              "requested_room_id": 66,
+              "requested_room_name": "120-121",
+              "room_id": 66,
+              "room_name": "120-121",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 52,
+              "teacher_id": 55,
+              "uid": "lesson-27033b55f4af7c9f",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 6,
+          "text": "Иностранный язык в профессиональной деятельности — 2 п/г, Ермолина Ирина Павловна, Лесная | ЛПЗ МДК.05.01 Электросварочные работы на автоматических и полуавтоматических машинах — 1 п/г, Лимонова Евгения Николаевна, Лесная",
+          "time": "6 пара (17:05-18:25)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": true,
+              "consecutive_pairs": 2,
+              "display_time": null,
+              "id": 585,
+              "is_block": false,
+              "is_lab": true,
+              "name": "ЛПЗ МДК.05.01 Электросварочные работы на автоматических и полуавтоматических машинах",
+              "requested_room_id": 66,
+              "requested_room_name": "120-121",
+              "room_id": 66,
+              "room_name": "120-121",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 52,
+              "teacher_id": 55,
+              "uid": "lesson-27033b55f4af7c9f",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 7,
+          "text": "ЛПЗ МДК.05.01 Электросварочные работы на автоматических и полуавтоматических машинах — 1 п/г, Лимонова Евгения Николаевна, Лесная",
+          "time": "7 пара (18:35-19:55)"
+        }
+      ],
+      "weekday": "СР"
     }
   ],
   "group_index": 26,

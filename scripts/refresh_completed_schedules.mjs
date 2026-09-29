@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-/* Refresh the teaching ledger from the four user-supplied Google exports.
+/* Refresh the teaching ledger from the five user-supplied Google exports.
  * The selected dates are confirmed by the dispatcher. One explicitly
  * confirmed fact-only Biology record is maintained below because its source
  * workload row was omitted from the supplied вклейки.
@@ -12,10 +12,11 @@ import { parseCompletedSchedule } from '../frontend/src/utils/completedScheduleI
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 const input = new Map()
 for (let index = 2; index < process.argv.length; index += 2) input.set(process.argv[index], process.argv[index + 1])
-const required = ['--previous', '--current', '--third', '--fourth']
-if (required.some(flag => !input.get(flag))) throw new Error('Usage: node scripts/refresh_completed_schedules.mjs --previous <xlsx> --current <xlsx> --third <xlsx> --fourth <xlsx> [--commit]')
+const required = ['--previous', '--current', '--third', '--fourth', '--fifth']
+if (required.some(flag => !input.get(flag))) throw new Error('Usage: node scripts/refresh_completed_schedules.mjs --previous <xlsx> --current <xlsx> --third <xlsx> --fourth <xlsx> --fifth <xlsx> [--base <json>] [--output <json>] [--commit]')
 const commit = process.argv.includes('--commit')
-const dataPath = path.join(root, 'data', 'timetable_data.json')
+const dataPath = path.resolve(root, input.get('--base') || path.join('data', 'timetable_data.json'))
+const candidatePath = input.get('--output') ? path.resolve(root, input.get('--output')) : ''
 const fileLike = async filePath => {
   const bytes = await fs.readFile(filePath)
   return { name: path.basename(filePath), arrayBuffer: async () => bytes.buffer.slice(bytes.byteOffset, bytes.byteOffset + bytes.byteLength) }
@@ -25,7 +26,8 @@ const jobs = [
   { flag: '--current', from: '2026-09-07', to: '2026-09-12', status: 'confirmed', label: 'Расписание занятий 07.09–12.09', url: 'https://docs.google.com/spreadsheets/d/1gHRTdbbjte1tqb4AFm91AQiHig3wO1HDoMevYXNvlX8/edit?usp=sharing' },
   { flag: '--third', from: '2026-09-14', to: '2026-09-14', status: 'confirmed', label: 'Расписание занятий 14.09', url: 'https://docs.google.com/spreadsheets/d/1vlRcwNR0gbhoNCmBEfp-5cIv3U9dxRtxXAP1n53v-to/edit?usp=sharing' },
   { flag: '--third', from: '2026-09-15', to: '2026-09-19', status: 'confirmed', label: 'Расписание занятий 15.09–19.09', url: 'https://docs.google.com/spreadsheets/d/1vlRcwNR0gbhoNCmBEfp-5cIv3U9dxRtxXAP1n53v-to/edit?usp=sharing' },
-  { flag: '--fourth', from: '2026-09-21', to: '2026-09-24', status: 'confirmed', label: 'Расписание занятий 21.09–24.09', url: 'https://docs.google.com/spreadsheets/d/1MikCATSfxd4IWwvfUOJb9Cp5Gxxu98Vnlt9IXOYb7_o/edit?usp=sharing' },
+  { flag: '--fourth', from: '2026-09-21', to: '2026-09-26', status: 'confirmed', label: 'Расписание занятий 21.09–26.09', url: 'https://docs.google.com/spreadsheets/d/1MikCATSfxd4IWwvfUOJb9Cp5Gxxu98Vnlt9IXOYb7_o/edit?usp=sharing' },
+  { flag: '--fifth', from: '2026-09-28', to: '2026-09-29', status: 'confirmed', label: 'Расписание занятий 28.09–29.09', url: 'https://docs.google.com/spreadsheets/d/1Ab_ih_UemP-cq3si0IuFv9BkCgeD0f9tRtYBriK4UZA/edit?usp=sharing' },
 ]
 let data = JSON.parse(await fs.readFile(dataPath, 'utf8'))
 const ensureConfirmedBiology = value => {
@@ -76,7 +78,8 @@ data.settings = {
 }
 const ledger = data.teaching_ledger || []
 const summary = {
-  generated_at: new Date().toISOString(), commit, jobs: reports, errors,
+  generated_at: new Date().toISOString(), commit, base: dataPath,
+  output: candidatePath || (commit ? dataPath : null), jobs: reports, errors,
   ledger: {
     confirmed_pairs: ledger.filter(row => row.status === 'confirmed').length,
     confirmed_hours: ledger.filter(row => row.status === 'confirmed').reduce((total, row) => total + Number(row.hours || 0), 0),
@@ -84,11 +87,15 @@ const summary = {
     planned_hours: ledger.filter(row => row.status === 'planned').reduce((total, row) => total + Number(row.hours || 0), 0),
   },
 }
-const outputDir = path.join(root, 'outputs', 'refresh-20260924')
+const outputDir = path.join(root, 'outputs', 'refresh-20260929')
 await fs.mkdir(outputDir, { recursive: true })
 await fs.writeFile(path.join(outputDir, 'ledger-refresh-report.json'), `${JSON.stringify(summary, null, 2)}\n`, 'utf8')
+if (candidatePath) {
+  await fs.mkdir(path.dirname(candidatePath), { recursive: true })
+  await fs.writeFile(candidatePath, `${JSON.stringify(data, null, 2)}\n`, 'utf8')
+}
 if (commit) {
-  const backup = path.join(root, 'data', 'timetable_data.before-ledger-refresh-20260924.json')
+  const backup = path.join(path.dirname(dataPath), `${path.basename(dataPath, path.extname(dataPath))}.before-ledger-refresh-20260929.json`)
   await fs.copyFile(dataPath, backup)
   const temporary = `${dataPath}.tmp-ledger-refresh`
   await fs.writeFile(temporary, `${JSON.stringify(data, null, 2)}\n`, 'utf8')

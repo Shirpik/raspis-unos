@@ -175,6 +175,387 @@
         }
       ],
       "weekday": "ВТ"
+    },
+    {
+      "date": "30.09.2026",
+      "date_iso": "2026-09-30",
+      "day_index": 0,
+      "slots": [
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 356,
+              "is_block": false,
+              "is_lab": false,
+              "name": "Математика",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 36,
+              "room_name": "315",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": -1,
+              "teacher_id": 17,
+              "uid": "lesson-692fbd496cf497b0",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 1,
+          "text": "Математика — вся группа, Нифонтова Ирина Геннадьевна, Лесная",
+          "time": "1 пара (08:30-09:55)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 351,
+              "is_block": false,
+              "is_lab": false,
+              "name": "География",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 33,
+              "room_name": "209",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": -1,
+              "teacher_id": 15,
+              "uid": "lesson-ccc6d1bc1c6c5d59",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 2,
+          "text": "География — вся группа, Кропотова Анастасия Андреевна, Лесная",
+          "time": "2 пара (10:05-11:30)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": true,
+              "consecutive_pairs": 2,
+              "display_time": null,
+              "id": 368,
+              "is_block": false,
+              "is_lab": true,
+              "name": "ЛПЗ ВМДК.04.02 Химический анализ сырья, материалов и готовой продукции",
+              "requested_room_id": 68,
+              "requested_room_name": "ЦПДЭ",
+              "room_id": 68,
+              "room_name": "ЦПДЭ",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 34,
+              "teacher_id": 81,
+              "uid": "lesson-d664a95a292cb4f1",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 3,
+          "text": "ЛПЗ ВМДК.04.02 Химический анализ сырья, материалов и готовой продукции — 1 п/г, Рахматулина Наталья Владимировна, Лесная",
+          "time": "3 пара (12:25-13:50)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": true,
+              "consecutive_pairs": 2,
+              "display_time": null,
+              "id": 368,
+              "is_block": false,
+              "is_lab": true,
+              "name": "ЛПЗ ВМДК.04.02 Химический анализ сырья, материалов и готовой продукции",
+              "requested_room_id": 68,
+              "requested_room_name": "ЦПДЭ",
+              "room_id": 68,
+              "room_name": "ЦПДЭ",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 34,
+              "teacher_id": 81,
+              "uid": "lesson-d664a95a292cb4f1",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 4,
+          "text": "ЛПЗ ВМДК.04.02 Химический анализ сырья, материалов и готовой продукции — 1 п/г, Рахматулина Наталья Владимировна, Лесная",
+          "time": "4 пара (14:00-15:25)"
+        },
+        {
+          "lessons": [],
+          "slot": 5,
+          "text": "-",
+          "time": "5 пара (15:35-16:55)"
+        },
+        {
+          "lessons": [],
+          "slot": 6,
+          "text": "-",
+          "time": "6 пара (17:05-18:25)"
+        },
+        {
+          "lessons": [],
+          "slot": 7,
+          "text": "-",
+          "time": "7 пара (18:35-19:55)"
+        }
+      ],
+      "weekday": "СР"
+    },
+    {
+      "date": "01.10.2026",
+      "date_iso": "2026-10-01",
+      "day_index": 1,
+      "slots": [
+        {
+          "lessons": [],
+          "slot": 1,
+          "text": "-",
+          "time": "1 пара (08:30-09:55)"
+        },
+        {
+          "lessons": [],
+          "slot": 2,
+          "text": "-",
+          "time": "2 пара (10:05-11:30)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 357,
+              "is_block": false,
+              "is_lab": false,
+              "name": "Общая и неорганическая химия",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 52,
+              "room_name": "54",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": -1,
+              "teacher_id": 10,
+              "uid": "lesson-7b80eded01831b79",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 3,
+          "text": "Общая и неорганическая химия — вся группа, Семенова Лилиана Ивановна, Кривоусова",
+          "time": "3 пара (12:25-13:50)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 357,
+              "is_block": false,
+              "is_lab": false,
+              "name": "Общая и неорганическая химия",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 52,
+              "room_name": "54",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": -1,
+              "teacher_id": 10,
+              "uid": "lesson-7b80eded01831b79",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 4,
+          "text": "Общая и неорганическая химия — вся группа, Семенова Лилиана Ивановна, Кривоусова",
+          "time": "4 пара (14:00-15:25)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 359,
+              "is_block": false,
+              "is_lab": false,
+              "name": "Аналитическая химия",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 52,
+              "room_name": "54",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": -1,
+              "teacher_id": 10,
+              "uid": "lesson-30cb3a2082ba852b",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 5,
+          "text": "Аналитическая химия — вся группа, Семенова Лилиана Ивановна, Кривоусова",
+          "time": "5 пара (15:35-16:55)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 358,
+              "is_block": false,
+              "is_lab": false,
+              "name": "Органическая химия",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 52,
+              "room_name": "54",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": -1,
+              "teacher_id": 10,
+              "uid": "lesson-a4a0b91a02687dd9",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 6,
+          "text": "Органическая химия — вся группа, Семенова Лилиана Ивановна, Кривоусова",
+          "time": "6 пара (17:05-18:25)"
+        },
+        {
+          "lessons": [],
+          "slot": 7,
+          "text": "-",
+          "time": "7 пара (18:35-19:55)"
+        }
+      ],
+      "weekday": "ЧТ"
+    },
+    {
+      "date": "02.10.2026",
+      "date_iso": "2026-10-02",
+      "day_index": 2,
+      "slots": [
+        {
+          "lessons": [],
+          "slot": 1,
+          "text": "-",
+          "time": "1 пара (08:30-09:55)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 352,
+              "is_block": false,
+              "is_lab": false,
+              "name": "Биология",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 18,
+              "room_name": "37",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": -1,
+              "teacher_id": 3,
+              "uid": "lesson-1163f150b90d805b",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 2,
+          "text": "Биология — вся группа, Никонова Антонина Олеговна, Кривоусова",
+          "time": "2 пара (10:05-11:30)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 360,
+              "is_block": false,
+              "is_lab": false,
+              "name": "Физическая и коллоидная химия",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 52,
+              "room_name": "54",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": -1,
+              "teacher_id": 10,
+              "uid": "lesson-5b3476d2fcabf463",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 3,
+          "text": "Физическая и коллоидная химия — вся группа, Семенова Лилиана Ивановна, Кривоусова",
+          "time": "3 пара (12:25-13:50)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 355,
+              "is_block": false,
+              "is_lab": false,
+              "name": "Физическая культура",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 22,
+              "room_name": "Спортзал",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": -1,
+              "teacher_id": 8,
+              "uid": "lesson-5e2dbe623ff4e0a2",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 4,
+          "text": "Физическая культура — вся группа, Потапова Регина Александровна, Кривоусова",
+          "time": "4 пара (14:00-15:25)"
+        },
+        {
+          "lessons": [],
+          "slot": 5,
+          "text": "-",
+          "time": "5 пара (15:35-16:55)"
+        },
+        {
+          "lessons": [],
+          "slot": 6,
+          "text": "-",
+          "time": "6 пара (17:05-18:25)"
+        },
+        {
+          "lessons": [],
+          "slot": 7,
+          "text": "-",
+          "time": "7 пара (18:35-19:55)"
+        }
+      ],
+      "weekday": "ПТ"
     }
   ],
   "group_index": 17,

@@ -1,0 +1,1779 @@
+
+---
+events:
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Program Files/Microsoft Visual Studio/18/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-4.3/Modules/CMakeDetermineSystem.cmake:212 (message)"
+      - "CMakeLists.txt:6 (project)"
+    message: |
+      The system is: Windows - 10.0.26200 - AMD64
+  -
+    kind: "find-v1"
+    backtrace:
+      - "C:/Program Files/Microsoft Visual Studio/18/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-4.3/Modules/CMakeDetermineCompilerId.cmake:468 (find_file)"
+      - "C:/Program Files/Microsoft Visual Studio/18/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-4.3/Modules/CMakeDetermineCompilerId.cmake:506 (CMAKE_DETERMINE_COMPILER_ID_WRITE)"
+      - "C:/Program Files/Microsoft Visual Studio/18/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-4.3/Modules/CMakeDetermineCompilerId.cmake:8 (CMAKE_DETERMINE_COMPILER_ID_BUILD)"
+      - "C:/Program Files/Microsoft Visual Studio/18/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-4.3/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "C:/Program Files/Microsoft Visual Studio/18/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-4.3/Modules/CMakeDetermineCCompiler.cmake:122 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:6 (project)"
+    mode: "file"
+    variable: "src_in"
+    description: "Path to a file."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "CMakeCCompilerId.c.in"
+    candidate_directories:
+      - "C:/Program Files/Microsoft Visual Studio/18/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-4.3/Modules/"
+    found: "C:/Program Files/Microsoft Visual Studio/18/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-4.3/Modules/CMakeCCompilerId.c.in"
+    search_context:
+      ENV{PATH}:
+        - "C:\\Users\\Student\\.codex\\tmp\\arg0\\codex-arg0drUE2p"
+        - "C:\\Users\\Student\\.codex\\packages\\app-server-daemon\\releases\\0.159.0-x86_64-pc-windows-msvc\\codex-path"
+        - "C:\\Users\\Student\\.codex\\tmp\\arg0\\codex-arg0yuc5YD"
+        - "C:\\Users\\Student\\.codex\\packages\\app-server-daemon\\releases\\0.158.0-x86_64-pc-windows-msvc\\codex-path"
+        - "C:\\Users\\Student\\.codex\\tmp\\arg0\\codex-arg0jP9Nrg"
+        - "C:\\Users\\Student\\AppData\\Roaming\\npm\\node_modules\\@openai\\codex\\node_modules\\@openai\\codex-win32-x64\\vendor\\x86_64-pc-windows-msvc\\codex-path"
+        - "C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common"
+        - "C:\\Program Files\\Common Files\\Siemens\\Automation\\Simatic OAM\\bin"
+        - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath"
+        - "C:\\WINDOWS\\system32"
+        - "C:\\WINDOWS"
+        - "C:\\WINDOWS\\System32\\Wbem"
+        - "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\WINDOWS\\System32\\OpenSSH\\"
+        - "C:\\Program Files\\NVIDIA Corporation\\NVIDIA App\\NvDLISR"
+        - "C:\\Program Files\\Microsoft SQL Server\\170\\Tools\\Binn\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\Client SDK\\ODBC\\170\\Tools\\Binn\\"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Program Files (x86)\\Microsoft SQL Server\\160\\Tools\\Binn\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\160\\Tools\\Binn\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\160\\DTS\\Binn\\"
+        - "C:\\Program Files\\dotnet\\"
+        - "C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance Toolkit\\"
+        - "C:\\Program Files\\nodejs\\"
+        - "C:\\Program Files (x86)\\Windows Kits\\8.1\\Windows Performance Toolkit\\"
+        - "C:\\Users\\Student\\AppData\\Local\\Programs\\OpenAI\\Codex\\bin"
+        - "C:\\Program Files\\MySQL\\MySQL Shell 8.0\\bin\\"
+        - "C:\\Users\\Student\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\Users\\Student\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "C:\\Users\\Student\\AppData\\Local\\GitHubDesktop\\bin"
+        - "C:\\Users\\Student\\AppData\\Roaming\\npm"
+        - "C:\\Users\\Student\\.dotnet\\tools"
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Program Files/Microsoft Visual Studio/18/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-4.3/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "C:/Program Files/Microsoft Visual Studio/18/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-4.3/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "C:/Program Files/Microsoft Visual Studio/18/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-4.3/Modules/CMakeDetermineCCompiler.cmake:122 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:6 (project)"
+    message: |
+      Compiling the C compiler identification source file "CMakeCCompilerId.c" failed.
+      Compiler:  
+      Build flags: 
+      Id flags:  
+      
+      The output was:
+      1
+      Версия MSBuild 18.9.1+a81b43525 для .NET Framework
+      Сборка начата 29.09.2026 18:05:20.
+      
+      Проект "C:\\Users\\Student\\Desktop\\raspis-unos\\__cmake_systeminformation\\CMakeFiles\\4.3.1-msvc1\\CompilerIdC\\CompilerIdC.vcxproj" в узле 1 (целевые объекты по умолчанию).
+      PrepareForBuild:
+        Создание каталога "Debug\\".
+        Структурированный вывод включен. Форматирование диагностики компилятора будет отражать иерархию ошибок. Подробнее см. https://aka.ms/cpp/structured-output.
+        Создание каталога "Debug\\CompilerIdC.tlog\\".
+      InitializeBuildStatus:
+        Создание "Debug\\CompilerIdC.tlog\\unsuccessfulbuild", так как было задано "AlwaysCreate".
+        Обращение к "Debug\\CompilerIdC.tlog\\unsuccessfulbuild".
+      ClCompile:
+        C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\VC\\Tools\\MSVC\\14.51.36231\\bin\\HostX64\\x64\\CL.exe /c /nologo /W0 /WX- /diagnostics:column /Od /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\\\" /Fd"Debug\\vc145.pdb" /external:W0 /Gd /TC /FC /errorReport:queue CMakeCCompilerId.c
+      C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\MSBuild\\Microsoft\\VC\\v180\\Microsoft.CppCommon.targets(790,5): error MSB6001: Недопустимый переключатель командной строки для "CL.exe". System.ArgumentException: Элемент уже добавлен. Ключ в словаре: "Path"  Добавляемый ключ: 'PATH' [C:\\Users\\Student\\Desktop\\raspis-unos\\__cmake_systeminformation\\CMakeFiles\\4.3.1-msvc1\\CompilerIdC\\CompilerIdC.vcxproj]
+      C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\MSBuild\\Microsoft\\VC\\v180\\Microsoft.CppCommon.targets(790,5): error MSB6001:    в System.Collections.Hashtable.Insert(Object key, Object nvalue, Boolean add) [C:\\Users\\Student\\Desktop\\raspis-unos\\__cmake_systeminformation\\CMakeFiles\\4.3.1-msvc1\\CompilerIdC\\CompilerIdC.vcxproj]
+      C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\MSBuild\\Microsoft\\VC\\v180\\Microsoft.CppCommon.targets(790,5): error MSB6001:    в System.Diagnostics.ProcessStartInfo.get_EnvironmentVariables() [C:\\Users\\Student\\Desktop\\raspis-unos\\__cmake_systeminformation\\CMakeFiles\\4.3.1-msvc1\\CompilerIdC\\CompilerIdC.vcxproj]
+      C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\MSBuild\\Microsoft\\VC\\v180\\Microsoft.CppCommon.targets(790,5): error MSB6001:    в Microsoft.Build.Utilities.ToolTask.GetProcessStartInfo(String pathToTool, String commandLineCommands, String responseFileSwitch) [C:\\Users\\Student\\Desktop\\raspis-unos\\__cmake_systeminformation\\CMakeFiles\\4.3.1-msvc1\\CompilerIdC\\CompilerIdC.vcxproj]
+      C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\MSBuild\\Microsoft\\VC\\v180\\Microsoft.CppCommon.targets(790,5): error MSB6001:    в Microsoft.Build.Utilities.ToolTask.ExecuteTool(String pathToTool, String responseFileCommands, String commandLineCommands) [C:\\Users\\Student\\Desktop\\raspis-unos\\__cmake_systeminformation\\CMakeFiles\\4.3.1-msvc1\\CompilerIdC\\CompilerIdC.vcxproj]
+      C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\MSBuild\\Microsoft\\VC\\v180\\Microsoft.CppCommon.targets(790,5): error MSB6001:    в Microsoft.Build.CPPTasks.TrackedVCToolTask.TrackerExecuteTool(String pathToTool, String responseFileCommands, String commandLineCommands) [C:\\Users\\Student\\Desktop\\raspis-unos\\__cmake_systeminformation\\CMakeFiles\\4.3.1-msvc1\\CompilerIdC\\CompilerIdC.vcxproj]
+      C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\MSBuild\\Microsoft\\VC\\v180\\Microsoft.CppCommon.targets(790,5): error MSB6001:    в Microsoft.Build.CPPTasks.TrackedVCToolTask.ExecuteTool(String pathToTool, String responseFileCommands, String commandLineCommands) [C:\\Users\\Student\\Desktop\\raspis-unos\\__cmake_systeminformation\\CMakeFiles\\4.3.1-msvc1\\CompilerIdC\\CompilerIdC.vcxproj]
+      C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\MSBuild\\Microsoft\\VC\\v180\\Microsoft.CppCommon.targets(790,5): error MSB6001:    в Microsoft.Build.CPPTasks.CL.ExecuteTool(String pathToTool, String responseFileCommands, String commandLineCommands) [C:\\Users\\Student\\Desktop\\raspis-unos\\__cmake_systeminformation\\CMakeFiles\\4.3.1-msvc1\\CompilerIdC\\CompilerIdC.vcxproj]
+      C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\MSBuild\\Microsoft\\VC\\v180\\Microsoft.CppCommon.targets(790,5): error MSB6001:    в Microsoft.Build.Utilities.ToolTask.Execute() [C:\\Users\\Student\\Desktop\\raspis-unos\\__cmake_systeminformation\\CMakeFiles\\4.3.1-msvc1\\CompilerIdC\\CompilerIdC.vcxproj]
+      Сборка проекта "C:\\Users\\Student\\Desktop\\raspis-unos\\__cmake_systeminformation\\CMakeFiles\\4.3.1-msvc1\\CompilerIdC\\CompilerIdC.vcxproj" завершена (целевые объекты по умолчанию) с ошибкой.
+      
+      Ошибка сборки.
+      
+      "C:\\Users\\Student\\Desktop\\raspis-unos\\__cmake_systeminformation\\CMakeFiles\\4.3.1-msvc1\\CompilerIdC\\CompilerIdC.vcxproj" (целевой объект по умолчанию) (1) ->
+      (Целевой объект ClCompile) -> 
+        C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\MSBuild\\Microsoft\\VC\\v180\\Microsoft.CppCommon.targets(790,5): error MSB6001: Недопустимый переключатель командной строки для "CL.exe". System.ArgumentException: Элемент уже добавлен. Ключ в словаре: "Path"  Добавляемый ключ: 'PATH' [C:\\Users\\Student\\Desktop\\raspis-unos\\__cmake_systeminformation\\CMakeFiles\\4.3.1-msvc1\\CompilerIdC\\CompilerIdC.vcxproj]
+      C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\MSBuild\\Microsoft\\VC\\v180\\Microsoft.CppCommon.targets(790,5): error MSB6001:    в System.Collections.Hashtable.Insert(Object key, Object nvalue, Boolean add) [C:\\Users\\Student\\Desktop\\raspis-unos\\__cmake_systeminformation\\CMakeFiles\\4.3.1-msvc1\\CompilerIdC\\CompilerIdC.vcxproj]
+      C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\MSBuild\\Microsoft\\VC\\v180\\Microsoft.CppCommon.targets(790,5): error MSB6001:    в System.Diagnostics.ProcessStartInfo.get_EnvironmentVariables() [C:\\Users\\Student\\Desktop\\raspis-unos\\__cmake_systeminformation\\CMakeFiles\\4.3.1-msvc1\\CompilerIdC\\CompilerIdC.vcxproj]
+      C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\MSBuild\\Microsoft\\VC\\v180\\Microsoft.CppCommon.targets(790,5): error MSB6001:    в Microsoft.Build.Utilities.ToolTask.GetProcessStartInfo(String pathToTool, String commandLineCommands, String responseFileSwitch) [C:\\Users\\Student\\Desktop\\raspis-unos\\__cmake_systeminformation\\CMakeFiles\\4.3.1-msvc1\\CompilerIdC\\CompilerIdC.vcxproj]
+      C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\MSBuild\\Microsoft\\VC\\v180\\Microsoft.CppCommon.targets(790,5): error MSB6001:    в Microsoft.Build.Utilities.ToolTask.ExecuteTool(String pathToTool, String responseFileCommands, String commandLineCommands) [C:\\Users\\Student\\Desktop\\raspis-unos\\__cmake_systeminformation\\CMakeFiles\\4.3.1-msvc1\\CompilerIdC\\CompilerIdC.vcxproj]
+      C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\MSBuild\\Microsoft\\VC\\v180\\Microsoft.CppCommon.targets(790,5): error MSB6001:    в Microsoft.Build.CPPTasks.TrackedVCToolTask.TrackerExecuteTool(String pathToTool, String responseFileCommands, String commandLineCommands) [C:\\Users\\Student\\Desktop\\raspis-unos\\__cmake_systeminformation\\CMakeFiles\\4.3.1-msvc1\\CompilerIdC\\CompilerIdC.vcxproj]
+      C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\MSBuild\\Microsoft\\VC\\v180\\Microsoft.CppCommon.targets(790,5): error MSB6001:    в Microsoft.Build.CPPTasks.TrackedVCToolTask.ExecuteTool(String pathToTool, String responseFileCommands, String commandLineCommands) [C:\\Users\\Student\\Desktop\\raspis-unos\\__cmake_systeminformation\\CMakeFiles\\4.3.1-msvc1\\CompilerIdC\\CompilerIdC.vcxproj]
+      C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\MSBuild\\Microsoft\\VC\\v180\\Microsoft.CppCommon.targets(790,5): error MSB6001:    в Microsoft.Build.CPPTasks.CL.ExecuteTool(String pathToTool, String responseFileCommands, String commandLineCommands) [C:\\Users\\Student\\Desktop\\raspis-unos\\__cmake_systeminformation\\CMakeFiles\\4.3.1-msvc1\\CompilerIdC\\CompilerIdC.vcxproj]
+      C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\MSBuild\\Microsoft\\VC\\v180\\Microsoft.CppCommon.targets(790,5): error MSB6001:    в Microsoft.Build.Utilities.ToolTask.Execute() [C:\\Users\\Student\\Desktop\\raspis-unos\\__cmake_systeminformation\\CMakeFiles\\4.3.1-msvc1\\CompilerIdC\\CompilerIdC.vcxproj]
+      
+          Предупреждений: 0
+          Ошибок: 1
+      
+      Прошло времени 00:00:00.20
+      
+      
+  -
+    kind: "find-v1"
+    backtrace:
+      - "C:/Program Files/Microsoft Visual Studio/18/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-4.3/Modules/CMakeDetermineCompilerId.cmake:468 (find_file)"
+      - "C:/Program Files/Microsoft Visual Studio/18/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-4.3/Modules/CMakeDetermineCompilerId.cmake:506 (CMAKE_DETERMINE_COMPILER_ID_WRITE)"
+      - "C:/Program Files/Microsoft Visual Studio/18/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-4.3/Modules/CMakeDetermineCompilerId.cmake:8 (CMAKE_DETERMINE_COMPILER_ID_BUILD)"
+      - "C:/Program Files/Microsoft Visual Studio/18/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-4.3/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "C:/Program Files/Microsoft Visual Studio/18/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-4.3/Modules/CMakeDetermineCCompiler.cmake:122 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:6 (project)"
+    mode: "file"
+    variable: "src_in"
+    description: "Path to a file."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "CMakeCCompilerId.c.in"
+    candidate_directories:
+      - "C:/Program Files/Microsoft Visual Studio/18/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-4.3/Modules/"
+    found: "C:/Program Files/Microsoft Visual Studio/18/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-4.3/Modules/CMakeCCompilerId.c.in"
+    search_context:
+      ENV{PATH}:
+        - "C:\\Users\\Student\\.codex\\tmp\\arg0\\codex-arg0drUE2p"
+        - "C:\\Users\\Student\\.codex\\packages\\app-server-daemon\\releases\\0.159.0-x86_64-pc-windows-msvc\\codex-path"
+        - "C:\\Users\\Student\\.codex\\tmp\\arg0\\codex-arg0yuc5YD"
+        - "C:\\Users\\Student\\.codex\\packages\\app-server-daemon\\releases\\0.158.0-x86_64-pc-windows-msvc\\codex-path"
+        - "C:\\Users\\Student\\.codex\\tmp\\arg0\\codex-arg0jP9Nrg"
+        - "C:\\Users\\Student\\AppData\\Roaming\\npm\\node_modules\\@openai\\codex\\node_modules\\@openai\\codex-win32-x64\\vendor\\x86_64-pc-windows-msvc\\codex-path"
+        - "C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common"
+        - "C:\\Program Files\\Common Files\\Siemens\\Automation\\Simatic OAM\\bin"
+        - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath"
+        - "C:\\WINDOWS\\system32"
+        - "C:\\WINDOWS"
+        - "C:\\WINDOWS\\System32\\Wbem"
+        - "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\WINDOWS\\System32\\OpenSSH\\"
+        - "C:\\Program Files\\NVIDIA Corporation\\NVIDIA App\\NvDLISR"
+        - "C:\\Program Files\\Microsoft SQL Server\\170\\Tools\\Binn\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\Client SDK\\ODBC\\170\\Tools\\Binn\\"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Program Files (x86)\\Microsoft SQL Server\\160\\Tools\\Binn\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\160\\Tools\\Binn\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\160\\DTS\\Binn\\"
+        - "C:\\Program Files\\dotnet\\"
+        - "C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance Toolkit\\"
+        - "C:\\Program Files\\nodejs\\"
+        - "C:\\Program Files (x86)\\Windows Kits\\8.1\\Windows Performance Toolkit\\"
+        - "C:\\Users\\Student\\AppData\\Local\\Programs\\OpenAI\\Codex\\bin"
+        - "C:\\Program Files\\MySQL\\MySQL Shell 8.0\\bin\\"
+        - "C:\\Users\\Student\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\Users\\Student\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "C:\\Users\\Student\\AppData\\Local\\GitHubDesktop\\bin"
+        - "C:\\Users\\Student\\AppData\\Roaming\\npm"
+        - "C:\\Users\\Student\\.dotnet\\tools"
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Program Files/Microsoft Visual Studio/18/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-4.3/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "C:/Program Files/Microsoft Visual Studio/18/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-4.3/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "C:/Program Files/Microsoft Visual Studio/18/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-4.3/Modules/CMakeDetermineCCompiler.cmake:122 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:6 (project)"
+    message: |
+      Compiling the C compiler identification source file "CMakeCCompilerId.c" failed.
+      Compiler:  
+      Build flags: 
+      Id flags:  
+      
+      The output was:
+      1
+      Версия MSBuild 18.9.1+a81b43525 для .NET Framework
+      Сборка начата 29.09.2026 18:05:20.
+      
+      Проект "C:\\Users\\Student\\Desktop\\raspis-unos\\__cmake_systeminformation\\CMakeFiles\\4.3.1-msvc1\\CompilerIdC\\CompilerIdC.vcxproj" в узле 1 (целевые объекты по умолчанию).
+      PrepareForBuild:
+        Создание каталога "Debug\\".
+        Структурированный вывод включен. Форматирование диагностики компилятора будет отражать иерархию ошибок. Подробнее см. https://aka.ms/cpp/structured-output.
+        Создание каталога "Debug\\CompilerIdC.tlog\\".
+      InitializeBuildStatus:
+        Создание "Debug\\CompilerIdC.tlog\\unsuccessfulbuild", так как было задано "AlwaysCreate".
+        Обращение к "Debug\\CompilerIdC.tlog\\unsuccessfulbuild".
+      ClCompile:
+        C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\VC\\Tools\\MSVC\\14.51.36231\\bin\\HostX64\\x64\\CL.exe /c /nologo /W0 /WX- /diagnostics:column /Od /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\\\" /Fd"Debug\\vc145.pdb" /external:W0 /Gd /TC /FC /errorReport:queue CMakeCCompilerId.c
+      C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\MSBuild\\Microsoft\\VC\\v180\\Microsoft.CppCommon.targets(790,5): error MSB6001: Недопустимый переключатель командной строки для "CL.exe". System.ArgumentException: Элемент уже добавлен. Ключ в словаре: "Path"  Добавляемый ключ: 'PATH' [C:\\Users\\Student\\Desktop\\raspis-unos\\__cmake_systeminformation\\CMakeFiles\\4.3.1-msvc1\\CompilerIdC\\CompilerIdC.vcxproj]
+      C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\MSBuild\\Microsoft\\VC\\v180\\Microsoft.CppCommon.targets(790,5): error MSB6001:    в System.Collections.Hashtable.Insert(Object key, Object nvalue, Boolean add) [C:\\Users\\Student\\Desktop\\raspis-unos\\__cmake_systeminformation\\CMakeFiles\\4.3.1-msvc1\\CompilerIdC\\CompilerIdC.vcxproj]
+      C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\MSBuild\\Microsoft\\VC\\v180\\Microsoft.CppCommon.targets(790,5): error MSB6001:    в System.Diagnostics.ProcessStartInfo.get_EnvironmentVariables() [C:\\Users\\Student\\Desktop\\raspis-unos\\__cmake_systeminformation\\CMakeFiles\\4.3.1-msvc1\\CompilerIdC\\CompilerIdC.vcxproj]
+      C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\MSBuild\\Microsoft\\VC\\v180\\Microsoft.CppCommon.targets(790,5): error MSB6001:    в Microsoft.Build.Utilities.ToolTask.GetProcessStartInfo(String pathToTool, String commandLineCommands, String responseFileSwitch) [C:\\Users\\Student\\Desktop\\raspis-unos\\__cmake_systeminformation\\CMakeFiles\\4.3.1-msvc1\\CompilerIdC\\CompilerIdC.vcxproj]
+      C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\MSBuild\\Microsoft\\VC\\v180\\Microsoft.CppCommon.targets(790,5): error MSB6001:    в Microsoft.Build.Utilities.ToolTask.ExecuteTool(String pathToTool, String responseFileCommands, String commandLineCommands) [C:\\Users\\Student\\Desktop\\raspis-unos\\__cmake_systeminformation\\CMakeFiles\\4.3.1-msvc1\\CompilerIdC\\CompilerIdC.vcxproj]
+      C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\MSBuild\\Microsoft\\VC\\v180\\Microsoft.CppCommon.targets(790,5): error MSB6001:    в Microsoft.Build.CPPTasks.TrackedVCToolTask.TrackerExecuteTool(String pathToTool, String responseFileCommands, String commandLineCommands) [C:\\Users\\Student\\Desktop\\raspis-unos\\__cmake_systeminformation\\CMakeFiles\\4.3.1-msvc1\\CompilerIdC\\CompilerIdC.vcxproj]
+      C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\MSBuild\\Microsoft\\VC\\v180\\Microsoft.CppCommon.targets(790,5): error MSB6001:    в Microsoft.Build.CPPTasks.TrackedVCToolTask.ExecuteTool(String pathToTool, String responseFileCommands, String commandLineCommands) [C:\\Users\\Student\\Desktop\\raspis-unos\\__cmake_systeminformation\\CMakeFiles\\4.3.1-msvc1\\CompilerIdC\\CompilerIdC.vcxproj]
+      C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\MSBuild\\Microsoft\\VC\\v180\\Microsoft.CppCommon.targets(790,5): error MSB6001:    в Microsoft.Build.CPPTasks.CL.ExecuteTool(String pathToTool, String responseFileCommands, String commandLineCommands) [C:\\Users\\Student\\Desktop\\raspis-unos\\__cmake_systeminformation\\CMakeFiles\\4.3.1-msvc1\\CompilerIdC\\CompilerIdC.vcxproj]
+      C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\MSBuild\\Microsoft\\VC\\v180\\Microsoft.CppCommon.targets(790,5): error MSB6001:    в Microsoft.Build.Utilities.ToolTask.Execute() [C:\\Users\\Student\\Desktop\\raspis-unos\\__cmake_systeminformation\\CMakeFiles\\4.3.1-msvc1\\CompilerIdC\\CompilerIdC.vcxproj]
+      Сборка проекта "C:\\Users\\Student\\Desktop\\raspis-unos\\__cmake_systeminformation\\CMakeFiles\\4.3.1-msvc1\\CompilerIdC\\CompilerIdC.vcxproj" завершена (целевые объекты по умолчанию) с ошибкой.
+      
+      Ошибка сборки.
+      
+      "C:\\Users\\Student\\Desktop\\raspis-unos\\__cmake_systeminformation\\CMakeFiles\\4.3.1-msvc1\\CompilerIdC\\CompilerIdC.vcxproj" (целевой объект по умолчанию) (1) ->
+      (Целевой объект ClCompile) -> 
+        C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\MSBuild\\Microsoft\\VC\\v180\\Microsoft.CppCommon.targets(790,5): error MSB6001: Недопустимый переключатель командной строки для "CL.exe". System.ArgumentException: Элемент уже добавлен. Ключ в словаре: "Path"  Добавляемый ключ: 'PATH' [C:\\Users\\Student\\Desktop\\raspis-unos\\__cmake_systeminformation\\CMakeFiles\\4.3.1-msvc1\\CompilerIdC\\CompilerIdC.vcxproj]
+      C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\MSBuild\\Microsoft\\VC\\v180\\Microsoft.CppCommon.targets(790,5): error MSB6001:    в System.Collections.Hashtable.Insert(Object key, Object nvalue, Boolean add) [C:\\Users\\Student\\Desktop\\raspis-unos\\__cmake_systeminformation\\CMakeFiles\\4.3.1-msvc1\\CompilerIdC\\CompilerIdC.vcxproj]
+      C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\MSBuild\\Microsoft\\VC\\v180\\Microsoft.CppCommon.targets(790,5): error MSB6001:    в System.Diagnostics.ProcessStartInfo.get_EnvironmentVariables() [C:\\Users\\Student\\Desktop\\raspis-unos\\__cmake_systeminformation\\CMakeFiles\\4.3.1-msvc1\\CompilerIdC\\CompilerIdC.vcxproj]
+      C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\MSBuild\\Microsoft\\VC\\v180\\Microsoft.CppCommon.targets(790,5): error MSB6001:    в Microsoft.Build.Utilities.ToolTask.GetProcessStartInfo(String pathToTool, String commandLineCommands, String responseFileSwitch) [C:\\Users\\Student\\Desktop\\raspis-unos\\__cmake_systeminformation\\CMakeFiles\\4.3.1-msvc1\\CompilerIdC\\CompilerIdC.vcxproj]
+      C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\MSBuild\\Microsoft\\VC\\v180\\Microsoft.CppCommon.targets(790,5): error MSB6001:    в Microsoft.Build.Utilities.ToolTask.ExecuteTool(String pathToTool, String responseFileCommands, String commandLineCommands) [C:\\Users\\Student\\Desktop\\raspis-unos\\__cmake_systeminformation\\CMakeFiles\\4.3.1-msvc1\\CompilerIdC\\CompilerIdC.vcxproj]
+      C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\MSBuild\\Microsoft\\VC\\v180\\Microsoft.CppCommon.targets(790,5): error MSB6001:    в Microsoft.Build.CPPTasks.TrackedVCToolTask.TrackerExecuteTool(String pathToTool, String responseFileCommands, String commandLineCommands) [C:\\Users\\Student\\Desktop\\raspis-unos\\__cmake_systeminformation\\CMakeFiles\\4.3.1-msvc1\\CompilerIdC\\CompilerIdC.vcxproj]
+      C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\MSBuild\\Microsoft\\VC\\v180\\Microsoft.CppCommon.targets(790,5): error MSB6001:    в Microsoft.Build.CPPTasks.TrackedVCToolTask.ExecuteTool(String pathToTool, String responseFileCommands, String commandLineCommands) [C:\\Users\\Student\\Desktop\\raspis-unos\\__cmake_systeminformation\\CMakeFiles\\4.3.1-msvc1\\CompilerIdC\\CompilerIdC.vcxproj]
+      C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\MSBuild\\Microsoft\\VC\\v180\\Microsoft.CppCommon.targets(790,5): error MSB6001:    в Microsoft.Build.CPPTasks.CL.ExecuteTool(String pathToTool, String responseFileCommands, String commandLineCommands) [C:\\Users\\Student\\Desktop\\raspis-unos\\__cmake_systeminformation\\CMakeFiles\\4.3.1-msvc1\\CompilerIdC\\CompilerIdC.vcxproj]
+      C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\MSBuild\\Microsoft\\VC\\v180\\Microsoft.CppCommon.targets(790,5): error MSB6001:    в Microsoft.Build.Utilities.ToolTask.Execute() [C:\\Users\\Student\\Desktop\\raspis-unos\\__cmake_systeminformation\\CMakeFiles\\4.3.1-msvc1\\CompilerIdC\\CompilerIdC.vcxproj]
+      
+          Предупреждений: 0
+          Ошибок: 1
+      
+      Прошло времени 00:00:00.19
+      
+      
+  -
+    kind: "find-v1"
+    backtrace:
+      - "C:/Program Files/Microsoft Visual Studio/18/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-4.3/Modules/CMakeFindBinUtils.cmake:37 (find_program)"
+      - "C:/Program Files/Microsoft Visual Studio/18/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-4.3/Modules/CMakeFindBinUtils.cmake:65 (__resolve_tool_path)"
+      - "C:/Program Files/Microsoft Visual Studio/18/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-4.3/Modules/CMakeFindBinUtils.cmake:103 (__resolve_linker_path)"
+      - "C:/Program Files/Microsoft Visual Studio/18/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-4.3/Modules/CMakeDetermineCCompiler.cmake:200 (include)"
+      - "CMakeLists.txt:6 (project)"
+    mode: "program"
+    variable: "_CMAKE_TOOL_WITH_PATH"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "link"
+    candidate_directories:
+      - "C:/Users/Student/.codex/tmp/arg0/codex-arg0drUE2p/"
+      - "C:/Users/Student/.codex/packages/app-server-daemon/releases/0.159.0-x86_64-pc-windows-msvc/codex-path/"
+      - "C:/Users/Student/.codex/tmp/arg0/codex-arg0yuc5YD/"
+      - "C:/Users/Student/.codex/packages/app-server-daemon/releases/0.158.0-x86_64-pc-windows-msvc/codex-path/"
+      - "C:/Users/Student/.codex/tmp/arg0/codex-arg0jP9Nrg/"
+      - "C:/Users/Student/AppData/Roaming/npm/node_modules/@openai/codex/node_modules/@openai/codex-win32-x64/vendor/x86_64-pc-windows-msvc/codex-path/"
+      - "C:/Program Files (x86)/NVIDIA Corporation/PhysX/Common/"
+      - "C:/Program Files/Common Files/Siemens/Automation/Simatic OAM/bin/"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/javapath/"
+      - "C:/Windows/System32/"
+      - "C:/Windows/"
+      - "C:/Windows/System32/wbem/"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/"
+      - "C:/Windows/System32/OpenSSH/"
+      - "C:/Program Files/NVIDIA Corporation/NVIDIA App/NvDLISR/"
+      - "C:/Program Files/Microsoft SQL Server/170/Tools/Binn/"
+      - "C:/Program Files/Microsoft SQL Server/Client SDK/ODBC/170/Tools/Binn/"
+      - "C:/Program Files/Git/cmd/"
+      - "C:/Program Files (x86)/Microsoft SQL Server/160/Tools/Binn/"
+      - "C:/Program Files/Microsoft SQL Server/160/Tools/Binn/"
+      - "C:/Program Files/Microsoft SQL Server/160/DTS/Binn/"
+      - "C:/Program Files/dotnet/"
+      - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/"
+      - "C:/Program Files/nodejs/"
+      - "C:/Program Files (x86)/Windows Kits/8.1/Windows Performance Toolkit/"
+      - "C:/Users/Student/AppData/Local/Programs/OpenAI/Codex/bin/"
+      - "C:/Program Files/MySQL/MySQL Shell 8.0/bin/"
+      - "C:/Users/Student/AppData/Local/Microsoft/WindowsApps/"
+      - "C:/Users/Student/AppData/Local/Programs/Microsoft VS Code/bin/"
+      - "C:/Users/Student/AppData/Local/GitHubDesktop/bin/"
+      - "C:/Users/Student/AppData/Roaming/npm/"
+      - "C:/Users/Student/.dotnet/tools/"
+    searched_directories:
+      - "C:/Users/Student/.codex/tmp/arg0/codex-arg0drUE2p/link.com"
+      - "C:/Users/Student/.codex/tmp/arg0/codex-arg0drUE2p/link.exe"
+      - "C:/Users/Student/.codex/tmp/arg0/codex-arg0drUE2p/link"
+      - "C:/Users/Student/.codex/packages/app-server-daemon/releases/0.159.0-x86_64-pc-windows-msvc/codex-path/link.com"
+      - "C:/Users/Student/.codex/packages/app-server-daemon/releases/0.159.0-x86_64-pc-windows-msvc/codex-path/link.exe"
+      - "C:/Users/Student/.codex/packages/app-server-daemon/releases/0.159.0-x86_64-pc-windows-msvc/codex-path/link"
+      - "C:/Users/Student/.codex/tmp/arg0/codex-arg0yuc5YD/link.com"
+      - "C:/Users/Student/.codex/tmp/arg0/codex-arg0yuc5YD/link.exe"
+      - "C:/Users/Student/.codex/tmp/arg0/codex-arg0yuc5YD/link"
+      - "C:/Users/Student/.codex/packages/app-server-daemon/releases/0.158.0-x86_64-pc-windows-msvc/codex-path/link.com"
+      - "C:/Users/Student/.codex/packages/app-server-daemon/releases/0.158.0-x86_64-pc-windows-msvc/codex-path/link.exe"
+      - "C:/Users/Student/.codex/packages/app-server-daemon/releases/0.158.0-x86_64-pc-windows-msvc/codex-path/link"
+      - "C:/Users/Student/.codex/tmp/arg0/codex-arg0jP9Nrg/link.com"
+      - "C:/Users/Student/.codex/tmp/arg0/codex-arg0jP9Nrg/link.exe"
+      - "C:/Users/Student/.codex/tmp/arg0/codex-arg0jP9Nrg/link"
+      - "C:/Users/Student/AppData/Roaming/npm/node_modules/@openai/codex/node_modules/@openai/codex-win32-x64/vendor/x86_64-pc-windows-msvc/codex-path/link.com"
+      - "C:/Users/Student/AppData/Roaming/npm/node_modules/@openai/codex/node_modules/@openai/codex-win32-x64/vendor/x86_64-pc-windows-msvc/codex-path/link.exe"
+      - "C:/Users/Student/AppData/Roaming/npm/node_modules/@openai/codex/node_modules/@openai/codex-win32-x64/vendor/x86_64-pc-windows-msvc/codex-path/link"
+      - "C:/Program Files (x86)/NVIDIA Corporation/PhysX/Common/link.com"
+      - "C:/Program Files (x86)/NVIDIA Corporation/PhysX/Common/link.exe"
+      - "C:/Program Files (x86)/NVIDIA Corporation/PhysX/Common/link"
+      - "C:/Program Files/Common Files/Siemens/Automation/Simatic OAM/bin/link.com"
+      - "C:/Program Files/Common Files/Siemens/Automation/Simatic OAM/bin/link.exe"
+      - "C:/Program Files/Common Files/Siemens/Automation/Simatic OAM/bin/link"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/javapath/link.com"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/javapath/link.exe"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/javapath/link"
+      - "C:/Windows/System32/link.com"
+      - "C:/Windows/System32/link.exe"
+      - "C:/Windows/System32/link"
+      - "C:/Windows/link.com"
+      - "C:/Windows/link.exe"
+      - "C:/Windows/link"
+      - "C:/Windows/System32/wbem/link.com"
+      - "C:/Windows/System32/wbem/link.exe"
+      - "C:/Windows/System32/wbem/link"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/link.com"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/link.exe"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/link"
+      - "C:/Windows/System32/OpenSSH/link.com"
+      - "C:/Windows/System32/OpenSSH/link.exe"
+      - "C:/Windows/System32/OpenSSH/link"
+      - "C:/Program Files/NVIDIA Corporation/NVIDIA App/NvDLISR/link.com"
+      - "C:/Program Files/NVIDIA Corporation/NVIDIA App/NvDLISR/link.exe"
+      - "C:/Program Files/NVIDIA Corporation/NVIDIA App/NvDLISR/link"
+      - "C:/Program Files/Microsoft SQL Server/170/Tools/Binn/link.com"
+      - "C:/Program Files/Microsoft SQL Server/170/Tools/Binn/link.exe"
+      - "C:/Program Files/Microsoft SQL Server/170/Tools/Binn/link"
+      - "C:/Program Files/Microsoft SQL Server/Client SDK/ODBC/170/Tools/Binn/link.com"
+      - "C:/Program Files/Microsoft SQL Server/Client SDK/ODBC/170/Tools/Binn/link.exe"
+      - "C:/Program Files/Microsoft SQL Server/Client SDK/ODBC/170/Tools/Binn/link"
+      - "C:/Program Files/Git/cmd/link.com"
+      - "C:/Program Files/Git/cmd/link.exe"
+      - "C:/Program Files/Git/cmd/link"
+      - "C:/Program Files (x86)/Microsoft SQL Server/160/Tools/Binn/link.com"
+      - "C:/Program Files (x86)/Microsoft SQL Server/160/Tools/Binn/link.exe"
+      - "C:/Program Files (x86)/Microsoft SQL Server/160/Tools/Binn/link"
+      - "C:/Program Files/Microsoft SQL Server/160/Tools/Binn/link.com"
+      - "C:/Program Files/Microsoft SQL Server/160/Tools/Binn/link.exe"
+      - "C:/Program Files/Microsoft SQL Server/160/Tools/Binn/link"
+      - "C:/Program Files/Microsoft SQL Server/160/DTS/Binn/link.com"
+      - "C:/Program Files/Microsoft SQL Server/160/DTS/Binn/link.exe"
+      - "C:/Program Files/Microsoft SQL Server/160/DTS/Binn/link"
+      - "C:/Program Files/dotnet/link.com"
+      - "C:/Program Files/dotnet/link.exe"
+      - "C:/Program Files/dotnet/link"
+      - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/link.com"
+      - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/link.exe"
+      - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/link"
+      - "C:/Program Files/nodejs/link.com"
+      - "C:/Program Files/nodejs/link.exe"
+      - "C:/Program Files/nodejs/link"
+      - "C:/Program Files (x86)/Windows Kits/8.1/Windows Performance Toolkit/link.com"
+      - "C:/Program Files (x86)/Windows Kits/8.1/Windows Performance Toolkit/link.exe"
+      - "C:/Program Files (x86)/Windows Kits/8.1/Windows Performance Toolkit/link"
+      - "C:/Users/Student/AppData/Local/Programs/OpenAI/Codex/bin/link.com"
+      - "C:/Users/Student/AppData/Local/Programs/OpenAI/Codex/bin/link.exe"
+      - "C:/Users/Student/AppData/Local/Programs/OpenAI/Codex/bin/link"
+      - "C:/Program Files/MySQL/MySQL Shell 8.0/bin/link.com"
+      - "C:/Program Files/MySQL/MySQL Shell 8.0/bin/link.exe"
+      - "C:/Program Files/MySQL/MySQL Shell 8.0/bin/link"
+      - "C:/Users/Student/AppData/Local/Microsoft/WindowsApps/link.com"
+      - "C:/Users/Student/AppData/Local/Microsoft/WindowsApps/link.exe"
+      - "C:/Users/Student/AppData/Local/Microsoft/WindowsApps/link"
+      - "C:/Users/Student/AppData/Local/Programs/Microsoft VS Code/bin/link.com"
+      - "C:/Users/Student/AppData/Local/Programs/Microsoft VS Code/bin/link.exe"
+      - "C:/Users/Student/AppData/Local/Programs/Microsoft VS Code/bin/link"
+      - "C:/Users/Student/AppData/Local/GitHubDesktop/bin/link.com"
+      - "C:/Users/Student/AppData/Local/GitHubDesktop/bin/link.exe"
+      - "C:/Users/Student/AppData/Local/GitHubDesktop/bin/link"
+      - "C:/Users/Student/AppData/Roaming/npm/link.com"
+      - "C:/Users/Student/AppData/Roaming/npm/link.exe"
+      - "C:/Users/Student/AppData/Roaming/npm/link"
+      - "C:/Users/Student/.dotnet/tools/link.com"
+      - "C:/Users/Student/.dotnet/tools/link.exe"
+      - "C:/Users/Student/.dotnet/tools/link"
+    found: false
+    search_context:
+      ENV{PATH}:
+        - "C:\\Users\\Student\\.codex\\tmp\\arg0\\codex-arg0drUE2p"
+        - "C:\\Users\\Student\\.codex\\packages\\app-server-daemon\\releases\\0.159.0-x86_64-pc-windows-msvc\\codex-path"
+        - "C:\\Users\\Student\\.codex\\tmp\\arg0\\codex-arg0yuc5YD"
+        - "C:\\Users\\Student\\.codex\\packages\\app-server-daemon\\releases\\0.158.0-x86_64-pc-windows-msvc\\codex-path"
+        - "C:\\Users\\Student\\.codex\\tmp\\arg0\\codex-arg0jP9Nrg"
+        - "C:\\Users\\Student\\AppData\\Roaming\\npm\\node_modules\\@openai\\codex\\node_modules\\@openai\\codex-win32-x64\\vendor\\x86_64-pc-windows-msvc\\codex-path"
+        - "C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common"
+        - "C:\\Program Files\\Common Files\\Siemens\\Automation\\Simatic OAM\\bin"
+        - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath"
+        - "C:\\WINDOWS\\system32"
+        - "C:\\WINDOWS"
+        - "C:\\WINDOWS\\System32\\Wbem"
+        - "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\WINDOWS\\System32\\OpenSSH\\"
+        - "C:\\Program Files\\NVIDIA Corporation\\NVIDIA App\\NvDLISR"
+        - "C:\\Program Files\\Microsoft SQL Server\\170\\Tools\\Binn\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\Client SDK\\ODBC\\170\\Tools\\Binn\\"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Program Files (x86)\\Microsoft SQL Server\\160\\Tools\\Binn\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\160\\Tools\\Binn\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\160\\DTS\\Binn\\"
+        - "C:\\Program Files\\dotnet\\"
+        - "C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance Toolkit\\"
+        - "C:\\Program Files\\nodejs\\"
+        - "C:\\Program Files (x86)\\Windows Kits\\8.1\\Windows Performance Toolkit\\"
+        - "C:\\Users\\Student\\AppData\\Local\\Programs\\OpenAI\\Codex\\bin"
+        - "C:\\Program Files\\MySQL\\MySQL Shell 8.0\\bin\\"
+        - "C:\\Users\\Student\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\Users\\Student\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "C:\\Users\\Student\\AppData\\Local\\GitHubDesktop\\bin"
+        - "C:\\Users\\Student\\AppData\\Roaming\\npm"
+        - "C:\\Users\\Student\\.dotnet\\tools"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "C:/Program Files/Microsoft Visual Studio/18/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-4.3/Modules/CMakeFindBinUtils.cmake:37 (find_program)"
+      - "C:/Program Files/Microsoft Visual Studio/18/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-4.3/Modules/CMakeFindBinUtils.cmake:65 (__resolve_tool_path)"
+      - "C:/Program Files/Microsoft Visual Studio/18/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-4.3/Modules/CMakeFindBinUtils.cmake:104 (__resolve_linker_path)"
+      - "C:/Program Files/Microsoft Visual Studio/18/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-4.3/Modules/CMakeDetermineCCompiler.cmake:200 (include)"
+      - "CMakeLists.txt:6 (project)"
+    mode: "program"
+    variable: "_CMAKE_TOOL_WITH_PATH"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "lld-link"
+    candidate_directories:
+      - "C:/Users/Student/.codex/tmp/arg0/codex-arg0drUE2p/"
+      - "C:/Users/Student/.codex/packages/app-server-daemon/releases/0.159.0-x86_64-pc-windows-msvc/codex-path/"
+      - "C:/Users/Student/.codex/tmp/arg0/codex-arg0yuc5YD/"
+      - "C:/Users/Student/.codex/packages/app-server-daemon/releases/0.158.0-x86_64-pc-windows-msvc/codex-path/"
+      - "C:/Users/Student/.codex/tmp/arg0/codex-arg0jP9Nrg/"
+      - "C:/Users/Student/AppData/Roaming/npm/node_modules/@openai/codex/node_modules/@openai/codex-win32-x64/vendor/x86_64-pc-windows-msvc/codex-path/"
+      - "C:/Program Files (x86)/NVIDIA Corporation/PhysX/Common/"
+      - "C:/Program Files/Common Files/Siemens/Automation/Simatic OAM/bin/"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/javapath/"
+      - "C:/Windows/System32/"
+      - "C:/Windows/"
+      - "C:/Windows/System32/wbem/"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/"
+      - "C:/Windows/System32/OpenSSH/"
+      - "C:/Program Files/NVIDIA Corporation/NVIDIA App/NvDLISR/"
+      - "C:/Program Files/Microsoft SQL Server/170/Tools/Binn/"
+      - "C:/Program Files/Microsoft SQL Server/Client SDK/ODBC/170/Tools/Binn/"
+      - "C:/Program Files/Git/cmd/"
+      - "C:/Program Files (x86)/Microsoft SQL Server/160/Tools/Binn/"
+      - "C:/Program Files/Microsoft SQL Server/160/Tools/Binn/"
+      - "C:/Program Files/Microsoft SQL Server/160/DTS/Binn/"
+      - "C:/Program Files/dotnet/"
+      - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/"
+      - "C:/Program Files/nodejs/"
+      - "C:/Program Files (x86)/Windows Kits/8.1/Windows Performance Toolkit/"
+      - "C:/Users/Student/AppData/Local/Programs/OpenAI/Codex/bin/"
+      - "C:/Program Files/MySQL/MySQL Shell 8.0/bin/"
+      - "C:/Users/Student/AppData/Local/Microsoft/WindowsApps/"
+      - "C:/Users/Student/AppData/Local/Programs/Microsoft VS Code/bin/"
+      - "C:/Users/Student/AppData/Local/GitHubDesktop/bin/"
+      - "C:/Users/Student/AppData/Roaming/npm/"
+      - "C:/Users/Student/.dotnet/tools/"
+    searched_directories:
+      - "C:/Users/Student/.codex/tmp/arg0/codex-arg0drUE2p/lld-link.com"
+      - "C:/Users/Student/.codex/tmp/arg0/codex-arg0drUE2p/lld-link.exe"
+      - "C:/Users/Student/.codex/tmp/arg0/codex-arg0drUE2p/lld-link"
+      - "C:/Users/Student/.codex/packages/app-server-daemon/releases/0.159.0-x86_64-pc-windows-msvc/codex-path/lld-link.com"
+      - "C:/Users/Student/.codex/packages/app-server-daemon/releases/0.159.0-x86_64-pc-windows-msvc/codex-path/lld-link.exe"
+      - "C:/Users/Student/.codex/packages/app-server-daemon/releases/0.159.0-x86_64-pc-windows-msvc/codex-path/lld-link"
+      - "C:/Users/Student/.codex/tmp/arg0/codex-arg0yuc5YD/lld-link.com"
+      - "C:/Users/Student/.codex/tmp/arg0/codex-arg0yuc5YD/lld-link.exe"
+      - "C:/Users/Student/.codex/tmp/arg0/codex-arg0yuc5YD/lld-link"
+      - "C:/Users/Student/.codex/packages/app-server-daemon/releases/0.158.0-x86_64-pc-windows-msvc/codex-path/lld-link.com"
+      - "C:/Users/Student/.codex/packages/app-server-daemon/releases/0.158.0-x86_64-pc-windows-msvc/codex-path/lld-link.exe"
+      - "C:/Users/Student/.codex/packages/app-server-daemon/releases/0.158.0-x86_64-pc-windows-msvc/codex-path/lld-link"
+      - "C:/Users/Student/.codex/tmp/arg0/codex-arg0jP9Nrg/lld-link.com"
+      - "C:/Users/Student/.codex/tmp/arg0/codex-arg0jP9Nrg/lld-link.exe"
+      - "C:/Users/Student/.codex/tmp/arg0/codex-arg0jP9Nrg/lld-link"
+      - "C:/Users/Student/AppData/Roaming/npm/node_modules/@openai/codex/node_modules/@openai/codex-win32-x64/vendor/x86_64-pc-windows-msvc/codex-path/lld-link.com"
+      - "C:/Users/Student/AppData/Roaming/npm/node_modules/@openai/codex/node_modules/@openai/codex-win32-x64/vendor/x86_64-pc-windows-msvc/codex-path/lld-link.exe"
+      - "C:/Users/Student/AppData/Roaming/npm/node_modules/@openai/codex/node_modules/@openai/codex-win32-x64/vendor/x86_64-pc-windows-msvc/codex-path/lld-link"
+      - "C:/Program Files (x86)/NVIDIA Corporation/PhysX/Common/lld-link.com"
+      - "C:/Program Files (x86)/NVIDIA Corporation/PhysX/Common/lld-link.exe"
+      - "C:/Program Files (x86)/NVIDIA Corporation/PhysX/Common/lld-link"
+      - "C:/Program Files/Common Files/Siemens/Automation/Simatic OAM/bin/lld-link.com"
+      - "C:/Program Files/Common Files/Siemens/Automation/Simatic OAM/bin/lld-link.exe"
+      - "C:/Program Files/Common Files/Siemens/Automation/Simatic OAM/bin/lld-link"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/javapath/lld-link.com"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/javapath/lld-link.exe"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/javapath/lld-link"
+      - "C:/Windows/System32/lld-link.com"
+      - "C:/Windows/System32/lld-link.exe"
+      - "C:/Windows/System32/lld-link"
+      - "C:/Windows/lld-link.com"
+      - "C:/Windows/lld-link.exe"
+      - "C:/Windows/lld-link"
+      - "C:/Windows/System32/wbem/lld-link.com"
+      - "C:/Windows/System32/wbem/lld-link.exe"
+      - "C:/Windows/System32/wbem/lld-link"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/lld-link.com"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/lld-link.exe"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/lld-link"
+      - "C:/Windows/System32/OpenSSH/lld-link.com"
+      - "C:/Windows/System32/OpenSSH/lld-link.exe"
+      - "C:/Windows/System32/OpenSSH/lld-link"
+      - "C:/Program Files/NVIDIA Corporation/NVIDIA App/NvDLISR/lld-link.com"
+      - "C:/Program Files/NVIDIA Corporation/NVIDIA App/NvDLISR/lld-link.exe"
+      - "C:/Program Files/NVIDIA Corporation/NVIDIA App/NvDLISR/lld-link"
+      - "C:/Program Files/Microsoft SQL Server/170/Tools/Binn/lld-link.com"
+      - "C:/Program Files/Microsoft SQL Server/170/Tools/Binn/lld-link.exe"
+      - "C:/Program Files/Microsoft SQL Server/170/Tools/Binn/lld-link"
+      - "C:/Program Files/Microsoft SQL Server/Client SDK/ODBC/170/Tools/Binn/lld-link.com"
+      - "C:/Program Files/Microsoft SQL Server/Client SDK/ODBC/170/Tools/Binn/lld-link.exe"
+      - "C:/Program Files/Microsoft SQL Server/Client SDK/ODBC/170/Tools/Binn/lld-link"
+      - "C:/Program Files/Git/cmd/lld-link.com"
+      - "C:/Program Files/Git/cmd/lld-link.exe"
+      - "C:/Program Files/Git/cmd/lld-link"
+      - "C:/Program Files (x86)/Microsoft SQL Server/160/Tools/Binn/lld-link.com"
+      - "C:/Program Files (x86)/Microsoft SQL Server/160/Tools/Binn/lld-link.exe"
+      - "C:/Program Files (x86)/Microsoft SQL Server/160/Tools/Binn/lld-link"
+      - "C:/Program Files/Microsoft SQL Server/160/Tools/Binn/lld-link.com"
+      - "C:/Program Files/Microsoft SQL Server/160/Tools/Binn/lld-link.exe"
+      - "C:/Program Files/Microsoft SQL Server/160/Tools/Binn/lld-link"
+      - "C:/Program Files/Microsoft SQL Server/160/DTS/Binn/lld-link.com"
+      - "C:/Program Files/Microsoft SQL Server/160/DTS/Binn/lld-link.exe"
+      - "C:/Program Files/Microsoft SQL Server/160/DTS/Binn/lld-link"
+      - "C:/Program Files/dotnet/lld-link.com"
+      - "C:/Program Files/dotnet/lld-link.exe"
+      - "C:/Program Files/dotnet/lld-link"
+      - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/lld-link.com"
+      - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/lld-link.exe"
+      - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/lld-link"
+      - "C:/Program Files/nodejs/lld-link.com"
+      - "C:/Program Files/nodejs/lld-link.exe"
+      - "C:/Program Files/nodejs/lld-link"
+      - "C:/Program Files (x86)/Windows Kits/8.1/Windows Performance Toolkit/lld-link.com"
+      - "C:/Program Files (x86)/Windows Kits/8.1/Windows Performance Toolkit/lld-link.exe"
+      - "C:/Program Files (x86)/Windows Kits/8.1/Windows Performance Toolkit/lld-link"
+      - "C:/Users/Student/AppData/Local/Programs/OpenAI/Codex/bin/lld-link.com"
+      - "C:/Users/Student/AppData/Local/Programs/OpenAI/Codex/bin/lld-link.exe"
+      - "C:/Users/Student/AppData/Local/Programs/OpenAI/Codex/bin/lld-link"
+      - "C:/Program Files/MySQL/MySQL Shell 8.0/bin/lld-link.com"
+      - "C:/Program Files/MySQL/MySQL Shell 8.0/bin/lld-link.exe"
+      - "C:/Program Files/MySQL/MySQL Shell 8.0/bin/lld-link"
+      - "C:/Users/Student/AppData/Local/Microsoft/WindowsApps/lld-link.com"
+      - "C:/Users/Student/AppData/Local/Microsoft/WindowsApps/lld-link.exe"
+      - "C:/Users/Student/AppData/Local/Microsoft/WindowsApps/lld-link"
+      - "C:/Users/Student/AppData/Local/Programs/Microsoft VS Code/bin/lld-link.com"
+      - "C:/Users/Student/AppData/Local/Programs/Microsoft VS Code/bin/lld-link.exe"
+      - "C:/Users/Student/AppData/Local/Programs/Microsoft VS Code/bin/lld-link"
+      - "C:/Users/Student/AppData/Local/GitHubDesktop/bin/lld-link.com"
+      - "C:/Users/Student/AppData/Local/GitHubDesktop/bin/lld-link.exe"
+      - "C:/Users/Student/AppData/Local/GitHubDesktop/bin/lld-link"
+      - "C:/Users/Student/AppData/Roaming/npm/lld-link.com"
+      - "C:/Users/Student/AppData/Roaming/npm/lld-link.exe"
+      - "C:/Users/Student/AppData/Roaming/npm/lld-link"
+      - "C:/Users/Student/.dotnet/tools/lld-link.com"
+      - "C:/Users/Student/.dotnet/tools/lld-link.exe"
+      - "C:/Users/Student/.dotnet/tools/lld-link"
+    found: false
+    search_context:
+      ENV{PATH}:
+        - "C:\\Users\\Student\\.codex\\tmp\\arg0\\codex-arg0drUE2p"
+        - "C:\\Users\\Student\\.codex\\packages\\app-server-daemon\\releases\\0.159.0-x86_64-pc-windows-msvc\\codex-path"
+        - "C:\\Users\\Student\\.codex\\tmp\\arg0\\codex-arg0yuc5YD"
+        - "C:\\Users\\Student\\.codex\\packages\\app-server-daemon\\releases\\0.158.0-x86_64-pc-windows-msvc\\codex-path"
+        - "C:\\Users\\Student\\.codex\\tmp\\arg0\\codex-arg0jP9Nrg"
+        - "C:\\Users\\Student\\AppData\\Roaming\\npm\\node_modules\\@openai\\codex\\node_modules\\@openai\\codex-win32-x64\\vendor\\x86_64-pc-windows-msvc\\codex-path"
+        - "C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common"
+        - "C:\\Program Files\\Common Files\\Siemens\\Automation\\Simatic OAM\\bin"
+        - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath"
+        - "C:\\WINDOWS\\system32"
+        - "C:\\WINDOWS"
+        - "C:\\WINDOWS\\System32\\Wbem"
+        - "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\WINDOWS\\System32\\OpenSSH\\"
+        - "C:\\Program Files\\NVIDIA Corporation\\NVIDIA App\\NvDLISR"
+        - "C:\\Program Files\\Microsoft SQL Server\\170\\Tools\\Binn\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\Client SDK\\ODBC\\170\\Tools\\Binn\\"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Program Files (x86)\\Microsoft SQL Server\\160\\Tools\\Binn\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\160\\Tools\\Binn\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\160\\DTS\\Binn\\"
+        - "C:\\Program Files\\dotnet\\"
+        - "C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance Toolkit\\"
+        - "C:\\Program Files\\nodejs\\"
+        - "C:\\Program Files (x86)\\Windows Kits\\8.1\\Windows Performance Toolkit\\"
+        - "C:\\Users\\Student\\AppData\\Local\\Programs\\OpenAI\\Codex\\bin"
+        - "C:\\Program Files\\MySQL\\MySQL Shell 8.0\\bin\\"
+        - "C:\\Users\\Student\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\Users\\Student\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "C:\\Users\\Student\\AppData\\Local\\GitHubDesktop\\bin"
+        - "C:\\Users\\Student\\AppData\\Roaming\\npm"
+        - "C:\\Users\\Student\\.dotnet\\tools"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "C:/Program Files/Microsoft Visual Studio/18/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-4.3/Modules/CMakeFindBinUtils.cmake:243 (find_program)"
+      - "C:/Program Files/Microsoft Visual Studio/18/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-4.3/Modules/CMakeDetermineCCompiler.cmake:200 (include)"
+      - "CMakeLists.txt:6 (project)"
+    mode: "program"
+    variable: "CMAKE_LINKER"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "link"
+    candidate_directories:
+      - "C:/Users/Student/.codex/tmp/arg0/codex-arg0drUE2p/"
+      - "C:/Users/Student/.codex/packages/app-server-daemon/releases/0.159.0-x86_64-pc-windows-msvc/codex-path/"
+      - "C:/Users/Student/.codex/tmp/arg0/codex-arg0yuc5YD/"
+      - "C:/Users/Student/.codex/packages/app-server-daemon/releases/0.158.0-x86_64-pc-windows-msvc/codex-path/"
+      - "C:/Users/Student/.codex/tmp/arg0/codex-arg0jP9Nrg/"
+      - "C:/Users/Student/AppData/Roaming/npm/node_modules/@openai/codex/node_modules/@openai/codex-win32-x64/vendor/x86_64-pc-windows-msvc/codex-path/"
+      - "C:/Program Files (x86)/NVIDIA Corporation/PhysX/Common/"
+      - "C:/Program Files/Common Files/Siemens/Automation/Simatic OAM/bin/"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/javapath/"
+      - "C:/Windows/System32/"
+      - "C:/Windows/"
+      - "C:/Windows/System32/wbem/"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/"
+      - "C:/Windows/System32/OpenSSH/"
+      - "C:/Program Files/NVIDIA Corporation/NVIDIA App/NvDLISR/"
+      - "C:/Program Files/Microsoft SQL Server/170/Tools/Binn/"
+      - "C:/Program Files/Microsoft SQL Server/Client SDK/ODBC/170/Tools/Binn/"
+      - "C:/Program Files/Git/cmd/"
+      - "C:/Program Files (x86)/Microsoft SQL Server/160/Tools/Binn/"
+      - "C:/Program Files/Microsoft SQL Server/160/Tools/Binn/"
+      - "C:/Program Files/Microsoft SQL Server/160/DTS/Binn/"
+      - "C:/Program Files/dotnet/"
+      - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/"
+      - "C:/Program Files/nodejs/"
+      - "C:/Program Files (x86)/Windows Kits/8.1/Windows Performance Toolkit/"
+      - "C:/Users/Student/AppData/Local/Programs/OpenAI/Codex/bin/"
+      - "C:/Program Files/MySQL/MySQL Shell 8.0/bin/"
+      - "C:/Users/Student/AppData/Local/Microsoft/WindowsApps/"
+      - "C:/Users/Student/AppData/Local/Programs/Microsoft VS Code/bin/"
+      - "C:/Users/Student/AppData/Local/GitHubDesktop/bin/"
+      - "C:/Users/Student/AppData/Roaming/npm/"
+      - "C:/Users/Student/.dotnet/tools/"
+    searched_directories:
+      - "C:/Users/Student/.codex/tmp/arg0/codex-arg0drUE2p/link.com"
+      - "C:/Users/Student/.codex/tmp/arg0/codex-arg0drUE2p/link.exe"
+      - "C:/Users/Student/.codex/tmp/arg0/codex-arg0drUE2p/link"
+      - "C:/Users/Student/.codex/packages/app-server-daemon/releases/0.159.0-x86_64-pc-windows-msvc/codex-path/link.com"
+      - "C:/Users/Student/.codex/packages/app-server-daemon/releases/0.159.0-x86_64-pc-windows-msvc/codex-path/link.exe"
+      - "C:/Users/Student/.codex/packages/app-server-daemon/releases/0.159.0-x86_64-pc-windows-msvc/codex-path/link"
+      - "C:/Users/Student/.codex/tmp/arg0/codex-arg0yuc5YD/link.com"
+      - "C:/Users/Student/.codex/tmp/arg0/codex-arg0yuc5YD/link.exe"
+      - "C:/Users/Student/.codex/tmp/arg0/codex-arg0yuc5YD/link"
+      - "C:/Users/Student/.codex/packages/app-server-daemon/releases/0.158.0-x86_64-pc-windows-msvc/codex-path/link.com"
+      - "C:/Users/Student/.codex/packages/app-server-daemon/releases/0.158.0-x86_64-pc-windows-msvc/codex-path/link.exe"
+      - "C:/Users/Student/.codex/packages/app-server-daemon/releases/0.158.0-x86_64-pc-windows-msvc/codex-path/link"
+      - "C:/Users/Student/.codex/tmp/arg0/codex-arg0jP9Nrg/link.com"
+      - "C:/Users/Student/.codex/tmp/arg0/codex-arg0jP9Nrg/link.exe"
+      - "C:/Users/Student/.codex/tmp/arg0/codex-arg0jP9Nrg/link"
+      - "C:/Users/Student/AppData/Roaming/npm/node_modules/@openai/codex/node_modules/@openai/codex-win32-x64/vendor/x86_64-pc-windows-msvc/codex-path/link.com"
+      - "C:/Users/Student/AppData/Roaming/npm/node_modules/@openai/codex/node_modules/@openai/codex-win32-x64/vendor/x86_64-pc-windows-msvc/codex-path/link.exe"
+      - "C:/Users/Student/AppData/Roaming/npm/node_modules/@openai/codex/node_modules/@openai/codex-win32-x64/vendor/x86_64-pc-windows-msvc/codex-path/link"
+      - "C:/Program Files (x86)/NVIDIA Corporation/PhysX/Common/link.com"
+      - "C:/Program Files (x86)/NVIDIA Corporation/PhysX/Common/link.exe"
+      - "C:/Program Files (x86)/NVIDIA Corporation/PhysX/Common/link"
+      - "C:/Program Files/Common Files/Siemens/Automation/Simatic OAM/bin/link.com"
+      - "C:/Program Files/Common Files/Siemens/Automation/Simatic OAM/bin/link.exe"
+      - "C:/Program Files/Common Files/Siemens/Automation/Simatic OAM/bin/link"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/javapath/link.com"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/javapath/link.exe"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/javapath/link"
+      - "C:/Windows/System32/link.com"
+      - "C:/Windows/System32/link.exe"
+      - "C:/Windows/System32/link"
+      - "C:/Windows/link.com"
+      - "C:/Windows/link.exe"
+      - "C:/Windows/link"
+      - "C:/Windows/System32/wbem/link.com"
+      - "C:/Windows/System32/wbem/link.exe"
+      - "C:/Windows/System32/wbem/link"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/link.com"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/link.exe"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/link"
+      - "C:/Windows/System32/OpenSSH/link.com"
+      - "C:/Windows/System32/OpenSSH/link.exe"
+      - "C:/Windows/System32/OpenSSH/link"
+      - "C:/Program Files/NVIDIA Corporation/NVIDIA App/NvDLISR/link.com"
+      - "C:/Program Files/NVIDIA Corporation/NVIDIA App/NvDLISR/link.exe"
+      - "C:/Program Files/NVIDIA Corporation/NVIDIA App/NvDLISR/link"
+      - "C:/Program Files/Microsoft SQL Server/170/Tools/Binn/link.com"
+      - "C:/Program Files/Microsoft SQL Server/170/Tools/Binn/link.exe"
+      - "C:/Program Files/Microsoft SQL Server/170/Tools/Binn/link"
+      - "C:/Program Files/Microsoft SQL Server/Client SDK/ODBC/170/Tools/Binn/link.com"
+      - "C:/Program Files/Microsoft SQL Server/Client SDK/ODBC/170/Tools/Binn/link.exe"
+      - "C:/Program Files/Microsoft SQL Server/Client SDK/ODBC/170/Tools/Binn/link"
+      - "C:/Program Files/Git/cmd/link.com"
+      - "C:/Program Files/Git/cmd/link.exe"
+      - "C:/Program Files/Git/cmd/link"
+      - "C:/Program Files (x86)/Microsoft SQL Server/160/Tools/Binn/link.com"
+      - "C:/Program Files (x86)/Microsoft SQL Server/160/Tools/Binn/link.exe"
+      - "C:/Program Files (x86)/Microsoft SQL Server/160/Tools/Binn/link"
+      - "C:/Program Files/Microsoft SQL Server/160/Tools/Binn/link.com"
+      - "C:/Program Files/Microsoft SQL Server/160/Tools/Binn/link.exe"
+      - "C:/Program Files/Microsoft SQL Server/160/Tools/Binn/link"
+      - "C:/Program Files/Microsoft SQL Server/160/DTS/Binn/link.com"
+      - "C:/Program Files/Microsoft SQL Server/160/DTS/Binn/link.exe"
+      - "C:/Program Files/Microsoft SQL Server/160/DTS/Binn/link"
+      - "C:/Program Files/dotnet/link.com"
+      - "C:/Program Files/dotnet/link.exe"
+      - "C:/Program Files/dotnet/link"
+      - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/link.com"
+      - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/link.exe"
+      - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/link"
+      - "C:/Program Files/nodejs/link.com"
+      - "C:/Program Files/nodejs/link.exe"
+      - "C:/Program Files/nodejs/link"
+      - "C:/Program Files (x86)/Windows Kits/8.1/Windows Performance Toolkit/link.com"
+      - "C:/Program Files (x86)/Windows Kits/8.1/Windows Performance Toolkit/link.exe"
+      - "C:/Program Files (x86)/Windows Kits/8.1/Windows Performance Toolkit/link"
+      - "C:/Users/Student/AppData/Local/Programs/OpenAI/Codex/bin/link.com"
+      - "C:/Users/Student/AppData/Local/Programs/OpenAI/Codex/bin/link.exe"
+      - "C:/Users/Student/AppData/Local/Programs/OpenAI/Codex/bin/link"
+      - "C:/Program Files/MySQL/MySQL Shell 8.0/bin/link.com"
+      - "C:/Program Files/MySQL/MySQL Shell 8.0/bin/link.exe"
+      - "C:/Program Files/MySQL/MySQL Shell 8.0/bin/link"
+      - "C:/Users/Student/AppData/Local/Microsoft/WindowsApps/link.com"
+      - "C:/Users/Student/AppData/Local/Microsoft/WindowsApps/link.exe"
+      - "C:/Users/Student/AppData/Local/Microsoft/WindowsApps/link"
+      - "C:/Users/Student/AppData/Local/Programs/Microsoft VS Code/bin/link.com"
+      - "C:/Users/Student/AppData/Local/Programs/Microsoft VS Code/bin/link.exe"
+      - "C:/Users/Student/AppData/Local/Programs/Microsoft VS Code/bin/link"
+      - "C:/Users/Student/AppData/Local/GitHubDesktop/bin/link.com"
+      - "C:/Users/Student/AppData/Local/GitHubDesktop/bin/link.exe"
+      - "C:/Users/Student/AppData/Local/GitHubDesktop/bin/link"
+      - "C:/Users/Student/AppData/Roaming/npm/link.com"
+      - "C:/Users/Student/AppData/Roaming/npm/link.exe"
+      - "C:/Users/Student/AppData/Roaming/npm/link"
+      - "C:/Users/Student/.dotnet/tools/link.com"
+      - "C:/Users/Student/.dotnet/tools/link.exe"
+      - "C:/Users/Student/.dotnet/tools/link"
+    found: false
+    search_context:
+      ENV{PATH}:
+        - "C:\\Users\\Student\\.codex\\tmp\\arg0\\codex-arg0drUE2p"
+        - "C:\\Users\\Student\\.codex\\packages\\app-server-daemon\\releases\\0.159.0-x86_64-pc-windows-msvc\\codex-path"
+        - "C:\\Users\\Student\\.codex\\tmp\\arg0\\codex-arg0yuc5YD"
+        - "C:\\Users\\Student\\.codex\\packages\\app-server-daemon\\releases\\0.158.0-x86_64-pc-windows-msvc\\codex-path"
+        - "C:\\Users\\Student\\.codex\\tmp\\arg0\\codex-arg0jP9Nrg"
+        - "C:\\Users\\Student\\AppData\\Roaming\\npm\\node_modules\\@openai\\codex\\node_modules\\@openai\\codex-win32-x64\\vendor\\x86_64-pc-windows-msvc\\codex-path"
+        - "C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common"
+        - "C:\\Program Files\\Common Files\\Siemens\\Automation\\Simatic OAM\\bin"
+        - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath"
+        - "C:\\WINDOWS\\system32"
+        - "C:\\WINDOWS"
+        - "C:\\WINDOWS\\System32\\Wbem"
+        - "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\WINDOWS\\System32\\OpenSSH\\"
+        - "C:\\Program Files\\NVIDIA Corporation\\NVIDIA App\\NvDLISR"
+        - "C:\\Program Files\\Microsoft SQL Server\\170\\Tools\\Binn\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\Client SDK\\ODBC\\170\\Tools\\Binn\\"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Program Files (x86)\\Microsoft SQL Server\\160\\Tools\\Binn\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\160\\Tools\\Binn\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\160\\DTS\\Binn\\"
+        - "C:\\Program Files\\dotnet\\"
+        - "C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance Toolkit\\"
+        - "C:\\Program Files\\nodejs\\"
+        - "C:\\Program Files (x86)\\Windows Kits\\8.1\\Windows Performance Toolkit\\"
+        - "C:\\Users\\Student\\AppData\\Local\\Programs\\OpenAI\\Codex\\bin"
+        - "C:\\Program Files\\MySQL\\MySQL Shell 8.0\\bin\\"
+        - "C:\\Users\\Student\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\Users\\Student\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "C:\\Users\\Student\\AppData\\Local\\GitHubDesktop\\bin"
+        - "C:\\Users\\Student\\AppData\\Roaming\\npm"
+        - "C:\\Users\\Student\\.dotnet\\tools"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "C:/Program Files/Microsoft Visual Studio/18/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-4.3/Modules/CMakeFindBinUtils.cmake:243 (find_program)"
+      - "C:/Program Files/Microsoft Visual Studio/18/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-4.3/Modules/CMakeDetermineCCompiler.cmake:200 (include)"
+      - "CMakeLists.txt:6 (project)"
+    mode: "program"
+    variable: "CMAKE_MT"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "mt"
+    candidate_directories:
+      - "C:/Users/Student/.codex/tmp/arg0/codex-arg0drUE2p/"
+      - "C:/Users/Student/.codex/packages/app-server-daemon/releases/0.159.0-x86_64-pc-windows-msvc/codex-path/"
+      - "C:/Users/Student/.codex/tmp/arg0/codex-arg0yuc5YD/"
+      - "C:/Users/Student/.codex/packages/app-server-daemon/releases/0.158.0-x86_64-pc-windows-msvc/codex-path/"
+      - "C:/Users/Student/.codex/tmp/arg0/codex-arg0jP9Nrg/"
+      - "C:/Users/Student/AppData/Roaming/npm/node_modules/@openai/codex/node_modules/@openai/codex-win32-x64/vendor/x86_64-pc-windows-msvc/codex-path/"
+      - "C:/Program Files (x86)/NVIDIA Corporation/PhysX/Common/"
+      - "C:/Program Files/Common Files/Siemens/Automation/Simatic OAM/bin/"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/javapath/"
+      - "C:/Windows/System32/"
+      - "C:/Windows/"
+      - "C:/Windows/System32/wbem/"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/"
+      - "C:/Windows/System32/OpenSSH/"
+      - "C:/Program Files/NVIDIA Corporation/NVIDIA App/NvDLISR/"
+      - "C:/Program Files/Microsoft SQL Server/170/Tools/Binn/"
+      - "C:/Program Files/Microsoft SQL Server/Client SDK/ODBC/170/Tools/Binn/"
+      - "C:/Program Files/Git/cmd/"
+      - "C:/Program Files (x86)/Microsoft SQL Server/160/Tools/Binn/"
+      - "C:/Program Files/Microsoft SQL Server/160/Tools/Binn/"
+      - "C:/Program Files/Microsoft SQL Server/160/DTS/Binn/"
+      - "C:/Program Files/dotnet/"
+      - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/"
+      - "C:/Program Files/nodejs/"
+      - "C:/Program Files (x86)/Windows Kits/8.1/Windows Performance Toolkit/"
+      - "C:/Users/Student/AppData/Local/Programs/OpenAI/Codex/bin/"
+      - "C:/Program Files/MySQL/MySQL Shell 8.0/bin/"
+      - "C:/Users/Student/AppData/Local/Microsoft/WindowsApps/"
+      - "C:/Users/Student/AppData/Local/Programs/Microsoft VS Code/bin/"
+      - "C:/Users/Student/AppData/Local/GitHubDesktop/bin/"
+      - "C:/Users/Student/AppData/Roaming/npm/"
+      - "C:/Users/Student/.dotnet/tools/"
+    searched_directories:
+      - "C:/Users/Student/.codex/tmp/arg0/codex-arg0drUE2p/mt.com"
+      - "C:/Users/Student/.codex/tmp/arg0/codex-arg0drUE2p/mt.exe"
+      - "C:/Users/Student/.codex/tmp/arg0/codex-arg0drUE2p/mt"
+      - "C:/Users/Student/.codex/packages/app-server-daemon/releases/0.159.0-x86_64-pc-windows-msvc/codex-path/mt.com"
+      - "C:/Users/Student/.codex/packages/app-server-daemon/releases/0.159.0-x86_64-pc-windows-msvc/codex-path/mt.exe"
+      - "C:/Users/Student/.codex/packages/app-server-daemon/releases/0.159.0-x86_64-pc-windows-msvc/codex-path/mt"
+      - "C:/Users/Student/.codex/tmp/arg0/codex-arg0yuc5YD/mt.com"
+      - "C:/Users/Student/.codex/tmp/arg0/codex-arg0yuc5YD/mt.exe"
+      - "C:/Users/Student/.codex/tmp/arg0/codex-arg0yuc5YD/mt"
+      - "C:/Users/Student/.codex/packages/app-server-daemon/releases/0.158.0-x86_64-pc-windows-msvc/codex-path/mt.com"
+      - "C:/Users/Student/.codex/packages/app-server-daemon/releases/0.158.0-x86_64-pc-windows-msvc/codex-path/mt.exe"
+      - "C:/Users/Student/.codex/packages/app-server-daemon/releases/0.158.0-x86_64-pc-windows-msvc/codex-path/mt"
+      - "C:/Users/Student/.codex/tmp/arg0/codex-arg0jP9Nrg/mt.com"
+      - "C:/Users/Student/.codex/tmp/arg0/codex-arg0jP9Nrg/mt.exe"
+      - "C:/Users/Student/.codex/tmp/arg0/codex-arg0jP9Nrg/mt"
+      - "C:/Users/Student/AppData/Roaming/npm/node_modules/@openai/codex/node_modules/@openai/codex-win32-x64/vendor/x86_64-pc-windows-msvc/codex-path/mt.com"
+      - "C:/Users/Student/AppData/Roaming/npm/node_modules/@openai/codex/node_modules/@openai/codex-win32-x64/vendor/x86_64-pc-windows-msvc/codex-path/mt.exe"
+      - "C:/Users/Student/AppData/Roaming/npm/node_modules/@openai/codex/node_modules/@openai/codex-win32-x64/vendor/x86_64-pc-windows-msvc/codex-path/mt"
+      - "C:/Program Files (x86)/NVIDIA Corporation/PhysX/Common/mt.com"
+      - "C:/Program Files (x86)/NVIDIA Corporation/PhysX/Common/mt.exe"
+      - "C:/Program Files (x86)/NVIDIA Corporation/PhysX/Common/mt"
+      - "C:/Program Files/Common Files/Siemens/Automation/Simatic OAM/bin/mt.com"
+      - "C:/Program Files/Common Files/Siemens/Automation/Simatic OAM/bin/mt.exe"
+      - "C:/Program Files/Common Files/Siemens/Automation/Simatic OAM/bin/mt"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/javapath/mt.com"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/javapath/mt.exe"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/javapath/mt"
+      - "C:/Windows/System32/mt.com"
+      - "C:/Windows/System32/mt.exe"
+      - "C:/Windows/System32/mt"
+      - "C:/Windows/mt.com"
+      - "C:/Windows/mt.exe"
+      - "C:/Windows/mt"
+      - "C:/Windows/System32/wbem/mt.com"
+      - "C:/Windows/System32/wbem/mt.exe"
+      - "C:/Windows/System32/wbem/mt"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/mt.com"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/mt.exe"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/mt"
+      - "C:/Windows/System32/OpenSSH/mt.com"
+      - "C:/Windows/System32/OpenSSH/mt.exe"
+      - "C:/Windows/System32/OpenSSH/mt"
+      - "C:/Program Files/NVIDIA Corporation/NVIDIA App/NvDLISR/mt.com"
+      - "C:/Program Files/NVIDIA Corporation/NVIDIA App/NvDLISR/mt.exe"
+      - "C:/Program Files/NVIDIA Corporation/NVIDIA App/NvDLISR/mt"
+      - "C:/Program Files/Microsoft SQL Server/170/Tools/Binn/mt.com"
+      - "C:/Program Files/Microsoft SQL Server/170/Tools/Binn/mt.exe"
+      - "C:/Program Files/Microsoft SQL Server/170/Tools/Binn/mt"
+      - "C:/Program Files/Microsoft SQL Server/Client SDK/ODBC/170/Tools/Binn/mt.com"
+      - "C:/Program Files/Microsoft SQL Server/Client SDK/ODBC/170/Tools/Binn/mt.exe"
+      - "C:/Program Files/Microsoft SQL Server/Client SDK/ODBC/170/Tools/Binn/mt"
+      - "C:/Program Files/Git/cmd/mt.com"
+      - "C:/Program Files/Git/cmd/mt.exe"
+      - "C:/Program Files/Git/cmd/mt"
+      - "C:/Program Files (x86)/Microsoft SQL Server/160/Tools/Binn/mt.com"
+      - "C:/Program Files (x86)/Microsoft SQL Server/160/Tools/Binn/mt.exe"
+      - "C:/Program Files (x86)/Microsoft SQL Server/160/Tools/Binn/mt"
+      - "C:/Program Files/Microsoft SQL Server/160/Tools/Binn/mt.com"
+      - "C:/Program Files/Microsoft SQL Server/160/Tools/Binn/mt.exe"
+      - "C:/Program Files/Microsoft SQL Server/160/Tools/Binn/mt"
+      - "C:/Program Files/Microsoft SQL Server/160/DTS/Binn/mt.com"
+      - "C:/Program Files/Microsoft SQL Server/160/DTS/Binn/mt.exe"
+      - "C:/Program Files/Microsoft SQL Server/160/DTS/Binn/mt"
+      - "C:/Program Files/dotnet/mt.com"
+      - "C:/Program Files/dotnet/mt.exe"
+      - "C:/Program Files/dotnet/mt"
+      - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/mt.com"
+      - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/mt.exe"
+      - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/mt"
+      - "C:/Program Files/nodejs/mt.com"
+      - "C:/Program Files/nodejs/mt.exe"
+      - "C:/Program Files/nodejs/mt"
+      - "C:/Program Files (x86)/Windows Kits/8.1/Windows Performance Toolkit/mt.com"
+      - "C:/Program Files (x86)/Windows Kits/8.1/Windows Performance Toolkit/mt.exe"
+      - "C:/Program Files (x86)/Windows Kits/8.1/Windows Performance Toolkit/mt"
+      - "C:/Users/Student/AppData/Local/Programs/OpenAI/Codex/bin/mt.com"
+      - "C:/Users/Student/AppData/Local/Programs/OpenAI/Codex/bin/mt.exe"
+      - "C:/Users/Student/AppData/Local/Programs/OpenAI/Codex/bin/mt"
+      - "C:/Program Files/MySQL/MySQL Shell 8.0/bin/mt.com"
+      - "C:/Program Files/MySQL/MySQL Shell 8.0/bin/mt.exe"
+      - "C:/Program Files/MySQL/MySQL Shell 8.0/bin/mt"
+      - "C:/Users/Student/AppData/Local/Microsoft/WindowsApps/mt.com"
+      - "C:/Users/Student/AppData/Local/Microsoft/WindowsApps/mt.exe"
+      - "C:/Users/Student/AppData/Local/Microsoft/WindowsApps/mt"
+      - "C:/Users/Student/AppData/Local/Programs/Microsoft VS Code/bin/mt.com"
+      - "C:/Users/Student/AppData/Local/Programs/Microsoft VS Code/bin/mt.exe"
+      - "C:/Users/Student/AppData/Local/Programs/Microsoft VS Code/bin/mt"
+      - "C:/Users/Student/AppData/Local/GitHubDesktop/bin/mt.com"
+      - "C:/Users/Student/AppData/Local/GitHubDesktop/bin/mt.exe"
+      - "C:/Users/Student/AppData/Local/GitHubDesktop/bin/mt"
+      - "C:/Users/Student/AppData/Roaming/npm/mt.com"
+      - "C:/Users/Student/AppData/Roaming/npm/mt.exe"
+      - "C:/Users/Student/AppData/Roaming/npm/mt"
+      - "C:/Users/Student/.dotnet/tools/mt.com"
+      - "C:/Users/Student/.dotnet/tools/mt.exe"
+      - "C:/Users/Student/.dotnet/tools/mt"
+    found: false
+    search_context:
+      ENV{PATH}:
+        - "C:\\Users\\Student\\.codex\\tmp\\arg0\\codex-arg0drUE2p"
+        - "C:\\Users\\Student\\.codex\\packages\\app-server-daemon\\releases\\0.159.0-x86_64-pc-windows-msvc\\codex-path"
+        - "C:\\Users\\Student\\.codex\\tmp\\arg0\\codex-arg0yuc5YD"
+        - "C:\\Users\\Student\\.codex\\packages\\app-server-daemon\\releases\\0.158.0-x86_64-pc-windows-msvc\\codex-path"
+        - "C:\\Users\\Student\\.codex\\tmp\\arg0\\codex-arg0jP9Nrg"
+        - "C:\\Users\\Student\\AppData\\Roaming\\npm\\node_modules\\@openai\\codex\\node_modules\\@openai\\codex-win32-x64\\vendor\\x86_64-pc-windows-msvc\\codex-path"
+        - "C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common"
+        - "C:\\Program Files\\Common Files\\Siemens\\Automation\\Simatic OAM\\bin"
+        - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath"
+        - "C:\\WINDOWS\\system32"
+        - "C:\\WINDOWS"
+        - "C:\\WINDOWS\\System32\\Wbem"
+        - "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\WINDOWS\\System32\\OpenSSH\\"
+        - "C:\\Program Files\\NVIDIA Corporation\\NVIDIA App\\NvDLISR"
+        - "C:\\Program Files\\Microsoft SQL Server\\170\\Tools\\Binn\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\Client SDK\\ODBC\\170\\Tools\\Binn\\"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Program Files (x86)\\Microsoft SQL Server\\160\\Tools\\Binn\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\160\\Tools\\Binn\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\160\\DTS\\Binn\\"
+        - "C:\\Program Files\\dotnet\\"
+        - "C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance Toolkit\\"
+        - "C:\\Program Files\\nodejs\\"
+        - "C:\\Program Files (x86)\\Windows Kits\\8.1\\Windows Performance Toolkit\\"
+        - "C:\\Users\\Student\\AppData\\Local\\Programs\\OpenAI\\Codex\\bin"
+        - "C:\\Program Files\\MySQL\\MySQL Shell 8.0\\bin\\"
+        - "C:\\Users\\Student\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\Users\\Student\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "C:\\Users\\Student\\AppData\\Local\\GitHubDesktop\\bin"
+        - "C:\\Users\\Student\\AppData\\Roaming\\npm"
+        - "C:\\Users\\Student\\.dotnet\\tools"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "C:/Program Files/Microsoft Visual Studio/18/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-4.3/Modules/CMakeFindBinUtils.cmake:243 (find_program)"
+      - "C:/Program Files/Microsoft Visual Studio/18/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-4.3/Modules/CMakeDetermineCCompiler.cmake:200 (include)"
+      - "CMakeLists.txt:6 (project)"
+    mode: "program"
+    variable: "CMAKE_AR"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "lib"
+    candidate_directories:
+      - "C:/Users/Student/.codex/tmp/arg0/codex-arg0drUE2p/"
+      - "C:/Users/Student/.codex/packages/app-server-daemon/releases/0.159.0-x86_64-pc-windows-msvc/codex-path/"
+      - "C:/Users/Student/.codex/tmp/arg0/codex-arg0yuc5YD/"
+      - "C:/Users/Student/.codex/packages/app-server-daemon/releases/0.158.0-x86_64-pc-windows-msvc/codex-path/"
+      - "C:/Users/Student/.codex/tmp/arg0/codex-arg0jP9Nrg/"
+      - "C:/Users/Student/AppData/Roaming/npm/node_modules/@openai/codex/node_modules/@openai/codex-win32-x64/vendor/x86_64-pc-windows-msvc/codex-path/"
+      - "C:/Program Files (x86)/NVIDIA Corporation/PhysX/Common/"
+      - "C:/Program Files/Common Files/Siemens/Automation/Simatic OAM/bin/"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/javapath/"
+      - "C:/Windows/System32/"
+      - "C:/Windows/"
+      - "C:/Windows/System32/wbem/"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/"
+      - "C:/Windows/System32/OpenSSH/"
+      - "C:/Program Files/NVIDIA Corporation/NVIDIA App/NvDLISR/"
+      - "C:/Program Files/Microsoft SQL Server/170/Tools/Binn/"
+      - "C:/Program Files/Microsoft SQL Server/Client SDK/ODBC/170/Tools/Binn/"
+      - "C:/Program Files/Git/cmd/"
+      - "C:/Program Files (x86)/Microsoft SQL Server/160/Tools/Binn/"
+      - "C:/Program Files/Microsoft SQL Server/160/Tools/Binn/"
+      - "C:/Program Files/Microsoft SQL Server/160/DTS/Binn/"
+      - "C:/Program Files/dotnet/"
+      - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/"
+      - "C:/Program Files/nodejs/"
+      - "C:/Program Files (x86)/Windows Kits/8.1/Windows Performance Toolkit/"
+      - "C:/Users/Student/AppData/Local/Programs/OpenAI/Codex/bin/"
+      - "C:/Program Files/MySQL/MySQL Shell 8.0/bin/"
+      - "C:/Users/Student/AppData/Local/Microsoft/WindowsApps/"
+      - "C:/Users/Student/AppData/Local/Programs/Microsoft VS Code/bin/"
+      - "C:/Users/Student/AppData/Local/GitHubDesktop/bin/"
+      - "C:/Users/Student/AppData/Roaming/npm/"
+      - "C:/Users/Student/.dotnet/tools/"
+    searched_directories:
+      - "C:/Users/Student/.codex/tmp/arg0/codex-arg0drUE2p/lib.com"
+      - "C:/Users/Student/.codex/tmp/arg0/codex-arg0drUE2p/lib.exe"
+      - "C:/Users/Student/.codex/tmp/arg0/codex-arg0drUE2p/lib"
+      - "C:/Users/Student/.codex/packages/app-server-daemon/releases/0.159.0-x86_64-pc-windows-msvc/codex-path/lib.com"
+      - "C:/Users/Student/.codex/packages/app-server-daemon/releases/0.159.0-x86_64-pc-windows-msvc/codex-path/lib.exe"
+      - "C:/Users/Student/.codex/packages/app-server-daemon/releases/0.159.0-x86_64-pc-windows-msvc/codex-path/lib"
+      - "C:/Users/Student/.codex/tmp/arg0/codex-arg0yuc5YD/lib.com"
+      - "C:/Users/Student/.codex/tmp/arg0/codex-arg0yuc5YD/lib.exe"
+      - "C:/Users/Student/.codex/tmp/arg0/codex-arg0yuc5YD/lib"
+      - "C:/Users/Student/.codex/packages/app-server-daemon/releases/0.158.0-x86_64-pc-windows-msvc/codex-path/lib.com"
+      - "C:/Users/Student/.codex/packages/app-server-daemon/releases/0.158.0-x86_64-pc-windows-msvc/codex-path/lib.exe"
+      - "C:/Users/Student/.codex/packages/app-server-daemon/releases/0.158.0-x86_64-pc-windows-msvc/codex-path/lib"
+      - "C:/Users/Student/.codex/tmp/arg0/codex-arg0jP9Nrg/lib.com"
+      - "C:/Users/Student/.codex/tmp/arg0/codex-arg0jP9Nrg/lib.exe"
+      - "C:/Users/Student/.codex/tmp/arg0/codex-arg0jP9Nrg/lib"
+      - "C:/Users/Student/AppData/Roaming/npm/node_modules/@openai/codex/node_modules/@openai/codex-win32-x64/vendor/x86_64-pc-windows-msvc/codex-path/lib.com"
+      - "C:/Users/Student/AppData/Roaming/npm/node_modules/@openai/codex/node_modules/@openai/codex-win32-x64/vendor/x86_64-pc-windows-msvc/codex-path/lib.exe"
+      - "C:/Users/Student/AppData/Roaming/npm/node_modules/@openai/codex/node_modules/@openai/codex-win32-x64/vendor/x86_64-pc-windows-msvc/codex-path/lib"
+      - "C:/Program Files (x86)/NVIDIA Corporation/PhysX/Common/lib.com"
+      - "C:/Program Files (x86)/NVIDIA Corporation/PhysX/Common/lib.exe"
+      - "C:/Program Files (x86)/NVIDIA Corporation/PhysX/Common/lib"
+      - "C:/Program Files/Common Files/Siemens/Automation/Simatic OAM/bin/lib.com"
+      - "C:/Program Files/Common Files/Siemens/Automation/Simatic OAM/bin/lib.exe"
+      - "C:/Program Files/Common Files/Siemens/Automation/Simatic OAM/bin/lib"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/javapath/lib.com"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/javapath/lib.exe"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/javapath/lib"
+      - "C:/Windows/System32/lib.com"
+      - "C:/Windows/System32/lib.exe"
+      - "C:/Windows/System32/lib"
+      - "C:/Windows/lib.com"
+      - "C:/Windows/lib.exe"
+      - "C:/Windows/lib"
+      - "C:/Windows/System32/wbem/lib.com"
+      - "C:/Windows/System32/wbem/lib.exe"
+      - "C:/Windows/System32/wbem/lib"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/lib.com"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/lib.exe"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/lib"
+      - "C:/Windows/System32/OpenSSH/lib.com"
+      - "C:/Windows/System32/OpenSSH/lib.exe"
+      - "C:/Windows/System32/OpenSSH/lib"
+      - "C:/Program Files/NVIDIA Corporation/NVIDIA App/NvDLISR/lib.com"
+      - "C:/Program Files/NVIDIA Corporation/NVIDIA App/NvDLISR/lib.exe"
+      - "C:/Program Files/NVIDIA Corporation/NVIDIA App/NvDLISR/lib"
+      - "C:/Program Files/Microsoft SQL Server/170/Tools/Binn/lib.com"
+      - "C:/Program Files/Microsoft SQL Server/170/Tools/Binn/lib.exe"
+      - "C:/Program Files/Microsoft SQL Server/170/Tools/Binn/lib"
+      - "C:/Program Files/Microsoft SQL Server/Client SDK/ODBC/170/Tools/Binn/lib.com"
+      - "C:/Program Files/Microsoft SQL Server/Client SDK/ODBC/170/Tools/Binn/lib.exe"
+      - "C:/Program Files/Microsoft SQL Server/Client SDK/ODBC/170/Tools/Binn/lib"
+      - "C:/Program Files/Git/cmd/lib.com"
+      - "C:/Program Files/Git/cmd/lib.exe"
+      - "C:/Program Files/Git/cmd/lib"
+      - "C:/Program Files (x86)/Microsoft SQL Server/160/Tools/Binn/lib.com"
+      - "C:/Program Files (x86)/Microsoft SQL Server/160/Tools/Binn/lib.exe"
+      - "C:/Program Files (x86)/Microsoft SQL Server/160/Tools/Binn/lib"
+      - "C:/Program Files/Microsoft SQL Server/160/Tools/Binn/lib.com"
+      - "C:/Program Files/Microsoft SQL Server/160/Tools/Binn/lib.exe"
+      - "C:/Program Files/Microsoft SQL Server/160/Tools/Binn/lib"
+      - "C:/Program Files/Microsoft SQL Server/160/DTS/Binn/lib.com"
+      - "C:/Program Files/Microsoft SQL Server/160/DTS/Binn/lib.exe"
+      - "C:/Program Files/Microsoft SQL Server/160/DTS/Binn/lib"
+      - "C:/Program Files/dotnet/lib.com"
+      - "C:/Program Files/dotnet/lib.exe"
+      - "C:/Program Files/dotnet/lib"
+      - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/lib.com"
+      - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/lib.exe"
+      - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/lib"
+      - "C:/Program Files/nodejs/lib.com"
+      - "C:/Program Files/nodejs/lib.exe"
+      - "C:/Program Files/nodejs/lib"
+      - "C:/Program Files (x86)/Windows Kits/8.1/Windows Performance Toolkit/lib.com"
+      - "C:/Program Files (x86)/Windows Kits/8.1/Windows Performance Toolkit/lib.exe"
+      - "C:/Program Files (x86)/Windows Kits/8.1/Windows Performance Toolkit/lib"
+      - "C:/Users/Student/AppData/Local/Programs/OpenAI/Codex/bin/lib.com"
+      - "C:/Users/Student/AppData/Local/Programs/OpenAI/Codex/bin/lib.exe"
+      - "C:/Users/Student/AppData/Local/Programs/OpenAI/Codex/bin/lib"
+      - "C:/Program Files/MySQL/MySQL Shell 8.0/bin/lib.com"
+      - "C:/Program Files/MySQL/MySQL Shell 8.0/bin/lib.exe"
+      - "C:/Program Files/MySQL/MySQL Shell 8.0/bin/lib"
+      - "C:/Users/Student/AppData/Local/Microsoft/WindowsApps/lib.com"
+      - "C:/Users/Student/AppData/Local/Microsoft/WindowsApps/lib.exe"
+      - "C:/Users/Student/AppData/Local/Microsoft/WindowsApps/lib"
+      - "C:/Users/Student/AppData/Local/Programs/Microsoft VS Code/bin/lib.com"
+      - "C:/Users/Student/AppData/Local/Programs/Microsoft VS Code/bin/lib.exe"
+      - "C:/Users/Student/AppData/Local/Programs/Microsoft VS Code/bin/lib"
+      - "C:/Users/Student/AppData/Local/GitHubDesktop/bin/lib.com"
+      - "C:/Users/Student/AppData/Local/GitHubDesktop/bin/lib.exe"
+      - "C:/Users/Student/AppData/Local/GitHubDesktop/bin/lib"
+      - "C:/Users/Student/AppData/Roaming/npm/lib.com"
+      - "C:/Users/Student/AppData/Roaming/npm/lib.exe"
+      - "C:/Users/Student/AppData/Roaming/npm/lib"
+      - "C:/Users/Student/.dotnet/tools/lib.com"
+      - "C:/Users/Student/.dotnet/tools/lib.exe"
+      - "C:/Users/Student/.dotnet/tools/lib"
+    found: false
+    search_context:
+      ENV{PATH}:
+        - "C:\\Users\\Student\\.codex\\tmp\\arg0\\codex-arg0drUE2p"
+        - "C:\\Users\\Student\\.codex\\packages\\app-server-daemon\\releases\\0.159.0-x86_64-pc-windows-msvc\\codex-path"
+        - "C:\\Users\\Student\\.codex\\tmp\\arg0\\codex-arg0yuc5YD"
+        - "C:\\Users\\Student\\.codex\\packages\\app-server-daemon\\releases\\0.158.0-x86_64-pc-windows-msvc\\codex-path"
+        - "C:\\Users\\Student\\.codex\\tmp\\arg0\\codex-arg0jP9Nrg"
+        - "C:\\Users\\Student\\AppData\\Roaming\\npm\\node_modules\\@openai\\codex\\node_modules\\@openai\\codex-win32-x64\\vendor\\x86_64-pc-windows-msvc\\codex-path"
+        - "C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common"
+        - "C:\\Program Files\\Common Files\\Siemens\\Automation\\Simatic OAM\\bin"
+        - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath"
+        - "C:\\WINDOWS\\system32"
+        - "C:\\WINDOWS"
+        - "C:\\WINDOWS\\System32\\Wbem"
+        - "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\WINDOWS\\System32\\OpenSSH\\"
+        - "C:\\Program Files\\NVIDIA Corporation\\NVIDIA App\\NvDLISR"
+        - "C:\\Program Files\\Microsoft SQL Server\\170\\Tools\\Binn\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\Client SDK\\ODBC\\170\\Tools\\Binn\\"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Program Files (x86)\\Microsoft SQL Server\\160\\Tools\\Binn\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\160\\Tools\\Binn\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\160\\DTS\\Binn\\"
+        - "C:\\Program Files\\dotnet\\"
+        - "C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance Toolkit\\"
+        - "C:\\Program Files\\nodejs\\"
+        - "C:\\Program Files (x86)\\Windows Kits\\8.1\\Windows Performance Toolkit\\"
+        - "C:\\Users\\Student\\AppData\\Local\\Programs\\OpenAI\\Codex\\bin"
+        - "C:\\Program Files\\MySQL\\MySQL Shell 8.0\\bin\\"
+        - "C:\\Users\\Student\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\Users\\Student\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "C:\\Users\\Student\\AppData\\Local\\GitHubDesktop\\bin"
+        - "C:\\Users\\Student\\AppData\\Roaming\\npm"
+        - "C:\\Users\\Student\\.dotnet\\tools"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "C:/Program Files/Microsoft Visual Studio/18/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-4.3/Modules/CMakeDetermineCompilerId.cmake:468 (find_file)"
+      - "C:/Program Files/Microsoft Visual Studio/18/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-4.3/Modules/CMakeDetermineCompilerId.cmake:506 (CMAKE_DETERMINE_COMPILER_ID_WRITE)"
+      - "C:/Program Files/Microsoft Visual Studio/18/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-4.3/Modules/CMakeDetermineCompilerId.cmake:8 (CMAKE_DETERMINE_COMPILER_ID_BUILD)"
+      - "C:/Program Files/Microsoft Visual Studio/18/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-4.3/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "C:/Program Files/Microsoft Visual Studio/18/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-4.3/Modules/CMakeDetermineCXXCompiler.cmake:125 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:6 (project)"
+    mode: "file"
+    variable: "src_in"
+    description: "Path to a file."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "CMakeCXXCompilerId.cpp.in"
+    candidate_directories:
+      - "C:/Program Files/Microsoft Visual Studio/18/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-4.3/Modules/"
+    found: "C:/Program Files/Microsoft Visual Studio/18/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-4.3/Modules/CMakeCXXCompilerId.cpp.in"
+    search_context:
+      ENV{PATH}:
+        - "C:\\Users\\Student\\.codex\\tmp\\arg0\\codex-arg0drUE2p"
+        - "C:\\Users\\Student\\.codex\\packages\\app-server-daemon\\releases\\0.159.0-x86_64-pc-windows-msvc\\codex-path"
+        - "C:\\Users\\Student\\.codex\\tmp\\arg0\\codex-arg0yuc5YD"
+        - "C:\\Users\\Student\\.codex\\packages\\app-server-daemon\\releases\\0.158.0-x86_64-pc-windows-msvc\\codex-path"
+        - "C:\\Users\\Student\\.codex\\tmp\\arg0\\codex-arg0jP9Nrg"
+        - "C:\\Users\\Student\\AppData\\Roaming\\npm\\node_modules\\@openai\\codex\\node_modules\\@openai\\codex-win32-x64\\vendor\\x86_64-pc-windows-msvc\\codex-path"
+        - "C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common"
+        - "C:\\Program Files\\Common Files\\Siemens\\Automation\\Simatic OAM\\bin"
+        - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath"
+        - "C:\\WINDOWS\\system32"
+        - "C:\\WINDOWS"
+        - "C:\\WINDOWS\\System32\\Wbem"
+        - "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\WINDOWS\\System32\\OpenSSH\\"
+        - "C:\\Program Files\\NVIDIA Corporation\\NVIDIA App\\NvDLISR"
+        - "C:\\Program Files\\Microsoft SQL Server\\170\\Tools\\Binn\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\Client SDK\\ODBC\\170\\Tools\\Binn\\"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Program Files (x86)\\Microsoft SQL Server\\160\\Tools\\Binn\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\160\\Tools\\Binn\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\160\\DTS\\Binn\\"
+        - "C:\\Program Files\\dotnet\\"
+        - "C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance Toolkit\\"
+        - "C:\\Program Files\\nodejs\\"
+        - "C:\\Program Files (x86)\\Windows Kits\\8.1\\Windows Performance Toolkit\\"
+        - "C:\\Users\\Student\\AppData\\Local\\Programs\\OpenAI\\Codex\\bin"
+        - "C:\\Program Files\\MySQL\\MySQL Shell 8.0\\bin\\"
+        - "C:\\Users\\Student\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\Users\\Student\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "C:\\Users\\Student\\AppData\\Local\\GitHubDesktop\\bin"
+        - "C:\\Users\\Student\\AppData\\Roaming\\npm"
+        - "C:\\Users\\Student\\.dotnet\\tools"
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Program Files/Microsoft Visual Studio/18/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-4.3/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "C:/Program Files/Microsoft Visual Studio/18/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-4.3/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "C:/Program Files/Microsoft Visual Studio/18/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-4.3/Modules/CMakeDetermineCXXCompiler.cmake:125 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:6 (project)"
+    message: |
+      Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+      Compiler:  
+      Build flags: 
+      Id flags:  
+      
+      The output was:
+      1
+      Версия MSBuild 18.9.1+a81b43525 для .NET Framework
+      Сборка начата 29.09.2026 18:05:21.
+      
+      Проект "C:\\Users\\Student\\Desktop\\raspis-unos\\__cmake_systeminformation\\CMakeFiles\\4.3.1-msvc1\\CompilerIdCXX\\CompilerIdCXX.vcxproj" в узле 1 (целевые объекты по умолчанию).
+      PrepareForBuild:
+        Создание каталога "Debug\\".
+        Структурированный вывод включен. Форматирование диагностики компилятора будет отражать иерархию ошибок. Подробнее см. https://aka.ms/cpp/structured-output.
+        Создание каталога "Debug\\CompilerIdCXX.tlog\\".
+      InitializeBuildStatus:
+        Создание "Debug\\CompilerIdCXX.tlog\\unsuccessfulbuild", так как было задано "AlwaysCreate".
+        Обращение к "Debug\\CompilerIdCXX.tlog\\unsuccessfulbuild".
+      ClCompile:
+        C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\VC\\Tools\\MSVC\\14.51.36231\\bin\\HostX64\\x64\\CL.exe /c /nologo /W0 /WX- /diagnostics:column /Od /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\\\" /Fd"Debug\\vc145.pdb" /external:W0 /Gd /TP /FC /errorReport:queue CMakeCXXCompilerId.cpp
+      C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\MSBuild\\Microsoft\\VC\\v180\\Microsoft.CppCommon.targets(790,5): error MSB6001: Недопустимый переключатель командной строки для "CL.exe". System.ArgumentException: Элемент уже добавлен. Ключ в словаре: "Path"  Добавляемый ключ: 'PATH' [C:\\Users\\Student\\Desktop\\raspis-unos\\__cmake_systeminformation\\CMakeFiles\\4.3.1-msvc1\\CompilerIdCXX\\CompilerIdCXX.vcxproj]
+      C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\MSBuild\\Microsoft\\VC\\v180\\Microsoft.CppCommon.targets(790,5): error MSB6001:    в System.Collections.Hashtable.Insert(Object key, Object nvalue, Boolean add) [C:\\Users\\Student\\Desktop\\raspis-unos\\__cmake_systeminformation\\CMakeFiles\\4.3.1-msvc1\\CompilerIdCXX\\CompilerIdCXX.vcxproj]
+      C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\MSBuild\\Microsoft\\VC\\v180\\Microsoft.CppCommon.targets(790,5): error MSB6001:    в System.Diagnostics.ProcessStartInfo.get_EnvironmentVariables() [C:\\Users\\Student\\Desktop\\raspis-unos\\__cmake_systeminformation\\CMakeFiles\\4.3.1-msvc1\\CompilerIdCXX\\CompilerIdCXX.vcxproj]
+      C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\MSBuild\\Microsoft\\VC\\v180\\Microsoft.CppCommon.targets(790,5): error MSB6001:    в Microsoft.Build.Utilities.ToolTask.GetProcessStartInfo(String pathToTool, String commandLineCommands, String responseFileSwitch) [C:\\Users\\Student\\Desktop\\raspis-unos\\__cmake_systeminformation\\CMakeFiles\\4.3.1-msvc1\\CompilerIdCXX\\CompilerIdCXX.vcxproj]
+      C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\MSBuild\\Microsoft\\VC\\v180\\Microsoft.CppCommon.targets(790,5): error MSB6001:    в Microsoft.Build.Utilities.ToolTask.ExecuteTool(String pathToTool, String responseFileCommands, String commandLineCommands) [C:\\Users\\Student\\Desktop\\raspis-unos\\__cmake_systeminformation\\CMakeFiles\\4.3.1-msvc1\\CompilerIdCXX\\CompilerIdCXX.vcxproj]
+      C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\MSBuild\\Microsoft\\VC\\v180\\Microsoft.CppCommon.targets(790,5): error MSB6001:    в Microsoft.Build.CPPTasks.TrackedVCToolTask.TrackerExecuteTool(String pathToTool, String responseFileCommands, String commandLineCommands) [C:\\Users\\Student\\Desktop\\raspis-unos\\__cmake_systeminformation\\CMakeFiles\\4.3.1-msvc1\\CompilerIdCXX\\CompilerIdCXX.vcxproj]
+      C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\MSBuild\\Microsoft\\VC\\v180\\Microsoft.CppCommon.targets(790,5): error MSB6001:    в Microsoft.Build.CPPTasks.TrackedVCToolTask.ExecuteTool(String pathToTool, String responseFileCommands, String commandLineCommands) [C:\\Users\\Student\\Desktop\\raspis-unos\\__cmake_systeminformation\\CMakeFiles\\4.3.1-msvc1\\CompilerIdCXX\\CompilerIdCXX.vcxproj]
+      C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\MSBuild\\Microsoft\\VC\\v180\\Microsoft.CppCommon.targets(790,5): error MSB6001:    в Microsoft.Build.CPPTasks.CL.ExecuteTool(String pathToTool, String responseFileCommands, String commandLineCommands) [C:\\Users\\Student\\Desktop\\raspis-unos\\__cmake_systeminformation\\CMakeFiles\\4.3.1-msvc1\\CompilerIdCXX\\CompilerIdCXX.vcxproj]
+      C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\MSBuild\\Microsoft\\VC\\v180\\Microsoft.CppCommon.targets(790,5): error MSB6001:    в Microsoft.Build.Utilities.ToolTask.Execute() [C:\\Users\\Student\\Desktop\\raspis-unos\\__cmake_systeminformation\\CMakeFiles\\4.3.1-msvc1\\CompilerIdCXX\\CompilerIdCXX.vcxproj]
+      Сборка проекта "C:\\Users\\Student\\Desktop\\raspis-unos\\__cmake_systeminformation\\CMakeFiles\\4.3.1-msvc1\\CompilerIdCXX\\CompilerIdCXX.vcxproj" завершена (целевые объекты по умолчанию) с ошибкой.
+      
+      Ошибка сборки.
+      
+      "C:\\Users\\Student\\Desktop\\raspis-unos\\__cmake_systeminformation\\CMakeFiles\\4.3.1-msvc1\\CompilerIdCXX\\CompilerIdCXX.vcxproj" (целевой объект по умолчанию) (1) ->
+      (Целевой объект ClCompile) -> 
+        C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\MSBuild\\Microsoft\\VC\\v180\\Microsoft.CppCommon.targets(790,5): error MSB6001: Недопустимый переключатель командной строки для "CL.exe". System.ArgumentException: Элемент уже добавлен. Ключ в словаре: "Path"  Добавляемый ключ: 'PATH' [C:\\Users\\Student\\Desktop\\raspis-unos\\__cmake_systeminformation\\CMakeFiles\\4.3.1-msvc1\\CompilerIdCXX\\CompilerIdCXX.vcxproj]
+      C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\MSBuild\\Microsoft\\VC\\v180\\Microsoft.CppCommon.targets(790,5): error MSB6001:    в System.Collections.Hashtable.Insert(Object key, Object nvalue, Boolean add) [C:\\Users\\Student\\Desktop\\raspis-unos\\__cmake_systeminformation\\CMakeFiles\\4.3.1-msvc1\\CompilerIdCXX\\CompilerIdCXX.vcxproj]
+      C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\MSBuild\\Microsoft\\VC\\v180\\Microsoft.CppCommon.targets(790,5): error MSB6001:    в System.Diagnostics.ProcessStartInfo.get_EnvironmentVariables() [C:\\Users\\Student\\Desktop\\raspis-unos\\__cmake_systeminformation\\CMakeFiles\\4.3.1-msvc1\\CompilerIdCXX\\CompilerIdCXX.vcxproj]
+      C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\MSBuild\\Microsoft\\VC\\v180\\Microsoft.CppCommon.targets(790,5): error MSB6001:    в Microsoft.Build.Utilities.ToolTask.GetProcessStartInfo(String pathToTool, String commandLineCommands, String responseFileSwitch) [C:\\Users\\Student\\Desktop\\raspis-unos\\__cmake_systeminformation\\CMakeFiles\\4.3.1-msvc1\\CompilerIdCXX\\CompilerIdCXX.vcxproj]
+      C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\MSBuild\\Microsoft\\VC\\v180\\Microsoft.CppCommon.targets(790,5): error MSB6001:    в Microsoft.Build.Utilities.ToolTask.ExecuteTool(String pathToTool, String responseFileCommands, String commandLineCommands) [C:\\Users\\Student\\Desktop\\raspis-unos\\__cmake_systeminformation\\CMakeFiles\\4.3.1-msvc1\\CompilerIdCXX\\CompilerIdCXX.vcxproj]
+      C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\MSBuild\\Microsoft\\VC\\v180\\Microsoft.CppCommon.targets(790,5): error MSB6001:    в Microsoft.Build.CPPTasks.TrackedVCToolTask.TrackerExecuteTool(String pathToTool, String responseFileCommands, String commandLineCommands) [C:\\Users\\Student\\Desktop\\raspis-unos\\__cmake_systeminformation\\CMakeFiles\\4.3.1-msvc1\\CompilerIdCXX\\CompilerIdCXX.vcxproj]
+      C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\MSBuild\\Microsoft\\VC\\v180\\Microsoft.CppCommon.targets(790,5): error MSB6001:    в Microsoft.Build.CPPTasks.TrackedVCToolTask.ExecuteTool(String pathToTool, String responseFileCommands, String commandLineCommands) [C:\\Users\\Student\\Desktop\\raspis-unos\\__cmake_systeminformation\\CMakeFiles\\4.3.1-msvc1\\CompilerIdCXX\\CompilerIdCXX.vcxproj]
+      C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\MSBuild\\Microsoft\\VC\\v180\\Microsoft.CppCommon.targets(790,5): error MSB6001:    в Microsoft.Build.CPPTasks.CL.ExecuteTool(String pathToTool, String responseFileCommands, String commandLineCommands) [C:\\Users\\Student\\Desktop\\raspis-unos\\__cmake_systeminformation\\CMakeFiles\\4.3.1-msvc1\\CompilerIdCXX\\CompilerIdCXX.vcxproj]
+      C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\MSBuild\\Microsoft\\VC\\v180\\Microsoft.CppCommon.targets(790,5): error MSB6001:    в Microsoft.Build.Utilities.ToolTask.Execute() [C:\\Users\\Student\\Desktop\\raspis-unos\\__cmake_systeminformation\\CMakeFiles\\4.3.1-msvc1\\CompilerIdCXX\\CompilerIdCXX.vcxproj]
+      
+          Предупреждений: 0
+          Ошибок: 1
+      
+      Прошло времени 00:00:00.20
+      
+      
+  -
+    kind: "find-v1"
+    backtrace:
+      - "C:/Program Files/Microsoft Visual Studio/18/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-4.3/Modules/CMakeDetermineCompilerId.cmake:468 (find_file)"
+      - "C:/Program Files/Microsoft Visual Studio/18/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-4.3/Modules/CMakeDetermineCompilerId.cmake:506 (CMAKE_DETERMINE_COMPILER_ID_WRITE)"
+      - "C:/Program Files/Microsoft Visual Studio/18/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-4.3/Modules/CMakeDetermineCompilerId.cmake:8 (CMAKE_DETERMINE_COMPILER_ID_BUILD)"
+      - "C:/Program Files/Microsoft Visual Studio/18/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-4.3/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "C:/Program Files/Microsoft Visual Studio/18/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-4.3/Modules/CMakeDetermineCXXCompiler.cmake:125 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:6 (project)"
+    mode: "file"
+    variable: "src_in"
+    description: "Path to a file."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "CMakeCXXCompilerId.cpp.in"
+    candidate_directories:
+      - "C:/Program Files/Microsoft Visual Studio/18/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-4.3/Modules/"
+    found: "C:/Program Files/Microsoft Visual Studio/18/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-4.3/Modules/CMakeCXXCompilerId.cpp.in"
+    search_context:
+      ENV{PATH}:
+        - "C:\\Users\\Student\\.codex\\tmp\\arg0\\codex-arg0drUE2p"
+        - "C:\\Users\\Student\\.codex\\packages\\app-server-daemon\\releases\\0.159.0-x86_64-pc-windows-msvc\\codex-path"
+        - "C:\\Users\\Student\\.codex\\tmp\\arg0\\codex-arg0yuc5YD"
+        - "C:\\Users\\Student\\.codex\\packages\\app-server-daemon\\releases\\0.158.0-x86_64-pc-windows-msvc\\codex-path"
+        - "C:\\Users\\Student\\.codex\\tmp\\arg0\\codex-arg0jP9Nrg"
+        - "C:\\Users\\Student\\AppData\\Roaming\\npm\\node_modules\\@openai\\codex\\node_modules\\@openai\\codex-win32-x64\\vendor\\x86_64-pc-windows-msvc\\codex-path"
+        - "C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common"
+        - "C:\\Program Files\\Common Files\\Siemens\\Automation\\Simatic OAM\\bin"
+        - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath"
+        - "C:\\WINDOWS\\system32"
+        - "C:\\WINDOWS"
+        - "C:\\WINDOWS\\System32\\Wbem"
+        - "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\WINDOWS\\System32\\OpenSSH\\"
+        - "C:\\Program Files\\NVIDIA Corporation\\NVIDIA App\\NvDLISR"
+        - "C:\\Program Files\\Microsoft SQL Server\\170\\Tools\\Binn\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\Client SDK\\ODBC\\170\\Tools\\Binn\\"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Program Files (x86)\\Microsoft SQL Server\\160\\Tools\\Binn\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\160\\Tools\\Binn\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\160\\DTS\\Binn\\"
+        - "C:\\Program Files\\dotnet\\"
+        - "C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance Toolkit\\"
+        - "C:\\Program Files\\nodejs\\"
+        - "C:\\Program Files (x86)\\Windows Kits\\8.1\\Windows Performance Toolkit\\"
+        - "C:\\Users\\Student\\AppData\\Local\\Programs\\OpenAI\\Codex\\bin"
+        - "C:\\Program Files\\MySQL\\MySQL Shell 8.0\\bin\\"
+        - "C:\\Users\\Student\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\Users\\Student\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "C:\\Users\\Student\\AppData\\Local\\GitHubDesktop\\bin"
+        - "C:\\Users\\Student\\AppData\\Roaming\\npm"
+        - "C:\\Users\\Student\\.dotnet\\tools"
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Program Files/Microsoft Visual Studio/18/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-4.3/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "C:/Program Files/Microsoft Visual Studio/18/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-4.3/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "C:/Program Files/Microsoft Visual Studio/18/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-4.3/Modules/CMakeDetermineCXXCompiler.cmake:125 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:6 (project)"
+    message: |
+      Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+      Compiler:  
+      Build flags: 
+      Id flags:  
+      
+      The output was:
+      1
+      Версия MSBuild 18.9.1+a81b43525 для .NET Framework
+      Сборка начата 29.09.2026 18:05:21.
+      
+      Проект "C:\\Users\\Student\\Desktop\\raspis-unos\\__cmake_systeminformation\\CMakeFiles\\4.3.1-msvc1\\CompilerIdCXX\\CompilerIdCXX.vcxproj" в узле 1 (целевые объекты по умолчанию).
+      PrepareForBuild:
+        Создание каталога "Debug\\".
+        Структурированный вывод включен. Форматирование диагностики компилятора будет отражать иерархию ошибок. Подробнее см. https://aka.ms/cpp/structured-output.
+        Создание каталога "Debug\\CompilerIdCXX.tlog\\".
+      InitializeBuildStatus:
+        Создание "Debug\\CompilerIdCXX.tlog\\unsuccessfulbuild", так как было задано "AlwaysCreate".
+        Обращение к "Debug\\CompilerIdCXX.tlog\\unsuccessfulbuild".
+      ClCompile:
+        C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\VC\\Tools\\MSVC\\14.51.36231\\bin\\HostX64\\x64\\CL.exe /c /nologo /W0 /WX- /diagnostics:column /Od /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\\\" /Fd"Debug\\vc145.pdb" /external:W0 /Gd /TP /FC /errorReport:queue CMakeCXXCompilerId.cpp
+      C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\MSBuild\\Microsoft\\VC\\v180\\Microsoft.CppCommon.targets(790,5): error MSB6001: Недопустимый переключатель командной строки для "CL.exe". System.ArgumentException: Элемент уже добавлен. Ключ в словаре: "Path"  Добавляемый ключ: 'PATH' [C:\\Users\\Student\\Desktop\\raspis-unos\\__cmake_systeminformation\\CMakeFiles\\4.3.1-msvc1\\CompilerIdCXX\\CompilerIdCXX.vcxproj]
+      C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\MSBuild\\Microsoft\\VC\\v180\\Microsoft.CppCommon.targets(790,5): error MSB6001:    в System.Collections.Hashtable.Insert(Object key, Object nvalue, Boolean add) [C:\\Users\\Student\\Desktop\\raspis-unos\\__cmake_systeminformation\\CMakeFiles\\4.3.1-msvc1\\CompilerIdCXX\\CompilerIdCXX.vcxproj]
+      C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\MSBuild\\Microsoft\\VC\\v180\\Microsoft.CppCommon.targets(790,5): error MSB6001:    в System.Diagnostics.ProcessStartInfo.get_EnvironmentVariables() [C:\\Users\\Student\\Desktop\\raspis-unos\\__cmake_systeminformation\\CMakeFiles\\4.3.1-msvc1\\CompilerIdCXX\\CompilerIdCXX.vcxproj]
+      C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\MSBuild\\Microsoft\\VC\\v180\\Microsoft.CppCommon.targets(790,5): error MSB6001:    в Microsoft.Build.Utilities.ToolTask.GetProcessStartInfo(String pathToTool, String commandLineCommands, String responseFileSwitch) [C:\\Users\\Student\\Desktop\\raspis-unos\\__cmake_systeminformation\\CMakeFiles\\4.3.1-msvc1\\CompilerIdCXX\\CompilerIdCXX.vcxproj]
+      C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\MSBuild\\Microsoft\\VC\\v180\\Microsoft.CppCommon.targets(790,5): error MSB6001:    в Microsoft.Build.Utilities.ToolTask.ExecuteTool(String pathToTool, String responseFileCommands, String commandLineCommands) [C:\\Users\\Student\\Desktop\\raspis-unos\\__cmake_systeminformation\\CMakeFiles\\4.3.1-msvc1\\CompilerIdCXX\\CompilerIdCXX.vcxproj]
+      C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\MSBuild\\Microsoft\\VC\\v180\\Microsoft.CppCommon.targets(790,5): error MSB6001:    в Microsoft.Build.CPPTasks.TrackedVCToolTask.TrackerExecuteTool(String pathToTool, String responseFileCommands, String commandLineCommands) [C:\\Users\\Student\\Desktop\\raspis-unos\\__cmake_systeminformation\\CMakeFiles\\4.3.1-msvc1\\CompilerIdCXX\\CompilerIdCXX.vcxproj]
+      C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\MSBuild\\Microsoft\\VC\\v180\\Microsoft.CppCommon.targets(790,5): error MSB6001:    в Microsoft.Build.CPPTasks.TrackedVCToolTask.ExecuteTool(String pathToTool, String responseFileCommands, String commandLineCommands) [C:\\Users\\Student\\Desktop\\raspis-unos\\__cmake_systeminformation\\CMakeFiles\\4.3.1-msvc1\\CompilerIdCXX\\CompilerIdCXX.vcxproj]
+      C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\MSBuild\\Microsoft\\VC\\v180\\Microsoft.CppCommon.targets(790,5): error MSB6001:    в Microsoft.Build.CPPTasks.CL.ExecuteTool(String pathToTool, String responseFileCommands, String commandLineCommands) [C:\\Users\\Student\\Desktop\\raspis-unos\\__cmake_systeminformation\\CMakeFiles\\4.3.1-msvc1\\CompilerIdCXX\\CompilerIdCXX.vcxproj]
+      C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\MSBuild\\Microsoft\\VC\\v180\\Microsoft.CppCommon.targets(790,5): error MSB6001:    в Microsoft.Build.Utilities.ToolTask.Execute() [C:\\Users\\Student\\Desktop\\raspis-unos\\__cmake_systeminformation\\CMakeFiles\\4.3.1-msvc1\\CompilerIdCXX\\CompilerIdCXX.vcxproj]
+      Сборка проекта "C:\\Users\\Student\\Desktop\\raspis-unos\\__cmake_systeminformation\\CMakeFiles\\4.3.1-msvc1\\CompilerIdCXX\\CompilerIdCXX.vcxproj" завершена (целевые объекты по умолчанию) с ошибкой.
+      
+      Ошибка сборки.
+      
+      "C:\\Users\\Student\\Desktop\\raspis-unos\\__cmake_systeminformation\\CMakeFiles\\4.3.1-msvc1\\CompilerIdCXX\\CompilerIdCXX.vcxproj" (целевой объект по умолчанию) (1) ->
+      (Целевой объект ClCompile) -> 
+        C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\MSBuild\\Microsoft\\VC\\v180\\Microsoft.CppCommon.targets(790,5): error MSB6001: Недопустимый переключатель командной строки для "CL.exe". System.ArgumentException: Элемент уже добавлен. Ключ в словаре: "Path"  Добавляемый ключ: 'PATH' [C:\\Users\\Student\\Desktop\\raspis-unos\\__cmake_systeminformation\\CMakeFiles\\4.3.1-msvc1\\CompilerIdCXX\\CompilerIdCXX.vcxproj]
+      C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\MSBuild\\Microsoft\\VC\\v180\\Microsoft.CppCommon.targets(790,5): error MSB6001:    в System.Collections.Hashtable.Insert(Object key, Object nvalue, Boolean add) [C:\\Users\\Student\\Desktop\\raspis-unos\\__cmake_systeminformation\\CMakeFiles\\4.3.1-msvc1\\CompilerIdCXX\\CompilerIdCXX.vcxproj]
+      C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\MSBuild\\Microsoft\\VC\\v180\\Microsoft.CppCommon.targets(790,5): error MSB6001:    в System.Diagnostics.ProcessStartInfo.get_EnvironmentVariables() [C:\\Users\\Student\\Desktop\\raspis-unos\\__cmake_systeminformation\\CMakeFiles\\4.3.1-msvc1\\CompilerIdCXX\\CompilerIdCXX.vcxproj]
+      C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\MSBuild\\Microsoft\\VC\\v180\\Microsoft.CppCommon.targets(790,5): error MSB6001:    в Microsoft.Build.Utilities.ToolTask.GetProcessStartInfo(String pathToTool, String commandLineCommands, String responseFileSwitch) [C:\\Users\\Student\\Desktop\\raspis-unos\\__cmake_systeminformation\\CMakeFiles\\4.3.1-msvc1\\CompilerIdCXX\\CompilerIdCXX.vcxproj]
+      C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\MSBuild\\Microsoft\\VC\\v180\\Microsoft.CppCommon.targets(790,5): error MSB6001:    в Microsoft.Build.Utilities.ToolTask.ExecuteTool(String pathToTool, String responseFileCommands, String commandLineCommands) [C:\\Users\\Student\\Desktop\\raspis-unos\\__cmake_systeminformation\\CMakeFiles\\4.3.1-msvc1\\CompilerIdCXX\\CompilerIdCXX.vcxproj]
+      C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\MSBuild\\Microsoft\\VC\\v180\\Microsoft.CppCommon.targets(790,5): error MSB6001:    в Microsoft.Build.CPPTasks.TrackedVCToolTask.TrackerExecuteTool(String pathToTool, String responseFileCommands, String commandLineCommands) [C:\\Users\\Student\\Desktop\\raspis-unos\\__cmake_systeminformation\\CMakeFiles\\4.3.1-msvc1\\CompilerIdCXX\\CompilerIdCXX.vcxproj]
+      C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\MSBuild\\Microsoft\\VC\\v180\\Microsoft.CppCommon.targets(790,5): error MSB6001:    в Microsoft.Build.CPPTasks.TrackedVCToolTask.ExecuteTool(String pathToTool, String responseFileCommands, String commandLineCommands) [C:\\Users\\Student\\Desktop\\raspis-unos\\__cmake_systeminformation\\CMakeFiles\\4.3.1-msvc1\\CompilerIdCXX\\CompilerIdCXX.vcxproj]
+      C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\MSBuild\\Microsoft\\VC\\v180\\Microsoft.CppCommon.targets(790,5): error MSB6001:    в Microsoft.Build.CPPTasks.CL.ExecuteTool(String pathToTool, String responseFileCommands, String commandLineCommands) [C:\\Users\\Student\\Desktop\\raspis-unos\\__cmake_systeminformation\\CMakeFiles\\4.3.1-msvc1\\CompilerIdCXX\\CompilerIdCXX.vcxproj]
+      C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\MSBuild\\Microsoft\\VC\\v180\\Microsoft.CppCommon.targets(790,5): error MSB6001:    в Microsoft.Build.Utilities.ToolTask.Execute() [C:\\Users\\Student\\Desktop\\raspis-unos\\__cmake_systeminformation\\CMakeFiles\\4.3.1-msvc1\\CompilerIdCXX\\CompilerIdCXX.vcxproj]
+      
+          Предупреждений: 0
+          Ошибок: 1
+      
+      Прошло времени 00:00:00.18
+      
+      
+  -
+    kind: "find-v1"
+    backtrace:
+      - "C:/Program Files/Microsoft Visual Studio/18/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-4.3/Modules/CMakeFindBinUtils.cmake:37 (find_program)"
+      - "C:/Program Files/Microsoft Visual Studio/18/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-4.3/Modules/CMakeFindBinUtils.cmake:65 (__resolve_tool_path)"
+      - "C:/Program Files/Microsoft Visual Studio/18/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-4.3/Modules/CMakeFindBinUtils.cmake:103 (__resolve_linker_path)"
+      - "C:/Program Files/Microsoft Visual Studio/18/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-4.3/Modules/CMakeDetermineCXXCompiler.cmake:206 (include)"
+      - "CMakeLists.txt:6 (project)"
+    mode: "program"
+    variable: "_CMAKE_TOOL_WITH_PATH"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "link"
+    candidate_directories:
+      - "C:/Users/Student/.codex/tmp/arg0/codex-arg0drUE2p/"
+      - "C:/Users/Student/.codex/packages/app-server-daemon/releases/0.159.0-x86_64-pc-windows-msvc/codex-path/"
+      - "C:/Users/Student/.codex/tmp/arg0/codex-arg0yuc5YD/"
+      - "C:/Users/Student/.codex/packages/app-server-daemon/releases/0.158.0-x86_64-pc-windows-msvc/codex-path/"
+      - "C:/Users/Student/.codex/tmp/arg0/codex-arg0jP9Nrg/"
+      - "C:/Users/Student/AppData/Roaming/npm/node_modules/@openai/codex/node_modules/@openai/codex-win32-x64/vendor/x86_64-pc-windows-msvc/codex-path/"
+      - "C:/Program Files (x86)/NVIDIA Corporation/PhysX/Common/"
+      - "C:/Program Files/Common Files/Siemens/Automation/Simatic OAM/bin/"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/javapath/"
+      - "C:/Windows/System32/"
+      - "C:/Windows/"
+      - "C:/Windows/System32/wbem/"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/"
+      - "C:/Windows/System32/OpenSSH/"
+      - "C:/Program Files/NVIDIA Corporation/NVIDIA App/NvDLISR/"
+      - "C:/Program Files/Microsoft SQL Server/170/Tools/Binn/"
+      - "C:/Program Files/Microsoft SQL Server/Client SDK/ODBC/170/Tools/Binn/"
+      - "C:/Program Files/Git/cmd/"
+      - "C:/Program Files (x86)/Microsoft SQL Server/160/Tools/Binn/"
+      - "C:/Program Files/Microsoft SQL Server/160/Tools/Binn/"
+      - "C:/Program Files/Microsoft SQL Server/160/DTS/Binn/"
+      - "C:/Program Files/dotnet/"
+      - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/"
+      - "C:/Program Files/nodejs/"
+      - "C:/Program Files (x86)/Windows Kits/8.1/Windows Performance Toolkit/"
+      - "C:/Users/Student/AppData/Local/Programs/OpenAI/Codex/bin/"
+      - "C:/Program Files/MySQL/MySQL Shell 8.0/bin/"
+      - "C:/Users/Student/AppData/Local/Microsoft/WindowsApps/"
+      - "C:/Users/Student/AppData/Local/Programs/Microsoft VS Code/bin/"
+      - "C:/Users/Student/AppData/Local/GitHubDesktop/bin/"
+      - "C:/Users/Student/AppData/Roaming/npm/"
+      - "C:/Users/Student/.dotnet/tools/"
+    searched_directories:
+      - "C:/Users/Student/.codex/tmp/arg0/codex-arg0drUE2p/link.com"
+      - "C:/Users/Student/.codex/tmp/arg0/codex-arg0drUE2p/link.exe"
+      - "C:/Users/Student/.codex/tmp/arg0/codex-arg0drUE2p/link"
+      - "C:/Users/Student/.codex/packages/app-server-daemon/releases/0.159.0-x86_64-pc-windows-msvc/codex-path/link.com"
+      - "C:/Users/Student/.codex/packages/app-server-daemon/releases/0.159.0-x86_64-pc-windows-msvc/codex-path/link.exe"
+      - "C:/Users/Student/.codex/packages/app-server-daemon/releases/0.159.0-x86_64-pc-windows-msvc/codex-path/link"
+      - "C:/Users/Student/.codex/tmp/arg0/codex-arg0yuc5YD/link.com"
+      - "C:/Users/Student/.codex/tmp/arg0/codex-arg0yuc5YD/link.exe"
+      - "C:/Users/Student/.codex/tmp/arg0/codex-arg0yuc5YD/link"
+      - "C:/Users/Student/.codex/packages/app-server-daemon/releases/0.158.0-x86_64-pc-windows-msvc/codex-path/link.com"
+      - "C:/Users/Student/.codex/packages/app-server-daemon/releases/0.158.0-x86_64-pc-windows-msvc/codex-path/link.exe"
+      - "C:/Users/Student/.codex/packages/app-server-daemon/releases/0.158.0-x86_64-pc-windows-msvc/codex-path/link"
+      - "C:/Users/Student/.codex/tmp/arg0/codex-arg0jP9Nrg/link.com"
+      - "C:/Users/Student/.codex/tmp/arg0/codex-arg0jP9Nrg/link.exe"
+      - "C:/Users/Student/.codex/tmp/arg0/codex-arg0jP9Nrg/link"
+      - "C:/Users/Student/AppData/Roaming/npm/node_modules/@openai/codex/node_modules/@openai/codex-win32-x64/vendor/x86_64-pc-windows-msvc/codex-path/link.com"
+      - "C:/Users/Student/AppData/Roaming/npm/node_modules/@openai/codex/node_modules/@openai/codex-win32-x64/vendor/x86_64-pc-windows-msvc/codex-path/link.exe"
+      - "C:/Users/Student/AppData/Roaming/npm/node_modules/@openai/codex/node_modules/@openai/codex-win32-x64/vendor/x86_64-pc-windows-msvc/codex-path/link"
+      - "C:/Program Files (x86)/NVIDIA Corporation/PhysX/Common/link.com"
+      - "C:/Program Files (x86)/NVIDIA Corporation/PhysX/Common/link.exe"
+      - "C:/Program Files (x86)/NVIDIA Corporation/PhysX/Common/link"
+      - "C:/Program Files/Common Files/Siemens/Automation/Simatic OAM/bin/link.com"
+      - "C:/Program Files/Common Files/Siemens/Automation/Simatic OAM/bin/link.exe"
+      - "C:/Program Files/Common Files/Siemens/Automation/Simatic OAM/bin/link"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/javapath/link.com"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/javapath/link.exe"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/javapath/link"
+      - "C:/Windows/System32/link.com"
+      - "C:/Windows/System32/link.exe"
+      - "C:/Windows/System32/link"
+      - "C:/Windows/link.com"
+      - "C:/Windows/link.exe"
+      - "C:/Windows/link"
+      - "C:/Windows/System32/wbem/link.com"
+      - "C:/Windows/System32/wbem/link.exe"
+      - "C:/Windows/System32/wbem/link"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/link.com"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/link.exe"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/link"
+      - "C:/Windows/System32/OpenSSH/link.com"
+      - "C:/Windows/System32/OpenSSH/link.exe"
+      - "C:/Windows/System32/OpenSSH/link"
+      - "C:/Program Files/NVIDIA Corporation/NVIDIA App/NvDLISR/link.com"
+      - "C:/Program Files/NVIDIA Corporation/NVIDIA App/NvDLISR/link.exe"
+      - "C:/Program Files/NVIDIA Corporation/NVIDIA App/NvDLISR/link"
+      - "C:/Program Files/Microsoft SQL Server/170/Tools/Binn/link.com"
+      - "C:/Program Files/Microsoft SQL Server/170/Tools/Binn/link.exe"
+      - "C:/Program Files/Microsoft SQL Server/170/Tools/Binn/link"
+      - "C:/Program Files/Microsoft SQL Server/Client SDK/ODBC/170/Tools/Binn/link.com"
+      - "C:/Program Files/Microsoft SQL Server/Client SDK/ODBC/170/Tools/Binn/link.exe"
+      - "C:/Program Files/Microsoft SQL Server/Client SDK/ODBC/170/Tools/Binn/link"
+      - "C:/Program Files/Git/cmd/link.com"
+      - "C:/Program Files/Git/cmd/link.exe"
+      - "C:/Program Files/Git/cmd/link"
+      - "C:/Program Files (x86)/Microsoft SQL Server/160/Tools/Binn/link.com"
+      - "C:/Program Files (x86)/Microsoft SQL Server/160/Tools/Binn/link.exe"
+      - "C:/Program Files (x86)/Microsoft SQL Server/160/Tools/Binn/link"
+      - "C:/Program Files/Microsoft SQL Server/160/Tools/Binn/link.com"
+      - "C:/Program Files/Microsoft SQL Server/160/Tools/Binn/link.exe"
+      - "C:/Program Files/Microsoft SQL Server/160/Tools/Binn/link"
+      - "C:/Program Files/Microsoft SQL Server/160/DTS/Binn/link.com"
+      - "C:/Program Files/Microsoft SQL Server/160/DTS/Binn/link.exe"
+      - "C:/Program Files/Microsoft SQL Server/160/DTS/Binn/link"
+      - "C:/Program Files/dotnet/link.com"
+      - "C:/Program Files/dotnet/link.exe"
+      - "C:/Program Files/dotnet/link"
+      - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/link.com"
+      - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/link.exe"
+      - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/link"
+      - "C:/Program Files/nodejs/link.com"
+      - "C:/Program Files/nodejs/link.exe"
+      - "C:/Program Files/nodejs/link"
+      - "C:/Program Files (x86)/Windows Kits/8.1/Windows Performance Toolkit/link.com"
+      - "C:/Program Files (x86)/Windows Kits/8.1/Windows Performance Toolkit/link.exe"
+      - "C:/Program Files (x86)/Windows Kits/8.1/Windows Performance Toolkit/link"
+      - "C:/Users/Student/AppData/Local/Programs/OpenAI/Codex/bin/link.com"
+      - "C:/Users/Student/AppData/Local/Programs/OpenAI/Codex/bin/link.exe"
+      - "C:/Users/Student/AppData/Local/Programs/OpenAI/Codex/bin/link"
+      - "C:/Program Files/MySQL/MySQL Shell 8.0/bin/link.com"
+      - "C:/Program Files/MySQL/MySQL Shell 8.0/bin/link.exe"
+      - "C:/Program Files/MySQL/MySQL Shell 8.0/bin/link"
+      - "C:/Users/Student/AppData/Local/Microsoft/WindowsApps/link.com"
+      - "C:/Users/Student/AppData/Local/Microsoft/WindowsApps/link.exe"
+      - "C:/Users/Student/AppData/Local/Microsoft/WindowsApps/link"
+      - "C:/Users/Student/AppData/Local/Programs/Microsoft VS Code/bin/link.com"
+      - "C:/Users/Student/AppData/Local/Programs/Microsoft VS Code/bin/link.exe"
+      - "C:/Users/Student/AppData/Local/Programs/Microsoft VS Code/bin/link"
+      - "C:/Users/Student/AppData/Local/GitHubDesktop/bin/link.com"
+      - "C:/Users/Student/AppData/Local/GitHubDesktop/bin/link.exe"
+      - "C:/Users/Student/AppData/Local/GitHubDesktop/bin/link"
+      - "C:/Users/Student/AppData/Roaming/npm/link.com"
+      - "C:/Users/Student/AppData/Roaming/npm/link.exe"
+      - "C:/Users/Student/AppData/Roaming/npm/link"
+      - "C:/Users/Student/.dotnet/tools/link.com"
+      - "C:/Users/Student/.dotnet/tools/link.exe"
+      - "C:/Users/Student/.dotnet/tools/link"
+    found: false
+    search_context:
+      ENV{PATH}:
+        - "C:\\Users\\Student\\.codex\\tmp\\arg0\\codex-arg0drUE2p"
+        - "C:\\Users\\Student\\.codex\\packages\\app-server-daemon\\releases\\0.159.0-x86_64-pc-windows-msvc\\codex-path"
+        - "C:\\Users\\Student\\.codex\\tmp\\arg0\\codex-arg0yuc5YD"
+        - "C:\\Users\\Student\\.codex\\packages\\app-server-daemon\\releases\\0.158.0-x86_64-pc-windows-msvc\\codex-path"
+        - "C:\\Users\\Student\\.codex\\tmp\\arg0\\codex-arg0jP9Nrg"
+        - "C:\\Users\\Student\\AppData\\Roaming\\npm\\node_modules\\@openai\\codex\\node_modules\\@openai\\codex-win32-x64\\vendor\\x86_64-pc-windows-msvc\\codex-path"
+        - "C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common"
+        - "C:\\Program Files\\Common Files\\Siemens\\Automation\\Simatic OAM\\bin"
+        - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath"
+        - "C:\\WINDOWS\\system32"
+        - "C:\\WINDOWS"
+        - "C:\\WINDOWS\\System32\\Wbem"
+        - "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\WINDOWS\\System32\\OpenSSH\\"
+        - "C:\\Program Files\\NVIDIA Corporation\\NVIDIA App\\NvDLISR"
+        - "C:\\Program Files\\Microsoft SQL Server\\170\\Tools\\Binn\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\Client SDK\\ODBC\\170\\Tools\\Binn\\"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Program Files (x86)\\Microsoft SQL Server\\160\\Tools\\Binn\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\160\\Tools\\Binn\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\160\\DTS\\Binn\\"
+        - "C:\\Program Files\\dotnet\\"
+        - "C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance Toolkit\\"
+        - "C:\\Program Files\\nodejs\\"
+        - "C:\\Program Files (x86)\\Windows Kits\\8.1\\Windows Performance Toolkit\\"
+        - "C:\\Users\\Student\\AppData\\Local\\Programs\\OpenAI\\Codex\\bin"
+        - "C:\\Program Files\\MySQL\\MySQL Shell 8.0\\bin\\"
+        - "C:\\Users\\Student\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\Users\\Student\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "C:\\Users\\Student\\AppData\\Local\\GitHubDesktop\\bin"
+        - "C:\\Users\\Student\\AppData\\Roaming\\npm"
+        - "C:\\Users\\Student\\.dotnet\\tools"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "C:/Program Files/Microsoft Visual Studio/18/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-4.3/Modules/CMakeFindBinUtils.cmake:37 (find_program)"
+      - "C:/Program Files/Microsoft Visual Studio/18/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-4.3/Modules/CMakeFindBinUtils.cmake:65 (__resolve_tool_path)"
+      - "C:/Program Files/Microsoft Visual Studio/18/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-4.3/Modules/CMakeFindBinUtils.cmake:104 (__resolve_linker_path)"
+      - "C:/Program Files/Microsoft Visual Studio/18/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-4.3/Modules/CMakeDetermineCXXCompiler.cmake:206 (include)"
+      - "CMakeLists.txt:6 (project)"
+    mode: "program"
+    variable: "_CMAKE_TOOL_WITH_PATH"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "lld-link"
+    candidate_directories:
+      - "C:/Users/Student/.codex/tmp/arg0/codex-arg0drUE2p/"
+      - "C:/Users/Student/.codex/packages/app-server-daemon/releases/0.159.0-x86_64-pc-windows-msvc/codex-path/"
+      - "C:/Users/Student/.codex/tmp/arg0/codex-arg0yuc5YD/"
+      - "C:/Users/Student/.codex/packages/app-server-daemon/releases/0.158.0-x86_64-pc-windows-msvc/codex-path/"
+      - "C:/Users/Student/.codex/tmp/arg0/codex-arg0jP9Nrg/"
+      - "C:/Users/Student/AppData/Roaming/npm/node_modules/@openai/codex/node_modules/@openai/codex-win32-x64/vendor/x86_64-pc-windows-msvc/codex-path/"
+      - "C:/Program Files (x86)/NVIDIA Corporation/PhysX/Common/"
+      - "C:/Program Files/Common Files/Siemens/Automation/Simatic OAM/bin/"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/javapath/"
+      - "C:/Windows/System32/"
+      - "C:/Windows/"
+      - "C:/Windows/System32/wbem/"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/"
+      - "C:/Windows/System32/OpenSSH/"
+      - "C:/Program Files/NVIDIA Corporation/NVIDIA App/NvDLISR/"
+      - "C:/Program Files/Microsoft SQL Server/170/Tools/Binn/"
+      - "C:/Program Files/Microsoft SQL Server/Client SDK/ODBC/170/Tools/Binn/"
+      - "C:/Program Files/Git/cmd/"
+      - "C:/Program Files (x86)/Microsoft SQL Server/160/Tools/Binn/"
+      - "C:/Program Files/Microsoft SQL Server/160/Tools/Binn/"
+      - "C:/Program Files/Microsoft SQL Server/160/DTS/Binn/"
+      - "C:/Program Files/dotnet/"
+      - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/"
+      - "C:/Program Files/nodejs/"
+      - "C:/Program Files (x86)/Windows Kits/8.1/Windows Performance Toolkit/"
+      - "C:/Users/Student/AppData/Local/Programs/OpenAI/Codex/bin/"
+      - "C:/Program Files/MySQL/MySQL Shell 8.0/bin/"
+      - "C:/Users/Student/AppData/Local/Microsoft/WindowsApps/"
+      - "C:/Users/Student/AppData/Local/Programs/Microsoft VS Code/bin/"
+      - "C:/Users/Student/AppData/Local/GitHubDesktop/bin/"
+      - "C:/Users/Student/AppData/Roaming/npm/"
+      - "C:/Users/Student/.dotnet/tools/"
+    searched_directories:
+      - "C:/Users/Student/.codex/tmp/arg0/codex-arg0drUE2p/lld-link.com"
+      - "C:/Users/Student/.codex/tmp/arg0/codex-arg0drUE2p/lld-link.exe"
+      - "C:/Users/Student/.codex/tmp/arg0/codex-arg0drUE2p/lld-link"
+      - "C:/Users/Student/.codex/packages/app-server-daemon/releases/0.159.0-x86_64-pc-windows-msvc/codex-path/lld-link.com"
+      - "C:/Users/Student/.codex/packages/app-server-daemon/releases/0.159.0-x86_64-pc-windows-msvc/codex-path/lld-link.exe"
+      - "C:/Users/Student/.codex/packages/app-server-daemon/releases/0.159.0-x86_64-pc-windows-msvc/codex-path/lld-link"
+      - "C:/Users/Student/.codex/tmp/arg0/codex-arg0yuc5YD/lld-link.com"
+      - "C:/Users/Student/.codex/tmp/arg0/codex-arg0yuc5YD/lld-link.exe"
+      - "C:/Users/Student/.codex/tmp/arg0/codex-arg0yuc5YD/lld-link"
+      - "C:/Users/Student/.codex/packages/app-server-daemon/releases/0.158.0-x86_64-pc-windows-msvc/codex-path/lld-link.com"
+      - "C:/Users/Student/.codex/packages/app-server-daemon/releases/0.158.0-x86_64-pc-windows-msvc/codex-path/lld-link.exe"
+      - "C:/Users/Student/.codex/packages/app-server-daemon/releases/0.158.0-x86_64-pc-windows-msvc/codex-path/lld-link"
+      - "C:/Users/Student/.codex/tmp/arg0/codex-arg0jP9Nrg/lld-link.com"
+      - "C:/Users/Student/.codex/tmp/arg0/codex-arg0jP9Nrg/lld-link.exe"
+      - "C:/Users/Student/.codex/tmp/arg0/codex-arg0jP9Nrg/lld-link"
+      - "C:/Users/Student/AppData/Roaming/npm/node_modules/@openai/codex/node_modules/@openai/codex-win32-x64/vendor/x86_64-pc-windows-msvc/codex-path/lld-link.com"
+      - "C:/Users/Student/AppData/Roaming/npm/node_modules/@openai/codex/node_modules/@openai/codex-win32-x64/vendor/x86_64-pc-windows-msvc/codex-path/lld-link.exe"
+      - "C:/Users/Student/AppData/Roaming/npm/node_modules/@openai/codex/node_modules/@openai/codex-win32-x64/vendor/x86_64-pc-windows-msvc/codex-path/lld-link"
+      - "C:/Program Files (x86)/NVIDIA Corporation/PhysX/Common/lld-link.com"
+      - "C:/Program Files (x86)/NVIDIA Corporation/PhysX/Common/lld-link.exe"
+      - "C:/Program Files (x86)/NVIDIA Corporation/PhysX/Common/lld-link"
+      - "C:/Program Files/Common Files/Siemens/Automation/Simatic OAM/bin/lld-link.com"
+      - "C:/Program Files/Common Files/Siemens/Automation/Simatic OAM/bin/lld-link.exe"
+      - "C:/Program Files/Common Files/Siemens/Automation/Simatic OAM/bin/lld-link"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/javapath/lld-link.com"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/javapath/lld-link.exe"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/javapath/lld-link"
+      - "C:/Windows/System32/lld-link.com"
+      - "C:/Windows/System32/lld-link.exe"
+      - "C:/Windows/System32/lld-link"
+      - "C:/Windows/lld-link.com"
+      - "C:/Windows/lld-link.exe"
+      - "C:/Windows/lld-link"
+      - "C:/Windows/System32/wbem/lld-link.com"
+      - "C:/Windows/System32/wbem/lld-link.exe"
+      - "C:/Windows/System32/wbem/lld-link"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/lld-link.com"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/lld-link.exe"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/lld-link"
+      - "C:/Windows/System32/OpenSSH/lld-link.com"
+      - "C:/Windows/System32/OpenSSH/lld-link.exe"
+      - "C:/Windows/System32/OpenSSH/lld-link"
+      - "C:/Program Files/NVIDIA Corporation/NVIDIA App/NvDLISR/lld-link.com"
+      - "C:/Program Files/NVIDIA Corporation/NVIDIA App/NvDLISR/lld-link.exe"
+      - "C:/Program Files/NVIDIA Corporation/NVIDIA App/NvDLISR/lld-link"
+      - "C:/Program Files/Microsoft SQL Server/170/Tools/Binn/lld-link.com"
+      - "C:/Program Files/Microsoft SQL Server/170/Tools/Binn/lld-link.exe"
+      - "C:/Program Files/Microsoft SQL Server/170/Tools/Binn/lld-link"
+      - "C:/Program Files/Microsoft SQL Server/Client SDK/ODBC/170/Tools/Binn/lld-link.com"
+      - "C:/Program Files/Microsoft SQL Server/Client SDK/ODBC/170/Tools/Binn/lld-link.exe"
+      - "C:/Program Files/Microsoft SQL Server/Client SDK/ODBC/170/Tools/Binn/lld-link"
+      - "C:/Program Files/Git/cmd/lld-link.com"
+      - "C:/Program Files/Git/cmd/lld-link.exe"
+      - "C:/Program Files/Git/cmd/lld-link"
+      - "C:/Program Files (x86)/Microsoft SQL Server/160/Tools/Binn/lld-link.com"
+      - "C:/Program Files (x86)/Microsoft SQL Server/160/Tools/Binn/lld-link.exe"
+      - "C:/Program Files (x86)/Microsoft SQL Server/160/Tools/Binn/lld-link"
+      - "C:/Program Files/Microsoft SQL Server/160/Tools/Binn/lld-link.com"
+      - "C:/Program Files/Microsoft SQL Server/160/Tools/Binn/lld-link.exe"
+      - "C:/Program Files/Microsoft SQL Server/160/Tools/Binn/lld-link"
+      - "C:/Program Files/Microsoft SQL Server/160/DTS/Binn/lld-link.com"
+      - "C:/Program Files/Microsoft SQL Server/160/DTS/Binn/lld-link.exe"
+      - "C:/Program Files/Microsoft SQL Server/160/DTS/Binn/lld-link"
+      - "C:/Program Files/dotnet/lld-link.com"
+      - "C:/Program Files/dotnet/lld-link.exe"
+      - "C:/Program Files/dotnet/lld-link"
+      - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/lld-link.com"
+      - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/lld-link.exe"
+      - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/lld-link"
+      - "C:/Program Files/nodejs/lld-link.com"
+      - "C:/Program Files/nodejs/lld-link.exe"
+      - "C:/Program Files/nodejs/lld-link"
+      - "C:/Program Files (x86)/Windows Kits/8.1/Windows Performance Toolkit/lld-link.com"
+      - "C:/Program Files (x86)/Windows Kits/8.1/Windows Performance Toolkit/lld-link.exe"
+      - "C:/Program Files (x86)/Windows Kits/8.1/Windows Performance Toolkit/lld-link"
+      - "C:/Users/Student/AppData/Local/Programs/OpenAI/Codex/bin/lld-link.com"
+      - "C:/Users/Student/AppData/Local/Programs/OpenAI/Codex/bin/lld-link.exe"
+      - "C:/Users/Student/AppData/Local/Programs/OpenAI/Codex/bin/lld-link"
+      - "C:/Program Files/MySQL/MySQL Shell 8.0/bin/lld-link.com"
+      - "C:/Program Files/MySQL/MySQL Shell 8.0/bin/lld-link.exe"
+      - "C:/Program Files/MySQL/MySQL Shell 8.0/bin/lld-link"
+      - "C:/Users/Student/AppData/Local/Microsoft/WindowsApps/lld-link.com"
+      - "C:/Users/Student/AppData/Local/Microsoft/WindowsApps/lld-link.exe"
+      - "C:/Users/Student/AppData/Local/Microsoft/WindowsApps/lld-link"
+      - "C:/Users/Student/AppData/Local/Programs/Microsoft VS Code/bin/lld-link.com"
+      - "C:/Users/Student/AppData/Local/Programs/Microsoft VS Code/bin/lld-link.exe"
+      - "C:/Users/Student/AppData/Local/Programs/Microsoft VS Code/bin/lld-link"
+      - "C:/Users/Student/AppData/Local/GitHubDesktop/bin/lld-link.com"
+      - "C:/Users/Student/AppData/Local/GitHubDesktop/bin/lld-link.exe"
+      - "C:/Users/Student/AppData/Local/GitHubDesktop/bin/lld-link"
+      - "C:/Users/Student/AppData/Roaming/npm/lld-link.com"
+      - "C:/Users/Student/AppData/Roaming/npm/lld-link.exe"
+      - "C:/Users/Student/AppData/Roaming/npm/lld-link"
+      - "C:/Users/Student/.dotnet/tools/lld-link.com"
+      - "C:/Users/Student/.dotnet/tools/lld-link.exe"
+      - "C:/Users/Student/.dotnet/tools/lld-link"
+    found: false
+    search_context:
+      ENV{PATH}:
+        - "C:\\Users\\Student\\.codex\\tmp\\arg0\\codex-arg0drUE2p"
+        - "C:\\Users\\Student\\.codex\\packages\\app-server-daemon\\releases\\0.159.0-x86_64-pc-windows-msvc\\codex-path"
+        - "C:\\Users\\Student\\.codex\\tmp\\arg0\\codex-arg0yuc5YD"
+        - "C:\\Users\\Student\\.codex\\packages\\app-server-daemon\\releases\\0.158.0-x86_64-pc-windows-msvc\\codex-path"
+        - "C:\\Users\\Student\\.codex\\tmp\\arg0\\codex-arg0jP9Nrg"
+        - "C:\\Users\\Student\\AppData\\Roaming\\npm\\node_modules\\@openai\\codex\\node_modules\\@openai\\codex-win32-x64\\vendor\\x86_64-pc-windows-msvc\\codex-path"
+        - "C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common"
+        - "C:\\Program Files\\Common Files\\Siemens\\Automation\\Simatic OAM\\bin"
+        - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath"
+        - "C:\\WINDOWS\\system32"
+        - "C:\\WINDOWS"
+        - "C:\\WINDOWS\\System32\\Wbem"
+        - "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\WINDOWS\\System32\\OpenSSH\\"
+        - "C:\\Program Files\\NVIDIA Corporation\\NVIDIA App\\NvDLISR"
+        - "C:\\Program Files\\Microsoft SQL Server\\170\\Tools\\Binn\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\Client SDK\\ODBC\\170\\Tools\\Binn\\"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Program Files (x86)\\Microsoft SQL Server\\160\\Tools\\Binn\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\160\\Tools\\Binn\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\160\\DTS\\Binn\\"
+        - "C:\\Program Files\\dotnet\\"
+        - "C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance Toolkit\\"
+        - "C:\\Program Files\\nodejs\\"
+        - "C:\\Program Files (x86)\\Windows Kits\\8.1\\Windows Performance Toolkit\\"
+        - "C:\\Users\\Student\\AppData\\Local\\Programs\\OpenAI\\Codex\\bin"
+        - "C:\\Program Files\\MySQL\\MySQL Shell 8.0\\bin\\"
+        - "C:\\Users\\Student\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\Users\\Student\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "C:\\Users\\Student\\AppData\\Local\\GitHubDesktop\\bin"
+        - "C:\\Users\\Student\\AppData\\Roaming\\npm"
+        - "C:\\Users\\Student\\.dotnet\\tools"
+...

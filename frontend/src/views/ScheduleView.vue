@@ -30,33 +30,49 @@
           <Upload :size="16" />
           <span>{{ publishing ? 'Публикую…' : 'Опубликовать' }}</span>
         </button>
-        <select v-if="!demoMode" v-model="lockMode" class="form-select lock-select" :disabled="store.generating">
+      </div>
+    </div>
+
+    <section v-if="!demoMode" class="generation-panel">
+      <div class="generation-panel-heading">
+        <div>
+          <strong>Период генерации</strong>
+          <span>Выберите один день, текущую неделю или точные даты «с — по».</span>
+        </div>
+      </div>
+      <div class="generation-panel-controls">
+        <select v-model="generationMode" class="form-select generation-mode-select" :disabled="store.generating" aria-label="Режим генерации">
+          <option value="weekly">По неделям</option>
+          <option value="monolithic">Весь период</option>
+        </select>
+        <select v-if="generationMode === 'weekly'" v-model="generationScope" class="form-select generation-mode-select" :disabled="store.generating" aria-label="Период генерации">
+          <option value="week">Эту неделю</option>
+          <option value="day">Один день</option>
+          <option value="range">С даты по дату</option>
+          <option value="all">Весь период</option>
+        </select>
+        <select v-if="generationMode === 'weekly' && generationScope === 'day'" v-model="selectedDay" class="form-select generation-mode-select" :disabled="store.generating" aria-label="День генерации">
+          <option v-for="day in weekDates" :key="day" :value="day">{{ day }} · {{ getDayWeekday(day) }}</option>
+        </select>
+        <template v-if="generationMode === 'weekly' && generationScope === 'range'">
+          <label class="generation-date-field"><span>С даты</span><input v-model="generationFrom" type="date" class="form-input" :disabled="store.generating" /></label>
+          <label class="generation-date-field"><span>По дату</span><input v-model="generationTo" type="date" class="form-input" :disabled="store.generating" /></label>
+        </template>
+        <select v-model="lockMode" class="form-select lock-select" :disabled="store.generating" aria-label="Учет существующего расписания">
           <option value="none">Не учитывать Конструктор</option>
           <option value="manual">Достроить из Конструктора</option>
           <option value="auto">Зафиксировать прошлую автогенерацию</option>
         </select>
-        <select v-if="!demoMode" v-model="generationMode" class="form-select generation-mode-select" :disabled="store.generating">
-          <option value="weekly">По неделям</option>
-          <option value="monolithic">Весь период</option>
-        </select>
-        <select v-if="!demoMode && generationMode === 'weekly'" v-model="generationScope" class="form-select generation-mode-select" :disabled="store.generating">
-          <option value="week">Эту неделю</option>
-          <option value="day">Один день</option>
-          <option value="all">Весь период</option>
-        </select>
-        <select v-if="!demoMode && generationMode === 'weekly' && generationScope === 'day'" v-model="selectedDay" class="form-select generation-mode-select" :disabled="store.generating">
-          <option v-for="day in weekDates" :key="day" :value="day">{{ day }} · {{ getDayWeekday(day) }}</option>
-        </select>
-        <button v-if="!demoMode && !store.generating" class="btn btn-primary" @click="onRegenerate">
+        <button v-if="!store.generating" class="btn btn-primary generation-submit" @click="onRegenerate">
           <Sparkles :size="16" />
-          <span>{{ generationScope === 'day' ? 'Сгенерировать день' : generationScope === 'week' ? 'Сгенерировать неделю' : 'Сгенерировать' }}</span>
+          <span>{{ generationScope === 'day' ? 'Сгенерировать день' : generationScope === 'week' ? 'Сгенерировать неделю' : generationScope === 'range' ? 'Сгенерировать диапазон' : 'Сгенерировать' }}</span>
         </button>
-        <button v-else-if="!demoMode" class="btn btn-danger" @click="onCancel" :disabled="cancelling">
+        <button v-else class="btn btn-danger generation-submit" @click="onCancel" :disabled="cancelling">
           <X :size="16" />
           <span>{{ cancelling ? 'Отменяется…' : 'Отменить' }}</span>
         </button>
       </div>
-    </div>
+    </section>
 
     <div v-if="demoMode" class="notice demo-notice">
       <Info :size="18" />
@@ -411,6 +427,8 @@ const lockMode = ref('none')
 const generationMode = ref('weekly')
 const generationScope = ref('week')
 const selectedDay = ref('')
+const generationFrom = ref('')
+const generationTo = ref('')
 const publishing = ref(false)
 const validating = ref(false)
 const excelExporting = ref(false)
@@ -479,6 +497,10 @@ function getMonday(date) {
 
 function fmtDate(date) {
   return `${String(date.getDate()).padStart(2, '0')}.${String(date.getMonth() + 1).padStart(2, '0')}.${date.getFullYear()}`
+}
+
+function toIsoDate(date) {
+  return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`
 }
 
 function formatDateShort(dateStr) {
@@ -669,7 +691,13 @@ const weekDates = computed(() => {
   return [...set].sort(compareDMY)
 })
 
-watch(weekDates, days => { selectedDay.value = days[0] || '' }, { immediate: true })
+watch(weekDates, days => {
+  selectedDay.value = days[0] || ''
+  if (days.length) {
+    generationFrom.value = toIsoDate(parseDMY(days[0]))
+    generationTo.value = toIsoDate(parseDMY(days.at(-1)))
+  }
+}, { immediate: true })
 
 const weekConfirmedCount = computed(() => store.groups.reduce((sum, group) => sum + (group.days || [])
   .filter(day => weekDates.value.includes(day.date))
@@ -825,19 +853,24 @@ async function onRegenerate() {
   if (generationMode.value === 'weekly' && generationScope.value !== 'all') {
     if (generationScope.value === 'day') {
       if (!selectedDay.value) return toast.error('Выберите день')
-      const date = parseDMY(selectedDay.value)
-      opts.scope_from = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`
+      opts.scope_from = toIsoDate(parseDMY(selectedDay.value))
       opts.scope_to = opts.scope_from
+    } else if (generationScope.value === 'range') {
+      if (!generationFrom.value || !generationTo.value) return toast.error('Укажите начало и конец диапазона')
+      if (generationTo.value < generationFrom.value) return toast.error('Конечная дата раньше начальной')
+      opts.scope_from = generationFrom.value
+      opts.scope_to = generationTo.value
     } else {
       const week = sortedWeeks.value[weekIndex.value]
       if (!week) return toast.error('Выберите неделю')
-      opts.scope_from = `${week.mon.getFullYear()}-${String(week.mon.getMonth() + 1).padStart(2, '0')}-${String(week.mon.getDate()).padStart(2, '0')}`
-      opts.scope_to = `${week.sun.getFullYear()}-${String(week.sun.getMonth() + 1).padStart(2, '0')}-${String(week.sun.getDate()).padStart(2, '0')}`
-      const start = store.semester?.semester_start_date
-      const end = store.semester?.first_course_semester_end_date || store.semester?.semester_end_date
-      if (start && opts.scope_from < start) opts.scope_from = start
-      if (end && opts.scope_to > end) opts.scope_to = end
+      opts.scope_from = toIsoDate(week.mon)
+      opts.scope_to = toIsoDate(week.sun)
     }
+    const start = store.semester?.semester_start_date
+    const end = store.semester?.first_course_semester_end_date || store.semester?.semester_end_date
+    if (start && opts.scope_from < start) opts.scope_from = start
+    if (end && opts.scope_to > end) opts.scope_to = end
+    if (opts.scope_to < opts.scope_from) return toast.error('Диапазон находится за пределами семестра')
   }
   if (lockMode.value && lockMode.value !== 'none') opts.lock_existing = lockMode.value
   cancelling.value = false
@@ -892,6 +925,17 @@ watch(() => store.progress?.state, (newState, oldState) => {
 .lock-select { width: auto; min-width: 220px; padding: 7px 10px; font-size: 13px; }
 .validation-source { width: auto; min-width: 205px; padding: 7px 10px; font-size: 13px; }
 .generation-mode-select { width: auto; min-width: 145px; padding: 7px 10px; font-size: 13px; }
+.generation-panel {
+  display: grid; gap: 12px; margin-bottom: 16px; padding: 14px 16px;
+  border: 1px solid var(--accent); border-radius: var(--radius); background: var(--accent-light);
+}
+.generation-panel-heading > div { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+.generation-panel-heading strong { color: var(--text-primary); font-size: 15px; }
+.generation-panel-heading span { color: var(--text-secondary); font-size: 13px; }
+.generation-panel-controls { display: flex; align-items: flex-end; gap: 10px; flex-wrap: wrap; }
+.generation-date-field { display: grid; gap: 4px; color: var(--text-secondary); font-size: 12px; font-weight: 600; }
+.generation-date-field .form-input { width: 145px; padding: 7px 9px; font-size: 13px; }
+.generation-submit { min-height: 38px; }
 .schedule-mode-bar {
   display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
   padding: 10px; margin-bottom: 12px; border: 1px solid var(--border);

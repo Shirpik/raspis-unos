@@ -139,11 +139,41 @@ int main() {
     auto valid = timetable::ValidateScheduleJson(input, config, Schedule());
     Require(valid.ok, "valid schedule must pass");
 
+    auto strict_daily_config = config;
+    strict_daily_config.min_student_pairs_per_study_day = 2;
+    strict_daily_config.allow_single_pair_day_fallback = false;
+    auto strict_daily = timetable::ValidateScheduleJson(input, strict_daily_config, Schedule());
+    Require(!strict_daily.ok && HasCode(strict_daily.report, "student_daily_minimum_fallback"),
+        "daily minimum must remain strict for a full-period validation");
+    ScheduleValidationOptions scoped_options;
+    scoped_options.allow_daily_minimum_fallback = true;
+    scoped_options.require_weekly_study_days = false;
+    auto scoped_daily = timetable::ValidateScheduleJson(
+        input, strict_daily_config, Schedule(), scoped_options);
+    Require(scoped_daily.ok && HasCode(scoped_daily.report, "student_daily_minimum_fallback"),
+        "scoped generation may report its solver fallback as a warning");
+
     auto up_input = Input();
     up_input.lessons[0].is_block = true;
     up_input.lessons[0].subgroup = 0;
     auto one_slot_up = timetable::ValidateScheduleJson(up_input, config, Schedule());
     Require(one_slot_up.ok, "one UP occurrence on pair 1 must occupy exactly one displayed slot");
+
+    auto adjacent_up_input = up_input;
+    Lesson afternoon_up = adjacent_up_input.lessons[0];
+    afternoon_up.id = 1;
+    afternoon_up.uid = "lesson-1";
+    afternoon_up.subgroup = 1;
+    adjacent_up_input.lessons.push_back(afternoon_up);
+    auto adjacent_up_schedule = Schedule();
+    JsonValue afternoon_up_rendered = RenderedLesson();
+    afternoon_up_rendered.At("id") = JsonValue::MakeNumber(1);
+    adjacent_up_schedule.At("groups").array_value[0].At("days").array_value[0]
+        .At("slots").array_value[2].At("lessons").array_value.push_back(afternoon_up_rendered);
+    auto adjacent_up_result = timetable::ValidateScheduleJson(
+        adjacent_up_input, config, adjacent_up_schedule);
+    Require(adjacent_up_result.ok && !HasCode(adjacent_up_result.report, "teacher_window"),
+        "adjacent morning and afternoon UP shifts for one teacher are continuous, not a window");
 
     auto wrong_up_slot = Schedule();
     auto& wrong_slots = wrong_up_slot.At("groups").array_value[0]

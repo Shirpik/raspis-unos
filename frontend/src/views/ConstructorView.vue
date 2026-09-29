@@ -32,13 +32,43 @@
           Сохранить
           <span v-if="cstore.dirty" class="badge badge-warning" style="margin-left:6px">●</span>
         </button>
-        <button class="btn btn-success btn-sm" :disabled="cstore.saving || generating || placedLessonCount === 0" @click="onSaveAndGenerate">
+        <button class="btn btn-success btn-sm" :disabled="cstore.saving || generating || rangePlacedLessonCount === 0" @click="onSaveAndGenerate">
           <span v-if="generating" class="spinner spinner-sm"/>
           <Sparkles v-else :size="16" />
-          {{ generating ? 'Запускаю…' : placedDates.length === 1 ? 'Сохранить и достроить день' : 'Сохранить и достроить' }}
+          {{ generating ? 'Запускаю…' : 'Сохранить и достроить выбранные даты' }}
         </button>
       </div>
     </div>
+
+    <section class="generation-range-card">
+      <div class="generation-range-copy">
+        <strong>Обязательные пары и достройка</strong>
+        <span>Поставьте нужные пары в таблице. Решатель зафиксирует их и заполнит только выбранные даты; прежнее расписание вне диапазона сохранится.</span>
+        <span><strong>УП:</strong> одно размещение = 6 часов, за день можно поставить 12 часов. Если преподаватель один — ставьте утро с 1-й пары и вторую УП с 3-й; разные преподаватели могут вести подгруппы параллельно.</span>
+      </div>
+      <div class="generation-range-controls">
+        <label><span>С даты</span><input v-model="generationFrom" type="date" class="form-input" /></label>
+        <label><span>По дату</span><input v-model="generationTo" type="date" class="form-input" /></label>
+        <label class="teacher-filter-field">
+          <span>Показывать занятия преподавателя</span>
+          <select v-model.number="teacherFilter" class="form-select">
+            <option :value="-1">Все преподаватели</option>
+            <option v-for="teacher in sortedTeachers" :key="teacher.id" :value="teacher.id">{{ teacher.name }}</option>
+          </select>
+        </label>
+        <div class="range-lock-count" :class="{ empty: rangePlacedLessonCount === 0 }">
+          Закреплено в диапазоне: <strong>{{ rangePlacedLessonCount }}</strong>
+        </div>
+      </div>
+      <div v-if="selectedTeacherUpHours" class="teacher-hours-summary">
+        <strong>{{ selectedTeacherUpHours.name }} · УП, 1 семестр</strong>
+        <span>План: {{ selectedTeacherUpHours.plan }} ч</span>
+        <span>Проведено: {{ selectedTeacherUpHours.confirmed }} ч</span>
+        <span>В Конструкторе: {{ selectedTeacherUpHours.manual }} ч</span>
+        <span class="teacher-hours-remaining">Осталось: {{ selectedTeacherUpHours.remaining }} ч</span>
+      </div>
+      <p v-if="rangeError" class="generation-range-error">{{ rangeError }}</p>
+    </section>
 
     <div v-if="importReport" class="import-report" :class="importReport.ok ? 'import-report-ok' : 'import-report-error'">
       <strong>{{ importReport.ok ? 'Неделя восстановлена' : 'Excel не импортирован' }}</strong>
@@ -165,7 +195,10 @@
                       :key="`${lesson.uid || lesson.id}-${lessonIndex}`"
                       class="cell-lesson"
                     >
-                      <span class="cell-subject">{{ lesson.name }}</span>
+                      <span class="cell-subject">
+                        <b v-if="lessonSourceIndex(lesson)" class="subject-index">{{ lessonSourceIndex(lesson) }}</b>
+                        {{ lesson.name }}
+                      </span>
                       <span class="cell-detail">{{ subgroupLabel(lesson.subgroup) }}</span>
                     </div>
                   </div>
@@ -184,8 +217,8 @@
           <span>Прогресс расстановки уроков</span>
         </div>
         <p class="progress-help">
-          Счётчик показывает: <strong>закреплено вручную / требуется на период</strong>.
-          При генерации закреплённые пары останутся на выбранных местах, а остальные ячейки заполнятся автоматически.
+          По каждому занятию показаны часы первого семестра: <strong>план, уже проведено, поставлено в Конструкторе и остаток</strong>.
+          После добавления пары остаток пересчитывается сразу; для УП одно размещение вычитает 6 часов.
         </p>
         <div class="progress-legend" aria-label="Обозначения прогресса">
           <span><i class="legend-dot progress-none-dot" />Ещё не ставили</span>
@@ -201,14 +234,17 @@
           }">
             <div class="progress-name">
               <span class="progress-group">{{ groupNameById(lp.group) }}</span>
-              {{ lp.name }}
+              <span><b v-if="lp.source_index" class="subject-index">{{ lp.source_index }}</b> {{ lp.name }}</span>
               <small>
                 <template v-if="lp.total_slots === 0 && lp.placed > 0">не входит в текущий план · </template>
                 {{ subgroupLabel(lp.subgroup) }} · {{ teacherNameById(lp.teacher) }}
               </small>
             </div>
             <div class="progress-counts" :title="`${lp.placed} закреплено вручную, ${lp.total_slots} требуется на период`">
-              {{ lp.placed }} / {{ lp.total_slots }}
+              <span>План {{ lp.planHours }} ч</span>
+              <span>Проведено {{ lp.confirmedHours }} ч</span>
+              <span>В Конструкторе {{ lp.manualHours }} ч</span>
+              <strong>Осталось {{ lp.remainingHours }} ч</strong>
             </div>
           </div>
         </div>
@@ -221,7 +257,7 @@
         <div v-if="pickerCell.lessons.length" class="picker-current">
           <div style="font-weight:600;margin-bottom:8px">Сейчас в ячейке:</div>
           <div v-for="L in pickerCell.lessons" :key="L.id" class="picker-current-item">
-            <div>{{ L.name }} <span class="muted">— {{ subgroupLabel(L.subgroup) }}, препод #{{ L.teacher_id }}</span></div>
+            <div><b v-if="lessonSourceIndex(L)" class="subject-index">{{ lessonSourceIndex(L) }}</b> {{ L.name }} <span class="muted">— {{ subgroupLabel(L.subgroup) }}, {{ teacherNameById(L.teacher_id) }}</span></div>
             <button class="btn btn-ghost btn-sm" style="color:var(--error)" @click="removeLessonFromCell(L.id)">Удалить</button>
           </div>
           <hr style="margin:14px 0;border-color:var(--border)"/>
@@ -229,26 +265,32 @@
 
         <div style="font-weight:600;margin-bottom:8px">Доступные уроки группы {{ pickerCell.groupName }}:</div>
         <div v-if="pickerOptions.length === 0" style="color:var(--text-muted);padding:14px 0">
-          Все уроки этой группы уже расставлены целиком.
+          У группы нет предметов, подходящих под выбранный фильтр преподавателя.
         </div>
         <div v-else class="picker-list">
           <div
             v-for="opt in pickerOptions" :key="opt.id"
             class="picker-option"
-            :class="{ 'picker-warn': opt.conflict }"
+            :class="{ 'picker-warn': opt.conflict, 'picker-blocked': opt.blocking }"
             @click="addLessonToCell(opt)"
           >
             <div class="picker-option-main">
-              <span class="picker-option-name">{{ opt.name }}</span>
+              <span class="picker-option-name">
+                <b v-if="opt.source_index" class="subject-index">{{ opt.source_index }}</b>
+                {{ opt.name }}
+              </span>
               <span class="picker-option-meta">
                 {{ subgroupLabel(opt.subgroup) }} ·
-                препод #{{ opt.teacher }} ·
-                {{ opt.placed }}/{{ opt.total_slots }}
+                {{ teacherNameById(opt.teacher) }} ·
+                план {{ opt.planHours }} ч · проведено {{ opt.confirmedHours }} ч ·
+                в Конструкторе {{ opt.manualHours }} ч · осталось {{ opt.remainingHours }} ч
                 <span v-if="opt.is_block"> · УП</span>
                 <span v-if="opt.is_lab"> · ЛПЗ</span>
               </span>
             </div>
-            <div v-if="opt.conflict" class="picker-option-warn">⚠ {{ opt.conflict }}</div>
+            <div v-if="opt.conflict" class="picker-option-warn">
+              ⚠ {{ opt.conflict }}<template v-if="!opt.blocking"> · можно закрепить вручную</template>
+            </div>
           </div>
         </div>
       </div>
@@ -260,7 +302,7 @@
 </template>
 
 <script setup>
-import { ref, computed, onMounted } from 'vue'
+import { ref, computed, onMounted, watch } from 'vue'
 import { useRouter } from 'vue-router'
 import Modal from '../components/Modal.vue'
 import { useConstructorStore } from '../stores/constructor.js'
@@ -285,12 +327,23 @@ const validationResult = ref(null)
 const scheduleImportInput = ref(null)
 const importingSchedule = ref(false)
 const importReport = ref(null)
+const generationFrom = ref('')
+const generationTo = ref('')
+const teacherFilter = ref(-1)
+const teachingLedger = ref([])
 
 onMounted(async () => {
-  await Promise.all([
+  const [, , contextResponse] = await Promise.all([
     cstore.load(),
     data.loadAll(),
+    api.schedule.context(),
   ])
+  teachingLedger.value = contextResponse.ok && Array.isArray(contextResponse.data?.teaching_ledger)
+    ? contextResponse.data.teaching_ledger
+    : []
+  ensureConstructorGroups()
+  setDefaultGenerationRange()
+  jumpToGenerationWeek()
 })
 
 // ── Computed shape ──
@@ -315,15 +368,40 @@ function formatDateShort(dateStr) {
   return `${d}.${m}`
 }
 function compareDMY(a, b) { return parseDMY(a) - parseDMY(b) }
+function isoDateValue(date) {
+  return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`
+}
+function displayFromIso(iso) {
+  const [year, month, day] = iso.split('-')
+  return `${day}.${month}.${year}`
+}
+function ensureConstructorGroups() {
+  if (!cstore.manualData || cstore.error) return
+  for (const group of data.groups) cstore.ensureGroup(group.id, group.name)
+}
+function setDefaultGenerationRange() {
+  const now = new Date()
+  now.setHours(12, 0, 0, 0)
+  let from = addDays(now, 1)
+  if (from.getDay() === 0) from = addDays(from, 1)
+  const saturdayOffset = (6 - from.getDay() + 7) % 7
+  let to = addDays(from, saturdayOffset)
+  const semesterStart = data.settings?.semester_start_date || data.settings?.start_date
+  const semesterEnd = data.settings?.first_course_semester_end_date || data.settings?.semester_end_date || data.settings?.end_date
+  if (semesterStart && isoDateValue(from) < semesterStart) from = new Date(`${semesterStart}T12:00:00`)
+  if (semesterEnd && isoDateValue(to) > semesterEnd) to = new Date(`${semesterEnd}T12:00:00`)
+  generationFrom.value = isoDateValue(from)
+  generationTo.value = isoDateValue(to)
+}
+function jumpToGenerationWeek() {
+  if (!generationFrom.value) return
+  const target = getMonday(new Date(`${generationFrom.value}T12:00:00`)).toISOString()
+  const index = sortedWeeks.value.findIndex(week => week.iso === target)
+  if (index >= 0) weekIndex.value = index
+}
+watch(generationFrom, jumpToGenerationWeek)
 function detectCourseYear(name) {
-  const m4 = name.match(/[^\d]2(\d)\d{2}/)
-  if (m4) {
-    const d = parseInt(m4[1])
-    const enrollYear = 2020 + d
-    const y = 2025 - enrollYear + 1
-    if (y >= 1 && y <= 4) return y
-  }
-  const m1 = name.match(/-(\d)/)
+  const m1 = name.match(/-([1-4])\d/)
   if (m1) {
     const d = parseInt(m1[1])
     if (d >= 1 && d <= 4) return d
@@ -353,10 +431,20 @@ const sortedWeeks = computed(() => {
       set.add(mon.toISOString())
     }
   }
+  const from = data.settings?.semester_start_date || data.settings?.start_date
+  const to = data.settings?.first_course_semester_end_date || data.settings?.semester_end_date || data.settings?.end_date
+  if (from && to) {
+    const date = getMonday(new Date(`${from}T12:00:00`))
+    const end = new Date(`${to}T12:00:00`)
+    while (date <= end) {
+      set.add(date.toISOString())
+      date.setDate(date.getDate() + 7)
+    }
+  }
   return [...set].sort().map(iso => {
     const mon = new Date(iso)
     const sun = new Date(mon); sun.setDate(sun.getDate() + 6)
-    return { iso, monStr: fmtDate(mon), sunStr: fmtDate(sun) }
+    return { iso, mon, sun, monStr: fmtDate(mon), sunStr: fmtDate(sun) }
   })
 })
 
@@ -375,6 +463,15 @@ const weekDates = computed(() => {
       if (getMonday(parseDMY(d.date)).toISOString() === w.iso) set.add(d.date)
     }
   }
+  const from = data.settings?.semester_start_date || data.settings?.start_date
+  const to = data.settings?.first_course_semester_end_date || data.settings?.semester_end_date || data.settings?.end_date
+  if (from && to) {
+    for (let offset = 0; offset < 6; offset++) {
+      const date = addDays(w.mon, offset)
+      const iso = isoDateValue(date)
+      if (from <= iso && iso <= to) set.add(fmtDate(date))
+    }
+  }
   return [...set].sort(compareDMY)
 })
 
@@ -383,7 +480,7 @@ function getDayWeekday(dateStr) {
     const lk = slotLookup.value[g.group_index]?.[dateStr]
     if (lk) return lk.weekday
   }
-  return ''
+  return ['', 'ПН', 'ВТ', 'СР', 'ЧТ', 'ПТ', 'СБ'][parseDMY(dateStr).getDay()] || ''
 }
 
 const yearTabs = computed(() => {
@@ -451,6 +548,128 @@ function teacherNameById(id) {
   return data.teachers.find(t => t.id === id)?.name || `преподаватель #${id}`
 }
 
+function lessonSourceIndex(lesson) {
+  if (lesson?.source_index) return lesson.source_index
+  return data.lessons.find(item => Number(item.id) === Number(lesson?.id))?.source_index || ''
+}
+
+function isUpLesson(lesson) {
+  return lesson?.is_block === true || /^(?:В?УП)(?:\.|\s)/i.test(String(lesson?.name || '').trim())
+}
+
+function isTransferredToPp(lesson) {
+  const teacher = data.teachers.find(item => Number(item.id) === Number(lesson?.teacher))
+  const name = String(teacher?.name || '').toLocaleLowerCase('ru')
+  return name.includes('вынес') && name.includes('пп')
+}
+
+function upAllowedOnDate(groupId, dateIso) {
+  const group = data.groups.find(item => Number(item.id) === Number(groupId))
+  if (!group || !dateIso) return false
+  if ((group.practice_periods || []).some(period => period.from <= dateIso && dateIso <= period.to)) return false
+  const week = (group.academic_calendar || []).find(item => item.from <= dateIso && dateIso <= item.to)
+  // The calendar UP value is a planning hint, not a hard restriction for a
+  // dispatcher-locked lesson. Manual UP is allowed in an ordinary teaching
+  // week, but never during PP or vacation.
+  return Boolean(week && Number(week.pp_hours || 0) === 0 && !week.vacation)
+}
+
+function placedUpHoursOnDay(groupId, dateIso) {
+  const manualGroup = groups.value.find(item => Number(item.group_index) === Number(groupId))
+  if (!manualGroup) return 0
+  let hours = 0
+  for (const day of manualGroup.days || []) {
+    if (day.date_iso !== dateIso) continue
+    for (const slot of day.slots || []) {
+      for (const placed of slot.lessons || []) {
+        const source = data.lessons.find(item => Number(item.id) === Number(placed.id)) || placed
+        if (isUpLesson(source)) hours += 6
+      }
+    }
+  }
+  return hours
+}
+
+function lessonHoursPerPlacement(lesson) {
+  return isUpLesson(lesson) ? 6 : 2
+}
+
+const confirmedHoursByLesson = computed(() => {
+  const totals = {}
+  for (const entry of teachingLedger.value) {
+    const id = Number(entry.lesson_id)
+    totals[id] = (totals[id] || 0) + Number(entry.hours || 0)
+  }
+  return totals
+})
+
+const confirmedPlacementKeys = computed(() => new Set(teachingLedger.value.map(entry =>
+  `${Number(entry.lesson_id)}|${entry.date}|${Number(entry.slot)}`
+)))
+
+const manualHoursByLesson = computed(() => {
+  const totals = {}
+  for (const group of groups.value) {
+    for (const day of group.days || []) {
+      for (const slot of day.slots || []) {
+        for (const placed of slot.lessons || []) {
+          const id = Number(placed.id)
+          if (confirmedPlacementKeys.value.has(`${id}|${day.date_iso}|${Number(slot.slot)}`)) continue
+          const lesson = data.lessons.find(item => Number(item.id) === id) || placed
+          totals[id] = (totals[id] || 0) + lessonHoursPerPlacement(lesson)
+        }
+      }
+    }
+  }
+  return totals
+})
+
+function lessonHourState(lesson) {
+  const planHours = Number(lesson?.total_hours || 0)
+  const confirmedHours = Number(confirmedHoursByLesson.value[lesson?.id] || 0)
+  const manualHours = Number(manualHoursByLesson.value[lesson?.id] || 0)
+  return {
+    planHours,
+    confirmedHours,
+    manualHours,
+    remainingHours: Math.max(0, planHours - confirmedHours - manualHours),
+  }
+}
+
+function effectiveTargetSlots(lesson, dateIso = generationFrom.value) {
+  const hours = lessonHourState(lesson)
+  if (!isUpLesson(lesson)) return Math.ceil(Math.max(0, hours.planHours - hours.confirmedHours) / 2)
+  if (lesson?.plan_active === false || Number(lesson?.total_hours || 0) <= 0 || Number(lesson?.teacher) < 0 ||
+      isTransferredToPp(lesson) || !upAllowedOnDate(lesson.group, dateIso)) return 0
+  return Math.floor(Math.max(0, hours.planHours - hours.confirmedHours) / 6)
+}
+
+const selectedTeacherUpHours = computed(() => {
+  if (teacherFilter.value < 0) return null
+  const lessons = data.lessons.filter(lesson =>
+    Number(lesson.teacher) === teacherFilter.value &&
+    lesson.plan_active !== false &&
+    isUpLesson(lesson) &&
+    Number(lesson.workload_source?.semester || 1) === 1
+  )
+  if (!lessons.length) return null
+  const result = {
+    name: teacherNameById(teacherFilter.value),
+    plan: 0,
+    confirmed: 0,
+    manual: 0,
+    remaining: 0,
+  }
+  for (const lesson of lessons) {
+    const state = lessonHourState(lesson)
+    result.plan += state.planHours
+    result.confirmed += state.confirmedHours
+    result.manual += state.manualHours
+    result.remaining += state.remainingHours
+  }
+  return result
+})
+
 // ── Lesson progress ──
 const placementByLesson = computed(() => {
   const acc = {}
@@ -471,15 +690,20 @@ const lessonProgress = computed(() => {
   const visibleGroups = new Set(filteredGroups.value.map(group => group.group_index))
   for (const lesson of data.lessons) {
     if (!visibleGroups.has(lesson.group)) continue
-    const placed = placementByLesson.value[lesson.id] || 0
-    if (Number(lesson.total_slots || 0) <= 0 && placed === 0) continue
+    if (teacherFilter.value >= 0 && Number(lesson.teacher) !== teacherFilter.value) continue
+    const placed = rangePlacementByLesson.value[lesson.id] || 0
+    const targetSlots = effectiveTargetSlots(lesson)
+    const hourState = lessonHourState(lesson)
+    if (targetSlots <= 0 && placed === 0) continue
     items.push({
       id: lesson.id,
       group: lesson.group,
       name: lesson.name,
+      source_index: lesson.source_index || '',
       teacher: lesson.teacher,
-      total_slots: Number(lesson.total_slots || 0),
+      total_slots: targetSlots,
       placed,
+      ...hourState,
       subgroup: lesson.subgroup,
     })
   }
@@ -490,6 +714,35 @@ const lessonProgress = computed(() => {
 const placedLessonCount = computed(() =>
   Object.values(placementByLesson.value).reduce((sum, count) => sum + count, 0)
 )
+
+const rangeError = computed(() => {
+  if (!generationFrom.value || !generationTo.value) return 'Укажите обе даты генерации.'
+  if (generationTo.value < generationFrom.value) return 'Дата окончания раньше даты начала.'
+  const from = new Date(`${generationFrom.value}T12:00:00`)
+  const to = new Date(`${generationTo.value}T12:00:00`)
+  if ((to - from) / 86400000 > 6) return 'За один запуск можно достроить не более 7 календарных дней.'
+  return ''
+})
+
+const rangePlacementByLesson = computed(() => {
+  const counts = {}
+  if (rangeError.value) return counts
+  for (const group of groups.value) {
+    for (const day of group.days || []) {
+      if (!day.date_iso || day.date_iso < generationFrom.value || day.date_iso > generationTo.value) continue
+      for (const slot of day.slots || []) {
+        for (const lesson of slot.lessons || []) counts[lesson.id] = (counts[lesson.id] || 0) + 1
+      }
+    }
+  }
+  return counts
+})
+
+const rangePlacedLessonCount = computed(() =>
+  Object.values(rangePlacementByLesson.value).reduce((sum, count) => sum + count, 0)
+)
+
+const sortedTeachers = computed(() => [...data.teachers].sort((a, b) => a.name.localeCompare(b.name, 'ru')))
 
 const placedDates = computed(() => {
   const dates = new Set()
@@ -535,22 +788,39 @@ const pickerOptions = computed(() => {
   if (!pickerCell.value) return []
   const sameGroup = data.lessons.filter(l =>
     l.group === pickerCell.value.group_index &&
+    (teacherFilter.value < 0 || Number(l.teacher) === teacherFilter.value) &&
     l.plan_active !== false &&
-    l.generation_active !== false &&
-    Number(l.total_slots || 0) > 0
+    l.curriculum_active !== false &&
+    l.is_class_hour !== true
   )
   return sameGroup.map(l => {
-    const placed = placementByLesson.value[l.id] || 0
+    const placed = rangePlacementByLesson.value[l.id] || 0
+    const totalSlots = effectiveTargetSlots(l, pickerCell.value.dateIso)
+    const hourState = lessonHourState(l)
     let conflict = ''
+    let blocking = false
+    if (Number(l.teacher) < 0) { conflict = 'не назначен преподаватель'; blocking = true }
+    if (!conflict && l.is_pp === true) { conflict = 'производственная практика ставится по периоду ПП'; blocking = true }
+    if (!conflict && isTransferredToPp(l)) { conflict = 'УП вынесена на производственную практику'; blocking = true }
+    if (!conflict && isUpLesson(l) && !upAllowedOnDate(l.group, pickerCell.value.dateIso)) {
+      conflict = 'УП нельзя ставить во время ПП или каникул'; blocking = true
+    }
+    if (!conflict && Number(l.total_hours || 0) <= 0) conflict = 'в учебном плане нет часов'
+    if (!conflict && isUpLesson(l) && ![1, 3].includes(Number(pickerCell.value.slotNum))) {
+      conflict = 'УП можно начинать только с 1-й или 3-й пары'; blocking = true
+    }
     // Конфликт: тот же урок уже в этом слоте
-    if (pickerCell.value.lessons.some(x => x.id === l.id)) conflict = 'уже в этой ячейке'
+    if (!conflict && pickerCell.value.lessons.some(x => x.id === l.id)) { conflict = 'уже в этой ячейке'; blocking = true }
+    if (!conflict && pickerCell.value.lessons.some(x => Number(x.teacher_id) === Number(l.teacher))) {
+      conflict = 'преподаватель уже занят в этой ячейке'; blocking = true
+    }
     // Конфликт: эта же подгруппа уже занята
-    else if (l.subgroup !== -1) {
+    else if (!conflict && l.subgroup !== -1) {
       const occupiedSub = pickerCell.value.lessons.some(x => x.subgroup === l.subgroup || x.subgroup === -1)
-      if (occupiedSub) conflict = 'подгруппа уже занята'
-    } else {
+      if (occupiedSub) { conflict = 'подгруппа уже занята'; blocking = true }
+    } else if (!conflict) {
       // -1 (вся группа) не должна сосуществовать ни с чем
-      if (pickerCell.value.lessons.length) conflict = 'ячейка занята подгруппой'
+      if (pickerCell.value.lessons.length) { conflict = 'ячейка занята подгруппой'; blocking = true }
     }
     // Конфликт: преподаватель занят в этот слот у другой группы
     if (!conflict) {
@@ -559,24 +829,33 @@ const pickerOptions = computed(() => {
         const arr = slotLookup.value[g.group_index]?.[pickerCell.value.dateStr]?.slots[pickerCell.value.slotNum]?.lessons || []
         if (arr.some(x => x.teacher_id === l.teacher)) {
           conflict = `препод #${l.teacher} занят в ${g.group_name}`
+          blocking = true
           break
         }
       }
     }
-    if (!conflict && placed >= l.total_slots) {
+    if (!conflict && isUpLesson(l) && placedUpHoursOnDay(l.group, pickerCell.value.dateIso) + 6 > 12) {
+      conflict = 'на этот день уже поставлено 12 ч УП'; blocking = true
+    }
+    if (!conflict && hourState.remainingHours < lessonHoursPerPlacement(l)) {
       conflict = 'нагрузка уже выполнена'
     }
     return {
       id: l.id, name: l.name, subgroup: l.subgroup, teacher: l.teacher,
-      is_lab: l.is_lab, is_block: l.is_block, total_slots: l.total_slots,
+      source_index: l.source_index || '',
+      is_lab: l.is_lab, is_block: isUpLesson(l), total_slots: totalSlots,
       placed,
+      ...hourState,
       conflict,
+      blocking,
     }
-  })
+  }).sort((a, b) => Number(Boolean(a.conflict)) - Number(Boolean(b.conflict)) ||
+    a.source_index.localeCompare(b.source_index, 'ru', { numeric: true }) ||
+    a.name.localeCompare(b.name, 'ru') || a.subgroup - b.subgroup)
 })
 
 function addLessonToCell(opt) {
-  if (opt.conflict) {
+  if (opt.conflict && opt.blocking) {
     toast.warning(opt.conflict)
     return
   }
@@ -586,12 +865,14 @@ function addLessonToCell(opt) {
   const slot = cstore.findOrCreateSlot(day, cell.slotNum, cell.time)
   const newLessons = [...(slot.lessons || []), {
     id: opt.id, name: opt.name, teacher_id: opt.teacher,
+    source_index: opt.source_index,
     subgroup: opt.subgroup, is_lab: opt.is_lab, is_block: opt.is_block,
   }]
   cstore.setSlotLessons(slot, newLessons)
   // Sync picker view
   pickerCell.value.lessons = newLessons.slice()
-  toast.success('Добавлено')
+  if (opt.conflict) toast.warning(`Закреплено вручную: ${opt.conflict}`)
+  else toast.success('Добавлено')
 }
 
 function removeLessonFromCell(lessonId) {
@@ -684,6 +965,14 @@ async function onImportSchedule(event) {
 }
 
 async function onSaveAndGenerate() {
+  if (rangeError.value) {
+    toast.error(rangeError.value)
+    return
+  }
+  if (rangePlacedLessonCount.value === 0) {
+    toast.error('Поставьте хотя бы одну обязательную пару внутри выбранного диапазона')
+    return
+  }
   generating.value = true
   const saved = await cstore.save()
   if (!saved.ok) {
@@ -691,10 +980,11 @@ async function onSaveAndGenerate() {
     generating.value = false
     return
   }
-  const options = { mode: 'weekly', lock_existing: 'manual' }
-  if (placedDates.value.length === 1) {
-    options.scope_from = placedDates.value[0]
-    options.scope_to = placedDates.value[0]
+  const options = {
+    mode: 'weekly',
+    lock_existing: 'manual',
+    scope_from: generationFrom.value,
+    scope_to: generationTo.value,
   }
   const result = await scheduleStore.regenerate(options)
   generating.value = false
@@ -702,9 +992,7 @@ async function onSaveAndGenerate() {
     toast.error(result.message || 'Не удалось запустить генерацию')
     return
   }
-  toast.success(placedDates.value.length === 1
-    ? `Закреплённые пары сохранены. Достраивается день ${placedDates.value[0]}.`
-    : 'Закреплённые пары сохранены. Генерация всего периода запущена.')
+  toast.success(`Закреплённые пары сохранены. Достраивается диапазон ${generationFrom.value} — ${generationTo.value}; остальные даты сохраняются.`)
   router.push('/schedule')
 }
 
@@ -779,6 +1067,24 @@ function initScratch() {
 
 <style scoped>
 .header-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+.generation-range-card {
+  display: grid; gap: 12px; margin-bottom: 16px; padding: 14px 16px;
+  border: 1px solid var(--accent); border-radius: var(--radius); background: var(--accent-light);
+}
+.generation-range-copy { display: grid; gap: 4px; }
+.generation-range-copy strong { color: var(--text-primary); font-size: 15px; }
+.generation-range-copy span { color: var(--text-secondary); font-size: 13px; }
+.generation-range-controls { display: flex; align-items: end; gap: 10px; flex-wrap: wrap; }
+.generation-range-controls label { display: grid; gap: 4px; color: var(--text-secondary); font-size: 12px; font-weight: 600; }
+.generation-range-controls input { width: 150px; }
+.teacher-filter-field { min-width: min(100%, 320px); flex: 1; }
+.teacher-filter-field select { width: 100%; }
+.range-lock-count { padding: 9px 12px; border-radius: var(--radius-sm); background: var(--success-light); color: var(--success); font-size: 13px; }
+.range-lock-count.empty { background: var(--bg-tertiary); color: var(--text-muted); }
+.teacher-hours-summary { display:flex; align-items:center; gap:8px 14px; flex-wrap:wrap; padding:10px 12px; border:1px solid var(--border); border-radius:var(--radius-sm); background:var(--bg-secondary); color:var(--text-secondary); font-size:13px; }
+.teacher-hours-summary strong { margin-right:auto; color:var(--text-primary); }
+.teacher-hours-remaining { color:var(--success); font-weight:800; }
+.generation-range-error { margin: 0; color: var(--error); font-size: 13px; font-weight: 600; }
 .visually-hidden { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
 .import-report { display:flex; flex-direction:column; gap:6px; margin-bottom:16px; padding:12px 14px; border:1px solid var(--border); border-radius:var(--radius); font-size:13px; }
 .import-report-ok { border-color:var(--success); background:var(--success-light); }
@@ -867,6 +1173,7 @@ function initScratch() {
 .cell-lesson { display:flex; flex-direction:column; align-items:flex-start; gap:3px; }
 .cell-lesson + .cell-lesson { margin-top:6px; padding-top:6px; border-top:1px dashed var(--border-strong); }
 .cell-subject { font-size: 12px; font-weight: 600; color: var(--text-primary); line-height: 1.35; }
+.subject-index { display:inline-block; margin-right:4px; padding:1px 5px; border-radius:4px; background:var(--accent-light); color:var(--accent); font-size:.85em; font-weight:800; white-space:nowrap; }
 .cell-detail { font-size:10px; color:var(--text-secondary); }
 .cell-empty {
   color: var(--text-muted); font-size: 18px; display: flex;
@@ -895,7 +1202,8 @@ function initScratch() {
 .progress-name { color: var(--text-secondary); display:flex; flex-direction:column; }
 .progress-name small { margin-top:2px; color:var(--text-muted); font-size:10px; }
 .progress-group { color: var(--accent); font-weight: 600; margin-right: 6px; }
-.progress-counts { color: var(--text-primary); font-weight: 600; font-variant-numeric: tabular-nums; }
+.progress-counts { display:flex; flex-direction:column; align-items:flex-end; color: var(--text-primary); font-weight: 600; font-variant-numeric: tabular-nums; white-space:nowrap; }
+.progress-counts span { color:var(--text-muted); font-size:10px; font-weight:500; }
 .progress-partial .progress-counts { color: #f59e0b; }
 .progress-complete .progress-counts { color: #10b981; }
 .progress-over .progress-counts { color: #ef4444; }
@@ -913,8 +1221,10 @@ function initScratch() {
   border: 1px solid transparent;
 }
 .picker-option:hover { background: var(--accent-light); border-color: var(--accent); }
-.picker-option.picker-warn { opacity: 0.7; }
-.picker-option.picker-warn:hover { background: rgba(239, 68, 68, 0.1); border-color: var(--error); }
+.picker-option.picker-warn { background: var(--warning-light); border-color: var(--warning); }
+.picker-option.picker-warn:hover { background: var(--warning-light); border-color: var(--warning); }
+.picker-option.picker-blocked { opacity: 0.6; cursor: not-allowed; }
+.picker-option.picker-blocked:hover { background: rgba(239, 68, 68, 0.1); border-color: var(--error); }
 .picker-option-main { display: flex; justify-content: space-between; gap: 10px; align-items: center; }
 .picker-option-name { font-weight: 600; font-size: 13px; }
 .picker-option-meta { font-size: 11px; color: var(--text-muted); }

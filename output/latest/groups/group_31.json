@@ -196,6 +196,334 @@
         }
       ],
       "weekday": "ВТ"
+    },
+    {
+      "date": "30.09.2026",
+      "date_iso": "2026-09-30",
+      "day_index": 0,
+      "slots": [
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 685,
+              "is_block": false,
+              "is_lab": false,
+              "name": "Автоматизация автомастерской в компьютерной программе \"1С предприятие 8: \"Автосервис\"",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 34,
+              "room_name": "210",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 63,
+              "teacher_id": 47,
+              "uid": "lesson-3a01d5ca310fc083",
+              "week_parity": "all"
+            },
+            {
+              "avoid_lunch_split": true,
+              "consecutive_pairs": 2,
+              "display_time": null,
+              "id": 692,
+              "is_block": false,
+              "is_lab": true,
+              "name": "ЛПЗ ВМДК.04.01 Слесарное дело и технические измерения",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 64,
+              "room_name": "115-116",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 62,
+              "teacher_id": 59,
+              "uid": "lesson-06e03726d1c178bc",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 1,
+          "text": "Автоматизация автомастерской в компьютерной программе \"1С предприятие 8: \"Автосервис\" — 2 п/г, Азарян Карине Айказовна, Лесная | ЛПЗ ВМДК.04.01 Слесарное дело и технические измерения — 1 п/г, Самцов Андрей Евгеньевич, Лесная",
+          "time": "1 пара (08:30-09:55)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 685,
+              "is_block": false,
+              "is_lab": false,
+              "name": "Автоматизация автомастерской в компьютерной программе \"1С предприятие 8: \"Автосервис\"",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 34,
+              "room_name": "210",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 63,
+              "teacher_id": 47,
+              "uid": "lesson-3a01d5ca310fc083",
+              "week_parity": "all"
+            },
+            {
+              "avoid_lunch_split": true,
+              "consecutive_pairs": 2,
+              "display_time": null,
+              "id": 692,
+              "is_block": false,
+              "is_lab": true,
+              "name": "ЛПЗ ВМДК.04.01 Слесарное дело и технические измерения",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 64,
+              "room_name": "115-116",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 62,
+              "teacher_id": 59,
+              "uid": "lesson-06e03726d1c178bc",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 2,
+          "text": "Автоматизация автомастерской в компьютерной программе \"1С предприятие 8: \"Автосервис\" — 2 п/г, Азарян Карине Айказовна, Лесная | ЛПЗ ВМДК.04.01 Слесарное дело и технические измерения — 1 п/г, Самцов Андрей Евгеньевич, Лесная",
+          "time": "2 пара (10:05-11:30)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 680,
+              "is_block": false,
+              "is_lab": false,
+              "name": "Иностранный язык в профессиональной деятельности",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 47,
+              "room_name": "417",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 63,
+              "teacher_id": 28,
+              "uid": "lesson-d1d58a7f59603790",
+              "week_parity": "all"
+            },
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 684,
+              "is_block": false,
+              "is_lab": false,
+              "name": "Автоматизация автомастерской в компьютерной программе \"1С предприятие 8: \"Автосервис\"",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 34,
+              "room_name": "210",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 62,
+              "teacher_id": 47,
+              "uid": "lesson-112bcde94085e932",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 3,
+          "text": "Иностранный язык в профессиональной деятельности — 2 п/г, Новосёлова Светлана Юрьевна, Лесная | Автоматизация автомастерской в компьютерной программе \"1С предприятие 8: \"Автосервис\" — 1 п/г, Азарян Карине Айказовна, Лесная",
+          "time": "3 пара (12:25-13:50)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 685,
+              "is_block": false,
+              "is_lab": false,
+              "name": "Автоматизация автомастерской в компьютерной программе \"1С предприятие 8: \"Автосервис\"",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 34,
+              "room_name": "210",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 63,
+              "teacher_id": 47,
+              "uid": "lesson-3a01d5ca310fc083",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 4,
+          "text": "Автоматизация автомастерской в компьютерной программе \"1С предприятие 8: \"Автосервис\" — 2 п/г, Азарян Карине Айказовна, Лесная",
+          "time": "4 пара (14:00-15:25)"
+        },
+        {
+          "lessons": [],
+          "slot": 5,
+          "text": "-",
+          "time": "5 пара (15:35-16:55)"
+        },
+        {
+          "lessons": [],
+          "slot": 6,
+          "text": "-",
+          "time": "6 пара (17:05-18:25)"
+        },
+        {
+          "lessons": [],
+          "slot": 7,
+          "text": "-",
+          "time": "7 пара (18:35-19:55)"
+        }
+      ],
+      "weekday": "СР"
+    },
+    {
+      "date": "02.10.2026",
+      "date_iso": "2026-10-02",
+      "day_index": 2,
+      "slots": [
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 680,
+              "is_block": false,
+              "is_lab": false,
+              "name": "Иностранный язык в профессиональной деятельности",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 47,
+              "room_name": "417",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 63,
+              "teacher_id": 28,
+              "uid": "lesson-d1d58a7f59603790",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 1,
+          "text": "Иностранный язык в профессиональной деятельности — 2 п/г, Новосёлова Светлана Юрьевна, Лесная",
+          "time": "1 пара (08:30-09:55)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 685,
+              "is_block": false,
+              "is_lab": false,
+              "name": "Автоматизация автомастерской в компьютерной программе \"1С предприятие 8: \"Автосервис\"",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 34,
+              "room_name": "210",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 63,
+              "teacher_id": 47,
+              "uid": "lesson-3a01d5ca310fc083",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 2,
+          "text": "Автоматизация автомастерской в компьютерной программе \"1С предприятие 8: \"Автосервис\" — 2 п/г, Азарян Карине Айказовна, Лесная",
+          "time": "2 пара (10:05-11:30)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 682,
+              "is_block": false,
+              "is_lab": false,
+              "name": "Метрология, стандартизация, сертификация",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 33,
+              "room_name": "209",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": -1,
+              "teacher_id": 41,
+              "uid": "lesson-550fa332f19d81ca",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 3,
+          "text": "Метрология, стандартизация, сертификация — вся группа, Садриева Татьяна Геннадьевна, Лесная",
+          "time": "3 пара (12:25-13:50)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 679,
+              "is_block": false,
+              "is_lab": false,
+              "name": "Иностранный язык в профессиональной деятельности",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 47,
+              "room_name": "417",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 62,
+              "teacher_id": 28,
+              "uid": "lesson-20a4ce29583340b9",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 4,
+          "text": "Иностранный язык в профессиональной деятельности — 1 п/г, Новосёлова Светлана Юрьевна, Лесная",
+          "time": "4 пара (14:00-15:25)"
+        },
+        {
+          "lessons": [],
+          "slot": 5,
+          "text": "-",
+          "time": "5 пара (15:35-16:55)"
+        },
+        {
+          "lessons": [],
+          "slot": 6,
+          "text": "-",
+          "time": "6 пара (17:05-18:25)"
+        },
+        {
+          "lessons": [],
+          "slot": 7,
+          "text": "-",
+          "time": "7 пара (18:35-19:55)"
+        }
+      ],
+      "weekday": "ПТ"
     }
   ],
   "group_index": 31,

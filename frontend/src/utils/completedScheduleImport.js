@@ -137,10 +137,16 @@ function chooseLesson(cell, groupId, inferredSubgroup, current, teachersById) {
     if (lesson) return { lesson, teacherMismatch: Boolean(cell.teacherSurname && !normalized(teachersById.get(Number(lesson.teacher))).startsWith(cell.teacherSurname)) }
   }
   const candidates = (current.lessons || [])
-    .filter(lesson => Number(lesson.group) === Number(groupId) && lesson.curriculum_active !== false)
+    .filter(lesson => Number(lesson.group) === Number(groupId))
     .map(lesson => {
       let score = nameScore(cell.matchingSubject || cell.subject, lesson.name)
       if (score < 35) return null
+      // A completed timetable may legitimately contain a historical workload
+      // row which was disabled after that week (for example, an already held
+      // UP block).  Keep fuzzy matching restricted to the active curriculum,
+      // but allow an exact name match to restore that confirmed fact.
+      if (lesson.curriculum_active === false && score < 100) return null
+      score += lesson.curriculum_active === false ? -10 : 10
       const lessonTeacher = teachersById.get(Number(lesson.teacher)) || ''
       const surnameMatches = cell.teacherSurname && normalized(lessonTeacher).startsWith(cell.teacherSurname)
       if (surnameMatches) score += 32

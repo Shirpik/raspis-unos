@@ -729,9 +729,18 @@ bool PrepareGenerationScope(const JsonValue& data, const std::filesystem::path& 
         confirmed_events.insert(std::to_string(JsonInt(entry, "lesson_id", -1)) + "|" + date + "|" +
                                 std::to_string(JsonInt(entry, "slot", 0)));
     }
-    if (!ScheduleFileIsCurrent(schedule_file.string())) return true;
+    // A scoped run must account for lessons already placed outside the range
+    // even when the input revision changed (for example after importing fresh
+    // confirmed lessons).  Unknown/removed lesson ids are ignored later by the
+    // scheduler, while known ids still protect their already planned hours.
+    if (!FileExists(schedule_file.string())) return true;
     JsonParseResult previous = ParseJson(ReadFileUtf8(schedule_file));
     if (!previous.ok || !previous.value.At("groups").IsArray()) return true;
+    std::set<int> block_lessons;
+    for (const JsonValue& lesson : data.At("lessons").array_value)
+        if (JsonBool(lesson, "is_block", false) ||
+            JsonString(lesson, "name", "").rfind("УП.", 0) == 0)
+            block_lessons.insert(JsonInt(lesson, "id", -1));
     std::set<std::string> seen;
     for (const JsonValue& group : previous.value.At("groups").array_value)
         for (const JsonValue& day : group.At("days").array_value) {
@@ -746,7 +755,7 @@ bool PrepareGenerationScope(const JsonValue& data, const std::filesystem::path& 
                     const std::string key = std::to_string(id) + "|" + date + "|" +
                                             std::to_string(JsonInt(slot, "slot", 0));
                     if (!confirmed_events.count(key) && seen.insert(key).second)
-                        opts.reserved_hours[id] += 2;
+                        opts.reserved_hours[id] += block_lessons.count(id) ? 6 : 2;
                 }
         }
     return true;
@@ -2242,14 +2251,24 @@ std::string HandleRequest(const std::string& request, const std::string& output_
                     const JsonValue quality = ReadOptionalJsonFile(cap_candidate / "quality_report.json");
                     const JsonValue rooms = ReadOptionalJsonFile(cap_candidate / "room_allocation.json");
                     validation.checked = true;
-                    validation.ok = JsonBool(quality, "load_matches_plan_exactly", false) &&
-                        JsonInt(rooms, "unassigned", -1) == 0;
-                    validation.message = validation.ok ? "Выбранный период проверен" :
-                        "Проверка выбранного периода: часы или кабинеты не совпали с планом";
+                    validation.unassigned_rooms = std::max(0, JsonInt(rooms, "unassigned", 0));
+                    // In Constructor mode the dispatcher-fixed subject, date
+                    // and pair are authoritative. A room is operational data:
+                    // keep the lesson even when the allocator has to leave its
+                    // room for manual clarification.
+                    validation.ok = JsonBool(quality, "load_matches_plan_exactly", false);
+                    validation.message = validation.ok
+                        ? (validation.unassigned_rooms == 0
+                            ? "Выбранный период проверен"
+                            : "Предметы и закреплённые пары сохранены; часть кабинетов требует уточнения")
+                        : "Проверка выбранного периода: часы не совпали с планом";
                     ApplyFinalOutputGate(result, validation);
                     if (result.success) {
                         const auto previous_path = std::filesystem::path(cap_output_dir) / "schedule_all.json";
-                        const JsonValue previous = ScheduleFileIsCurrent(previous_path.string())
+                        // Keep every day outside the requested range.  A data
+                        // refresh must not turn a Wed-Sat repair into a
+                        // replacement of the whole visible schedule.
+                        const JsonValue previous = FileExists(previous_path.string())
                             ? ReadOptionalJsonFile(previous_path) : JsonValue::MakeNull();
                         const JsonValue generated = ReadOptionalJsonFile(cap_candidate / "schedule_all.json");
                         const JsonValue merged = MergeScheduleRange(previous, generated,
@@ -2405,7 +2424,9 @@ std::string HandleRequest(const std::string& request, const std::string& output_
         std::lock_guard<std::mutex> lock(g_schedule_mutex);
         std::filesystem::path file = std::filesystem::path("output") / "manual" / "schedule_all.json";
         if (!FileExists(file)) return ErrorJson(404, "Not Found", "Ручное расписание пусто. Скопируй из автогенерации или начни с нуля.");
-        if (!ScheduleFileIsCurrent(file.string())) return ErrorJson(409, "Conflict", "База изменилась после сохранения ручного расписания. Скопируй свежую генерацию или начни заново.");
+        // The constructor is an editable draft.  Let the dispatcher open an
+        // older draft after a data import and save it again against the current
+        // revision.  Generation validates lesson ids and assignments normally.
         return JsonResponse(200, "OK", ReadFileUtf8(file));
     }
 

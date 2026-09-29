@@ -2756,9 +2756,31 @@ static WeekSolveResult SolveOneWeek(
     std::vector<std::vector<BoolVar>> teacher_busy(TEACHERS, std::vector<BoolVar>(local_slots));
     for (int teacher = 0; teacher < TEACHERS; teacher++) {
         for (int lt = 0; lt < local_slots; lt++) {
-            LinearExpr sum;
-            for (int l : active_teacher_lessons[teacher]) sum += x[l][lt];
-            model.AddLessOrEqual(sum, 1);
+            LinearExpr ordinary_sum;
+            for (int l : active_teacher_lessons[teacher])
+                if (!lessons[l].is_block) ordinary_sum += x[l][lt];
+            // Ordinary pair rows still share the same exact bell interval.
+            model.AddLessOrEqual(ordinary_sum, 1);
+            LinearExpr sum = ordinary_sum;
+            // UP is displayed as one start row but occupies its complete
+            // morning/afternoon interval. Include that interval in the
+            // teacher calendar so two adjacent UP shifts do not look like a
+            // prohibited artificial window between pair 1 and pair 3.
+            //
+            // Do not constrain this coarse sum to <= 1: the 08:30-12:30 and
+            // 13:00-17:00 UP shifts are disjoint, but both overlap the normal
+            // 12:10-13:40 pair slot. Their exact intervals are checked below;
+            // teacher_busy is only the OR-style occupancy indicator used by
+            // daily limits and quality rules.
+            for (const auto& blk : blocks) {
+                if (lessons[blk.lesson_id].teacher != teacher) continue;
+                for (int i = 0; i < static_cast<int>(blk.possible_starts.size()); ++i) {
+                    const auto occupied = TeacherBlockedSlotsForUpStart(
+                        week_days, blk.possible_starts[i]);
+                    if (std::find(occupied.begin(), occupied.end(), lt) != occupied.end())
+                        sum += blk.start_vars[i];
+                }
+            }
             teacher_busy[teacher][lt] = MakePositiveIndicator(model, sum);
         }
     }
@@ -2928,13 +2950,13 @@ static WeekSolveResult SolveOneWeek(
             LinearExpr wsd;
             for (int ld : avail_lds) wsd += student_day_has[g][p][ld];
 
-            // A one-day scoped run cannot evaluate a weekly minimum. Applying
-            // it here used to turn "at least 6 study days per week" into
-            // "every group with a positive quota must study on this exact
-            // day". That made otherwise valid day generation immediately
-            // INFEASIBLE. Daily limits and minimum pairs per active day still
-            // apply; the weekly minimum is checked when a week is generated.
-            if (HARD_MIN_STUDY_DAYS_PER_WEEK && !(allow_partial && W == 1)) {
+            // A scoped constructor run sees only the selected date fragment;
+            // preserved lessons before/after it are deliberately outside this
+            // model.  Therefore it cannot enforce a full-week study-day count
+            // without double-counting the missing part of the week. Daily
+            // limits still apply here; the weekly minimum remains hard for a
+            // normal full-week/semester generation.
+            if (HARD_MIN_STUDY_DAYS_PER_WEEK && !allow_partial) {
                 model.AddGreaterOrEqual(wsd, req_d);
             } else if (USE_QUALITY_OBJECTIVE && req_d > 0) {
                 IntVar miss = model.NewIntVar(Domain(0, req_d));
@@ -2968,8 +2990,15 @@ static WeekSolveResult SolveOneWeek(
     // ── Без окон (жёстко) ─────────────────────────────────────────────────
     std::set<int> monday_days;
     for (int day = 0; day < W; ++day) if (DayOfWeek(week_days[day]) == 1) monday_days.insert(day);
-    if (HARD_NO_STUDENT_WINDOWS) AddNoWindowsHard(model, student_entities, W, monday_days);
-    if (HARD_NO_TEACHER_WINDOWS) AddNoWindowsHard(model, teacher_busy, W, monday_days);
+    // Final validation applies the no-window rule to scoped output as well.
+    // Enforce it in the model instead of accepting a windowed solution and
+    // deleting one group/day per expensive output-repair pass afterwards.
+    // Constructor locks remain authoritative, but contradictory separated
+    // locks must be reported as infeasible rather than published with gaps.
+    if (HARD_NO_STUDENT_WINDOWS)
+        AddNoWindowsHard(model, student_entities, W, monday_days);
+    if (HARD_NO_TEACHER_WINDOWS)
+        AddNoWindowsHard(model, teacher_busy, W, monday_days);
 
     // ── Кампус ────────────────────────────────────────────────────────────
     std::vector<std::vector<IntVar>> group_day_campus(GROUPS, std::vector<IntVar>(W));
@@ -3034,9 +3063,29 @@ static WeekSolveResult SolveOneWeek(
         for (int ld = 0; ld < W; ++ld) {
             const auto target = teacher.date_minimum_pairs.find(week_days[ld]);
             if (target == teacher.date_minimum_pairs.end()) continue;
+            int minimum_pairs = target->second;
+            if (allow_partial) {
+                // A saved per-date target may predate a later availability or
+                // daily-limit edit.  In a constructor/scoped run it is a load
+                // preference, not permission to violate the teacher's hard
+                // capacity (e.g. minimum 4 with max_pairs_per_day == 2).
+                const int daily_limit = EffectiveTeacherMaxPairsPerDay(
+                    teacher.max_pairs_per_day);
+                if (daily_limit > 0) minimum_pairs = std::min(minimum_pairs, daily_limit);
+                int available_slots = 0;
+                for (int s = 0; s < SLOTS_PER_DAY; ++s) {
+                    const bool work_allowed = !teacher_work[teacher.id] ||
+                        WorkScheduleAllows(*teacher_work[teacher.id], week_days[ld], s);
+                    if (work_allowed && IsAvailable(
+                            week_days[ld], s, teacher.id, teacher_unavailable))
+                        ++available_slots;
+                }
+                minimum_pairs = std::min(minimum_pairs, available_slots);
+            }
+            if (minimum_pairs <= 0) continue;
             LinearExpr load;
             for (int s = 0; s < SLOTS_PER_DAY; ++s) load += teacher_busy[teacher.id][ld * SLOTS_PER_DAY + s];
-            model.AddGreaterOrEqual(load, target->second);
+            model.AddGreaterOrEqual(load, minimum_pairs);
         }
     }
 
@@ -3110,10 +3159,16 @@ static WeekSolveResult SolveOneWeek(
                     demand0 += x[l][lt];
                     demand0 -= at_campus1;
                 }
-                model.AddLessOrEqual(campus0_demand, room_capacity_by_campus[LESNAYA]);
-                model.AddLessOrEqual(campus1_demand, room_capacity_by_campus[KRIVOUSOVA]);
-                model.AddLessOrEqual(sports0_demand, sports_capacity_by_campus[LESNAYA]);
-                model.AddLessOrEqual(sports1_demand, sports_capacity_by_campus[KRIVOUSOVA]);
+                // In a Constructor/scoped run the dispatcher-selected subject
+                // timetable is authoritative. A missing room leaves that room
+                // unassigned for later editing instead of deleting the pair.
+                // Full-semester automatic generation keeps strict capacity.
+                if (!allow_partial) {
+                    model.AddLessOrEqual(campus0_demand, room_capacity_by_campus[LESNAYA]);
+                    model.AddLessOrEqual(campus1_demand, room_capacity_by_campus[KRIVOUSOVA]);
+                    model.AddLessOrEqual(sports0_demand, sports_capacity_by_campus[LESNAYA]);
+                    model.AddLessOrEqual(sports1_demand, sports_capacity_by_campus[KRIVOUSOVA]);
+                }
             }
     }
 
@@ -3252,8 +3307,16 @@ static WeekSolveResult SolveOneWeek(
     // Сначала решается полностью строгая модель. Лишь после доказанного
     // INFEASIBLE разрешаем CP-SAT выбрать минимальное число групп, которым
     // необходим одинарный учебный день. Все остальные hard-правила остаются.
+    // A constructor run covers an explicitly selected fragment of a week and
+    // uses the remaining curriculum quotas as upper bounds.  Such a fragment
+    // can legitimately leave a group with fewer than the global daily minimum
+    // (for example, three remaining pairs on Saturday).  Keep the strict pass
+    // first, then allow the existing selective fallback for scoped runs even
+    // when the semester-wide fallback is disabled in runtime settings.
+    const bool allow_daily_minimum_fallback =
+        g_solver_config.allow_single_pair_day_fallback || allow_partial;
     if (feasibility_resp.status() == CpSolverStatus::INFEASIBLE &&
-        g_solver_config.allow_single_pair_day_fallback &&
+        allow_daily_minimum_fallback &&
         !(allow_partial && W == 1) &&
         !(cancel_flag && cancel_flag->load())) {
         model.ClearAssumptions();
@@ -3275,6 +3338,10 @@ static WeekSolveResult SolveOneWeek(
         feasibility_seconds += fallback_resp.wall_time();
         feasibility_branches += fallback_resp.num_branches();
         feasibility_conflicts += fallback_resp.num_conflicts();
+        std::cerr << "  Daily-minimum fallback: "
+                  << CpSolverStatus_Name(fallback_resp.status())
+                  << " (" << std::fixed << std::setprecision(2)
+                  << fallback_resp.wall_time() << " s)\n";
 
         if (fallback_resp.status() == CpSolverStatus::OPTIMAL ||
             fallback_resp.status() == CpSolverStatus::FEASIBLE) {
@@ -3422,13 +3489,41 @@ GenerationResult GenerateScheduleWeekly(
             // The day model below uses their remaining semester hours as
             // candidate upper bounds and chooses compatible lessons itself.
             settings.At("automatic_period_quotas") = JsonValue::MakeBool(true);
+            // UP rows normally carry a zero rolling quota because the exact UP
+            // subject is chosen by the dispatcher and the academic calendar
+            // only specifies the aggregate UP hours for the week.  Reopen the
+            // UP rows explicitly locked in the Constructor; rows marked with
+            // the service teacher "вынесена на ПП" are removed below by
+            // ExcludeTransferredUpLessons.
+            std::map<int, int> locked_counts;
+            std::map<int, int> locked_up_counts;
+            for (const LockedAssignment& assignment : options.locked) {
+                locked_counts[assignment.lesson_id]++;
+                locked_up_counts[assignment.lesson_id]++;
+            }
+            for (JsonValue& lesson : parsed.value.At("lessons").array_value) {
+                const int id = JsonInt(lesson, "id", -1);
+                const auto locked = locked_counts.find(id);
+                if (locked == locked_counts.end()) continue;
+                lesson.At("generation_active") = JsonValue::MakeBool(true);
+                lesson.At("total_slots") = JsonValue::MakeNumber(
+                    std::max(JsonInt(lesson, "total_slots", 0), locked->second));
+                if (!JsonBool(lesson, "is_block", false) &&
+                    !IsUpLessonName(JsonString(lesson, "name", "")))
+                    locked_up_counts.erase(id);
+            }
             for (JsonValue& lesson : parsed.value.At("lessons").array_value) {
                 const auto found = options.reserved_hours.find(JsonInt(lesson, "id", -1));
                 if (found == options.reserved_hours.end()) continue;
                 const int hours = std::max(0, JsonInt(lesson, "total_hours", 0) - found->second);
                 lesson.At("total_hours") = JsonValue::MakeNumber(hours);
-                const int slots = std::max(0, JsonInt(lesson, "total_slots", 0) - (found->second + 1) / 2);
-                lesson.At("total_slots") = JsonValue::MakeNumber(slots);
+                const bool locked_up = locked_up_counts.count(JsonInt(lesson, "id", -1)) > 0 &&
+                    (JsonBool(lesson, "is_block", false) ||
+                     IsUpLessonName(JsonString(lesson, "name", "")));
+                if (!locked_up) {
+                    const int slots = std::max(0, JsonInt(lesson, "total_slots", 0) - (found->second + 1) / 2);
+                    lesson.At("total_slots") = JsonValue::MakeNumber(slots);
+                }
             }
             input_loaded = LoadScheduleInputDataFromRoot(parsed.value, input_data, input_error);
         } else input_error = parsed.error;
@@ -3497,7 +3592,6 @@ GenerationResult GenerateScheduleWeekly(
             }
             lesson.total_slots = 0;
             if (units == 0) continue;
-            const int count = static_cast<int>(eligible.size());
             if (single_day_scope) {
                 const bool selected_day_eligible = std::find(
                     eligible.begin(), eligible.end(), input_data.start_date) != eligible.end();
@@ -3524,17 +3618,38 @@ GenerationResult GenerateScheduleWeekly(
                 continue;
             }
             if (eligible.empty()) continue;
-            const int phase = (lesson.id * 37 + lesson.group * 11) % count;
-            for (int i = 0; i < count; i++) {
-                if (eligible[i] < input_data.start_date || input_data.end_date < eligible[i]) continue;
-                const int here = ((i + 1) * units + phase) / count - (i * units + phase) / count;
-                lesson.total_slots += here * step;
+            // A scoped week uses the same candidate semantics as a scoped day:
+            // every remaining curriculum row that can occur inside the selected
+            // dates is available to the exact model. Semester-wide rounding used
+            // to expose too few subjects here, so a weekly run produced a much
+            // smaller load than six otherwise identical one-day runs.
+            int selected_eligible_days = 0;
+            for (const Date& day : eligible) {
+                if (day < input_data.start_date || input_data.end_date < day) continue;
+                if (!LessonCalendarAllows(lesson, day)) continue;
+                const int semester_week = WeekIndexFromStart(semester_start, day);
+                if (!LessonAllowsWeek(lesson, semester_week)) continue;
+                ++selected_eligible_days;
             }
-            // The semester week number, not the local one-week model index,
-            // determines odd/even eligibility.
-            const int semester_week = WeekIndexFromStart(semester_start, input_data.start_date);
-            if (!LessonAllowsWeek(lesson, semester_week)) lesson.total_slots = 0;
+            const int subject_limit = lesson.subgroup < 0
+                ? MAX_WHOLE_GROUP_SAME_SUBJECT_PAIRS_PER_DAY
+                : MAX_SAME_SUBJECT_PAIRS_PER_DAY;
+            const int max_units_per_day = std::max(1, subject_limit / step);
+            lesson.total_slots = std::min(
+                units, selected_eligible_days * max_units_per_day) * step;
             lesson.week_parity = "all";
+        }
+        // A dispatcher lock is stronger than the automatically rounded quota
+        // for this short range.  Without this floor, e.g. three manually fixed
+        // occurrences could be constrained by a one- or two-slot weekly quota,
+        // making the quota model instantly INFEASIBLE before scheduling starts.
+        std::map<int, int> locked_counts;
+        for (const LockedAssignment& assignment : options.locked)
+            locked_counts[assignment.lesson_id]++;
+        for (Lesson& lesson : input_data.lessons) {
+            const auto locked = locked_counts.find(lesson.id);
+            if (locked != locked_counts.end())
+                lesson.total_slots = std::max(lesson.total_slots, locked->second);
         }
         input_data.load_requirements.clear();
         input_data.teacher_period_targets.clear();
@@ -3893,16 +4008,18 @@ GenerationResult GenerateScheduleWeekly(
         }
     }
 
-    const bool scoped_single_day = !options.scope_from.empty() && num_days == 1;
+    const bool scoped_range = !options.scope_from.empty();
+    const bool scoped_single_day = scoped_range && num_days == 1;
     QuotaBalanceResult quota_balance;
-    if (scoped_single_day) {
+    if (scoped_range) {
         // These are candidate upper bounds. The exact day model chooses a
-        // compatible subset, so the exact weekly quota balancer must not try
-        // to place every remaining curriculum line into this one day.
+        // compatible subset, so the exact semester quota balancer must not try
+        // to place every remaining curriculum line into this selected range.
         quota_balance.success = true;
         quota_balance.status = "CANDIDATE_BOUNDS";
         quota_balance.report.At("status") = JsonValue::MakeString(quota_balance.status);
-        quota_balance.report.At("scope") = JsonValue::MakeString("single_day");
+        quota_balance.report.At("scope") = JsonValue::MakeString(
+            scoped_single_day ? "single_day" : "date_range");
     } else {
         quota_balance = BalanceWeeklyQuotas(
             lessons, input_data.groups, input_data.teachers,
@@ -3925,9 +4042,10 @@ GenerationResult GenerateScheduleWeekly(
     }
 
     WeeklyPreflightResult preflight;
-    if (scoped_single_day) {
+    if (scoped_range) {
         preflight.report.At("ok") = JsonValue::MakeBool(true);
-        preflight.report.At("scope") = JsonValue::MakeString("single_day");
+        preflight.report.At("scope") = JsonValue::MakeString(
+            scoped_single_day ? "single_day" : "date_range");
         preflight.report.At("note") = JsonValue::MakeString(
             "Недельные квоты являются верхними границами; совместимый набор выбирает точная дневная модель");
     } else {
@@ -4168,7 +4286,12 @@ GenerationResult GenerateScheduleWeekly(
                 output_dir};
         }
 
-        if (scoped_single_day) {
+        // The room allocator still assigns every room it can. For a scoped
+        // Constructor run, however, it must not re-solve by forbidding lessons
+        // and silently lower the requested weekly load. Unassigned rooms are
+        // reported and can be filled by the dispatcher afterwards.
+        const bool retry_scoped_room_conflicts = false;
+        if (scoped_range && retry_scoped_room_conflicts) {
             std::set<std::pair<int, int>> forbidden_placements;
             bool rooms_placed = false;
             for (int attempt = 0; attempt < 24; ++attempt) {
@@ -4206,24 +4329,60 @@ GenerationResult GenerateScheduleWeekly(
                 for (const JsonValue& conflict : room_report.value.At("conflicts").array_value) {
                     const int lesson_id = JsonInt(conflict, "lesson_id", -1);
                     const int slot = JsonInt(conflict, "slot", 0) - 1;
-                    if (lesson_id >= 0 && slot >= 0 && slot < SLOTS_PER_DAY)
-                        added |= forbidden_placements.insert({lesson_id, slot}).second;
+                    Date conflict_date{};
+                    int local_day = -1;
+                    if (!ParseDateIso(JsonString(conflict, "date", ""), conflict_date) ||
+                        slot < 0 || slot >= SLOTS_PER_DAY) continue;
+                    for (int ld = 0; ld < static_cast<int>(wdix.size()); ++ld)
+                        if (all_days[wdix[ld]] == conflict_date) { local_day = ld; break; }
+                    if (local_day < 0) continue;
+                    const int local_slot = local_day * SLOTS_PER_DAY + slot;
+                    const bool conflict_is_locked = std::any_of(
+                        options.locked.begin(), options.locked.end(),
+                        [&](const LockedAssignment& assignment) {
+                            return assignment.lesson_id == lesson_id &&
+                                   assignment.date == conflict_date && assignment.slot == slot;
+                        });
+                    if (!conflict_is_locked) {
+                        added |= forbidden_placements.insert({lesson_id, local_slot}).second;
+                        continue;
+                    }
+
+                    // Constructor placements are authoritative. Move an
+                    // automatically placed event competing at the same time,
+                    // never the locked lesson itself.
+                    for (int other = 0; other < num_lessons && !added; ++other) {
+                        if (!wr.x_vals[other][local_slot] || lessons[other].id == lesson_id) continue;
+                        const bool other_is_locked = std::any_of(
+                            options.locked.begin(), options.locked.end(),
+                            [&](const LockedAssignment& assignment) {
+                                return assignment.lesson_id == lessons[other].id &&
+                                       assignment.date == conflict_date && assignment.slot == slot;
+                            });
+                        if (!other_is_locked)
+                            added |= forbidden_placements.insert(
+                                {lessons[other].id, local_slot}).second;
+                    }
                 }
                 if (!added) break;
                 std::cout << "  [room-search] конфликт кабинетов, попытка " << (attempt + 1)
                           << ", запрещённых назначений " << forbidden_placements.size() << "\n";
-                wr = SolveOneWeek(
+                WeekSolveResult repaired = SolveOneWeek(
                     w, wdix, all_days, lessons, input_data.groups, input_data,
                     input_data.teachers, input_data.rooms, unavailable_model,
                     teacher_unavailable_model, quotas, options.locked,
                     input_data.prior_theory_pairs, options.placement_hints,
                     nullptr, true, forbidden_placements, callbacks.cancel_flag);
-                if (!wr.success) break;
+                // A room retry is allowed to rearrange automatic lessons, but
+                // it must never replace the last feasible subject timetable
+                // with an infeasible result.
+                if (!repaired.success) break;
+                wr = std::move(repaired);
             }
-            if (!rooms_placed)
-                return {false, "ROOM_SEARCH_FAILED",
-                    "Не удалось разместить все группы в кабинетах выбранного дня; см. диагностику кандидата",
-                    output_dir};
+            if (!rooms_placed) {
+                std::cout << "  [room-search] предметы и закреплённые слоты сохранены; "
+                             "нераспределённые кабинеты оставлены диспетчеру\n";
+            }
         }
 
         if (!options.scope_from.empty()) {
@@ -4326,9 +4485,14 @@ GenerationResult GenerateScheduleWeekly(
     std::cout << "\nВсего недель решено за " << std::fixed << std::setprecision(1)
               << total_elapsed << " с\n";
 
-    // The day model re-solves room conflicts before accepting its solution.
-    // The older deferral path remains for a selected multi-day period.
-    if (!options.scope_from.empty() && !scoped_single_day) {
+    // Room conflicts for every scoped range are already handled above by
+    // re-solving the exact weekly model with forbidden automatic placements.
+    // The legacy deferral pass below deletes whole teacher/group days and can
+    // therefore discard dispatcher locks.  Keep it disabled: a scoped result
+    // must either preserve every lock or fail, never shrink the requested day.
+    const bool use_legacy_destructive_room_repair = false;
+    if (use_legacy_destructive_room_repair &&
+        !options.scope_from.empty() && !scoped_single_day) {
         for (int repair = 0; repair < 20; repair++) {
             std::ifstream room_stream(std::filesystem::path(output_dir) / "room_allocation.json", std::ios::binary);
             std::ostringstream room_buffer;
@@ -4497,6 +4661,24 @@ GenerationResult GenerateScheduleWeekly(
         }
     }
 
+    // No post-processing stage may silently discard a placement saved in the
+    // Constructor. A missing lock is a failed candidate, never a successful
+    // sparse schedule.
+    for (const LockedAssignment& assignment : options.locked) {
+        int lesson_index = -1, day_index = -1;
+        for (int l = 0; l < num_lessons; ++l)
+            if (lessons[l].id == assignment.lesson_id) { lesson_index = l; break; }
+        for (int d = 0; d < num_days; ++d)
+            if (all_days[d] == assignment.date) { day_index = d; break; }
+        if (lesson_index < 0 || day_index < 0 || assignment.slot < 0 ||
+            assignment.slot >= SLOTS_PER_DAY ||
+            !global_x_vals[lesson_index][day_index * SLOTS_PER_DAY + assignment.slot]) {
+            return {false, "LOCKED_ASSIGNMENT_LOST",
+                "Закреплённая в Конструкторе пара потеряна при распределении кабинетов; результат не установлен",
+                output_dir};
+        }
+    }
+
     // Защита последнего рубежа: даже если квоты/ПП/копирование недель когда-либо
     // разойдутся, неполная нагрузка не должна получить WEEKLY_FEASIBLE.
     const ScheduleLoadSummary final_load =
@@ -4534,7 +4716,7 @@ GenerationResult GenerateScheduleWeekly(
     if (!options.scope_from.empty()) input_data.lessons = lessons;
     if (!FinalizeSchedule(input_data, output_dir, finalize_error,
                           options.draft_semester_risk || !options.scope_from.empty(),
-                          scoped_single_day))
+                          scoped_range))
         return {false, "FINAL_VALIDATION_FAILED", finalize_error, output_dir};
 
     std::cout << "\nФайлы созданы в: " << output_dir << "\n";

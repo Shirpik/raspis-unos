@@ -253,14 +253,7 @@ function compareDMY(a, b) {
 }
 
 function detectCourseYear(name) {
-  const m4 = name.match(/[^\d]2(\d)\d{2}/)
-  if (m4) {
-    const d = parseInt(m4[1])
-    const enrollYear = 2020 + d
-    const year = 2025 - enrollYear + 1
-    if (year >= 1 && year <= 4) return year
-  }
-  const m1 = name.match(/-(\d)/)
+  const m1 = name.match(/-([1-4])\d/)
   if (m1) {
     const d = parseInt(m1[1])
     if (d >= 1 && d <= 4) return d
