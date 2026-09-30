@@ -393,26 +393,89 @@
       "weekday": "СР"
     },
     {
-      "date": "02.10.2026",
-      "date_iso": "2026-10-02",
-      "day_index": 2,
+      "date": "01.10.2026",
+      "date_iso": "2026-10-01",
+      "day_index": 0,
       "slots": [
         {
-          "lessons": [],
+          "lessons": [
+            {
+              "avoid_lunch_split": true,
+              "consecutive_pairs": 2,
+              "display_time": null,
+              "id": 509,
+              "is_block": false,
+              "is_lab": true,
+              "name": "ЛПЗ МДК.05.02 Процессы приготовления, подготовки к реализации хлебобулочных, мучных кондитерских изделий сложного ассортимента",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 28,
+              "room_name": "61",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 46,
+              "teacher_id": 53,
+              "uid": "lesson-fe12e4f958cc0191",
+              "week_parity": "all"
+            }
+          ],
           "slot": 1,
-          "text": "-",
+          "text": "ЛПЗ МДК.05.02 Процессы приготовления, подготовки к реализации хлебобулочных, мучных кондитерских изделий сложного ассортимента — 1 п/г, Конева Кристина Сергеевна, Кривоусова",
           "time": "1 пара (08:30-09:55)"
         },
         {
-          "lessons": [],
+          "lessons": [
+            {
+              "avoid_lunch_split": true,
+              "consecutive_pairs": 2,
+              "display_time": null,
+              "id": 509,
+              "is_block": false,
+              "is_lab": true,
+              "name": "ЛПЗ МДК.05.02 Процессы приготовления, подготовки к реализации хлебобулочных, мучных кондитерских изделий сложного ассортимента",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 28,
+              "room_name": "61",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 46,
+              "teacher_id": 53,
+              "uid": "lesson-fe12e4f958cc0191",
+              "week_parity": "all"
+            }
+          ],
           "slot": 2,
-          "text": "-",
+          "text": "ЛПЗ МДК.05.02 Процессы приготовления, подготовки к реализации хлебобулочных, мучных кондитерских изделий сложного ассортимента — 1 п/г, Конева Кристина Сергеевна, Кривоусова",
           "time": "2 пара (10:05-11:30)"
         },
         {
-          "lessons": [],
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 490,
+              "is_block": false,
+              "is_lab": false,
+              "name": "Психология общения",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 15,
+              "room_name": "32",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": -1,
+              "teacher_id": 50,
+              "uid": "lesson-c8ac25f967070917",
+              "week_parity": "all"
+            }
+          ],
           "slot": 3,
-          "text": "-",
+          "text": "Психология общения — вся группа, Ярославцева Елена Анатольевна, Кривоусова",
           "time": "3 пара (12:25-13:50)"
         },
         {
@@ -421,10 +484,10 @@
               "avoid_lunch_split": false,
               "consecutive_pairs": 1,
               "display_time": null,
-              "id": 513,
+              "id": 516,
               "is_block": false,
               "is_lab": false,
-              "name": "МДК.06.01 Оперативное управление текущей деятельностью подчиненного персонала",
+              "name": "КП МДК.06.01 Оперативное управление текущей деятельностью подчиненного персонала",
               "requested_room_id": null,
               "requested_room_name": null,
               "room_id": 25,
@@ -434,24 +497,24 @@
               "room_type": 0,
               "subgroup": -1,
               "teacher_id": 45,
-              "uid": "lesson-93fd216c079f1ff2",
+              "uid": "lesson-8b709b55caeac060",
               "week_parity": "all"
             }
           ],
           "slot": 4,
-          "text": "МДК.06.01 Оперативное управление текущей деятельностью подчиненного персонала — вся группа, Елагина Ольга Александровна, Кривоусова",
+          "text": "КП МДК.06.01 Оперативное управление текущей деятельностью подчиненного персонала — вся группа, Елагина Ольга Александровна, Кривоусова",
           "time": "4 пара (14:00-15:25)"
         },
         {
           "lessons": [
             {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
+              "avoid_lunch_split": true,
+              "consecutive_pairs": 2,
               "display_time": null,
-              "id": 496,
+              "id": 515,
               "is_block": false,
-              "is_lab": false,
-              "name": "Основы предпринимательской деятельности",
+              "is_lab": true,
+              "name": "ЛПЗ МДК.06.01 Оперативное управление текущей деятельностью подчиненного персонала",
               "requested_room_id": null,
               "requested_room_name": null,
               "room_id": 25,
@@ -459,14 +522,14 @@
               "room_substituted": false,
               "room_substitution_reason": null,
               "room_type": 0,
-              "subgroup": -1,
+              "subgroup": 47,
               "teacher_id": 45,
-              "uid": "lesson-8e25b5135072617a",
+              "uid": "lesson-0d3afb2b42bb972e",
               "week_parity": "all"
             }
           ],
           "slot": 5,
-          "text": "Основы предпринимательской деятельности — вся группа, Елагина Ольга Александровна, Кривоусова",
+          "text": "ЛПЗ МДК.06.01 Оперативное управление текущей деятельностью подчиненного персонала — 2 п/г, Елагина Ольга Александровна, Кривоусова",
           "time": "5 пара (15:35-16:55)"
         },
         {
@@ -497,126 +560,13 @@
           "time": "6 пара (17:05-18:25)"
         },
         {
-          "lessons": [
-            {
-              "avoid_lunch_split": true,
-              "consecutive_pairs": 2,
-              "display_time": null,
-              "id": 515,
-              "is_block": false,
-              "is_lab": true,
-              "name": "ЛПЗ МДК.06.01 Оперативное управление текущей деятельностью подчиненного персонала",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 25,
-              "room_name": "50",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": 47,
-              "teacher_id": 45,
-              "uid": "lesson-0d3afb2b42bb972e",
-              "week_parity": "all"
-            }
-          ],
+          "lessons": [],
           "slot": 7,
-          "text": "ЛПЗ МДК.06.01 Оперативное управление текущей деятельностью подчиненного персонала — 2 п/г, Елагина Ольга Александровна, Кривоусова",
+          "text": "-",
           "time": "7 пара (18:35-19:55)"
         }
       ],
-      "weekday": "ПТ"
-    },
-    {
-      "date": "03.10.2026",
-      "date_iso": "2026-10-03",
-      "day_index": 3,
-      "slots": [
-        {
-          "lessons": [],
-          "slot": 1,
-          "text": "-",
-          "time": "1 пара (08:30-09:45)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 497,
-              "is_block": false,
-              "is_lab": false,
-              "name": "Эффективное поведение на рынке труда",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 33,
-              "room_name": "209",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": -1,
-              "teacher_id": 15,
-              "uid": "lesson-95c4eda298b5c5bf",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 2,
-          "text": "Эффективное поведение на рынке труда — вся группа, Кропотова Анастасия Андреевна, Лесная",
-          "time": "2 пара (09:55-11:10)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 491,
-              "is_block": false,
-              "is_lab": false,
-              "name": "Правовые основы профессиональной деятельности/Социальная адаптация и основы социально-правовых знаний",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 39,
-              "room_name": "319",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": -1,
-              "teacher_id": 1,
-              "uid": "lesson-be301a78b2b09695",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 3,
-          "text": "Правовые основы профессиональной деятельности/Социальная адаптация и основы социально-правовых знаний — вся группа, Вагайская Татьяна Александровна, Лесная",
-          "time": "3 пара (11:30-12:45)"
-        },
-        {
-          "lessons": [],
-          "slot": 4,
-          "text": "-",
-          "time": "4 пара (12:55-14:10)"
-        },
-        {
-          "lessons": [],
-          "slot": 5,
-          "text": "-",
-          "time": "5 пара (14:20-15:30)"
-        },
-        {
-          "lessons": [],
-          "slot": 6,
-          "text": "-",
-          "time": "6 пара (15:40-16:50)"
-        },
-        {
-          "lessons": [],
-          "slot": 7,
-          "text": "-",
-          "time": "7 пара (17:00-18:10)"
-        }
-      ],
-      "weekday": "СБ"
+      "weekday": "ЧТ"
     }
   ],
   "group_index": 23,

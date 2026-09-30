@@ -271,141 +271,7 @@
     {
       "date": "01.10.2026",
       "date_iso": "2026-10-01",
-      "day_index": 1,
-      "slots": [
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 120,
-              "is_block": false,
-              "is_lab": false,
-              "name": "иностранный язык",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 41,
-              "room_name": "324",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": 13,
-              "teacher_id": 27,
-              "uid": "lesson-7a552148728c72d4",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 1,
-          "text": "иностранный язык — 2 п/г, Ермолина Ирина Павловна, Лесная",
-          "time": "1 пара (08:30-09:55)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 121,
-              "is_block": false,
-              "is_lab": false,
-              "name": "математика",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 35,
-              "room_name": "311",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": -1,
-              "teacher_id": 5,
-              "uid": "lesson-2842a8120014754f",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 2,
-          "text": "математика — вся группа, Домарева Ирина Вячеславовна, Лесная",
-          "time": "2 пара (10:05-11:30)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 121,
-              "is_block": false,
-              "is_lab": false,
-              "name": "математика",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 35,
-              "room_name": "311",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": -1,
-              "teacher_id": 5,
-              "uid": "lesson-2842a8120014754f",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 3,
-          "text": "математика — вся группа, Домарева Ирина Вячеславовна, Лесная",
-          "time": "3 пара (12:25-13:50)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 121,
-              "is_block": false,
-              "is_lab": false,
-              "name": "математика",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 35,
-              "room_name": "311",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": -1,
-              "teacher_id": 5,
-              "uid": "lesson-2842a8120014754f",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 4,
-          "text": "математика — вся группа, Домарева Ирина Вячеславовна, Лесная",
-          "time": "4 пара (14:00-15:25)"
-        },
-        {
-          "lessons": [],
-          "slot": 5,
-          "text": "-",
-          "time": "5 пара (15:35-16:55)"
-        },
-        {
-          "lessons": [],
-          "slot": 6,
-          "text": "-",
-          "time": "6 пара (17:05-18:25)"
-        },
-        {
-          "lessons": [],
-          "slot": 7,
-          "text": "-",
-          "time": "7 пара (18:35-19:55)"
-        }
-      ],
-      "weekday": "ЧТ"
-    },
-    {
-      "date": "02.10.2026",
-      "date_iso": "2026-10-02",
-      "day_index": 2,
+      "day_index": 0,
       "slots": [
         {
           "lessons": [],
@@ -420,22 +286,31 @@
           "time": "2 пара (10:05-11:30)"
         },
         {
-          "lessons": [],
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 117,
+              "is_block": false,
+              "is_lab": false,
+              "name": "обществознание",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 13,
+              "room_name": "28",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": -1,
+              "teacher_id": 2,
+              "uid": "lesson-efe560323c59cc34",
+              "week_parity": "all"
+            }
+          ],
           "slot": 3,
-          "text": "-",
+          "text": "обществознание — вся группа, Демина Екатерина Алексеевна, Кривоусова",
           "time": "3 пара (12:25-13:50)"
-        },
-        {
-          "lessons": [],
-          "slot": 4,
-          "text": "-",
-          "time": "4 пара (14:00-15:25)"
-        },
-        {
-          "lessons": [],
-          "slot": 5,
-          "text": "-",
-          "time": "5 пара (15:35-16:55)"
         },
         {
           "lessons": [
@@ -443,26 +318,26 @@
               "avoid_lunch_split": false,
               "consecutive_pairs": 1,
               "display_time": null,
-              "id": 116,
+              "id": 130,
               "is_block": false,
               "is_lab": false,
-              "name": "история",
+              "name": "индивидуальный проект",
               "requested_room_id": null,
               "requested_room_name": null,
-              "room_id": 12,
-              "room_name": "27",
+              "room_id": 14,
+              "room_name": "31",
               "room_substituted": false,
               "room_substitution_reason": null,
               "room_type": 0,
               "subgroup": -1,
-              "teacher_id": 26,
-              "uid": "lesson-09e33110fec41bbb",
+              "teacher_id": 11,
+              "uid": "lesson-9111d3ab2cf382e1",
               "week_parity": "all"
             }
           ],
-          "slot": 6,
-          "text": "история — вся группа, Дроговейко Дарья Юрьевна, Кривоусова",
-          "time": "6 пара (17:05-18:25)"
+          "slot": 4,
+          "text": "индивидуальный проект — вся группа, Цимфер Татьяна Ивановна, Кривоусова",
+          "time": "4 пара (14:00-15:25)"
         },
         {
           "lessons": [
@@ -487,12 +362,45 @@
               "week_parity": "all"
             }
           ],
-          "slot": 7,
+          "slot": 5,
           "text": "литература — вся группа, Кибардина Татьяна Леонидовна, Кривоусова",
+          "time": "5 пара (15:35-16:55)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 123,
+              "is_block": false,
+              "is_lab": false,
+              "name": "информатика",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 5,
+              "room_name": "16",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 12,
+              "teacher_id": 21,
+              "uid": "lesson-21df7d3a750c145e",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 6,
+          "text": "информатика — 1 п/г, Комарова Яна Николаевна, Кривоусова",
+          "time": "6 пара (17:05-18:25)"
+        },
+        {
+          "lessons": [],
+          "slot": 7,
+          "text": "-",
           "time": "7 пара (18:35-19:55)"
         }
       ],
-      "weekday": "ПТ"
+      "weekday": "ЧТ"
     }
   ],
   "group_index": 6,

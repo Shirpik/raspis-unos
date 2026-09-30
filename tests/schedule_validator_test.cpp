@@ -200,6 +200,16 @@ int main() {
     auto after_up_result = timetable::ValidateScheduleJson(after_up_input, config, after_up_schedule);
     Require(!after_up_result.ok && HasCode(after_up_result.report, "lesson_after_up"),
         "a subgroup must not have another lesson after its UP");
+    auto before_up_schedule = Schedule();
+    before_up_schedule.At("groups").array_value[0].At("days").array_value[0]
+        .At("slots").array_value[0].At("lessons") = JsonValue::MakeArray();
+    before_up_schedule.At("groups").array_value[0].At("days").array_value[0]
+        .At("slots").array_value[2].At("lessons").array_value.push_back(RenderedLesson());
+    before_up_schedule.At("groups").array_value[0].At("days").array_value[0]
+        .At("slots").array_value[0].At("lessons").array_value.push_back(after_up_rendered);
+    auto before_up_result = timetable::ValidateScheduleJson(after_up_input, config, before_up_schedule);
+    Require(!before_up_result.ok && HasCode(before_up_result.report, "lesson_after_up"),
+        "a subgroup must not have another lesson before its UP");
 
     auto transferred_up_input = up_input;
     transferred_up_input.teachers[0].name = "вынесена на ПП";
@@ -450,6 +460,16 @@ int main() {
     Require(semester_data.load_requirements.empty(), "paused teacher is not assigned a readout requirement");
     Require(timetable::JsonInt(semester_data.semester_readout_report.At("deferred_teachers").array_value[0], "remaining_hours", -1) == 10,
         "paused teacher hours are preserved, not credited or deleted");
+    auto dated_load = input;
+    dated_load.teachers[0].date_minimum_pairs[dated_load.start_date] = 2;
+    Require(HasCode(timetable::ValidateScheduleJson(dated_load, config, Schedule()).report,
+                    "teacher_date_minimum_not_met"),
+            "active teacher's date minimum remains mandatory");
+    dated_load.teachers[0].scheduling_active = false;
+    Require(!HasCode(timetable::ValidateScheduleJson(dated_load, config, Schedule()).report,
+                     "teacher_date_minimum_not_met"),
+            "paused teacher's saved date minimum does not block generation");
+
     auto draft_schedule = Schedule();
     draft_schedule.At("status") = JsonValue::MakeString("draft_semester_risk");
     Require(!timetable::ValidateScheduleJson(input, config, draft_schedule).ok, "draft cannot pass normal publication validation");

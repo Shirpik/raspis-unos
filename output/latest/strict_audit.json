@@ -40,14 +40,14 @@
       "id": "semester_plan",
       "label": "Темп вычитки учебного плана",
       "passed": true,
-      "warnings": 368
+      "warnings": 472
     },
     {
       "hard_errors": 0,
       "id": "campus",
       "label": "Площадки",
       "passed": true,
-      "warnings": 1
+      "warnings": 0
     },
     {
       "hard_errors": 0,
@@ -102,7 +102,7 @@
     "max_whole_group_same_subject_pairs_per_day": 3,
     "min_initial_theory_slots_before_labs": 0,
     "min_student_pairs_per_study_day": 2,
-    "min_student_study_days_per_week": 2,
+    "min_student_study_days_per_week": 3,
     "min_subject_spread_total_slots": 9999,
     "normal_subject_active_bucket_unit": 2,
     "optimize_student_windows": false,
@@ -139,11 +139,11 @@
         "code": "semester_capacity_shortfall",
         "group": -1,
         "lesson": -1,
-        "message": "Вагайская Татьяна Александровна / до 2026-12-26: нужно 143 пар, доступно не более 126",
+        "message": "Вагайская Татьяна Александровна / до 2026-12-26: нужно 144 пар, доступно не более 124",
         "severity": "error",
         "teacher": 1
       },
-      "message": "Вагайская Татьяна Александровна / до 2026-12-26: нужно 143 пар, доступно не более 126",
+      "message": "Вагайская Татьяна Александровна / до 2026-12-26: нужно 144 пар, доступно не более 124",
       "severity": "warning"
     },
     {
@@ -153,11 +153,11 @@
         "code": "semester_capacity_shortfall",
         "group": -1,
         "lesson": -1,
-        "message": "Кобылянская Татьяна Александровна / до 2026-12-26: нужно 172 пар, доступно не более 126",
+        "message": "Кобылянская Татьяна Александровна / до 2026-12-26: нужно 172 пар, доступно не более 124",
         "severity": "error",
         "teacher": 7
       },
-      "message": "Кобылянская Татьяна Александровна / до 2026-12-26: нужно 172 пар, доступно не более 126",
+      "message": "Кобылянская Татьяна Александровна / до 2026-12-26: нужно 172 пар, доступно не более 124",
       "severity": "warning"
     },
     {
@@ -167,11 +167,11 @@
         "code": "semester_capacity_shortfall",
         "group": -1,
         "lesson": -1,
-        "message": "Потапова Регина Александровна / до 2026-12-26: нужно 350 пар, доступно не более 312",
+        "message": "Потапова Регина Александровна / до 2026-12-26: нужно 345 пар, доступно не более 306",
         "severity": "error",
         "teacher": 8
       },
-      "message": "Потапова Регина Александровна / до 2026-12-26: нужно 350 пар, доступно не более 312",
+      "message": "Потапова Регина Александровна / до 2026-12-26: нужно 345 пар, доступно не более 306",
       "severity": "warning"
     },
     {
@@ -251,11 +251,53 @@
         "code": "semester_capacity_shortfall",
         "group": -1,
         "lesson": -1,
-        "message": "Коробкова Эльвира Федоровна / до 2026-12-26: нужно 108 пар, доступно не более 104",
+        "message": "Рабенок Мария Александровна / до 2026-12-26: нужно 69 пар, доступно не более 0",
+        "severity": "error",
+        "teacher": 12
+      },
+      "message": "Рабенок Мария Александровна / до 2026-12-26: нужно 69 пар, доступно не более 0",
+      "severity": "warning"
+    },
+    {
+      "category": "semester_plan",
+      "code": "ledger_exceeds_curriculum",
+      "context": {
+        "code": "ledger_exceeds_curriculum",
+        "group": -1,
+        "lesson": -1,
+        "message": "Подтверждённые часы превышают учебный план",
+        "severity": "error",
+        "teacher": 15
+      },
+      "message": "Подтверждённые часы превышают учебный план",
+      "severity": "warning"
+    },
+    {
+      "category": "semester_plan",
+      "code": "ledger_exceeds_curriculum",
+      "context": {
+        "code": "ledger_exceeds_curriculum",
+        "group": -1,
+        "lesson": -1,
+        "message": "Подтверждённые часы превышают учебный план",
+        "severity": "error",
+        "teacher": 15
+      },
+      "message": "Подтверждённые часы превышают учебный план",
+      "severity": "warning"
+    },
+    {
+      "category": "semester_plan",
+      "code": "semester_capacity_shortfall",
+      "context": {
+        "code": "semester_capacity_shortfall",
+        "group": -1,
+        "lesson": -1,
+        "message": "Коробкова Эльвира Федоровна / до 2026-12-26: нужно 115 пар, доступно не более 104",
         "severity": "error",
         "teacher": 39
       },
-      "message": "Коробкова Эльвира Федоровна / до 2026-12-26: нужно 108 пар, доступно не более 104",
+      "message": "Коробкова Эльвира Федоровна / до 2026-12-26: нужно 115 пар, доступно не более 104",
       "severity": "warning"
     },
     {
@@ -293,11 +335,11 @@
         "code": "semester_capacity_shortfall",
         "group": -1,
         "lesson": -1,
-        "message": "Осипчук Александр Александрович / до 2026-11-15: нужно 80 пар, доступно не более 49",
+        "message": "Осипчук Александр Александрович / до 2026-11-15: нужно 83 пар, доступно не более 49",
         "severity": "error",
         "teacher": 42
       },
-      "message": "Осипчук Александр Александрович / до 2026-11-15: нужно 80 пар, доступно не более 49",
+      "message": "Осипчук Александр Александрович / до 2026-11-15: нужно 83 пар, доступно не более 49",
       "severity": "warning"
     },
     {
@@ -307,11 +349,11 @@
         "code": "semester_capacity_shortfall",
         "group": -1,
         "lesson": -1,
-        "message": "Осипчук Александр Александрович / до 2026-11-22: нужно 80 пар, доступно не более 49",
+        "message": "Осипчук Александр Александрович / до 2026-11-22: нужно 83 пар, доступно не более 49",
         "severity": "error",
         "teacher": 42
       },
-      "message": "Осипчук Александр Александрович / до 2026-11-22: нужно 80 пар, доступно не более 49",
+      "message": "Осипчук Александр Александрович / до 2026-11-22: нужно 83 пар, доступно не более 49",
       "severity": "warning"
     },
     {
@@ -321,11 +363,11 @@
         "code": "semester_capacity_shortfall",
         "group": -1,
         "lesson": -1,
-        "message": "Осипчук Александр Александрович / до 2026-12-19: нужно 80 пар, доступно не более 49",
+        "message": "Осипчук Александр Александрович / до 2026-12-19: нужно 83 пар, доступно не более 49",
         "severity": "error",
         "teacher": 42
       },
-      "message": "Осипчук Александр Александрович / до 2026-12-19: нужно 80 пар, доступно не более 49",
+      "message": "Осипчук Александр Александрович / до 2026-12-19: нужно 83 пар, доступно не более 49",
       "severity": "warning"
     },
     {
@@ -335,11 +377,39 @@
         "code": "semester_capacity_shortfall",
         "group": -1,
         "lesson": -1,
-        "message": "Осипчук Александр Александрович / до 2026-12-26: нужно 80 пар, доступно не более 49",
+        "message": "Осипчук Александр Александрович / до 2026-12-26: нужно 83 пар, доступно не более 49",
         "severity": "error",
         "teacher": 42
       },
-      "message": "Осипчук Александр Александрович / до 2026-12-26: нужно 80 пар, доступно не более 49",
+      "message": "Осипчук Александр Александрович / до 2026-12-26: нужно 83 пар, доступно не более 49",
+      "severity": "warning"
+    },
+    {
+      "category": "semester_plan",
+      "code": "semester_capacity_shortfall",
+      "context": {
+        "code": "semester_capacity_shortfall",
+        "group": -1,
+        "lesson": -1,
+        "message": "Письмак Владимир Николаевич / до 2026-12-19: нужно 65 пар, доступно не более 0",
+        "severity": "error",
+        "teacher": 44
+      },
+      "message": "Письмак Владимир Николаевич / до 2026-12-19: нужно 65 пар, доступно не более 0",
+      "severity": "warning"
+    },
+    {
+      "category": "semester_plan",
+      "code": "semester_capacity_shortfall",
+      "context": {
+        "code": "semester_capacity_shortfall",
+        "group": -1,
+        "lesson": -1,
+        "message": "Письмак Владимир Николаевич / до 2026-12-26: нужно 65 пар, доступно не более 0",
+        "severity": "error",
+        "teacher": 44
+      },
+      "message": "Письмак Владимир Николаевич / до 2026-12-26: нужно 65 пар, доступно не более 0",
       "severity": "warning"
     },
     {
@@ -862,30 +932,142 @@
     },
     {
       "category": "semester_plan",
-      "code": "semester_capacity_shortfall",
+      "code": "ledger_exceeds_curriculum",
       "context": {
-        "code": "semester_capacity_shortfall",
+        "code": "ledger_exceeds_curriculum",
         "group": -1,
         "lesson": -1,
-        "message": "Саламатина Вера Викторовна / до 2026-12-19: нужно 323 пар, доступно не более 280",
+        "message": "Подтверждённые часы превышают учебный план",
         "severity": "error",
         "teacher": 61
       },
-      "message": "Саламатина Вера Викторовна / до 2026-12-19: нужно 323 пар, доступно не более 280",
+      "message": "Подтверждённые часы превышают учебный план",
       "severity": "warning"
     },
     {
       "category": "semester_plan",
-      "code": "semester_capacity_shortfall",
+      "code": "ledger_exceeds_curriculum",
       "context": {
-        "code": "semester_capacity_shortfall",
+        "code": "ledger_exceeds_curriculum",
         "group": -1,
         "lesson": -1,
-        "message": "Саламатина Вера Викторовна / до 2026-12-26: нужно 323 пар, доступно не более 280",
+        "message": "Подтверждённые часы превышают учебный план",
         "severity": "error",
         "teacher": 61
       },
-      "message": "Саламатина Вера Викторовна / до 2026-12-26: нужно 323 пар, доступно не более 280",
+      "message": "Подтверждённые часы превышают учебный план",
+      "severity": "warning"
+    },
+    {
+      "category": "semester_plan",
+      "code": "ledger_exceeds_curriculum",
+      "context": {
+        "code": "ledger_exceeds_curriculum",
+        "group": -1,
+        "lesson": -1,
+        "message": "Подтверждённые часы превышают учебный план",
+        "severity": "error",
+        "teacher": 61
+      },
+      "message": "Подтверждённые часы превышают учебный план",
+      "severity": "warning"
+    },
+    {
+      "category": "semester_plan",
+      "code": "ledger_exceeds_curriculum",
+      "context": {
+        "code": "ledger_exceeds_curriculum",
+        "group": -1,
+        "lesson": -1,
+        "message": "Подтверждённые часы превышают учебный план",
+        "severity": "error",
+        "teacher": 61
+      },
+      "message": "Подтверждённые часы превышают учебный план",
+      "severity": "warning"
+    },
+    {
+      "category": "semester_plan",
+      "code": "ledger_exceeds_curriculum",
+      "context": {
+        "code": "ledger_exceeds_curriculum",
+        "group": -1,
+        "lesson": -1,
+        "message": "Подтверждённые часы превышают учебный план",
+        "severity": "error",
+        "teacher": 61
+      },
+      "message": "Подтверждённые часы превышают учебный план",
+      "severity": "warning"
+    },
+    {
+      "category": "semester_plan",
+      "code": "ledger_exceeds_curriculum",
+      "context": {
+        "code": "ledger_exceeds_curriculum",
+        "group": -1,
+        "lesson": -1,
+        "message": "Подтверждённые часы превышают учебный план",
+        "severity": "error",
+        "teacher": 61
+      },
+      "message": "Подтверждённые часы превышают учебный план",
+      "severity": "warning"
+    },
+    {
+      "category": "semester_plan",
+      "code": "ledger_exceeds_curriculum",
+      "context": {
+        "code": "ledger_exceeds_curriculum",
+        "group": -1,
+        "lesson": -1,
+        "message": "Подтверждённые часы превышают учебный план",
+        "severity": "error",
+        "teacher": 61
+      },
+      "message": "Подтверждённые часы превышают учебный план",
+      "severity": "warning"
+    },
+    {
+      "category": "semester_plan",
+      "code": "ledger_exceeds_curriculum",
+      "context": {
+        "code": "ledger_exceeds_curriculum",
+        "group": -1,
+        "lesson": -1,
+        "message": "Подтверждённые часы превышают учебный план",
+        "severity": "error",
+        "teacher": 61
+      },
+      "message": "Подтверждённые часы превышают учебный план",
+      "severity": "warning"
+    },
+    {
+      "category": "semester_plan",
+      "code": "ledger_exceeds_curriculum",
+      "context": {
+        "code": "ledger_exceeds_curriculum",
+        "group": -1,
+        "lesson": -1,
+        "message": "Подтверждённые часы превышают учебный план",
+        "severity": "error",
+        "teacher": 61
+      },
+      "message": "Подтверждённые часы превышают учебный план",
+      "severity": "warning"
+    },
+    {
+      "category": "semester_plan",
+      "code": "ledger_exceeds_curriculum",
+      "context": {
+        "code": "ledger_exceeds_curriculum",
+        "group": -1,
+        "lesson": -1,
+        "message": "Подтверждённые часы превышают учебный план",
+        "severity": "error",
+        "teacher": 61
+      },
+      "message": "Подтверждённые часы превышают учебный план",
       "severity": "warning"
     },
     {
@@ -895,11 +1077,39 @@
         "code": "semester_capacity_shortfall",
         "group": -1,
         "lesson": -1,
-        "message": "Михайлова Татьяна Алексеевна / до 2026-12-19: нужно 254 пар, доступно не более 232",
+        "message": "Саламатина Вера Викторовна / до 2026-12-19: нужно 326 пар, доступно не более 276",
         "severity": "error",
-        "teacher": 65
+        "teacher": 61
       },
-      "message": "Михайлова Татьяна Алексеевна / до 2026-12-19: нужно 254 пар, доступно не более 232",
+      "message": "Саламатина Вера Викторовна / до 2026-12-19: нужно 326 пар, доступно не более 276",
+      "severity": "warning"
+    },
+    {
+      "category": "semester_plan",
+      "code": "ledger_exceeds_curriculum",
+      "context": {
+        "code": "ledger_exceeds_curriculum",
+        "group": -1,
+        "lesson": -1,
+        "message": "Подтверждённые часы превышают учебный план",
+        "severity": "error",
+        "teacher": 61
+      },
+      "message": "Подтверждённые часы превышают учебный план",
+      "severity": "warning"
+    },
+    {
+      "category": "semester_plan",
+      "code": "ledger_exceeds_curriculum",
+      "context": {
+        "code": "ledger_exceeds_curriculum",
+        "group": -1,
+        "lesson": -1,
+        "message": "Подтверждённые часы превышают учебный план",
+        "severity": "error",
+        "teacher": 61
+      },
+      "message": "Подтверждённые часы превышают учебный план",
       "severity": "warning"
     },
     {
@@ -909,11 +1119,123 @@
         "code": "semester_capacity_shortfall",
         "group": -1,
         "lesson": -1,
-        "message": "Михайлова Татьяна Алексеевна / до 2026-12-26: нужно 254 пар, доступно не более 232",
+        "message": "Саламатина Вера Викторовна / до 2026-12-26: нужно 326 пар, доступно не более 276",
+        "severity": "error",
+        "teacher": 61
+      },
+      "message": "Саламатина Вера Викторовна / до 2026-12-26: нужно 326 пар, доступно не более 276",
+      "severity": "warning"
+    },
+    {
+      "category": "semester_plan",
+      "code": "semester_capacity_shortfall",
+      "context": {
+        "code": "semester_capacity_shortfall",
+        "group": -1,
+        "lesson": -1,
+        "message": "Клабуков Василий Витальевич / до 2026-11-01: нужно 20 пар, доступно не более 0",
+        "severity": "error",
+        "teacher": 63
+      },
+      "message": "Клабуков Василий Витальевич / до 2026-11-01: нужно 20 пар, доступно не более 0",
+      "severity": "warning"
+    },
+    {
+      "category": "semester_plan",
+      "code": "semester_capacity_shortfall",
+      "context": {
+        "code": "semester_capacity_shortfall",
+        "group": -1,
+        "lesson": -1,
+        "message": "Клабуков Василий Витальевич / до 2026-11-08: нужно 20 пар, доступно не более 0",
+        "severity": "error",
+        "teacher": 63
+      },
+      "message": "Клабуков Василий Витальевич / до 2026-11-08: нужно 20 пар, доступно не более 0",
+      "severity": "warning"
+    },
+    {
+      "category": "semester_plan",
+      "code": "semester_capacity_shortfall",
+      "context": {
+        "code": "semester_capacity_shortfall",
+        "group": -1,
+        "lesson": -1,
+        "message": "Клабуков Василий Витальевич / до 2026-11-15: нужно 20 пар, доступно не более 0",
+        "severity": "error",
+        "teacher": 63
+      },
+      "message": "Клабуков Василий Витальевич / до 2026-11-15: нужно 20 пар, доступно не более 0",
+      "severity": "warning"
+    },
+    {
+      "category": "semester_plan",
+      "code": "semester_capacity_shortfall",
+      "context": {
+        "code": "semester_capacity_shortfall",
+        "group": -1,
+        "lesson": -1,
+        "message": "Клабуков Василий Витальевич / до 2026-11-22: нужно 20 пар, доступно не более 0",
+        "severity": "error",
+        "teacher": 63
+      },
+      "message": "Клабуков Василий Витальевич / до 2026-11-22: нужно 20 пар, доступно не более 0",
+      "severity": "warning"
+    },
+    {
+      "category": "semester_plan",
+      "code": "semester_capacity_shortfall",
+      "context": {
+        "code": "semester_capacity_shortfall",
+        "group": -1,
+        "lesson": -1,
+        "message": "Клабуков Василий Витальевич / до 2026-12-19: нужно 20 пар, доступно не более 0",
+        "severity": "error",
+        "teacher": 63
+      },
+      "message": "Клабуков Василий Витальевич / до 2026-12-19: нужно 20 пар, доступно не более 0",
+      "severity": "warning"
+    },
+    {
+      "category": "semester_plan",
+      "code": "semester_capacity_shortfall",
+      "context": {
+        "code": "semester_capacity_shortfall",
+        "group": -1,
+        "lesson": -1,
+        "message": "Клабуков Василий Витальевич / до 2026-12-26: нужно 20 пар, доступно не более 0",
+        "severity": "error",
+        "teacher": 63
+      },
+      "message": "Клабуков Василий Витальевич / до 2026-12-26: нужно 20 пар, доступно не более 0",
+      "severity": "warning"
+    },
+    {
+      "category": "semester_plan",
+      "code": "semester_capacity_shortfall",
+      "context": {
+        "code": "semester_capacity_shortfall",
+        "group": -1,
+        "lesson": -1,
+        "message": "Михайлова Татьяна Алексеевна / до 2026-12-19: нужно 255 пар, доступно не более 228",
         "severity": "error",
         "teacher": 65
       },
-      "message": "Михайлова Татьяна Алексеевна / до 2026-12-26: нужно 254 пар, доступно не более 232",
+      "message": "Михайлова Татьяна Алексеевна / до 2026-12-19: нужно 255 пар, доступно не более 228",
+      "severity": "warning"
+    },
+    {
+      "category": "semester_plan",
+      "code": "semester_capacity_shortfall",
+      "context": {
+        "code": "semester_capacity_shortfall",
+        "group": -1,
+        "lesson": -1,
+        "message": "Михайлова Татьяна Алексеевна / до 2026-12-26: нужно 255 пар, доступно не более 228",
+        "severity": "error",
+        "teacher": 65
+      },
+      "message": "Михайлова Татьяна Алексеевна / до 2026-12-26: нужно 255 пар, доступно не более 228",
       "severity": "warning"
     },
     {
@@ -942,6 +1264,118 @@
         "teacher": 81
       },
       "message": "Подтверждённые часы превышают учебный план",
+      "severity": "warning"
+    },
+    {
+      "category": "semester_plan",
+      "code": "ledger_exceeds_curriculum",
+      "context": {
+        "code": "ledger_exceeds_curriculum",
+        "group": -1,
+        "lesson": -1,
+        "message": "Подтверждённые часы превышают учебный план",
+        "severity": "error",
+        "teacher": 82
+      },
+      "message": "Подтверждённые часы превышают учебный план",
+      "severity": "warning"
+    },
+    {
+      "category": "semester_plan",
+      "code": "ledger_exceeds_curriculum",
+      "context": {
+        "code": "ledger_exceeds_curriculum",
+        "group": -1,
+        "lesson": -1,
+        "message": "Подтверждённые часы превышают учебный план",
+        "severity": "error",
+        "teacher": 82
+      },
+      "message": "Подтверждённые часы превышают учебный план",
+      "severity": "warning"
+    },
+    {
+      "category": "semester_plan",
+      "code": "ledger_exceeds_curriculum",
+      "context": {
+        "code": "ledger_exceeds_curriculum",
+        "group": -1,
+        "lesson": -1,
+        "message": "Подтверждённые часы превышают учебный план",
+        "severity": "error",
+        "teacher": 82
+      },
+      "message": "Подтверждённые часы превышают учебный план",
+      "severity": "warning"
+    },
+    {
+      "category": "semester_plan",
+      "code": "ledger_exceeds_curriculum",
+      "context": {
+        "code": "ledger_exceeds_curriculum",
+        "group": -1,
+        "lesson": -1,
+        "message": "Подтверждённые часы превышают учебный план",
+        "severity": "error",
+        "teacher": 82
+      },
+      "message": "Подтверждённые часы превышают учебный план",
+      "severity": "warning"
+    },
+    {
+      "category": "semester_plan",
+      "code": "ledger_exceeds_curriculum",
+      "context": {
+        "code": "ledger_exceeds_curriculum",
+        "group": -1,
+        "lesson": -1,
+        "message": "Подтверждённые часы превышают учебный план",
+        "severity": "error",
+        "teacher": 82
+      },
+      "message": "Подтверждённые часы превышают учебный план",
+      "severity": "warning"
+    },
+    {
+      "category": "semester_plan",
+      "code": "group_teacher_deadline_shortfall",
+      "context": {
+        "code": "group_teacher_deadline_shortfall",
+        "group": 0,
+        "lesson": -1,
+        "message": "ТАКХС-Пф-1203 / 1 п/г / до 2026-12-26 / Рабенок Мария Александровна: нужно 12 ч, совместно доступно 0 ч",
+        "severity": "error",
+        "teacher": 12
+      },
+      "message": "ТАКХС-Пф-1203 / 1 п/г / до 2026-12-26 / Рабенок Мария Александровна: нужно 12 ч, совместно доступно 0 ч",
+      "severity": "warning"
+    },
+    {
+      "category": "semester_plan",
+      "code": "group_teacher_deadline_shortfall",
+      "context": {
+        "code": "group_teacher_deadline_shortfall",
+        "group": 0,
+        "lesson": -1,
+        "message": "ТАКХС-Пф-1203 / 2 п/г / до 2026-12-26 / Рабенок Мария Александровна: нужно 12 ч, совместно доступно 0 ч",
+        "severity": "error",
+        "teacher": 12
+      },
+      "message": "ТАКХС-Пф-1203 / 2 п/г / до 2026-12-26 / Рабенок Мария Александровна: нужно 12 ч, совместно доступно 0 ч",
+      "severity": "warning"
+    },
+    {
+      "category": "semester_plan",
+      "code": "group_teacher_deadline_shortfall",
+      "context": {
+        "code": "group_teacher_deadline_shortfall",
+        "group": 1,
+        "lesson": -1,
+        "message": "ТМ-1419 / 1 п/г / до 2026-12-26 / Рабенок Мария Александровна: нужно 12 ч, совместно доступно 0 ч",
+        "severity": "error",
+        "teacher": 12
+      },
+      "message": "ТМ-1419 / 1 п/г / до 2026-12-26 / Рабенок Мария Александровна: нужно 12 ч, совместно доступно 0 ч",
       "severity": "warning"
     },
     {
@@ -965,6 +1399,20 @@
         "code": "group_teacher_deadline_shortfall",
         "group": 1,
         "lesson": -1,
+        "message": "ТМ-1419 / 2 п/г / до 2026-12-26 / Рабенок Мария Александровна: нужно 12 ч, совместно доступно 0 ч",
+        "severity": "error",
+        "teacher": 12
+      },
+      "message": "ТМ-1419 / 2 п/г / до 2026-12-26 / Рабенок Мария Александровна: нужно 12 ч, совместно доступно 0 ч",
+      "severity": "warning"
+    },
+    {
+      "category": "semester_plan",
+      "code": "group_teacher_deadline_shortfall",
+      "context": {
+        "code": "group_teacher_deadline_shortfall",
+        "group": 1,
+        "lesson": -1,
         "message": "ТМ-1419 / 2 п/г / до 2026-12-26 / Третяк Надежда Александровна: нужно 24 ч, совместно доступно 0 ч",
         "severity": "error",
         "teacher": 18
@@ -979,11 +1427,11 @@
         "code": "group_teacher_deadline_shortfall",
         "group": 2,
         "lesson": -1,
-        "message": "ТМ-1420 / 1 п/г / до 2026-12-26 / Третяк Надежда Александровна: нужно 28 ч, совместно доступно 0 ч",
+        "message": "ТМ-1420 / 1 п/г / до 2026-12-26 / Рабенок Мария Александровна: нужно 12 ч, совместно доступно 0 ч",
         "severity": "error",
-        "teacher": 18
+        "teacher": 12
       },
-      "message": "ТМ-1420 / 1 п/г / до 2026-12-26 / Третяк Надежда Александровна: нужно 28 ч, совместно доступно 0 ч",
+      "message": "ТМ-1420 / 1 п/г / до 2026-12-26 / Рабенок Мария Александровна: нужно 12 ч, совместно доступно 0 ч",
       "severity": "warning"
     },
     {
@@ -993,11 +1441,263 @@
         "code": "group_teacher_deadline_shortfall",
         "group": 2,
         "lesson": -1,
-        "message": "ТМ-1420 / 2 п/г / до 2026-12-26 / Третяк Надежда Александровна: нужно 28 ч, совместно доступно 0 ч",
+        "message": "ТМ-1420 / 1 п/г / до 2026-12-26 / Третяк Надежда Александровна: нужно 26 ч, совместно доступно 0 ч",
         "severity": "error",
         "teacher": 18
       },
-      "message": "ТМ-1420 / 2 п/г / до 2026-12-26 / Третяк Надежда Александровна: нужно 28 ч, совместно доступно 0 ч",
+      "message": "ТМ-1420 / 1 п/г / до 2026-12-26 / Третяк Надежда Александровна: нужно 26 ч, совместно доступно 0 ч",
+      "severity": "warning"
+    },
+    {
+      "category": "semester_plan",
+      "code": "group_teacher_deadline_shortfall",
+      "context": {
+        "code": "group_teacher_deadline_shortfall",
+        "group": 2,
+        "lesson": -1,
+        "message": "ТМ-1420 / 2 п/г / до 2026-12-26 / Рабенок Мария Александровна: нужно 12 ч, совместно доступно 0 ч",
+        "severity": "error",
+        "teacher": 12
+      },
+      "message": "ТМ-1420 / 2 п/г / до 2026-12-26 / Рабенок Мария Александровна: нужно 12 ч, совместно доступно 0 ч",
+      "severity": "warning"
+    },
+    {
+      "category": "semester_plan",
+      "code": "group_teacher_deadline_shortfall",
+      "context": {
+        "code": "group_teacher_deadline_shortfall",
+        "group": 2,
+        "lesson": -1,
+        "message": "ТМ-1420 / 2 п/г / до 2026-12-26 / Третяк Надежда Александровна: нужно 26 ч, совместно доступно 0 ч",
+        "severity": "error",
+        "teacher": 18
+      },
+      "message": "ТМ-1420 / 2 п/г / до 2026-12-26 / Третяк Надежда Александровна: нужно 26 ч, совместно доступно 0 ч",
+      "severity": "warning"
+    },
+    {
+      "category": "semester_plan",
+      "code": "group_teacher_deadline_shortfall",
+      "context": {
+        "code": "group_teacher_deadline_shortfall",
+        "group": 3,
+        "lesson": -1,
+        "message": "МЦМ-Пф-103 / 1 п/г / до 2026-12-26 / Рабенок Мария Александровна: нужно 14 ч, совместно доступно 0 ч",
+        "severity": "error",
+        "teacher": 12
+      },
+      "message": "МЦМ-Пф-103 / 1 п/г / до 2026-12-26 / Рабенок Мария Александровна: нужно 14 ч, совместно доступно 0 ч",
+      "severity": "warning"
+    },
+    {
+      "category": "semester_plan",
+      "code": "group_teacher_deadline_shortfall",
+      "context": {
+        "code": "group_teacher_deadline_shortfall",
+        "group": 3,
+        "lesson": -1,
+        "message": "МЦМ-Пф-103 / 2 п/г / до 2026-12-26 / Рабенок Мария Александровна: нужно 14 ч, совместно доступно 0 ч",
+        "severity": "error",
+        "teacher": 12
+      },
+      "message": "МЦМ-Пф-103 / 2 п/г / до 2026-12-26 / Рабенок Мария Александровна: нужно 14 ч, совместно доступно 0 ч",
+      "severity": "warning"
+    },
+    {
+      "category": "semester_plan",
+      "code": "group_teacher_deadline_shortfall",
+      "context": {
+        "code": "group_teacher_deadline_shortfall",
+        "group": 4,
+        "lesson": -1,
+        "message": "СП-Пф-1605 / 1 п/г / до 2026-12-26 / Рабенок Мария Александровна: нужно 12 ч, совместно доступно 0 ч",
+        "severity": "error",
+        "teacher": 12
+      },
+      "message": "СП-Пф-1605 / 1 п/г / до 2026-12-26 / Рабенок Мария Александровна: нужно 12 ч, совместно доступно 0 ч",
+      "severity": "warning"
+    },
+    {
+      "category": "semester_plan",
+      "code": "group_teacher_deadline_shortfall",
+      "context": {
+        "code": "group_teacher_deadline_shortfall",
+        "group": 4,
+        "lesson": -1,
+        "message": "СП-Пф-1605 / 2 п/г / до 2026-12-26 / Рабенок Мария Александровна: нужно 12 ч, совместно доступно 0 ч",
+        "severity": "error",
+        "teacher": 12
+      },
+      "message": "СП-Пф-1605 / 2 п/г / до 2026-12-26 / Рабенок Мария Александровна: нужно 12 ч, совместно доступно 0 ч",
+      "severity": "warning"
+    },
+    {
+      "category": "semester_plan",
+      "code": "group_teacher_deadline_shortfall",
+      "context": {
+        "code": "group_teacher_deadline_shortfall",
+        "group": 5,
+        "lesson": -1,
+        "message": "СП-Пф-1606п / 1 п/г / до 2026-12-26 / Рабенок Мария Александровна: нужно 12 ч, совместно доступно 0 ч",
+        "severity": "error",
+        "teacher": 12
+      },
+      "message": "СП-Пф-1606п / 1 п/г / до 2026-12-26 / Рабенок Мария Александровна: нужно 12 ч, совместно доступно 0 ч",
+      "severity": "warning"
+    },
+    {
+      "category": "semester_plan",
+      "code": "group_teacher_deadline_shortfall",
+      "context": {
+        "code": "group_teacher_deadline_shortfall",
+        "group": 5,
+        "lesson": -1,
+        "message": "СП-Пф-1606п / 2 п/г / до 2026-12-26 / Рабенок Мария Александровна: нужно 12 ч, совместно доступно 0 ч",
+        "severity": "error",
+        "teacher": 12
+      },
+      "message": "СП-Пф-1606п / 2 п/г / до 2026-12-26 / Рабенок Мария Александровна: нужно 12 ч, совместно доступно 0 ч",
+      "severity": "warning"
+    },
+    {
+      "category": "semester_plan",
+      "code": "group_teacher_deadline_shortfall",
+      "context": {
+        "code": "group_teacher_deadline_shortfall",
+        "group": 6,
+        "lesson": -1,
+        "message": "ЭОЭ-Пф-151 / 1 п/г / до 2026-12-26 / Рабенок Мария Александровна: нужно 14 ч, совместно доступно 0 ч",
+        "severity": "error",
+        "teacher": 12
+      },
+      "message": "ЭОЭ-Пф-151 / 1 п/г / до 2026-12-26 / Рабенок Мария Александровна: нужно 14 ч, совместно доступно 0 ч",
+      "severity": "warning"
+    },
+    {
+      "category": "semester_plan",
+      "code": "group_teacher_deadline_shortfall",
+      "context": {
+        "code": "group_teacher_deadline_shortfall",
+        "group": 6,
+        "lesson": -1,
+        "message": "ЭОЭ-Пф-151 / 2 п/г / до 2026-12-26 / Рабенок Мария Александровна: нужно 14 ч, совместно доступно 0 ч",
+        "severity": "error",
+        "teacher": 12
+      },
+      "message": "ЭОЭ-Пф-151 / 2 п/г / до 2026-12-26 / Рабенок Мария Александровна: нужно 14 ч, совместно доступно 0 ч",
+      "severity": "warning"
+    },
+    {
+      "category": "semester_plan",
+      "code": "group_teacher_deadline_shortfall",
+      "context": {
+        "code": "group_teacher_deadline_shortfall",
+        "group": 7,
+        "lesson": -1,
+        "message": "РУП-1301п / 1 п/г / до 2026-12-26 / Рабенок Мария Александровна: нужно 12 ч, совместно доступно 0 ч",
+        "severity": "error",
+        "teacher": 12
+      },
+      "message": "РУП-1301п / 1 п/г / до 2026-12-26 / Рабенок Мария Александровна: нужно 12 ч, совместно доступно 0 ч",
+      "severity": "warning"
+    },
+    {
+      "category": "semester_plan",
+      "code": "group_teacher_deadline_shortfall",
+      "context": {
+        "code": "group_teacher_deadline_shortfall",
+        "group": 7,
+        "lesson": -1,
+        "message": "РУП-1301п / 2 п/г / до 2026-12-26 / Рабенок Мария Александровна: нужно 12 ч, совместно доступно 0 ч",
+        "severity": "error",
+        "teacher": 12
+      },
+      "message": "РУП-1301п / 2 п/г / до 2026-12-26 / Рабенок Мария Александровна: нужно 12 ч, совместно доступно 0 ч",
+      "severity": "warning"
+    },
+    {
+      "category": "semester_plan",
+      "code": "group_teacher_deadline_shortfall",
+      "context": {
+        "code": "group_teacher_deadline_shortfall",
+        "group": 8,
+        "lesson": -1,
+        "message": "ПКД-1809 / 1 п/г / до 2026-12-26 / Рабенок Мария Александровна: нужно 14 ч, совместно доступно 0 ч",
+        "severity": "error",
+        "teacher": 12
+      },
+      "message": "ПКД-1809 / 1 п/г / до 2026-12-26 / Рабенок Мария Александровна: нужно 14 ч, совместно доступно 0 ч",
+      "severity": "warning"
+    },
+    {
+      "category": "semester_plan",
+      "code": "group_teacher_deadline_shortfall",
+      "context": {
+        "code": "group_teacher_deadline_shortfall",
+        "group": 8,
+        "lesson": -1,
+        "message": "ПКД-1809 / 2 п/г / до 2026-12-26 / Рабенок Мария Александровна: нужно 14 ч, совместно доступно 0 ч",
+        "severity": "error",
+        "teacher": 12
+      },
+      "message": "ПКД-1809 / 2 п/г / до 2026-12-26 / Рабенок Мария Александровна: нужно 14 ч, совместно доступно 0 ч",
+      "severity": "warning"
+    },
+    {
+      "category": "semester_plan",
+      "code": "group_teacher_deadline_shortfall",
+      "context": {
+        "code": "group_teacher_deadline_shortfall",
+        "group": 9,
+        "lesson": -1,
+        "message": "ТОиРА-1702 / 1 п/г / до 2026-12-26 / Рабенок Мария Александровна: нужно 12 ч, совместно доступно 0 ч",
+        "severity": "error",
+        "teacher": 12
+      },
+      "message": "ТОиРА-1702 / 1 п/г / до 2026-12-26 / Рабенок Мария Александровна: нужно 12 ч, совместно доступно 0 ч",
+      "severity": "warning"
+    },
+    {
+      "category": "semester_plan",
+      "code": "group_teacher_deadline_shortfall",
+      "context": {
+        "code": "group_teacher_deadline_shortfall",
+        "group": 9,
+        "lesson": -1,
+        "message": "ТОиРА-1702 / 2 п/г / до 2026-12-26 / Рабенок Мария Александровна: нужно 12 ч, совместно доступно 0 ч",
+        "severity": "error",
+        "teacher": 12
+      },
+      "message": "ТОиРА-1702 / 2 п/г / до 2026-12-26 / Рабенок Мария Александровна: нужно 12 ч, совместно доступно 0 ч",
+      "severity": "warning"
+    },
+    {
+      "category": "semester_plan",
+      "code": "group_teacher_deadline_shortfall",
+      "context": {
+        "code": "group_teacher_deadline_shortfall",
+        "group": 10,
+        "lesson": -1,
+        "message": "ТОиРА-1703п / 1 п/г / до 2026-12-26 / Рабенок Мария Александровна: нужно 12 ч, совместно доступно 0 ч",
+        "severity": "error",
+        "teacher": 12
+      },
+      "message": "ТОиРА-1703п / 1 п/г / до 2026-12-26 / Рабенок Мария Александровна: нужно 12 ч, совместно доступно 0 ч",
+      "severity": "warning"
+    },
+    {
+      "category": "semester_plan",
+      "code": "group_teacher_deadline_shortfall",
+      "context": {
+        "code": "group_teacher_deadline_shortfall",
+        "group": 10,
+        "lesson": -1,
+        "message": "ТОиРА-1703п / 2 п/г / до 2026-12-26 / Рабенок Мария Александровна: нужно 12 ч, совместно доступно 0 ч",
+        "severity": "error",
+        "teacher": 12
+      },
+      "message": "ТОиРА-1703п / 2 п/г / до 2026-12-26 / Рабенок Мария Александровна: нужно 12 ч, совместно доступно 0 ч",
       "severity": "warning"
     },
     {
@@ -1063,11 +1763,11 @@
         "code": "group_teacher_deadline_shortfall",
         "group": 13,
         "lesson": -1,
-        "message": "ОСА-491 / 1 п/г / до 2026-11-15 / Осипчук Александр Александрович: нужно 76 ч, совместно доступно 56 ч",
+        "message": "ОСА-491 / 1 п/г / до 2026-11-15 / Осипчук Александр Александрович: нужно 80 ч, совместно доступно 56 ч",
         "severity": "error",
         "teacher": 42
       },
-      "message": "ОСА-491 / 1 п/г / до 2026-11-15 / Осипчук Александр Александрович: нужно 76 ч, совместно доступно 56 ч",
+      "message": "ОСА-491 / 1 п/г / до 2026-11-15 / Осипчук Александр Александрович: нужно 80 ч, совместно доступно 56 ч",
       "severity": "warning"
     },
     {
@@ -1105,11 +1805,67 @@
         "code": "group_teacher_deadline_shortfall",
         "group": 13,
         "lesson": -1,
-        "message": "ОСА-491 / 2 п/г / до 2026-11-15 / Осипчук Александр Александрович: нужно 84 ч, совместно доступно 56 ч",
+        "message": "ОСА-491 / 2 п/г / до 2026-11-15 / Осипчук Александр Александрович: нужно 86 ч, совместно доступно 56 ч",
         "severity": "error",
         "teacher": 42
       },
-      "message": "ОСА-491 / 2 п/г / до 2026-11-15 / Осипчук Александр Александрович: нужно 84 ч, совместно доступно 56 ч",
+      "message": "ОСА-491 / 2 п/г / до 2026-11-15 / Осипчук Александр Александрович: нужно 86 ч, совместно доступно 56 ч",
+      "severity": "warning"
+    },
+    {
+      "category": "semester_plan",
+      "code": "group_teacher_deadline_shortfall",
+      "context": {
+        "code": "group_teacher_deadline_shortfall",
+        "group": 14,
+        "lesson": -1,
+        "message": "МЦМ-Пф-202 / 1 п/г / до 2026-12-19 / Письмак Владимир Николаевич: нужно 64 ч, совместно доступно 0 ч",
+        "severity": "error",
+        "teacher": 44
+      },
+      "message": "МЦМ-Пф-202 / 1 п/г / до 2026-12-19 / Письмак Владимир Николаевич: нужно 64 ч, совместно доступно 0 ч",
+      "severity": "warning"
+    },
+    {
+      "category": "semester_plan",
+      "code": "group_teacher_deadline_shortfall",
+      "context": {
+        "code": "group_teacher_deadline_shortfall",
+        "group": 14,
+        "lesson": -1,
+        "message": "МЦМ-Пф-202 / 2 п/г / до 2026-12-19 / Письмак Владимир Николаевич: нужно 62 ч, совместно доступно 0 ч",
+        "severity": "error",
+        "teacher": 44
+      },
+      "message": "МЦМ-Пф-202 / 2 п/г / до 2026-12-19 / Письмак Владимир Николаевич: нужно 62 ч, совместно доступно 0 ч",
+      "severity": "warning"
+    },
+    {
+      "category": "semester_plan",
+      "code": "group_teacher_deadline_shortfall",
+      "context": {
+        "code": "group_teacher_deadline_shortfall",
+        "group": 15,
+        "lesson": -1,
+        "message": "МЦМ-Пф-301 / 1 п/г / до 2026-12-19 / Письмак Владимир Николаевич: нужно 4 ч, совместно доступно 0 ч",
+        "severity": "error",
+        "teacher": 44
+      },
+      "message": "МЦМ-Пф-301 / 1 п/г / до 2026-12-19 / Письмак Владимир Николаевич: нужно 4 ч, совместно доступно 0 ч",
+      "severity": "warning"
+    },
+    {
+      "category": "semester_plan",
+      "code": "group_teacher_deadline_shortfall",
+      "context": {
+        "code": "group_teacher_deadline_shortfall",
+        "group": 15,
+        "lesson": -1,
+        "message": "МЦМ-Пф-301 / 2 п/г / до 2026-12-19 / Письмак Владимир Николаевич: нужно 4 ч, совместно доступно 0 ч",
+        "severity": "error",
+        "teacher": 44
+      },
+      "message": "МЦМ-Пф-301 / 2 п/г / до 2026-12-19 / Письмак Владимир Николаевич: нужно 4 ч, совместно доступно 0 ч",
       "severity": "warning"
     },
     {
@@ -1147,6 +1903,20 @@
         "code": "group_teacher_deadline_shortfall",
         "group": 16,
         "lesson": -1,
+        "message": "МЦМ-408 / 1 п/г / до 2026-12-19 / Письмак Владимир Николаевич: нужно 22 ч, совместно доступно 0 ч",
+        "severity": "error",
+        "teacher": 44
+      },
+      "message": "МЦМ-408 / 1 п/г / до 2026-12-19 / Письмак Владимир Николаевич: нужно 22 ч, совместно доступно 0 ч",
+      "severity": "warning"
+    },
+    {
+      "category": "semester_plan",
+      "code": "group_teacher_deadline_shortfall",
+      "context": {
+        "code": "group_teacher_deadline_shortfall",
+        "group": 16,
+        "lesson": -1,
         "message": "МЦМ-408 / 2 п/г / до 2026-12-19 / преподаватель не назначен: нужно 36 ч, совместно доступно 0 ч",
         "severity": "error",
         "teacher": -1
@@ -1166,6 +1936,20 @@
         "teacher": 35
       },
       "message": "МЦМ-408 / 2 п/г / до 2026-12-19 / Серянина Светлана Федоровна: нужно 54 ч, совместно доступно 0 ч",
+      "severity": "warning"
+    },
+    {
+      "category": "semester_plan",
+      "code": "group_teacher_deadline_shortfall",
+      "context": {
+        "code": "group_teacher_deadline_shortfall",
+        "group": 16,
+        "lesson": -1,
+        "message": "МЦМ-408 / 2 п/г / до 2026-12-19 / Письмак Владимир Николаевич: нужно 24 ч, совместно доступно 0 ч",
+        "severity": "error",
+        "teacher": 44
+      },
+      "message": "МЦМ-408 / 2 п/г / до 2026-12-19 / Письмак Владимир Николаевич: нужно 24 ч, совместно доступно 0 ч",
       "severity": "warning"
     },
     {
@@ -1649,6 +2433,62 @@
       "code": "group_teacher_deadline_shortfall",
       "context": {
         "code": "group_teacher_deadline_shortfall",
+        "group": 36,
+        "lesson": -1,
+        "message": "ТМ-3415 / 1 п/г / до 2026-11-01 / Клабуков Василий Витальевич: нужно 2 ч, совместно доступно 0 ч",
+        "severity": "error",
+        "teacher": 63
+      },
+      "message": "ТМ-3415 / 1 п/г / до 2026-11-01 / Клабуков Василий Витальевич: нужно 2 ч, совместно доступно 0 ч",
+      "severity": "warning"
+    },
+    {
+      "category": "semester_plan",
+      "code": "group_teacher_deadline_shortfall",
+      "context": {
+        "code": "group_teacher_deadline_shortfall",
+        "group": 36,
+        "lesson": -1,
+        "message": "ТМ-3415 / 2 п/г / до 2026-11-01 / Клабуков Василий Витальевич: нужно 2 ч, совместно доступно 0 ч",
+        "severity": "error",
+        "teacher": 63
+      },
+      "message": "ТМ-3415 / 2 п/г / до 2026-11-01 / Клабуков Василий Витальевич: нужно 2 ч, совместно доступно 0 ч",
+      "severity": "warning"
+    },
+    {
+      "category": "semester_plan",
+      "code": "group_teacher_deadline_shortfall",
+      "context": {
+        "code": "group_teacher_deadline_shortfall",
+        "group": 37,
+        "lesson": -1,
+        "message": "ТМ-3416п / 1 п/г / до 2026-11-01 / Клабуков Василий Витальевич: нужно 20 ч, совместно доступно 0 ч",
+        "severity": "error",
+        "teacher": 63
+      },
+      "message": "ТМ-3416п / 1 п/г / до 2026-11-01 / Клабуков Василий Витальевич: нужно 20 ч, совместно доступно 0 ч",
+      "severity": "warning"
+    },
+    {
+      "category": "semester_plan",
+      "code": "group_teacher_deadline_shortfall",
+      "context": {
+        "code": "group_teacher_deadline_shortfall",
+        "group": 37,
+        "lesson": -1,
+        "message": "ТМ-3416п / 2 п/г / до 2026-11-01 / Клабуков Василий Витальевич: нужно 16 ч, совместно доступно 0 ч",
+        "severity": "error",
+        "teacher": 63
+      },
+      "message": "ТМ-3416п / 2 п/г / до 2026-11-01 / Клабуков Василий Витальевич: нужно 16 ч, совместно доступно 0 ч",
+      "severity": "warning"
+    },
+    {
+      "category": "semester_plan",
+      "code": "group_teacher_deadline_shortfall",
+      "context": {
+        "code": "group_teacher_deadline_shortfall",
         "group": 38,
         "lesson": -1,
         "message": "ТМ-4413 / 1 п/г / до 2026-12-19 / Серянина Светлана Федоровна: нужно 36 ч, совместно доступно 0 ч",
@@ -1763,11 +2603,11 @@
         "code": "semester_quota_shortfall",
         "group": -1,
         "lesson": -1,
-        "message": "Вагайская Татьяна Александровна / до 2026-12-26: квота периода 14 пар меньше требуемого темпа 19",
+        "message": "Вагайская Татьяна Александровна / до 2026-12-26: квота периода 0 пар меньше требуемого темпа 20",
         "severity": "error",
         "teacher": 1
       },
-      "message": "Вагайская Татьяна Александровна / до 2026-12-26: квота периода 14 пар меньше требуемого темпа 19",
+      "message": "Вагайская Татьяна Александровна / до 2026-12-26: квота периода 0 пар меньше требуемого темпа 20",
       "severity": "warning"
     },
     {
@@ -1777,11 +2617,11 @@
         "code": "semester_quota_shortfall",
         "group": -1,
         "lesson": -1,
-        "message": "Кобылянская Татьяна Александровна / до 2026-12-26: квота периода 22 пар меньше требуемого темпа 48",
+        "message": "Кобылянская Татьяна Александровна / до 2026-12-26: квота периода 22 пар меньше требуемого темпа 50",
         "severity": "error",
         "teacher": 7
       },
-      "message": "Кобылянская Татьяна Александровна / до 2026-12-26: квота периода 22 пар меньше требуемого темпа 48",
+      "message": "Кобылянская Татьяна Александровна / до 2026-12-26: квота периода 22 пар меньше требуемого темпа 50",
       "severity": "warning"
     },
     {
@@ -1791,11 +2631,11 @@
         "code": "semester_quota_shortfall",
         "group": -1,
         "lesson": -1,
-        "message": "Коробкова Эльвира Федоровна / до 2026-12-26: квота периода 0 пар меньше требуемого темпа 4",
+        "message": "Рабенок Мария Александровна / до 2026-12-26: квота периода 0 пар меньше требуемого темпа 69",
         "severity": "error",
-        "teacher": 39
+        "teacher": 12
       },
-      "message": "Коробкова Эльвира Федоровна / до 2026-12-26: квота периода 0 пар меньше требуемого темпа 4",
+      "message": "Рабенок Мария Александровна / до 2026-12-26: квота периода 0 пар меньше требуемого темпа 69",
       "severity": "warning"
     },
     {
@@ -1833,11 +2673,11 @@
         "code": "semester_quota_shortfall",
         "group": -1,
         "lesson": -1,
-        "message": "Осипчук Александр Александрович / до 2026-11-15: квота периода 0 пар меньше требуемого темпа 31",
+        "message": "Осипчук Александр Александрович / до 2026-11-15: квота периода 0 пар меньше требуемого темпа 34",
         "severity": "error",
         "teacher": 42
       },
-      "message": "Осипчук Александр Александрович / до 2026-11-15: квота периода 0 пар меньше требуемого темпа 31",
+      "message": "Осипчук Александр Александрович / до 2026-11-15: квота периода 0 пар меньше требуемого темпа 34",
       "severity": "warning"
     },
     {
@@ -1847,11 +2687,11 @@
         "code": "semester_quota_shortfall",
         "group": -1,
         "lesson": -1,
-        "message": "Осипчук Александр Александрович / до 2026-11-22: квота периода 0 пар меньше требуемого темпа 31",
+        "message": "Осипчук Александр Александрович / до 2026-11-22: квота периода 0 пар меньше требуемого темпа 34",
         "severity": "error",
         "teacher": 42
       },
-      "message": "Осипчук Александр Александрович / до 2026-11-22: квота периода 0 пар меньше требуемого темпа 31",
+      "message": "Осипчук Александр Александрович / до 2026-11-22: квота периода 0 пар меньше требуемого темпа 34",
       "severity": "warning"
     },
     {
@@ -1861,11 +2701,11 @@
         "code": "semester_quota_shortfall",
         "group": -1,
         "lesson": -1,
-        "message": "Осипчук Александр Александрович / до 2026-12-19: квота периода 0 пар меньше требуемого темпа 31",
+        "message": "Осипчук Александр Александрович / до 2026-12-19: квота периода 0 пар меньше требуемого темпа 34",
         "severity": "error",
         "teacher": 42
       },
-      "message": "Осипчук Александр Александрович / до 2026-12-19: квота периода 0 пар меньше требуемого темпа 31",
+      "message": "Осипчук Александр Александрович / до 2026-12-19: квота периода 0 пар меньше требуемого темпа 34",
       "severity": "warning"
     },
     {
@@ -1875,11 +2715,123 @@
         "code": "semester_quota_shortfall",
         "group": -1,
         "lesson": -1,
-        "message": "Осипчук Александр Александрович / до 2026-12-26: квота периода 0 пар меньше требуемого темпа 31",
+        "message": "Осипчук Александр Александрович / до 2026-12-26: квота периода 0 пар меньше требуемого темпа 34",
         "severity": "error",
         "teacher": 42
       },
-      "message": "Осипчук Александр Александрович / до 2026-12-26: квота периода 0 пар меньше требуемого темпа 31",
+      "message": "Осипчук Александр Александрович / до 2026-12-26: квота периода 0 пар меньше требуемого темпа 34",
+      "severity": "warning"
+    },
+    {
+      "category": "semester_plan",
+      "code": "semester_quota_shortfall",
+      "context": {
+        "code": "semester_quota_shortfall",
+        "group": -1,
+        "lesson": -1,
+        "message": "Письмак Владимир Николаевич / до 2026-12-19: квота периода 0 пар меньше требуемого темпа 65",
+        "severity": "error",
+        "teacher": 44
+      },
+      "message": "Письмак Владимир Николаевич / до 2026-12-19: квота периода 0 пар меньше требуемого темпа 65",
+      "severity": "warning"
+    },
+    {
+      "category": "semester_plan",
+      "code": "semester_quota_shortfall",
+      "context": {
+        "code": "semester_quota_shortfall",
+        "group": -1,
+        "lesson": -1,
+        "message": "Письмак Владимир Николаевич / до 2026-12-26: квота периода 0 пар меньше требуемого темпа 65",
+        "severity": "error",
+        "teacher": 44
+      },
+      "message": "Письмак Владимир Николаевич / до 2026-12-26: квота периода 0 пар меньше требуемого темпа 65",
+      "severity": "warning"
+    },
+    {
+      "category": "semester_plan",
+      "code": "semester_quota_shortfall",
+      "context": {
+        "code": "semester_quota_shortfall",
+        "group": -1,
+        "lesson": -1,
+        "message": "Клабуков Василий Витальевич / до 2026-11-01: квота периода 0 пар меньше требуемого темпа 20",
+        "severity": "error",
+        "teacher": 63
+      },
+      "message": "Клабуков Василий Витальевич / до 2026-11-01: квота периода 0 пар меньше требуемого темпа 20",
+      "severity": "warning"
+    },
+    {
+      "category": "semester_plan",
+      "code": "semester_quota_shortfall",
+      "context": {
+        "code": "semester_quota_shortfall",
+        "group": -1,
+        "lesson": -1,
+        "message": "Клабуков Василий Витальевич / до 2026-11-08: квота периода 0 пар меньше требуемого темпа 20",
+        "severity": "error",
+        "teacher": 63
+      },
+      "message": "Клабуков Василий Витальевич / до 2026-11-08: квота периода 0 пар меньше требуемого темпа 20",
+      "severity": "warning"
+    },
+    {
+      "category": "semester_plan",
+      "code": "semester_quota_shortfall",
+      "context": {
+        "code": "semester_quota_shortfall",
+        "group": -1,
+        "lesson": -1,
+        "message": "Клабуков Василий Витальевич / до 2026-11-15: квота периода 0 пар меньше требуемого темпа 20",
+        "severity": "error",
+        "teacher": 63
+      },
+      "message": "Клабуков Василий Витальевич / до 2026-11-15: квота периода 0 пар меньше требуемого темпа 20",
+      "severity": "warning"
+    },
+    {
+      "category": "semester_plan",
+      "code": "semester_quota_shortfall",
+      "context": {
+        "code": "semester_quota_shortfall",
+        "group": -1,
+        "lesson": -1,
+        "message": "Клабуков Василий Витальевич / до 2026-11-22: квота периода 0 пар меньше требуемого темпа 20",
+        "severity": "error",
+        "teacher": 63
+      },
+      "message": "Клабуков Василий Витальевич / до 2026-11-22: квота периода 0 пар меньше требуемого темпа 20",
+      "severity": "warning"
+    },
+    {
+      "category": "semester_plan",
+      "code": "semester_quota_shortfall",
+      "context": {
+        "code": "semester_quota_shortfall",
+        "group": -1,
+        "lesson": -1,
+        "message": "Клабуков Василий Витальевич / до 2026-12-19: квота периода 0 пар меньше требуемого темпа 20",
+        "severity": "error",
+        "teacher": 63
+      },
+      "message": "Клабуков Василий Витальевич / до 2026-12-19: квота периода 0 пар меньше требуемого темпа 20",
+      "severity": "warning"
+    },
+    {
+      "category": "semester_plan",
+      "code": "semester_quota_shortfall",
+      "context": {
+        "code": "semester_quota_shortfall",
+        "group": -1,
+        "lesson": -1,
+        "message": "Клабуков Василий Витальевич / до 2026-12-26: квота периода 0 пар меньше требуемого темпа 20",
+        "severity": "error",
+        "teacher": 63
+      },
+      "message": "Клабуков Василий Витальевич / до 2026-12-26: квота периода 0 пар меньше требуемого темпа 20",
       "severity": "warning"
     },
     {
@@ -1940,16 +2892,16 @@
     },
     {
       "category": "semester_plan",
-      "code": "curriculum_calendar_mismatch",
+      "code": "teacher_group_combined_shortfall",
       "context": {
-        "code": "curriculum_calendar_mismatch",
+        "code": "teacher_group_combined_shortfall",
         "group": 0,
         "lesson": -1,
-        "message": "ТАКХС-Пф-1203 / 1 п/г: вклейки 600 ч обычных предметов, календарь 612 ч. Нагрузку автоматически не изменяем",
-        "severity": "warning",
-        "teacher": -1
+        "message": "ТАКХС-Пф-1203 / Рабенок Мария Александровна: по всем подгруппам нужно 12 ч, совместно доступно не более 0 ч",
+        "severity": "error",
+        "teacher": 12
       },
-      "message": "ТАКХС-Пф-1203 / 1 п/г: вклейки 600 ч обычных предметов, календарь 612 ч. Нагрузку автоматически не изменяем",
+      "message": "ТАКХС-Пф-1203 / Рабенок Мария Александровна: по всем подгруппам нужно 12 ч, совместно доступно не более 0 ч",
       "severity": "warning"
     },
     {
@@ -1959,11 +2911,25 @@
         "code": "curriculum_calendar_mismatch",
         "group": 0,
         "lesson": -1,
-        "message": "ТАКХС-Пф-1203 / 2 п/г: вклейки 600 ч обычных предметов, календарь 612 ч. Нагрузку автоматически не изменяем",
+        "message": "ТАКХС-Пф-1203 / 1 п/г: вклейки 590 ч обычных предметов, календарь 612 ч. Нагрузку автоматически не изменяем",
         "severity": "warning",
         "teacher": -1
       },
-      "message": "ТАКХС-Пф-1203 / 2 п/г: вклейки 600 ч обычных предметов, календарь 612 ч. Нагрузку автоматически не изменяем",
+      "message": "ТАКХС-Пф-1203 / 1 п/г: вклейки 590 ч обычных предметов, календарь 612 ч. Нагрузку автоматически не изменяем",
+      "severity": "warning"
+    },
+    {
+      "category": "semester_plan",
+      "code": "curriculum_calendar_mismatch",
+      "context": {
+        "code": "curriculum_calendar_mismatch",
+        "group": 0,
+        "lesson": -1,
+        "message": "ТАКХС-Пф-1203 / 2 п/г: вклейки 590 ч обычных предметов, календарь 612 ч. Нагрузку автоматически не изменяем",
+        "severity": "warning",
+        "teacher": -1
+      },
+      "message": "ТАКХС-Пф-1203 / 2 п/г: вклейки 590 ч обычных предметов, календарь 612 ч. Нагрузку автоматически не изменяем",
       "severity": "warning"
     },
     {
@@ -2001,6 +2967,20 @@
         "code": "teacher_group_combined_shortfall",
         "group": 1,
         "lesson": -1,
+        "message": "ТМ-1419 / Рабенок Мария Александровна: по всем подгруппам нужно 12 ч, совместно доступно не более 0 ч",
+        "severity": "error",
+        "teacher": 12
+      },
+      "message": "ТМ-1419 / Рабенок Мария Александровна: по всем подгруппам нужно 12 ч, совместно доступно не более 0 ч",
+      "severity": "warning"
+    },
+    {
+      "category": "semester_plan",
+      "code": "teacher_group_combined_shortfall",
+      "context": {
+        "code": "teacher_group_combined_shortfall",
+        "group": 1,
+        "lesson": -1,
         "message": "ТМ-1419 / Третяк Надежда Александровна: по всем подгруппам нужно 48 ч, совместно доступно не более 0 ч",
         "severity": "error",
         "teacher": 18
@@ -2015,11 +2995,25 @@
         "code": "curriculum_calendar_mismatch",
         "group": 1,
         "lesson": -1,
-        "message": "ТМ-1419 / 1 п/г: вклейки 596 ч обычных предметов, календарь 612 ч. Нагрузку автоматически не изменяем",
+        "message": "ТМ-1419 / 1 п/г: вклейки 602 ч обычных предметов, календарь 612 ч. Нагрузку автоматически не изменяем",
         "severity": "warning",
         "teacher": -1
       },
-      "message": "ТМ-1419 / 1 п/г: вклейки 596 ч обычных предметов, календарь 612 ч. Нагрузку автоматически не изменяем",
+      "message": "ТМ-1419 / 1 п/г: вклейки 602 ч обычных предметов, календарь 612 ч. Нагрузку автоматически не изменяем",
+      "severity": "warning"
+    },
+    {
+      "category": "semester_plan",
+      "code": "calendar_hours_shortfall",
+      "context": {
+        "code": "calendar_hours_shortfall",
+        "group": 1,
+        "lesson": -1,
+        "message": "ТМ-1419 / 1 п/г: осталось 460 ч, в оставшихся учебных неделях календаря не более 456 ч теории/ЛПЗ. Требуется сверка учебного плана и календаря",
+        "severity": "warning",
+        "teacher": -1
+      },
+      "message": "ТМ-1419 / 1 п/г: осталось 460 ч, в оставшихся учебных неделях календаря не более 456 ч теории/ЛПЗ. Требуется сверка учебного плана и календаря",
       "severity": "warning"
     },
     {
@@ -2029,11 +3023,25 @@
         "code": "curriculum_calendar_mismatch",
         "group": 1,
         "lesson": -1,
-        "message": "ТМ-1419 / 2 п/г: вклейки 596 ч обычных предметов, календарь 612 ч. Нагрузку автоматически не изменяем",
+        "message": "ТМ-1419 / 2 п/г: вклейки 602 ч обычных предметов, календарь 612 ч. Нагрузку автоматически не изменяем",
         "severity": "warning",
         "teacher": -1
       },
-      "message": "ТМ-1419 / 2 п/г: вклейки 596 ч обычных предметов, календарь 612 ч. Нагрузку автоматически не изменяем",
+      "message": "ТМ-1419 / 2 п/г: вклейки 602 ч обычных предметов, календарь 612 ч. Нагрузку автоматически не изменяем",
+      "severity": "warning"
+    },
+    {
+      "category": "semester_plan",
+      "code": "calendar_hours_shortfall",
+      "context": {
+        "code": "calendar_hours_shortfall",
+        "group": 1,
+        "lesson": -1,
+        "message": "ТМ-1419 / 2 п/г: осталось 460 ч, в оставшихся учебных неделях календаря не более 456 ч теории/ЛПЗ. Требуется сверка учебного плана и календаря",
+        "severity": "warning",
+        "teacher": -1
+      },
+      "message": "ТМ-1419 / 2 п/г: осталось 460 ч, в оставшихся учебных неделях календаря не более 456 ч теории/ЛПЗ. Требуется сверка учебного плана и календаря",
       "severity": "warning"
     },
     {
@@ -2057,11 +3065,11 @@
         "code": "teacher_inactive",
         "group": 2,
         "lesson": 47,
-        "message": "ТМ-1420 / Третяк Надежда Александровна / информатика: осталось 24 ч; преподаватель выключен из генерации",
+        "message": "ТМ-1420 / Третяк Надежда Александровна / информатика: осталось 22 ч; преподаватель выключен из генерации",
         "severity": "error",
         "teacher": 18
       },
-      "message": "ТМ-1420 / Третяк Надежда Александровна / информатика: осталось 24 ч; преподаватель выключен из генерации",
+      "message": "ТМ-1420 / Третяк Надежда Александровна / информатика: осталось 22 ч; преподаватель выключен из генерации",
       "severity": "warning"
     },
     {
@@ -2071,11 +3079,11 @@
         "code": "teacher_inactive",
         "group": 2,
         "lesson": 48,
-        "message": "ТМ-1420 / Третяк Надежда Александровна / информатика: осталось 24 ч; преподаватель выключен из генерации",
+        "message": "ТМ-1420 / Третяк Надежда Александровна / информатика: осталось 22 ч; преподаватель выключен из генерации",
         "severity": "error",
         "teacher": 18
       },
-      "message": "ТМ-1420 / Третяк Надежда Александровна / информатика: осталось 24 ч; преподаватель выключен из генерации",
+      "message": "ТМ-1420 / Третяк Надежда Александровна / информатика: осталось 22 ч; преподаватель выключен из генерации",
       "severity": "warning"
     },
     {
@@ -2085,11 +3093,25 @@
         "code": "teacher_group_combined_shortfall",
         "group": 2,
         "lesson": -1,
-        "message": "ТМ-1420 / Третяк Надежда Александровна: по всем подгруппам нужно 52 ч, совместно доступно не более 0 ч",
+        "message": "ТМ-1420 / Рабенок Мария Александровна: по всем подгруппам нужно 12 ч, совместно доступно не более 0 ч",
+        "severity": "error",
+        "teacher": 12
+      },
+      "message": "ТМ-1420 / Рабенок Мария Александровна: по всем подгруппам нужно 12 ч, совместно доступно не более 0 ч",
+      "severity": "warning"
+    },
+    {
+      "category": "semester_plan",
+      "code": "teacher_group_combined_shortfall",
+      "context": {
+        "code": "teacher_group_combined_shortfall",
+        "group": 2,
+        "lesson": -1,
+        "message": "ТМ-1420 / Третяк Надежда Александровна: по всем подгруппам нужно 48 ч, совместно доступно не более 0 ч",
         "severity": "error",
         "teacher": 18
       },
-      "message": "ТМ-1420 / Третяк Надежда Александровна: по всем подгруппам нужно 52 ч, совместно доступно не более 0 ч",
+      "message": "ТМ-1420 / Третяк Надежда Александровна: по всем подгруппам нужно 48 ч, совместно доступно не более 0 ч",
       "severity": "warning"
     },
     {
@@ -2099,11 +3121,25 @@
         "code": "curriculum_calendar_mismatch",
         "group": 2,
         "lesson": -1,
-        "message": "ТМ-1420 / 1 п/г: вклейки 596 ч обычных предметов, календарь 612 ч. Нагрузку автоматически не изменяем",
+        "message": "ТМ-1420 / 1 п/г: вклейки 602 ч обычных предметов, календарь 612 ч. Нагрузку автоматически не изменяем",
         "severity": "warning",
         "teacher": -1
       },
-      "message": "ТМ-1420 / 1 п/г: вклейки 596 ч обычных предметов, календарь 612 ч. Нагрузку автоматически не изменяем",
+      "message": "ТМ-1420 / 1 п/г: вклейки 602 ч обычных предметов, календарь 612 ч. Нагрузку автоматически не изменяем",
+      "severity": "warning"
+    },
+    {
+      "category": "semester_plan",
+      "code": "calendar_hours_shortfall",
+      "context": {
+        "code": "calendar_hours_shortfall",
+        "group": 2,
+        "lesson": -1,
+        "message": "ТМ-1420 / 1 п/г: осталось 458 ч, в оставшихся учебных неделях календаря не более 456 ч теории/ЛПЗ. Требуется сверка учебного плана и календаря",
+        "severity": "warning",
+        "teacher": -1
+      },
+      "message": "ТМ-1420 / 1 п/г: осталось 458 ч, в оставшихся учебных неделях календаря не более 456 ч теории/ЛПЗ. Требуется сверка учебного плана и календаря",
       "severity": "warning"
     },
     {
@@ -2113,11 +3149,25 @@
         "code": "curriculum_calendar_mismatch",
         "group": 2,
         "lesson": -1,
-        "message": "ТМ-1420 / 2 п/г: вклейки 596 ч обычных предметов, календарь 612 ч. Нагрузку автоматически не изменяем",
+        "message": "ТМ-1420 / 2 п/г: вклейки 602 ч обычных предметов, календарь 612 ч. Нагрузку автоматически не изменяем",
         "severity": "warning",
         "teacher": -1
       },
-      "message": "ТМ-1420 / 2 п/г: вклейки 596 ч обычных предметов, календарь 612 ч. Нагрузку автоматически не изменяем",
+      "message": "ТМ-1420 / 2 п/г: вклейки 602 ч обычных предметов, календарь 612 ч. Нагрузку автоматически не изменяем",
+      "severity": "warning"
+    },
+    {
+      "category": "semester_plan",
+      "code": "teacher_group_combined_shortfall",
+      "context": {
+        "code": "teacher_group_combined_shortfall",
+        "group": 3,
+        "lesson": -1,
+        "message": "МЦМ-Пф-103 / Рабенок Мария Александровна: по всем подгруппам нужно 14 ч, совместно доступно не более 0 ч",
+        "severity": "error",
+        "teacher": 12
+      },
+      "message": "МЦМ-Пф-103 / Рабенок Мария Александровна: по всем подгруппам нужно 14 ч, совместно доступно не более 0 ч",
       "severity": "warning"
     },
     {
@@ -2127,11 +3177,25 @@
         "code": "curriculum_calendar_mismatch",
         "group": 3,
         "lesson": -1,
-        "message": "МЦМ-Пф-103 / 1 п/г: вклейки 594 ч обычных предметов, календарь 612 ч. Нагрузку автоматически не изменяем",
+        "message": "МЦМ-Пф-103 / 1 п/г: вклейки 602 ч обычных предметов, календарь 612 ч. Нагрузку автоматически не изменяем",
         "severity": "warning",
         "teacher": -1
       },
-      "message": "МЦМ-Пф-103 / 1 п/г: вклейки 594 ч обычных предметов, календарь 612 ч. Нагрузку автоматически не изменяем",
+      "message": "МЦМ-Пф-103 / 1 п/г: вклейки 602 ч обычных предметов, календарь 612 ч. Нагрузку автоматически не изменяем",
+      "severity": "warning"
+    },
+    {
+      "category": "semester_plan",
+      "code": "calendar_hours_shortfall",
+      "context": {
+        "code": "calendar_hours_shortfall",
+        "group": 3,
+        "lesson": -1,
+        "message": "МЦМ-Пф-103 / 1 п/г: осталось 464 ч, в оставшихся учебных неделях календаря не более 456 ч теории/ЛПЗ. Требуется сверка учебного плана и календаря",
+        "severity": "warning",
+        "teacher": -1
+      },
+      "message": "МЦМ-Пф-103 / 1 п/г: осталось 464 ч, в оставшихся учебных неделях календаря не более 456 ч теории/ЛПЗ. Требуется сверка учебного плана и календаря",
       "severity": "warning"
     },
     {
@@ -2141,11 +3205,39 @@
         "code": "curriculum_calendar_mismatch",
         "group": 3,
         "lesson": -1,
-        "message": "МЦМ-Пф-103 / 2 п/г: вклейки 594 ч обычных предметов, календарь 612 ч. Нагрузку автоматически не изменяем",
+        "message": "МЦМ-Пф-103 / 2 п/г: вклейки 602 ч обычных предметов, календарь 612 ч. Нагрузку автоматически не изменяем",
         "severity": "warning",
         "teacher": -1
       },
-      "message": "МЦМ-Пф-103 / 2 п/г: вклейки 594 ч обычных предметов, календарь 612 ч. Нагрузку автоматически не изменяем",
+      "message": "МЦМ-Пф-103 / 2 п/г: вклейки 602 ч обычных предметов, календарь 612 ч. Нагрузку автоматически не изменяем",
+      "severity": "warning"
+    },
+    {
+      "category": "semester_plan",
+      "code": "calendar_hours_shortfall",
+      "context": {
+        "code": "calendar_hours_shortfall",
+        "group": 3,
+        "lesson": -1,
+        "message": "МЦМ-Пф-103 / 2 п/г: осталось 464 ч, в оставшихся учебных неделях календаря не более 456 ч теории/ЛПЗ. Требуется сверка учебного плана и календаря",
+        "severity": "warning",
+        "teacher": -1
+      },
+      "message": "МЦМ-Пф-103 / 2 п/г: осталось 464 ч, в оставшихся учебных неделях календаря не более 456 ч теории/ЛПЗ. Требуется сверка учебного плана и календаря",
+      "severity": "warning"
+    },
+    {
+      "category": "semester_plan",
+      "code": "teacher_group_combined_shortfall",
+      "context": {
+        "code": "teacher_group_combined_shortfall",
+        "group": 4,
+        "lesson": -1,
+        "message": "СП-Пф-1605 / Рабенок Мария Александровна: по всем подгруппам нужно 12 ч, совместно доступно не более 0 ч",
+        "severity": "error",
+        "teacher": 12
+      },
+      "message": "СП-Пф-1605 / Рабенок Мария Александровна: по всем подгруппам нужно 12 ч, совместно доступно не более 0 ч",
       "severity": "warning"
     },
     {
@@ -2155,11 +3247,11 @@
         "code": "curriculum_calendar_mismatch",
         "group": 4,
         "lesson": -1,
-        "message": "СП-Пф-1605 / 1 п/г: вклейки 596 ч обычных предметов, календарь 612 ч. Нагрузку автоматически не изменяем",
+        "message": "СП-Пф-1605 / 1 п/г: вклейки 590 ч обычных предметов, календарь 612 ч. Нагрузку автоматически не изменяем",
         "severity": "warning",
         "teacher": -1
       },
-      "message": "СП-Пф-1605 / 1 п/г: вклейки 596 ч обычных предметов, календарь 612 ч. Нагрузку автоматически не изменяем",
+      "message": "СП-Пф-1605 / 1 п/г: вклейки 590 ч обычных предметов, календарь 612 ч. Нагрузку автоматически не изменяем",
       "severity": "warning"
     },
     {
@@ -2169,11 +3261,25 @@
         "code": "curriculum_calendar_mismatch",
         "group": 4,
         "lesson": -1,
-        "message": "СП-Пф-1605 / 2 п/г: вклейки 600 ч обычных предметов, календарь 612 ч. Нагрузку автоматически не изменяем",
+        "message": "СП-Пф-1605 / 2 п/г: вклейки 590 ч обычных предметов, календарь 612 ч. Нагрузку автоматически не изменяем",
         "severity": "warning",
         "teacher": -1
       },
-      "message": "СП-Пф-1605 / 2 п/г: вклейки 600 ч обычных предметов, календарь 612 ч. Нагрузку автоматически не изменяем",
+      "message": "СП-Пф-1605 / 2 п/г: вклейки 590 ч обычных предметов, календарь 612 ч. Нагрузку автоматически не изменяем",
+      "severity": "warning"
+    },
+    {
+      "category": "semester_plan",
+      "code": "teacher_group_combined_shortfall",
+      "context": {
+        "code": "teacher_group_combined_shortfall",
+        "group": 5,
+        "lesson": -1,
+        "message": "СП-Пф-1606п / Рабенок Мария Александровна: по всем подгруппам нужно 12 ч, совместно доступно не более 0 ч",
+        "severity": "error",
+        "teacher": 12
+      },
+      "message": "СП-Пф-1606п / Рабенок Мария Александровна: по всем подгруппам нужно 12 ч, совместно доступно не более 0 ч",
       "severity": "warning"
     },
     {
@@ -2183,11 +3289,25 @@
         "code": "curriculum_calendar_mismatch",
         "group": 5,
         "lesson": -1,
-        "message": "СП-Пф-1606п / 1 п/г: вклейки 594 ч обычных предметов, календарь 612 ч. Нагрузку автоматически не изменяем",
+        "message": "СП-Пф-1606п / 1 п/г: вклейки 604 ч обычных предметов, календарь 612 ч. Нагрузку автоматически не изменяем",
         "severity": "warning",
         "teacher": -1
       },
-      "message": "СП-Пф-1606п / 1 п/г: вклейки 594 ч обычных предметов, календарь 612 ч. Нагрузку автоматически не изменяем",
+      "message": "СП-Пф-1606п / 1 п/г: вклейки 604 ч обычных предметов, календарь 612 ч. Нагрузку автоматически не изменяем",
+      "severity": "warning"
+    },
+    {
+      "category": "semester_plan",
+      "code": "calendar_hours_shortfall",
+      "context": {
+        "code": "calendar_hours_shortfall",
+        "group": 5,
+        "lesson": -1,
+        "message": "СП-Пф-1606п / 1 п/г: осталось 464 ч, в оставшихся учебных неделях календаря не более 456 ч теории/ЛПЗ. Требуется сверка учебного плана и календаря",
+        "severity": "warning",
+        "teacher": -1
+      },
+      "message": "СП-Пф-1606п / 1 п/г: осталось 464 ч, в оставшихся учебных неделях календаря не более 456 ч теории/ЛПЗ. Требуется сверка учебного плана и календаря",
       "severity": "warning"
     },
     {
@@ -2197,11 +3317,25 @@
         "code": "curriculum_calendar_mismatch",
         "group": 5,
         "lesson": -1,
-        "message": "СП-Пф-1606п / 2 п/г: вклейки 592 ч обычных предметов, календарь 612 ч. Нагрузку автоматически не изменяем",
+        "message": "СП-Пф-1606п / 2 п/г: вклейки 602 ч обычных предметов, календарь 612 ч. Нагрузку автоматически не изменяем",
         "severity": "warning",
         "teacher": -1
       },
-      "message": "СП-Пф-1606п / 2 п/г: вклейки 592 ч обычных предметов, календарь 612 ч. Нагрузку автоматически не изменяем",
+      "message": "СП-Пф-1606п / 2 п/г: вклейки 602 ч обычных предметов, календарь 612 ч. Нагрузку автоматически не изменяем",
+      "severity": "warning"
+    },
+    {
+      "category": "semester_plan",
+      "code": "teacher_group_combined_shortfall",
+      "context": {
+        "code": "teacher_group_combined_shortfall",
+        "group": 6,
+        "lesson": -1,
+        "message": "ЭОЭ-Пф-151 / Рабенок Мария Александровна: по всем подгруппам нужно 14 ч, совместно доступно не более 0 ч",
+        "severity": "error",
+        "teacher": 12
+      },
+      "message": "ЭОЭ-Пф-151 / Рабенок Мария Александровна: по всем подгруппам нужно 14 ч, совместно доступно не более 0 ч",
       "severity": "warning"
     },
     {
@@ -2211,11 +3345,11 @@
         "code": "curriculum_calendar_mismatch",
         "group": 6,
         "lesson": -1,
-        "message": "ЭОЭ-Пф-151 / 1 п/г: вклейки 598 ч обычных предметов, календарь 612 ч. Нагрузку автоматически не изменяем",
+        "message": "ЭОЭ-Пф-151 / 1 п/г: вклейки 606 ч обычных предметов, календарь 612 ч. Нагрузку автоматически не изменяем",
         "severity": "warning",
         "teacher": -1
       },
-      "message": "ЭОЭ-Пф-151 / 1 п/г: вклейки 598 ч обычных предметов, календарь 612 ч. Нагрузку автоматически не изменяем",
+      "message": "ЭОЭ-Пф-151 / 1 п/г: вклейки 606 ч обычных предметов, календарь 612 ч. Нагрузку автоматически не изменяем",
       "severity": "warning"
     },
     {
@@ -2225,11 +3359,11 @@
         "code": "calendar_hours_shortfall",
         "group": 6,
         "lesson": -1,
-        "message": "ЭОЭ-Пф-151 / 1 п/г: осталось 472 ч, в оставшихся учебных неделях календаря не более 464 ч теории/ЛПЗ. Требуется сверка учебного плана и календаря",
+        "message": "ЭОЭ-Пф-151 / 1 п/г: осталось 472 ч, в оставшихся учебных неделях календаря не более 456 ч теории/ЛПЗ. Требуется сверка учебного плана и календаря",
         "severity": "warning",
         "teacher": -1
       },
-      "message": "ЭОЭ-Пф-151 / 1 п/г: осталось 472 ч, в оставшихся учебных неделях календаря не более 464 ч теории/ЛПЗ. Требуется сверка учебного плана и календаря",
+      "message": "ЭОЭ-Пф-151 / 1 п/г: осталось 472 ч, в оставшихся учебных неделях календаря не более 456 ч теории/ЛПЗ. Требуется сверка учебного плана и календаря",
       "severity": "warning"
     },
     {
@@ -2239,11 +3373,11 @@
         "code": "curriculum_calendar_mismatch",
         "group": 6,
         "lesson": -1,
-        "message": "ЭОЭ-Пф-151 / 2 п/г: вклейки 596 ч обычных предметов, календарь 612 ч. Нагрузку автоматически не изменяем",
+        "message": "ЭОЭ-Пф-151 / 2 п/г: вклейки 604 ч обычных предметов, календарь 612 ч. Нагрузку автоматически не изменяем",
         "severity": "warning",
         "teacher": -1
       },
-      "message": "ЭОЭ-Пф-151 / 2 п/г: вклейки 596 ч обычных предметов, календарь 612 ч. Нагрузку автоматически не изменяем",
+      "message": "ЭОЭ-Пф-151 / 2 п/г: вклейки 604 ч обычных предметов, календарь 612 ч. Нагрузку автоматически не изменяем",
       "severity": "warning"
     },
     {
@@ -2253,11 +3387,25 @@
         "code": "calendar_hours_shortfall",
         "group": 6,
         "lesson": -1,
-        "message": "ЭОЭ-Пф-151 / 2 п/г: осталось 468 ч, в оставшихся учебных неделях календаря не более 464 ч теории/ЛПЗ. Требуется сверка учебного плана и календаря",
+        "message": "ЭОЭ-Пф-151 / 2 п/г: осталось 468 ч, в оставшихся учебных неделях календаря не более 456 ч теории/ЛПЗ. Требуется сверка учебного плана и календаря",
         "severity": "warning",
         "teacher": -1
       },
-      "message": "ЭОЭ-Пф-151 / 2 п/г: осталось 468 ч, в оставшихся учебных неделях календаря не более 464 ч теории/ЛПЗ. Требуется сверка учебного плана и календаря",
+      "message": "ЭОЭ-Пф-151 / 2 п/г: осталось 468 ч, в оставшихся учебных неделях календаря не более 456 ч теории/ЛПЗ. Требуется сверка учебного плана и календаря",
+      "severity": "warning"
+    },
+    {
+      "category": "semester_plan",
+      "code": "teacher_group_combined_shortfall",
+      "context": {
+        "code": "teacher_group_combined_shortfall",
+        "group": 7,
+        "lesson": -1,
+        "message": "РУП-1301п / Рабенок Мария Александровна: по всем подгруппам нужно 12 ч, совместно доступно не более 0 ч",
+        "severity": "error",
+        "teacher": 12
+      },
+      "message": "РУП-1301п / Рабенок Мария Александровна: по всем подгруппам нужно 12 ч, совместно доступно не более 0 ч",
       "severity": "warning"
     },
     {
@@ -2267,11 +3415,11 @@
         "code": "curriculum_calendar_mismatch",
         "group": 7,
         "lesson": -1,
-        "message": "РУП-1301п / 1 п/г: вклейки 600 ч обычных предметов, календарь 612 ч. Нагрузку автоматически не изменяем",
+        "message": "РУП-1301п / 1 п/г: вклейки 604 ч обычных предметов, календарь 612 ч. Нагрузку автоматически не изменяем",
         "severity": "warning",
         "teacher": -1
       },
-      "message": "РУП-1301п / 1 п/г: вклейки 600 ч обычных предметов, календарь 612 ч. Нагрузку автоматически не изменяем",
+      "message": "РУП-1301п / 1 п/г: вклейки 604 ч обычных предметов, календарь 612 ч. Нагрузку автоматически не изменяем",
       "severity": "warning"
     },
     {
@@ -2281,11 +3429,11 @@
         "code": "calendar_hours_shortfall",
         "group": 7,
         "lesson": -1,
-        "message": "РУП-1301п / 1 п/г: осталось 466 ч, в оставшихся учебных неделях календаря не более 464 ч теории/ЛПЗ. Требуется сверка учебного плана и календаря",
+        "message": "РУП-1301п / 1 п/г: осталось 464 ч, в оставшихся учебных неделях календаря не более 456 ч теории/ЛПЗ. Требуется сверка учебного плана и календаря",
         "severity": "warning",
         "teacher": -1
       },
-      "message": "РУП-1301п / 1 п/г: осталось 466 ч, в оставшихся учебных неделях календаря не более 464 ч теории/ЛПЗ. Требуется сверка учебного плана и календаря",
+      "message": "РУП-1301п / 1 п/г: осталось 464 ч, в оставшихся учебных неделях календаря не более 456 ч теории/ЛПЗ. Требуется сверка учебного плана и календаря",
       "severity": "warning"
     },
     {
@@ -2295,11 +3443,39 @@
         "code": "curriculum_calendar_mismatch",
         "group": 7,
         "lesson": -1,
-        "message": "РУП-1301п / 2 п/г: вклейки 600 ч обычных предметов, календарь 612 ч. Нагрузку автоматически не изменяем",
+        "message": "РУП-1301п / 2 п/г: вклейки 604 ч обычных предметов, календарь 612 ч. Нагрузку автоматически не изменяем",
         "severity": "warning",
         "teacher": -1
       },
-      "message": "РУП-1301п / 2 п/г: вклейки 600 ч обычных предметов, календарь 612 ч. Нагрузку автоматически не изменяем",
+      "message": "РУП-1301п / 2 п/г: вклейки 604 ч обычных предметов, календарь 612 ч. Нагрузку автоматически не изменяем",
+      "severity": "warning"
+    },
+    {
+      "category": "semester_plan",
+      "code": "calendar_hours_shortfall",
+      "context": {
+        "code": "calendar_hours_shortfall",
+        "group": 7,
+        "lesson": -1,
+        "message": "РУП-1301п / 2 п/г: осталось 460 ч, в оставшихся учебных неделях календаря не более 456 ч теории/ЛПЗ. Требуется сверка учебного плана и календаря",
+        "severity": "warning",
+        "teacher": -1
+      },
+      "message": "РУП-1301п / 2 п/г: осталось 460 ч, в оставшихся учебных неделях календаря не более 456 ч теории/ЛПЗ. Требуется сверка учебного плана и календаря",
+      "severity": "warning"
+    },
+    {
+      "category": "semester_plan",
+      "code": "teacher_group_combined_shortfall",
+      "context": {
+        "code": "teacher_group_combined_shortfall",
+        "group": 8,
+        "lesson": -1,
+        "message": "ПКД-1809 / Рабенок Мария Александровна: по всем подгруппам нужно 14 ч, совместно доступно не более 0 ч",
+        "severity": "error",
+        "teacher": 12
+      },
+      "message": "ПКД-1809 / Рабенок Мария Александровна: по всем подгруппам нужно 14 ч, совместно доступно не более 0 ч",
       "severity": "warning"
     },
     {
@@ -2309,25 +3485,11 @@
         "code": "curriculum_calendar_mismatch",
         "group": 8,
         "lesson": -1,
-        "message": "ПКД-1809 / 1 п/г: вклейки 598 ч обычных предметов, календарь 612 ч. Нагрузку автоматически не изменяем",
+        "message": "ПКД-1809 / 1 п/г: вклейки 604 ч обычных предметов, календарь 612 ч. Нагрузку автоматически не изменяем",
         "severity": "warning",
         "teacher": -1
       },
-      "message": "ПКД-1809 / 1 п/г: вклейки 598 ч обычных предметов, календарь 612 ч. Нагрузку автоматически не изменяем",
-      "severity": "warning"
-    },
-    {
-      "category": "semester_plan",
-      "code": "curriculum_calendar_mismatch",
-      "context": {
-        "code": "curriculum_calendar_mismatch",
-        "group": 8,
-        "lesson": -1,
-        "message": "ПКД-1809 / 2 п/г: вклейки 598 ч обычных предметов, календарь 612 ч. Нагрузку автоматически не изменяем",
-        "severity": "warning",
-        "teacher": -1
-      },
-      "message": "ПКД-1809 / 2 п/г: вклейки 598 ч обычных предметов, календарь 612 ч. Нагрузку автоматически не изменяем",
+      "message": "ПКД-1809 / 1 п/г: вклейки 604 ч обычных предметов, календарь 612 ч. Нагрузку автоматически не изменяем",
       "severity": "warning"
     },
     {
@@ -2337,11 +3499,53 @@
         "code": "calendar_hours_shortfall",
         "group": 8,
         "lesson": -1,
-        "message": "ПКД-1809 / 2 п/г: осталось 470 ч, в оставшихся учебных неделях календаря не более 464 ч теории/ЛПЗ. Требуется сверка учебного плана и календаря",
+        "message": "ПКД-1809 / 1 п/г: осталось 464 ч, в оставшихся учебных неделях календаря не более 456 ч теории/ЛПЗ. Требуется сверка учебного плана и календаря",
         "severity": "warning",
         "teacher": -1
       },
-      "message": "ПКД-1809 / 2 п/г: осталось 470 ч, в оставшихся учебных неделях календаря не более 464 ч теории/ЛПЗ. Требуется сверка учебного плана и календаря",
+      "message": "ПКД-1809 / 1 п/г: осталось 464 ч, в оставшихся учебных неделях календаря не более 456 ч теории/ЛПЗ. Требуется сверка учебного плана и календаря",
+      "severity": "warning"
+    },
+    {
+      "category": "semester_plan",
+      "code": "curriculum_calendar_mismatch",
+      "context": {
+        "code": "curriculum_calendar_mismatch",
+        "group": 8,
+        "lesson": -1,
+        "message": "ПКД-1809 / 2 п/г: вклейки 604 ч обычных предметов, календарь 612 ч. Нагрузку автоматически не изменяем",
+        "severity": "warning",
+        "teacher": -1
+      },
+      "message": "ПКД-1809 / 2 п/г: вклейки 604 ч обычных предметов, календарь 612 ч. Нагрузку автоматически не изменяем",
+      "severity": "warning"
+    },
+    {
+      "category": "semester_plan",
+      "code": "calendar_hours_shortfall",
+      "context": {
+        "code": "calendar_hours_shortfall",
+        "group": 8,
+        "lesson": -1,
+        "message": "ПКД-1809 / 2 п/г: осталось 472 ч, в оставшихся учебных неделях календаря не более 456 ч теории/ЛПЗ. Требуется сверка учебного плана и календаря",
+        "severity": "warning",
+        "teacher": -1
+      },
+      "message": "ПКД-1809 / 2 п/г: осталось 472 ч, в оставшихся учебных неделях календаря не более 456 ч теории/ЛПЗ. Требуется сверка учебного плана и календаря",
+      "severity": "warning"
+    },
+    {
+      "category": "semester_plan",
+      "code": "teacher_group_combined_shortfall",
+      "context": {
+        "code": "teacher_group_combined_shortfall",
+        "group": 9,
+        "lesson": -1,
+        "message": "ТОиРА-1702 / Рабенок Мария Александровна: по всем подгруппам нужно 12 ч, совместно доступно не более 0 ч",
+        "severity": "error",
+        "teacher": 12
+      },
+      "message": "ТОиРА-1702 / Рабенок Мария Александровна: по всем подгруппам нужно 12 ч, совместно доступно не более 0 ч",
       "severity": "warning"
     },
     {
@@ -2351,11 +3555,25 @@
         "code": "curriculum_calendar_mismatch",
         "group": 9,
         "lesson": -1,
-        "message": "ТОиРА-1702 / 1 п/г: вклейки 594 ч обычных предметов, календарь 612 ч. Нагрузку автоматически не изменяем",
+        "message": "ТОиРА-1702 / 1 п/г: вклейки 604 ч обычных предметов, календарь 612 ч. Нагрузку автоматически не изменяем",
         "severity": "warning",
         "teacher": -1
       },
-      "message": "ТОиРА-1702 / 1 п/г: вклейки 594 ч обычных предметов, календарь 612 ч. Нагрузку автоматически не изменяем",
+      "message": "ТОиРА-1702 / 1 п/г: вклейки 604 ч обычных предметов, календарь 612 ч. Нагрузку автоматически не изменяем",
+      "severity": "warning"
+    },
+    {
+      "category": "semester_plan",
+      "code": "calendar_hours_shortfall",
+      "context": {
+        "code": "calendar_hours_shortfall",
+        "group": 9,
+        "lesson": -1,
+        "message": "ТОиРА-1702 / 1 п/г: осталось 458 ч, в оставшихся учебных неделях календаря не более 456 ч теории/ЛПЗ. Требуется сверка учебного плана и календаря",
+        "severity": "warning",
+        "teacher": -1
+      },
+      "message": "ТОиРА-1702 / 1 п/г: осталось 458 ч, в оставшихся учебных неделях календаря не более 456 ч теории/ЛПЗ. Требуется сверка учебного плана и календаря",
       "severity": "warning"
     },
     {
@@ -2365,11 +3583,39 @@
         "code": "curriculum_calendar_mismatch",
         "group": 9,
         "lesson": -1,
-        "message": "ТОиРА-1702 / 2 п/г: вклейки 594 ч обычных предметов, календарь 612 ч. Нагрузку автоматически не изменяем",
+        "message": "ТОиРА-1702 / 2 п/г: вклейки 606 ч обычных предметов, календарь 612 ч. Нагрузку автоматически не изменяем",
         "severity": "warning",
         "teacher": -1
       },
-      "message": "ТОиРА-1702 / 2 п/г: вклейки 594 ч обычных предметов, календарь 612 ч. Нагрузку автоматически не изменяем",
+      "message": "ТОиРА-1702 / 2 п/г: вклейки 606 ч обычных предметов, календарь 612 ч. Нагрузку автоматически не изменяем",
+      "severity": "warning"
+    },
+    {
+      "category": "semester_plan",
+      "code": "calendar_hours_shortfall",
+      "context": {
+        "code": "calendar_hours_shortfall",
+        "group": 9,
+        "lesson": -1,
+        "message": "ТОиРА-1702 / 2 п/г: осталось 460 ч, в оставшихся учебных неделях календаря не более 456 ч теории/ЛПЗ. Требуется сверка учебного плана и календаря",
+        "severity": "warning",
+        "teacher": -1
+      },
+      "message": "ТОиРА-1702 / 2 п/г: осталось 460 ч, в оставшихся учебных неделях календаря не более 456 ч теории/ЛПЗ. Требуется сверка учебного плана и календаря",
+      "severity": "warning"
+    },
+    {
+      "category": "semester_plan",
+      "code": "teacher_group_combined_shortfall",
+      "context": {
+        "code": "teacher_group_combined_shortfall",
+        "group": 10,
+        "lesson": -1,
+        "message": "ТОиРА-1703п / Рабенок Мария Александровна: по всем подгруппам нужно 12 ч, совместно доступно не более 0 ч",
+        "severity": "error",
+        "teacher": 12
+      },
+      "message": "ТОиРА-1703п / Рабенок Мария Александровна: по всем подгруппам нужно 12 ч, совместно доступно не более 0 ч",
       "severity": "warning"
     },
     {
@@ -2379,11 +3625,11 @@
         "code": "curriculum_calendar_mismatch",
         "group": 10,
         "lesson": -1,
-        "message": "ТОиРА-1703п / 1 п/г: вклейки 598 ч обычных предметов, календарь 612 ч. Нагрузку автоматически не изменяем",
+        "message": "ТОиРА-1703п / 1 п/г: вклейки 604 ч обычных предметов, календарь 612 ч. Нагрузку автоматически не изменяем",
         "severity": "warning",
         "teacher": -1
       },
-      "message": "ТОиРА-1703п / 1 п/г: вклейки 598 ч обычных предметов, календарь 612 ч. Нагрузку автоматически не изменяем",
+      "message": "ТОиРА-1703п / 1 п/г: вклейки 604 ч обычных предметов, календарь 612 ч. Нагрузку автоматически не изменяем",
       "severity": "warning"
     },
     {
@@ -2393,11 +3639,11 @@
         "code": "curriculum_calendar_mismatch",
         "group": 10,
         "lesson": -1,
-        "message": "ТОиРА-1703п / 2 п/г: вклейки 598 ч обычных предметов, календарь 612 ч. Нагрузку автоматически не изменяем",
+        "message": "ТОиРА-1703п / 2 п/г: вклейки 604 ч обычных предметов, календарь 612 ч. Нагрузку автоматически не изменяем",
         "severity": "warning",
         "teacher": -1
       },
-      "message": "ТОиРА-1703п / 2 п/г: вклейки 598 ч обычных предметов, календарь 612 ч. Нагрузку автоматически не изменяем",
+      "message": "ТОиРА-1703п / 2 п/г: вклейки 604 ч обычных предметов, календарь 612 ч. Нагрузку автоматически не изменяем",
       "severity": "warning"
     },
     {
@@ -2449,11 +3695,11 @@
         "code": "curriculum_calendar_mismatch",
         "group": 11,
         "lesson": -1,
-        "message": "ТИК-212 / 1 п/г: вклейки 562 ч обычных предметов, календарь 576 ч. Нагрузку автоматически не изменяем",
+        "message": "ТИК-212 / 1 п/г: вклейки 564 ч обычных предметов, календарь 576 ч. Нагрузку автоматически не изменяем",
         "severity": "warning",
         "teacher": -1
       },
-      "message": "ТИК-212 / 1 п/г: вклейки 562 ч обычных предметов, календарь 576 ч. Нагрузку автоматически не изменяем",
+      "message": "ТИК-212 / 1 п/г: вклейки 564 ч обычных предметов, календарь 576 ч. Нагрузку автоматически не изменяем",
       "severity": "warning"
     },
     {
@@ -2463,11 +3709,11 @@
         "code": "calendar_hours_shortfall",
         "group": 11,
         "lesson": -1,
-        "message": "ТИК-212 / 1 п/г: осталось 410 ч, в оставшихся учебных неделях календаря не более 398 ч теории/ЛПЗ. Требуется сверка учебного плана и календаря",
+        "message": "ТИК-212 / 1 п/г: осталось 404 ч, в оставшихся учебных неделях календаря не более 390 ч теории/ЛПЗ. Требуется сверка учебного плана и календаря",
         "severity": "warning",
         "teacher": -1
       },
-      "message": "ТИК-212 / 1 п/г: осталось 410 ч, в оставшихся учебных неделях календаря не более 398 ч теории/ЛПЗ. Требуется сверка учебного плана и календаря",
+      "message": "ТИК-212 / 1 п/г: осталось 404 ч, в оставшихся учебных неделях календаря не более 390 ч теории/ЛПЗ. Требуется сверка учебного плана и календаря",
       "severity": "warning"
     },
     {
@@ -2477,11 +3723,11 @@
         "code": "curriculum_calendar_mismatch",
         "group": 11,
         "lesson": -1,
-        "message": "ТИК-212 / 2 п/г: вклейки 550 ч обычных предметов, календарь 576 ч. Нагрузку автоматически не изменяем",
+        "message": "ТИК-212 / 2 п/г: вклейки 558 ч обычных предметов, календарь 576 ч. Нагрузку автоматически не изменяем",
         "severity": "warning",
         "teacher": -1
       },
-      "message": "ТИК-212 / 2 п/г: вклейки 550 ч обычных предметов, календарь 576 ч. Нагрузку автоматически не изменяем",
+      "message": "ТИК-212 / 2 п/г: вклейки 558 ч обычных предметов, календарь 576 ч. Нагрузку автоматически не изменяем",
       "severity": "warning"
     },
     {
@@ -2491,11 +3737,11 @@
         "code": "calendar_hours_shortfall",
         "group": 11,
         "lesson": -1,
-        "message": "ТИК-212 / 2 п/г: осталось 402 ч, в оставшихся учебных неделях календаря не более 398 ч теории/ЛПЗ. Требуется сверка учебного плана и календаря",
+        "message": "ТИК-212 / 2 п/г: осталось 402 ч, в оставшихся учебных неделях календаря не более 390 ч теории/ЛПЗ. Требуется сверка учебного плана и календаря",
         "severity": "warning",
         "teacher": -1
       },
-      "message": "ТИК-212 / 2 п/г: осталось 402 ч, в оставшихся учебных неделях календаря не более 398 ч теории/ЛПЗ. Требуется сверка учебного плана и календаря",
+      "message": "ТИК-212 / 2 п/г: осталось 402 ч, в оставшихся учебных неделях календаря не более 390 ч теории/ЛПЗ. Требуется сверка учебного плана и календаря",
       "severity": "warning"
     },
     {
@@ -2519,11 +3765,11 @@
         "code": "curriculum_calendar_mismatch",
         "group": 12,
         "lesson": -1,
-        "message": "ТЭиРП-2901 / 1 п/г: вклейки 534 ч обычных предметов, календарь 564 ч. Нагрузку автоматически не изменяем",
+        "message": "ТЭиРП-2901 / 1 п/г: вклейки 536 ч обычных предметов, календарь 564 ч. Нагрузку автоматически не изменяем",
         "severity": "warning",
         "teacher": -1
       },
-      "message": "ТЭиРП-2901 / 1 п/г: вклейки 534 ч обычных предметов, календарь 564 ч. Нагрузку автоматически не изменяем",
+      "message": "ТЭиРП-2901 / 1 п/г: вклейки 536 ч обычных предметов, календарь 564 ч. Нагрузку автоматически не изменяем",
       "severity": "warning"
     },
     {
@@ -2533,11 +3779,11 @@
         "code": "calendar_hours_shortfall",
         "group": 12,
         "lesson": -1,
-        "message": "ТЭиРП-2901 / 1 п/г: осталось 402 ч, в оставшихся учебных неделях календаря не более 398 ч теории/ЛПЗ. Требуется сверка учебного плана и календаря",
+        "message": "ТЭиРП-2901 / 1 п/г: осталось 398 ч, в оставшихся учебных неделях календаря не более 390 ч теории/ЛПЗ. Требуется сверка учебного плана и календаря",
         "severity": "warning",
         "teacher": -1
       },
-      "message": "ТЭиРП-2901 / 1 п/г: осталось 402 ч, в оставшихся учебных неделях календаря не более 398 ч теории/ЛПЗ. Требуется сверка учебного плана и календаря",
+      "message": "ТЭиРП-2901 / 1 п/г: осталось 398 ч, в оставшихся учебных неделях календаря не более 390 ч теории/ЛПЗ. Требуется сверка учебного плана и календаря",
       "severity": "warning"
     },
     {
@@ -2547,11 +3793,11 @@
         "code": "curriculum_calendar_mismatch",
         "group": 12,
         "lesson": -1,
-        "message": "ТЭиРП-2901 / 2 п/г: вклейки 532 ч обычных предметов, календарь 564 ч. Нагрузку автоматически не изменяем",
+        "message": "ТЭиРП-2901 / 2 п/г: вклейки 536 ч обычных предметов, календарь 564 ч. Нагрузку автоматически не изменяем",
         "severity": "warning",
         "teacher": -1
       },
-      "message": "ТЭиРП-2901 / 2 п/г: вклейки 532 ч обычных предметов, календарь 564 ч. Нагрузку автоматически не изменяем",
+      "message": "ТЭиРП-2901 / 2 п/г: вклейки 536 ч обычных предметов, календарь 564 ч. Нагрузку автоматически не изменяем",
       "severity": "warning"
     },
     {
@@ -2561,11 +3807,11 @@
         "code": "calendar_hours_shortfall",
         "group": 12,
         "lesson": -1,
-        "message": "ТЭиРП-2901 / 2 п/г: осталось 402 ч, в оставшихся учебных неделях календаря не более 398 ч теории/ЛПЗ. Требуется сверка учебного плана и календаря",
+        "message": "ТЭиРП-2901 / 2 п/г: осталось 400 ч, в оставшихся учебных неделях календаря не более 390 ч теории/ЛПЗ. Требуется сверка учебного плана и календаря",
         "severity": "warning",
         "teacher": -1
       },
-      "message": "ТЭиРП-2901 / 2 п/г: осталось 402 ч, в оставшихся учебных неделях календаря не более 398 ч теории/ЛПЗ. Требуется сверка учебного плана и календаря",
+      "message": "ТЭиРП-2901 / 2 п/г: осталось 400 ч, в оставшихся учебных неделях календаря не более 390 ч теории/ЛПЗ. Требуется сверка учебного плана и календаря",
       "severity": "warning"
     },
     {
@@ -2645,11 +3891,11 @@
         "code": "teacher_group_combined_shortfall",
         "group": 13,
         "lesson": -1,
-        "message": "ОСА-491 / Осипчук Александр Александрович: по всем подгруппам нужно 160 ч, совместно доступно не более 98 ч",
+        "message": "ОСА-491 / Осипчук Александр Александрович: по всем подгруппам нужно 166 ч, совместно доступно не более 98 ч",
         "severity": "error",
         "teacher": 42
       },
-      "message": "ОСА-491 / Осипчук Александр Александрович: по всем подгруппам нужно 160 ч, совместно доступно не более 98 ч",
+      "message": "ОСА-491 / Осипчук Александр Александрович: по всем подгруппам нужно 166 ч, совместно доступно не более 98 ч",
       "severity": "warning"
     },
     {
@@ -2673,25 +3919,11 @@
         "code": "curriculum_calendar_mismatch",
         "group": 13,
         "lesson": -1,
-        "message": "ОСА-491 / 1 п/г: вклейки 384 ч обычных предметов, календарь 354 ч. Нагрузку автоматически не изменяем",
+        "message": "ОСА-491 / 1 п/г: вклейки 386 ч обычных предметов, календарь 354 ч. Нагрузку автоматически не изменяем",
         "severity": "warning",
         "teacher": -1
       },
-      "message": "ОСА-491 / 1 п/г: вклейки 384 ч обычных предметов, календарь 354 ч. Нагрузку автоматически не изменяем",
-      "severity": "warning"
-    },
-    {
-      "category": "semester_plan",
-      "code": "curriculum_calendar_mismatch",
-      "context": {
-        "code": "curriculum_calendar_mismatch",
-        "group": 13,
-        "lesson": -1,
-        "message": "ОСА-491 / 2 п/г: вклейки 420 ч обычных предметов, календарь 354 ч. Нагрузку автоматически не изменяем",
-        "severity": "warning",
-        "teacher": -1
-      },
-      "message": "ОСА-491 / 2 п/г: вклейки 420 ч обычных предметов, календарь 354 ч. Нагрузку автоматически не изменяем",
+      "message": "ОСА-491 / 1 п/г: вклейки 386 ч обычных предметов, календарь 354 ч. Нагрузку автоматически не изменяем",
       "severity": "warning"
     },
     {
@@ -2701,11 +3933,53 @@
         "code": "calendar_hours_shortfall",
         "group": 13,
         "lesson": -1,
-        "message": "ОСА-491 / 2 п/г: осталось 264 ч, в оставшихся учебных неделях календаря не более 222 ч теории/ЛПЗ. Требуется сверка учебного плана и календаря",
+        "message": "ОСА-491 / 1 п/г: осталось 220 ч, в оставшихся учебных неделях календаря не более 216 ч теории/ЛПЗ. Требуется сверка учебного плана и календаря",
         "severity": "warning",
         "teacher": -1
       },
-      "message": "ОСА-491 / 2 п/г: осталось 264 ч, в оставшихся учебных неделях календаря не более 222 ч теории/ЛПЗ. Требуется сверка учебного плана и календаря",
+      "message": "ОСА-491 / 1 п/г: осталось 220 ч, в оставшихся учебных неделях календаря не более 216 ч теории/ЛПЗ. Требуется сверка учебного плана и календаря",
+      "severity": "warning"
+    },
+    {
+      "category": "semester_plan",
+      "code": "curriculum_calendar_mismatch",
+      "context": {
+        "code": "curriculum_calendar_mismatch",
+        "group": 13,
+        "lesson": -1,
+        "message": "ОСА-491 / 2 п/г: вклейки 422 ч обычных предметов, календарь 354 ч. Нагрузку автоматически не изменяем",
+        "severity": "warning",
+        "teacher": -1
+      },
+      "message": "ОСА-491 / 2 п/г: вклейки 422 ч обычных предметов, календарь 354 ч. Нагрузку автоматически не изменяем",
+      "severity": "warning"
+    },
+    {
+      "category": "semester_plan",
+      "code": "calendar_hours_shortfall",
+      "context": {
+        "code": "calendar_hours_shortfall",
+        "group": 13,
+        "lesson": -1,
+        "message": "ОСА-491 / 2 п/г: осталось 260 ч, в оставшихся учебных неделях календаря не более 216 ч теории/ЛПЗ. Требуется сверка учебного плана и календаря",
+        "severity": "warning",
+        "teacher": -1
+      },
+      "message": "ОСА-491 / 2 п/г: осталось 260 ч, в оставшихся учебных неделях календаря не более 216 ч теории/ЛПЗ. Требуется сверка учебного плана и календаря",
+      "severity": "warning"
+    },
+    {
+      "category": "semester_plan",
+      "code": "teacher_group_combined_shortfall",
+      "context": {
+        "code": "teacher_group_combined_shortfall",
+        "group": 14,
+        "lesson": -1,
+        "message": "МЦМ-Пф-202 / Письмак Владимир Николаевич: по всем подгруппам нужно 96 ч, совместно доступно не более 0 ч",
+        "severity": "error",
+        "teacher": 44
+      },
+      "message": "МЦМ-Пф-202 / Письмак Владимир Николаевич: по всем подгруппам нужно 96 ч, совместно доступно не более 0 ч",
       "severity": "warning"
     },
     {
@@ -2743,11 +4017,25 @@
         "code": "curriculum_calendar_mismatch",
         "group": 14,
         "lesson": -1,
-        "message": "МЦМ-Пф-202 / 2 п/г: вклейки 518 ч обычных предметов, календарь 564 ч. Нагрузку автоматически не изменяем",
+        "message": "МЦМ-Пф-202 / 2 п/г: вклейки 520 ч обычных предметов, календарь 564 ч. Нагрузку автоматически не изменяем",
         "severity": "warning",
         "teacher": -1
       },
-      "message": "МЦМ-Пф-202 / 2 п/г: вклейки 518 ч обычных предметов, календарь 564 ч. Нагрузку автоматически не изменяем",
+      "message": "МЦМ-Пф-202 / 2 п/г: вклейки 520 ч обычных предметов, календарь 564 ч. Нагрузку автоматически не изменяем",
+      "severity": "warning"
+    },
+    {
+      "category": "semester_plan",
+      "code": "teacher_group_combined_shortfall",
+      "context": {
+        "code": "teacher_group_combined_shortfall",
+        "group": 15,
+        "lesson": -1,
+        "message": "МЦМ-Пф-301 / Письмак Владимир Николаевич: по всем подгруппам нужно 4 ч, совместно доступно не более 0 ч",
+        "severity": "error",
+        "teacher": 44
+      },
+      "message": "МЦМ-Пф-301 / Письмак Владимир Николаевич: по всем подгруппам нужно 4 ч, совместно доступно не более 0 ч",
       "severity": "warning"
     },
     {
@@ -2771,11 +4059,11 @@
         "code": "curriculum_calendar_mismatch",
         "group": 15,
         "lesson": -1,
-        "message": "МЦМ-Пф-301 / 1 п/г: вклейки 448 ч обычных предметов, календарь 468 ч. Нагрузку автоматически не изменяем",
+        "message": "МЦМ-Пф-301 / 1 п/г: вклейки 450 ч обычных предметов, календарь 468 ч. Нагрузку автоматически не изменяем",
         "severity": "warning",
         "teacher": -1
       },
-      "message": "МЦМ-Пф-301 / 1 п/г: вклейки 448 ч обычных предметов, календарь 468 ч. Нагрузку автоматически не изменяем",
+      "message": "МЦМ-Пф-301 / 1 п/г: вклейки 450 ч обычных предметов, календарь 468 ч. Нагрузку автоматически не изменяем",
       "severity": "warning"
     },
     {
@@ -2785,11 +4073,11 @@
         "code": "curriculum_calendar_mismatch",
         "group": 15,
         "lesson": -1,
-        "message": "МЦМ-Пф-301 / 2 п/г: вклейки 448 ч обычных предметов, календарь 468 ч. Нагрузку автоматически не изменяем",
+        "message": "МЦМ-Пф-301 / 2 п/г: вклейки 452 ч обычных предметов, календарь 468 ч. Нагрузку автоматически не изменяем",
         "severity": "warning",
         "teacher": -1
       },
-      "message": "МЦМ-Пф-301 / 2 п/г: вклейки 448 ч обычных предметов, календарь 468 ч. Нагрузку автоматически не изменяем",
+      "message": "МЦМ-Пф-301 / 2 п/г: вклейки 452 ч обычных предметов, календарь 468 ч. Нагрузку автоматически не изменяем",
       "severity": "warning"
     },
     {
@@ -2850,6 +4138,20 @@
     },
     {
       "category": "semester_plan",
+      "code": "teacher_group_combined_shortfall",
+      "context": {
+        "code": "teacher_group_combined_shortfall",
+        "group": 16,
+        "lesson": -1,
+        "message": "МЦМ-408 / Письмак Владимир Николаевич: по всем подгруппам нужно 30 ч, совместно доступно не более 0 ч",
+        "severity": "error",
+        "teacher": 44
+      },
+      "message": "МЦМ-408 / Письмак Владимир Николаевич: по всем подгруппам нужно 30 ч, совместно доступно не более 0 ч",
+      "severity": "warning"
+    },
+    {
+      "category": "semester_plan",
       "code": "practice_staffing_unverified",
       "context": {
         "code": "practice_staffing_unverified",
@@ -2869,11 +4171,11 @@
         "code": "curriculum_calendar_mismatch",
         "group": 16,
         "lesson": -1,
-        "message": "МЦМ-408 / 1 п/г: вклейки 500 ч обычных предметов, календарь 504 ч. Нагрузку автоматически не изменяем",
+        "message": "МЦМ-408 / 1 п/г: вклейки 498 ч обычных предметов, календарь 504 ч. Нагрузку автоматически не изменяем",
         "severity": "warning",
         "teacher": -1
       },
-      "message": "МЦМ-408 / 1 п/г: вклейки 500 ч обычных предметов, календарь 504 ч. Нагрузку автоматически не изменяем",
+      "message": "МЦМ-408 / 1 п/г: вклейки 498 ч обычных предметов, календарь 504 ч. Нагрузку автоматически не изменяем",
       "severity": "warning"
     },
     {
@@ -2911,11 +4213,25 @@
         "code": "curriculum_calendar_mismatch",
         "group": 17,
         "lesson": -1,
-        "message": "ТАКХС-Пф-2202 / 1 п/г: вклейки 506 ч обычных предметов, календарь 528 ч. Нагрузку автоматически не изменяем",
+        "message": "ТАКХС-Пф-2202 / 1 п/г: вклейки 518 ч обычных предметов, календарь 528 ч. Нагрузку автоматически не изменяем",
         "severity": "warning",
         "teacher": -1
       },
-      "message": "ТАКХС-Пф-2202 / 1 п/г: вклейки 506 ч обычных предметов, календарь 528 ч. Нагрузку автоматически не изменяем",
+      "message": "ТАКХС-Пф-2202 / 1 п/г: вклейки 518 ч обычных предметов, календарь 528 ч. Нагрузку автоматически не изменяем",
+      "severity": "warning"
+    },
+    {
+      "category": "semester_plan",
+      "code": "calendar_hours_shortfall",
+      "context": {
+        "code": "calendar_hours_shortfall",
+        "group": 17,
+        "lesson": -1,
+        "message": "ТАКХС-Пф-2202 / 1 п/г: осталось 364 ч, в оставшихся учебных неделях календаря не более 354 ч теории/ЛПЗ. Требуется сверка учебного плана и календаря",
+        "severity": "warning",
+        "teacher": -1
+      },
+      "message": "ТАКХС-Пф-2202 / 1 п/г: осталось 364 ч, в оставшихся учебных неделях календаря не более 354 ч теории/ЛПЗ. Требуется сверка учебного плана и календаря",
       "severity": "warning"
     },
     {
@@ -2925,11 +4241,25 @@
         "code": "curriculum_calendar_mismatch",
         "group": 17,
         "lesson": -1,
-        "message": "ТАКХС-Пф-2202 / 2 п/г: вклейки 502 ч обычных предметов, календарь 528 ч. Нагрузку автоматически не изменяем",
+        "message": "ТАКХС-Пф-2202 / 2 п/г: вклейки 514 ч обычных предметов, календарь 528 ч. Нагрузку автоматически не изменяем",
         "severity": "warning",
         "teacher": -1
       },
-      "message": "ТАКХС-Пф-2202 / 2 п/г: вклейки 502 ч обычных предметов, календарь 528 ч. Нагрузку автоматически не изменяем",
+      "message": "ТАКХС-Пф-2202 / 2 п/г: вклейки 514 ч обычных предметов, календарь 528 ч. Нагрузку автоматически не изменяем",
+      "severity": "warning"
+    },
+    {
+      "category": "semester_plan",
+      "code": "calendar_hours_shortfall",
+      "context": {
+        "code": "calendar_hours_shortfall",
+        "group": 17,
+        "lesson": -1,
+        "message": "ТАКХС-Пф-2202 / 2 п/г: осталось 366 ч, в оставшихся учебных неделях календаря не более 354 ч теории/ЛПЗ. Требуется сверка учебного плана и календаря",
+        "severity": "warning",
+        "teacher": -1
+      },
+      "message": "ТАКХС-Пф-2202 / 2 п/г: осталось 366 ч, в оставшихся учебных неделях календаря не более 354 ч теории/ЛПЗ. Требуется сверка учебного плана и календаря",
       "severity": "warning"
     },
     {
@@ -2953,11 +4283,11 @@
         "code": "indivisible_remaining_hours",
         "group": 18,
         "lesson": 381,
-        "message": "ТАКХС-3201 / Рахматулина Наталья Владимировна / ЛПЗ МДК.01.01 Основы аналитической химии и физико-химических методов анализа: остаток 14 ч не делится на размер обязательного занятия; проверьте вклейку и факт",
+        "message": "ТАКХС-3201 / Рахматулина Наталья Владимировна / ЛПЗ МДК.01.01 Основы аналитической химии и физико-химических методов анализа: остаток 10 ч не делится на размер обязательного занятия; проверьте вклейку и факт",
         "severity": "error",
         "teacher": 81
       },
-      "message": "ТАКХС-3201 / Рахматулина Наталья Владимировна / ЛПЗ МДК.01.01 Основы аналитической химии и физико-химических методов анализа: остаток 14 ч не делится на размер обязательного занятия; проверьте вклейку и факт",
+      "message": "ТАКХС-3201 / Рахматулина Наталья Владимировна / ЛПЗ МДК.01.01 Основы аналитической химии и физико-химических методов анализа: остаток 10 ч не делится на размер обязательного занятия; проверьте вклейку и факт",
       "severity": "warning"
     },
     {
@@ -2967,11 +4297,11 @@
         "code": "indivisible_remaining_hours",
         "group": 18,
         "lesson": 382,
-        "message": "ТАКХС-3201 / Рахматулина Наталья Владимировна / ЛПЗ МДК.01.01 Основы аналитической химии и физико-химических методов анализа: остаток 14 ч не делится на размер обязательного занятия; проверьте вклейку и факт",
+        "message": "ТАКХС-3201 / Рахматулина Наталья Владимировна / ЛПЗ МДК.01.01 Основы аналитической химии и физико-химических методов анализа: остаток 10 ч не делится на размер обязательного занятия; проверьте вклейку и факт",
         "severity": "error",
         "teacher": 81
       },
-      "message": "ТАКХС-3201 / Рахматулина Наталья Владимировна / ЛПЗ МДК.01.01 Основы аналитической химии и физико-химических методов анализа: остаток 14 ч не делится на размер обязательного занятия; проверьте вклейку и факт",
+      "message": "ТАКХС-3201 / Рахматулина Наталья Владимировна / ЛПЗ МДК.01.01 Основы аналитической химии и физико-химических методов анализа: остаток 10 ч не делится на размер обязательного занятия; проверьте вклейку и факт",
       "severity": "warning"
     },
     {
@@ -3037,11 +4367,11 @@
         "code": "curriculum_calendar_mismatch",
         "group": 18,
         "lesson": -1,
-        "message": "ТАКХС-3201 / 1 п/г: вклейки 416 ч обычных предметов, календарь 444 ч. Нагрузку автоматически не изменяем",
+        "message": "ТАКХС-3201 / 1 п/г: вклейки 428 ч обычных предметов, календарь 444 ч. Нагрузку автоматически не изменяем",
         "severity": "warning",
         "teacher": -1
       },
-      "message": "ТАКХС-3201 / 1 п/г: вклейки 416 ч обычных предметов, календарь 444 ч. Нагрузку автоматически не изменяем",
+      "message": "ТАКХС-3201 / 1 п/г: вклейки 428 ч обычных предметов, календарь 444 ч. Нагрузку автоматически не изменяем",
       "severity": "warning"
     },
     {
@@ -3051,11 +4381,11 @@
         "code": "curriculum_calendar_mismatch",
         "group": 18,
         "lesson": -1,
-        "message": "ТАКХС-3201 / 2 п/г: вклейки 418 ч обычных предметов, календарь 444 ч. Нагрузку автоматически не изменяем",
+        "message": "ТАКХС-3201 / 2 п/г: вклейки 428 ч обычных предметов, календарь 444 ч. Нагрузку автоматически не изменяем",
         "severity": "warning",
         "teacher": -1
       },
-      "message": "ТАКХС-3201 / 2 п/г: вклейки 418 ч обычных предметов, календарь 444 ч. Нагрузку автоматически не изменяем",
+      "message": "ТАКХС-3201 / 2 п/г: вклейки 428 ч обычных предметов, календарь 444 ч. Нагрузку автоматически не изменяем",
       "severity": "warning"
     },
     {
@@ -3079,11 +4409,11 @@
         "code": "indivisible_remaining_hours",
         "group": 19,
         "lesson": 400,
-        "message": "ТАКХС-4202 / Семенова Лилиана Ивановна / ЛПЗ МДК.01.01 Основы аналитической химии и физико-химических методов анализа: остаток 14 ч не делится на размер обязательного занятия; проверьте вклейку и факт",
+        "message": "ТАКХС-4202 / Семенова Лилиана Ивановна / ЛПЗ МДК.01.01 Основы аналитической химии и физико-химических методов анализа: остаток 10 ч не делится на размер обязательного занятия; проверьте вклейку и факт",
         "severity": "error",
         "teacher": 10
       },
-      "message": "ТАКХС-4202 / Семенова Лилиана Ивановна / ЛПЗ МДК.01.01 Основы аналитической химии и физико-химических методов анализа: остаток 14 ч не делится на размер обязательного занятия; проверьте вклейку и факт",
+      "message": "ТАКХС-4202 / Семенова Лилиана Ивановна / ЛПЗ МДК.01.01 Основы аналитической химии и физико-химических методов анализа: остаток 10 ч не делится на размер обязательного занятия; проверьте вклейку и факт",
       "severity": "warning"
     },
     {
@@ -3093,25 +4423,11 @@
         "code": "indivisible_remaining_hours",
         "group": 19,
         "lesson": 401,
-        "message": "ТАКХС-4202 / Семенова Лилиана Ивановна / ЛПЗ МДК.01.01 Основы аналитической химии и физико-химических методов анализа: остаток 14 ч не делится на размер обязательного занятия; проверьте вклейку и факт",
+        "message": "ТАКХС-4202 / Семенова Лилиана Ивановна / ЛПЗ МДК.01.01 Основы аналитической химии и физико-химических методов анализа: остаток 18 ч не делится на размер обязательного занятия; проверьте вклейку и факт",
         "severity": "error",
         "teacher": 10
       },
-      "message": "ТАКХС-4202 / Семенова Лилиана Ивановна / ЛПЗ МДК.01.01 Основы аналитической химии и физико-химических методов анализа: остаток 14 ч не делится на размер обязательного занятия; проверьте вклейку и факт",
-      "severity": "warning"
-    },
-    {
-      "category": "semester_plan",
-      "code": "indivisible_remaining_hours",
-      "context": {
-        "code": "indivisible_remaining_hours",
-        "group": 19,
-        "lesson": 406,
-        "message": "ТАКХС-4202 / Семенова Лилиана Ивановна / ЛПЗ МДК.02.01 Основы качественного и количественного анализа природных и промышленных материалов: остаток 30 ч не делится на размер обязательного занятия; проверьте вклейку и факт",
-        "severity": "error",
-        "teacher": 10
-      },
-      "message": "ТАКХС-4202 / Семенова Лилиана Ивановна / ЛПЗ МДК.02.01 Основы качественного и количественного анализа природных и промышленных материалов: остаток 30 ч не делится на размер обязательного занятия; проверьте вклейку и факт",
+      "message": "ТАКХС-4202 / Семенова Лилиана Ивановна / ЛПЗ МДК.01.01 Основы аналитической химии и физико-химических методов анализа: остаток 18 ч не делится на размер обязательного занятия; проверьте вклейку и факт",
       "severity": "warning"
     },
     {
@@ -3186,34 +4502,6 @@
     },
     {
       "category": "semester_plan",
-      "code": "curriculum_calendar_mismatch",
-      "context": {
-        "code": "curriculum_calendar_mismatch",
-        "group": 19,
-        "lesson": -1,
-        "message": "ТАКХС-4202 / 1 п/г: вклейки 428 ч обычных предметов, календарь 432 ч. Нагрузку автоматически не изменяем",
-        "severity": "warning",
-        "teacher": -1
-      },
-      "message": "ТАКХС-4202 / 1 п/г: вклейки 428 ч обычных предметов, календарь 432 ч. Нагрузку автоматически не изменяем",
-      "severity": "warning"
-    },
-    {
-      "category": "semester_plan",
-      "code": "curriculum_calendar_mismatch",
-      "context": {
-        "code": "curriculum_calendar_mismatch",
-        "group": 19,
-        "lesson": -1,
-        "message": "ТАКХС-4202 / 2 п/г: вклейки 424 ч обычных предметов, календарь 432 ч. Нагрузку автоматически не изменяем",
-        "severity": "warning",
-        "teacher": -1
-      },
-      "message": "ТАКХС-4202 / 2 п/г: вклейки 424 ч обычных предметов, календарь 432 ч. Нагрузку автоматически не изменяем",
-      "severity": "warning"
-    },
-    {
-      "category": "semester_plan",
       "code": "indivisible_remaining_hours",
       "context": {
         "code": "indivisible_remaining_hours",
@@ -3233,11 +4521,11 @@
         "code": "indivisible_remaining_hours",
         "group": 20,
         "lesson": 419,
-        "message": "ТЭО-Пф-3501 / Усков Алексей Николаевич / МДК.02.02 Разработка документации по эксплуатации электрического и электромеханического оборудования: остаток 27 ч не делится на размер обязательного занятия; проверьте вклейку и факт",
+        "message": "ТЭО-Пф-3501 / Усков Алексей Николаевич / МДК.02.02 Разработка документации по эксплуатации электрического и электромеханического оборудования: остаток 31 ч не делится на размер обязательного занятия; проверьте вклейку и факт",
         "severity": "error",
         "teacher": 82
       },
-      "message": "ТЭО-Пф-3501 / Усков Алексей Николаевич / МДК.02.02 Разработка документации по эксплуатации электрического и электромеханического оборудования: остаток 27 ч не делится на размер обязательного занятия; проверьте вклейку и факт",
+      "message": "ТЭО-Пф-3501 / Усков Алексей Николаевич / МДК.02.02 Разработка документации по эксплуатации электрического и электромеханического оборудования: остаток 31 ч не делится на размер обязательного занятия; проверьте вклейку и факт",
       "severity": "warning"
     },
     {
@@ -3252,6 +4540,20 @@
         "teacher": 9
       },
       "message": "ТЭО-Пф-3501 / Сутягин Артём Борисович / МДК.03.01 Основы энергоснабжения объектов отрасли: факт и уже запланированные часы превышают вклейку на 4 ч",
+      "severity": "warning"
+    },
+    {
+      "category": "semester_plan",
+      "code": "ledger_and_reservations_exceed_curriculum",
+      "context": {
+        "code": "ledger_and_reservations_exceed_curriculum",
+        "group": 20,
+        "lesson": 427,
+        "message": "ТЭО-Пф-3501 / Усков Алексей Николаевич / ЛПЗ МДК.04.01 Выполнение монтажных работ, монтажное оборудование и контрольно-измерительные приборы: факт и уже запланированные часы превышают вклейку на 2 ч",
+        "severity": "error",
+        "teacher": 82
+      },
+      "message": "ТЭО-Пф-3501 / Усков Алексей Николаевич / ЛПЗ МДК.04.01 Выполнение монтажных работ, монтажное оборудование и контрольно-измерительные приборы: факт и уже запланированные часы превышают вклейку на 2 ч",
       "severity": "warning"
     },
     {
@@ -3275,11 +4577,11 @@
         "code": "curriculum_calendar_mismatch",
         "group": 20,
         "lesson": -1,
-        "message": "ТЭО-Пф-3501 / 1 п/г: вклейки 232 ч обычных предметов, календарь 252 ч. Нагрузку автоматически не изменяем",
+        "message": "ТЭО-Пф-3501 / 1 п/г: вклейки 234 ч обычных предметов, календарь 252 ч. Нагрузку автоматически не изменяем",
         "severity": "warning",
         "teacher": -1
       },
-      "message": "ТЭО-Пф-3501 / 1 п/г: вклейки 232 ч обычных предметов, календарь 252 ч. Нагрузку автоматически не изменяем",
+      "message": "ТЭО-Пф-3501 / 1 п/г: вклейки 234 ч обычных предметов, календарь 252 ч. Нагрузку автоматически не изменяем",
       "severity": "warning"
     },
     {
@@ -3289,11 +4591,11 @@
         "code": "curriculum_calendar_mismatch",
         "group": 20,
         "lesson": -1,
-        "message": "ТЭО-Пф-3501 / 2 п/г: вклейки 228 ч обычных предметов, календарь 252 ч. Нагрузку автоматически не изменяем",
+        "message": "ТЭО-Пф-3501 / 2 п/г: вклейки 236 ч обычных предметов, календарь 252 ч. Нагрузку автоматически не изменяем",
         "severity": "warning",
         "teacher": -1
       },
-      "message": "ТЭО-Пф-3501 / 2 п/г: вклейки 228 ч обычных предметов, календарь 252 ч. Нагрузку автоматически не изменяем",
+      "message": "ТЭО-Пф-3501 / 2 п/г: вклейки 236 ч обычных предметов, календарь 252 ч. Нагрузку автоматически не изменяем",
       "severity": "warning"
     },
     {
@@ -3373,11 +4675,11 @@
         "code": "indivisible_remaining_hours",
         "group": 21,
         "lesson": 457,
-        "message": "ПКД-2808п / Чадова Марина Александровна / ЛПЗ ВМДК.07.02 Термическая обработка теста и отделка поверхности хлебобулочных изделий: остаток 10 ч не делится на размер обязательного занятия; проверьте вклейку и факт",
+        "message": "ПКД-2808п / Чадова Марина Александровна / ЛПЗ ВМДК.07.02 Термическая обработка теста и отделка поверхности хлебобулочных изделий: остаток 14 ч не делится на размер обязательного занятия; проверьте вклейку и факт",
         "severity": "error",
         "teacher": 52
       },
-      "message": "ПКД-2808п / Чадова Марина Александровна / ЛПЗ ВМДК.07.02 Термическая обработка теста и отделка поверхности хлебобулочных изделий: остаток 10 ч не делится на размер обязательного занятия; проверьте вклейку и факт",
+      "message": "ПКД-2808п / Чадова Марина Александровна / ЛПЗ ВМДК.07.02 Термическая обработка теста и отделка поверхности хлебобулочных изделий: остаток 14 ч не делится на размер обязательного занятия; проверьте вклейку и факт",
       "severity": "warning"
     },
     {
@@ -3443,11 +4745,25 @@
         "code": "curriculum_calendar_mismatch",
         "group": 21,
         "lesson": -1,
-        "message": "ПКД-2808п / 1 п/г: вклейки 488 ч обычных предметов, календарь 510 ч. Нагрузку автоматически не изменяем",
+        "message": "ПКД-2808п / 1 п/г: вклейки 504 ч обычных предметов, календарь 510 ч. Нагрузку автоматически не изменяем",
         "severity": "warning",
         "teacher": -1
       },
-      "message": "ПКД-2808п / 1 п/г: вклейки 488 ч обычных предметов, календарь 510 ч. Нагрузку автоматически не изменяем",
+      "message": "ПКД-2808п / 1 п/г: вклейки 504 ч обычных предметов, календарь 510 ч. Нагрузку автоматически не изменяем",
+      "severity": "warning"
+    },
+    {
+      "category": "semester_plan",
+      "code": "calendar_hours_shortfall",
+      "context": {
+        "code": "calendar_hours_shortfall",
+        "group": 21,
+        "lesson": -1,
+        "message": "ПКД-2808п / 1 п/г: осталось 350 ч, в оставшихся учебных неделях календаря не более 342 ч теории/ЛПЗ. Требуется сверка учебного плана и календаря",
+        "severity": "warning",
+        "teacher": -1
+      },
+      "message": "ПКД-2808п / 1 п/г: осталось 350 ч, в оставшихся учебных неделях календаря не более 342 ч теории/ЛПЗ. Требуется сверка учебного плана и календаря",
       "severity": "warning"
     },
     {
@@ -3457,11 +4773,25 @@
         "code": "curriculum_calendar_mismatch",
         "group": 21,
         "lesson": -1,
-        "message": "ПКД-2808п / 2 п/г: вклейки 484 ч обычных предметов, календарь 510 ч. Нагрузку автоматически не изменяем",
+        "message": "ПКД-2808п / 2 п/г: вклейки 500 ч обычных предметов, календарь 510 ч. Нагрузку автоматически не изменяем",
         "severity": "warning",
         "teacher": -1
       },
-      "message": "ПКД-2808п / 2 п/г: вклейки 484 ч обычных предметов, календарь 510 ч. Нагрузку автоматически не изменяем",
+      "message": "ПКД-2808п / 2 п/г: вклейки 500 ч обычных предметов, календарь 510 ч. Нагрузку автоматически не изменяем",
+      "severity": "warning"
+    },
+    {
+      "category": "semester_plan",
+      "code": "calendar_hours_shortfall",
+      "context": {
+        "code": "calendar_hours_shortfall",
+        "group": 21,
+        "lesson": -1,
+        "message": "ПКД-2808п / 2 п/г: осталось 352 ч, в оставшихся учебных неделях календаря не более 342 ч теории/ЛПЗ. Требуется сверка учебного плана и календаря",
+        "severity": "warning",
+        "teacher": -1
+      },
+      "message": "ПКД-2808п / 2 п/г: осталось 352 ч, в оставшихся учебных неделях календаря не более 342 ч теории/ЛПЗ. Требуется сверка учебного плана и календаря",
       "severity": "warning"
     },
     {
@@ -3499,11 +4829,11 @@
         "code": "indivisible_remaining_hours",
         "group": 22,
         "lesson": 483,
-        "message": "ПКД-3806/07п / Кузнецова Елизавета Олеговна / ЛПЗ ВМДК.07.02 Термическая обработка теста и отделка поверхности хлебобулочных изделий: остаток 18 ч не делится на размер обязательного занятия; проверьте вклейку и факт",
+        "message": "ПКД-3806/07п / Кузнецова Елизавета Олеговна / ЛПЗ ВМДК.07.02 Термическая обработка теста и отделка поверхности хлебобулочных изделий: остаток 14 ч не делится на размер обязательного занятия; проверьте вклейку и факт",
         "severity": "error",
         "teacher": 54
       },
-      "message": "ПКД-3806/07п / Кузнецова Елизавета Олеговна / ЛПЗ ВМДК.07.02 Термическая обработка теста и отделка поверхности хлебобулочных изделий: остаток 18 ч не делится на размер обязательного занятия; проверьте вклейку и факт",
+      "message": "ПКД-3806/07п / Кузнецова Елизавета Олеговна / ЛПЗ ВМДК.07.02 Термическая обработка теста и отделка поверхности хлебобулочных изделий: остаток 14 ч не делится на размер обязательного занятия; проверьте вклейку и факт",
       "severity": "warning"
     },
     {
@@ -3513,11 +4843,11 @@
         "code": "practice_staffing_unverified",
         "group": 22,
         "lesson": -1,
-        "message": "ПКД-3806/07п: УП/ПП — ещё 276 ч преподавательской нагрузки. Даты известны, но распределение наставников и рабочих мест не доказано",
+        "message": "ПКД-3806/07п: УП/ПП — ещё 270 ч преподавательской нагрузки. Даты известны, но распределение наставников и рабочих мест не доказано",
         "severity": "warning",
         "teacher": -1
       },
-      "message": "ПКД-3806/07п: УП/ПП — ещё 276 ч преподавательской нагрузки. Даты известны, но распределение наставников и рабочих мест не доказано",
+      "message": "ПКД-3806/07п: УП/ПП — ещё 270 ч преподавательской нагрузки. Даты известны, но распределение наставников и рабочих мест не доказано",
       "severity": "warning"
     },
     {
@@ -3527,11 +4857,11 @@
         "code": "curriculum_calendar_mismatch",
         "group": 22,
         "lesson": -1,
-        "message": "ПКД-3806/07п / 1 п/г: вклейки 350 ч обычных предметов, календарь 360 ч. Нагрузку автоматически не изменяем",
+        "message": "ПКД-3806/07п / 1 п/г: вклейки 342 ч обычных предметов, календарь 360 ч. Нагрузку автоматически не изменяем",
         "severity": "warning",
         "teacher": -1
       },
-      "message": "ПКД-3806/07п / 1 п/г: вклейки 350 ч обычных предметов, календарь 360 ч. Нагрузку автоматически не изменяем",
+      "message": "ПКД-3806/07п / 1 п/г: вклейки 342 ч обычных предметов, календарь 360 ч. Нагрузку автоматически не изменяем",
       "severity": "warning"
     },
     {
@@ -3541,11 +4871,11 @@
         "code": "curriculum_calendar_mismatch",
         "group": 22,
         "lesson": -1,
-        "message": "ПКД-3806/07п / 2 п/г: вклейки 344 ч обычных предметов, календарь 360 ч. Нагрузку автоматически не изменяем",
+        "message": "ПКД-3806/07п / 2 п/г: вклейки 334 ч обычных предметов, календарь 360 ч. Нагрузку автоматически не изменяем",
         "severity": "warning",
         "teacher": -1
       },
-      "message": "ПКД-3806/07п / 2 п/г: вклейки 344 ч обычных предметов, календарь 360 ч. Нагрузку автоматически не изменяем",
+      "message": "ПКД-3806/07п / 2 п/г: вклейки 334 ч обычных предметов, календарь 360 ч. Нагрузку автоматически не изменяем",
       "severity": "warning"
     },
     {
@@ -3555,11 +4885,11 @@
         "code": "indivisible_remaining_hours",
         "group": 23,
         "lesson": 504,
-        "message": "ПКД-4805п / Конева Кристина Сергеевна / ЛПЗ МДК.04.02 Процессы приготовления, подготовки к реализации холодных и горячих десертов, напитков сложного ассортимента: остаток 18 ч не делится на размер обязательного занятия; проверьте вклейку и факт",
+        "message": "ПКД-4805п / Конева Кристина Сергеевна / ЛПЗ МДК.04.02 Процессы приготовления, подготовки к реализации холодных и горячих десертов, напитков сложного ассортимента: остаток 14 ч не делится на размер обязательного занятия; проверьте вклейку и факт",
         "severity": "error",
         "teacher": 53
       },
-      "message": "ПКД-4805п / Конева Кристина Сергеевна / ЛПЗ МДК.04.02 Процессы приготовления, подготовки к реализации холодных и горячих десертов, напитков сложного ассортимента: остаток 18 ч не делится на размер обязательного занятия; проверьте вклейку и факт",
+      "message": "ПКД-4805п / Конева Кристина Сергеевна / ЛПЗ МДК.04.02 Процессы приготовления, подготовки к реализации холодных и горячих десертов, напитков сложного ассортимента: остаток 14 ч не делится на размер обязательного занятия; проверьте вклейку и факт",
       "severity": "warning"
     },
     {
@@ -3625,11 +4955,11 @@
         "code": "curriculum_calendar_mismatch",
         "group": 23,
         "lesson": -1,
-        "message": "ПКД-4805п / 1 п/г: вклейки 478 ч обычных предметов, календарь 492 ч. Нагрузку автоматически не изменяем",
+        "message": "ПКД-4805п / 1 п/г: вклейки 486 ч обычных предметов, календарь 492 ч. Нагрузку автоматически не изменяем",
         "severity": "warning",
         "teacher": -1
       },
-      "message": "ПКД-4805п / 1 п/г: вклейки 478 ч обычных предметов, календарь 492 ч. Нагрузку автоматически не изменяем",
+      "message": "ПКД-4805п / 1 п/г: вклейки 486 ч обычных предметов, календарь 492 ч. Нагрузку автоматически не изменяем",
       "severity": "warning"
     },
     {
@@ -3639,11 +4969,11 @@
         "code": "curriculum_calendar_mismatch",
         "group": 23,
         "lesson": -1,
-        "message": "ПКД-4805п / 2 п/г: вклейки 474 ч обычных предметов, календарь 492 ч. Нагрузку автоматически не изменяем",
+        "message": "ПКД-4805п / 2 п/г: вклейки 482 ч обычных предметов, календарь 492 ч. Нагрузку автоматически не изменяем",
         "severity": "warning",
         "teacher": -1
       },
-      "message": "ПКД-4805п / 2 п/г: вклейки 474 ч обычных предметов, календарь 492 ч. Нагрузку автоматически не изменяем",
+      "message": "ПКД-4805п / 2 п/г: вклейки 482 ч обычных предметов, календарь 492 ч. Нагрузку автоматически не изменяем",
       "severity": "warning"
     },
     {
@@ -3774,30 +5104,30 @@
     },
     {
       "category": "semester_plan",
-      "code": "curriculum_calendar_mismatch",
+      "code": "calendar_hours_shortfall",
       "context": {
-        "code": "curriculum_calendar_mismatch",
+        "code": "calendar_hours_shortfall",
         "group": 24,
         "lesson": -1,
-        "message": "СП-Пф-2603 / 1 п/г: вклейки 540 ч обычных предметов, календарь 558 ч. Нагрузку автоматически не изменяем",
+        "message": "СП-Пф-2603 / 1 п/г: осталось 412 ч, в оставшихся учебных неделях календаря не более 402 ч теории/ЛПЗ. Требуется сверка учебного плана и календаря",
         "severity": "warning",
         "teacher": -1
       },
-      "message": "СП-Пф-2603 / 1 п/г: вклейки 540 ч обычных предметов, календарь 558 ч. Нагрузку автоматически не изменяем",
+      "message": "СП-Пф-2603 / 1 п/г: осталось 412 ч, в оставшихся учебных неделях календаря не более 402 ч теории/ЛПЗ. Требуется сверка учебного плана и календаря",
       "severity": "warning"
     },
     {
       "category": "semester_plan",
-      "code": "curriculum_calendar_mismatch",
+      "code": "calendar_hours_shortfall",
       "context": {
-        "code": "curriculum_calendar_mismatch",
+        "code": "calendar_hours_shortfall",
         "group": 24,
         "lesson": -1,
-        "message": "СП-Пф-2603 / 2 п/г: вклейки 544 ч обычных предметов, календарь 558 ч. Нагрузку автоматически не изменяем",
+        "message": "СП-Пф-2603 / 2 п/г: осталось 414 ч, в оставшихся учебных неделях календаря не более 402 ч теории/ЛПЗ. Требуется сверка учебного плана и календаря",
         "severity": "warning",
         "teacher": -1
       },
-      "message": "СП-Пф-2603 / 2 п/г: вклейки 544 ч обычных предметов, календарь 558 ч. Нагрузку автоматически не изменяем",
+      "message": "СП-Пф-2603 / 2 п/г: осталось 414 ч, в оставшихся учебных неделях календаря не более 402 ч теории/ЛПЗ. Требуется сверка учебного плана и календаря",
       "severity": "warning"
     },
     {
@@ -3919,11 +5249,25 @@
         "code": "curriculum_calendar_mismatch",
         "group": 25,
         "lesson": -1,
-        "message": "СП-Пф-2604п / 1 п/г: вклейки 540 ч обычных предметов, календарь 558 ч. Нагрузку автоматически не изменяем",
+        "message": "СП-Пф-2604п / 1 п/г: вклейки 556 ч обычных предметов, календарь 558 ч. Нагрузку автоматически не изменяем",
         "severity": "warning",
         "teacher": -1
       },
-      "message": "СП-Пф-2604п / 1 п/г: вклейки 540 ч обычных предметов, календарь 558 ч. Нагрузку автоматически не изменяем",
+      "message": "СП-Пф-2604п / 1 п/г: вклейки 556 ч обычных предметов, календарь 558 ч. Нагрузку автоматически не изменяем",
+      "severity": "warning"
+    },
+    {
+      "category": "semester_plan",
+      "code": "calendar_hours_shortfall",
+      "context": {
+        "code": "calendar_hours_shortfall",
+        "group": 25,
+        "lesson": -1,
+        "message": "СП-Пф-2604п / 1 п/г: осталось 416 ч, в оставшихся учебных неделях календаря не более 402 ч теории/ЛПЗ. Требуется сверка учебного плана и календаря",
+        "severity": "warning",
+        "teacher": -1
+      },
+      "message": "СП-Пф-2604п / 1 п/г: осталось 416 ч, в оставшихся учебных неделях календаря не более 402 ч теории/ЛПЗ. Требуется сверка учебного плана и календаря",
       "severity": "warning"
     },
     {
@@ -3933,11 +5277,25 @@
         "code": "curriculum_calendar_mismatch",
         "group": 25,
         "lesson": -1,
-        "message": "СП-Пф-2604п / 2 п/г: вклейки 542 ч обычных предметов, календарь 558 ч. Нагрузку автоматически не изменяем",
+        "message": "СП-Пф-2604п / 2 п/г: вклейки 556 ч обычных предметов, календарь 558 ч. Нагрузку автоматически не изменяем",
         "severity": "warning",
         "teacher": -1
       },
-      "message": "СП-Пф-2604п / 2 п/г: вклейки 542 ч обычных предметов, календарь 558 ч. Нагрузку автоматически не изменяем",
+      "message": "СП-Пф-2604п / 2 п/г: вклейки 556 ч обычных предметов, календарь 558 ч. Нагрузку автоматически не изменяем",
+      "severity": "warning"
+    },
+    {
+      "category": "semester_plan",
+      "code": "calendar_hours_shortfall",
+      "context": {
+        "code": "calendar_hours_shortfall",
+        "group": 25,
+        "lesson": -1,
+        "message": "СП-Пф-2604п / 2 п/г: осталось 416 ч, в оставшихся учебных неделях календаря не более 402 ч теории/ЛПЗ. Требуется сверка учебного плана и календаря",
+        "severity": "warning",
+        "teacher": -1
+      },
+      "message": "СП-Пф-2604п / 2 п/г: осталось 416 ч, в оставшихся учебных неделях календаря не более 402 ч теории/ЛПЗ. Требуется сверка учебного плана и календаря",
       "severity": "warning"
     },
     {
@@ -4031,11 +5389,11 @@
         "code": "practice_staffing_unverified",
         "group": 26,
         "lesson": -1,
-        "message": "СП-Пф-3601: УП/ПП — ещё 390 ч преподавательской нагрузки. Даты известны, но распределение наставников и рабочих мест не доказано",
+        "message": "СП-Пф-3601: УП/ПП — ещё 366 ч преподавательской нагрузки. Даты известны, но распределение наставников и рабочих мест не доказано",
         "severity": "warning",
         "teacher": -1
       },
-      "message": "СП-Пф-3601: УП/ПП — ещё 390 ч преподавательской нагрузки. Даты известны, но распределение наставников и рабочих мест не доказано",
+      "message": "СП-Пф-3601: УП/ПП — ещё 366 ч преподавательской нагрузки. Даты известны, но распределение наставников и рабочих мест не доказано",
       "severity": "warning"
     },
     {
@@ -4045,11 +5403,11 @@
         "code": "indivisible_remaining_hours",
         "group": 27,
         "lesson": 603,
-        "message": "СП-Пф-3602п / Ахметов Артур Фанависович / ЛПЗ МДК.01.02 Основное оборудование для производства сварных конструкций: остаток 6 ч не делится на размер обязательного занятия; проверьте вклейку и факт",
+        "message": "СП-Пф-3602п / Ахметов Артур Фанависович / ЛПЗ МДК.01.02 Основное оборудование для производства сварных конструкций: остаток 10 ч не делится на размер обязательного занятия; проверьте вклейку и факт",
         "severity": "error",
         "teacher": 56
       },
-      "message": "СП-Пф-3602п / Ахметов Артур Фанависович / ЛПЗ МДК.01.02 Основное оборудование для производства сварных конструкций: остаток 6 ч не делится на размер обязательного занятия; проверьте вклейку и факт",
+      "message": "СП-Пф-3602п / Ахметов Артур Фанависович / ЛПЗ МДК.01.02 Основное оборудование для производства сварных конструкций: остаток 10 ч не делится на размер обязательного занятия; проверьте вклейку и факт",
       "severity": "warning"
     },
     {
@@ -4115,11 +5473,11 @@
         "code": "practice_staffing_unverified",
         "group": 27,
         "lesson": -1,
-        "message": "СП-Пф-3602п: УП/ПП — ещё 360 ч преподавательской нагрузки. Даты известны, но распределение наставников и рабочих мест не доказано",
+        "message": "СП-Пф-3602п: УП/ПП — ещё 366 ч преподавательской нагрузки. Даты известны, но распределение наставников и рабочих мест не доказано",
         "severity": "warning",
         "teacher": -1
       },
-      "message": "СП-Пф-3602п: УП/ПП — ещё 360 ч преподавательской нагрузки. Даты известны, но распределение наставников и рабочих мест не доказано",
+      "message": "СП-Пф-3602п: УП/ПП — ещё 366 ч преподавательской нагрузки. Даты известны, но распределение наставников и рабочих мест не доказано",
       "severity": "warning"
     },
     {
@@ -4129,11 +5487,25 @@
         "code": "curriculum_calendar_mismatch",
         "group": 27,
         "lesson": -1,
-        "message": "СП-Пф-3602п / 1 п/г: вклейки 270 ч обычных предметов, календарь 264 ч. Нагрузку автоматически не изменяем",
+        "message": "СП-Пф-3602п / 1 п/г: вклейки 284 ч обычных предметов, календарь 264 ч. Нагрузку автоматически не изменяем",
         "severity": "warning",
         "teacher": -1
       },
-      "message": "СП-Пф-3602п / 1 п/г: вклейки 270 ч обычных предметов, календарь 264 ч. Нагрузку автоматически не изменяем",
+      "message": "СП-Пф-3602п / 1 п/г: вклейки 284 ч обычных предметов, календарь 264 ч. Нагрузку автоматически не изменяем",
+      "severity": "warning"
+    },
+    {
+      "category": "semester_plan",
+      "code": "calendar_hours_shortfall",
+      "context": {
+        "code": "calendar_hours_shortfall",
+        "group": 27,
+        "lesson": -1,
+        "message": "СП-Пф-3602п / 1 п/г: осталось 158 ч, в оставшихся учебных неделях календаря не более 156 ч теории/ЛПЗ. Требуется сверка учебного плана и календаря",
+        "severity": "warning",
+        "teacher": -1
+      },
+      "message": "СП-Пф-3602п / 1 п/г: осталось 158 ч, в оставшихся учебных неделях календаря не более 156 ч теории/ЛПЗ. Требуется сверка учебного плана и календаря",
       "severity": "warning"
     },
     {
@@ -4264,34 +5636,6 @@
     },
     {
       "category": "semester_plan",
-      "code": "curriculum_calendar_mismatch",
-      "context": {
-        "code": "curriculum_calendar_mismatch",
-        "group": 28,
-        "lesson": -1,
-        "message": "СП-4611 / 1 п/г: вклейки 540 ч обычных предметов, календарь 558 ч. Нагрузку автоматически не изменяем",
-        "severity": "warning",
-        "teacher": -1
-      },
-      "message": "СП-4611 / 1 п/г: вклейки 540 ч обычных предметов, календарь 558 ч. Нагрузку автоматически не изменяем",
-      "severity": "warning"
-    },
-    {
-      "category": "semester_plan",
-      "code": "curriculum_calendar_mismatch",
-      "context": {
-        "code": "curriculum_calendar_mismatch",
-        "group": 28,
-        "lesson": -1,
-        "message": "СП-4611 / 2 п/г: вклейки 540 ч обычных предметов, календарь 558 ч. Нагрузку автоматически не изменяем",
-        "severity": "warning",
-        "teacher": -1
-      },
-      "message": "СП-4611 / 2 п/г: вклейки 540 ч обычных предметов, календарь 558 ч. Нагрузку автоматически не изменяем",
-      "severity": "warning"
-    },
-    {
-      "category": "semester_plan",
       "code": "teacher_inactive",
       "context": {
         "code": "teacher_inactive",
@@ -4325,11 +5669,11 @@
         "code": "indivisible_remaining_hours",
         "group": 29,
         "lesson": 655,
-        "message": "СП-4612п / Ахметов Артур Фанависович / ЛПЗ МДК.02.02 Основы проектирования технологических процессов: остаток 14 ч не делится на размер обязательного занятия; проверьте вклейку и факт",
+        "message": "СП-4612п / Ахметов Артур Фанависович / ЛПЗ МДК.02.02 Основы проектирования технологических процессов: остаток 18 ч не делится на размер обязательного занятия; проверьте вклейку и факт",
         "severity": "error",
         "teacher": 56
       },
-      "message": "СП-4612п / Ахметов Артур Фанависович / ЛПЗ МДК.02.02 Основы проектирования технологических процессов: остаток 14 ч не делится на размер обязательного занятия; проверьте вклейку и факт",
+      "message": "СП-4612п / Ахметов Артур Фанависович / ЛПЗ МДК.02.02 Основы проектирования технологических процессов: остаток 18 ч не делится на размер обязательного занятия; проверьте вклейку и факт",
       "severity": "warning"
     },
     {
@@ -4381,11 +5725,11 @@
         "code": "curriculum_calendar_mismatch",
         "group": 29,
         "lesson": -1,
-        "message": "СП-4612п / 1 п/г: вклейки 542 ч обычных предметов, календарь 558 ч. Нагрузку автоматически не изменяем",
+        "message": "СП-4612п / 1 п/г: вклейки 556 ч обычных предметов, календарь 558 ч. Нагрузку автоматически не изменяем",
         "severity": "warning",
         "teacher": -1
       },
-      "message": "СП-4612п / 1 п/г: вклейки 542 ч обычных предметов, календарь 558 ч. Нагрузку автоматически не изменяем",
+      "message": "СП-4612п / 1 п/г: вклейки 556 ч обычных предметов, календарь 558 ч. Нагрузку автоматически не изменяем",
       "severity": "warning"
     },
     {
@@ -4409,11 +5753,11 @@
         "code": "curriculum_calendar_mismatch",
         "group": 30,
         "lesson": -1,
-        "message": "ТОиРА-2701п / 1 п/г: вклейки 542 ч обычных предметов, календарь 564 ч. Нагрузку автоматически не изменяем",
+        "message": "ТОиРА-2701п / 1 п/г: вклейки 552 ч обычных предметов, календарь 564 ч. Нагрузку автоматически не изменяем",
         "severity": "warning",
         "teacher": -1
       },
-      "message": "ТОиРА-2701п / 1 п/г: вклейки 542 ч обычных предметов, календарь 564 ч. Нагрузку автоматически не изменяем",
+      "message": "ТОиРА-2701п / 1 п/г: вклейки 552 ч обычных предметов, календарь 564 ч. Нагрузку автоматически не изменяем",
       "severity": "warning"
     },
     {
@@ -4423,11 +5767,11 @@
         "code": "calendar_hours_shortfall",
         "group": 30,
         "lesson": -1,
-        "message": "ТОиРА-2701п / 1 п/г: осталось 412 ч, в оставшихся учебных неделях календаря не более 398 ч теории/ЛПЗ. Требуется сверка учебного плана и календаря",
+        "message": "ТОиРА-2701п / 1 п/г: осталось 418 ч, в оставшихся учебных неделях календаря не более 390 ч теории/ЛПЗ. Требуется сверка учебного плана и календаря",
         "severity": "warning",
         "teacher": -1
       },
-      "message": "ТОиРА-2701п / 1 п/г: осталось 412 ч, в оставшихся учебных неделях календаря не более 398 ч теории/ЛПЗ. Требуется сверка учебного плана и календаря",
+      "message": "ТОиРА-2701п / 1 п/г: осталось 418 ч, в оставшихся учебных неделях календаря не более 390 ч теории/ЛПЗ. Требуется сверка учебного плана и календаря",
       "severity": "warning"
     },
     {
@@ -4437,11 +5781,11 @@
         "code": "curriculum_calendar_mismatch",
         "group": 30,
         "lesson": -1,
-        "message": "ТОиРА-2701п / 2 п/г: вклейки 542 ч обычных предметов, календарь 564 ч. Нагрузку автоматически не изменяем",
+        "message": "ТОиРА-2701п / 2 п/г: вклейки 558 ч обычных предметов, календарь 564 ч. Нагрузку автоматически не изменяем",
         "severity": "warning",
         "teacher": -1
       },
-      "message": "ТОиРА-2701п / 2 п/г: вклейки 542 ч обычных предметов, календарь 564 ч. Нагрузку автоматически не изменяем",
+      "message": "ТОиРА-2701п / 2 п/г: вклейки 558 ч обычных предметов, календарь 564 ч. Нагрузку автоматически не изменяем",
       "severity": "warning"
     },
     {
@@ -4451,11 +5795,11 @@
         "code": "calendar_hours_shortfall",
         "group": 30,
         "lesson": -1,
-        "message": "ТОиРА-2701п / 2 п/г: осталось 412 ч, в оставшихся учебных неделях календаря не более 398 ч теории/ЛПЗ. Требуется сверка учебного плана и календаря",
+        "message": "ТОиРА-2701п / 2 п/г: осталось 420 ч, в оставшихся учебных неделях календаря не более 390 ч теории/ЛПЗ. Требуется сверка учебного плана и календаря",
         "severity": "warning",
         "teacher": -1
       },
-      "message": "ТОиРА-2701п / 2 п/г: осталось 412 ч, в оставшихся учебных неделях календаря не более 398 ч теории/ЛПЗ. Требуется сверка учебного плана и календаря",
+      "message": "ТОиРА-2701п / 2 п/г: осталось 420 ч, в оставшихся учебных неделях календаря не более 390 ч теории/ЛПЗ. Требуется сверка учебного плана и календаря",
       "severity": "warning"
     },
     {
@@ -4493,11 +5837,11 @@
         "code": "ledger_and_reservations_exceed_curriculum",
         "group": 31,
         "lesson": 701,
-        "message": "ТОРД-3706 / Не назначен / ВМДК.05.05 Транспортная логистика и безопасность дорожного движения: факт и уже запланированные часы превышают вклейку на 2 ч",
+        "message": "ТОРД-3706 / Не назначен / ВМДК.05.05 Транспортная логистика и безопасность дорожного движения: факт и уже запланированные часы превышают вклейку на 6 ч",
         "severity": "error",
         "teacher": -1
       },
-      "message": "ТОРД-3706 / Не назначен / ВМДК.05.05 Транспортная логистика и безопасность дорожного движения: факт и уже запланированные часы превышают вклейку на 2 ч",
+      "message": "ТОРД-3706 / Не назначен / ВМДК.05.05 Транспортная логистика и безопасность дорожного движения: факт и уже запланированные часы превышают вклейку на 6 ч",
       "severity": "warning"
     },
     {
@@ -4535,11 +5879,11 @@
         "code": "curriculum_calendar_mismatch",
         "group": 31,
         "lesson": -1,
-        "message": "ТОРД-3706 / 1 п/г: вклейки 288 ч обычных предметов, календарь 300 ч. Нагрузку автоматически не изменяем",
+        "message": "ТОРД-3706 / 1 п/г: вклейки 280 ч обычных предметов, календарь 300 ч. Нагрузку автоматически не изменяем",
         "severity": "warning",
         "teacher": -1
       },
-      "message": "ТОРД-3706 / 1 п/г: вклейки 288 ч обычных предметов, календарь 300 ч. Нагрузку автоматически не изменяем",
+      "message": "ТОРД-3706 / 1 п/г: вклейки 280 ч обычных предметов, календарь 300 ч. Нагрузку автоматически не изменяем",
       "severity": "warning"
     },
     {
@@ -4549,11 +5893,11 @@
         "code": "curriculum_calendar_mismatch",
         "group": 31,
         "lesson": -1,
-        "message": "ТОРД-3706 / 2 п/г: вклейки 284 ч обычных предметов, календарь 300 ч. Нагрузку автоматически не изменяем",
+        "message": "ТОРД-3706 / 2 п/г: вклейки 282 ч обычных предметов, календарь 300 ч. Нагрузку автоматически не изменяем",
         "severity": "warning",
         "teacher": -1
       },
-      "message": "ТОРД-3706 / 2 п/г: вклейки 284 ч обычных предметов, календарь 300 ч. Нагрузку автоматически не изменяем",
+      "message": "ТОРД-3706 / 2 п/г: вклейки 282 ч обычных предметов, календарь 300 ч. Нагрузку автоматически не изменяем",
       "severity": "warning"
     },
     {
@@ -4605,11 +5949,11 @@
         "code": "curriculum_calendar_mismatch",
         "group": 32,
         "lesson": -1,
-        "message": "ТОРД-3707п / 1 п/г: вклейки 316 ч обычных предметов, календарь 336 ч. Нагрузку автоматически не изменяем",
+        "message": "ТОРД-3707п / 1 п/г: вклейки 328 ч обычных предметов, календарь 336 ч. Нагрузку автоматически не изменяем",
         "severity": "warning",
         "teacher": -1
       },
-      "message": "ТОРД-3707п / 1 п/г: вклейки 316 ч обычных предметов, календарь 336 ч. Нагрузку автоматически не изменяем",
+      "message": "ТОРД-3707п / 1 п/г: вклейки 328 ч обычных предметов, календарь 336 ч. Нагрузку автоматически не изменяем",
       "severity": "warning"
     },
     {
@@ -4619,11 +5963,25 @@
         "code": "curriculum_calendar_mismatch",
         "group": 32,
         "lesson": -1,
-        "message": "ТОРД-3707п / 2 п/г: вклейки 316 ч обычных предметов, календарь 336 ч. Нагрузку автоматически не изменяем",
+        "message": "ТОРД-3707п / 2 п/г: вклейки 328 ч обычных предметов, календарь 336 ч. Нагрузку автоматически не изменяем",
         "severity": "warning",
         "teacher": -1
       },
-      "message": "ТОРД-3707п / 2 п/г: вклейки 316 ч обычных предметов, календарь 336 ч. Нагрузку автоматически не изменяем",
+      "message": "ТОРД-3707п / 2 п/г: вклейки 328 ч обычных предметов, календарь 336 ч. Нагрузку автоматически не изменяем",
+      "severity": "warning"
+    },
+    {
+      "category": "semester_plan",
+      "code": "calendar_hours_shortfall",
+      "context": {
+        "code": "calendar_hours_shortfall",
+        "group": 32,
+        "lesson": -1,
+        "message": "ТОРД-3707п / 2 п/г: осталось 202 ч, в оставшихся учебных неделях календаря не более 198 ч теории/ЛПЗ. Требуется сверка учебного плана и календаря",
+        "severity": "warning",
+        "teacher": -1
+      },
+      "message": "ТОРД-3707п / 2 п/г: осталось 202 ч, в оставшихся учебных неделях календаря не более 198 ч теории/ЛПЗ. Требуется сверка учебного плана и календаря",
       "severity": "warning"
     },
     {
@@ -4647,11 +6005,11 @@
         "code": "indivisible_remaining_hours",
         "group": 33,
         "lesson": 743,
-        "message": "ТОРД-4705п / Самцов Андрей Евгеньевич / ЛПЗ МДК.03.03 Тюнинг автомобилей: остаток 10 ч не делится на размер обязательного занятия; проверьте вклейку и факт",
+        "message": "ТОРД-4705п / Самцов Андрей Евгеньевич / ЛПЗ МДК.03.03 Тюнинг автомобилей: остаток 14 ч не делится на размер обязательного занятия; проверьте вклейку и факт",
         "severity": "error",
         "teacher": 59
       },
-      "message": "ТОРД-4705п / Самцов Андрей Евгеньевич / ЛПЗ МДК.03.03 Тюнинг автомобилей: остаток 10 ч не делится на размер обязательного занятия; проверьте вклейку и факт",
+      "message": "ТОРД-4705п / Самцов Андрей Евгеньевич / ЛПЗ МДК.03.03 Тюнинг автомобилей: остаток 14 ч не делится на размер обязательного занятия; проверьте вклейку и факт",
       "severity": "warning"
     },
     {
@@ -4703,11 +6061,11 @@
         "code": "curriculum_calendar_mismatch",
         "group": 33,
         "lesson": -1,
-        "message": "ТОРД-4705п / 1 п/г: вклейки 540 ч обычных предметов, календарь 552 ч. Нагрузку автоматически не изменяем",
+        "message": "ТОРД-4705п / 1 п/г: вклейки 550 ч обычных предметов, календарь 552 ч. Нагрузку автоматически не изменяем",
         "severity": "warning",
         "teacher": -1
       },
-      "message": "ТОРД-4705п / 1 п/г: вклейки 540 ч обычных предметов, календарь 552 ч. Нагрузку автоматически не изменяем",
+      "message": "ТОРД-4705п / 1 п/г: вклейки 550 ч обычных предметов, календарь 552 ч. Нагрузку автоматически не изменяем",
       "severity": "warning"
     },
     {
@@ -4717,11 +6075,11 @@
         "code": "curriculum_calendar_mismatch",
         "group": 33,
         "lesson": -1,
-        "message": "ТОРД-4705п / 2 п/г: вклейки 536 ч обычных предметов, календарь 552 ч. Нагрузку автоматически не изменяем",
+        "message": "ТОРД-4705п / 2 п/г: вклейки 550 ч обычных предметов, календарь 552 ч. Нагрузку автоматически не изменяем",
         "severity": "warning",
         "teacher": -1
       },
-      "message": "ТОРД-4705п / 2 п/г: вклейки 536 ч обычных предметов, календарь 552 ч. Нагрузку автоматически не изменяем",
+      "message": "ТОРД-4705п / 2 п/г: вклейки 550 ч обычных предметов, календарь 552 ч. Нагрузку автоматически не изменяем",
       "severity": "warning"
     },
     {
@@ -4745,11 +6103,11 @@
         "code": "curriculum_calendar_mismatch",
         "group": 34,
         "lesson": -1,
-        "message": "ТМ-2417 / 1 п/г: вклейки 498 ч обычных предметов, календарь 504 ч. Нагрузку автоматически не изменяем",
+        "message": "ТМ-2417 / 1 п/г: вклейки 502 ч обычных предметов, календарь 504 ч. Нагрузку автоматически не изменяем",
         "severity": "warning",
         "teacher": -1
       },
-      "message": "ТМ-2417 / 1 п/г: вклейки 498 ч обычных предметов, календарь 504 ч. Нагрузку автоматически не изменяем",
+      "message": "ТМ-2417 / 1 п/г: вклейки 502 ч обычных предметов, календарь 504 ч. Нагрузку автоматически не изменяем",
       "severity": "warning"
     },
     {
@@ -4759,25 +6117,11 @@
         "code": "calendar_hours_shortfall",
         "group": 34,
         "lesson": -1,
-        "message": "ТМ-2417 / 1 п/г: осталось 364 ч, в оставшихся учебных неделях календаря не более 356 ч теории/ЛПЗ. Требуется сверка учебного плана и календаря",
+        "message": "ТМ-2417 / 1 п/г: осталось 360 ч, в оставшихся учебных неделях календаря не более 348 ч теории/ЛПЗ. Требуется сверка учебного плана и календаря",
         "severity": "warning",
         "teacher": -1
       },
-      "message": "ТМ-2417 / 1 п/г: осталось 364 ч, в оставшихся учебных неделях календаря не более 356 ч теории/ЛПЗ. Требуется сверка учебного плана и календаря",
-      "severity": "warning"
-    },
-    {
-      "category": "semester_plan",
-      "code": "curriculum_calendar_mismatch",
-      "context": {
-        "code": "curriculum_calendar_mismatch",
-        "group": 34,
-        "lesson": -1,
-        "message": "ТМ-2417 / 2 п/г: вклейки 496 ч обычных предметов, календарь 504 ч. Нагрузку автоматически не изменяем",
-        "severity": "warning",
-        "teacher": -1
-      },
-      "message": "ТМ-2417 / 2 п/г: вклейки 496 ч обычных предметов, календарь 504 ч. Нагрузку автоматически не изменяем",
+      "message": "ТМ-2417 / 1 п/г: осталось 360 ч, в оставшихся учебных неделях календаря не более 348 ч теории/ЛПЗ. Требуется сверка учебного плана и календаря",
       "severity": "warning"
     },
     {
@@ -4787,11 +6131,25 @@
         "code": "calendar_hours_shortfall",
         "group": 34,
         "lesson": -1,
-        "message": "ТМ-2417 / 2 п/г: осталось 366 ч, в оставшихся учебных неделях календаря не более 356 ч теории/ЛПЗ. Требуется сверка учебного плана и календаря",
+        "message": "ТМ-2417 / 2 п/г: осталось 366 ч, в оставшихся учебных неделях календаря не более 348 ч теории/ЛПЗ. Требуется сверка учебного плана и календаря",
         "severity": "warning",
         "teacher": -1
       },
-      "message": "ТМ-2417 / 2 п/г: осталось 366 ч, в оставшихся учебных неделях календаря не более 356 ч теории/ЛПЗ. Требуется сверка учебного плана и календаря",
+      "message": "ТМ-2417 / 2 п/г: осталось 366 ч, в оставшихся учебных неделях календаря не более 348 ч теории/ЛПЗ. Требуется сверка учебного плана и календаря",
+      "severity": "warning"
+    },
+    {
+      "category": "semester_plan",
+      "code": "ledger_and_reservations_exceed_curriculum",
+      "context": {
+        "code": "ledger_and_reservations_exceed_curriculum",
+        "group": 35,
+        "lesson": 765,
+        "message": "ТМ-2418п / Кропотова Анастасия Андреевна / География: факт и уже запланированные часы превышают вклейку на 2 ч",
+        "severity": "error",
+        "teacher": 15
+      },
+      "message": "ТМ-2418п / Кропотова Анастасия Андреевна / География: факт и уже запланированные часы превышают вклейку на 2 ч",
       "severity": "warning"
     },
     {
@@ -4815,11 +6173,25 @@
         "code": "curriculum_calendar_mismatch",
         "group": 35,
         "lesson": -1,
-        "message": "ТМ-2418п / 1 п/г: вклейки 482 ч обычных предметов, календарь 504 ч. Нагрузку автоматически не изменяем",
+        "message": "ТМ-2418п / 1 п/г: вклейки 490 ч обычных предметов, календарь 504 ч. Нагрузку автоматически не изменяем",
         "severity": "warning",
         "teacher": -1
       },
-      "message": "ТМ-2418п / 1 п/г: вклейки 482 ч обычных предметов, календарь 504 ч. Нагрузку автоматически не изменяем",
+      "message": "ТМ-2418п / 1 п/г: вклейки 490 ч обычных предметов, календарь 504 ч. Нагрузку автоматически не изменяем",
+      "severity": "warning"
+    },
+    {
+      "category": "semester_plan",
+      "code": "calendar_hours_shortfall",
+      "context": {
+        "code": "calendar_hours_shortfall",
+        "group": 35,
+        "lesson": -1,
+        "message": "ТМ-2418п / 1 п/г: осталось 362 ч, в оставшихся учебных неделях календаря не более 348 ч теории/ЛПЗ. Требуется сверка учебного плана и календаря",
+        "severity": "warning",
+        "teacher": -1
+      },
+      "message": "ТМ-2418п / 1 п/г: осталось 362 ч, в оставшихся учебных неделях календаря не более 348 ч теории/ЛПЗ. Требуется сверка учебного плана и календаря",
       "severity": "warning"
     },
     {
@@ -4829,11 +6201,53 @@
         "code": "curriculum_calendar_mismatch",
         "group": 35,
         "lesson": -1,
-        "message": "ТМ-2418п / 2 п/г: вклейки 484 ч обычных предметов, календарь 504 ч. Нагрузку автоматически не изменяем",
+        "message": "ТМ-2418п / 2 п/г: вклейки 492 ч обычных предметов, календарь 504 ч. Нагрузку автоматически не изменяем",
         "severity": "warning",
         "teacher": -1
       },
-      "message": "ТМ-2418п / 2 п/г: вклейки 484 ч обычных предметов, календарь 504 ч. Нагрузку автоматически не изменяем",
+      "message": "ТМ-2418п / 2 п/г: вклейки 492 ч обычных предметов, календарь 504 ч. Нагрузку автоматически не изменяем",
+      "severity": "warning"
+    },
+    {
+      "category": "semester_plan",
+      "code": "calendar_hours_shortfall",
+      "context": {
+        "code": "calendar_hours_shortfall",
+        "group": 35,
+        "lesson": -1,
+        "message": "ТМ-2418п / 2 п/г: осталось 360 ч, в оставшихся учебных неделях календаря не более 348 ч теории/ЛПЗ. Требуется сверка учебного плана и календаря",
+        "severity": "warning",
+        "teacher": -1
+      },
+      "message": "ТМ-2418п / 2 п/г: осталось 360 ч, в оставшихся учебных неделях календаря не более 348 ч теории/ЛПЗ. Требуется сверка учебного плана и календаря",
+      "severity": "warning"
+    },
+    {
+      "category": "semester_plan",
+      "code": "ledger_and_reservations_exceed_curriculum",
+      "context": {
+        "code": "ledger_and_reservations_exceed_curriculum",
+        "group": 36,
+        "lesson": 792,
+        "message": "ТМ-3415 / Саламатина Вера Викторовна / ЛПЗ МДК.01.02 Оформление технологической документации по процессам изготовления деталей машин: факт и уже запланированные часы превышают вклейку на 2 ч",
+        "severity": "error",
+        "teacher": 61
+      },
+      "message": "ТМ-3415 / Саламатина Вера Викторовна / ЛПЗ МДК.01.02 Оформление технологической документации по процессам изготовления деталей машин: факт и уже запланированные часы превышают вклейку на 2 ч",
+      "severity": "warning"
+    },
+    {
+      "category": "semester_plan",
+      "code": "teacher_group_combined_shortfall",
+      "context": {
+        "code": "teacher_group_combined_shortfall",
+        "group": 36,
+        "lesson": -1,
+        "message": "ТМ-3415 / Клабуков Василий Витальевич: по всем подгруппам нужно 4 ч, совместно доступно не более 0 ч",
+        "severity": "error",
+        "teacher": 63
+      },
+      "message": "ТМ-3415 / Клабуков Василий Витальевич: по всем подгруппам нужно 4 ч, совместно доступно не более 0 ч",
       "severity": "warning"
     },
     {
@@ -4857,11 +6271,11 @@
         "code": "curriculum_calendar_mismatch",
         "group": 36,
         "lesson": -1,
-        "message": "ТМ-3415 / 1 п/г: вклейки 304 ч обычных предметов, календарь 318 ч. Нагрузку автоматически не изменяем",
+        "message": "ТМ-3415 / 1 п/г: вклейки 298 ч обычных предметов, календарь 318 ч. Нагрузку автоматически не изменяем",
         "severity": "warning",
         "teacher": -1
       },
-      "message": "ТМ-3415 / 1 п/г: вклейки 304 ч обычных предметов, календарь 318 ч. Нагрузку автоматически не изменяем",
+      "message": "ТМ-3415 / 1 п/г: вклейки 298 ч обычных предметов, календарь 318 ч. Нагрузку автоматически не изменяем",
       "severity": "warning"
     },
     {
@@ -4871,11 +6285,11 @@
         "code": "curriculum_calendar_mismatch",
         "group": 36,
         "lesson": -1,
-        "message": "ТМ-3415 / 2 п/г: вклейки 304 ч обычных предметов, календарь 318 ч. Нагрузку автоматически не изменяем",
+        "message": "ТМ-3415 / 2 п/г: вклейки 300 ч обычных предметов, календарь 318 ч. Нагрузку автоматически не изменяем",
         "severity": "warning",
         "teacher": -1
       },
-      "message": "ТМ-3415 / 2 п/г: вклейки 304 ч обычных предметов, календарь 318 ч. Нагрузку автоматически не изменяем",
+      "message": "ТМ-3415 / 2 п/г: вклейки 300 ч обычных предметов, календарь 318 ч. Нагрузку автоматически не изменяем",
       "severity": "warning"
     },
     {
@@ -4885,11 +6299,39 @@
         "code": "calendar_hours_shortfall",
         "group": 36,
         "lesson": -1,
-        "message": "ТМ-3415 / 2 п/г: осталось 160 ч, в оставшихся учебных неделях календаря не более 158 ч теории/ЛПЗ. Требуется сверка учебного плана и календаря",
+        "message": "ТМ-3415 / 2 п/г: осталось 154 ч, в оставшихся учебных неделях календаря не более 150 ч теории/ЛПЗ. Требуется сверка учебного плана и календаря",
         "severity": "warning",
         "teacher": -1
       },
-      "message": "ТМ-3415 / 2 п/г: осталось 160 ч, в оставшихся учебных неделях календаря не более 158 ч теории/ЛПЗ. Требуется сверка учебного плана и календаря",
+      "message": "ТМ-3415 / 2 п/г: осталось 154 ч, в оставшихся учебных неделях календаря не более 150 ч теории/ЛПЗ. Требуется сверка учебного плана и календаря",
+      "severity": "warning"
+    },
+    {
+      "category": "semester_plan",
+      "code": "ledger_and_reservations_exceed_curriculum",
+      "context": {
+        "code": "ledger_and_reservations_exceed_curriculum",
+        "group": 37,
+        "lesson": 814,
+        "message": "ТМ-3416п / Саламатина Вера Викторовна / ЛПЗ МДК.01.02 Оформление технологической документации по процессам изготовления деталей машин: факт и уже запланированные часы превышают вклейку на 2 ч",
+        "severity": "error",
+        "teacher": 61
+      },
+      "message": "ТМ-3416п / Саламатина Вера Викторовна / ЛПЗ МДК.01.02 Оформление технологической документации по процессам изготовления деталей машин: факт и уже запланированные часы превышают вклейку на 2 ч",
+      "severity": "warning"
+    },
+    {
+      "category": "semester_plan",
+      "code": "teacher_group_combined_shortfall",
+      "context": {
+        "code": "teacher_group_combined_shortfall",
+        "group": 37,
+        "lesson": -1,
+        "message": "ТМ-3416п / Клабуков Василий Витальевич: по всем подгруппам нужно 36 ч, совместно доступно не более 0 ч",
+        "severity": "error",
+        "teacher": 63
+      },
+      "message": "ТМ-3416п / Клабуков Василий Витальевич: по всем подгруппам нужно 36 ч, совместно доступно не более 0 ч",
       "severity": "warning"
     },
     {
@@ -4913,25 +6355,11 @@
         "code": "curriculum_calendar_mismatch",
         "group": 37,
         "lesson": -1,
-        "message": "ТМ-3416п / 1 п/г: вклейки 310 ч обычных предметов, календарь 318 ч. Нагрузку автоматически не изменяем",
+        "message": "ТМ-3416п / 1 п/г: вклейки 306 ч обычных предметов, календарь 318 ч. Нагрузку автоматически не изменяем",
         "severity": "warning",
         "teacher": -1
       },
-      "message": "ТМ-3416п / 1 п/г: вклейки 310 ч обычных предметов, календарь 318 ч. Нагрузку автоматически не изменяем",
-      "severity": "warning"
-    },
-    {
-      "category": "semester_plan",
-      "code": "curriculum_calendar_mismatch",
-      "context": {
-        "code": "curriculum_calendar_mismatch",
-        "group": 37,
-        "lesson": -1,
-        "message": "ТМ-3416п / 2 п/г: вклейки 310 ч обычных предметов, календарь 318 ч. Нагрузку автоматически не изменяем",
-        "severity": "warning",
-        "teacher": -1
-      },
-      "message": "ТМ-3416п / 2 п/г: вклейки 310 ч обычных предметов, календарь 318 ч. Нагрузку автоматически не изменяем",
+      "message": "ТМ-3416п / 1 п/г: вклейки 306 ч обычных предметов, календарь 318 ч. Нагрузку автоматически не изменяем",
       "severity": "warning"
     },
     {
@@ -4941,11 +6369,39 @@
         "code": "calendar_hours_shortfall",
         "group": 37,
         "lesson": -1,
-        "message": "ТМ-3416п / 2 п/г: осталось 162 ч, в оставшихся учебных неделях календаря не более 158 ч теории/ЛПЗ. Требуется сверка учебного плана и календаря",
+        "message": "ТМ-3416п / 1 п/г: осталось 152 ч, в оставшихся учебных неделях календаря не более 150 ч теории/ЛПЗ. Требуется сверка учебного плана и календаря",
         "severity": "warning",
         "teacher": -1
       },
-      "message": "ТМ-3416п / 2 п/г: осталось 162 ч, в оставшихся учебных неделях календаря не более 158 ч теории/ЛПЗ. Требуется сверка учебного плана и календаря",
+      "message": "ТМ-3416п / 1 п/г: осталось 152 ч, в оставшихся учебных неделях календаря не более 150 ч теории/ЛПЗ. Требуется сверка учебного плана и календаря",
+      "severity": "warning"
+    },
+    {
+      "category": "semester_plan",
+      "code": "curriculum_calendar_mismatch",
+      "context": {
+        "code": "curriculum_calendar_mismatch",
+        "group": 37,
+        "lesson": -1,
+        "message": "ТМ-3416п / 2 п/г: вклейки 308 ч обычных предметов, календарь 318 ч. Нагрузку автоматически не изменяем",
+        "severity": "warning",
+        "teacher": -1
+      },
+      "message": "ТМ-3416п / 2 п/г: вклейки 308 ч обычных предметов, календарь 318 ч. Нагрузку автоматически не изменяем",
+      "severity": "warning"
+    },
+    {
+      "category": "semester_plan",
+      "code": "calendar_hours_shortfall",
+      "context": {
+        "code": "calendar_hours_shortfall",
+        "group": 37,
+        "lesson": -1,
+        "message": "ТМ-3416п / 2 п/г: осталось 152 ч, в оставшихся учебных неделях календаря не более 150 ч теории/ЛПЗ. Требуется сверка учебного плана и календаря",
+        "severity": "warning",
+        "teacher": -1
+      },
+      "message": "ТМ-3416п / 2 п/г: осталось 152 ч, в оставшихся учебных неделях календаря не более 150 ч теории/ЛПЗ. Требуется сверка учебного плана и календаря",
       "severity": "warning"
     },
     {
@@ -4983,11 +6439,11 @@
         "code": "curriculum_calendar_mismatch",
         "group": 38,
         "lesson": -1,
-        "message": "ТМ-4413 / 1 п/г: вклейки 570 ч обычных предметов, календарь 576 ч. Нагрузку автоматически не изменяем",
+        "message": "ТМ-4413 / 1 п/г: вклейки 572 ч обычных предметов, календарь 576 ч. Нагрузку автоматически не изменяем",
         "severity": "warning",
         "teacher": -1
       },
-      "message": "ТМ-4413 / 1 п/г: вклейки 570 ч обычных предметов, календарь 576 ч. Нагрузку автоматически не изменяем",
+      "message": "ТМ-4413 / 1 п/г: вклейки 572 ч обычных предметов, календарь 576 ч. Нагрузку автоматически не изменяем",
       "severity": "warning"
     },
     {
@@ -4997,11 +6453,11 @@
         "code": "calendar_hours_shortfall",
         "group": 38,
         "lesson": -1,
-        "message": "ТМ-4413 / 1 п/г: осталось 430 ч, в оставшихся учебных неделях календаря не более 428 ч теории/ЛПЗ. Требуется сверка учебного плана и календаря",
+        "message": "ТМ-4413 / 1 п/г: осталось 426 ч, в оставшихся учебных неделях календаря не более 420 ч теории/ЛПЗ. Требуется сверка учебного плана и календаря",
         "severity": "warning",
         "teacher": -1
       },
-      "message": "ТМ-4413 / 1 п/г: осталось 430 ч, в оставшихся учебных неделях календаря не более 428 ч теории/ЛПЗ. Требуется сверка учебного плана и календаря",
+      "message": "ТМ-4413 / 1 п/г: осталось 426 ч, в оставшихся учебных неделях календаря не более 420 ч теории/ЛПЗ. Требуется сверка учебного плана и календаря",
       "severity": "warning"
     },
     {
@@ -5016,6 +6472,20 @@
         "teacher": -1
       },
       "message": "ТМ-4413 / 2 п/г: вклейки 572 ч обычных предметов, календарь 576 ч. Нагрузку автоматически не изменяем",
+      "severity": "warning"
+    },
+    {
+      "category": "semester_plan",
+      "code": "calendar_hours_shortfall",
+      "context": {
+        "code": "calendar_hours_shortfall",
+        "group": 38,
+        "lesson": -1,
+        "message": "ТМ-4413 / 2 п/г: осталось 422 ч, в оставшихся учебных неделях календаря не более 420 ч теории/ЛПЗ. Требуется сверка учебного плана и календаря",
+        "severity": "warning",
+        "teacher": -1
+      },
+      "message": "ТМ-4413 / 2 п/г: осталось 422 ч, в оставшихся учебных неделях календаря не более 420 ч теории/ЛПЗ. Требуется сверка учебного плана и календаря",
       "severity": "warning"
     },
     {
@@ -5053,25 +6523,25 @@
         "code": "curriculum_calendar_mismatch",
         "group": 39,
         "lesson": -1,
-        "message": "ТМ-4414п / 1 п/г: вклейки 566 ч обычных предметов, календарь 576 ч. Нагрузку автоматически не изменяем",
+        "message": "ТМ-4414п / 1 п/г: вклейки 574 ч обычных предметов, календарь 576 ч. Нагрузку автоматически не изменяем",
         "severity": "warning",
         "teacher": -1
       },
-      "message": "ТМ-4414п / 1 п/г: вклейки 566 ч обычных предметов, календарь 576 ч. Нагрузку автоматически не изменяем",
+      "message": "ТМ-4414п / 1 п/г: вклейки 574 ч обычных предметов, календарь 576 ч. Нагрузку автоматически не изменяем",
       "severity": "warning"
     },
     {
       "category": "semester_plan",
-      "code": "curriculum_calendar_mismatch",
+      "code": "calendar_hours_shortfall",
       "context": {
-        "code": "curriculum_calendar_mismatch",
+        "code": "calendar_hours_shortfall",
         "group": 39,
         "lesson": -1,
-        "message": "ТМ-4414п / 2 п/г: вклейки 566 ч обычных предметов, календарь 576 ч. Нагрузку автоматически не изменяем",
+        "message": "ТМ-4414п / 1 п/г: осталось 422 ч, в оставшихся учебных неделях календаря не более 420 ч теории/ЛПЗ. Требуется сверка учебного плана и календаря",
         "severity": "warning",
         "teacher": -1
       },
-      "message": "ТМ-4414п / 2 п/г: вклейки 566 ч обычных предметов, календарь 576 ч. Нагрузку автоматически не изменяем",
+      "message": "ТМ-4414п / 1 п/г: осталось 422 ч, в оставшихся учебных неделях календаря не более 420 ч теории/ЛПЗ. Требуется сверка учебного плана и календаря",
       "severity": "warning"
     },
     {
@@ -5081,11 +6551,11 @@
         "code": "curriculum_calendar_mismatch",
         "group": 40,
         "lesson": -1,
-        "message": "ИСП-2308 / 1 п/г: вклейки 552 ч обычных предметов, календарь 564 ч. Нагрузку автоматически не изменяем",
+        "message": "ИСП-2308 / 1 п/г: вклейки 560 ч обычных предметов, календарь 564 ч. Нагрузку автоматически не изменяем",
         "severity": "warning",
         "teacher": -1
       },
-      "message": "ИСП-2308 / 1 п/г: вклейки 552 ч обычных предметов, календарь 564 ч. Нагрузку автоматически не изменяем",
+      "message": "ИСП-2308 / 1 п/г: вклейки 560 ч обычных предметов, календарь 564 ч. Нагрузку автоматически не изменяем",
       "severity": "warning"
     },
     {
@@ -5095,39 +6565,11 @@
         "code": "curriculum_calendar_mismatch",
         "group": 40,
         "lesson": -1,
-        "message": "ИСП-2308 / 2 п/г: вклейки 552 ч обычных предметов, календарь 564 ч. Нагрузку автоматически не изменяем",
+        "message": "ИСП-2308 / 2 п/г: вклейки 560 ч обычных предметов, календарь 564 ч. Нагрузку автоматически не изменяем",
         "severity": "warning",
         "teacher": -1
       },
-      "message": "ИСП-2308 / 2 п/г: вклейки 552 ч обычных предметов, календарь 564 ч. Нагрузку автоматически не изменяем",
-      "severity": "warning"
-    },
-    {
-      "category": "semester_plan",
-      "code": "curriculum_calendar_mismatch",
-      "context": {
-        "code": "curriculum_calendar_mismatch",
-        "group": 41,
-        "lesson": -1,
-        "message": "ИСП-2309п / 1 п/г: вклейки 552 ч обычных предметов, календарь 564 ч. Нагрузку автоматически не изменяем",
-        "severity": "warning",
-        "teacher": -1
-      },
-      "message": "ИСП-2309п / 1 п/г: вклейки 552 ч обычных предметов, календарь 564 ч. Нагрузку автоматически не изменяем",
-      "severity": "warning"
-    },
-    {
-      "category": "semester_plan",
-      "code": "curriculum_calendar_mismatch",
-      "context": {
-        "code": "curriculum_calendar_mismatch",
-        "group": 41,
-        "lesson": -1,
-        "message": "ИСП-2309п / 2 п/г: вклейки 552 ч обычных предметов, календарь 564 ч. Нагрузку автоматически не изменяем",
-        "severity": "warning",
-        "teacher": -1
-      },
-      "message": "ИСП-2309п / 2 п/г: вклейки 552 ч обычных предметов, календарь 564 ч. Нагрузку автоматически не изменяем",
+      "message": "ИСП-2308 / 2 п/г: вклейки 560 ч обычных предметов, календарь 564 ч. Нагрузку автоматически не изменяем",
       "severity": "warning"
     },
     {
@@ -5137,11 +6579,25 @@
         "code": "calendar_hours_shortfall",
         "group": 41,
         "lesson": -1,
-        "message": "ИСП-2309п / 2 п/г: осталось 418 ч, в оставшихся учебных неделях календаря не более 416 ч теории/ЛПЗ. Требуется сверка учебного плана и календаря",
+        "message": "ИСП-2309п / 1 п/г: осталось 416 ч, в оставшихся учебных неделях календаря не более 408 ч теории/ЛПЗ. Требуется сверка учебного плана и календаря",
         "severity": "warning",
         "teacher": -1
       },
-      "message": "ИСП-2309п / 2 п/г: осталось 418 ч, в оставшихся учебных неделях календаря не более 416 ч теории/ЛПЗ. Требуется сверка учебного плана и календаря",
+      "message": "ИСП-2309п / 1 п/г: осталось 416 ч, в оставшихся учебных неделях календаря не более 408 ч теории/ЛПЗ. Требуется сверка учебного плана и календаря",
+      "severity": "warning"
+    },
+    {
+      "category": "semester_plan",
+      "code": "calendar_hours_shortfall",
+      "context": {
+        "code": "calendar_hours_shortfall",
+        "group": 41,
+        "lesson": -1,
+        "message": "ИСП-2309п / 2 п/г: осталось 422 ч, в оставшихся учебных неделях календаря не более 408 ч теории/ЛПЗ. Требуется сверка учебного плана и календаря",
+        "severity": "warning",
+        "teacher": -1
+      },
+      "message": "ИСП-2309п / 2 п/г: осталось 422 ч, в оставшихся учебных неделях календаря не более 408 ч теории/ЛПЗ. Требуется сверка учебного плана и календаря",
       "severity": "warning"
     },
     {
@@ -5151,11 +6607,11 @@
         "code": "curriculum_calendar_mismatch",
         "group": 42,
         "lesson": -1,
-        "message": "ИСП-3306п / 1 п/г: вклейки 556 ч обычных предметов, календарь 576 ч. Нагрузку автоматически не изменяем",
+        "message": "ИСП-3306п / 1 п/г: вклейки 572 ч обычных предметов, календарь 576 ч. Нагрузку автоматически не изменяем",
         "severity": "warning",
         "teacher": -1
       },
-      "message": "ИСП-3306п / 1 п/г: вклейки 556 ч обычных предметов, календарь 576 ч. Нагрузку автоматически не изменяем",
+      "message": "ИСП-3306п / 1 п/г: вклейки 572 ч обычных предметов, календарь 576 ч. Нагрузку автоматически не изменяем",
       "severity": "warning"
     },
     {
@@ -5165,11 +6621,11 @@
         "code": "curriculum_calendar_mismatch",
         "group": 42,
         "lesson": -1,
-        "message": "ИСП-3306п / 2 п/г: вклейки 556 ч обычных предметов, календарь 576 ч. Нагрузку автоматически не изменяем",
+        "message": "ИСП-3306п / 2 п/г: вклейки 572 ч обычных предметов, календарь 576 ч. Нагрузку автоматически не изменяем",
         "severity": "warning",
         "teacher": -1
       },
-      "message": "ИСП-3306п / 2 п/г: вклейки 556 ч обычных предметов, календарь 576 ч. Нагрузку автоматически не изменяем",
+      "message": "ИСП-3306п / 2 п/г: вклейки 572 ч обычных предметов, календарь 576 ч. Нагрузку автоматически не изменяем",
       "severity": "warning"
     },
     {
@@ -5179,11 +6635,11 @@
         "code": "curriculum_calendar_mismatch",
         "group": 43,
         "lesson": -1,
-        "message": "ИСП-3307п / 1 п/г: вклейки 556 ч обычных предметов, календарь 576 ч. Нагрузку автоматически не изменяем",
+        "message": "ИСП-3307п / 1 п/г: вклейки 574 ч обычных предметов, календарь 576 ч. Нагрузку автоматически не изменяем",
         "severity": "warning",
         "teacher": -1
       },
-      "message": "ИСП-3307п / 1 п/г: вклейки 556 ч обычных предметов, календарь 576 ч. Нагрузку автоматически не изменяем",
+      "message": "ИСП-3307п / 1 п/г: вклейки 574 ч обычных предметов, календарь 576 ч. Нагрузку автоматически не изменяем",
       "severity": "warning"
     },
     {
@@ -5193,11 +6649,11 @@
         "code": "curriculum_calendar_mismatch",
         "group": 43,
         "lesson": -1,
-        "message": "ИСП-3307п / 2 п/г: вклейки 562 ч обычных предметов, календарь 576 ч. Нагрузку автоматически не изменяем",
+        "message": "ИСП-3307п / 2 п/г: вклейки 574 ч обычных предметов, календарь 576 ч. Нагрузку автоматически не изменяем",
         "severity": "warning",
         "teacher": -1
       },
-      "message": "ИСП-3307п / 2 п/г: вклейки 562 ч обычных предметов, календарь 576 ч. Нагрузку автоматически не изменяем",
+      "message": "ИСП-3307п / 2 п/г: вклейки 574 ч обычных предметов, календарь 576 ч. Нагрузку автоматически не изменяем",
       "severity": "warning"
     },
     {
@@ -5235,11 +6691,11 @@
         "code": "curriculum_calendar_mismatch",
         "group": 44,
         "lesson": -1,
-        "message": "ИСП-4304 / 2 п/г: вклейки 570 ч обычных предметов, календарь 576 ч. Нагрузку автоматически не изменяем",
+        "message": "ИСП-4304 / 2 п/г: вклейки 566 ч обычных предметов, календарь 576 ч. Нагрузку автоматически не изменяем",
         "severity": "warning",
         "teacher": -1
       },
-      "message": "ИСП-4304 / 2 п/г: вклейки 570 ч обычных предметов, календарь 576 ч. Нагрузку автоматически не изменяем",
+      "message": "ИСП-4304 / 2 п/г: вклейки 566 ч обычных предметов, календарь 576 ч. Нагрузку автоматически не изменяем",
       "severity": "warning"
     },
     {
@@ -5277,41 +6733,29 @@
         "code": "curriculum_calendar_mismatch",
         "group": 45,
         "lesson": -1,
-        "message": "ИСП-4305п / 2 п/г: вклейки 564 ч обычных предметов, календарь 576 ч. Нагрузку автоматически не изменяем",
+        "message": "ИСП-4305п / 2 п/г: вклейки 566 ч обычных предметов, календарь 576 ч. Нагрузку автоматически не изменяем",
         "severity": "warning",
         "teacher": -1
       },
-      "message": "ИСП-4305п / 2 п/г: вклейки 564 ч обычных предметов, календарь 576 ч. Нагрузку автоматически не изменяем",
-      "severity": "warning"
-    },
-    {
-      "category": "campus",
-      "code": "teacher_campus_not_preferred",
-      "context": {
-        "campus": 1,
-        "date": "2026-09-30",
-        "preferred_campus": 0,
-        "teacher": 1
-      },
-      "message": "Вагайская Татьяна Александровна находится не на приоритетной площадке",
+      "message": "ИСП-4305п / 2 п/г: вклейки 566 ч обычных предметов, календарь 576 ч. Нагрузку автоматически не изменяем",
       "severity": "warning"
     }
   ],
-  "message": "Жёсткие ограничения соблюдены; есть рекомендаций: 369",
+  "message": "Жёсткие ограничения соблюдены; есть рекомендаций: 472",
   "ok": true,
-  "period_from": "2026-09-30",
-  "period_to": "2026-09-30",
+  "period_from": "2026-10-01",
+  "period_to": "2026-10-01",
   "source": "auto",
   "summary": {
-    "events": 247,
+    "events": 234,
     "excess_hours": 0,
     "hard_errors": 0,
     "incomplete_lessons": 0,
     "mismatched_lessons": 0,
-    "planned_occurrences": 247,
+    "planned_occurrences": 234,
     "remaining_hours": 0,
-    "scheduled_occurrences": 247,
+    "scheduled_occurrences": 234,
     "unassigned_rooms": 0,
-    "warnings": 369
+    "warnings": 472
   }
 }

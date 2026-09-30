@@ -13,6 +13,8 @@ const host = process.env.SITE_HOST || '127.0.0.1'
 const port = Number(process.env.SITE_PORT || 4173)
 const apiHost = '127.0.0.1'
 const apiPort = Number(process.env.SITE_API_PORT || 8080)
+const scheduleTemplatePath = path.join(rootDir, 'frontend', 'public', 'templates', 'schedule-template.xlsx')
+const scheduleExportModule = import('../frontend/src/utils/scheduleTemplateExport.js')
 
 const backendCandidates = [
   process.env.SITE_BACKEND_PATH,
@@ -75,6 +77,45 @@ function proxyApi(request, response) {
   request.pipe(upstream)
 }
 
+async function readJsonBody(request, maxBytes = 25 * 1024 * 1024) {
+  const chunks = []
+  let received = 0
+  for await (const chunk of request) {
+    received += chunk.length
+    if (received > maxBytes) throw new Error('Расписание слишком большое для экспорта')
+    chunks.push(chunk)
+  }
+  return JSON.parse(Buffer.concat(chunks).toString('utf8'))
+}
+
+async function exportScheduleExcel(request, response) {
+  if (request.method !== 'POST') {
+    response.writeHead(405, { Allow: 'POST' }).end()
+    return
+  }
+  try {
+    const schedule = await readJsonBody(request)
+    const template = await readFile(scheduleTemplatePath)
+    const { buildScheduleExcelWorkbook, scheduleExcelFilename } = await scheduleExportModule
+    const result = await buildScheduleExcelWorkbook(schedule, template)
+    const body = Buffer.from(await result.workbook.xlsx.writeBuffer())
+    const filename = scheduleExcelFilename(schedule)
+    response.writeHead(200, {
+      'Content-Type': mime.get('.xlsx'),
+      'Content-Disposition': `attachment; filename*=UTF-8''${encodeURIComponent(filename)}`,
+      'Content-Length': body.length,
+      'Cache-Control': 'no-store',
+      'X-Export-Lessons': String(result.insertedLessons),
+      'X-Export-Groups': String(result.groups),
+      'X-Export-Dates': String(result.dates),
+    })
+    response.end(body)
+  } catch (error) {
+    response.writeHead(400, { 'Content-Type': 'application/json; charset=utf-8' })
+    response.end(JSON.stringify({ message: error.message || 'Не удалось собрать Excel' }))
+  }
+}
+
 async function serveFrontend(request, response) {
   const url = new URL(request.url || '/', `http://${request.headers.host || 'localhost'}`)
   let relative = decodeURIComponent(url.pathname).replace(/^\/+/, '')
@@ -105,7 +146,9 @@ async function serveFrontend(request, response) {
 }
 
 const server = http.createServer((request, response) => {
-  if ((request.url || '').startsWith('/api')) proxyApi(request, response)
+  const pathname = new URL(request.url || '/', `http://${request.headers.host || 'localhost'}`).pathname
+  if (pathname === '/export/schedule.xlsx') exportScheduleExcel(request, response)
+  else if (pathname.startsWith('/api')) proxyApi(request, response)
   else serveFrontend(request, response).catch(error => {
     response.writeHead(500, { 'Content-Type': 'text/plain; charset=utf-8' })
     response.end(error.message)

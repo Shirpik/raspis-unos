@@ -329,6 +329,323 @@
         }
       ],
       "weekday": "СР"
+    },
+    {
+      "date": "01.10.2026",
+      "date_iso": "2026-10-01",
+      "day_index": 0,
+      "slots": [
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": true,
+              "consecutive_pairs": 2,
+              "display_time": null,
+              "id": 581,
+              "is_block": false,
+              "is_lab": true,
+              "name": "ЛПЗ МДК.03.01 Формы и методы контроля качества металлов и сварных конструкций",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 31,
+              "room_name": "205",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 53,
+              "teacher_id": 56,
+              "uid": "lesson-f9faccbb439923c3",
+              "week_parity": "all"
+            },
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": "08:30-12:30",
+              "id": 595,
+              "is_block": true,
+              "is_lab": false,
+              "name": "УП.06",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 68,
+              "room_name": "ЦПДЭ",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 52,
+              "teacher_id": 57,
+              "uid": "lesson-cb27ddfec68e5026",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 1,
+          "text": "ЛПЗ МДК.03.01 Формы и методы контроля качества металлов и сварных конструкций — 2 п/г, Ахметов Артур Фанависович, Лесная | УП.06 (УП утро 08:30-12:30) — 1 п/г, Подчиненнов Александр Юрьевич, Лесная",
+          "time": "1 пара (08:30-09:55)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": true,
+              "consecutive_pairs": 2,
+              "display_time": null,
+              "id": 581,
+              "is_block": false,
+              "is_lab": true,
+              "name": "ЛПЗ МДК.03.01 Формы и методы контроля качества металлов и сварных конструкций",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 31,
+              "room_name": "205",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 53,
+              "teacher_id": 56,
+              "uid": "lesson-f9faccbb439923c3",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 2,
+          "text": "ЛПЗ МДК.03.01 Формы и методы контроля качества металлов и сварных конструкций — 2 п/г, Ахметов Артур Фанависович, Лесная",
+          "time": "2 пара (10:05-11:30)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": "13:00-17:00",
+              "id": 596,
+              "is_block": true,
+              "is_lab": false,
+              "name": "УП.06",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 68,
+              "room_name": "ЦПДЭ",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 53,
+              "teacher_id": 57,
+              "uid": "lesson-4222e6651bd8cdfb",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 3,
+          "text": "УП.06 (УП день 13:00-17:00) — 2 п/г, Подчиненнов Александр Юрьевич, Лесная",
+          "time": "3 пара (12:25-13:50)"
+        },
+        {
+          "lessons": [],
+          "slot": 4,
+          "text": "-",
+          "time": "4 пара (14:00-15:25)"
+        },
+        {
+          "lessons": [],
+          "slot": 5,
+          "text": "-",
+          "time": "5 пара (15:35-16:55)"
+        },
+        {
+          "lessons": [],
+          "slot": 6,
+          "text": "-",
+          "time": "6 пара (17:05-18:25)"
+        },
+        {
+          "lessons": [],
+          "slot": 7,
+          "text": "-",
+          "time": "7 пара (18:35-19:55)"
+        }
+      ],
+      "weekday": "ЧТ"
+    },
+    {
+      "date": "02.10.2026",
+      "date_iso": "2026-10-02",
+      "day_index": 1,
+      "slots": [
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": "08:30-12:30",
+              "id": 595,
+              "is_block": true,
+              "is_lab": false,
+              "name": "УП.06",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 68,
+              "room_name": "ЦПДЭ",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 52,
+              "teacher_id": 57,
+              "uid": "lesson-cb27ddfec68e5026",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 1,
+          "text": "УП.06 (УП утро 08:30-12:30) — 1 п/г, Подчиненнов Александр Юрьевич, Лесная",
+          "time": "1 пара (08:30-09:55)"
+        },
+        {
+          "lessons": [],
+          "slot": 2,
+          "text": "-",
+          "time": "2 пара (10:05-11:30)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": "13:00-17:00",
+              "id": 596,
+              "is_block": true,
+              "is_lab": false,
+              "name": "УП.06",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 68,
+              "room_name": "ЦПДЭ",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 53,
+              "teacher_id": 57,
+              "uid": "lesson-4222e6651bd8cdfb",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 3,
+          "text": "УП.06 (УП день 13:00-17:00) — 2 п/г, Подчиненнов Александр Юрьевич, Лесная",
+          "time": "3 пара (12:25-13:50)"
+        },
+        {
+          "lessons": [],
+          "slot": 4,
+          "text": "-",
+          "time": "4 пара (14:00-15:25)"
+        },
+        {
+          "lessons": [],
+          "slot": 5,
+          "text": "-",
+          "time": "5 пара (15:35-16:55)"
+        },
+        {
+          "lessons": [],
+          "slot": 6,
+          "text": "-",
+          "time": "6 пара (17:05-18:25)"
+        },
+        {
+          "lessons": [],
+          "slot": 7,
+          "text": "-",
+          "time": "7 пара (18:35-19:55)"
+        }
+      ],
+      "weekday": "ПТ"
+    },
+    {
+      "date": "03.10.2026",
+      "date_iso": "2026-10-03",
+      "day_index": 2,
+      "slots": [
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": "08:30-12:30",
+              "id": 595,
+              "is_block": true,
+              "is_lab": false,
+              "name": "УП.06",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 68,
+              "room_name": "ЦПДЭ",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 52,
+              "teacher_id": 57,
+              "uid": "lesson-cb27ddfec68e5026",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 1,
+          "text": "УП.06 (УП утро 08:30-12:30) — 1 п/г, Подчиненнов Александр Юрьевич, Лесная",
+          "time": "1 пара (08:30-09:45)"
+        },
+        {
+          "lessons": [],
+          "slot": 2,
+          "text": "-",
+          "time": "2 пара (09:55-11:10)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": "13:00-17:00",
+              "id": 596,
+              "is_block": true,
+              "is_lab": false,
+              "name": "УП.06",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 68,
+              "room_name": "ЦПДЭ",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 53,
+              "teacher_id": 57,
+              "uid": "lesson-4222e6651bd8cdfb",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 3,
+          "text": "УП.06 (УП день 13:00-17:00) — 2 п/г, Подчиненнов Александр Юрьевич, Лесная",
+          "time": "3 пара (11:30-12:45)"
+        },
+        {
+          "lessons": [],
+          "slot": 4,
+          "text": "-",
+          "time": "4 пара (12:55-14:10)"
+        },
+        {
+          "lessons": [],
+          "slot": 5,
+          "text": "-",
+          "time": "5 пара (14:20-15:30)"
+        },
+        {
+          "lessons": [],
+          "slot": 6,
+          "text": "-",
+          "time": "6 пара (15:40-16:50)"
+        },
+        {
+          "lessons": [],
+          "slot": 7,
+          "text": "-",
+          "time": "7 пара (17:00-18:10)"
+        }
+      ],
+      "weekday": "СБ"
     }
   ],
   "group_index": 26,

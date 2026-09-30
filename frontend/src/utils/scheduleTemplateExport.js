@@ -410,6 +410,28 @@ const downloadBuffer = (buffer, filename) => {
 }
 
 export async function exportScheduleExcel(schedule) {
+  const serverResponse = await fetch('/export/schedule.xlsx', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(schedule),
+  })
+  if (serverResponse.ok) {
+    const filename = scheduleExcelFilename(schedule)
+    downloadBuffer(await serverResponse.arrayBuffer(), filename)
+    return {
+      filename,
+      insertedLessons: Number(serverResponse.headers.get('X-Export-Lessons') || expectedLessonCount(schedule)),
+      groups: Number(serverResponse.headers.get('X-Export-Groups') || schedule?.groups?.length || 0),
+      dates: Number(serverResponse.headers.get('X-Export-Dates') || collectDates(schedule?.groups).length),
+    }
+  }
+  if (serverResponse.status !== 404 && serverResponse.status !== 405) {
+    const payload = await serverResponse.json().catch(() => null)
+    throw new Error(payload?.message || `Сервер не собрал Excel (${serverResponse.status})`)
+  }
+
+  // Vite dev server does not provide the production export endpoint, so keep
+  // the browser implementation as a development fallback.
   const response = await fetch(TEMPLATE_URL, { cache: 'no-store' })
   if (!response.ok) throw new Error(`Excel-образец не загрузился (${response.status})`)
   const result = await buildScheduleExcelWorkbook(schedule, await response.arrayBuffer())

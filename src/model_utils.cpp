@@ -388,18 +388,28 @@ int CountUpDayRuleViolations(
         for (int p = 0; p < PARTS_PER_GROUP; p++) {
             for (int d = 0; d < num_days; d++) {
                 bool invalid = false;
+                int up_count = 0;
                 for (int s = 0; s < SLOTS_PER_DAY; s++) {
                     int t = d * SLOTS_PER_DAY + s;
                     for (int l = 0; l < static_cast<int>(lessons.size()); l++) {
                         if (!lessons[l].is_block ||
                             !LessonAffectsPart(lessons[l], g, p) ||
                             !BoolValue(response, x[l][t])) continue;
+                        up_count++;
                         if (s != UP_MORNING_MODEL_START_SLOT &&
                             s != UP_AFTERNOON_MODEL_START_SLOT) invalid = true;
-                        for (int later = s + 1; later < SLOTS_PER_DAY; ++later)
-                            if (BoolValue(response,
-                                part_busy[g][p][d * SLOTS_PER_DAY + later]))
-                                invalid = true;
+                    }
+                }
+                if (up_count > 1) invalid = true;
+                if (up_count > 0) {
+                    for (int s = 0; s < SLOTS_PER_DAY; ++s) {
+                        const int t = d * SLOTS_PER_DAY + s;
+                        for (int l = 0; l < static_cast<int>(lessons.size()); ++l) {
+                            if (lessons[l].is_block ||
+                                !LessonAffectsPart(lessons[l], g, p) ||
+                                !BoolValue(response, x[l][t])) continue;
+                            invalid = true;
+                        }
                     }
                 }
                 if (invalid) violations++;

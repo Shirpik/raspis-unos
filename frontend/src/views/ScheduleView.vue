@@ -224,8 +224,8 @@
           </select>
         </label>
         <button class="btn btn-ghost btn-sm" :disabled="weekIndex >= sortedWeeks.length - 1" @click="weekIndex++">След. ›</button>
-        <span v-if="weekConfirmedCount" class="week-fact-badge">✓ {{ weekConfirmedCount }} подтверждено</span>
-        <span v-if="weekGeneratedCount" class="week-plan-badge">✦ {{ weekGeneratedCount }} запланировано</span>
+        <span v-if="weekConfirmedLoad.slots" class="week-fact-badge">✓ {{ weekConfirmedLoad.slots }} слотов · {{ weekConfirmedLoad.hours }} ч подтверждено</span>
+        <span v-if="weekGeneratedLoad.slots" class="week-plan-badge">✦ {{ weekGeneratedLoad.slots }} слотов · {{ weekGeneratedLoad.hours }} ч запланировано</span>
       </div>
 
       <template v-if="viewMode === 'teachers'">
@@ -699,12 +699,35 @@ watch(weekDates, days => {
   }
 }, { immediate: true })
 
-const weekConfirmedCount = computed(() => store.groups.reduce((sum, group) => sum + (group.days || [])
-  .filter(day => weekDates.value.includes(day.date))
-  .reduce((count, day) => count + (day.slots || []).reduce((n, slot) => n + (slot.lessons || []).filter(lesson => lesson.confirmed).length, 0), 0), 0))
-const weekGeneratedCount = computed(() => store.groups.reduce((sum, group) => sum + (group.days || [])
-  .filter(day => weekDates.value.includes(day.date))
-  .reduce((count, day) => count + (day.slots || []).reduce((n, slot) => n + (slot.lessons || []).filter(lesson => !lesson.confirmed).length, 0), 0), 0))
+function selectedWeekLoad(confirmed) {
+  let slots = 0
+  let hours = 0
+  const seenBlocks = new Set()
+  for (const group of store.groups) {
+    for (const day of group.days || []) {
+      if (!weekDates.value.includes(day.date)) continue
+      for (const slot of day.slots || []) {
+        for (const lesson of slot.lessons || []) {
+          if (Boolean(lesson.confirmed) !== confirmed || lesson.is_class_hour) continue
+          if (lesson.is_block) {
+            const key = `${group.group_index}|${day.date_iso || day.date}|${lesson.uid || lesson.id}`
+            if (seenBlocks.has(key)) continue
+            seenBlocks.add(key)
+            slots += 1
+            hours += 6
+          } else {
+            slots += 1
+            hours += 2
+          }
+        }
+      }
+    }
+  }
+  return { slots, hours }
+}
+
+const weekConfirmedLoad = computed(() => selectedWeekLoad(true))
+const weekGeneratedLoad = computed(() => selectedWeekLoad(false))
 
 function getDayWeekday(dateStr) {
   for (const g of store.groups) {

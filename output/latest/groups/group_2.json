@@ -269,9 +269,9 @@
       "weekday": "СР"
     },
     {
-      "date": "02.10.2026",
-      "date_iso": "2026-10-02",
-      "day_index": 2,
+      "date": "01.10.2026",
+      "date_iso": "2026-10-01",
+      "day_index": 0,
       "slots": [
         {
           "lessons": [],
@@ -280,30 +280,9 @@
           "time": "1 пара (08:30-09:55)"
         },
         {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 45,
-              "is_block": false,
-              "is_lab": false,
-              "name": "математика",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 36,
-              "room_name": "315",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": -1,
-              "teacher_id": 17,
-              "uid": "lesson-8b49aceecf8a5333",
-              "week_parity": "all"
-            }
-          ],
+          "lessons": [],
           "slot": 2,
-          "text": "математика — вся группа, Нифонтова Ирина Геннадьевна, Лесная",
+          "text": "-",
           "time": "2 пара (10:05-11:30)"
         },
         {
@@ -312,25 +291,25 @@
               "avoid_lunch_split": false,
               "consecutive_pairs": 1,
               "display_time": null,
-              "id": 40,
+              "id": 41,
               "is_block": false,
               "is_lab": false,
-              "name": "история",
+              "name": "обществознание",
               "requested_room_id": null,
               "requested_room_name": null,
-              "room_id": 37,
-              "room_name": "317",
+              "room_id": 14,
+              "room_name": "31",
               "room_substituted": false,
               "room_substitution_reason": null,
               "room_type": 0,
               "subgroup": -1,
-              "teacher_id": 14,
-              "uid": "lesson-39ae0f02b6df49f6",
+              "teacher_id": 11,
+              "uid": "lesson-41ab28ed4300ff03",
               "week_parity": "all"
             }
           ],
           "slot": 3,
-          "text": "история — вся группа, Лучинин Александр Васильевич, Лесная",
+          "text": "обществознание — вся группа, Цимфер Татьяна Ивановна, Кривоусова",
           "time": "3 пара (12:25-13:50)"
         },
         {
@@ -339,25 +318,25 @@
               "avoid_lunch_split": false,
               "consecutive_pairs": 1,
               "display_time": null,
-              "id": 40,
+              "id": 39,
               "is_block": false,
               "is_lab": false,
-              "name": "история",
+              "name": "литература",
               "requested_room_id": null,
               "requested_room_name": null,
-              "room_id": 37,
-              "room_name": "317",
+              "room_id": 10,
+              "room_name": "23",
               "room_substituted": false,
               "room_substitution_reason": null,
               "room_type": 0,
               "subgroup": -1,
-              "teacher_id": 14,
-              "uid": "lesson-39ae0f02b6df49f6",
+              "teacher_id": 0,
+              "uid": "lesson-e2fc1e3b039275bb",
               "week_parity": "all"
             }
           ],
           "slot": 4,
-          "text": "история — вся группа, Лучинин Александр Васильевич, Лесная",
+          "text": "литература — вся группа, Хасанова Гузель Хамитовна, Кривоусова",
           "time": "4 пара (14:00-15:25)"
         },
         {
@@ -366,31 +345,52 @@
               "avoid_lunch_split": false,
               "consecutive_pairs": 1,
               "display_time": null,
-              "id": 43,
+              "id": 39,
               "is_block": false,
               "is_lab": false,
-              "name": "иностранный язык",
+              "name": "литература",
               "requested_room_id": null,
               "requested_room_name": null,
-              "room_id": 45,
-              "room_name": "407",
+              "room_id": 10,
+              "room_name": "23",
               "room_substituted": false,
               "room_substitution_reason": null,
               "room_type": 0,
-              "subgroup": 4,
-              "teacher_id": 16,
-              "uid": "lesson-ccaf966914a4df54",
+              "subgroup": -1,
+              "teacher_id": 0,
+              "uid": "lesson-e2fc1e3b039275bb",
               "week_parity": "all"
             }
           ],
           "slot": 5,
-          "text": "иностранный язык — 1 п/г, Буркова Елена Владимировна, Лесная",
+          "text": "литература — вся группа, Хасанова Гузель Хамитовна, Кривоусова",
           "time": "5 пара (15:35-16:55)"
         },
         {
-          "lessons": [],
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 39,
+              "is_block": false,
+              "is_lab": false,
+              "name": "литература",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 10,
+              "room_name": "23",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": -1,
+              "teacher_id": 0,
+              "uid": "lesson-e2fc1e3b039275bb",
+              "week_parity": "all"
+            }
+          ],
           "slot": 6,
-          "text": "-",
+          "text": "литература — вся группа, Хасанова Гузель Хамитовна, Кривоусова",
           "time": "6 пара (17:05-18:25)"
         },
         {
@@ -400,141 +400,7 @@
           "time": "7 пара (18:35-19:55)"
         }
       ],
-      "weekday": "ПТ"
-    },
-    {
-      "date": "03.10.2026",
-      "date_iso": "2026-10-03",
-      "day_index": 3,
-      "slots": [
-        {
-          "lessons": [],
-          "slot": 1,
-          "text": "-",
-          "time": "1 пара (08:30-09:45)"
-        },
-        {
-          "lessons": [],
-          "slot": 2,
-          "text": "-",
-          "time": "2 пара (09:55-11:10)"
-        },
-        {
-          "lessons": [],
-          "slot": 3,
-          "text": "-",
-          "time": "3 пара (11:30-12:45)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 42,
-              "is_block": false,
-              "is_lab": false,
-              "name": "география",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 33,
-              "room_name": "209",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": -1,
-              "teacher_id": 15,
-              "uid": "lesson-f27a6243b4704385",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 4,
-          "text": "география — вся группа, Кропотова Анастасия Андреевна, Лесная",
-          "time": "4 пара (12:55-14:10)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 45,
-              "is_block": false,
-              "is_lab": false,
-              "name": "математика",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 36,
-              "room_name": "315",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": -1,
-              "teacher_id": 17,
-              "uid": "lesson-8b49aceecf8a5333",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 5,
-          "text": "математика — вся группа, Нифонтова Ирина Геннадьевна, Лесная",
-          "time": "5 пара (14:20-15:30)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 45,
-              "is_block": false,
-              "is_lab": false,
-              "name": "математика",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 36,
-              "room_name": "315",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": -1,
-              "teacher_id": 17,
-              "uid": "lesson-8b49aceecf8a5333",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 6,
-          "text": "математика — вся группа, Нифонтова Ирина Геннадьевна, Лесная",
-          "time": "6 пара (15:40-16:50)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 44,
-              "is_block": false,
-              "is_lab": false,
-              "name": "иностранный язык",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 45,
-              "room_name": "407",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": 5,
-              "teacher_id": 16,
-              "uid": "lesson-9188ec78f9e3898d",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 7,
-          "text": "иностранный язык — 2 п/г, Буркова Елена Владимировна, Лесная",
-          "time": "7 пара (17:00-18:10)"
-        }
-      ],
-      "weekday": "СБ"
+      "weekday": "ЧТ"
     }
   ],
   "group_index": 2,
