@@ -3807,6 +3807,13 @@ GenerationResult GenerateScheduleWeekly(
             for (int i = 0; i < static_cast<int>(input_data.lessons.size()); i++) {
                 const Lesson& lesson = input_data.lessons[i];
                 if (lesson.total_slots <= 0) continue;
+                // A dispatcher lock is a hard requirement: deferring its
+                // occurrences here would silently delete the lesson and make the
+                // whole run fail later with LOCKED_ASSIGNMENT_LOST. Trim only the
+                // occurrences above the locked floor and never below it.
+                const auto locked_here = locked_counts.find(lesson.id);
+                if (locked_here != locked_counts.end() &&
+                    lesson.total_slots <= locked_here->second) continue;
                 bool overloaded = teacher_load[lesson.teacher] > teacher_capacity[lesson.teacher];
                 for (int part = 0; part < PARTS_PER_GROUP; part++)
                     if (LessonAffectsPart(lesson, lesson.group, part) &&
@@ -4673,9 +4680,25 @@ GenerationResult GenerateScheduleWeekly(
         if (lesson_index < 0 || day_index < 0 || assignment.slot < 0 ||
             assignment.slot >= SLOTS_PER_DAY ||
             !global_x_vals[lesson_index][day_index * SLOTS_PER_DAY + assignment.slot]) {
-            return {false, "LOCKED_ASSIGNMENT_LOST",
-                "Закреплённая в Конструкторе пара потеряна при распределении кабинетов; результат не установлен",
-                output_dir};
+            std::string lesson_name = "id " + std::to_string(assignment.lesson_id);
+            std::string group_name;
+            for (const Lesson& lesson : lessons)
+                if (lesson.id == assignment.lesson_id) {
+                    lesson_name = lesson.name;
+                    for (const GroupData& group : input_data.groups)
+                        if (group.id == lesson.group) { group_name = group.name; break; }
+                    break;
+                }
+            std::ostringstream detail;
+            detail << "Закреплённая в Конструкторе пара потеряна: «" << lesson_name << "»";
+            if (!group_name.empty()) detail << ", группа " << group_name;
+            detail << ", " << DateToString(assignment.date)
+                   << ", пара " << (assignment.slot + 1) << ". ";
+            detail << (lesson_index < 0
+                ? "Строка учебного плана исключена из расчёта до решателя (нет остатка часов в выбранном диапазоне)."
+                : "Решатель не поставил её в закреплённый слот.");
+            detail << " Результат не установлен.";
+            return {false, "LOCKED_ASSIGNMENT_LOST", detail.str(), output_dir};
         }
     }
 
