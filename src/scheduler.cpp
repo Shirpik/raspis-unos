@@ -5,6 +5,7 @@
 #include <chrono>
 #include <cstdint>
 #include <cstdlib>
+#include <ctime>
 #include <filesystem>
 #include <fstream>
 #include <functional>
@@ -43,6 +44,21 @@
 namespace timetable {
 
 using operations_research::Domain;
+
+namespace {
+
+Date CurrentLocalDate() {
+    const std::time_t now = std::time(nullptr);
+    std::tm local{};
+#ifdef _WIN32
+    localtime_s(&local, &now);
+#else
+    localtime_r(&now, &local);
+#endif
+    return Date{local.tm_year + 1900, local.tm_mon + 1, local.tm_mday};
+}
+
+}  // namespace
 using operations_research::sat::BoolVar;
 using operations_research::sat::CpModelBuilder;
 using operations_research::sat::CpModelProto;
@@ -3503,6 +3519,19 @@ GenerationResult GenerateScheduleWeekly(
     const GenerationOptions& options,
     const WeeklyGenCallbacks& callbacks
 ) {
+
+    if (!options.scope_from.empty()) {
+        Date requested_from{};
+        if (ParseDateIso(options.scope_from, requested_from)) {
+            const Date today = CurrentLocalDate();
+            if (requested_from < today) {
+                return {false, "PAST_DATE_SCOPE",
+                    "Нельзя генерировать новые пары на прошедшую дату " +
+                        DateToIso(requested_from) + "; подтверждённые факты прошлого сохраняются",
+                    output_dir};
+            }
+        }
+    }
 
     // ── Загрузка входных данных ───────────────────────────────────────────
     ScheduleInputData input_data;
