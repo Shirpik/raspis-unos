@@ -8,121 +8,163 @@
         {
           "lessons": [
             {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
+              "avoid_lunch_split": true,
+              "consecutive_pairs": 2,
               "display_time": null,
-              "id": 352,
+              "id": 369,
               "is_block": false,
-              "is_lab": false,
-              "name": "Биология",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 8,
-              "room_name": "21",
+              "is_lab": true,
+              "name": "ЛПЗ ВМДК.04.02 Химический анализ сырья, материалов и готовой продукции",
+              "requested_room_id": 68,
+              "requested_room_name": "ЦПДЭ",
+              "room_id": 68,
+              "room_name": "ЦПДЭ",
               "room_substituted": false,
               "room_substitution_reason": null,
               "room_type": 0,
-              "subgroup": -1,
-              "teacher_id": 3,
-              "uid": "lesson-1163f150b90d805b",
+              "subgroup": 35,
+              "teacher_id": 81,
+              "uid": "lesson-de308c217f2bfc75",
               "week_parity": "all"
             }
           ],
           "slot": 1,
-          "text": "Биология — вся группа, Никонова Антонина Олеговна, Кривоусова",
+          "text": "ЛПЗ ВМДК.04.02 Химический анализ сырья, материалов и готовой продукции — 2 п/г, Рахматулина Наталья Владимировна, Лесная",
           "time": "1 пара (08:30-09:55)"
         },
         {
           "lessons": [
             {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
+              "avoid_lunch_split": true,
+              "consecutive_pairs": 2,
               "display_time": null,
-              "id": 352,
+              "id": 369,
               "is_block": false,
-              "is_lab": false,
-              "name": "Биология",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 8,
-              "room_name": "21",
+              "is_lab": true,
+              "name": "ЛПЗ ВМДК.04.02 Химический анализ сырья, материалов и готовой продукции",
+              "requested_room_id": 68,
+              "requested_room_name": "ЦПДЭ",
+              "room_id": 68,
+              "room_name": "ЦПДЭ",
               "room_substituted": false,
               "room_substitution_reason": null,
               "room_type": 0,
-              "subgroup": -1,
-              "teacher_id": 3,
-              "uid": "lesson-1163f150b90d805b",
+              "subgroup": 35,
+              "teacher_id": 81,
+              "uid": "lesson-de308c217f2bfc75",
               "week_parity": "all"
             }
           ],
           "slot": 2,
-          "text": "Биология — вся группа, Никонова Антонина Олеговна, Кривоусова",
+          "text": "ЛПЗ ВМДК.04.02 Химический анализ сырья, материалов и готовой продукции — 2 п/г, Рахматулина Наталья Владимировна, Лесная",
           "time": "2 пара (10:05-11:30)"
         },
         {
           "lessons": [
             {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
+              "avoid_lunch_split": true,
+              "consecutive_pairs": 2,
               "display_time": null,
-              "id": 352,
+              "id": 366,
               "is_block": false,
-              "is_lab": false,
-              "name": "Биология",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 8,
-              "room_name": "21",
+              "is_lab": true,
+              "name": "ЛПЗ МДК.04.01 Выполнение работ по профессии лаборант химического анализа",
+              "requested_room_id": 68,
+              "requested_room_name": "ЦПДЭ",
+              "room_id": 68,
+              "room_name": "ЦПДЭ",
               "room_substituted": false,
               "room_substitution_reason": null,
               "room_type": 0,
-              "subgroup": -1,
-              "teacher_id": 3,
-              "uid": "lesson-1163f150b90d805b",
+              "subgroup": 35,
+              "teacher_id": 81,
+              "uid": "lesson-8742e5b34b158183",
               "week_parity": "all"
             }
           ],
           "slot": 3,
-          "text": "Биология — вся группа, Никонова Антонина Олеговна, Кривоусова",
+          "text": "ЛПЗ МДК.04.01 Выполнение работ по профессии лаборант химического анализа — 2 п/г, Рахматулина Наталья Владимировна, Лесная",
           "time": "3 пара (12:25-13:50)"
         },
         {
           "lessons": [
             {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
+              "avoid_lunch_split": true,
+              "consecutive_pairs": 2,
               "display_time": null,
-              "id": 367,
+              "id": 366,
               "is_block": false,
-              "is_lab": false,
-              "name": "ВМДК.04.02 Химический анализ сырья, материалов и готовой продукции",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 58,
-              "room_name": "67",
+              "is_lab": true,
+              "name": "ЛПЗ МДК.04.01 Выполнение работ по профессии лаборант химического анализа",
+              "requested_room_id": 68,
+              "requested_room_name": "ЦПДЭ",
+              "room_id": 68,
+              "room_name": "ЦПДЭ",
               "room_substituted": false,
               "room_substitution_reason": null,
               "room_type": 0,
-              "subgroup": -1,
+              "subgroup": 35,
               "teacher_id": 81,
-              "uid": "lesson-1af2492a570059c2",
+              "uid": "lesson-8742e5b34b158183",
               "week_parity": "all"
             }
           ],
           "slot": 4,
-          "text": "ВМДК.04.02 Химический анализ сырья, материалов и готовой продукции — вся группа, Рахматулина Наталья Владимировна, Кривоусова",
+          "text": "ЛПЗ МДК.04.01 Выполнение работ по профессии лаборант химического анализа — 2 п/г, Рахматулина Наталья Владимировна, Лесная",
           "time": "4 пара (14:00-15:25)"
         },
         {
-          "lessons": [],
+          "lessons": [
+            {
+              "avoid_lunch_split": true,
+              "consecutive_pairs": 2,
+              "display_time": null,
+              "id": 368,
+              "is_block": false,
+              "is_lab": true,
+              "name": "ЛПЗ ВМДК.04.02 Химический анализ сырья, материалов и готовой продукции",
+              "requested_room_id": 68,
+              "requested_room_name": "ЦПДЭ",
+              "room_id": 68,
+              "room_name": "ЦПДЭ",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 34,
+              "teacher_id": 81,
+              "uid": "lesson-d664a95a292cb4f1",
+              "week_parity": "all"
+            }
+          ],
           "slot": 5,
-          "text": "-",
+          "text": "ЛПЗ ВМДК.04.02 Химический анализ сырья, материалов и готовой продукции — 1 п/г, Рахматулина Наталья Владимировна, Лесная",
           "time": "5 пара (15:35-16:55)"
         },
         {
-          "lessons": [],
+          "lessons": [
+            {
+              "avoid_lunch_split": true,
+              "consecutive_pairs": 2,
+              "display_time": null,
+              "id": 368,
+              "is_block": false,
+              "is_lab": true,
+              "name": "ЛПЗ ВМДК.04.02 Химический анализ сырья, материалов и готовой продукции",
+              "requested_room_id": 68,
+              "requested_room_name": "ЦПДЭ",
+              "room_id": 68,
+              "room_name": "ЦПДЭ",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 34,
+              "teacher_id": 81,
+              "uid": "lesson-d664a95a292cb4f1",
+              "week_parity": "all"
+            }
+          ],
           "slot": 6,
-          "text": "-",
+          "text": "ЛПЗ ВМДК.04.02 Химический анализ сырья, материалов и готовой продукции — 1 п/г, Рахматулина Наталья Владимировна, Лесная",
           "time": "6 пара (17:05-18:25)"
         },
         {
@@ -133,6 +175,182 @@
         }
       ],
       "weekday": "ПТ"
+    },
+    {
+      "date": "03.10.2026",
+      "date_iso": "2026-10-03",
+      "day_index": 1,
+      "slots": [
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": true,
+              "consecutive_pairs": 2,
+              "display_time": null,
+              "id": 369,
+              "is_block": false,
+              "is_lab": true,
+              "name": "ЛПЗ ВМДК.04.02 Химический анализ сырья, материалов и готовой продукции",
+              "requested_room_id": 68,
+              "requested_room_name": "ЦПДЭ",
+              "room_id": 68,
+              "room_name": "ЦПДЭ",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 35,
+              "teacher_id": 81,
+              "uid": "lesson-de308c217f2bfc75",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 1,
+          "text": "ЛПЗ ВМДК.04.02 Химический анализ сырья, материалов и готовой продукции — 2 п/г, Рахматулина Наталья Владимировна, Лесная",
+          "time": "1 пара (08:30-09:45)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": true,
+              "consecutive_pairs": 2,
+              "display_time": null,
+              "id": 369,
+              "is_block": false,
+              "is_lab": true,
+              "name": "ЛПЗ ВМДК.04.02 Химический анализ сырья, материалов и готовой продукции",
+              "requested_room_id": 68,
+              "requested_room_name": "ЦПДЭ",
+              "room_id": 68,
+              "room_name": "ЦПДЭ",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 35,
+              "teacher_id": 81,
+              "uid": "lesson-de308c217f2bfc75",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 2,
+          "text": "ЛПЗ ВМДК.04.02 Химический анализ сырья, материалов и готовой продукции — 2 п/г, Рахматулина Наталья Владимировна, Лесная",
+          "time": "2 пара (09:55-11:10)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": true,
+              "consecutive_pairs": 2,
+              "display_time": null,
+              "id": 368,
+              "is_block": false,
+              "is_lab": true,
+              "name": "ЛПЗ ВМДК.04.02 Химический анализ сырья, материалов и готовой продукции",
+              "requested_room_id": 68,
+              "requested_room_name": "ЦПДЭ",
+              "room_id": 68,
+              "room_name": "ЦПДЭ",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 34,
+              "teacher_id": 81,
+              "uid": "lesson-d664a95a292cb4f1",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 3,
+          "text": "ЛПЗ ВМДК.04.02 Химический анализ сырья, материалов и готовой продукции — 1 п/г, Рахматулина Наталья Владимировна, Лесная",
+          "time": "3 пара (11:30-12:45)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": true,
+              "consecutive_pairs": 2,
+              "display_time": null,
+              "id": 368,
+              "is_block": false,
+              "is_lab": true,
+              "name": "ЛПЗ ВМДК.04.02 Химический анализ сырья, материалов и готовой продукции",
+              "requested_room_id": 68,
+              "requested_room_name": "ЦПДЭ",
+              "room_id": 68,
+              "room_name": "ЦПДЭ",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 34,
+              "teacher_id": 81,
+              "uid": "lesson-d664a95a292cb4f1",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 4,
+          "text": "ЛПЗ ВМДК.04.02 Химический анализ сырья, материалов и готовой продукции — 1 п/г, Рахматулина Наталья Владимировна, Лесная",
+          "time": "4 пара (12:55-14:10)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": true,
+              "consecutive_pairs": 2,
+              "display_time": null,
+              "id": 365,
+              "is_block": false,
+              "is_lab": true,
+              "name": "ЛПЗ МДК.04.01 Выполнение работ по профессии лаборант химического анализа",
+              "requested_room_id": 68,
+              "requested_room_name": "ЦПДЭ",
+              "room_id": 68,
+              "room_name": "ЦПДЭ",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 34,
+              "teacher_id": 81,
+              "uid": "lesson-33ae7e612ea4effb",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 5,
+          "text": "ЛПЗ МДК.04.01 Выполнение работ по профессии лаборант химического анализа — 1 п/г, Рахматулина Наталья Владимировна, Лесная",
+          "time": "5 пара (14:20-15:30)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": true,
+              "consecutive_pairs": 2,
+              "display_time": null,
+              "id": 365,
+              "is_block": false,
+              "is_lab": true,
+              "name": "ЛПЗ МДК.04.01 Выполнение работ по профессии лаборант химического анализа",
+              "requested_room_id": 68,
+              "requested_room_name": "ЦПДЭ",
+              "room_id": 68,
+              "room_name": "ЦПДЭ",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 34,
+              "teacher_id": 81,
+              "uid": "lesson-33ae7e612ea4effb",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 6,
+          "text": "ЛПЗ МДК.04.01 Выполнение работ по профессии лаборант химического анализа — 1 п/г, Рахматулина Наталья Владимировна, Лесная",
+          "time": "6 пара (15:40-16:50)"
+        },
+        {
+          "lessons": [],
+          "slot": 7,
+          "text": "-",
+          "time": "7 пара (17:00-18:10)"
+        }
+      ],
+      "weekday": "СБ"
     }
   ],
   "group_index": 17,

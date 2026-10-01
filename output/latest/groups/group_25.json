@@ -18,9 +18,30 @@
           "time": "2 пара (10:05-11:30)"
         },
         {
-          "lessons": [],
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 548,
+              "is_block": false,
+              "is_lab": false,
+              "name": "Информационные технологии в профессиональной деятельности",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 58,
+              "room_name": "67",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 50,
+              "teacher_id": 31,
+              "uid": "lesson-51115653fa62c92e",
+              "week_parity": "all"
+            }
+          ],
           "slot": 3,
-          "text": "-",
+          "text": "Информационные технологии в профессиональной деятельности — 1 п/г, Ланитина Елена Сергеевна, Кривоусова",
           "time": "3 пара (12:25-13:50)"
         },
         {
@@ -29,52 +50,31 @@
               "avoid_lunch_split": false,
               "consecutive_pairs": 1,
               "display_time": null,
-              "id": 544,
+              "id": 548,
               "is_block": false,
               "is_lab": false,
-              "name": "Химия",
+              "name": "Информационные технологии в профессиональной деятельности",
               "requested_room_id": null,
               "requested_room_name": null,
-              "room_id": 4,
-              "room_name": "15",
+              "room_id": 58,
+              "room_name": "67",
               "room_substituted": false,
               "room_substitution_reason": null,
               "room_type": 0,
-              "subgroup": -1,
-              "teacher_id": 20,
-              "uid": "lesson-95491f7fff6a7ddc",
+              "subgroup": 50,
+              "teacher_id": 31,
+              "uid": "lesson-51115653fa62c92e",
               "week_parity": "all"
             }
           ],
           "slot": 4,
-          "text": "Химия — вся группа, Соболева Любовь Анатольевна, Кривоусова",
+          "text": "Информационные технологии в профессиональной деятельности — 1 п/г, Ланитина Елена Сергеевна, Кривоусова",
           "time": "4 пара (14:00-15:25)"
         },
         {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 556,
-              "is_block": false,
-              "is_lab": false,
-              "name": "Метрология, стандартизация и сертификация",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 54,
-              "room_name": "57",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": -1,
-              "teacher_id": 41,
-              "uid": "lesson-46279c6e89eec731",
-              "week_parity": "all"
-            }
-          ],
+          "lessons": [],
           "slot": 5,
-          "text": "Метрология, стандартизация и сертификация — вся группа, Садриева Татьяна Геннадьевна, Кривоусова",
+          "text": "-",
           "time": "5 пара (15:35-16:55)"
         },
         {
@@ -83,25 +83,25 @@
               "avoid_lunch_split": false,
               "consecutive_pairs": 1,
               "display_time": null,
-              "id": 556,
+              "id": 549,
               "is_block": false,
               "is_lab": false,
-              "name": "Метрология, стандартизация и сертификация",
+              "name": "Информационные технологии в профессиональной деятельности",
               "requested_room_id": null,
               "requested_room_name": null,
-              "room_id": 54,
-              "room_name": "57",
+              "room_id": 56,
+              "room_name": "64",
               "room_substituted": false,
               "room_substitution_reason": null,
               "room_type": 0,
-              "subgroup": -1,
-              "teacher_id": 41,
-              "uid": "lesson-46279c6e89eec731",
+              "subgroup": 51,
+              "teacher_id": 31,
+              "uid": "lesson-6046900264569435",
               "week_parity": "all"
             }
           ],
           "slot": 6,
-          "text": "Метрология, стандартизация и сертификация — вся группа, Садриева Татьяна Геннадьевна, Кривоусова",
+          "text": "Информационные технологии в профессиональной деятельности — 2 п/г, Ланитина Елена Сергеевна, Кривоусова",
           "time": "6 пара (17:05-18:25)"
         },
         {
@@ -110,29 +110,163 @@
               "avoid_lunch_split": false,
               "consecutive_pairs": 1,
               "display_time": null,
-              "id": 556,
+              "id": 549,
               "is_block": false,
               "is_lab": false,
-              "name": "Метрология, стандартизация и сертификация",
+              "name": "Информационные технологии в профессиональной деятельности",
               "requested_room_id": null,
               "requested_room_name": null,
-              "room_id": 54,
-              "room_name": "57",
+              "room_id": 56,
+              "room_name": "64",
               "room_substituted": false,
               "room_substitution_reason": null,
               "room_type": 0,
-              "subgroup": -1,
-              "teacher_id": 41,
-              "uid": "lesson-46279c6e89eec731",
+              "subgroup": 51,
+              "teacher_id": 31,
+              "uid": "lesson-6046900264569435",
               "week_parity": "all"
             }
           ],
           "slot": 7,
-          "text": "Метрология, стандартизация и сертификация — вся группа, Садриева Татьяна Геннадьевна, Кривоусова",
+          "text": "Информационные технологии в профессиональной деятельности — 2 п/г, Ланитина Елена Сергеевна, Кривоусова",
           "time": "7 пара (18:35-19:55)"
         }
       ],
       "weekday": "ПТ"
+    },
+    {
+      "date": "03.10.2026",
+      "date_iso": "2026-10-03",
+      "day_index": 1,
+      "slots": [
+        {
+          "lessons": [],
+          "slot": 1,
+          "text": "-",
+          "time": "1 пара (08:30-09:45)"
+        },
+        {
+          "lessons": [],
+          "slot": 2,
+          "text": "-",
+          "time": "2 пара (09:55-11:10)"
+        },
+        {
+          "lessons": [],
+          "slot": 3,
+          "text": "-",
+          "time": "3 пара (11:30-12:45)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 543,
+              "is_block": false,
+              "is_lab": false,
+              "name": "География",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 33,
+              "room_name": "209",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": -1,
+              "teacher_id": 15,
+              "uid": "lesson-c52048880694057f",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 4,
+          "text": "География — вся группа, Кропотова Анастасия Андреевна, Лесная",
+          "time": "4 пара (12:55-14:10)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 557,
+              "is_block": false,
+              "is_lab": false,
+              "name": "Технология конструкционных материалов",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 31,
+              "room_name": "205",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": -1,
+              "teacher_id": 56,
+              "uid": "lesson-6354ba72e802eb47",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 5,
+          "text": "Технология конструкционных материалов — вся группа, Ахметов Артур Фанависович, Лесная",
+          "time": "5 пара (14:20-15:30)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 543,
+              "is_block": false,
+              "is_lab": false,
+              "name": "География",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 33,
+              "room_name": "209",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": -1,
+              "teacher_id": 15,
+              "uid": "lesson-c52048880694057f",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 6,
+          "text": "География — вся группа, Кропотова Анастасия Андреевна, Лесная",
+          "time": "6 пара (15:40-16:50)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 545,
+              "is_block": false,
+              "is_lab": false,
+              "name": "Иностранный язык в профессиональной деятельности",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 41,
+              "room_name": "324",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 50,
+              "teacher_id": 27,
+              "uid": "lesson-3da49cf25bb2f9be",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 7,
+          "text": "Иностранный язык в профессиональной деятельности — 1 п/г, Ермолина Ирина Павловна, Лесная",
+          "time": "7 пара (17:00-18:10)"
+        }
+      ],
+      "weekday": "СБ"
     }
   ],
   "group_index": 25,

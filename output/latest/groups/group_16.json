@@ -11,25 +11,25 @@
               "avoid_lunch_split": false,
               "consecutive_pairs": 1,
               "display_time": null,
-              "id": 339,
+              "id": 350,
               "is_block": false,
-              "is_lab": true,
-              "name": "ЛПЗ МДК.01.01 Металлургия цветных металлов",
+              "is_lab": false,
+              "name": "МДК.04.05 Информационные технологии в профессиональной деятельности",
               "requested_room_id": null,
               "requested_room_name": null,
-              "room_id": 57,
-              "room_name": "65",
+              "room_id": 34,
+              "room_name": "210",
               "room_substituted": false,
               "room_substitution_reason": null,
               "room_type": 0,
               "subgroup": 33,
-              "teacher_id": 43,
-              "uid": "lesson-97086a30d985250b",
+              "teacher_id": 47,
+              "uid": "lesson-2fd4775b5f3a44dd",
               "week_parity": "all"
             }
           ],
           "slot": 1,
-          "text": "ЛПЗ МДК.01.01 Металлургия цветных металлов — 2 п/г, Попова Татьяна Вильевна, Кривоусова",
+          "text": "МДК.04.05 Информационные технологии в профессиональной деятельности — 2 п/г, Азарян Карине Айказовна, Лесная",
           "time": "1 пара (08:30-09:55)"
         },
         {
@@ -38,25 +38,25 @@
               "avoid_lunch_split": false,
               "consecutive_pairs": 1,
               "display_time": null,
-              "id": 339,
+              "id": 350,
               "is_block": false,
-              "is_lab": true,
-              "name": "ЛПЗ МДК.01.01 Металлургия цветных металлов",
+              "is_lab": false,
+              "name": "МДК.04.05 Информационные технологии в профессиональной деятельности",
               "requested_room_id": null,
               "requested_room_name": null,
-              "room_id": 57,
-              "room_name": "65",
+              "room_id": 34,
+              "room_name": "210",
               "room_substituted": false,
               "room_substitution_reason": null,
               "room_type": 0,
               "subgroup": 33,
-              "teacher_id": 43,
-              "uid": "lesson-97086a30d985250b",
+              "teacher_id": 47,
+              "uid": "lesson-2fd4775b5f3a44dd",
               "week_parity": "all"
             }
           ],
           "slot": 2,
-          "text": "ЛПЗ МДК.01.01 Металлургия цветных металлов — 2 п/г, Попова Татьяна Вильевна, Кривоусова",
+          "text": "МДК.04.05 Информационные технологии в профессиональной деятельности — 2 п/г, Азарян Карине Айказовна, Лесная",
           "time": "2 пара (10:05-11:30)"
         },
         {
@@ -65,25 +65,25 @@
               "avoid_lunch_split": false,
               "consecutive_pairs": 1,
               "display_time": null,
-              "id": 338,
+              "id": 333,
               "is_block": false,
-              "is_lab": true,
-              "name": "ЛПЗ МДК.01.01 Металлургия цветных металлов",
+              "is_lab": false,
+              "name": "Иностранный язык",
               "requested_room_id": null,
               "requested_room_name": null,
-              "room_id": 57,
-              "room_name": "65",
+              "room_id": 43,
+              "room_name": "401",
               "room_substituted": false,
               "room_substitution_reason": null,
               "room_type": 0,
-              "subgroup": 32,
-              "teacher_id": 43,
-              "uid": "lesson-fbcca93592104406",
+              "subgroup": 33,
+              "teacher_id": 4,
+              "uid": "lesson-8868baf1110fc610",
               "week_parity": "all"
             }
           ],
           "slot": 3,
-          "text": "ЛПЗ МДК.01.01 Металлургия цветных металлов — 1 п/г, Попова Татьяна Вильевна, Кривоусова",
+          "text": "Иностранный язык — 2 п/г, Давыдова Валентина Алексеевна, Лесная",
           "time": "3 пара (12:25-13:50)"
         },
         {
@@ -92,25 +92,25 @@
               "avoid_lunch_split": false,
               "consecutive_pairs": 1,
               "display_time": null,
-              "id": 338,
+              "id": 349,
               "is_block": false,
-              "is_lab": true,
-              "name": "ЛПЗ МДК.01.01 Металлургия цветных металлов",
+              "is_lab": false,
+              "name": "МДК.04.05 Информационные технологии в профессиональной деятельности",
               "requested_room_id": null,
               "requested_room_name": null,
-              "room_id": 57,
-              "room_name": "65",
+              "room_id": 34,
+              "room_name": "210",
               "room_substituted": false,
               "room_substitution_reason": null,
               "room_type": 0,
               "subgroup": 32,
-              "teacher_id": 43,
-              "uid": "lesson-fbcca93592104406",
+              "teacher_id": 47,
+              "uid": "lesson-9ba5d8ba3b3c6cf6",
               "week_parity": "all"
             }
           ],
           "slot": 4,
-          "text": "ЛПЗ МДК.01.01 Металлургия цветных металлов — 1 п/г, Попова Татьяна Вильевна, Кривоусова",
+          "text": "МДК.04.05 Информационные технологии в профессиональной деятельности — 1 п/г, Азарян Карине Айказовна, Лесная",
           "time": "4 пара (14:00-15:25)"
         },
         {
@@ -119,41 +119,259 @@
               "avoid_lunch_split": false,
               "consecutive_pairs": 1,
               "display_time": null,
-              "id": 338,
+              "id": 332,
               "is_block": false,
-              "is_lab": true,
-              "name": "ЛПЗ МДК.01.01 Металлургия цветных металлов",
+              "is_lab": false,
+              "name": "Иностранный язык",
               "requested_room_id": null,
               "requested_room_name": null,
-              "room_id": 57,
-              "room_name": "65",
+              "room_id": 43,
+              "room_name": "401",
               "room_substituted": false,
               "room_substitution_reason": null,
               "room_type": 0,
               "subgroup": 32,
-              "teacher_id": 43,
-              "uid": "lesson-fbcca93592104406",
+              "teacher_id": 4,
+              "uid": "lesson-a196693bdc6e1153",
               "week_parity": "all"
             }
           ],
           "slot": 5,
-          "text": "ЛПЗ МДК.01.01 Металлургия цветных металлов — 1 п/г, Попова Татьяна Вильевна, Кривоусова",
+          "text": "Иностранный язык — 1 п/г, Давыдова Валентина Алексеевна, Лесная",
           "time": "5 пара (15:35-16:55)"
         },
         {
-          "lessons": [],
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 332,
+              "is_block": false,
+              "is_lab": false,
+              "name": "Иностранный язык",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 43,
+              "room_name": "401",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 32,
+              "teacher_id": 4,
+              "uid": "lesson-a196693bdc6e1153",
+              "week_parity": "all"
+            }
+          ],
           "slot": 6,
-          "text": "-",
+          "text": "Иностранный язык — 1 п/г, Давыдова Валентина Алексеевна, Лесная",
           "time": "6 пара (17:05-18:25)"
         },
         {
-          "lessons": [],
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 332,
+              "is_block": false,
+              "is_lab": false,
+              "name": "Иностранный язык",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 43,
+              "room_name": "401",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 32,
+              "teacher_id": 4,
+              "uid": "lesson-a196693bdc6e1153",
+              "week_parity": "all"
+            }
+          ],
           "slot": 7,
-          "text": "-",
+          "text": "Иностранный язык — 1 п/г, Давыдова Валентина Алексеевна, Лесная",
           "time": "7 пара (18:35-19:55)"
         }
       ],
       "weekday": "ПТ"
+    },
+    {
+      "date": "03.10.2026",
+      "date_iso": "2026-10-03",
+      "day_index": 1,
+      "slots": [
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 333,
+              "is_block": false,
+              "is_lab": false,
+              "name": "Иностранный язык",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 43,
+              "room_name": "401",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 33,
+              "teacher_id": 4,
+              "uid": "lesson-8868baf1110fc610",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 1,
+          "text": "Иностранный язык — 2 п/г, Давыдова Валентина Алексеевна, Лесная",
+          "time": "1 пара (08:30-09:45)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 333,
+              "is_block": false,
+              "is_lab": false,
+              "name": "Иностранный язык",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 43,
+              "room_name": "401",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 33,
+              "teacher_id": 4,
+              "uid": "lesson-8868baf1110fc610",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 2,
+          "text": "Иностранный язык — 2 п/г, Давыдова Валентина Алексеевна, Лесная",
+          "time": "2 пара (09:55-11:10)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 333,
+              "is_block": false,
+              "is_lab": false,
+              "name": "Иностранный язык",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 43,
+              "room_name": "401",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 33,
+              "teacher_id": 4,
+              "uid": "lesson-8868baf1110fc610",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 3,
+          "text": "Иностранный язык — 2 п/г, Давыдова Валентина Алексеевна, Лесная",
+          "time": "3 пара (11:30-12:45)"
+        },
+        {
+          "lessons": [],
+          "slot": 4,
+          "text": "-",
+          "time": "4 пара (12:55-14:10)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 332,
+              "is_block": false,
+              "is_lab": false,
+              "name": "Иностранный язык",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 43,
+              "room_name": "401",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 32,
+              "teacher_id": 4,
+              "uid": "lesson-a196693bdc6e1153",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 5,
+          "text": "Иностранный язык — 1 п/г, Давыдова Валентина Алексеевна, Лесная",
+          "time": "5 пара (14:20-15:30)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 332,
+              "is_block": false,
+              "is_lab": false,
+              "name": "Иностранный язык",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 43,
+              "room_name": "401",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 32,
+              "teacher_id": 4,
+              "uid": "lesson-a196693bdc6e1153",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 6,
+          "text": "Иностранный язык — 1 п/г, Давыдова Валентина Алексеевна, Лесная",
+          "time": "6 пара (15:40-16:50)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 332,
+              "is_block": false,
+              "is_lab": false,
+              "name": "Иностранный язык",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 43,
+              "room_name": "401",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 32,
+              "teacher_id": 4,
+              "uid": "lesson-a196693bdc6e1153",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 7,
+          "text": "Иностранный язык — 1 п/г, Давыдова Валентина Алексеевна, Лесная",
+          "time": "7 пара (17:00-18:10)"
+        }
+      ],
+      "weekday": "СБ"
     }
   ],
   "group_index": 16,

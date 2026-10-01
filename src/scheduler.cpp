@@ -2909,14 +2909,20 @@ static WeekSolveResult SolveOneWeek(
                     }
                     LinearExpr minimum;
                     minimum += has * eff_min;
-                    if (allow_partial && W == 1) {
-                        // A generated day must be a real study day for every
-                        // active physical part: at least the configured daily
-                        // minimum (2 with the current settings). Keep this
-                        // hard in day mode; the weekly fallback must not turn
-                        // the result into an empty timetable.
-                        model.AddEquality(has, 1);
-                        model.AddGreaterOrEqual(adjusted, eff_min);
+                    // Every available selected day is a required study day in
+                    // Constructor mode. Previously this was hard only for a
+                    // one-day request; in a range, `has` could stay zero and
+                    // the group silently disappeared from that date.
+                    bool group_day_open = IsAvailable(week_days[ld], g, unavailable);
+                    if (group_day_open && group_work[g]) {
+                        group_day_open = false;
+                        for (int slot = 0; slot < SLOTS_PER_DAY; ++slot)
+                            group_day_open = group_day_open ||
+                                WorkScheduleAllows(*group_work[g], week_days[ld], slot);
+                    }
+                    if (group_day_open) {
+                        model.AddEquality(has, 1).OnlyEnforceIf(daily_min_rule);
+                        model.AddGreaterOrEqual(adjusted, eff_min).OnlyEnforceIf(daily_min_rule);
                     } else {
                         model.AddGreaterOrEqual(adjusted, minimum).OnlyEnforceIf(daily_min_rule);
                     }
@@ -3796,7 +3802,11 @@ GenerationResult GenerateScheduleWeekly(
         // A one-day model treats these values as upper bounds and chooses the
         // compatible subjects itself, so pruning candidates here would again
         // create artificial empty groups.
-        if (!single_day_scope) {
+        // Scoped ranges must keep all curriculum candidates and let CP-SAT
+        // distribute them across the selected dates.  The old capacity
+        // deferral pass trimmed lessons before solving and made a two-day run
+        // lose most groups even though each day solved independently.
+        if (false && !single_day_scope) {
         std::map<std::pair<int, int>, int> group_capacity;
         std::map<int, int> teacher_capacity;
         for (const GroupData& group : input_data.groups) {

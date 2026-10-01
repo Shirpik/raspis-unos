@@ -11,7 +11,7 @@
               "avoid_lunch_split": false,
               "consecutive_pairs": 1,
               "display_time": null,
-              "id": 951,
+              "id": 950,
               "is_block": false,
               "is_lab": true,
               "name": "ЛПЗ МДК.04.01 Технология разработки и защиты баз данных",
@@ -22,18 +22,11 @@
               "room_substituted": false,
               "room_substitution_reason": null,
               "room_type": 0,
-              "subgroup": 89,
+              "subgroup": 88,
               "teacher_id": 65,
-              "uid": "lesson-c193a532fb6576af",
+              "uid": "lesson-ae2daaac8d711b8e",
               "week_parity": "all"
-            }
-          ],
-          "slot": 1,
-          "text": "ЛПЗ МДК.04.01 Технология разработки и защиты баз данных — 2 п/г, Михайлова Татьяна Алексеевна, Лесная",
-          "time": "1 пара (08:30-09:55)"
-        },
-        {
-          "lessons": [
+            },
             {
               "avoid_lunch_split": false,
               "consecutive_pairs": 1,
@@ -55,8 +48,55 @@
               "week_parity": "all"
             }
           ],
+          "slot": 1,
+          "text": "ЛПЗ МДК.04.01 Технология разработки и защиты баз данных — 1 п/г, Михайлова Татьяна Алексеевна, Лесная | ЛПЗ ВМДК.05.02 Сертификация информационных систем — 2 п/г, Меренчуков Иван Александрович, Лесная",
+          "time": "1 пара (08:30-09:55)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 948,
+              "is_block": false,
+              "is_lab": true,
+              "name": "ЛПЗ МДК.02.03 Математическое моделирование",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 29,
+              "room_name": "201",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 89,
+              "teacher_id": 38,
+              "uid": "lesson-0c0d17a1b36563af",
+              "week_parity": "all"
+            },
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 950,
+              "is_block": false,
+              "is_lab": true,
+              "name": "ЛПЗ МДК.04.01 Технология разработки и защиты баз данных",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 46,
+              "room_name": "409",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 88,
+              "teacher_id": 65,
+              "uid": "lesson-ae2daaac8d711b8e",
+              "week_parity": "all"
+            }
+          ],
           "slot": 2,
-          "text": "ЛПЗ ВМДК.05.02 Сертификация информационных систем — 2 п/г, Меренчуков Иван Александрович, Лесная",
+          "text": "ЛПЗ МДК.02.03 Математическое моделирование — 2 п/г, Абрамчук Раида Филимазовна, Лесная | ЛПЗ МДК.04.01 Технология разработки и защиты баз данных — 1 п/г, Михайлова Татьяна Алексеевна, Лесная",
           "time": "2 пара (10:05-11:30)"
         },
         {
@@ -80,10 +120,30 @@
               "teacher_id": 38,
               "uid": "lesson-0c0d17a1b36563af",
               "week_parity": "all"
+            },
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 956,
+              "is_block": false,
+              "is_lab": true,
+              "name": "ЛПЗ ВМДК.05.02 Сертификация информационных систем",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 30,
+              "room_name": "204",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 88,
+              "teacher_id": 64,
+              "uid": "lesson-a0c8874688115160",
+              "week_parity": "all"
             }
           ],
           "slot": 3,
-          "text": "ЛПЗ МДК.02.03 Математическое моделирование — 2 п/г, Абрамчук Раида Филимазовна, Лесная",
+          "text": "ЛПЗ МДК.02.03 Математическое моделирование — 2 п/г, Абрамчук Раида Филимазовна, Лесная | ЛПЗ ВМДК.05.02 Сертификация информационных систем — 1 п/г, Меренчуков Иван Александрович, Лесная",
           "time": "3 пара (12:25-13:50)"
         },
         {
@@ -92,25 +152,25 @@
               "avoid_lunch_split": false,
               "consecutive_pairs": 1,
               "display_time": null,
-              "id": 954,
+              "id": 946,
               "is_block": false,
-              "is_lab": true,
-              "name": "ЛПЗ ВМДК.05.01 Управление и автоматизация баз данных",
+              "is_lab": false,
+              "name": "МДК.02.03 Математическое моделирование",
               "requested_room_id": null,
               "requested_room_name": null,
-              "room_id": 49,
-              "room_name": "411",
+              "room_id": 29,
+              "room_name": "201",
               "room_substituted": false,
               "room_substitution_reason": null,
               "room_type": 0,
-              "subgroup": 89,
-              "teacher_id": 67,
-              "uid": "lesson-62e2f10bc6bed6da",
+              "subgroup": -1,
+              "teacher_id": 38,
+              "uid": "lesson-e18e864c070cb579",
               "week_parity": "all"
             }
           ],
           "slot": 4,
-          "text": "ЛПЗ ВМДК.05.01 Управление и автоматизация баз данных — 2 п/г, Гарбузов Андрей Евгеньевич, Лесная",
+          "text": "МДК.02.03 Математическое моделирование — вся группа, Абрамчук Раида Филимазовна, Лесная",
           "time": "4 пара (14:00-15:25)"
         },
         {
@@ -118,6 +178,113 @@
           "slot": 5,
           "text": "-",
           "time": "5 пара (15:35-16:55)"
+        },
+        {
+          "lessons": [],
+          "slot": 6,
+          "text": "-",
+          "time": "6 пара (17:05-18:25)"
+        },
+        {
+          "lessons": [],
+          "slot": 7,
+          "text": "-",
+          "time": "7 пара (18:35-19:55)"
+        }
+      ],
+      "weekday": "ПТ"
+    },
+    {
+      "date": "03.10.2026",
+      "date_iso": "2026-10-03",
+      "day_index": 1,
+      "slots": [
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 942,
+              "is_block": false,
+              "is_lab": true,
+              "name": "ЛПЗ МДК.02.01 Технология разработки программного обеспечения",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 11,
+              "room_name": "24",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 89,
+              "teacher_id": 68,
+              "uid": "lesson-e0fcb48e243e4ff9",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 1,
+          "text": "ЛПЗ МДК.02.01 Технология разработки программного обеспечения — 2 п/г, Ханьжина Ксения Владимировна, Кривоусова",
+          "time": "1 пара (08:30-09:45)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 942,
+              "is_block": false,
+              "is_lab": true,
+              "name": "ЛПЗ МДК.02.01 Технология разработки программного обеспечения",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 58,
+              "room_name": "67",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 89,
+              "teacher_id": 68,
+              "uid": "lesson-e0fcb48e243e4ff9",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 2,
+          "text": "ЛПЗ МДК.02.01 Технология разработки программного обеспечения — 2 п/г, Ханьжина Ксения Владимировна, Кривоусова",
+          "time": "2 пара (09:55-11:10)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 942,
+              "is_block": false,
+              "is_lab": true,
+              "name": "ЛПЗ МДК.02.01 Технология разработки программного обеспечения",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 58,
+              "room_name": "67",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 89,
+              "teacher_id": 68,
+              "uid": "lesson-e0fcb48e243e4ff9",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 3,
+          "text": "ЛПЗ МДК.02.01 Технология разработки программного обеспечения — 2 п/г, Ханьжина Ксения Владимировна, Кривоусова",
+          "time": "3 пара (11:30-12:45)"
+        },
+        {
+          "lessons": [],
+          "slot": 4,
+          "text": "-",
+          "time": "4 пара (12:55-14:10)"
         },
         {
           "lessons": [
@@ -131,8 +298,35 @@
               "name": "ЛПЗ МДК.02.01 Технология разработки программного обеспечения",
               "requested_room_id": null,
               "requested_room_name": null,
-              "room_id": 44,
-              "room_name": "405",
+              "room_id": 58,
+              "room_name": "67",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 88,
+              "teacher_id": 68,
+              "uid": "lesson-3597cced9b481e63",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 5,
+          "text": "ЛПЗ МДК.02.01 Технология разработки программного обеспечения — 1 п/г, Ханьжина Ксения Владимировна, Кривоусова",
+          "time": "5 пара (14:20-15:30)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 941,
+              "is_block": false,
+              "is_lab": true,
+              "name": "ЛПЗ МДК.02.01 Технология разработки программного обеспечения",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 58,
+              "room_name": "67",
               "room_substituted": false,
               "room_substitution_reason": null,
               "room_type": 0,
@@ -143,8 +337,8 @@
             }
           ],
           "slot": 6,
-          "text": "ЛПЗ МДК.02.01 Технология разработки программного обеспечения — 1 п/г, Ханьжина Ксения Владимировна, Лесная",
-          "time": "6 пара (17:05-18:25)"
+          "text": "ЛПЗ МДК.02.01 Технология разработки программного обеспечения — 1 п/г, Ханьжина Ксения Владимировна, Кривоусова",
+          "time": "6 пара (15:40-16:50)"
         },
         {
           "lessons": [
@@ -152,29 +346,29 @@
               "avoid_lunch_split": false,
               "consecutive_pairs": 1,
               "display_time": null,
-              "id": 944,
+              "id": 941,
               "is_block": false,
               "is_lab": true,
-              "name": "ЛПЗ МДК.02.02 Инструментальные средства разработки программного обеспечения",
+              "name": "ЛПЗ МДК.02.01 Технология разработки программного обеспечения",
               "requested_room_id": null,
               "requested_room_name": null,
-              "room_id": 30,
-              "room_name": "204",
+              "room_id": 58,
+              "room_name": "67",
               "room_substituted": false,
               "room_substitution_reason": null,
               "room_type": 0,
               "subgroup": 88,
-              "teacher_id": 64,
-              "uid": "lesson-af1b90af568620f3",
+              "teacher_id": 68,
+              "uid": "lesson-3597cced9b481e63",
               "week_parity": "all"
             }
           ],
           "slot": 7,
-          "text": "ЛПЗ МДК.02.02 Инструментальные средства разработки программного обеспечения — 1 п/г, Меренчуков Иван Александрович, Лесная",
-          "time": "7 пара (18:35-19:55)"
+          "text": "ЛПЗ МДК.02.01 Технология разработки программного обеспечения — 1 п/г, Ханьжина Ксения Владимировна, Кривоусова",
+          "time": "7 пара (17:00-18:10)"
         }
       ],
-      "weekday": "ПТ"
+      "weekday": "СБ"
     }
   ],
   "group_index": 44,

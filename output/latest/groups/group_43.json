@@ -11,25 +11,25 @@
               "avoid_lunch_split": false,
               "consecutive_pairs": 1,
               "display_time": null,
-              "id": 920,
+              "id": 932,
               "is_block": false,
-              "is_lab": false,
-              "name": "Безопасность жизнедеятельности",
+              "is_lab": true,
+              "name": "ЛПЗ МДК.01.04 Системное программирование",
               "requested_room_id": null,
               "requested_room_name": null,
-              "room_id": 18,
-              "room_name": "37",
+              "room_id": 49,
+              "room_name": "411",
               "room_substituted": false,
               "room_substitution_reason": null,
               "room_type": 0,
-              "subgroup": -1,
-              "teacher_id": 8,
-              "uid": "lesson-6ad1a0a3635dce5f",
+              "subgroup": 86,
+              "teacher_id": 67,
+              "uid": "lesson-f7f149c19f17606e",
               "week_parity": "all"
             }
           ],
           "slot": 1,
-          "text": "Безопасность жизнедеятельности — вся группа, Потапова Регина Александровна, Кривоусова",
+          "text": "ЛПЗ МДК.01.04 Системное программирование — 1 п/г, Гарбузов Андрей Евгеньевич, Лесная",
           "time": "1 пара (08:30-09:55)"
         },
         {
@@ -38,25 +38,25 @@
               "avoid_lunch_split": false,
               "consecutive_pairs": 1,
               "display_time": null,
-              "id": 920,
+              "id": 917,
               "is_block": false,
               "is_lab": false,
-              "name": "Безопасность жизнедеятельности",
+              "name": "Иностранный язык в профессиональной деятельности",
               "requested_room_id": null,
               "requested_room_name": null,
-              "room_id": 18,
-              "room_name": "37",
+              "room_id": 47,
+              "room_name": "417",
               "room_substituted": false,
               "room_substitution_reason": null,
               "room_type": 0,
-              "subgroup": -1,
-              "teacher_id": 8,
-              "uid": "lesson-6ad1a0a3635dce5f",
+              "subgroup": 86,
+              "teacher_id": 28,
+              "uid": "lesson-e52bcb9acebae45a",
               "week_parity": "all"
             }
           ],
           "slot": 2,
-          "text": "Безопасность жизнедеятельности — вся группа, Потапова Регина Александровна, Кривоусова",
+          "text": "Иностранный язык в профессиональной деятельности — 1 п/г, Новосёлова Светлана Юрьевна, Лесная",
           "time": "2 пара (10:05-11:30)"
         },
         {
@@ -65,10 +65,191 @@
               "avoid_lunch_split": false,
               "consecutive_pairs": 1,
               "display_time": null,
-              "id": 921,
+              "id": 932,
+              "is_block": false,
+              "is_lab": true,
+              "name": "ЛПЗ МДК.01.04 Системное программирование",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 49,
+              "room_name": "411",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 86,
+              "teacher_id": 67,
+              "uid": "lesson-f7f149c19f17606e",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 3,
+          "text": "ЛПЗ МДК.01.04 Системное программирование — 1 п/г, Гарбузов Андрей Евгеньевич, Лесная",
+          "time": "3 пара (12:25-13:50)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 917,
               "is_block": false,
               "is_lab": false,
-              "name": "Стандартизация, серификация и техническое документоведение",
+              "name": "Иностранный язык в профессиональной деятельности",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 47,
+              "room_name": "417",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 86,
+              "teacher_id": 28,
+              "uid": "lesson-e52bcb9acebae45a",
+              "week_parity": "all"
+            },
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 930,
+              "is_block": false,
+              "is_lab": true,
+              "name": "ЛПЗ МДК 01.03 Разработка мобильных приложений",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 30,
+              "room_name": "204",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 87,
+              "teacher_id": 64,
+              "uid": "lesson-756a318f33c52d3e",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 4,
+          "text": "Иностранный язык в профессиональной деятельности — 1 п/г, Новосёлова Светлана Юрьевна, Лесная | ЛПЗ МДК 01.03 Разработка мобильных приложений — 2 п/г, Меренчуков Иван Александрович, Лесная",
+          "time": "4 пара (14:00-15:25)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 933,
+              "is_block": false,
+              "is_lab": true,
+              "name": "ЛПЗ МДК.01.04 Системное программирование",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 49,
+              "room_name": "411",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 87,
+              "teacher_id": 67,
+              "uid": "lesson-cdc5ae6616e06546",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 5,
+          "text": "ЛПЗ МДК.01.04 Системное программирование — 2 п/г, Гарбузов Андрей Евгеньевич, Лесная",
+          "time": "5 пара (15:35-16:55)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 933,
+              "is_block": false,
+              "is_lab": true,
+              "name": "ЛПЗ МДК.01.04 Системное программирование",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 49,
+              "room_name": "411",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 87,
+              "teacher_id": 67,
+              "uid": "lesson-cdc5ae6616e06546",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 6,
+          "text": "ЛПЗ МДК.01.04 Системное программирование — 2 п/г, Гарбузов Андрей Евгеньевич, Лесная",
+          "time": "6 пара (17:05-18:25)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 933,
+              "is_block": false,
+              "is_lab": true,
+              "name": "ЛПЗ МДК.01.04 Системное программирование",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 49,
+              "room_name": "411",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 87,
+              "teacher_id": 67,
+              "uid": "lesson-cdc5ae6616e06546",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 7,
+          "text": "ЛПЗ МДК.01.04 Системное программирование — 2 п/г, Гарбузов Андрей Евгеньевич, Лесная",
+          "time": "7 пара (18:35-19:55)"
+        }
+      ],
+      "weekday": "ПТ"
+    },
+    {
+      "date": "03.10.2026",
+      "date_iso": "2026-10-03",
+      "day_index": 1,
+      "slots": [
+        {
+          "lessons": [],
+          "slot": 1,
+          "text": "-",
+          "time": "1 пара (08:30-09:45)"
+        },
+        {
+          "lessons": [],
+          "slot": 2,
+          "text": "-",
+          "time": "2 пара (09:55-11:10)"
+        },
+        {
+          "lessons": [],
+          "slot": 3,
+          "text": "-",
+          "time": "3 пара (11:30-12:45)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 936,
+              "is_block": false,
+              "is_lab": true,
+              "name": "ЛПЗ ВМДК 05.01 Управление и автоматизация баз данных",
               "requested_room_id": null,
               "requested_room_name": null,
               "room_id": 58,
@@ -76,15 +257,15 @@
               "room_substituted": false,
               "room_substitution_reason": null,
               "room_type": 0,
-              "subgroup": -1,
-              "teacher_id": 41,
-              "uid": "lesson-88aa456bf817da5b",
+              "subgroup": 87,
+              "teacher_id": 68,
+              "uid": "lesson-36e395feb8e4cb2a",
               "week_parity": "all"
             }
           ],
-          "slot": 3,
-          "text": "Стандартизация, серификация и техническое документоведение — вся группа, Садриева Татьяна Геннадьевна, Кривоусова",
-          "time": "3 пара (12:25-13:50)"
+          "slot": 4,
+          "text": "ЛПЗ ВМДК 05.01 Управление и автоматизация баз данных — 2 п/г, Ханьжина Ксения Владимировна, Кривоусова",
+          "time": "4 пара (12:55-14:10)"
         },
         {
           "lessons": [
@@ -109,30 +290,66 @@
               "week_parity": "all"
             }
           ],
-          "slot": 4,
-          "text": "Основы филосовии — вся группа, Кузнецова Елизавета Олеговна, Кривоусова",
-          "time": "4 пара (14:00-15:25)"
-        },
-        {
-          "lessons": [],
           "slot": 5,
-          "text": "-",
-          "time": "5 пара (15:35-16:55)"
+          "text": "Основы филосовии — вся группа, Кузнецова Елизавета Олеговна, Кривоусова",
+          "time": "5 пара (14:20-15:30)"
         },
         {
-          "lessons": [],
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 916,
+              "is_block": false,
+              "is_lab": false,
+              "name": "Основы филосовии",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 51,
+              "room_name": "13",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": -1,
+              "teacher_id": 54,
+              "uid": "lesson-002d066cc762490a",
+              "week_parity": "all"
+            }
+          ],
           "slot": 6,
-          "text": "-",
-          "time": "6 пара (17:05-18:25)"
+          "text": "Основы филосовии — вся группа, Кузнецова Елизавета Олеговна, Кривоусова",
+          "time": "6 пара (15:40-16:50)"
         },
         {
-          "lessons": [],
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 916,
+              "is_block": false,
+              "is_lab": false,
+              "name": "Основы филосовии",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 51,
+              "room_name": "13",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": -1,
+              "teacher_id": 54,
+              "uid": "lesson-002d066cc762490a",
+              "week_parity": "all"
+            }
+          ],
           "slot": 7,
-          "text": "-",
-          "time": "7 пара (18:35-19:55)"
+          "text": "Основы филосовии — вся группа, Кузнецова Елизавета Олеговна, Кривоусова",
+          "time": "7 пара (17:00-18:10)"
         }
       ],
-      "weekday": "ПТ"
+      "weekday": "СБ"
     }
   ],
   "group_index": 43,

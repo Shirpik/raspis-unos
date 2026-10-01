@@ -65,6 +65,33 @@
               "avoid_lunch_split": false,
               "consecutive_pairs": 1,
               "display_time": null,
+              "id": 656,
+              "is_block": false,
+              "is_lab": false,
+              "name": "МДК.03.01 Формы и методы контроля качества металлов и сварных конструкций",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 31,
+              "room_name": "205",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": -1,
+              "teacher_id": 56,
+              "uid": "lesson-0dce7a6f1718c0fb",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 3,
+          "text": "МДК.03.01 Формы и методы контроля качества металлов и сварных конструкций — вся группа, Ахметов Артур Фанависович, Лесная",
+          "time": "3 пара (12:25-13:50)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
               "id": 647,
               "is_block": false,
               "is_lab": false,
@@ -82,9 +109,107 @@
               "week_parity": "all"
             }
           ],
-          "slot": 3,
+          "slot": 4,
           "text": "Эффективное поведение на рынке труда — вся группа, Кропотова Анастасия Андреевна, Лесная",
-          "time": "3 пара (12:25-13:50)"
+          "time": "4 пара (14:00-15:25)"
+        },
+        {
+          "lessons": [],
+          "slot": 5,
+          "text": "-",
+          "time": "5 пара (15:35-16:55)"
+        },
+        {
+          "lessons": [],
+          "slot": 6,
+          "text": "-",
+          "time": "6 пара (17:05-18:25)"
+        },
+        {
+          "lessons": [],
+          "slot": 7,
+          "text": "-",
+          "time": "7 пара (18:35-19:55)"
+        }
+      ],
+      "weekday": "ПТ"
+    },
+    {
+      "date": "03.10.2026",
+      "date_iso": "2026-10-03",
+      "day_index": 1,
+      "slots": [
+        {
+          "lessons": [],
+          "slot": 1,
+          "text": "-",
+          "time": "1 пара (08:30-09:45)"
+        },
+        {
+          "lessons": [],
+          "slot": 2,
+          "text": "-",
+          "time": "2 пара (09:55-11:10)"
+        },
+        {
+          "lessons": [],
+          "slot": 3,
+          "text": "-",
+          "time": "3 пара (11:30-12:45)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 659,
+              "is_block": false,
+              "is_lab": false,
+              "name": "МДК.04.01 Основы организации и планирования производственных работ на сварочном участке",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 44,
+              "room_name": "405",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": -1,
+              "teacher_id": 58,
+              "uid": "lesson-33484e4faf15ffac",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 4,
+          "text": "МДК.04.01 Основы организации и планирования производственных работ на сварочном участке — вся группа, Билалова Рауиза Галлинуровна, Лесная",
+          "time": "4 пара (12:55-14:10)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 647,
+              "is_block": false,
+              "is_lab": false,
+              "name": "Эффективное поведение на рынке труда",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 33,
+              "room_name": "209",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": -1,
+              "teacher_id": 15,
+              "uid": "lesson-06c3510fb2ac8faf",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 5,
+          "text": "Эффективное поведение на рынке труда — вся группа, Кропотова Анастасия Андреевна, Лесная",
+          "time": "5 пара (14:20-15:30)"
         },
         {
           "lessons": [
@@ -109,30 +234,39 @@
               "week_parity": "all"
             }
           ],
-          "slot": 4,
-          "text": "Иностранный язык — вся группа, Ермолина Ирина Павловна, Лесная",
-          "time": "4 пара (14:00-15:25)"
-        },
-        {
-          "lessons": [],
-          "slot": 5,
-          "text": "-",
-          "time": "5 пара (15:35-16:55)"
-        },
-        {
-          "lessons": [],
           "slot": 6,
-          "text": "-",
-          "time": "6 пара (17:05-18:25)"
+          "text": "Иностранный язык — вся группа, Ермолина Ирина Павловна, Лесная",
+          "time": "6 пара (15:40-16:50)"
         },
         {
-          "lessons": [],
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 647,
+              "is_block": false,
+              "is_lab": false,
+              "name": "Эффективное поведение на рынке труда",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 33,
+              "room_name": "209",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": -1,
+              "teacher_id": 15,
+              "uid": "lesson-06c3510fb2ac8faf",
+              "week_parity": "all"
+            }
+          ],
           "slot": 7,
-          "text": "-",
-          "time": "7 пара (18:35-19:55)"
+          "text": "Эффективное поведение на рынке труда — вся группа, Кропотова Анастасия Андреевна, Лесная",
+          "time": "7 пара (17:00-18:10)"
         }
       ],
-      "weekday": "ПТ"
+      "weekday": "СБ"
     }
   ],
   "group_index": 29,

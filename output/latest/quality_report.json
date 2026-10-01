@@ -7,21 +7,21 @@
   "max_student_pairs_per_day": 4,
   "mismatched_lessons": 0,
   "missing_hours": 0,
-  "planned_hours": 504,
+  "planned_hours": 970,
   "remaining_hours": 0,
   "rooms": {
-    "assigned": 228,
+    "assigned": 446,
     "conflicts": [],
-    "events": 228,
+    "events": 446,
     "inventory_configured": true,
     "substituted": 0,
     "substitutions": [],
     "unassigned": 0
   },
-  "scheduled_hours": 504,
-  "student_days_at_daily_limit": 74,
+  "scheduled_hours": 970,
+  "student_days_at_daily_limit": 132,
   "student_windows": 0,
-  "teacher_windows": 3,
+  "teacher_windows": 0,
   "up_day_rule_violations": 0,
   "up_teacher_lock_violations": 0
 }

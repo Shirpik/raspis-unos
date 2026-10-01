@@ -11,25 +11,25 @@
               "avoid_lunch_split": false,
               "consecutive_pairs": 1,
               "display_time": null,
-              "id": 139,
+              "id": 143,
               "is_block": false,
               "is_lab": false,
-              "name": "иностранный язык",
+              "name": "информатика",
               "requested_room_id": null,
               "requested_room_name": null,
-              "room_id": 47,
-              "room_name": "417",
+              "room_id": 56,
+              "room_name": "64",
               "room_substituted": false,
               "room_substitution_reason": null,
               "room_type": 0,
               "subgroup": 15,
-              "teacher_id": 28,
-              "uid": "lesson-591f15c252ebdc51",
+              "teacher_id": 29,
+              "uid": "lesson-af1c5d9b09ac98fe",
               "week_parity": "all"
             }
           ],
           "slot": 1,
-          "text": "иностранный язык — 2 п/г, Новосёлова Светлана Юрьевна, Лесная",
+          "text": "информатика — 2 п/г, Галузин Антон Илюсович, Кривоусова",
           "time": "1 пара (08:30-09:55)"
         },
         {
@@ -44,8 +44,8 @@
               "name": "информатика",
               "requested_room_id": null,
               "requested_room_name": null,
-              "room_id": 45,
-              "room_name": "407",
+              "room_id": 56,
+              "room_name": "64",
               "room_substituted": false,
               "room_substitution_reason": null,
               "room_type": 0,
@@ -56,31 +56,11 @@
             }
           ],
           "slot": 2,
-          "text": "информатика — 2 п/г, Галузин Антон Илюсович, Лесная",
+          "text": "информатика — 2 п/г, Галузин Антон Илюсович, Кривоусова",
           "time": "2 пара (10:05-11:30)"
         },
         {
           "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 138,
-              "is_block": false,
-              "is_lab": false,
-              "name": "иностранный язык",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 47,
-              "room_name": "417",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": 14,
-              "teacher_id": 28,
-              "uid": "lesson-c022340732a5dae2",
-              "week_parity": "all"
-            },
             {
               "avoid_lunch_split": false,
               "consecutive_pairs": 1,
@@ -91,8 +71,8 @@
               "name": "информатика",
               "requested_room_id": null,
               "requested_room_name": null,
-              "room_id": 45,
-              "room_name": "407",
+              "room_id": 56,
+              "room_name": "64",
               "room_substituted": false,
               "room_substitution_reason": null,
               "room_type": 0,
@@ -103,7 +83,7 @@
             }
           ],
           "slot": 3,
-          "text": "иностранный язык — 1 п/г, Новосёлова Светлана Юрьевна, Лесная | информатика — 2 п/г, Галузин Антон Илюсович, Лесная",
+          "text": "информатика — 2 п/г, Галузин Антон Илюсович, Кривоусова",
           "time": "3 пара (12:25-13:50)"
         },
         {
@@ -112,25 +92,25 @@
               "avoid_lunch_split": false,
               "consecutive_pairs": 1,
               "display_time": null,
-              "id": 141,
+              "id": 142,
               "is_block": false,
               "is_lab": false,
               "name": "информатика",
               "requested_room_id": null,
               "requested_room_name": null,
-              "room_id": 45,
-              "room_name": "407",
+              "room_id": 56,
+              "room_name": "64",
               "room_substituted": false,
               "room_substitution_reason": null,
               "room_type": 0,
-              "subgroup": -1,
+              "subgroup": 14,
               "teacher_id": 29,
-              "uid": "lesson-4c1d2a3e5948cab9",
+              "uid": "lesson-ac353eb47d2319fd",
               "week_parity": "all"
             }
           ],
           "slot": 4,
-          "text": "информатика — вся группа, Галузин Антон Илюсович, Лесная",
+          "text": "информатика — 1 п/г, Галузин Антон Илюсович, Кривоусова",
           "time": "4 пара (14:00-15:25)"
         },
         {
@@ -145,8 +125,8 @@
               "name": "информатика",
               "requested_room_id": null,
               "requested_room_name": null,
-              "room_id": 45,
-              "room_name": "407",
+              "room_id": 56,
+              "room_name": "64",
               "room_substituted": false,
               "room_substitution_reason": null,
               "room_type": 0,
@@ -157,7 +137,7 @@
             }
           ],
           "slot": 5,
-          "text": "информатика — 1 п/г, Галузин Антон Илюсович, Лесная",
+          "text": "информатика — 1 п/г, Галузин Антон Илюсович, Кривоусова",
           "time": "5 пара (15:35-16:55)"
         },
         {
@@ -172,8 +152,8 @@
               "name": "информатика",
               "requested_room_id": null,
               "requested_room_name": null,
-              "room_id": 45,
-              "room_name": "407",
+              "room_id": 5,
+              "room_name": "16",
               "room_substituted": false,
               "room_substitution_reason": null,
               "room_type": 0,
@@ -184,7 +164,7 @@
             }
           ],
           "slot": 6,
-          "text": "информатика — 1 п/г, Галузин Антон Илюсович, Лесная",
+          "text": "информатика — 1 п/г, Галузин Антон Илюсович, Кривоусова",
           "time": "6 пара (17:05-18:25)"
         },
         {
@@ -195,6 +175,140 @@
         }
       ],
       "weekday": "ПТ"
+    },
+    {
+      "date": "03.10.2026",
+      "date_iso": "2026-10-03",
+      "day_index": 1,
+      "slots": [
+        {
+          "lessons": [],
+          "slot": 1,
+          "text": "-",
+          "time": "1 пара (08:30-09:45)"
+        },
+        {
+          "lessons": [],
+          "slot": 2,
+          "text": "-",
+          "time": "2 пара (09:55-11:10)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 134,
+              "is_block": false,
+              "is_lab": false,
+              "name": "литература",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 16,
+              "room_name": "33",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": -1,
+              "teacher_id": 22,
+              "uid": "lesson-a14437859e260703",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 3,
+          "text": "литература — вся группа, Кибардина Татьяна Леонидовна, Кривоусова",
+          "time": "3 пара (11:30-12:45)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 134,
+              "is_block": false,
+              "is_lab": false,
+              "name": "литература",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 16,
+              "room_name": "33",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": -1,
+              "teacher_id": 22,
+              "uid": "lesson-a14437859e260703",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 4,
+          "text": "литература — вся группа, Кибардина Татьяна Леонидовна, Кривоусова",
+          "time": "4 пара (12:55-14:10)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 147,
+              "is_block": false,
+              "is_lab": false,
+              "name": "химия",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 4,
+              "room_name": "15",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": -1,
+              "teacher_id": 20,
+              "uid": "lesson-f609b1a991da1c0e",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 5,
+          "text": "химия — вся группа, Соболева Любовь Анатольевна, Кривоусова",
+          "time": "5 пара (14:20-15:30)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 147,
+              "is_block": false,
+              "is_lab": false,
+              "name": "химия",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 4,
+              "room_name": "15",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": -1,
+              "teacher_id": 20,
+              "uid": "lesson-f609b1a991da1c0e",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 6,
+          "text": "химия — вся группа, Соболева Любовь Анатольевна, Кривоусова",
+          "time": "6 пара (15:40-16:50)"
+        },
+        {
+          "lessons": [],
+          "slot": 7,
+          "text": "-",
+          "time": "7 пара (17:00-18:10)"
+        }
+      ],
+      "weekday": "СБ"
     }
   ],
   "group_index": 7,

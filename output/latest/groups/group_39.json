@@ -11,25 +11,25 @@
               "avoid_lunch_split": false,
               "consecutive_pairs": 1,
               "display_time": null,
-              "id": 1004,
+              "id": 1005,
               "is_block": false,
               "is_lab": false,
-              "name": "КП МДК.05.01 Планирование, организация и контроль деятельности подчиненного персонала",
+              "name": "ВМДК.05.02 Основы экономики и организации правового обеспечения в профессиональной деятельности",
               "requested_room_id": null,
               "requested_room_name": null,
-              "room_id": 24,
-              "room_name": "48",
+              "room_id": 25,
+              "room_name": "50",
               "room_substituted": false,
               "room_substitution_reason": null,
               "room_type": 0,
               "subgroup": -1,
-              "teacher_id": 46,
-              "uid": "lesson-b925ca9eaaaf0404",
+              "teacher_id": 45,
+              "uid": "lesson-5ab9a1b46367641d",
               "week_parity": "all"
             }
           ],
           "slot": 1,
-          "text": "КП МДК.05.01 Планирование, организация и контроль деятельности подчиненного персонала — вся группа, Черепанова Татьяна Михайловна, Кривоусова",
+          "text": "ВМДК.05.02 Основы экономики и организации правового обеспечения в профессиональной деятельности — вся группа, Елагина Ольга Александровна, Кривоусова",
           "time": "1 пара (08:30-09:55)"
         },
         {
@@ -38,25 +38,25 @@
               "avoid_lunch_split": false,
               "consecutive_pairs": 1,
               "display_time": null,
-              "id": 1004,
+              "id": 853,
               "is_block": false,
               "is_lab": false,
-              "name": "КП МДК.05.01 Планирование, организация и контроль деятельности подчиненного персонала",
+              "name": "МДК.05.01 Планирование, организация и контроль деятельности подчиненного персонала",
               "requested_room_id": null,
               "requested_room_name": null,
-              "room_id": 24,
-              "room_name": "48",
+              "room_id": 2,
+              "room_name": "2",
               "room_substituted": false,
               "room_substitution_reason": null,
               "room_type": 0,
               "subgroup": -1,
               "teacher_id": 46,
-              "uid": "lesson-b925ca9eaaaf0404",
+              "uid": "lesson-0c89ff4cd32c55ba",
               "week_parity": "all"
             }
           ],
           "slot": 2,
-          "text": "КП МДК.05.01 Планирование, организация и контроль деятельности подчиненного персонала — вся группа, Черепанова Татьяна Михайловна, Кривоусова",
+          "text": "МДК.05.01 Планирование, организация и контроль деятельности подчиненного персонала — вся группа, Черепанова Татьяна Михайловна, Кривоусова",
           "time": "2 пара (10:05-11:30)"
         },
         {
@@ -65,25 +65,25 @@
               "avoid_lunch_split": false,
               "consecutive_pairs": 1,
               "display_time": null,
-              "id": 1004,
+              "id": 1005,
               "is_block": false,
               "is_lab": false,
-              "name": "КП МДК.05.01 Планирование, организация и контроль деятельности подчиненного персонала",
+              "name": "ВМДК.05.02 Основы экономики и организации правового обеспечения в профессиональной деятельности",
               "requested_room_id": null,
               "requested_room_name": null,
-              "room_id": 24,
-              "room_name": "48",
+              "room_id": 25,
+              "room_name": "50",
               "room_substituted": false,
               "room_substitution_reason": null,
               "room_type": 0,
               "subgroup": -1,
-              "teacher_id": 46,
-              "uid": "lesson-b925ca9eaaaf0404",
+              "teacher_id": 45,
+              "uid": "lesson-5ab9a1b46367641d",
               "week_parity": "all"
             }
           ],
           "slot": 3,
-          "text": "КП МДК.05.01 Планирование, организация и контроль деятельности подчиненного персонала — вся группа, Черепанова Татьяна Михайловна, Кривоусова",
+          "text": "ВМДК.05.02 Основы экономики и организации правового обеспечения в профессиональной деятельности — вся группа, Елагина Ольга Александровна, Кривоусова",
           "time": "3 пара (12:25-13:50)"
         },
         {
@@ -133,6 +133,161 @@
         }
       ],
       "weekday": "ПТ"
+    },
+    {
+      "date": "03.10.2026",
+      "date_iso": "2026-10-03",
+      "day_index": 1,
+      "slots": [
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 851,
+              "is_block": false,
+              "is_lab": true,
+              "name": "ЛПЗ МДК.04.01 Контроль, наладка, подналадка и техническое обслуживание сборочного оборудования",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 48,
+              "room_name": "413",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 79,
+              "teacher_id": 62,
+              "uid": "lesson-913daf4069a419eb",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 1,
+          "text": "ЛПЗ МДК.04.01 Контроль, наладка, подналадка и техническое обслуживание сборочного оборудования — 2 п/г, Вальдиянов Ян Мансурович, Лесная",
+          "time": "1 пара (08:30-09:45)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 851,
+              "is_block": false,
+              "is_lab": true,
+              "name": "ЛПЗ МДК.04.01 Контроль, наладка, подналадка и техническое обслуживание сборочного оборудования",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 48,
+              "room_name": "413",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 79,
+              "teacher_id": 62,
+              "uid": "lesson-913daf4069a419eb",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 2,
+          "text": "ЛПЗ МДК.04.01 Контроль, наладка, подналадка и техническое обслуживание сборочного оборудования — 2 п/г, Вальдиянов Ян Мансурович, Лесная",
+          "time": "2 пара (09:55-11:10)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 851,
+              "is_block": false,
+              "is_lab": true,
+              "name": "ЛПЗ МДК.04.01 Контроль, наладка, подналадка и техническое обслуживание сборочного оборудования",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 48,
+              "room_name": "413",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 79,
+              "teacher_id": 62,
+              "uid": "lesson-913daf4069a419eb",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 3,
+          "text": "ЛПЗ МДК.04.01 Контроль, наладка, подналадка и техническое обслуживание сборочного оборудования — 2 п/г, Вальдиянов Ян Мансурович, Лесная",
+          "time": "3 пара (11:30-12:45)"
+        },
+        {
+          "lessons": [],
+          "slot": 4,
+          "text": "-",
+          "time": "4 пара (12:55-14:10)"
+        },
+        {
+          "lessons": [],
+          "slot": 5,
+          "text": "-",
+          "time": "5 пара (14:20-15:30)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 850,
+              "is_block": false,
+              "is_lab": true,
+              "name": "ЛПЗ МДК.04.01 Контроль, наладка, подналадка и техническое обслуживание сборочного оборудования",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 48,
+              "room_name": "413",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 78,
+              "teacher_id": 62,
+              "uid": "lesson-29e7c589a24f4c74",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 6,
+          "text": "ЛПЗ МДК.04.01 Контроль, наладка, подналадка и техническое обслуживание сборочного оборудования — 1 п/г, Вальдиянов Ян Мансурович, Лесная",
+          "time": "6 пара (15:40-16:50)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 850,
+              "is_block": false,
+              "is_lab": true,
+              "name": "ЛПЗ МДК.04.01 Контроль, наладка, подналадка и техническое обслуживание сборочного оборудования",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 48,
+              "room_name": "413",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 78,
+              "teacher_id": 62,
+              "uid": "lesson-29e7c589a24f4c74",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 7,
+          "text": "ЛПЗ МДК.04.01 Контроль, наладка, подналадка и техническое обслуживание сборочного оборудования — 1 п/г, Вальдиянов Ян Мансурович, Лесная",
+          "time": "7 пара (17:00-18:10)"
+        }
+      ],
+      "weekday": "СБ"
     }
   ],
   "group_index": 39,

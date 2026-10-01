@@ -11,10 +11,10 @@
               "avoid_lunch_split": false,
               "consecutive_pairs": 1,
               "display_time": null,
-              "id": 275,
+              "id": 259,
               "is_block": false,
               "is_lab": true,
-              "name": "ЛПЗ ВМДК.05.01 Технология сборки, регулировки и ремонта контрольно-измерительных приборов и систем автоматики",
+              "name": "ЛПЗ МДК.02.01 Осуществление выбора оборудования, элементной базы, монтажа и наладка модели элементов систем автоматизации на основе разработанной технической документации",
               "requested_room_id": null,
               "requested_room_name": null,
               "room_id": 61,
@@ -24,12 +24,12 @@
               "room_type": 0,
               "subgroup": 27,
               "teacher_id": 40,
-              "uid": "lesson-69c443565552a0d8",
+              "uid": "lesson-c330229560e488fe",
               "week_parity": "all"
             }
           ],
           "slot": 1,
-          "text": "ЛПЗ ВМДК.05.01 Технология сборки, регулировки и ремонта контрольно-измерительных приборов и систем автоматики — 2 п/г, Сивилькаев Вадим Михайлович, Кривоусова",
+          "text": "ЛПЗ МДК.02.01 Осуществление выбора оборудования, элементной базы, монтажа и наладка модели элементов систем автоматизации на основе разработанной технической документации — 2 п/г, Сивилькаев Вадим Михайлович, Кривоусова",
           "time": "1 пара (08:30-09:55)"
         },
         {
@@ -65,7 +65,7 @@
               "avoid_lunch_split": false,
               "consecutive_pairs": 1,
               "display_time": null,
-              "id": 275,
+              "id": 274,
               "is_block": false,
               "is_lab": true,
               "name": "ЛПЗ ВМДК.05.01 Технология сборки, регулировки и ремонта контрольно-измерительных приборов и систем автоматики",
@@ -76,96 +76,15 @@
               "room_substituted": false,
               "room_substitution_reason": null,
               "room_type": 0,
-              "subgroup": 27,
+              "subgroup": 26,
               "teacher_id": 40,
-              "uid": "lesson-69c443565552a0d8",
+              "uid": "lesson-2fde5ee5a5cbe72b",
               "week_parity": "all"
             }
           ],
           "slot": 3,
-          "text": "ЛПЗ ВМДК.05.01 Технология сборки, регулировки и ремонта контрольно-измерительных приборов и систем автоматики — 2 п/г, Сивилькаев Вадим Михайлович, Кривоусова",
+          "text": "ЛПЗ ВМДК.05.01 Технология сборки, регулировки и ремонта контрольно-измерительных приборов и систем автоматики — 1 п/г, Сивилькаев Вадим Михайлович, Кривоусова",
           "time": "3 пара (12:25-13:50)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 263,
-              "is_block": false,
-              "is_lab": false,
-              "name": "КП МДК.02.02 Испытания модели элементов систем автоматизации в реальных условиях и их оптимизация",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 61,
-              "room_name": "70",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": -1,
-              "teacher_id": 40,
-              "uid": "lesson-5b64e3d5cef1a164",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 4,
-          "text": "КП МДК.02.02 Испытания модели элементов систем автоматизации в реальных условиях и их оптимизация — вся группа, Сивилькаев Вадим Михайлович, Кривоусова",
-          "time": "4 пара (14:00-15:25)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 274,
-              "is_block": false,
-              "is_lab": true,
-              "name": "ЛПЗ ВМДК.05.01 Технология сборки, регулировки и ремонта контрольно-измерительных приборов и систем автоматики",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 61,
-              "room_name": "70",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": 26,
-              "teacher_id": 40,
-              "uid": "lesson-2fde5ee5a5cbe72b",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 5,
-          "text": "ЛПЗ ВМДК.05.01 Технология сборки, регулировки и ремонта контрольно-измерительных приборов и систем автоматики — 1 п/г, Сивилькаев Вадим Михайлович, Кривоусова",
-          "time": "5 пара (15:35-16:55)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 274,
-              "is_block": false,
-              "is_lab": true,
-              "name": "ЛПЗ ВМДК.05.01 Технология сборки, регулировки и ремонта контрольно-измерительных приборов и систем автоматики",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 61,
-              "room_name": "70",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": 26,
-              "teacher_id": 40,
-              "uid": "lesson-2fde5ee5a5cbe72b",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 6,
-          "text": "ЛПЗ ВМДК.05.01 Технология сборки, регулировки и ремонта контрольно-измерительных приборов и систем автоматики — 1 п/г, Сивилькаев Вадим Михайлович, Кривоусова",
-          "time": "6 пара (17:05-18:25)"
         },
         {
           "lessons": [
@@ -190,12 +109,227 @@
               "week_parity": "all"
             }
           ],
-          "slot": 7,
+          "slot": 4,
           "text": "ЛПЗ МДК.02.01 Осуществление выбора оборудования, элементной базы, монтажа и наладка модели элементов систем автоматизации на основе разработанной технической документации — 1 п/г, Сивилькаев Вадим Михайлович, Кривоусова",
+          "time": "4 пара (14:00-15:25)"
+        },
+        {
+          "lessons": [],
+          "slot": 5,
+          "text": "-",
+          "time": "5 пара (15:35-16:55)"
+        },
+        {
+          "lessons": [],
+          "slot": 6,
+          "text": "-",
+          "time": "6 пара (17:05-18:25)"
+        },
+        {
+          "lessons": [],
+          "slot": 7,
+          "text": "-",
           "time": "7 пара (18:35-19:55)"
         }
       ],
       "weekday": "ПТ"
+    },
+    {
+      "date": "03.10.2026",
+      "date_iso": "2026-10-03",
+      "day_index": 1,
+      "slots": [
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 277,
+              "is_block": false,
+              "is_lab": true,
+              "name": "ЛПЗ ВМДК.05.02 Технология выполнения слесарных и слесарно-сборочных работ",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 55,
+              "room_name": "63",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 26,
+              "teacher_id": 42,
+              "uid": "lesson-635a92e49b36896e",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 1,
+          "text": "ЛПЗ ВМДК.05.02 Технология выполнения слесарных и слесарно-сборочных работ — 1 п/г, Осипчук Александр Александрович, Кривоусова",
+          "time": "1 пара (08:30-09:45)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 277,
+              "is_block": false,
+              "is_lab": true,
+              "name": "ЛПЗ ВМДК.05.02 Технология выполнения слесарных и слесарно-сборочных работ",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 55,
+              "room_name": "63",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 26,
+              "teacher_id": 42,
+              "uid": "lesson-635a92e49b36896e",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 2,
+          "text": "ЛПЗ ВМДК.05.02 Технология выполнения слесарных и слесарно-сборочных работ — 1 п/г, Осипчук Александр Александрович, Кривоусова",
+          "time": "2 пара (09:55-11:10)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 269,
+              "is_block": false,
+              "is_lab": true,
+              "name": "ЛПЗ МДК.03.02 Разработка, организация и контроль качества работ по монтажу, наладке и техническому обслуживанию систем и средств автоматизации",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 55,
+              "room_name": "63",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 26,
+              "teacher_id": 42,
+              "uid": "lesson-8f89dcd1211cbbe9",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 3,
+          "text": "ЛПЗ МДК.03.02 Разработка, организация и контроль качества работ по монтажу, наладке и техническому обслуживанию систем и средств автоматизации — 1 п/г, Осипчук Александр Александрович, Кривоусова",
+          "time": "3 пара (11:30-12:45)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 277,
+              "is_block": false,
+              "is_lab": true,
+              "name": "ЛПЗ ВМДК.05.02 Технология выполнения слесарных и слесарно-сборочных работ",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 55,
+              "room_name": "63",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 26,
+              "teacher_id": 42,
+              "uid": "lesson-635a92e49b36896e",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 4,
+          "text": "ЛПЗ ВМДК.05.02 Технология выполнения слесарных и слесарно-сборочных работ — 1 п/г, Осипчук Александр Александрович, Кривоусова",
+          "time": "4 пара (12:55-14:10)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 278,
+              "is_block": false,
+              "is_lab": true,
+              "name": "ЛПЗ ВМДК.05.02 Технология выполнения слесарных и слесарно-сборочных работ",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 55,
+              "room_name": "63",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 27,
+              "teacher_id": 42,
+              "uid": "lesson-a74028f841981ee9",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 5,
+          "text": "ЛПЗ ВМДК.05.02 Технология выполнения слесарных и слесарно-сборочных работ — 2 п/г, Осипчук Александр Александрович, Кривоусова",
+          "time": "5 пара (14:20-15:30)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 262,
+              "is_block": false,
+              "is_lab": true,
+              "name": "ЛПЗ МДК.02.02 Испытания модели элементов систем автоматизации в реальных условиях и их оптимизация",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 55,
+              "room_name": "63",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 27,
+              "teacher_id": 42,
+              "uid": "lesson-468553c9bd0f6c04",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 6,
+          "text": "ЛПЗ МДК.02.02 Испытания модели элементов систем автоматизации в реальных условиях и их оптимизация — 2 п/г, Осипчук Александр Александрович, Кривоусова",
+          "time": "6 пара (15:40-16:50)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 278,
+              "is_block": false,
+              "is_lab": true,
+              "name": "ЛПЗ ВМДК.05.02 Технология выполнения слесарных и слесарно-сборочных работ",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 55,
+              "room_name": "63",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 27,
+              "teacher_id": 42,
+              "uid": "lesson-a74028f841981ee9",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 7,
+          "text": "ЛПЗ ВМДК.05.02 Технология выполнения слесарных и слесарно-сборочных работ — 2 п/г, Осипчук Александр Александрович, Кривоусова",
+          "time": "7 пара (17:00-18:10)"
+        }
+      ],
+      "weekday": "СБ"
     }
   ],
   "group_index": 13,

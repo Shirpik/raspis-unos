@@ -6,15 +6,68 @@
       "day_index": 0,
       "slots": [
         {
+          "lessons": [],
+          "slot": 1,
+          "text": "-",
+          "time": "1 пара (08:30-09:55)"
+        },
+        {
           "lessons": [
             {
               "avoid_lunch_split": false,
               "consecutive_pairs": 1,
-              "display_time": "08:30-12:30",
-              "id": 479,
-              "is_block": true,
+              "display_time": null,
+              "id": 466,
+              "is_block": false,
               "is_lab": false,
-              "name": "УП.02",
+              "name": "Иностранный язык в профессиональной деятельности",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 7,
+              "room_name": "18/2",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 44,
+              "teacher_id": 30,
+              "uid": "lesson-b5e85a603a5a8388",
+              "week_parity": "all"
+            },
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 474,
+              "is_block": false,
+              "is_lab": false,
+              "name": "Информационные технологии в профессиональной деятельности/Адаптивные информационные и коммуникационные технологии",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 58,
+              "room_name": "67",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 45,
+              "teacher_id": 31,
+              "uid": "lesson-d4c729a03fba7038",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 2,
+          "text": "Иностранный язык в профессиональной деятельности — 1 п/г, Синельникова Елена Владимировна, Кривоусова | Информационные технологии в профессиональной деятельности/Адаптивные информационные и коммуникационные технологии — 2 п/г, Ланитина Елена Сергеевна, Кривоусова",
+          "time": "2 пара (10:05-11:30)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 476,
+              "is_block": false,
+              "is_lab": false,
+              "name": "МДК.02.01 Организация процессов приготовления, подготовки к реализации горячих блюд, кулинарных изделий, закусок сложного ассортимента",
               "requested_room_id": null,
               "requested_room_name": null,
               "room_id": 28,
@@ -22,26 +75,14 @@
               "room_substituted": false,
               "room_substitution_reason": null,
               "room_type": 0,
-              "subgroup": 44,
+              "subgroup": -1,
               "teacher_id": 53,
-              "uid": "lesson-339efc194a9e5758",
+              "uid": "lesson-321a1f446e287ccf",
               "week_parity": "all"
             }
           ],
-          "slot": 1,
-          "text": "УП.02 (УП утро 08:30-12:30) — 1 п/г, Конева Кристина Сергеевна, Кривоусова",
-          "time": "1 пара (08:30-09:55)"
-        },
-        {
-          "lessons": [],
-          "slot": 2,
-          "text": "-",
-          "time": "2 пара (10:05-11:30)"
-        },
-        {
-          "lessons": [],
           "slot": 3,
-          "text": "-",
+          "text": "МДК.02.01 Организация процессов приготовления, подготовки к реализации горячих блюд, кулинарных изделий, закусок сложного ассортимента — вся группа, Конева Кристина Сергеевна, Кривоусова",
           "time": "3 пара (12:25-13:50)"
         },
         {
@@ -50,80 +91,26 @@
               "avoid_lunch_split": false,
               "consecutive_pairs": 1,
               "display_time": null,
-              "id": 474,
+              "id": 481,
               "is_block": false,
               "is_lab": false,
-              "name": "Информационные технологии в профессиональной деятельности/Адаптивные информационные и коммуникационные технологии",
+              "name": "ВМДК.07.02 Термическая обработка теста и отделка поверхности хлебобулочных изделий",
               "requested_room_id": null,
               "requested_room_name": null,
-              "room_id": 20,
-              "room_name": "41",
+              "room_id": 51,
+              "room_name": "13",
               "room_substituted": false,
               "room_substitution_reason": null,
               "room_type": 0,
-              "subgroup": 45,
-              "teacher_id": 31,
-              "uid": "lesson-d4c729a03fba7038",
+              "subgroup": -1,
+              "teacher_id": 54,
+              "uid": "lesson-0a2fa9f7cbd50b6b",
               "week_parity": "all"
             }
           ],
           "slot": 4,
-          "text": "Информационные технологии в профессиональной деятельности/Адаптивные информационные и коммуникационные технологии — 2 п/г, Ланитина Елена Сергеевна, Кривоусова",
+          "text": "ВМДК.07.02 Термическая обработка теста и отделка поверхности хлебобулочных изделий — вся группа, Кузнецова Елизавета Олеговна, Кривоусова",
           "time": "4 пара (14:00-15:25)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": true,
-              "consecutive_pairs": 2,
-              "display_time": null,
-              "id": 483,
-              "is_block": false,
-              "is_lab": true,
-              "name": "ЛПЗ ВМДК.07.02 Термическая обработка теста и отделка поверхности хлебобулочных изделий",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 51,
-              "room_name": "13",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": 45,
-              "teacher_id": 54,
-              "uid": "lesson-5c2579fec9c01f95",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 5,
-          "text": "ЛПЗ ВМДК.07.02 Термическая обработка теста и отделка поверхности хлебобулочных изделий — 2 п/г, Кузнецова Елизавета Олеговна, Кривоусова",
-          "time": "5 пара (15:35-16:55)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": true,
-              "consecutive_pairs": 2,
-              "display_time": null,
-              "id": 483,
-              "is_block": false,
-              "is_lab": true,
-              "name": "ЛПЗ ВМДК.07.02 Термическая обработка теста и отделка поверхности хлебобулочных изделий",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 51,
-              "room_name": "13",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": 45,
-              "teacher_id": 54,
-              "uid": "lesson-5c2579fec9c01f95",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 6,
-          "text": "ЛПЗ ВМДК.07.02 Термическая обработка теста и отделка поверхности хлебобулочных изделий — 2 п/г, Кузнецова Елизавета Олеговна, Кривоусова",
-          "time": "6 пара (17:05-18:25)"
         },
         {
           "lessons": [
@@ -131,25 +118,37 @@
               "avoid_lunch_split": false,
               "consecutive_pairs": 1,
               "display_time": null,
-              "id": 474,
+              "id": 481,
               "is_block": false,
               "is_lab": false,
-              "name": "Информационные технологии в профессиональной деятельности/Адаптивные информационные и коммуникационные технологии",
+              "name": "ВМДК.07.02 Термическая обработка теста и отделка поверхности хлебобулочных изделий",
               "requested_room_id": null,
               "requested_room_name": null,
-              "room_id": 20,
-              "room_name": "41",
+              "room_id": 51,
+              "room_name": "13",
               "room_substituted": false,
               "room_substitution_reason": null,
               "room_type": 0,
-              "subgroup": 45,
-              "teacher_id": 31,
-              "uid": "lesson-d4c729a03fba7038",
+              "subgroup": -1,
+              "teacher_id": 54,
+              "uid": "lesson-0a2fa9f7cbd50b6b",
               "week_parity": "all"
             }
           ],
+          "slot": 5,
+          "text": "ВМДК.07.02 Термическая обработка теста и отделка поверхности хлебобулочных изделий — вся группа, Кузнецова Елизавета Олеговна, Кривоусова",
+          "time": "5 пара (15:35-16:55)"
+        },
+        {
+          "lessons": [],
+          "slot": 6,
+          "text": "-",
+          "time": "6 пара (17:05-18:25)"
+        },
+        {
+          "lessons": [],
           "slot": 7,
-          "text": "Информационные технологии в профессиональной деятельности/Адаптивные информационные и коммуникационные технологии — 2 п/г, Ланитина Елена Сергеевна, Кривоусова",
+          "text": "-",
           "time": "7 пара (18:35-19:55)"
         }
       ],
@@ -161,57 +160,15 @@
       "day_index": 1,
       "slots": [
         {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 465,
-              "is_block": false,
-              "is_lab": false,
-              "name": "История",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 37,
-              "room_name": "317",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": -1,
-              "teacher_id": 14,
-              "uid": "lesson-b12e3aeada3f3002",
-              "week_parity": "all"
-            }
-          ],
+          "lessons": [],
           "slot": 1,
-          "text": "История — вся группа, Лучинин Александр Васильевич, Лесная",
+          "text": "-",
           "time": "1 пара (08:30-09:45)"
         },
         {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 465,
-              "is_block": false,
-              "is_lab": false,
-              "name": "История",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 37,
-              "room_name": "317",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": -1,
-              "teacher_id": 14,
-              "uid": "lesson-b12e3aeada3f3002",
-              "week_parity": "all"
-            }
-          ],
+          "lessons": [],
           "slot": 2,
-          "text": "История — вся группа, Лучинин Александр Васильевич, Лесная",
+          "text": "-",
           "time": "2 пара (09:55-11:10)"
         },
         {
@@ -220,43 +177,106 @@
               "avoid_lunch_split": false,
               "consecutive_pairs": 1,
               "display_time": null,
-              "id": 465,
+              "id": 471,
               "is_block": false,
               "is_lab": false,
-              "name": "История",
+              "name": "Основы экономики, менеджмента и маркетинга",
               "requested_room_id": null,
               "requested_room_name": null,
-              "room_id": 37,
-              "room_name": "317",
+              "room_id": 25,
+              "room_name": "50",
               "room_substituted": false,
               "room_substitution_reason": null,
               "room_type": 0,
               "subgroup": -1,
-              "teacher_id": 14,
-              "uid": "lesson-b12e3aeada3f3002",
+              "teacher_id": 45,
+              "uid": "lesson-4d3b56bca4cff8dc",
               "week_parity": "all"
             }
           ],
           "slot": 3,
-          "text": "История — вся группа, Лучинин Александр Васильевич, Лесная",
+          "text": "Основы экономики, менеджмента и маркетинга — вся группа, Елагина Ольга Александровна, Кривоусова",
           "time": "3 пара (11:30-12:45)"
         },
         {
-          "lessons": [],
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 481,
+              "is_block": false,
+              "is_lab": false,
+              "name": "ВМДК.07.02 Термическая обработка теста и отделка поверхности хлебобулочных изделий",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 51,
+              "room_name": "13",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": -1,
+              "teacher_id": 54,
+              "uid": "lesson-0a2fa9f7cbd50b6b",
+              "week_parity": "all"
+            }
+          ],
           "slot": 4,
-          "text": "-",
+          "text": "ВМДК.07.02 Термическая обработка теста и отделка поверхности хлебобулочных изделий — вся группа, Кузнецова Елизавета Олеговна, Кривоусова",
           "time": "4 пара (12:55-14:10)"
         },
         {
-          "lessons": [],
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 476,
+              "is_block": false,
+              "is_lab": false,
+              "name": "МДК.02.01 Организация процессов приготовления, подготовки к реализации горячих блюд, кулинарных изделий, закусок сложного ассортимента",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 28,
+              "room_name": "61",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": -1,
+              "teacher_id": 53,
+              "uid": "lesson-321a1f446e287ccf",
+              "week_parity": "all"
+            }
+          ],
           "slot": 5,
-          "text": "-",
+          "text": "МДК.02.01 Организация процессов приготовления, подготовки к реализации горячих блюд, кулинарных изделий, закусок сложного ассортимента — вся группа, Конева Кристина Сергеевна, Кривоусова",
           "time": "5 пара (14:20-15:30)"
         },
         {
-          "lessons": [],
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 476,
+              "is_block": false,
+              "is_lab": false,
+              "name": "МДК.02.01 Организация процессов приготовления, подготовки к реализации горячих блюд, кулинарных изделий, закусок сложного ассортимента",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 28,
+              "room_name": "61",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": -1,
+              "teacher_id": 53,
+              "uid": "lesson-321a1f446e287ccf",
+              "week_parity": "all"
+            }
+          ],
           "slot": 6,
-          "text": "-",
+          "text": "МДК.02.01 Организация процессов приготовления, подготовки к реализации горячих блюд, кулинарных изделий, закусок сложного ассортимента — вся группа, Конева Кристина Сергеевна, Кривоусова",
           "time": "6 пара (15:40-16:50)"
         },
         {
