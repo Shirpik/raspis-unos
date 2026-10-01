@@ -1,8 +1,8 @@
 {
   "days": [
     {
-      "date": "29.09.2026",
-      "date_iso": "2026-09-29",
+      "date": "02.10.2026",
+      "date_iso": "2026-10-02",
       "day_index": 0,
       "slots": [
         {
@@ -26,266 +26,11 @@
               "teacher_id": 4,
               "uid": "lesson-c9cff819457a65c5",
               "week_parity": "all"
-            },
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 886,
-              "is_block": false,
-              "is_lab": true,
-              "name": "ЛПЗ Основы проектирования баз данных",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 46,
-              "room_name": "409",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": 82,
-              "teacher_id": 65,
-              "uid": "lesson-236e307c5ca866d1",
-              "week_parity": "all"
             }
           ],
           "slot": 1,
-          "text": "Иностранный язык в профессиональной деятельности — 2 п/г, Давыдова Валентина Алексеевна, Лесная | ЛПЗ Основы проектирования баз данных — 1 п/г, Михайлова Татьяна Алексеевна, Лесная",
-          "time": "1 пара (08:30-09:55)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 888,
-              "is_block": false,
-              "is_lab": false,
-              "name": "Компьютерные сети",
-              "requested_room_id": 49,
-              "requested_room_name": "411",
-              "room_id": 49,
-              "room_name": "411",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": -1,
-              "teacher_id": 66,
-              "uid": "lesson-aeeaac9198a083fa",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 2,
-          "text": "Компьютерные сети — вся группа, Колтышев Евгений Валерьевич, Лесная",
-          "time": "2 пара (10:05-11:30)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 887,
-              "is_block": false,
-              "is_lab": true,
-              "name": "ЛПЗ Основы проектирования баз данных",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 46,
-              "room_name": "409",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": 83,
-              "teacher_id": 65,
-              "uid": "lesson-b1b88c6d4d46b727",
-              "week_parity": "all"
-            },
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 893,
-              "is_block": false,
-              "is_lab": true,
-              "name": "ЛПЗ МДК.03.02 Обеспечение качеств функционирования компьютерных систем",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 44,
-              "room_name": "405",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": 82,
-              "teacher_id": 67,
-              "uid": "lesson-73cd1bc3638a35c8",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 3,
-          "text": "ЛПЗ Основы проектирования баз данных — 2 п/г, Михайлова Татьяна Алексеевна, Лесная | ЛПЗ МДК.03.02 Обеспечение качеств функционирования компьютерных систем — 1 п/г, Гарбузов Андрей Евгеньевич, Лесная",
-          "time": "3 пара (12:25-13:50)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 883,
-              "is_block": false,
-              "is_lab": false,
-              "name": "Теория вероятностей и математическая статистика",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 36,
-              "room_name": "315",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": -1,
-              "teacher_id": 17,
-              "uid": "lesson-bb8ce3c3a7887fb0",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 4,
-          "text": "Теория вероятностей и математическая статистика — вся группа, Нифонтова Ирина Геннадьевна, Лесная",
-          "time": "4 пара (14:00-15:25)"
-        },
-        {
-          "lessons": [],
-          "slot": 5,
-          "text": "-",
-          "time": "5 пара (15:35-16:55)"
-        },
-        {
-          "lessons": [],
-          "slot": 6,
-          "text": "-",
-          "time": "6 пара (17:05-18:25)"
-        },
-        {
-          "lessons": [],
-          "slot": 7,
-          "text": "-",
-          "time": "7 пара (18:35-19:55)"
-        }
-      ],
-      "weekday": "ВТ"
-    },
-    {
-      "date": "30.09.2026",
-      "date_iso": "2026-09-30",
-      "day_index": 0,
-      "slots": [
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 886,
-              "is_block": false,
-              "is_lab": true,
-              "name": "ЛПЗ Основы проектирования баз данных",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 46,
-              "room_name": "409",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": 82,
-              "teacher_id": 65,
-              "uid": "lesson-236e307c5ca866d1",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 1,
-          "text": "ЛПЗ Основы проектирования баз данных — 1 п/г, Михайлова Татьяна Алексеевна, Лесная",
-          "time": "1 пара (08:30-09:55)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 877,
-              "is_block": false,
-              "is_lab": false,
-              "name": "История",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 37,
-              "room_name": "317",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": -1,
-              "teacher_id": 14,
-              "uid": "lesson-72c5eaf8efb73518",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 2,
-          "text": "История — вся группа, Лучинин Александр Васильевич, Лесная",
-          "time": "2 пара (10:05-11:30)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 877,
-              "is_block": false,
-              "is_lab": false,
-              "name": "История",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 37,
-              "room_name": "317",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": -1,
-              "teacher_id": 14,
-              "uid": "lesson-72c5eaf8efb73518",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 3,
-          "text": "История — вся группа, Лучинин Александр Васильевич, Лесная",
-          "time": "3 пара (12:25-13:50)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 879,
-              "is_block": false,
-              "is_lab": false,
-              "name": "Иностранный язык в профессиональной деятельности",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 43,
-              "room_name": "401",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": 83,
-              "teacher_id": 4,
-              "uid": "lesson-c9cff819457a65c5",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 4,
           "text": "Иностранный язык в профессиональной деятельности — 2 п/г, Давыдова Валентина Алексеевна, Лесная",
-          "time": "4 пара (14:00-15:25)"
+          "time": "1 пара (08:30-09:55)"
         },
         {
           "lessons": [
@@ -310,82 +55,8 @@
               "week_parity": "all"
             }
           ],
-          "slot": 5,
-          "text": "ЛПЗ МДК.03.02 Обеспечение качеств функционирования компьютерных систем — 2 п/г, Гарбузов Андрей Евгеньевич, Лесная",
-          "time": "5 пара (15:35-16:55)"
-        },
-        {
-          "lessons": [],
-          "slot": 6,
-          "text": "-",
-          "time": "6 пара (17:05-18:25)"
-        },
-        {
-          "lessons": [],
-          "slot": 7,
-          "text": "-",
-          "time": "7 пара (18:35-19:55)"
-        }
-      ],
-      "weekday": "СР"
-    },
-    {
-      "date": "01.10.2026",
-      "date_iso": "2026-10-01",
-      "day_index": 0,
-      "slots": [
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 875,
-              "is_block": false,
-              "is_lab": false,
-              "name": "География",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 33,
-              "room_name": "209",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": -1,
-              "teacher_id": 15,
-              "uid": "lesson-841978d5ca61ce4e",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 1,
-          "text": "География — вся группа, Кропотова Анастасия Андреевна, Лесная",
-          "time": "1 пара (08:30-09:55)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 883,
-              "is_block": false,
-              "is_lab": false,
-              "name": "Теория вероятностей и математическая статистика",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 36,
-              "room_name": "315",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": -1,
-              "teacher_id": 17,
-              "uid": "lesson-bb8ce3c3a7887fb0",
-              "week_parity": "all"
-            }
-          ],
           "slot": 2,
-          "text": "Теория вероятностей и математическая статистика — вся группа, Нифонтова Ирина Геннадьевна, Лесная",
+          "text": "ЛПЗ МДК.03.02 Обеспечение качеств функционирования компьютерных систем — 2 п/г, Гарбузов Андрей Евгеньевич, Лесная",
           "time": "2 пара (10:05-11:30)"
         },
         {
@@ -421,30 +92,37 @@
               "avoid_lunch_split": false,
               "consecutive_pairs": 1,
               "display_time": null,
-              "id": 878,
+              "id": 875,
               "is_block": false,
               "is_lab": false,
-              "name": "Иностранный язык в профессиональной деятельности",
+              "name": "География",
               "requested_room_id": null,
               "requested_room_name": null,
-              "room_id": 43,
-              "room_name": "401",
+              "room_id": 33,
+              "room_name": "209",
               "room_substituted": false,
               "room_substitution_reason": null,
               "room_type": 0,
-              "subgroup": 82,
-              "teacher_id": 4,
-              "uid": "lesson-4368da9ef01001cc",
+              "subgroup": -1,
+              "teacher_id": 15,
+              "uid": "lesson-841978d5ca61ce4e",
               "week_parity": "all"
-            },
+            }
+          ],
+          "slot": 4,
+          "text": "География — вся группа, Кропотова Анастасия Андреевна, Лесная",
+          "time": "4 пара (14:00-15:25)"
+        },
+        {
+          "lessons": [
             {
               "avoid_lunch_split": false,
               "consecutive_pairs": 1,
               "display_time": null,
-              "id": 891,
+              "id": 893,
               "is_block": false,
               "is_lab": true,
-              "name": "ЛПЗ МДК.03.01 Внедрение и поддержка компьютерных систем",
+              "name": "ЛПЗ МДК.03.02 Обеспечение качеств функционирования компьютерных систем",
               "requested_room_id": null,
               "requested_room_name": null,
               "room_id": 49,
@@ -452,26 +130,41 @@
               "room_substituted": false,
               "room_substitution_reason": null,
               "room_type": 0,
-              "subgroup": 83,
+              "subgroup": 82,
               "teacher_id": 67,
-              "uid": "lesson-b82a49d13af03a97",
+              "uid": "lesson-73cd1bc3638a35c8",
               "week_parity": "all"
             }
           ],
-          "slot": 4,
-          "text": "Иностранный язык в профессиональной деятельности — 1 п/г, Давыдова Валентина Алексеевна, Лесная | ЛПЗ МДК.03.01 Внедрение и поддержка компьютерных систем — 2 п/г, Гарбузов Андрей Евгеньевич, Лесная",
-          "time": "4 пара (14:00-15:25)"
-        },
-        {
-          "lessons": [],
           "slot": 5,
-          "text": "-",
+          "text": "ЛПЗ МДК.03.02 Обеспечение качеств функционирования компьютерных систем — 1 п/г, Гарбузов Андрей Евгеньевич, Лесная",
           "time": "5 пара (15:35-16:55)"
         },
         {
-          "lessons": [],
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 893,
+              "is_block": false,
+              "is_lab": true,
+              "name": "ЛПЗ МДК.03.02 Обеспечение качеств функционирования компьютерных систем",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 49,
+              "room_name": "411",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 82,
+              "teacher_id": 67,
+              "uid": "lesson-73cd1bc3638a35c8",
+              "week_parity": "all"
+            }
+          ],
           "slot": 6,
-          "text": "-",
+          "text": "ЛПЗ МДК.03.02 Обеспечение качеств функционирования компьютерных систем — 1 п/г, Гарбузов Андрей Евгеньевич, Лесная",
           "time": "6 пара (17:05-18:25)"
         },
         {
@@ -481,7 +174,7 @@
           "time": "7 пара (18:35-19:55)"
         }
       ],
-      "weekday": "ЧТ"
+      "weekday": "ПТ"
     }
   ],
   "group_index": 41,

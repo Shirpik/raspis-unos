@@ -1,324 +1,35 @@
 {
   "days": [
     {
-      "date": "29.09.2026",
-      "date_iso": "2026-09-29",
+      "date": "02.10.2026",
+      "date_iso": "2026-10-02",
       "day_index": 0,
       "slots": [
         {
           "lessons": [
             {
               "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
+              "consecutive_pairs": 2,
               "display_time": null,
-              "id": 397,
+              "id": 990,
               "is_block": false,
-              "is_lab": false,
-              "name": "Психология общения",
+              "is_lab": true,
+              "name": "ЛПЗ МДК.03.01 Организация лабораторно-производственной деятельности",
               "requested_room_id": null,
               "requested_room_name": null,
-              "room_id": 15,
-              "room_name": "32",
+              "room_id": 59,
+              "room_name": "68",
               "room_substituted": false,
               "room_substitution_reason": null,
               "room_type": 0,
-              "subgroup": -1,
-              "teacher_id": 50,
-              "uid": "lesson-7a9bc95a9b0a6f74",
+              "subgroup": 38,
+              "teacher_id": 81,
+              "uid": "lesson-2011be2db8d0dda9",
               "week_parity": "all"
             }
           ],
           "slot": 1,
-          "text": "Психология общения — вся группа, Ярославцева Елена Анатольевна, Кривоусова",
-          "time": "1 пара (08:30-09:55)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 397,
-              "is_block": false,
-              "is_lab": false,
-              "name": "Психология общения",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 15,
-              "room_name": "32",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": -1,
-              "teacher_id": 50,
-              "uid": "lesson-7a9bc95a9b0a6f74",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 2,
-          "text": "Психология общения — вся группа, Ярославцева Елена Анатольевна, Кривоусова",
-          "time": "2 пара (10:05-11:30)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 404,
-              "is_block": false,
-              "is_lab": false,
-              "name": "МДК.02.01 Основы качественного и количественного анализа природных и промышленных материалов",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 52,
-              "room_name": "54",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": -1,
-              "teacher_id": 10,
-              "uid": "lesson-d2339e699d128554",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 3,
-          "text": "МДК.02.01 Основы качественного и количественного анализа природных и промышленных материалов — вся группа, Семенова Лилиана Ивановна, Кривоусова",
-          "time": "3 пара (12:25-13:50)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 407,
-              "is_block": false,
-              "is_lab": false,
-              "name": "КП МДК.02.01 Основы качественного и количественного анализа природных и промышленных материалов",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 52,
-              "room_name": "54",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": -1,
-              "teacher_id": 10,
-              "uid": "lesson-878e82f9ba807579",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 4,
-          "text": "КП МДК.02.01 Основы качественного и количественного анализа природных и промышленных материалов — вся группа, Семенова Лилиана Ивановна, Кривоусова",
-          "time": "4 пара (14:00-15:25)"
-        },
-        {
-          "lessons": [],
-          "slot": 5,
-          "text": "-",
-          "time": "5 пара (15:35-16:55)"
-        },
-        {
-          "lessons": [],
-          "slot": 6,
-          "text": "-",
-          "time": "6 пара (17:05-18:25)"
-        },
-        {
-          "lessons": [],
-          "slot": 7,
-          "text": "-",
-          "time": "7 пара (18:35-19:55)"
-        }
-      ],
-      "weekday": "ВТ"
-    },
-    {
-      "date": "30.09.2026",
-      "date_iso": "2026-09-30",
-      "day_index": 0,
-      "slots": [
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": true,
-              "consecutive_pairs": 2,
-              "display_time": null,
-              "id": 405,
-              "is_block": false,
-              "is_lab": true,
-              "name": "ЛПЗ МДК.02.01 Основы качественного и количественного анализа природных и промышленных материалов",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 52,
-              "room_name": "54",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": 38,
-              "teacher_id": 10,
-              "uid": "lesson-799b82203a849518",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 1,
-          "text": "ЛПЗ МДК.02.01 Основы качественного и количественного анализа природных и промышленных материалов — 1 п/г, Семенова Лилиана Ивановна, Кривоусова",
-          "time": "1 пара (08:30-09:55)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": true,
-              "consecutive_pairs": 2,
-              "display_time": null,
-              "id": 405,
-              "is_block": false,
-              "is_lab": true,
-              "name": "ЛПЗ МДК.02.01 Основы качественного и количественного анализа природных и промышленных материалов",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 52,
-              "room_name": "54",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": 38,
-              "teacher_id": 10,
-              "uid": "lesson-799b82203a849518",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 2,
-          "text": "ЛПЗ МДК.02.01 Основы качественного и количественного анализа природных и промышленных материалов — 1 п/г, Семенова Лилиана Ивановна, Кривоусова",
-          "time": "2 пара (10:05-11:30)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": true,
-              "consecutive_pairs": 2,
-              "display_time": null,
-              "id": 400,
-              "is_block": false,
-              "is_lab": true,
-              "name": "ЛПЗ МДК.01.01 Основы аналитической химии и физико-химических методов анализа",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 52,
-              "room_name": "54",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": 38,
-              "teacher_id": 10,
-              "uid": "lesson-6c6e4b7e069ed681",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 3,
-          "text": "ЛПЗ МДК.01.01 Основы аналитической химии и физико-химических методов анализа — 1 п/г, Семенова Лилиана Ивановна, Кривоусова",
-          "time": "3 пара (12:25-13:50)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": true,
-              "consecutive_pairs": 2,
-              "display_time": null,
-              "id": 400,
-              "is_block": false,
-              "is_lab": true,
-              "name": "ЛПЗ МДК.01.01 Основы аналитической химии и физико-химических методов анализа",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 52,
-              "room_name": "54",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": 38,
-              "teacher_id": 10,
-              "uid": "lesson-6c6e4b7e069ed681",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 4,
-          "text": "ЛПЗ МДК.01.01 Основы аналитической химии и физико-химических методов анализа — 1 п/г, Семенова Лилиана Ивановна, Кривоусова",
-          "time": "4 пара (14:00-15:25)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": true,
-              "consecutive_pairs": 2,
-              "display_time": null,
-              "id": 406,
-              "is_block": false,
-              "is_lab": true,
-              "name": "ЛПЗ МДК.02.01 Основы качественного и количественного анализа природных и промышленных материалов",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 52,
-              "room_name": "54",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": 39,
-              "teacher_id": 10,
-              "uid": "lesson-26962e13b65bedf5",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 5,
-          "text": "ЛПЗ МДК.02.01 Основы качественного и количественного анализа природных и промышленных материалов — 2 п/г, Семенова Лилиана Ивановна, Кривоусова",
-          "time": "5 пара (15:35-16:55)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": true,
-              "consecutive_pairs": 2,
-              "display_time": null,
-              "id": 406,
-              "is_block": false,
-              "is_lab": true,
-              "name": "ЛПЗ МДК.02.01 Основы качественного и количественного анализа природных и промышленных материалов",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 52,
-              "room_name": "54",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": 39,
-              "teacher_id": 10,
-              "uid": "lesson-26962e13b65bedf5",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 6,
-          "text": "ЛПЗ МДК.02.01 Основы качественного и количественного анализа природных и промышленных материалов — 2 п/г, Семенова Лилиана Ивановна, Кривоусова",
-          "time": "6 пара (17:05-18:25)"
-        },
-        {
-          "lessons": [],
-          "slot": 7,
-          "text": "-",
-          "time": "7 пара (18:35-19:55)"
-        }
-      ],
-      "weekday": "СР"
-    },
-    {
-      "date": "01.10.2026",
-      "date_iso": "2026-10-01",
-      "day_index": 0,
-      "slots": [
-        {
-          "lessons": [],
-          "slot": 1,
-          "text": "-",
+          "text": "ЛПЗ МДК.03.01 Организация лабораторно-производственной деятельности — 1 п/г, Рахматулина Наталья Владимировна, Кривоусова",
           "time": "1 пара (08:30-09:55)"
         },
         {
@@ -333,8 +44,8 @@
               "name": "ЛПЗ МДК.03.01 Организация лабораторно-производственной деятельности",
               "requested_room_id": null,
               "requested_room_name": null,
-              "room_id": 20,
-              "room_name": "41",
+              "room_id": 59,
+              "room_name": "68",
               "room_substituted": false,
               "room_substitution_reason": null,
               "room_type": 0,
@@ -347,60 +58,6 @@
           "slot": 2,
           "text": "ЛПЗ МДК.03.01 Организация лабораторно-производственной деятельности — 1 п/г, Рахматулина Наталья Владимировна, Кривоусова",
           "time": "2 пара (10:05-11:30)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 2,
-              "display_time": null,
-              "id": 990,
-              "is_block": false,
-              "is_lab": true,
-              "name": "ЛПЗ МДК.03.01 Организация лабораторно-производственной деятельности",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 20,
-              "room_name": "41",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": 38,
-              "teacher_id": 81,
-              "uid": "lesson-2011be2db8d0dda9",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 3,
-          "text": "ЛПЗ МДК.03.01 Организация лабораторно-производственной деятельности — 1 п/г, Рахматулина Наталья Владимировна, Кривоусова",
-          "time": "3 пара (12:25-13:50)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 397,
-              "is_block": false,
-              "is_lab": false,
-              "name": "Психология общения",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 15,
-              "room_name": "32",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": -1,
-              "teacher_id": 50,
-              "uid": "lesson-7a9bc95a9b0a6f74",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 4,
-          "text": "Психология общения — вся группа, Ярославцева Елена Анатольевна, Кривоусова",
-          "time": "4 пара (14:00-15:25)"
         },
         {
           "lessons": [
@@ -414,8 +71,8 @@
               "name": "КП МДК.03.01 Организация лабораторно-производственной деятельности",
               "requested_room_id": null,
               "requested_room_name": null,
-              "room_id": 18,
-              "room_name": "37",
+              "room_id": 4,
+              "room_name": "15",
               "room_substituted": false,
               "room_substitution_reason": null,
               "room_type": 0,
@@ -425,8 +82,62 @@
               "week_parity": "all"
             }
           ],
-          "slot": 5,
+          "slot": 3,
           "text": "КП МДК.03.01 Организация лабораторно-производственной деятельности — вся группа, Рахматулина Наталья Владимировна, Кривоусова",
+          "time": "3 пара (12:25-13:50)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 397,
+              "is_block": false,
+              "is_lab": false,
+              "name": "Психология общения",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 15,
+              "room_name": "32",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": -1,
+              "teacher_id": 50,
+              "uid": "lesson-7a9bc95a9b0a6f74",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 4,
+          "text": "Психология общения — вся группа, Ярославцева Елена Анатольевна, Кривоусова",
+          "time": "4 пара (14:00-15:25)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 2,
+              "display_time": null,
+              "id": 991,
+              "is_block": false,
+              "is_lab": true,
+              "name": "ЛПЗ МДК.03.01 Организация лабораторно-производственной деятельности",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 58,
+              "room_name": "67",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 39,
+              "teacher_id": 81,
+              "uid": "lesson-d2d806a1632f71ad",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 5,
+          "text": "ЛПЗ МДК.03.01 Организация лабораторно-производственной деятельности — 2 п/г, Рахматулина Наталья Владимировна, Кривоусова",
           "time": "5 пара (15:35-16:55)"
         },
         {
@@ -441,8 +152,8 @@
               "name": "ЛПЗ МДК.03.01 Организация лабораторно-производственной деятельности",
               "requested_room_id": null,
               "requested_room_name": null,
-              "room_id": 18,
-              "room_name": "37",
+              "room_id": 58,
+              "room_name": "67",
               "room_substituted": false,
               "room_substitution_reason": null,
               "room_type": 0,
@@ -457,34 +168,13 @@
           "time": "6 пара (17:05-18:25)"
         },
         {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 2,
-              "display_time": null,
-              "id": 991,
-              "is_block": false,
-              "is_lab": true,
-              "name": "ЛПЗ МДК.03.01 Организация лабораторно-производственной деятельности",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 18,
-              "room_name": "37",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": 39,
-              "teacher_id": 81,
-              "uid": "lesson-d2d806a1632f71ad",
-              "week_parity": "all"
-            }
-          ],
+          "lessons": [],
           "slot": 7,
-          "text": "ЛПЗ МДК.03.01 Организация лабораторно-производственной деятельности — 2 п/г, Рахматулина Наталья Владимировна, Кривоусова",
+          "text": "-",
           "time": "7 пара (18:35-19:55)"
         }
       ],
-      "weekday": "ЧТ"
+      "weekday": "ПТ"
     }
   ],
   "group_index": 19,

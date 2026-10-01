@@ -1,8 +1,8 @@
 {
   "days": [
     {
-      "date": "29.09.2026",
-      "date_iso": "2026-09-29",
+      "date": "02.10.2026",
+      "date_iso": "2026-10-02",
       "day_index": 0,
       "slots": [
         {
@@ -11,25 +11,25 @@
               "avoid_lunch_split": true,
               "consecutive_pairs": 2,
               "display_time": null,
-              "id": 509,
+              "id": 514,
               "is_block": false,
               "is_lab": true,
-              "name": "ЛПЗ МДК.05.02 Процессы приготовления, подготовки к реализации хлебобулочных, мучных кондитерских изделий сложного ассортимента",
+              "name": "ЛПЗ МДК.06.01 Оперативное управление текущей деятельностью подчиненного персонала",
               "requested_room_id": null,
               "requested_room_name": null,
-              "room_id": 28,
-              "room_name": "61",
+              "room_id": 25,
+              "room_name": "50",
               "room_substituted": false,
               "room_substitution_reason": null,
               "room_type": 0,
               "subgroup": 46,
-              "teacher_id": 53,
-              "uid": "lesson-fe12e4f958cc0191",
+              "teacher_id": 45,
+              "uid": "lesson-050b877f97ccdb15",
               "week_parity": "all"
             }
           ],
           "slot": 1,
-          "text": "ЛПЗ МДК.05.02 Процессы приготовления, подготовки к реализации хлебобулочных, мучных кондитерских изделий сложного ассортимента — 1 п/г, Конева Кристина Сергеевна, Кривоусова",
+          "text": "ЛПЗ МДК.06.01 Оперативное управление текущей деятельностью подчиненного персонала — 1 п/г, Елагина Ольга Александровна, Кривоусова",
           "time": "1 пара (08:30-09:55)"
         },
         {
@@ -38,445 +38,26 @@
               "avoid_lunch_split": true,
               "consecutive_pairs": 2,
               "display_time": null,
-              "id": 509,
+              "id": 514,
               "is_block": false,
               "is_lab": true,
-              "name": "ЛПЗ МДК.05.02 Процессы приготовления, подготовки к реализации хлебобулочных, мучных кондитерских изделий сложного ассортимента",
+              "name": "ЛПЗ МДК.06.01 Оперативное управление текущей деятельностью подчиненного персонала",
               "requested_room_id": null,
               "requested_room_name": null,
-              "room_id": 28,
-              "room_name": "61",
+              "room_id": 25,
+              "room_name": "50",
               "room_substituted": false,
               "room_substitution_reason": null,
               "room_type": 0,
               "subgroup": 46,
-              "teacher_id": 53,
-              "uid": "lesson-fe12e4f958cc0191",
+              "teacher_id": 45,
+              "uid": "lesson-050b877f97ccdb15",
               "week_parity": "all"
             }
           ],
           "slot": 2,
-          "text": "ЛПЗ МДК.05.02 Процессы приготовления, подготовки к реализации хлебобулочных, мучных кондитерских изделий сложного ассортимента — 1 п/г, Конева Кристина Сергеевна, Кривоусова",
+          "text": "ЛПЗ МДК.06.01 Оперативное управление текущей деятельностью подчиненного персонала — 1 п/г, Елагина Ольга Александровна, Кривоусова",
           "time": "2 пара (10:05-11:30)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": true,
-              "consecutive_pairs": 2,
-              "display_time": null,
-              "id": 500,
-              "is_block": false,
-              "is_lab": true,
-              "name": "ЛПЗ МДК.03.02 Процессы приготовления, подготовки к реализации холодных блюд, кулинарных изделий, закусок сложного ассортимента",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 28,
-              "room_name": "61",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": 47,
-              "teacher_id": 53,
-              "uid": "lesson-0fe9fb0c5378e05c",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 3,
-          "text": "ЛПЗ МДК.03.02 Процессы приготовления, подготовки к реализации холодных блюд, кулинарных изделий, закусок сложного ассортимента — 2 п/г, Конева Кристина Сергеевна, Кривоусова",
-          "time": "3 пара (12:25-13:50)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": true,
-              "consecutive_pairs": 2,
-              "display_time": null,
-              "id": 500,
-              "is_block": false,
-              "is_lab": true,
-              "name": "ЛПЗ МДК.03.02 Процессы приготовления, подготовки к реализации холодных блюд, кулинарных изделий, закусок сложного ассортимента",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 28,
-              "room_name": "61",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": 47,
-              "teacher_id": 53,
-              "uid": "lesson-0fe9fb0c5378e05c",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 4,
-          "text": "ЛПЗ МДК.03.02 Процессы приготовления, подготовки к реализации холодных блюд, кулинарных изделий, закусок сложного ассортимента — 2 п/г, Конева Кристина Сергеевна, Кривоусова",
-          "time": "4 пара (14:00-15:25)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": true,
-              "consecutive_pairs": 2,
-              "display_time": null,
-              "id": 515,
-              "is_block": false,
-              "is_lab": true,
-              "name": "ЛПЗ МДК.06.01 Оперативное управление текущей деятельностью подчиненного персонала",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 25,
-              "room_name": "50",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": 47,
-              "teacher_id": 45,
-              "uid": "lesson-0d3afb2b42bb972e",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 5,
-          "text": "ЛПЗ МДК.06.01 Оперативное управление текущей деятельностью подчиненного персонала — 2 п/г, Елагина Ольга Александровна, Кривоусова",
-          "time": "5 пара (15:35-16:55)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": true,
-              "consecutive_pairs": 2,
-              "display_time": null,
-              "id": 515,
-              "is_block": false,
-              "is_lab": true,
-              "name": "ЛПЗ МДК.06.01 Оперативное управление текущей деятельностью подчиненного персонала",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 25,
-              "room_name": "50",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": 47,
-              "teacher_id": 45,
-              "uid": "lesson-0d3afb2b42bb972e",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 6,
-          "text": "ЛПЗ МДК.06.01 Оперативное управление текущей деятельностью подчиненного персонала — 2 п/г, Елагина Ольга Александровна, Кривоусова",
-          "time": "6 пара (17:05-18:25)"
-        },
-        {
-          "lessons": [],
-          "slot": 7,
-          "text": "-",
-          "time": "7 пара (18:35-19:55)"
-        }
-      ],
-      "weekday": "ВТ"
-    },
-    {
-      "date": "30.09.2026",
-      "date_iso": "2026-09-30",
-      "day_index": 0,
-      "slots": [
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": true,
-              "consecutive_pairs": 2,
-              "display_time": null,
-              "id": 509,
-              "is_block": false,
-              "is_lab": true,
-              "name": "ЛПЗ МДК.05.02 Процессы приготовления, подготовки к реализации хлебобулочных, мучных кондитерских изделий сложного ассортимента",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 28,
-              "room_name": "61",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": 46,
-              "teacher_id": 53,
-              "uid": "lesson-fe12e4f958cc0191",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 1,
-          "text": "ЛПЗ МДК.05.02 Процессы приготовления, подготовки к реализации хлебобулочных, мучных кондитерских изделий сложного ассортимента — 1 п/г, Конева Кристина Сергеевна, Кривоусова",
-          "time": "1 пара (08:30-09:55)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": true,
-              "consecutive_pairs": 2,
-              "display_time": null,
-              "id": 509,
-              "is_block": false,
-              "is_lab": true,
-              "name": "ЛПЗ МДК.05.02 Процессы приготовления, подготовки к реализации хлебобулочных, мучных кондитерских изделий сложного ассортимента",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 28,
-              "room_name": "61",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": 46,
-              "teacher_id": 53,
-              "uid": "lesson-fe12e4f958cc0191",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 2,
-          "text": "ЛПЗ МДК.05.02 Процессы приготовления, подготовки к реализации хлебобулочных, мучных кондитерских изделий сложного ассортимента — 1 п/г, Конева Кристина Сергеевна, Кривоусова",
-          "time": "2 пара (10:05-11:30)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": true,
-              "consecutive_pairs": 2,
-              "display_time": null,
-              "id": 504,
-              "is_block": false,
-              "is_lab": true,
-              "name": "ЛПЗ МДК.04.02 Процессы приготовления, подготовки к реализации холодных и горячих десертов, напитков сложного ассортимента",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 28,
-              "room_name": "61",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": 46,
-              "teacher_id": 53,
-              "uid": "lesson-a854066778c476b8",
-              "week_parity": "all"
-            },
-            {
-              "avoid_lunch_split": true,
-              "consecutive_pairs": 2,
-              "display_time": null,
-              "id": 515,
-              "is_block": false,
-              "is_lab": true,
-              "name": "ЛПЗ МДК.06.01 Оперативное управление текущей деятельностью подчиненного персонала",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 25,
-              "room_name": "50",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": 47,
-              "teacher_id": 45,
-              "uid": "lesson-0d3afb2b42bb972e",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 3,
-          "text": "ЛПЗ МДК.04.02 Процессы приготовления, подготовки к реализации холодных и горячих десертов, напитков сложного ассортимента — 1 п/г, Конева Кристина Сергеевна, Кривоусова | ЛПЗ МДК.06.01 Оперативное управление текущей деятельностью подчиненного персонала — 2 п/г, Елагина Ольга Александровна, Кривоусова",
-          "time": "3 пара (12:25-13:50)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": true,
-              "consecutive_pairs": 2,
-              "display_time": null,
-              "id": 504,
-              "is_block": false,
-              "is_lab": true,
-              "name": "ЛПЗ МДК.04.02 Процессы приготовления, подготовки к реализации холодных и горячих десертов, напитков сложного ассортимента",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 28,
-              "room_name": "61",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": 46,
-              "teacher_id": 53,
-              "uid": "lesson-a854066778c476b8",
-              "week_parity": "all"
-            },
-            {
-              "avoid_lunch_split": true,
-              "consecutive_pairs": 2,
-              "display_time": null,
-              "id": 515,
-              "is_block": false,
-              "is_lab": true,
-              "name": "ЛПЗ МДК.06.01 Оперативное управление текущей деятельностью подчиненного персонала",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 25,
-              "room_name": "50",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": 47,
-              "teacher_id": 45,
-              "uid": "lesson-0d3afb2b42bb972e",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 4,
-          "text": "ЛПЗ МДК.04.02 Процессы приготовления, подготовки к реализации холодных и горячих десертов, напитков сложного ассортимента — 1 п/г, Конева Кристина Сергеевна, Кривоусова | ЛПЗ МДК.06.01 Оперативное управление текущей деятельностью подчиненного персонала — 2 п/г, Елагина Ольга Александровна, Кривоусова",
-          "time": "4 пара (14:00-15:25)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": true,
-              "consecutive_pairs": 2,
-              "display_time": null,
-              "id": 500,
-              "is_block": false,
-              "is_lab": true,
-              "name": "ЛПЗ МДК.03.02 Процессы приготовления, подготовки к реализации холодных блюд, кулинарных изделий, закусок сложного ассортимента",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 28,
-              "room_name": "61",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": 47,
-              "teacher_id": 53,
-              "uid": "lesson-0fe9fb0c5378e05c",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 5,
-          "text": "ЛПЗ МДК.03.02 Процессы приготовления, подготовки к реализации холодных блюд, кулинарных изделий, закусок сложного ассортимента — 2 п/г, Конева Кристина Сергеевна, Кривоусова",
-          "time": "5 пара (15:35-16:55)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": true,
-              "consecutive_pairs": 2,
-              "display_time": null,
-              "id": 500,
-              "is_block": false,
-              "is_lab": true,
-              "name": "ЛПЗ МДК.03.02 Процессы приготовления, подготовки к реализации холодных блюд, кулинарных изделий, закусок сложного ассортимента",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 28,
-              "room_name": "61",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": 47,
-              "teacher_id": 53,
-              "uid": "lesson-0fe9fb0c5378e05c",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 6,
-          "text": "ЛПЗ МДК.03.02 Процессы приготовления, подготовки к реализации холодных блюд, кулинарных изделий, закусок сложного ассортимента — 2 п/г, Конева Кристина Сергеевна, Кривоусова",
-          "time": "6 пара (17:05-18:25)"
-        },
-        {
-          "lessons": [],
-          "slot": 7,
-          "text": "-",
-          "time": "7 пара (18:35-19:55)"
-        }
-      ],
-      "weekday": "СР"
-    },
-    {
-      "date": "01.10.2026",
-      "date_iso": "2026-10-01",
-      "day_index": 0,
-      "slots": [
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": true,
-              "consecutive_pairs": 2,
-              "display_time": null,
-              "id": 509,
-              "is_block": false,
-              "is_lab": true,
-              "name": "ЛПЗ МДК.05.02 Процессы приготовления, подготовки к реализации хлебобулочных, мучных кондитерских изделий сложного ассортимента",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 28,
-              "room_name": "61",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": 46,
-              "teacher_id": 53,
-              "uid": "lesson-fe12e4f958cc0191",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 1,
-          "text": "ЛПЗ МДК.05.02 Процессы приготовления, подготовки к реализации хлебобулочных, мучных кондитерских изделий сложного ассортимента — 1 п/г, Конева Кристина Сергеевна, Кривоусова",
-          "time": "1 пара (08:30-09:55)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": true,
-              "consecutive_pairs": 2,
-              "display_time": null,
-              "id": 509,
-              "is_block": false,
-              "is_lab": true,
-              "name": "ЛПЗ МДК.05.02 Процессы приготовления, подготовки к реализации хлебобулочных, мучных кондитерских изделий сложного ассортимента",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 28,
-              "room_name": "61",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": 46,
-              "teacher_id": 53,
-              "uid": "lesson-fe12e4f958cc0191",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 2,
-          "text": "ЛПЗ МДК.05.02 Процессы приготовления, подготовки к реализации хлебобулочных, мучных кондитерских изделий сложного ассортимента — 1 п/г, Конева Кристина Сергеевна, Кривоусова",
-          "time": "2 пара (10:05-11:30)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 490,
-              "is_block": false,
-              "is_lab": false,
-              "name": "Психология общения",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 15,
-              "room_name": "32",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": -1,
-              "teacher_id": 50,
-              "uid": "lesson-c8ac25f967070917",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 3,
-          "text": "Психология общения — вся группа, Ярославцева Елена Анатольевна, Кривоусова",
-          "time": "3 пара (12:25-13:50)"
         },
         {
           "lessons": [
@@ -501,8 +82,35 @@
               "week_parity": "all"
             }
           ],
-          "slot": 4,
+          "slot": 3,
           "text": "КП МДК.06.01 Оперативное управление текущей деятельностью подчиненного персонала — вся группа, Елагина Ольга Александровна, Кривоусова",
+          "time": "3 пара (12:25-13:50)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 508,
+              "is_block": false,
+              "is_lab": false,
+              "name": "МДК.05.02 Процессы приготовления, подготовки к реализации хлебобулочных, мучных кондитерских изделий сложного ассортимента",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 28,
+              "room_name": "61",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": -1,
+              "teacher_id": 53,
+              "uid": "lesson-9a5652b561b2486b",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 4,
+          "text": "МДК.05.02 Процессы приготовления, подготовки к реализации хлебобулочных, мучных кондитерских изделий сложного ассортимента — вся группа, Конева Кристина Сергеевна, Кривоусова",
           "time": "4 пара (14:00-15:25)"
         },
         {
@@ -511,25 +119,25 @@
               "avoid_lunch_split": true,
               "consecutive_pairs": 2,
               "display_time": null,
-              "id": 515,
+              "id": 500,
               "is_block": false,
               "is_lab": true,
-              "name": "ЛПЗ МДК.06.01 Оперативное управление текущей деятельностью подчиненного персонала",
+              "name": "ЛПЗ МДК.03.02 Процессы приготовления, подготовки к реализации холодных блюд, кулинарных изделий, закусок сложного ассортимента",
               "requested_room_id": null,
               "requested_room_name": null,
-              "room_id": 25,
-              "room_name": "50",
+              "room_id": 28,
+              "room_name": "61",
               "room_substituted": false,
               "room_substitution_reason": null,
               "room_type": 0,
               "subgroup": 47,
-              "teacher_id": 45,
-              "uid": "lesson-0d3afb2b42bb972e",
+              "teacher_id": 53,
+              "uid": "lesson-0fe9fb0c5378e05c",
               "week_parity": "all"
             }
           ],
           "slot": 5,
-          "text": "ЛПЗ МДК.06.01 Оперативное управление текущей деятельностью подчиненного персонала — 2 п/г, Елагина Ольга Александровна, Кривоусова",
+          "text": "ЛПЗ МДК.03.02 Процессы приготовления, подготовки к реализации холодных блюд, кулинарных изделий, закусок сложного ассортимента — 2 п/г, Конева Кристина Сергеевна, Кривоусова",
           "time": "5 пара (15:35-16:55)"
         },
         {
@@ -538,25 +146,25 @@
               "avoid_lunch_split": true,
               "consecutive_pairs": 2,
               "display_time": null,
-              "id": 515,
+              "id": 500,
               "is_block": false,
               "is_lab": true,
-              "name": "ЛПЗ МДК.06.01 Оперативное управление текущей деятельностью подчиненного персонала",
+              "name": "ЛПЗ МДК.03.02 Процессы приготовления, подготовки к реализации холодных блюд, кулинарных изделий, закусок сложного ассортимента",
               "requested_room_id": null,
               "requested_room_name": null,
-              "room_id": 25,
-              "room_name": "50",
+              "room_id": 28,
+              "room_name": "61",
               "room_substituted": false,
               "room_substitution_reason": null,
               "room_type": 0,
               "subgroup": 47,
-              "teacher_id": 45,
-              "uid": "lesson-0d3afb2b42bb972e",
+              "teacher_id": 53,
+              "uid": "lesson-0fe9fb0c5378e05c",
               "week_parity": "all"
             }
           ],
           "slot": 6,
-          "text": "ЛПЗ МДК.06.01 Оперативное управление текущей деятельностью подчиненного персонала — 2 п/г, Елагина Ольга Александровна, Кривоусова",
+          "text": "ЛПЗ МДК.03.02 Процессы приготовления, подготовки к реализации холодных блюд, кулинарных изделий, закусок сложного ассортимента — 2 п/г, Конева Кристина Сергеевна, Кривоусова",
           "time": "6 пара (17:05-18:25)"
         },
         {
@@ -566,7 +174,7 @@
           "time": "7 пара (18:35-19:55)"
         }
       ],
-      "weekday": "ЧТ"
+      "weekday": "ПТ"
     }
   ],
   "group_index": 23,

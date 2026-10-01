@@ -689,6 +689,40 @@ ScheduleValidationResult ValidateScheduleJson(
         }
     }
 
+    // A serialized constructor result must not hide empty or one-pair days.
+    // part_day_slots only contains days that have at least one event, so walk
+    // the schedule's explicit day rows as well and fail closed for missing
+    // rows.  This is deliberately independent of the solver status and of the
+    // lesson-hour totals: a group with a closed quota is still a missing group
+    // when its selected study day contains fewer than the hard minimum.
+    for (const auto& group_row : schedule.At("groups").array_value) {
+        const int group_id = JsonInt(group_row, "group_index", -1);
+        const GroupData* group = FindGroup(data, group_id);
+        if (!group) continue;
+        const int parts = std::max(1, group->parts);
+        for (const auto& day_row : group_row.At("days").array_value) {
+            Date date{};
+            if (!ParseDateIso(JsonString(day_row, "date_iso", ""), date)) continue;
+            if (DateInRanges(date, data.unavailable, group_id)) continue;
+            bool has_work_slot = false;
+            for (int pair = 1; pair <= SLOTS_PER_DAY; ++pair)
+                has_work_slot = has_work_slot || WorkScheduleAllows(group->work_schedule, date, pair - 1);
+            if (!has_work_slot) continue;
+            for (int part = 0; part < parts; ++part) {
+                const auto key = std::make_tuple(group_id, part, date);
+                if (part_days_with_up.count(key)) continue;
+                const int actual = static_cast<int>(part_day_slots[key].size());
+                if (actual >= config.min_student_pairs_per_study_day) continue;
+                JsonValue ctx = Context();
+                Put(ctx, "group", group_id); Put(ctx, "part", part + 1);
+                Put(ctx, "date", DateLabel(date));
+                Put(ctx, "actual", actual); Put(ctx, "min", config.min_student_pairs_per_study_day);
+                collector.Add("error", "daily_load", "student_daily_minimum_missing_day",
+                              "У группы на выбранную учебную дату меньше обязательных пар", ctx);
+            }
+        }
+    }
+
     std::map<std::tuple<int, int, int>, int> part_week_days;
     std::map<std::tuple<int, int, int>, int> part_week_pairs;
     std::map<std::tuple<int, int, int>, int> part_week_two_pair_days;

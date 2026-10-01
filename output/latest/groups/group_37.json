@@ -1,10 +1,49 @@
 {
   "days": [
     {
-      "date": "29.09.2026",
-      "date_iso": "2026-09-29",
+      "date": "02.10.2026",
+      "date_iso": "2026-10-02",
       "day_index": 0,
       "slots": [
+        {
+          "lessons": [],
+          "slot": 1,
+          "text": "-",
+          "time": "1 пара (08:30-09:55)"
+        },
+        {
+          "lessons": [],
+          "slot": 2,
+          "text": "-",
+          "time": "2 пара (10:05-11:30)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 806,
+              "is_block": false,
+              "is_lab": false,
+              "name": "Иностранный язык в профессиональной деятельности",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 41,
+              "room_name": "324",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 74,
+              "teacher_id": 27,
+              "uid": "lesson-20c0faa5832ed947",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 3,
+          "text": "Иностранный язык в профессиональной деятельности — 1 п/г, Ермолина Ирина Павловна, Лесная",
+          "time": "3 пара (12:25-13:50)"
+        },
         {
           "lessons": [
             {
@@ -28,9 +67,9 @@
               "week_parity": "all"
             }
           ],
-          "slot": 1,
+          "slot": 4,
           "text": "Физическая культура — вся группа, Нуров Мирзо Нуралиевич, Лесная",
-          "time": "1 пара (08:30-09:55)"
+          "time": "4 пара (14:00-15:25)"
         },
         {
           "lessons": [
@@ -55,9 +94,9 @@
               "week_parity": "all"
             }
           ],
-          "slot": 2,
+          "slot": 5,
           "text": "Физическая культура — вся группа, Нуров Мирзо Нуралиевич, Лесная",
-          "time": "2 пара (10:05-11:30)"
+          "time": "5 пара (15:35-16:55)"
         },
         {
           "lessons": [
@@ -65,285 +104,26 @@
               "avoid_lunch_split": false,
               "consecutive_pairs": 1,
               "display_time": null,
-              "id": 996,
+              "id": 809,
               "is_block": false,
               "is_lab": false,
-              "name": "КП МДК.01.02 Оформление технологической документации по процессам изготовления деталей машин",
+              "name": "Физическая культура",
               "requested_room_id": null,
               "requested_room_name": null,
-              "room_id": 40,
-              "room_name": "322",
+              "room_id": 67,
+              "room_name": "Спортзал",
               "room_substituted": false,
               "room_substitution_reason": null,
               "room_type": 0,
               "subgroup": -1,
-              "teacher_id": 61,
-              "uid": "lesson-0ed8b8ba8f92c97e",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 3,
-          "text": "КП МДК.01.02 Оформление технологической документации по процессам изготовления деталей машин — вся группа, Саламатина Вера Викторовна, Лесная",
-          "time": "3 пара (12:25-13:50)"
-        },
-        {
-          "lessons": [],
-          "slot": 4,
-          "text": "-",
-          "time": "4 пара (14:00-15:25)"
-        },
-        {
-          "lessons": [],
-          "slot": 5,
-          "text": "-",
-          "time": "5 пара (15:35-16:55)"
-        },
-        {
-          "lessons": [],
-          "slot": 6,
-          "text": "-",
-          "time": "6 пара (17:05-18:25)"
-        },
-        {
-          "lessons": [],
-          "slot": 7,
-          "text": "-",
-          "time": "7 пара (18:35-19:55)"
-        }
-      ],
-      "weekday": "ВТ"
-    },
-    {
-      "date": "30.09.2026",
-      "date_iso": "2026-09-30",
-      "day_index": 0,
-      "slots": [
-        {
-          "lessons": [],
-          "slot": 1,
-          "text": "-",
-          "time": "1 пара (08:30-09:55)"
-        },
-        {
-          "lessons": [],
-          "slot": 2,
-          "text": "-",
-          "time": "2 пара (10:05-11:30)"
-        },
-        {
-          "lessons": [],
-          "slot": 3,
-          "text": "-",
-          "time": "3 пара (12:25-13:50)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 826,
-              "is_block": false,
-              "is_lab": true,
-              "name": "ЛПЗ ВМДК.07.01 Технология обработки на металлорежущих станках",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 44,
-              "room_name": "405",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": 75,
-              "teacher_id": 63,
-              "uid": "lesson-0baa9de35290f54d",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 4,
-          "text": "ЛПЗ ВМДК.07.01 Технология обработки на металлорежущих станках — 2 п/г, Клабуков Василий Витальевич, Лесная",
-          "time": "4 пара (14:00-15:25)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 814,
-              "is_block": false,
-              "is_lab": true,
-              "name": "ЛПЗ МДК.01.02 Оформление технологической документации по процессам изготовления деталей машин",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 40,
-              "room_name": "322",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": 74,
-              "teacher_id": 61,
-              "uid": "lesson-e1eeb26a01a5ce45",
-              "week_parity": "all"
-            },
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 999,
-              "is_block": false,
-              "is_lab": true,
-              "name": "ЛПЗ ВМДК.06.01 Программирование для автоматизированного оборудования",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 48,
-              "room_name": "413",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": 75,
-              "teacher_id": 62,
-              "uid": "lesson-eca6b13bca604f02",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 5,
-          "text": "ЛПЗ МДК.01.02 Оформление технологической документации по процессам изготовления деталей машин — 1 п/г, Саламатина Вера Викторовна, Лесная | ЛПЗ ВМДК.06.01 Программирование для автоматизированного оборудования — 2 п/г, Вальдиянов Ян Мансурович, Лесная",
-          "time": "5 пара (15:35-16:55)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 815,
-              "is_block": false,
-              "is_lab": true,
-              "name": "ЛПЗ МДК.01.02 Оформление технологической документации по процессам изготовления деталей машин",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 40,
-              "room_name": "322",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": 75,
-              "teacher_id": 61,
-              "uid": "lesson-91c825feb81a56aa",
-              "week_parity": "all"
-            },
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 998,
-              "is_block": false,
-              "is_lab": true,
-              "name": "ЛПЗ ВМДК.06.01 Программирование для автоматизированного оборудования",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 48,
-              "room_name": "413",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": 74,
-              "teacher_id": 62,
-              "uid": "lesson-b37a30d8aa3ed8a7",
+              "teacher_id": 34,
+              "uid": "lesson-0065fa2d0a7577e3",
               "week_parity": "all"
             }
           ],
           "slot": 6,
-          "text": "ЛПЗ МДК.01.02 Оформление технологической документации по процессам изготовления деталей машин — 2 п/г, Саламатина Вера Викторовна, Лесная | ЛПЗ ВМДК.06.01 Программирование для автоматизированного оборудования — 1 п/г, Вальдиянов Ян Мансурович, Лесная",
+          "text": "Физическая культура — вся группа, Нуров Мирзо Нуралиевич, Лесная",
           "time": "6 пара (17:05-18:25)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 825,
-              "is_block": false,
-              "is_lab": true,
-              "name": "ЛПЗ ВМДК.07.01 Технология обработки на металлорежущих станках",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 44,
-              "room_name": "405",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": 74,
-              "teacher_id": 63,
-              "uid": "lesson-c1ebb6e9f3d37051",
-              "week_parity": "all"
-            },
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 999,
-              "is_block": false,
-              "is_lab": true,
-              "name": "ЛПЗ ВМДК.06.01 Программирование для автоматизированного оборудования",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 48,
-              "room_name": "413",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": 75,
-              "teacher_id": 62,
-              "uid": "lesson-eca6b13bca604f02",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 7,
-          "text": "ЛПЗ ВМДК.07.01 Технология обработки на металлорежущих станках — 1 п/г, Клабуков Василий Витальевич, Лесная | ЛПЗ ВМДК.06.01 Программирование для автоматизированного оборудования — 2 п/г, Вальдиянов Ян Мансурович, Лесная",
-          "time": "7 пара (18:35-19:55)"
-        }
-      ],
-      "weekday": "СР"
-    },
-    {
-      "date": "01.10.2026",
-      "date_iso": "2026-10-01",
-      "day_index": 0,
-      "slots": [
-        {
-          "lessons": [],
-          "slot": 1,
-          "text": "-",
-          "time": "1 пара (08:30-09:55)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 999,
-              "is_block": false,
-              "is_lab": true,
-              "name": "ЛПЗ ВМДК.06.01 Программирование для автоматизированного оборудования",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 48,
-              "room_name": "413",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": 75,
-              "teacher_id": 62,
-              "uid": "lesson-eca6b13bca604f02",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 2,
-          "text": "ЛПЗ ВМДК.06.01 Программирование для автоматизированного оборудования — 2 п/г, Вальдиянов Ян Мансурович, Лесная",
-          "time": "2 пара (10:05-11:30)"
         },
         {
           "lessons": [
@@ -368,233 +148,12 @@
               "week_parity": "all"
             }
           ],
-          "slot": 3,
-          "text": "Иностранный язык в профессиональной деятельности — 2 п/г, Ермолина Ирина Павловна, Лесная",
-          "time": "3 пара (12:25-13:50)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 996,
-              "is_block": false,
-              "is_lab": false,
-              "name": "КП МДК.01.02 Оформление технологической документации по процессам изготовления деталей машин",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 40,
-              "room_name": "322",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": -1,
-              "teacher_id": 61,
-              "uid": "lesson-0ed8b8ba8f92c97e",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 4,
-          "text": "КП МДК.01.02 Оформление технологической документации по процессам изготовления деталей машин — вся группа, Саламатина Вера Викторовна, Лесная",
-          "time": "4 пара (14:00-15:25)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 809,
-              "is_block": false,
-              "is_lab": false,
-              "name": "Физическая культура",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 67,
-              "room_name": "Спортзал",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": -1,
-              "teacher_id": 34,
-              "uid": "lesson-0065fa2d0a7577e3",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 5,
-          "text": "Физическая культура — вся группа, Нуров Мирзо Нуралиевич, Лесная",
-          "time": "5 пара (15:35-16:55)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 998,
-              "is_block": false,
-              "is_lab": true,
-              "name": "ЛПЗ ВМДК.06.01 Программирование для автоматизированного оборудования",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 48,
-              "room_name": "413",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": 74,
-              "teacher_id": 62,
-              "uid": "lesson-b37a30d8aa3ed8a7",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 6,
-          "text": "ЛПЗ ВМДК.06.01 Программирование для автоматизированного оборудования — 1 п/г, Вальдиянов Ян Мансурович, Лесная",
-          "time": "6 пара (17:05-18:25)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 822,
-              "is_block": false,
-              "is_lab": true,
-              "name": "ЛПЗ ВМДК.06.02 Технология металлообработки на металлорежущих станках с программным управлением",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 48,
-              "room_name": "413",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": 74,
-              "teacher_id": 62,
-              "uid": "lesson-8eb798e0e0179c47",
-              "week_parity": "all"
-            }
-          ],
           "slot": 7,
-          "text": "ЛПЗ ВМДК.06.02 Технология металлообработки на металлорежущих станках с программным управлением — 1 п/г, Вальдиянов Ян Мансурович, Лесная",
+          "text": "Иностранный язык в профессиональной деятельности — 2 п/г, Ермолина Ирина Павловна, Лесная",
           "time": "7 пара (18:35-19:55)"
         }
       ],
-      "weekday": "ЧТ"
-    },
-    {
-      "date": "03.10.2026",
-      "date_iso": "2026-10-03",
-      "day_index": 2,
-      "slots": [
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 808,
-              "is_block": false,
-              "is_lab": false,
-              "name": "Безопасность жизнедеятельности",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 18,
-              "room_name": "37",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": -1,
-              "teacher_id": 8,
-              "uid": "lesson-e4c5f317fe66e319",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 1,
-          "text": "Безопасность жизнедеятельности — вся группа, Потапова Регина Александровна, Кривоусова",
-          "time": "1 пара (08:30-09:45)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 808,
-              "is_block": false,
-              "is_lab": false,
-              "name": "Безопасность жизнедеятельности",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 18,
-              "room_name": "37",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": -1,
-              "teacher_id": 8,
-              "uid": "lesson-e4c5f317fe66e319",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 2,
-          "text": "Безопасность жизнедеятельности — вся группа, Потапова Регина Александровна, Кривоусова",
-          "time": "2 пара (09:55-11:10)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 808,
-              "is_block": false,
-              "is_lab": false,
-              "name": "Безопасность жизнедеятельности",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 18,
-              "room_name": "37",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": -1,
-              "teacher_id": 8,
-              "uid": "lesson-e4c5f317fe66e319",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 3,
-          "text": "Безопасность жизнедеятельности — вся группа, Потапова Регина Александровна, Кривоусова",
-          "time": "3 пара (11:30-12:45)"
-        },
-        {
-          "lessons": [],
-          "slot": 4,
-          "text": "-",
-          "time": "4 пара (12:55-14:10)"
-        },
-        {
-          "lessons": [],
-          "slot": 5,
-          "text": "-",
-          "time": "5 пара (14:20-15:30)"
-        },
-        {
-          "lessons": [],
-          "slot": 6,
-          "text": "-",
-          "time": "6 пара (15:40-16:50)"
-        },
-        {
-          "lessons": [],
-          "slot": 7,
-          "text": "-",
-          "time": "7 пара (17:00-18:10)"
-        }
-      ],
-      "weekday": "СБ"
+      "weekday": "ПТ"
     }
   ],
   "group_index": 37,

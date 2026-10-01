@@ -2883,9 +2883,11 @@ static WeekSolveResult SolveOneWeek(
         model.AddAssumption(daily_min_rule);
         daily_min_assumption_group[daily_min_rule.index()] = g;
         for (int p = 0; p < group_part_count[g]; p++) {
-            const int eff_min = EffectiveStudentDailyMinimum(
-                MIN_STUDENT_PAIRS_PER_STUDY_DAY,
-                group_part_week_total[g][p]);
+            // The daily minimum is a hard policy, not a value that may be
+            // reduced to the remaining weekly quota.  If a group has only one
+            // available pair left, the correct result is INFEASIBLE and the
+            // dispatcher must add/restore data before publishing it.
+            const int eff_min = MIN_STUDENT_PAIRS_PER_STUDY_DAY;
             LinearExpr two_pair_days;
             for (int ld = 0; ld < W; ld++) {
                 LinearExpr ds;
@@ -3328,17 +3330,15 @@ static WeekSolveResult SolveOneWeek(
         std::cerr << "\n";
     }
 
-    // Сначала решается полностью строгая модель. Лишь после доказанного
-    // INFEASIBLE разрешаем CP-SAT выбрать минимальное число групп, которым
-    // необходим одинарный учебный день. Все остальные hard-правила остаются.
-    // A constructor run covers an explicitly selected fragment of a week and
-    // uses the remaining curriculum quotas as upper bounds.  Such a fragment
-    // can legitimately leave a group with fewer than the global daily minimum
-    // (for example, three remaining pairs on Saturday).  Keep the strict pass
-    // first, then allow the existing selective fallback for scoped runs even
-    // when the semester-wide fallback is disabled in runtime settings.
-    const bool allow_daily_minimum_fallback =
-        g_solver_config.allow_single_pair_day_fallback || allow_partial;
+    // Сначала решается полностью строгая модель. Для Constructor нельзя
+    // ослаблять это правило после INFEASIBLE: выбранный период обязан дать
+    // каждой включённой группе минимум две пары на каждый доступный день.
+    // Единственный допустимый fallback остаётся явной настройкой профиля;
+    // scoped-режим сам по себе больше не включает его автоматически.
+    // This project policy is unconditional: an enabled group can never be
+    // published with a one-pair or empty study day.  The legacy profile flag
+    // remains readable for compatibility, but it must not weaken Constructor.
+    const bool allow_daily_minimum_fallback = false;
     if (feasibility_resp.status() == CpSolverStatus::INFEASIBLE &&
         allow_daily_minimum_fallback &&
         !(cancel_flag && cancel_flag->load())) {
