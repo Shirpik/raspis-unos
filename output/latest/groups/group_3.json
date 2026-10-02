@@ -1,6 +1,140 @@
 {
   "days": [
     {
+      "date": "01.09.2026",
+      "date_iso": "2026-09-01",
+      "day_index": 0,
+      "slots": [
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 65,
+              "is_block": false,
+              "is_lab": false,
+              "name": "информатика",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 56,
+              "room_name": "64",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": -1,
+              "teacher_id": 21,
+              "uid": "lesson-56e15a8eb33c39b8",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 1,
+          "text": "информатика — вся группа, Комарова Яна Николаевна, Кривоусова",
+          "time": "1 пара (08:30-09:55)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 65,
+              "is_block": false,
+              "is_lab": false,
+              "name": "информатика",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 56,
+              "room_name": "64",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": -1,
+              "teacher_id": 21,
+              "uid": "lesson-56e15a8eb33c39b8",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 2,
+          "text": "информатика — вся группа, Комарова Яна Николаевна, Кривоусова",
+          "time": "2 пара (10:05-11:30)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 65,
+              "is_block": false,
+              "is_lab": false,
+              "name": "информатика",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 56,
+              "room_name": "64",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": -1,
+              "teacher_id": 21,
+              "uid": "lesson-56e15a8eb33c39b8",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 3,
+          "text": "информатика — вся группа, Комарова Яна Николаевна, Кривоусова",
+          "time": "3 пара (12:25-13:50)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 71,
+              "is_block": false,
+              "is_lab": false,
+              "name": "химия",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 4,
+              "room_name": "15",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": -1,
+              "teacher_id": 20,
+              "uid": "lesson-ef52788bb51e631b",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 4,
+          "text": "химия — вся группа, Соболева Любовь Анатольевна, Кривоусова",
+          "time": "4 пара (14:00-15:25)"
+        },
+        {
+          "lessons": [],
+          "slot": 5,
+          "text": "-",
+          "time": "5 пара (15:35-16:55)"
+        },
+        {
+          "lessons": [],
+          "slot": 6,
+          "text": "-",
+          "time": "6 пара (17:05-18:25)"
+        },
+        {
+          "lessons": [],
+          "slot": 7,
+          "text": "-",
+          "time": "7 пара (18:35-19:55)"
+        }
+      ],
+      "weekday": "ВТ"
+    },
+    {
       "date": "02.10.2026",
       "date_iso": "2026-10-02",
       "day_index": 0,
@@ -137,7 +271,7 @@
     {
       "date": "03.10.2026",
       "date_iso": "2026-10-03",
-      "day_index": 1,
+      "day_index": 0,
       "slots": [
         {
           "lessons": [
@@ -226,25 +360,25 @@
               "avoid_lunch_split": false,
               "consecutive_pairs": 1,
               "display_time": null,
-              "id": 65,
+              "id": 58,
               "is_block": false,
               "is_lab": false,
-              "name": "информатика",
+              "name": "литература",
               "requested_room_id": null,
               "requested_room_name": null,
-              "room_id": 5,
-              "room_name": "16",
+              "room_id": 10,
+              "room_name": "23",
               "room_substituted": false,
               "room_substitution_reason": null,
               "room_type": 0,
               "subgroup": -1,
-              "teacher_id": 21,
-              "uid": "lesson-56e15a8eb33c39b8",
+              "teacher_id": 0,
+              "uid": "lesson-c643bb7e7a53ea94",
               "week_parity": "all"
             }
           ],
           "slot": 4,
-          "text": "информатика — вся группа, Комарова Яна Николаевна, Кривоусова",
+          "text": "литература — вся группа, Хасанова Гузель Хамитовна, Кривоусова",
           "time": "4 пара (12:55-14:10)"
         },
         {

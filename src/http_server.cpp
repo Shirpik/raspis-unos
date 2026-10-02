@@ -128,6 +128,16 @@ struct GenState {
 };
 
 static GenState g_gen;
+
+int GroupCourseYear(const JsonValue& group) {
+    const int explicit_course = JsonInt(group, "course_year", 0);
+    if (explicit_course >= 1 && explicit_course <= 4) return explicit_course;
+    const std::string name = JsonString(group, "name", JsonString(group, "group_name", ""));
+    for (size_t index = 1; index < name.size(); ++index)
+        if (name[index - 1] == '-' && name[index] >= '1' && name[index] <= '4')
+            return name[index] - '0';
+    return 0;
+}
 static auto g_gen_start = std::chrono::steady_clock::now();
 
 std::string ReadFileUtf8(const std::filesystem::path& path) {
@@ -695,6 +705,19 @@ JsonValue MergeScheduleRange(const JsonValue& existing, const JsonValue& generat
             return JsonString(a, "date_iso", "") < JsonString(b, "date_iso", "");
         });
     }
+    // A course-scoped candidate intentionally contains only selected groups.
+    // Preserve every group absent from it, including all of its days.
+    std::set<int> generated_group_ids;
+    for (const JsonValue& group : merged.At("groups").array_value)
+        generated_group_ids.insert(JsonInt(group, "group_index", -1));
+    for (const JsonValue& old_group : existing.At("groups").array_value) {
+        const int id = JsonInt(old_group, "group_index", -1);
+        if (!generated_group_ids.count(id)) merged.At("groups").array_value.push_back(old_group);
+    }
+    auto& groups = merged.At("groups").array_value;
+    std::sort(groups.begin(), groups.end(), [](const JsonValue& a, const JsonValue& b) {
+        return JsonInt(a, "group_index", -1) < JsonInt(b, "group_index", -1);
+    });
     return merged;
 }
 
@@ -718,11 +741,19 @@ bool PrepareGenerationScope(const JsonValue& data, const std::filesystem::path& 
     }
     opts.scope_from = from;
     opts.scope_to = to;
+    std::map<int, int> lesson_courses;
+    std::map<int, int> group_courses;
+    for (const JsonValue& group : data.At("groups").array_value)
+        group_courses[JsonInt(group, "id", -1)] = GroupCourseYear(group);
+    for (const JsonValue& lesson : data.At("lessons").array_value)
+        lesson_courses[JsonInt(lesson, "id", -1)] = group_courses[JsonInt(lesson, "group", -1)];
     std::set<std::string> confirmed_events;
     for (const JsonValue& entry : data.At("teaching_ledger").array_value) {
         if (JsonString(entry, "status", "") != "confirmed") continue;
         const std::string date = JsonString(entry, "date", "");
-        if (from <= date && date <= to) {
+        const int course = lesson_courses[JsonInt(entry, "lesson_id", -1)];
+        if (from <= date && date <= to &&
+            (opts.course_years.empty() || opts.course_years.count(course))) {
             error = "Выбранный период содержит подтверждённые пары. Они защищены от перезаписи; выберите будущую дату без факта.";
             return false;
         }
@@ -2043,6 +2074,19 @@ std::string HandleRequest(const std::string& request, const std::string& output_
             request = parsed.value;
             if (parsed.ok && parsed.value.IsObject()) {
                 gen_mode = JsonString(parsed.value, "mode", "weekly");
+                if (parsed.value.Has("course_years")) {
+                    const JsonValue& courses = parsed.value.At("course_years");
+                    if (!courses.IsArray())
+                        return ErrorJson(400, "Bad Request", "course_years должен быть массивом курсов");
+                    for (const JsonValue& course : courses.array_value) {
+                        const int value = course.IsNumber() ? static_cast<int>(course.number_value) : 0;
+                        if (value < 1 || value > 4)
+                            return ErrorJson(400, "Bad Request", "Курс должен быть от 1 до 4");
+                        opts.course_years.insert(value);
+                    }
+                    if (opts.course_years.empty())
+                        return ErrorJson(400, "Bad Request", "Выберите хотя бы один курс");
+                }
                 std::string lock_existing = JsonString(parsed.value, "lock_existing", "none");
                 std::string lock_path;
                 if (lock_existing == "manual") {
@@ -2119,13 +2163,29 @@ std::string HandleRequest(const std::string& request, const std::string& output_
                 opts.locked.erase(std::remove_if(opts.locked.begin(), opts.locked.end(),
                     [&](const LockedAssignment& assignment) {
                         return assignment.date < scope_first || scope_last < assignment.date;
-                    }), opts.locked.end());
+                }), opts.locked.end());
+                if (!opts.course_years.empty()) {
+                    std::map<int, int> group_courses;
+                    std::map<int, int> lesson_courses;
+                    for (const JsonValue& group : audit_source.value.At("groups").array_value)
+                        group_courses[JsonInt(group, "id", -1)] = GroupCourseYear(group);
+                    for (const JsonValue& lesson : audit_source.value.At("lessons").array_value)
+                        lesson_courses[JsonInt(lesson, "id", -1)] =
+                            group_courses[JsonInt(lesson, "group", -1)];
+                    opts.locked.erase(std::remove_if(opts.locked.begin(), opts.locked.end(),
+                        [&](const LockedAssignment& assignment) {
+                            return !opts.course_years.count(lesson_courses[assignment.lesson_id]);
+                        }), opts.locked.end());
+                }
                 if (opts.locked.empty() && opts.lock_source == "manual") {
                     return ErrorJson(422, "Unprocessable Entity",
                         "В Конструкторе нет закреплённых пар на выбранную дату.");
                 }
             }
         }
+        if (!opts.course_years.empty() && !request.Has("scope_from"))
+            return ErrorJson(400, "Bad Request",
+                "Выбор курсов работает только для одного дня, недели или диапазона дат");
 
         if (gen_mode == "monolithic") {
             // Монолитный режим — синхронно (без прогресса). Генератор всегда

@@ -1,6 +1,180 @@
 {
   "days": [
     {
+      "date": "01.09.2026",
+      "date_iso": "2026-09-01",
+      "day_index": 0,
+      "slots": [
+        {
+          "lessons": [],
+          "slot": 1,
+          "text": "-",
+          "time": "1 пара (08:30-09:55)"
+        },
+        {
+          "lessons": [],
+          "slot": 2,
+          "text": "-",
+          "time": "2 пара (10:05-11:30)"
+        },
+        {
+          "lessons": [],
+          "slot": 3,
+          "text": "-",
+          "time": "3 пара (12:25-13:50)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 919,
+              "is_block": false,
+              "is_lab": false,
+              "name": "Физическая культура",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 67,
+              "room_name": "Спортзал",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": -1,
+              "teacher_id": 34,
+              "uid": "lesson-e9fcb5992ec66d58",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 4,
+          "text": "Физическая культура — вся группа, Нуров Мирзо Нуралиевич, Лесная",
+          "time": "4 пара (14:00-15:25)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 919,
+              "is_block": false,
+              "is_lab": false,
+              "name": "Физическая культура",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 67,
+              "room_name": "Спортзал",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": -1,
+              "teacher_id": 34,
+              "uid": "lesson-e9fcb5992ec66d58",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 5,
+          "text": "Физическая культура — вся группа, Нуров Мирзо Нуралиевич, Лесная",
+          "time": "5 пара (15:35-16:55)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 923,
+              "is_block": false,
+              "is_lab": true,
+              "name": "ЛПЗ МДК.01.01 Разработка программных модулей",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 49,
+              "room_name": "411",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 86,
+              "teacher_id": 67,
+              "uid": "lesson-9d83f8e7a666dbab",
+              "week_parity": "all"
+            },
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 927,
+              "is_block": false,
+              "is_lab": true,
+              "name": "ЛПЗ МДК.01.02 Поддержка и тестирование программных модулей",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 30,
+              "room_name": "204",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 87,
+              "teacher_id": 64,
+              "uid": "lesson-14465012a548dc5a",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 6,
+          "text": "ЛПЗ МДК.01.01 Разработка программных модулей — 1 п/г, Гарбузов Андрей Евгеньевич, Лесная | ЛПЗ МДК.01.02 Поддержка и тестирование программных модулей — 2 п/г, Меренчуков Иван Александрович, Лесная",
+          "time": "6 пара (17:05-18:25)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 923,
+              "is_block": false,
+              "is_lab": true,
+              "name": "ЛПЗ МДК.01.01 Разработка программных модулей",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 49,
+              "room_name": "411",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 86,
+              "teacher_id": 67,
+              "uid": "lesson-9d83f8e7a666dbab",
+              "week_parity": "all"
+            },
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 927,
+              "is_block": false,
+              "is_lab": true,
+              "name": "ЛПЗ МДК.01.02 Поддержка и тестирование программных модулей",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 30,
+              "room_name": "204",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 87,
+              "teacher_id": 64,
+              "uid": "lesson-14465012a548dc5a",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 7,
+          "text": "ЛПЗ МДК.01.01 Разработка программных модулей — 1 п/г, Гарбузов Андрей Евгеньевич, Лесная | ЛПЗ МДК.01.02 Поддержка и тестирование программных модулей — 2 п/г, Меренчуков Иван Александрович, Лесная",
+          "time": "7 пара (18:35-19:55)"
+        }
+      ],
+      "weekday": "ВТ"
+    },
+    {
       "date": "02.10.2026",
       "date_iso": "2026-10-02",
       "day_index": 0,
@@ -220,25 +394,115 @@
     {
       "date": "03.10.2026",
       "date_iso": "2026-10-03",
-      "day_index": 1,
+      "day_index": 0,
       "slots": [
         {
-          "lessons": [],
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 935,
+              "is_block": false,
+              "is_lab": true,
+              "name": "ЛПЗ ВМДК 05.01 Управление и автоматизация баз данных",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 55,
+              "room_name": "63",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 86,
+              "teacher_id": 68,
+              "uid": "lesson-6472e47cba88fab8",
+              "week_parity": "all"
+            }
+          ],
           "slot": 1,
-          "text": "-",
+          "text": "ЛПЗ ВМДК 05.01 Управление и автоматизация баз данных — 1 п/г, Ханьжина Ксения Владимировна, Кривоусова",
           "time": "1 пара (08:30-09:45)"
         },
         {
-          "lessons": [],
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 935,
+              "is_block": false,
+              "is_lab": true,
+              "name": "ЛПЗ ВМДК 05.01 Управление и автоматизация баз данных",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 58,
+              "room_name": "67",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 86,
+              "teacher_id": 68,
+              "uid": "lesson-6472e47cba88fab8",
+              "week_parity": "all"
+            }
+          ],
           "slot": 2,
-          "text": "-",
+          "text": "ЛПЗ ВМДК 05.01 Управление и автоматизация баз данных — 1 п/г, Ханьжина Ксения Владимировна, Кривоусова",
           "time": "2 пара (09:55-11:10)"
         },
         {
-          "lessons": [],
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 935,
+              "is_block": false,
+              "is_lab": true,
+              "name": "ЛПЗ ВМДК 05.01 Управление и автоматизация баз данных",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 58,
+              "room_name": "67",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 86,
+              "teacher_id": 68,
+              "uid": "lesson-6472e47cba88fab8",
+              "week_parity": "all"
+            }
+          ],
           "slot": 3,
-          "text": "-",
+          "text": "ЛПЗ ВМДК 05.01 Управление и автоматизация баз данных — 1 п/г, Ханьжина Ксения Владимировна, Кривоусова",
           "time": "3 пара (11:30-12:45)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 916,
+              "is_block": false,
+              "is_lab": false,
+              "name": "Основы филосовии",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 51,
+              "room_name": "13",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": -1,
+              "teacher_id": 54,
+              "uid": "lesson-002d066cc762490a",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 4,
+          "text": "Основы филосовии — вся группа, Кузнецова Елизавета Олеговна, Кривоусова",
+          "time": "4 пара (12:55-14:10)"
         },
         {
           "lessons": [
@@ -252,8 +516,8 @@
               "name": "ЛПЗ ВМДК 05.01 Управление и автоматизация баз данных",
               "requested_room_id": null,
               "requested_room_name": null,
-              "room_id": 58,
-              "room_name": "67",
+              "room_id": 55,
+              "room_name": "63",
               "room_substituted": false,
               "room_substitution_reason": null,
               "room_type": 0,
@@ -263,35 +527,8 @@
               "week_parity": "all"
             }
           ],
-          "slot": 4,
-          "text": "ЛПЗ ВМДК 05.01 Управление и автоматизация баз данных — 2 п/г, Ханьжина Ксения Владимировна, Кривоусова",
-          "time": "4 пара (12:55-14:10)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 916,
-              "is_block": false,
-              "is_lab": false,
-              "name": "Основы филосовии",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 51,
-              "room_name": "13",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": -1,
-              "teacher_id": 54,
-              "uid": "lesson-002d066cc762490a",
-              "week_parity": "all"
-            }
-          ],
           "slot": 5,
-          "text": "Основы филосовии — вся группа, Кузнецова Елизавета Олеговна, Кривоусова",
+          "text": "ЛПЗ ВМДК 05.01 Управление и автоматизация баз данных — 2 п/г, Ханьжина Ксения Владимировна, Кривоусова",
           "time": "5 пара (14:20-15:30)"
         },
         {
@@ -300,25 +537,25 @@
               "avoid_lunch_split": false,
               "consecutive_pairs": 1,
               "display_time": null,
-              "id": 916,
+              "id": 936,
               "is_block": false,
-              "is_lab": false,
-              "name": "Основы филосовии",
+              "is_lab": true,
+              "name": "ЛПЗ ВМДК 05.01 Управление и автоматизация баз данных",
               "requested_room_id": null,
               "requested_room_name": null,
-              "room_id": 51,
-              "room_name": "13",
+              "room_id": 55,
+              "room_name": "63",
               "room_substituted": false,
               "room_substitution_reason": null,
               "room_type": 0,
-              "subgroup": -1,
-              "teacher_id": 54,
-              "uid": "lesson-002d066cc762490a",
+              "subgroup": 87,
+              "teacher_id": 68,
+              "uid": "lesson-36e395feb8e4cb2a",
               "week_parity": "all"
             }
           ],
           "slot": 6,
-          "text": "Основы филосовии — вся группа, Кузнецова Елизавета Олеговна, Кривоусова",
+          "text": "ЛПЗ ВМДК 05.01 Управление и автоматизация баз данных — 2 п/г, Ханьжина Ксения Владимировна, Кривоусова",
           "time": "6 пара (15:40-16:50)"
         },
         {
@@ -327,25 +564,25 @@
               "avoid_lunch_split": false,
               "consecutive_pairs": 1,
               "display_time": null,
-              "id": 916,
+              "id": 936,
               "is_block": false,
-              "is_lab": false,
-              "name": "Основы филосовии",
+              "is_lab": true,
+              "name": "ЛПЗ ВМДК 05.01 Управление и автоматизация баз данных",
               "requested_room_id": null,
               "requested_room_name": null,
-              "room_id": 51,
-              "room_name": "13",
+              "room_id": 55,
+              "room_name": "63",
               "room_substituted": false,
               "room_substitution_reason": null,
               "room_type": 0,
-              "subgroup": -1,
-              "teacher_id": 54,
-              "uid": "lesson-002d066cc762490a",
+              "subgroup": 87,
+              "teacher_id": 68,
+              "uid": "lesson-36e395feb8e4cb2a",
               "week_parity": "all"
             }
           ],
           "slot": 7,
-          "text": "Основы филосовии — вся группа, Кузнецова Елизавета Олеговна, Кривоусова",
+          "text": "ЛПЗ ВМДК 05.01 Управление и автоматизация баз данных — 2 п/г, Ханьжина Ксения Владимировна, Кривоусова",
           "time": "7 пара (17:00-18:10)"
         }
       ],

@@ -1390,10 +1390,10 @@ bool LoadScheduleInputDataFromRoot(const JsonValue& source, ScheduleInputData& d
         group.class_hour_fixed_pair = JsonInt(item, "class_hour_fixed_pair", -1);
         group.work_schedule = ParseWorkSchedule(item);
         group.teaching_deadline = JsonString(item, "teaching_deadline", "");
-        int course_year = JsonInt(item, "course_year", 0);
-        if (!course_year) for (size_t i = 1; i < group.name.size(); ++i)
-            if (group.name[i - 1] == '-' && group.name[i] >= '1' && group.name[i] <= '4') { course_year = group.name[i] - '0'; break; }
-        group.semester_end_date = JsonString(settings, course_year == 1 ? "first_course_semester_end_date" : "semester_end_date", "");
+        group.course_year = JsonInt(item, "course_year", 0);
+        if (!group.course_year) for (size_t i = 1; i < group.name.size(); ++i)
+            if (group.name[i - 1] == '-' && group.name[i] >= '1' && group.name[i] <= '4') { group.course_year = group.name[i] - '0'; break; }
+        group.semester_end_date = JsonString(settings, group.course_year == 1 ? "first_course_semester_end_date" : "semester_end_date", "");
         if (group.semester_end_date.empty()) group.semester_end_date = JsonString(settings, "semester_end_date", "");
         Date manual_deadline{};
         if (!group.teaching_deadline.empty() && !ParseDateIso(group.teaching_deadline, manual_deadline)) {

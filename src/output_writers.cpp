@@ -3,6 +3,7 @@
 #include <fstream>
 #include <iomanip>
 #include <iostream>
+#include <set>
 #include <sstream>
 #include <string>
 
@@ -723,7 +724,8 @@ void WriteAllGroupsJson(
     const std::vector<std::vector<BoolVar>>& group_busy,
     const std::vector<std::vector<IntVar>>& group_day_campus,
     const std::map<int, std::map<Date, std::string>>& unavailable_day_texts,
-    const RoomAssignmentMap* room_assignments
+    const RoomAssignmentMap* room_assignments,
+    const std::set<int>* included_groups
 ) {
     std::ofstream out(file_name, std::ios::binary);
     if (!out) {
@@ -733,11 +735,15 @@ void WriteAllGroupsJson(
 
     out << "{\n";
     out << "  \"groups\": [\n";
-    for (int g = 0; g < GROUPS; g++) {
+    std::vector<int> group_ids;
+    for (int g = 0; g < GROUPS; ++g)
+        if (!included_groups || included_groups->count(g)) group_ids.push_back(g);
+    for (size_t index = 0; index < group_ids.size(); ++index) {
+        const int g = group_ids[index];
         out << "    ";
         WriteGroupJsonBody(out, response, all_days, lessons, x, group_busy, group_day_campus,
             unavailable_day_texts, g, room_assignments);
-        if (g + 1 < GROUPS) {
+        if (index + 1 < group_ids.size()) {
             out << ",";
         }
         out << "\n";

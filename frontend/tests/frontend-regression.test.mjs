@@ -190,6 +190,14 @@ test('schedule generation exposes and submits an explicit date range', async () 
   assert.match(scheduleSource, /Конечная дата раньше начальной/)
 })
 
+test('schedule generation can target selected courses without full-period replacement', async () => {
+  const scheduleSource = await readFile(new URL('../src/views/ScheduleView.vue', import.meta.url), 'utf8')
+
+  assert.match(scheduleSource, /v-model="generationCourses" type="checkbox"/)
+  assert.match(scheduleSource, /opts\.course_years = \[\.\.\.generationCourses\.value\]\.sort\(\)/)
+  assert.match(scheduleSource, /Выбор курсов доступен для дня, недели или диапазона дат/)
+})
+
 test('constructor locks lessons and generates only the selected date range', async () => {
   const constructorSource = await readFile(new URL('../src/views/ConstructorView.vue', import.meta.url), 'utf8')
 

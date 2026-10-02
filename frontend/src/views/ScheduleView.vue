@@ -63,6 +63,13 @@
           <option value="manual">Достроить из Конструктора</option>
           <option value="auto">Зафиксировать прошлую автогенерацию</option>
         </select>
+        <div class="generation-courses" aria-label="Курсы для генерации">
+          <span>Курсы:</span>
+          <label v-for="course in [1, 2, 3, 4]" :key="course">
+            <input v-model="generationCourses" type="checkbox" :value="course" :disabled="store.generating" />
+            {{ course }}
+          </label>
+        </div>
         <button v-if="!store.generating" class="btn btn-primary generation-submit" @click="onRegenerate">
           <Sparkles :size="16" />
           <span>{{ generationScope === 'day' ? 'Сгенерировать день' : generationScope === 'week' ? 'Сгенерировать неделю' : generationScope === 'range' ? 'Сгенерировать диапазон' : 'Сгенерировать' }}</span>
@@ -429,6 +436,7 @@ const generationScope = ref('week')
 const selectedDay = ref('')
 const generationFrom = ref('')
 const generationTo = ref('')
+const generationCourses = ref([1, 2, 3, 4])
 const publishing = ref(false)
 const validating = ref(false)
 const excelExporting = ref(false)
@@ -873,6 +881,10 @@ const cancelling = ref(false)
 
 async function onRegenerate() {
   const opts = { mode: generationMode.value }
+  if (!generationCourses.value.length) return toast.error('Выберите хотя бы один курс')
+  if (generationCourses.value.length < 4 && (generationMode.value !== 'weekly' || generationScope.value === 'all'))
+    return toast.error('Выбор курсов доступен для дня, недели или диапазона дат')
+  if (generationCourses.value.length < 4) opts.course_years = [...generationCourses.value].sort()
   if (generationMode.value === 'weekly' && generationScope.value !== 'all') {
     if (generationScope.value === 'day') {
       if (!selectedDay.value) return toast.error('Выберите день')
@@ -959,6 +971,8 @@ watch(() => store.progress?.state, (newState, oldState) => {
 .generation-date-field { display: grid; gap: 4px; color: var(--text-secondary); font-size: 12px; font-weight: 600; }
 .generation-date-field .form-input { width: 145px; padding: 7px 9px; font-size: 13px; }
 .generation-submit { min-height: 38px; }
+.generation-courses { display: flex; align-items: center; gap: 8px; min-height: 38px; padding: 0 10px; border: 1px solid var(--border); border-radius: var(--radius-sm); color: var(--text-secondary); font-size: 13px; }
+.generation-courses label { display: flex; align-items: center; gap: 3px; color: var(--text-primary); cursor: pointer; }
 .schedule-mode-bar {
   display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
   padding: 10px; margin-bottom: 12px; border: 1px solid var(--border);

@@ -1,6 +1,7 @@
 #pragma once
 
 #include <map>
+#include <set>
 #include <string>
 #include <vector>
 
@@ -103,7 +104,8 @@ void WriteAllGroupsJson(
     const std::vector<std::vector<operations_research::sat::BoolVar>>& group_busy,
     const std::vector<std::vector<operations_research::sat::IntVar>>& group_day_campus,
     const std::map<int, std::map<Date, std::string>>& unavailable_day_texts,
-    const RoomAssignmentMap* room_assignments = nullptr
+    const RoomAssignmentMap* room_assignments = nullptr,
+    const std::set<int>* included_groups = nullptr
 );
 
 void WriteGroupJson(

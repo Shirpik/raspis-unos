@@ -602,10 +602,26 @@ ScheduleValidationResult ValidateScheduleJson(
         for (const auto& [date, minimum] : teacher.date_minimum_pairs) {
             if (!teacher.scheduling_active) continue;
             if (!expected_date_set.count(date)) continue;
+            int effective_minimum = minimum;
+            if (options.allow_daily_minimum_fallback) {
+                const int daily_limit = EffectiveTeacherMaxPairsPerDay(
+                    teacher.max_pairs_per_day);
+                if (daily_limit > 0)
+                    effective_minimum = std::min(effective_minimum, daily_limit);
+                int available_slots = 0;
+                for (int slot = 0; slot < SLOTS_PER_DAY; ++slot) {
+                    if (WorkScheduleAllows(teacher.work_schedule, date, slot) &&
+                        IsAvailable(date, slot, teacher.id, data.teacher_unavailable))
+                        ++available_slots;
+                }
+                effective_minimum = std::min(effective_minimum, available_slots);
+            }
+            if (effective_minimum <= 0) continue;
             const int actual = static_cast<int>(teacher_day_slots[{teacher.id, date}].size());
-            if (actual >= minimum) continue;
+            if (actual >= effective_minimum) continue;
             JsonValue ctx = Context(); Put(ctx, "teacher", teacher.id); Put(ctx, "date", DateLabel(date));
-            Put(ctx, "minimum", minimum); Put(ctx, "actual", actual);
+            Put(ctx, "minimum", effective_minimum); Put(ctx, "configured_minimum", minimum);
+            Put(ctx, "actual", actual);
             collector.Add("error", "daily_load", "teacher_date_minimum_not_met",
                 "Не выполнена обязательная нагрузка преподавателя на дату", ctx);
         }

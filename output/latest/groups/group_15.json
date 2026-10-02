@@ -1,6 +1,119 @@
 {
   "days": [
     {
+      "date": "01.09.2026",
+      "date_iso": "2026-09-01",
+      "day_index": 0,
+      "slots": [
+        {
+          "lessons": [],
+          "slot": 1,
+          "text": "-",
+          "time": "1 пара (08:30-09:55)"
+        },
+        {
+          "lessons": [],
+          "slot": 2,
+          "text": "-",
+          "time": "2 пара (10:05-11:30)"
+        },
+        {
+          "lessons": [],
+          "slot": 3,
+          "text": "-",
+          "time": "3 пара (12:25-13:50)"
+        },
+        {
+          "lessons": [],
+          "slot": 4,
+          "text": "-",
+          "time": "4 пара (14:00-15:25)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 309,
+              "is_block": false,
+              "is_lab": false,
+              "name": "МДК 01.04 Охрана труда",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 38,
+              "room_name": "318",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": -1,
+              "teacher_id": 13,
+              "uid": "lesson-c188be403137353d",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 5,
+          "text": "МДК 01.04 Охрана труда — вся группа, Костарева Наталья Викторовна, Лесная",
+          "time": "5 пара (15:35-16:55)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 305,
+              "is_block": false,
+              "is_lab": false,
+              "name": "Физическая культура",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 67,
+              "room_name": "Спортзал",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": -1,
+              "teacher_id": 34,
+              "uid": "lesson-ae72661f45296dcd",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 6,
+          "text": "Физическая культура — вся группа, Нуров Мирзо Нуралиевич, Лесная",
+          "time": "6 пара (17:05-18:25)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 305,
+              "is_block": false,
+              "is_lab": false,
+              "name": "Физическая культура",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 67,
+              "room_name": "Спортзал",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": -1,
+              "teacher_id": 34,
+              "uid": "lesson-ae72661f45296dcd",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 7,
+          "text": "Физическая культура — вся группа, Нуров Мирзо Нуралиевич, Лесная",
+          "time": "7 пара (18:35-19:55)"
+        }
+      ],
+      "weekday": "ВТ"
+    },
+    {
       "date": "02.10.2026",
       "date_iso": "2026-10-02",
       "day_index": 0,
@@ -200,7 +313,7 @@
     {
       "date": "03.10.2026",
       "date_iso": "2026-10-03",
-      "day_index": 1,
+      "day_index": 0,
       "slots": [
         {
           "lessons": [
@@ -208,25 +321,25 @@
               "avoid_lunch_split": false,
               "consecutive_pairs": 1,
               "display_time": null,
-              "id": 985,
+              "id": 321,
               "is_block": false,
               "is_lab": true,
-              "name": "ЛПЗ ВМДК.03.02 Технология производства цветных металлов и сплавов (по типам производства)",
+              "name": "ЛПЗ МДК.02.05 Автоматизация технологических процессов производства цветных металлов и сплавов",
               "requested_room_id": null,
               "requested_room_name": null,
-              "room_id": 57,
-              "room_name": "65",
+              "room_id": 61,
+              "room_name": "70",
               "room_substituted": false,
               "room_substitution_reason": null,
               "room_type": 0,
               "subgroup": 31,
-              "teacher_id": 43,
-              "uid": "lesson-0eb6b99463298f87",
+              "teacher_id": 40,
+              "uid": "lesson-5d8980eeab0532b5",
               "week_parity": "all"
             }
           ],
           "slot": 1,
-          "text": "ЛПЗ ВМДК.03.02 Технология производства цветных металлов и сплавов (по типам производства) — 2 п/г, Попова Татьяна Вильевна, Кривоусова",
+          "text": "ЛПЗ МДК.02.05 Автоматизация технологических процессов производства цветных металлов и сплавов — 2 п/г, Сивилькаев Вадим Михайлович, Кривоусова",
           "time": "1 пара (08:30-09:45)"
         },
         {
@@ -235,7 +348,88 @@
               "avoid_lunch_split": false,
               "consecutive_pairs": 1,
               "display_time": null,
-              "id": 312,
+              "id": 321,
+              "is_block": false,
+              "is_lab": true,
+              "name": "ЛПЗ МДК.02.05 Автоматизация технологических процессов производства цветных металлов и сплавов",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 61,
+              "room_name": "70",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 31,
+              "teacher_id": 40,
+              "uid": "lesson-5d8980eeab0532b5",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 2,
+          "text": "ЛПЗ МДК.02.05 Автоматизация технологических процессов производства цветных металлов и сплавов — 2 п/г, Сивилькаев Вадим Михайлович, Кривоусова",
+          "time": "2 пара (09:55-11:10)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 321,
+              "is_block": false,
+              "is_lab": true,
+              "name": "ЛПЗ МДК.02.05 Автоматизация технологических процессов производства цветных металлов и сплавов",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 61,
+              "room_name": "70",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 31,
+              "teacher_id": 40,
+              "uid": "lesson-5d8980eeab0532b5",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 3,
+          "text": "ЛПЗ МДК.02.05 Автоматизация технологических процессов производства цветных металлов и сплавов — 2 п/г, Сивилькаев Вадим Михайлович, Кривоусова",
+          "time": "3 пара (11:30-12:45)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 316,
+              "is_block": false,
+              "is_lab": false,
+              "name": "МДК.02.03 Основное, вспомогательное и технологическое оборудование, агрегаты в производстве цветных металлов и сплавов",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 57,
+              "room_name": "65",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": -1,
+              "teacher_id": 43,
+              "uid": "lesson-e69f42c36832b23e",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 4,
+          "text": "МДК.02.03 Основное, вспомогательное и технологическое оборудование, агрегаты в производстве цветных металлов и сплавов — вся группа, Попова Татьяна Вильевна, Кривоусова",
+          "time": "4 пара (12:55-14:10)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 311,
               "is_block": false,
               "is_lab": true,
               "name": "ЛПЗ МДК 02.01 Металлургия цветных металлов",
@@ -246,115 +440,14 @@
               "room_substituted": false,
               "room_substitution_reason": null,
               "room_type": 0,
-              "subgroup": 31,
-              "teacher_id": 43,
-              "uid": "lesson-15da50438bcdf94e",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 2,
-          "text": "ЛПЗ МДК 02.01 Металлургия цветных металлов — 2 п/г, Попова Татьяна Вильевна, Кривоусова",
-          "time": "2 пара (09:55-11:10)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 985,
-              "is_block": false,
-              "is_lab": true,
-              "name": "ЛПЗ ВМДК.03.02 Технология производства цветных металлов и сплавов (по типам производства)",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 57,
-              "room_name": "65",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": 31,
-              "teacher_id": 43,
-              "uid": "lesson-0eb6b99463298f87",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 3,
-          "text": "ЛПЗ ВМДК.03.02 Технология производства цветных металлов и сплавов (по типам производства) — 2 п/г, Попова Татьяна Вильевна, Кривоусова",
-          "time": "3 пара (11:30-12:45)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 320,
-              "is_block": false,
-              "is_lab": true,
-              "name": "ЛПЗ МДК.02.05 Автоматизация технологических процессов производства цветных металлов и сплавов",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 61,
-              "room_name": "70",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": 30,
-              "teacher_id": 40,
-              "uid": "lesson-1070c8f1ad25559d",
-              "week_parity": "all"
-            },
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 985,
-              "is_block": false,
-              "is_lab": true,
-              "name": "ЛПЗ ВМДК.03.02 Технология производства цветных металлов и сплавов (по типам производства)",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 57,
-              "room_name": "65",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": 31,
-              "teacher_id": 43,
-              "uid": "lesson-0eb6b99463298f87",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 4,
-          "text": "ЛПЗ МДК.02.05 Автоматизация технологических процессов производства цветных металлов и сплавов — 1 п/г, Сивилькаев Вадим Михайлович, Кривоусова | ЛПЗ ВМДК.03.02 Технология производства цветных металлов и сплавов (по типам производства) — 2 п/г, Попова Татьяна Вильевна, Кривоусова",
-          "time": "4 пара (12:55-14:10)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 984,
-              "is_block": false,
-              "is_lab": true,
-              "name": "ЛПЗ ВМДК.03.02 Технология производства цветных металлов и сплавов (по типам производства)",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 57,
-              "room_name": "65",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
               "subgroup": 30,
               "teacher_id": 43,
-              "uid": "lesson-8fcdd998533d99bc",
+              "uid": "lesson-28578f187233ae77",
               "week_parity": "all"
             }
           ],
           "slot": 5,
-          "text": "ЛПЗ ВМДК.03.02 Технология производства цветных металлов и сплавов (по типам производства) — 1 п/г, Попова Татьяна Вильевна, Кривоусова",
+          "text": "ЛПЗ МДК 02.01 Металлургия цветных металлов — 1 п/г, Попова Татьяна Вильевна, Кривоусова",
           "time": "5 пара (14:20-15:30)"
         },
         {
@@ -363,6 +456,33 @@
               "avoid_lunch_split": false,
               "consecutive_pairs": 1,
               "display_time": null,
+              "id": 311,
+              "is_block": false,
+              "is_lab": true,
+              "name": "ЛПЗ МДК 02.01 Металлургия цветных металлов",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 57,
+              "room_name": "65",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 30,
+              "teacher_id": 43,
+              "uid": "lesson-28578f187233ae77",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 6,
+          "text": "ЛПЗ МДК 02.01 Металлургия цветных металлов — 1 п/г, Попова Татьяна Вильевна, Кривоусова",
+          "time": "6 пара (15:40-16:50)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
               "id": 984,
               "is_block": false,
               "is_lab": true,
@@ -380,35 +500,8 @@
               "week_parity": "all"
             }
           ],
-          "slot": 6,
-          "text": "ЛПЗ ВМДК.03.02 Технология производства цветных металлов и сплавов (по типам производства) — 1 п/г, Попова Татьяна Вильевна, Кривоусова",
-          "time": "6 пара (15:40-16:50)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 320,
-              "is_block": false,
-              "is_lab": true,
-              "name": "ЛПЗ МДК.02.05 Автоматизация технологических процессов производства цветных металлов и сплавов",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 61,
-              "room_name": "70",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": 30,
-              "teacher_id": 40,
-              "uid": "lesson-1070c8f1ad25559d",
-              "week_parity": "all"
-            }
-          ],
           "slot": 7,
-          "text": "ЛПЗ МДК.02.05 Автоматизация технологических процессов производства цветных металлов и сплавов — 1 п/г, Сивилькаев Вадим Михайлович, Кривоусова",
+          "text": "ЛПЗ ВМДК.03.02 Технология производства цветных металлов и сплавов (по типам производства) — 1 п/г, Попова Татьяна Вильевна, Кривоусова",
           "time": "7 пара (17:00-18:10)"
         }
       ],

@@ -150,16 +150,19 @@ int main() {
     scoped_options.require_weekly_study_days = false;
     auto scoped_daily = timetable::ValidateScheduleJson(
         input, strict_daily_config, Schedule(), scoped_options);
-    Require(scoped_daily.ok && HasCode(scoped_daily.report, "student_daily_minimum_fallback"),
-        "scoped generation may report its solver fallback as a warning");
+    Require(!scoped_daily.ok &&
+            HasCode(scoped_daily.report, "student_daily_minimum_fallback") &&
+            HasCode(scoped_daily.report, "student_daily_minimum_missing_day"),
+        "scoped generation reports the fallback but still requires every selected study day");
 
     auto up_input = Input();
     up_input.lessons[0].is_block = true;
-    up_input.lessons[0].subgroup = 0;
+    up_input.lessons[0].subgroup = -1;
     auto one_slot_up = timetable::ValidateScheduleJson(up_input, config, Schedule());
     Require(one_slot_up.ok, "one UP occurrence on pair 1 must occupy exactly one displayed slot");
 
     auto adjacent_up_input = up_input;
+    adjacent_up_input.lessons[0].subgroup = 0;
     Lesson afternoon_up = adjacent_up_input.lessons[0];
     afternoon_up.id = 1;
     afternoon_up.uid = "lesson-1";
@@ -469,6 +472,17 @@ int main() {
     Require(!HasCode(timetable::ValidateScheduleJson(dated_load, config, Schedule()).report,
                      "teacher_date_minimum_not_met"),
             "paused teacher's saved date minimum does not block generation");
+    dated_load.teachers[0].scheduling_active = true;
+    for (auto& day : dated_load.teachers[0].work_schedule.days) {
+        day.enabled = false;
+        day.slots.clear();
+    }
+    ScheduleValidationOptions dated_scope_options;
+    dated_scope_options.allow_daily_minimum_fallback = true;
+    Require(!HasCode(timetable::ValidateScheduleJson(
+                         dated_load, config, Schedule(), dated_scope_options).report,
+                     "teacher_date_minimum_not_met"),
+            "saved date minimum is clamped to the teacher's actual date availability");
 
     auto draft_schedule = Schedule();
     draft_schedule.At("status") = JsonValue::MakeString("draft_semester_risk");

@@ -1,6 +1,203 @@
 {
   "days": [
     {
+      "date": "01.09.2026",
+      "date_iso": "2026-09-01",
+      "day_index": 0,
+      "slots": [
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": true,
+              "consecutive_pairs": 2,
+              "display_time": null,
+              "id": 625,
+              "is_block": false,
+              "is_lab": true,
+              "name": "ЛПЗ МДК.01.02 Основное оборудование для производства сварных конструкций",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 31,
+              "room_name": "205",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 56,
+              "teacher_id": 56,
+              "uid": "lesson-41447169e1d02f69",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 1,
+          "text": "ЛПЗ МДК.01.02 Основное оборудование для производства сварных конструкций — 1 п/г, Ахметов Артур Фанависович, Лесная",
+          "time": "1 пара (08:30-09:55)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": true,
+              "consecutive_pairs": 2,
+              "display_time": null,
+              "id": 625,
+              "is_block": false,
+              "is_lab": true,
+              "name": "ЛПЗ МДК.01.02 Основное оборудование для производства сварных конструкций",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 31,
+              "room_name": "205",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 56,
+              "teacher_id": 56,
+              "uid": "lesson-41447169e1d02f69",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 2,
+          "text": "ЛПЗ МДК.01.02 Основное оборудование для производства сварных конструкций — 1 п/г, Ахметов Артур Фанависович, Лесная",
+          "time": "2 пара (10:05-11:30)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": true,
+              "consecutive_pairs": 2,
+              "display_time": null,
+              "id": 634,
+              "is_block": false,
+              "is_lab": true,
+              "name": "ЛПЗ МДК.02.02 Основы проектирования технологических процессов",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 31,
+              "room_name": "205",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 56,
+              "teacher_id": 56,
+              "uid": "lesson-fb9555cf8444ac26",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 3,
+          "text": "ЛПЗ МДК.02.02 Основы проектирования технологических процессов — 1 п/г, Ахметов Артур Фанависович, Лесная",
+          "time": "3 пара (12:25-13:50)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": true,
+              "consecutive_pairs": 2,
+              "display_time": null,
+              "id": 634,
+              "is_block": false,
+              "is_lab": true,
+              "name": "ЛПЗ МДК.02.02 Основы проектирования технологических процессов",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 31,
+              "room_name": "205",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 56,
+              "teacher_id": 56,
+              "uid": "lesson-fb9555cf8444ac26",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 4,
+          "text": "ЛПЗ МДК.02.02 Основы проектирования технологических процессов — 1 п/г, Ахметов Артур Фанависович, Лесная",
+          "time": "4 пара (14:00-15:25)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 618,
+              "is_block": false,
+              "is_lab": false,
+              "name": "Иностранный язык",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 43,
+              "room_name": "401",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 57,
+              "teacher_id": 4,
+              "uid": "lesson-07793553eba64a55",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 5,
+          "text": "Иностранный язык — 2 п/г, Давыдова Валентина Алексеевна, Лесная",
+          "time": "5 пара (15:35-16:55)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 618,
+              "is_block": false,
+              "is_lab": false,
+              "name": "Иностранный язык",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 43,
+              "room_name": "401",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 57,
+              "teacher_id": 4,
+              "uid": "lesson-07793553eba64a55",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 6,
+          "text": "Иностранный язык — 2 п/г, Давыдова Валентина Алексеевна, Лесная",
+          "time": "6 пара (17:05-18:25)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 618,
+              "is_block": false,
+              "is_lab": false,
+              "name": "Иностранный язык",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 43,
+              "room_name": "401",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 57,
+              "teacher_id": 4,
+              "uid": "lesson-07793553eba64a55",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 7,
+          "text": "Иностранный язык — 2 п/г, Давыдова Валентина Алексеевна, Лесная",
+          "time": "7 пара (18:35-19:55)"
+        }
+      ],
+      "weekday": "ВТ"
+    },
+    {
       "date": "02.10.2026",
       "date_iso": "2026-10-02",
       "day_index": 0,
@@ -156,7 +353,7 @@
     {
       "date": "03.10.2026",
       "date_iso": "2026-10-03",
-      "day_index": 1,
+      "day_index": 0,
       "slots": [
         {
           "lessons": [],
@@ -185,13 +382,13 @@
         {
           "lessons": [
             {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
+              "avoid_lunch_split": true,
+              "consecutive_pairs": 2,
               "display_time": null,
-              "id": 629,
+              "id": 631,
               "is_block": false,
-              "is_lab": false,
-              "name": "МДК.02.01 Основы расчѐта и проектирования сварных конструкций",
+              "is_lab": true,
+              "name": "ЛПЗ МДК.02.01 Основы расчѐта и проектирования сварных конструкций",
               "requested_room_id": null,
               "requested_room_name": null,
               "room_id": 44,
@@ -199,14 +396,34 @@
               "room_substituted": false,
               "room_substitution_reason": null,
               "room_type": 0,
-              "subgroup": -1,
+              "subgroup": 57,
               "teacher_id": 58,
-              "uid": "lesson-bdb3e53bdeca8311",
+              "uid": "lesson-d39f5b1f03e4d007",
+              "week_parity": "all"
+            },
+            {
+              "avoid_lunch_split": true,
+              "consecutive_pairs": 2,
+              "display_time": null,
+              "id": 637,
+              "is_block": false,
+              "is_lab": true,
+              "name": "ЛПЗ МДК.03.01 Формы и методы контроля качества металлов и сварных конструкций",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 31,
+              "room_name": "205",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 56,
+              "teacher_id": 56,
+              "uid": "lesson-7cd4c0ecc6339228",
               "week_parity": "all"
             }
           ],
           "slot": 5,
-          "text": "МДК.02.01 Основы расчѐта и проектирования сварных конструкций — вся группа, Билалова Рауиза Галлинуровна, Лесная",
+          "text": "ЛПЗ МДК.02.01 Основы расчѐта и проектирования сварных конструкций — 2 п/г, Билалова Рауиза Галлинуровна, Лесная | ЛПЗ МДК.03.01 Формы и методы контроля качества металлов и сварных конструкций — 1 п/г, Ахметов Артур Фанависович, Лесная",
           "time": "5 пара (14:20-15:30)"
         },
         {
@@ -259,33 +476,13 @@
         {
           "lessons": [
             {
-              "avoid_lunch_split": true,
-              "consecutive_pairs": 2,
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
               "display_time": null,
-              "id": 631,
+              "id": 632,
               "is_block": false,
-              "is_lab": true,
-              "name": "ЛПЗ МДК.02.01 Основы расчѐта и проектирования сварных конструкций",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 44,
-              "room_name": "405",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": 57,
-              "teacher_id": 58,
-              "uid": "lesson-d39f5b1f03e4d007",
-              "week_parity": "all"
-            },
-            {
-              "avoid_lunch_split": true,
-              "consecutive_pairs": 2,
-              "display_time": null,
-              "id": 637,
-              "is_block": false,
-              "is_lab": true,
-              "name": "ЛПЗ МДК.03.01 Формы и методы контроля качества металлов и сварных конструкций",
+              "is_lab": false,
+              "name": "КП МДК.02.01 Основы расчѐта и проектирования сварных конструкций",
               "requested_room_id": null,
               "requested_room_name": null,
               "room_id": 31,
@@ -293,14 +490,14 @@
               "room_substituted": false,
               "room_substitution_reason": null,
               "room_type": 0,
-              "subgroup": 56,
+              "subgroup": -1,
               "teacher_id": 56,
-              "uid": "lesson-7cd4c0ecc6339228",
+              "uid": "lesson-45f1ddc0e57b9f38",
               "week_parity": "all"
             }
           ],
           "slot": 7,
-          "text": "ЛПЗ МДК.02.01 Основы расчѐта и проектирования сварных конструкций — 2 п/г, Билалова Рауиза Галлинуровна, Лесная | ЛПЗ МДК.03.01 Формы и методы контроля качества металлов и сварных конструкций — 1 п/г, Ахметов Артур Фанависович, Лесная",
+          "text": "КП МДК.02.01 Основы расчѐта и проектирования сварных конструкций — вся группа, Ахметов Артур Фанависович, Лесная",
           "time": "7 пара (17:00-18:10)"
         }
       ],

@@ -1,6 +1,203 @@
 {
   "days": [
     {
+      "date": "01.09.2026",
+      "date_iso": "2026-09-01",
+      "day_index": 0,
+      "slots": [
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 200,
+              "is_block": false,
+              "is_lab": false,
+              "name": "информатика",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 27,
+              "room_name": "60",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 21,
+              "teacher_id": 32,
+              "uid": "lesson-f31e8d3445cb1d60",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 1,
+          "text": "информатика — 2 п/г, Логинова Ксения Ивановна, Кривоусова",
+          "time": "1 пара (08:30-09:55)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 200,
+              "is_block": false,
+              "is_lab": false,
+              "name": "информатика",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 27,
+              "room_name": "60",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 21,
+              "teacher_id": 32,
+              "uid": "lesson-f31e8d3445cb1d60",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 2,
+          "text": "информатика — 2 п/г, Логинова Ксения Ивановна, Кривоусова",
+          "time": "2 пара (10:05-11:30)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 200,
+              "is_block": false,
+              "is_lab": false,
+              "name": "информатика",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 27,
+              "room_name": "60",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 21,
+              "teacher_id": 32,
+              "uid": "lesson-f31e8d3445cb1d60",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 3,
+          "text": "информатика — 2 п/г, Логинова Ксения Ивановна, Кривоусова",
+          "time": "3 пара (12:25-13:50)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 191,
+              "is_block": false,
+              "is_lab": false,
+              "name": "литература",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 16,
+              "room_name": "33",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": -1,
+              "teacher_id": 22,
+              "uid": "lesson-d87d6d1a057db795",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 4,
+          "text": "литература — вся группа, Кибардина Татьяна Леонидовна, Кривоусова",
+          "time": "4 пара (14:00-15:25)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 199,
+              "is_block": false,
+              "is_lab": false,
+              "name": "информатика",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 27,
+              "room_name": "60",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 20,
+              "teacher_id": 32,
+              "uid": "lesson-e61996b9f229127d",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 5,
+          "text": "информатика — 1 п/г, Логинова Ксения Ивановна, Кривоусова",
+          "time": "5 пара (15:35-16:55)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 199,
+              "is_block": false,
+              "is_lab": false,
+              "name": "информатика",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 27,
+              "room_name": "60",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 20,
+              "teacher_id": 32,
+              "uid": "lesson-e61996b9f229127d",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 6,
+          "text": "информатика — 1 п/г, Логинова Ксения Ивановна, Кривоусова",
+          "time": "6 пара (17:05-18:25)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 199,
+              "is_block": false,
+              "is_lab": false,
+              "name": "информатика",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 27,
+              "room_name": "60",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 20,
+              "teacher_id": 32,
+              "uid": "lesson-e61996b9f229127d",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 7,
+          "text": "информатика — 1 п/г, Логинова Ксения Ивановна, Кривоусова",
+          "time": "7 пара (18:35-19:55)"
+        }
+      ],
+      "weekday": "ВТ"
+    },
+    {
       "date": "02.10.2026",
       "date_iso": "2026-10-02",
       "day_index": 0,
@@ -200,61 +397,25 @@
     {
       "date": "03.10.2026",
       "date_iso": "2026-10-03",
-      "day_index": 1,
+      "day_index": 0,
       "slots": [
         {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 200,
-              "is_block": false,
-              "is_lab": false,
-              "name": "информатика",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 27,
-              "room_name": "60",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": 21,
-              "teacher_id": 32,
-              "uid": "lesson-f31e8d3445cb1d60",
-              "week_parity": "all"
-            }
-          ],
+          "lessons": [],
           "slot": 1,
-          "text": "информатика — 2 п/г, Логинова Ксения Ивановна, Кривоусова",
+          "text": "-",
           "time": "1 пара (08:30-09:45)"
         },
         {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 200,
-              "is_block": false,
-              "is_lab": false,
-              "name": "информатика",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 27,
-              "room_name": "60",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": 21,
-              "teacher_id": 32,
-              "uid": "lesson-f31e8d3445cb1d60",
-              "week_parity": "all"
-            }
-          ],
+          "lessons": [],
           "slot": 2,
-          "text": "информатика — 2 п/г, Логинова Ксения Ивановна, Кривоусова",
+          "text": "-",
           "time": "2 пара (09:55-11:10)"
+        },
+        {
+          "lessons": [],
+          "slot": 3,
+          "text": "-",
+          "time": "3 пара (11:30-12:45)"
         },
         {
           "lessons": [
@@ -262,7 +423,7 @@
               "avoid_lunch_split": false,
               "consecutive_pairs": 1,
               "display_time": null,
-              "id": 200,
+              "id": 198,
               "is_block": false,
               "is_lab": false,
               "name": "информатика",
@@ -273,15 +434,42 @@
               "room_substituted": false,
               "room_substitution_reason": null,
               "room_type": 0,
-              "subgroup": 21,
+              "subgroup": -1,
               "teacher_id": 32,
-              "uid": "lesson-f31e8d3445cb1d60",
+              "uid": "lesson-62c52e68c02bad8a",
               "week_parity": "all"
             }
           ],
-          "slot": 3,
-          "text": "информатика — 2 п/г, Логинова Ксения Ивановна, Кривоусова",
-          "time": "3 пара (11:30-12:45)"
+          "slot": 4,
+          "text": "информатика — вся группа, Логинова Ксения Ивановна, Кривоусова",
+          "time": "4 пара (12:55-14:10)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 203,
+              "is_block": false,
+              "is_lab": false,
+              "name": "физика",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 9,
+              "room_name": "22",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": -1,
+              "teacher_id": 19,
+              "uid": "lesson-a874e16de61845e2",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 5,
+          "text": "физика — вся группа, Силенок Марина Юрьевна, Кривоусова",
+          "time": "5 пара (14:20-15:30)"
         },
         {
           "lessons": [
@@ -295,8 +483,8 @@
               "name": "математика",
               "requested_room_id": null,
               "requested_room_name": null,
-              "room_id": 54,
-              "room_name": "57",
+              "room_id": 59,
+              "room_name": "68",
               "room_substituted": false,
               "room_substitution_reason": null,
               "room_type": 0,
@@ -306,62 +494,8 @@
               "week_parity": "all"
             }
           ],
-          "slot": 4,
-          "text": "математика — вся группа, Журавский Константин Сергеевич, Кривоусова",
-          "time": "4 пара (12:55-14:10)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 199,
-              "is_block": false,
-              "is_lab": false,
-              "name": "информатика",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 27,
-              "room_name": "60",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": 20,
-              "teacher_id": 32,
-              "uid": "lesson-e61996b9f229127d",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 5,
-          "text": "информатика — 1 п/г, Логинова Ксения Ивановна, Кривоусова",
-          "time": "5 пара (14:20-15:30)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 199,
-              "is_block": false,
-              "is_lab": false,
-              "name": "информатика",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 27,
-              "room_name": "60",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": 20,
-              "teacher_id": 32,
-              "uid": "lesson-e61996b9f229127d",
-              "week_parity": "all"
-            }
-          ],
           "slot": 6,
-          "text": "информатика — 1 п/г, Логинова Ксения Ивановна, Кривоусова",
+          "text": "математика — вся группа, Журавский Константин Сергеевич, Кривоусова",
           "time": "6 пара (15:40-16:50)"
         },
         {
@@ -370,25 +504,25 @@
               "avoid_lunch_split": false,
               "consecutive_pairs": 1,
               "display_time": null,
-              "id": 199,
+              "id": 197,
               "is_block": false,
               "is_lab": false,
-              "name": "информатика",
+              "name": "математика",
               "requested_room_id": null,
               "requested_room_name": null,
-              "room_id": 27,
-              "room_name": "60",
+              "room_id": 59,
+              "room_name": "68",
               "room_substituted": false,
               "room_substitution_reason": null,
               "room_type": 0,
-              "subgroup": 20,
-              "teacher_id": 32,
-              "uid": "lesson-e61996b9f229127d",
+              "subgroup": -1,
+              "teacher_id": 23,
+              "uid": "lesson-2b0c7abfa52e46e3",
               "week_parity": "all"
             }
           ],
           "slot": 7,
-          "text": "информатика — 1 п/г, Логинова Ксения Ивановна, Кривоусова",
+          "text": "математика — вся группа, Журавский Константин Сергеевич, Кривоусова",
           "time": "7 пара (17:00-18:10)"
         }
       ],

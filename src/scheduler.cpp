@@ -5,7 +5,6 @@
 #include <chrono>
 #include <cstdint>
 #include <cstdlib>
-#include <ctime>
 #include <filesystem>
 #include <fstream>
 #include <functional>
@@ -45,20 +44,6 @@ namespace timetable {
 
 using operations_research::Domain;
 
-namespace {
-
-Date CurrentLocalDate() {
-    const std::time_t now = std::time(nullptr);
-    std::tm local{};
-#ifdef _WIN32
-    localtime_s(&local, &now);
-#else
-    localtime_r(&now, &local);
-#endif
-    return Date{local.tm_year + 1900, local.tm_mon + 1, local.tm_mday};
-}
-
-}  // namespace
 using operations_research::sat::BoolVar;
 using operations_research::sat::CpModelBuilder;
 using operations_research::sat::CpModelProto;
@@ -2376,10 +2361,12 @@ static bool WriteScheduleFiles(
         (out_dir / "raspisanie_teachers.txt").string(),
         fix_resp, all_days, lessons, fx, rec_blocks, ftb, ftdc);
 
+    std::set<int> included_group_ids;
+    for (const GroupData& group : groups) included_group_ids.insert(group.id);
     WriteAllGroupsJson(
         (out_dir / "schedule_all.json").string(),
         fix_resp, all_days, lessons, fx, fgb, fgdc, unavailable_day_texts,
-        room_assignments);
+        room_assignments, &included_group_ids);
 
     for (int g = 0; g < GROUPS; g++) {
         WriteGroupJson(
@@ -2929,8 +2916,12 @@ static WeekSolveResult SolveOneWeek(
                     // Constructor mode. Previously this was hard only for a
                     // one-day request; in a range, `has` could stay zero and
                     // the group silently disappeared from that date.
-                    bool group_day_open = IsAvailable(week_days[ld], g, unavailable);
-                    if (group_day_open && group_work[g]) {
+                    // Sparse/course-scoped runs keep global numeric ids, so a
+                    // missing GroupData entry must stay inactive instead of
+                    // being treated as an available group with no calendar.
+                    bool group_day_open = group_work[g] &&
+                        IsAvailable(week_days[ld], g, unavailable);
+                    if (group_day_open) {
                         group_day_open = false;
                         for (int slot = 0; slot < SLOTS_PER_DAY; ++slot)
                             group_day_open = group_day_open ||
@@ -3520,19 +3511,6 @@ GenerationResult GenerateScheduleWeekly(
     const WeeklyGenCallbacks& callbacks
 ) {
 
-    if (!options.scope_from.empty()) {
-        Date requested_from{};
-        if (ParseDateIso(options.scope_from, requested_from)) {
-            const Date today = CurrentLocalDate();
-            if (requested_from < today) {
-                return {false, "PAST_DATE_SCOPE",
-                    "Нельзя генерировать новые пары на прошедшую дату " +
-                        DateToIso(requested_from) + "; подтверждённые факты прошлого сохраняются",
-                    output_dir};
-            }
-        }
-    }
-
     // ── Загрузка входных данных ───────────────────────────────────────────
     ScheduleInputData input_data;
     std::string input_error;
@@ -3548,7 +3526,12 @@ GenerationResult GenerateScheduleWeekly(
             // Reopen curriculum rows whose current-period quota is zero.
             // The day model below uses their remaining semester hours as
             // candidate upper bounds and chooses compatible lessons itself.
-            settings.At("automatic_period_quotas") = JsonValue::MakeBool(true);
+            // Keep every active curriculum row until the scoped pass below
+            // recalculates its exact remaining quota.  The generic loader's
+            // automatic quota is based only on the selected interval; for a
+            // historical/single-day request it can produce zero and erase a
+            // lesson before the scoped emergency-day logic can reopen it.
+            settings.At("automatic_period_quotas") = JsonValue::MakeBool(false);
             // UP rows normally carry a zero rolling quota because the exact UP
             // subject is chosen by the dispatcher and the academic calendar
             // only specifies the aggregate UP hours for the week.  Reopen the
@@ -3563,6 +3546,17 @@ GenerationResult GenerateScheduleWeekly(
             }
             for (JsonValue& lesson : parsed.value.At("lessons").array_value) {
                 const int id = JsonInt(lesson, "id", -1);
+                const bool regular_curriculum =
+                    JsonBool(lesson, "curriculum_active", true) &&
+                    !JsonBool(lesson, "is_block", false) &&
+                    !JsonBool(lesson, "is_pp", false) &&
+                    !IsUpLessonName(JsonString(lesson, "name", ""));
+                if (regular_curriculum) {
+                    const int step = JsonInt(lesson, "consecutive_pairs", 1) == 2 ? 2 : 1;
+                    lesson.At("generation_active") = JsonValue::MakeBool(true);
+                    lesson.At("total_slots") = JsonValue::MakeNumber(
+                        std::max(JsonInt(lesson, "total_slots", 0), step));
+                }
                 const auto locked = locked_counts.find(id);
                 if (locked == locked_counts.end()) continue;
                 lesson.At("generation_active") = JsonValue::MakeBool(true);
@@ -3592,6 +3586,18 @@ GenerationResult GenerateScheduleWeekly(
         return {false, "INPUT_ERROR",
             "Не удалось загрузить data/timetable_data.json: " + input_error, output_dir};
     }
+    if (!options.course_years.empty()) {
+        std::set<int> selected_groups;
+        for (const GroupData& group : input_data.groups)
+            if (options.course_years.count(group.course_year)) selected_groups.insert(group.id);
+        input_data.groups.erase(std::remove_if(input_data.groups.begin(), input_data.groups.end(),
+            [&](const GroupData& group) { return !selected_groups.count(group.id); }), input_data.groups.end());
+        input_data.lessons.erase(std::remove_if(input_data.lessons.begin(), input_data.lessons.end(),
+            [&](const Lesson& lesson) { return !selected_groups.count(lesson.group); }), input_data.lessons.end());
+        if (input_data.groups.empty()) {
+            return {false, "INPUT_ERROR", "Для выбранных курсов не найдено учебных групп", output_dir};
+        }
+    }
     ExcludeTransferredUpLessons(input_data);
     if (!options.scope_from.empty()) {
         JsonParseResult scoped_source = ParseJson(ReadDataJsonText());
@@ -3604,6 +3610,64 @@ GenerationResult GenerateScheduleWeekly(
         Date first_course_end{};
         if (ParseDateIso(JsonString(settings, "first_course_semester_end_date", ""), first_course_end))
             semester_end = std::max(semester_end, first_course_end);
+        // When only some courses are added to an already completed historical
+        // day, facts of the other courses are external occupancy. Keep their
+        // teachers and rooms unavailable at the recorded pair(s).
+        if (!options.course_years.empty()) {
+            std::set<int> selected_group_ids;
+            for (const GroupData& group : input_data.groups) selected_group_ids.insert(group.id);
+            struct LedgerLessonMeta { int group = -1; int teacher = -1; bool block = false; };
+            std::map<int, LedgerLessonMeta> lesson_meta;
+            for (const JsonValue& lesson : scoped_source.value.At("lessons").array_value) {
+                lesson_meta[JsonInt(lesson, "id", -1)] = {
+                    JsonInt(lesson, "group", -1), JsonInt(lesson, "teacher", -1),
+                    JsonBool(lesson, "is_block", false) ||
+                        IsUpLessonName(JsonString(lesson, "name", ""))};
+            }
+            auto reserve_slot = [](WorkSchedule& schedule, const Date& date, int pair) {
+                if (!schedule.date_slot_overrides.count(date)) {
+                    std::set<int> allowed;
+                    for (int slot = 0; slot < SLOTS_PER_DAY; ++slot)
+                        if (WorkScheduleAllows(schedule, date, slot)) allowed.insert(slot + 1);
+                    schedule.date_slot_overrides[date] = std::move(allowed);
+                }
+                schedule.date_slot_overrides[date].erase(pair);
+            };
+            auto room_matches = [](const std::string& configured, const std::string& recorded) {
+                if (configured.empty() || recorded.empty()) return false;
+                if (configured == recorded) return true;
+                return recorded.size() > configured.size() &&
+                    recorded.compare(0, configured.size(), configured) == 0 &&
+                    (recorded[configured.size()] == '_' || recorded[configured.size()] == '-' ||
+                     recorded[configured.size()] == ' ');
+            };
+            for (const JsonValue& entry : scoped_source.value.At("teaching_ledger").array_value) {
+                if (JsonString(entry, "status", "confirmed") != "confirmed") continue;
+                Date date{};
+                const std::string date_iso = JsonString(entry, "date", "");
+                const int lesson_id = JsonInt(entry, "lesson_id", -1);
+                const auto meta = lesson_meta.find(lesson_id);
+                if (meta == lesson_meta.end() || selected_group_ids.count(meta->second.group) ||
+                    !ParseDateIso(date_iso, date) || date < input_data.start_date || input_data.end_date < date)
+                    continue;
+                const int first_pair = JsonInt(entry, "slot", 0);
+                const int last_pair = std::min(SLOTS_PER_DAY,
+                    first_pair + (meta->second.block ? 1 : 0));
+                const int teacher_id = JsonInt(entry, "actual_teacher", meta->second.teacher);
+                for (TeacherData& teacher : input_data.teachers) {
+                    if (teacher.id != teacher_id) continue;
+                    for (int pair = first_pair; pair <= last_pair; ++pair)
+                        if (pair >= 1) reserve_slot(teacher.work_schedule, date, pair);
+                    break;
+                }
+                const std::string recorded_room = JsonString(entry, "room", "");
+                for (RoomData& room : input_data.rooms) {
+                    if (!room_matches(room.name, recorded_room)) continue;
+                    for (int pair = first_pair; pair <= last_pair; ++pair)
+                        if (pair >= 1) reserve_slot(room.work_schedule, date, pair);
+                }
+            }
+        }
         const auto balances = ReadTeachingBalances(scoped_source.value, input_data.start_date);
         const bool single_day_scope = input_data.start_date == input_data.end_date;
         std::set<int> day_emergency_groups;

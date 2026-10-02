@@ -33,6 +33,9 @@ struct GenerationOptions {
     std::string scope_to;
     std::map<int, int> reserved_hours; // generated placements outside selected range, excluding confirmed facts
     std::set<Date> reserved_dates;
+    // Empty means all courses. Otherwise only groups from these course years
+    // participate in generation; the other groups are preserved on merge.
+    std::set<int> course_years;
 };
 
 // Колбэки для недельной генерации (прогресс + отмена)

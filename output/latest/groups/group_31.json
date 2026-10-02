@@ -1,6 +1,203 @@
 {
   "days": [
     {
+      "date": "01.09.2026",
+      "date_iso": "2026-09-01",
+      "day_index": 0,
+      "slots": [
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": true,
+              "consecutive_pairs": 2,
+              "display_time": null,
+              "id": 692,
+              "is_block": false,
+              "is_lab": true,
+              "name": "ЛПЗ ВМДК.04.01 Слесарное дело и технические измерения",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 64,
+              "room_name": "115-116",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 62,
+              "teacher_id": 59,
+              "uid": "lesson-06e03726d1c178bc",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 1,
+          "text": "ЛПЗ ВМДК.04.01 Слесарное дело и технические измерения — 1 п/г, Самцов Андрей Евгеньевич, Лесная",
+          "time": "1 пара (08:30-09:55)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": true,
+              "consecutive_pairs": 2,
+              "display_time": null,
+              "id": 692,
+              "is_block": false,
+              "is_lab": true,
+              "name": "ЛПЗ ВМДК.04.01 Слесарное дело и технические измерения",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 64,
+              "room_name": "115-116",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 62,
+              "teacher_id": 59,
+              "uid": "lesson-06e03726d1c178bc",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 2,
+          "text": "ЛПЗ ВМДК.04.01 Слесарное дело и технические измерения — 1 п/г, Самцов Андрей Евгеньевич, Лесная",
+          "time": "2 пара (10:05-11:30)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 684,
+              "is_block": false,
+              "is_lab": false,
+              "name": "Автоматизация автомастерской в компьютерной программе \"1С предприятие 8: \"Автосервис\"",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 34,
+              "room_name": "210",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 62,
+              "teacher_id": 47,
+              "uid": "lesson-112bcde94085e932",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 3,
+          "text": "Автоматизация автомастерской в компьютерной программе \"1С предприятие 8: \"Автосервис\" — 1 п/г, Азарян Карине Айказовна, Лесная",
+          "time": "3 пара (12:25-13:50)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 684,
+              "is_block": false,
+              "is_lab": false,
+              "name": "Автоматизация автомастерской в компьютерной программе \"1С предприятие 8: \"Автосервис\"",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 34,
+              "room_name": "210",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 62,
+              "teacher_id": 47,
+              "uid": "lesson-112bcde94085e932",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 4,
+          "text": "Автоматизация автомастерской в компьютерной программе \"1С предприятие 8: \"Автосервис\" — 1 п/г, Азарян Карине Айказовна, Лесная",
+          "time": "4 пара (14:00-15:25)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 685,
+              "is_block": false,
+              "is_lab": false,
+              "name": "Автоматизация автомастерской в компьютерной программе \"1С предприятие 8: \"Автосервис\"",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 34,
+              "room_name": "210",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 63,
+              "teacher_id": 47,
+              "uid": "lesson-3a01d5ca310fc083",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 5,
+          "text": "Автоматизация автомастерской в компьютерной программе \"1С предприятие 8: \"Автосервис\" — 2 п/г, Азарян Карине Айказовна, Лесная",
+          "time": "5 пара (15:35-16:55)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": true,
+              "consecutive_pairs": 2,
+              "display_time": null,
+              "id": 696,
+              "is_block": false,
+              "is_lab": true,
+              "name": "ЛПЗ ВМДК.04.02 Диагностика, техническое обслуживание и ремонт мехатронных систем автомобиля",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 32,
+              "room_name": "207",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 63,
+              "teacher_id": 60,
+              "uid": "lesson-fa55beb4bc6d03ad",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 6,
+          "text": "ЛПЗ ВМДК.04.02 Диагностика, техническое обслуживание и ремонт мехатронных систем автомобиля — 2 п/г, Тимеров Валерий Вагизович, Лесная",
+          "time": "6 пара (17:05-18:25)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": true,
+              "consecutive_pairs": 2,
+              "display_time": null,
+              "id": 696,
+              "is_block": false,
+              "is_lab": true,
+              "name": "ЛПЗ ВМДК.04.02 Диагностика, техническое обслуживание и ремонт мехатронных систем автомобиля",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 32,
+              "room_name": "207",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 63,
+              "teacher_id": 60,
+              "uid": "lesson-fa55beb4bc6d03ad",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 7,
+          "text": "ЛПЗ ВМДК.04.02 Диагностика, техническое обслуживание и ремонт мехатронных систем автомобиля — 2 п/г, Тимеров Валерий Вагизович, Лесная",
+          "time": "7 пара (18:35-19:55)"
+        }
+      ],
+      "weekday": "ВТ"
+    },
+    {
       "date": "02.10.2026",
       "date_iso": "2026-10-02",
       "day_index": 0,
@@ -137,60 +334,39 @@
     {
       "date": "03.10.2026",
       "date_iso": "2026-10-03",
-      "day_index": 1,
+      "day_index": 0,
       "slots": [
         {
-          "lessons": [
-            {
-              "avoid_lunch_split": true,
-              "consecutive_pairs": 2,
-              "display_time": null,
-              "id": 693,
-              "is_block": false,
-              "is_lab": true,
-              "name": "ЛПЗ ВМДК.04.01 Слесарное дело и технические измерения",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 64,
-              "room_name": "115-116",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": 63,
-              "teacher_id": 59,
-              "uid": "lesson-318773e9f0310300",
-              "week_parity": "all"
-            }
-          ],
+          "lessons": [],
           "slot": 1,
-          "text": "ЛПЗ ВМДК.04.01 Слесарное дело и технические измерения — 2 п/г, Самцов Андрей Евгеньевич, Лесная",
+          "text": "-",
           "time": "1 пара (08:30-09:45)"
         },
         {
           "lessons": [
             {
-              "avoid_lunch_split": true,
-              "consecutive_pairs": 2,
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
               "display_time": null,
-              "id": 693,
+              "id": 683,
               "is_block": false,
-              "is_lab": true,
-              "name": "ЛПЗ ВМДК.04.01 Слесарное дело и технические измерения",
+              "is_lab": false,
+              "name": "Безопасность жизнедеятельности",
               "requested_room_id": null,
               "requested_room_name": null,
-              "room_id": 64,
-              "room_name": "115-116",
+              "room_id": 18,
+              "room_name": "37",
               "room_substituted": false,
               "room_substitution_reason": null,
               "room_type": 0,
-              "subgroup": 63,
-              "teacher_id": 59,
-              "uid": "lesson-318773e9f0310300",
+              "subgroup": -1,
+              "teacher_id": 8,
+              "uid": "lesson-14c10432dfbde558",
               "week_parity": "all"
             }
           ],
           "slot": 2,
-          "text": "ЛПЗ ВМДК.04.01 Слесарное дело и технические измерения — 2 п/г, Самцов Андрей Евгеньевич, Лесная",
+          "text": "Безопасность жизнедеятельности — вся группа, Потапова Регина Александровна, Кривоусова",
           "time": "2 пара (09:55-11:10)"
         },
         {
@@ -199,25 +375,25 @@
               "avoid_lunch_split": false,
               "consecutive_pairs": 1,
               "display_time": null,
-              "id": 694,
+              "id": 700,
               "is_block": false,
               "is_lab": false,
-              "name": "ВМДК.04.02 Диагностика, техническое обслуживание и ремонт мехатронных систем автомобиля",
+              "name": "ВМДК.05.03 Психофизиологические основы деятельности водителля",
               "requested_room_id": null,
               "requested_room_name": null,
-              "room_id": 32,
-              "room_name": "207",
+              "room_id": 15,
+              "room_name": "32",
               "room_substituted": false,
               "room_substitution_reason": null,
               "room_type": 0,
               "subgroup": -1,
-              "teacher_id": 60,
-              "uid": "lesson-440b0e49799db369",
+              "teacher_id": 50,
+              "uid": "lesson-dcd5d91bcacacd6c",
               "week_parity": "all"
             }
           ],
           "slot": 3,
-          "text": "ВМДК.04.02 Диагностика, техническое обслуживание и ремонт мехатронных систем автомобиля — вся группа, Тимеров Валерий Вагизович, Лесная",
+          "text": "ВМДК.05.03 Психофизиологические основы деятельности водителля — вся группа, Ярославцева Елена Анатольевна, Кривоусова",
           "time": "3 пара (11:30-12:45)"
         },
         {
@@ -226,79 +402,58 @@
               "avoid_lunch_split": false,
               "consecutive_pairs": 1,
               "display_time": null,
-              "id": 694,
+              "id": 700,
               "is_block": false,
               "is_lab": false,
-              "name": "ВМДК.04.02 Диагностика, техническое обслуживание и ремонт мехатронных систем автомобиля",
+              "name": "ВМДК.05.03 Психофизиологические основы деятельности водителля",
               "requested_room_id": null,
               "requested_room_name": null,
-              "room_id": 32,
-              "room_name": "207",
+              "room_id": 15,
+              "room_name": "32",
               "room_substituted": false,
               "room_substitution_reason": null,
               "room_type": 0,
               "subgroup": -1,
-              "teacher_id": 60,
-              "uid": "lesson-440b0e49799db369",
+              "teacher_id": 50,
+              "uid": "lesson-dcd5d91bcacacd6c",
               "week_parity": "all"
             }
           ],
           "slot": 4,
-          "text": "ВМДК.04.02 Диагностика, техническое обслуживание и ремонт мехатронных систем автомобиля — вся группа, Тимеров Валерий Вагизович, Лесная",
+          "text": "ВМДК.05.03 Психофизиологические основы деятельности водителля — вся группа, Ярославцева Елена Анатольевна, Кривоусова",
           "time": "4 пара (12:55-14:10)"
         },
         {
           "lessons": [
             {
-              "avoid_lunch_split": true,
-              "consecutive_pairs": 2,
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
               "display_time": null,
-              "id": 692,
+              "id": 700,
               "is_block": false,
-              "is_lab": true,
-              "name": "ЛПЗ ВМДК.04.01 Слесарное дело и технические измерения",
+              "is_lab": false,
+              "name": "ВМДК.05.03 Психофизиологические основы деятельности водителля",
               "requested_room_id": null,
               "requested_room_name": null,
-              "room_id": 64,
-              "room_name": "115-116",
+              "room_id": 15,
+              "room_name": "32",
               "room_substituted": false,
               "room_substitution_reason": null,
               "room_type": 0,
-              "subgroup": 62,
-              "teacher_id": 59,
-              "uid": "lesson-06e03726d1c178bc",
+              "subgroup": -1,
+              "teacher_id": 50,
+              "uid": "lesson-dcd5d91bcacacd6c",
               "week_parity": "all"
             }
           ],
           "slot": 5,
-          "text": "ЛПЗ ВМДК.04.01 Слесарное дело и технические измерения — 1 п/г, Самцов Андрей Евгеньевич, Лесная",
+          "text": "ВМДК.05.03 Психофизиологические основы деятельности водителля — вся группа, Ярославцева Елена Анатольевна, Кривоусова",
           "time": "5 пара (14:20-15:30)"
         },
         {
-          "lessons": [
-            {
-              "avoid_lunch_split": true,
-              "consecutive_pairs": 2,
-              "display_time": null,
-              "id": 692,
-              "is_block": false,
-              "is_lab": true,
-              "name": "ЛПЗ ВМДК.04.01 Слесарное дело и технические измерения",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 64,
-              "room_name": "115-116",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": 62,
-              "teacher_id": 59,
-              "uid": "lesson-06e03726d1c178bc",
-              "week_parity": "all"
-            }
-          ],
+          "lessons": [],
           "slot": 6,
-          "text": "ЛПЗ ВМДК.04.01 Слесарное дело и технические измерения — 1 п/г, Самцов Андрей Евгеньевич, Лесная",
+          "text": "-",
           "time": "6 пара (15:40-16:50)"
         },
         {

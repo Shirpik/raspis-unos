@@ -137,6 +137,20 @@ int main(int argc, char* argv[]) {
                 options.scope_to = argv[++index];
                 continue;
             }
+            if (argument == "--courses" && index + 1 < argc) {
+                std::stringstream values(argv[++index]);
+                std::string value;
+                while (std::getline(values, value, ',')) {
+                    int course = 0;
+                    try { course = std::stoi(value); } catch (...) { course = 0; }
+                    if (course < 1 || course > 4) {
+                        std::cerr << "Курсы задаются числами 1-4 через запятую\n";
+                        return 2;
+                    }
+                    options.course_years.insert(course);
+                }
+                continue;
+            }
             if (argument == "--output" && index + 1 < argc) {
                 output_dir = argv[++index];
                 continue;

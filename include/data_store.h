@@ -40,6 +40,7 @@ struct AcademicWeek {
 
 struct GroupData {
     int id = 0;
+    int course_year = 0;
     std::string uid;
     std::string name;
     int parts = 2;
