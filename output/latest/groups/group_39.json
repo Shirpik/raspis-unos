@@ -1,38 +1,62 @@
 {
   "days": [
     {
-      "date": "01.09.2026",
-      "date_iso": "2026-09-01",
+      "date": "07.10.2026",
+      "date_iso": "2026-10-07",
       "day_index": 0,
       "slots": [
         {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 842,
-              "is_block": false,
-              "is_lab": false,
-              "name": "Физическая культура",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 22,
-              "room_name": "Спортзал",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": -1,
-              "teacher_id": 8,
-              "uid": "lesson-4840e378c563feb6",
-              "week_parity": "all"
-            }
-          ],
+          "lessons": [],
           "slot": 1,
-          "text": "Физическая культура — вся группа, Потапова Регина Александровна, Кривоусова",
+          "text": "-",
           "time": "1 пара (08:30-09:55)"
         },
         {
+          "lessons": [],
+          "slot": 2,
+          "text": "-",
+          "time": "2 пара (10:05-11:30)"
+        },
+        {
+          "lessons": [],
+          "slot": 3,
+          "text": "-",
+          "time": "3 пара (12:25-13:50)"
+        },
+        {
+          "lessons": [],
+          "slot": 4,
+          "text": "-",
+          "time": "4 пара (14:00-15:25)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 1005,
+              "is_block": false,
+              "is_lab": false,
+              "name": "ВМДК.05.02 Основы экономики и организации правового обеспечения в профессиональной деятельности",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 25,
+              "room_name": "50",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": -1,
+              "teacher_id": 45,
+              "uid": "lesson-5ab9a1b46367641d",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 5,
+          "text": "ВМДК.05.02 Основы экономики и организации правового обеспечения в профессиональной деятельности — вся группа, Елагина Ольга Александровна, Кривоусова",
+          "time": "5 пара (15:35-16:55)"
+        },
+        {
           "lessons": [
             {
               "avoid_lunch_split": false,
@@ -55,241 +79,9 @@
               "week_parity": "all"
             }
           ],
-          "slot": 2,
-          "text": "Физическая культура — вся группа, Потапова Регина Александровна, Кривоусова",
-          "time": "2 пара (10:05-11:30)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 1004,
-              "is_block": false,
-              "is_lab": false,
-              "name": "КП МДК.05.01 Планирование, организация и контроль деятельности подчиненного персонала",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 58,
-              "room_name": "67",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": -1,
-              "teacher_id": 46,
-              "uid": "lesson-b925ca9eaaaf0404",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 3,
-          "text": "КП МДК.05.01 Планирование, организация и контроль деятельности подчиненного персонала — вся группа, Черепанова Татьяна Михайловна, Кривоусова",
-          "time": "3 пара (12:25-13:50)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 842,
-              "is_block": false,
-              "is_lab": false,
-              "name": "Физическая культура",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 22,
-              "room_name": "Спортзал",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": -1,
-              "teacher_id": 8,
-              "uid": "lesson-4840e378c563feb6",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 4,
-          "text": "Физическая культура — вся группа, Потапова Регина Александровна, Кривоусова",
-          "time": "4 пара (14:00-15:25)"
-        },
-        {
-          "lessons": [],
-          "slot": 5,
-          "text": "-",
-          "time": "5 пара (15:35-16:55)"
-        },
-        {
-          "lessons": [],
           "slot": 6,
-          "text": "-",
+          "text": "Физическая культура — вся группа, Потапова Регина Александровна, Кривоусова",
           "time": "6 пара (17:05-18:25)"
-        },
-        {
-          "lessons": [],
-          "slot": 7,
-          "text": "-",
-          "time": "7 пара (18:35-19:55)"
-        }
-      ],
-      "weekday": "ВТ"
-    },
-    {
-      "date": "02.10.2026",
-      "date_iso": "2026-10-02",
-      "day_index": 0,
-      "slots": [
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 1005,
-              "is_block": false,
-              "is_lab": false,
-              "name": "ВМДК.05.02 Основы экономики и организации правового обеспечения в профессиональной деятельности",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 25,
-              "room_name": "50",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": -1,
-              "teacher_id": 45,
-              "uid": "lesson-5ab9a1b46367641d",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 1,
-          "text": "ВМДК.05.02 Основы экономики и организации правового обеспечения в профессиональной деятельности — вся группа, Елагина Ольга Александровна, Кривоусова",
-          "time": "1 пара (08:30-09:55)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 853,
-              "is_block": false,
-              "is_lab": false,
-              "name": "МДК.05.01 Планирование, организация и контроль деятельности подчиненного персонала",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 2,
-              "room_name": "2",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": -1,
-              "teacher_id": 46,
-              "uid": "lesson-0c89ff4cd32c55ba",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 2,
-          "text": "МДК.05.01 Планирование, организация и контроль деятельности подчиненного персонала — вся группа, Черепанова Татьяна Михайловна, Кривоусова",
-          "time": "2 пара (10:05-11:30)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 1005,
-              "is_block": false,
-              "is_lab": false,
-              "name": "ВМДК.05.02 Основы экономики и организации правового обеспечения в профессиональной деятельности",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 25,
-              "room_name": "50",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": -1,
-              "teacher_id": 45,
-              "uid": "lesson-5ab9a1b46367641d",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 3,
-          "text": "ВМДК.05.02 Основы экономики и организации правового обеспечения в профессиональной деятельности — вся группа, Елагина Ольга Александровна, Кривоусова",
-          "time": "3 пара (12:25-13:50)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 1005,
-              "is_block": false,
-              "is_lab": false,
-              "name": "ВМДК.05.02 Основы экономики и организации правового обеспечения в профессиональной деятельности",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 25,
-              "room_name": "50",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": -1,
-              "teacher_id": 45,
-              "uid": "lesson-5ab9a1b46367641d",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 4,
-          "text": "ВМДК.05.02 Основы экономики и организации правового обеспечения в профессиональной деятельности — вся группа, Елагина Ольга Александровна, Кривоусова",
-          "time": "4 пара (14:00-15:25)"
-        },
-        {
-          "lessons": [],
-          "slot": 5,
-          "text": "-",
-          "time": "5 пара (15:35-16:55)"
-        },
-        {
-          "lessons": [],
-          "slot": 6,
-          "text": "-",
-          "time": "6 пара (17:05-18:25)"
-        },
-        {
-          "lessons": [],
-          "slot": 7,
-          "text": "-",
-          "time": "7 пара (18:35-19:55)"
-        }
-      ],
-      "weekday": "ПТ"
-    },
-    {
-      "date": "03.10.2026",
-      "date_iso": "2026-10-03",
-      "day_index": 0,
-      "slots": [
-        {
-          "lessons": [],
-          "slot": 1,
-          "text": "-",
-          "time": "1 пара (08:30-09:45)"
-        },
-        {
-          "lessons": [],
-          "slot": 2,
-          "text": "-",
-          "time": "2 пара (09:55-11:10)"
-        },
-        {
-          "lessons": [],
-          "slot": 3,
-          "text": "-",
-          "time": "3 пара (11:30-12:45)"
         },
         {
           "lessons": [
@@ -314,93 +106,12 @@
               "week_parity": "all"
             }
           ],
-          "slot": 4,
-          "text": "ЛПЗ МДК.03.01 Разработка и реализация технологических процессов в механосборочном производстве — 1 п/г, Сивилькаев Вадим Михайлович, Кривоусова",
-          "time": "4 пара (12:55-14:10)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 845,
-              "is_block": false,
-              "is_lab": true,
-              "name": "ЛПЗ МДК.03.01 Разработка и реализация технологических процессов в механосборочном производстве",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 61,
-              "room_name": "70",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": 78,
-              "teacher_id": 40,
-              "uid": "lesson-a640984bcdd17772",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 5,
-          "text": "ЛПЗ МДК.03.01 Разработка и реализация технологических процессов в механосборочном производстве — 1 п/г, Сивилькаев Вадим Михайлович, Кривоусова",
-          "time": "5 пара (14:20-15:30)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 1005,
-              "is_block": false,
-              "is_lab": false,
-              "name": "ВМДК.05.02 Основы экономики и организации правового обеспечения в профессиональной деятельности",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 25,
-              "room_name": "50",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": -1,
-              "teacher_id": 45,
-              "uid": "lesson-5ab9a1b46367641d",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 6,
-          "text": "ВМДК.05.02 Основы экономики и организации правового обеспечения в профессиональной деятельности — вся группа, Елагина Ольга Александровна, Кривоусова",
-          "time": "6 пара (15:40-16:50)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 846,
-              "is_block": false,
-              "is_lab": true,
-              "name": "ЛПЗ МДК.03.01 Разработка и реализация технологических процессов в механосборочном производстве",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 61,
-              "room_name": "70",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": 79,
-              "teacher_id": 40,
-              "uid": "lesson-40ce9c5def7ac23a",
-              "week_parity": "all"
-            }
-          ],
           "slot": 7,
-          "text": "ЛПЗ МДК.03.01 Разработка и реализация технологических процессов в механосборочном производстве — 2 п/г, Сивилькаев Вадим Михайлович, Кривоусова",
-          "time": "7 пара (17:00-18:10)"
+          "text": "ЛПЗ МДК.03.01 Разработка и реализация технологических процессов в механосборочном производстве — 1 п/г, Сивилькаев Вадим Михайлович, Кривоусова",
+          "time": "7 пара (18:35-19:55)"
         }
       ],
-      "weekday": "СБ"
+      "weekday": "СР"
     }
   ],
   "group_index": 39,

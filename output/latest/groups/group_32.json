@@ -1,8 +1,8 @@
 {
   "days": [
     {
-      "date": "01.09.2026",
-      "date_iso": "2026-09-01",
+      "date": "07.10.2026",
+      "date_iso": "2026-10-07",
       "day_index": 0,
       "slots": [
         {
@@ -38,22 +38,29 @@
               "avoid_lunch_split": false,
               "consecutive_pairs": 1,
               "display_time": null,
-              "id": 705,
+              "id": 704,
               "is_block": false,
               "is_lab": false,
               "name": "Иностранный язык в профессиональной деятельности",
               "requested_room_id": null,
               "requested_room_name": null,
-              "room_id": 43,
-              "room_name": "401",
+              "room_id": 47,
+              "room_name": "417",
               "room_substituted": false,
               "room_substitution_reason": null,
               "room_type": 0,
-              "subgroup": 65,
-              "teacher_id": 4,
-              "uid": "lesson-00490cf58d1e9cd2",
+              "subgroup": 64,
+              "teacher_id": 28,
+              "uid": "lesson-d97ca3b6c22703bb",
               "week_parity": "all"
-            },
+            }
+          ],
+          "slot": 2,
+          "text": "Иностранный язык в профессиональной деятельности — 1 п/г, Новосёлова Светлана Юрьевна, Лесная",
+          "time": "2 пара (10:05-11:30)"
+        },
+        {
+          "lessons": [
             {
               "avoid_lunch_split": false,
               "consecutive_pairs": 1,
@@ -75,130 +82,10 @@
               "week_parity": "all"
             }
           ],
-          "slot": 2,
-          "text": "Иностранный язык в профессиональной деятельности — 2 п/г, Давыдова Валентина Алексеевна, Лесная | Автоматизация автомастерской в компьютерной программе \"1С предприятие 8: \"Автосервис\" — 1 п/г, Азарян Карине Айказовна, Лесная",
-          "time": "2 пара (10:05-11:30)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": true,
-              "consecutive_pairs": 2,
-              "display_time": null,
-              "id": 714,
-              "is_block": false,
-              "is_lab": true,
-              "name": "ЛПЗ МДК.01.01 Устройство автомобилей",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 32,
-              "room_name": "207",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": 64,
-              "teacher_id": 60,
-              "uid": "lesson-b8f9eaa0e7a4ffdd",
-              "week_parity": "all"
-            },
-            {
-              "avoid_lunch_split": true,
-              "consecutive_pairs": 2,
-              "display_time": null,
-              "id": 720,
-              "is_block": false,
-              "is_lab": true,
-              "name": "ЛПЗ ВМДК.04.01 Слесарное дело и технические измерения",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 64,
-              "room_name": "115-116",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": 65,
-              "teacher_id": 59,
-              "uid": "lesson-9623ab6a1f228ef0",
-              "week_parity": "all"
-            }
-          ],
           "slot": 3,
-          "text": "ЛПЗ МДК.01.01 Устройство автомобилей — 1 п/г, Тимеров Валерий Вагизович, Лесная | ЛПЗ ВМДК.04.01 Слесарное дело и технические измерения — 2 п/г, Самцов Андрей Евгеньевич, Лесная",
+          "text": "Автоматизация автомастерской в компьютерной программе \"1С предприятие 8: \"Автосервис\" — 1 п/г, Азарян Карине Айказовна, Лесная",
           "time": "3 пара (12:25-13:50)"
         },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": true,
-              "consecutive_pairs": 2,
-              "display_time": null,
-              "id": 714,
-              "is_block": false,
-              "is_lab": true,
-              "name": "ЛПЗ МДК.01.01 Устройство автомобилей",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 32,
-              "room_name": "207",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": 64,
-              "teacher_id": 60,
-              "uid": "lesson-b8f9eaa0e7a4ffdd",
-              "week_parity": "all"
-            },
-            {
-              "avoid_lunch_split": true,
-              "consecutive_pairs": 2,
-              "display_time": null,
-              "id": 720,
-              "is_block": false,
-              "is_lab": true,
-              "name": "ЛПЗ ВМДК.04.01 Слесарное дело и технические измерения",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 64,
-              "room_name": "115-116",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": 65,
-              "teacher_id": 59,
-              "uid": "lesson-9623ab6a1f228ef0",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 4,
-          "text": "ЛПЗ МДК.01.01 Устройство автомобилей — 1 п/г, Тимеров Валерий Вагизович, Лесная | ЛПЗ ВМДК.04.01 Слесарное дело и технические измерения — 2 п/г, Самцов Андрей Евгеньевич, Лесная",
-          "time": "4 пара (14:00-15:25)"
-        },
-        {
-          "lessons": [],
-          "slot": 5,
-          "text": "-",
-          "time": "5 пара (15:35-16:55)"
-        },
-        {
-          "lessons": [],
-          "slot": 6,
-          "text": "-",
-          "time": "6 пара (17:05-18:25)"
-        },
-        {
-          "lessons": [],
-          "slot": 7,
-          "text": "-",
-          "time": "7 пара (18:35-19:55)"
-        }
-      ],
-      "weekday": "ВТ"
-    },
-    {
-      "date": "02.10.2026",
-      "date_iso": "2026-10-02",
-      "day_index": 0,
-      "slots": [
         {
           "lessons": [
             {
@@ -220,350 +107,115 @@
               "teacher_id": 28,
               "uid": "lesson-d97ca3b6c22703bb",
               "week_parity": "all"
-            }
-          ],
-          "slot": 1,
-          "text": "Иностранный язык в профессиональной деятельности — 1 п/г, Новосёлова Светлана Юрьевна, Лесная",
-          "time": "1 пара (08:30-09:55)"
-        },
-        {
-          "lessons": [
+            },
             {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
+              "avoid_lunch_split": true,
+              "consecutive_pairs": 2,
               "display_time": null,
-              "id": 707,
+              "id": 723,
               "is_block": false,
-              "is_lab": false,
-              "name": "Метрология, стандартизация, сертификация",
+              "is_lab": true,
+              "name": "ЛПЗ ВМДК.04.02 Диагностика, техническое обслуживание и ремонт мехатронных систем автомобиля",
               "requested_room_id": null,
               "requested_room_name": null,
-              "room_id": 44,
-              "room_name": "405",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": -1,
-              "teacher_id": 41,
-              "uid": "lesson-a06fc3fbb3e7045e",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 2,
-          "text": "Метрология, стандартизация, сертификация — вся группа, Садриева Татьяна Геннадьевна, Лесная",
-          "time": "2 пара (10:05-11:30)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 712,
-              "is_block": false,
-              "is_lab": false,
-              "name": "Автоматизация автомастерской в компьютерной программе \"1С предприятие 8: \"Автосервис\"",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 34,
-              "room_name": "210",
+              "room_id": 32,
+              "room_name": "207",
               "room_substituted": false,
               "room_substitution_reason": null,
               "room_type": 0,
               "subgroup": 65,
-              "teacher_id": 47,
-              "uid": "lesson-fc177ba530fd1a39",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 3,
-          "text": "Автоматизация автомастерской в компьютерной программе \"1С предприятие 8: \"Автосервис\" — 2 п/г, Азарян Карине Айказовна, Лесная",
-          "time": "3 пара (12:25-13:50)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 705,
-              "is_block": false,
-              "is_lab": false,
-              "name": "Иностранный язык в профессиональной деятельности",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 43,
-              "room_name": "401",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": 65,
-              "teacher_id": 4,
-              "uid": "lesson-00490cf58d1e9cd2",
+              "teacher_id": 60,
+              "uid": "lesson-474ef9f00c3ba061",
               "week_parity": "all"
             }
           ],
           "slot": 4,
-          "text": "Иностранный язык в профессиональной деятельности — 2 п/г, Давыдова Валентина Алексеевна, Лесная",
+          "text": "Иностранный язык в профессиональной деятельности — 1 п/г, Новосёлова Светлана Юрьевна, Лесная | ЛПЗ ВМДК.04.02 Диагностика, техническое обслуживание и ремонт мехатронных систем автомобиля — 2 п/г, Тимеров Валерий Вагизович, Лесная",
           "time": "4 пара (14:00-15:25)"
         },
         {
           "lessons": [
             {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
+              "avoid_lunch_split": true,
+              "consecutive_pairs": 2,
               "display_time": null,
-              "id": 712,
+              "id": 723,
               "is_block": false,
-              "is_lab": false,
-              "name": "Автоматизация автомастерской в компьютерной программе \"1С предприятие 8: \"Автосервис\"",
+              "is_lab": true,
+              "name": "ЛПЗ ВМДК.04.02 Диагностика, техническое обслуживание и ремонт мехатронных систем автомобиля",
               "requested_room_id": null,
               "requested_room_name": null,
-              "room_id": 34,
-              "room_name": "210",
+              "room_id": 32,
+              "room_name": "207",
               "room_substituted": false,
               "room_substitution_reason": null,
               "room_type": 0,
               "subgroup": 65,
-              "teacher_id": 47,
-              "uid": "lesson-fc177ba530fd1a39",
+              "teacher_id": 60,
+              "uid": "lesson-474ef9f00c3ba061",
               "week_parity": "all"
             }
           ],
           "slot": 5,
-          "text": "Автоматизация автомастерской в компьютерной программе \"1С предприятие 8: \"Автосервис\" — 2 п/г, Азарян Карине Айказовна, Лесная",
+          "text": "ЛПЗ ВМДК.04.02 Диагностика, техническое обслуживание и ремонт мехатронных систем автомобиля — 2 п/г, Тимеров Валерий Вагизович, Лесная",
           "time": "5 пара (15:35-16:55)"
         },
         {
-          "lessons": [],
+          "lessons": [
+            {
+              "avoid_lunch_split": true,
+              "consecutive_pairs": 2,
+              "display_time": null,
+              "id": 720,
+              "is_block": false,
+              "is_lab": true,
+              "name": "ЛПЗ ВМДК.04.01 Слесарное дело и технические измерения",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 64,
+              "room_name": "115-116",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 65,
+              "teacher_id": 59,
+              "uid": "lesson-9623ab6a1f228ef0",
+              "week_parity": "all"
+            }
+          ],
           "slot": 6,
-          "text": "-",
+          "text": "ЛПЗ ВМДК.04.01 Слесарное дело и технические измерения — 2 п/г, Самцов Андрей Евгеньевич, Лесная",
           "time": "6 пара (17:05-18:25)"
         },
         {
-          "lessons": [],
+          "lessons": [
+            {
+              "avoid_lunch_split": true,
+              "consecutive_pairs": 2,
+              "display_time": null,
+              "id": 720,
+              "is_block": false,
+              "is_lab": true,
+              "name": "ЛПЗ ВМДК.04.01 Слесарное дело и технические измерения",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 64,
+              "room_name": "115-116",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 65,
+              "teacher_id": 59,
+              "uid": "lesson-9623ab6a1f228ef0",
+              "week_parity": "all"
+            }
+          ],
           "slot": 7,
-          "text": "-",
+          "text": "ЛПЗ ВМДК.04.01 Слесарное дело и технические измерения — 2 п/г, Самцов Андрей Евгеньевич, Лесная",
           "time": "7 пара (18:35-19:55)"
         }
       ],
-      "weekday": "ПТ"
-    },
-    {
-      "date": "03.10.2026",
-      "date_iso": "2026-10-03",
-      "day_index": 0,
-      "slots": [
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": true,
-              "consecutive_pairs": 2,
-              "display_time": null,
-              "id": 723,
-              "is_block": false,
-              "is_lab": true,
-              "name": "ЛПЗ ВМДК.04.02 Диагностика, техническое обслуживание и ремонт мехатронных систем автомобиля",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 32,
-              "room_name": "207",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": 65,
-              "teacher_id": 60,
-              "uid": "lesson-474ef9f00c3ba061",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 1,
-          "text": "ЛПЗ ВМДК.04.02 Диагностика, техническое обслуживание и ремонт мехатронных систем автомобиля — 2 п/г, Тимеров Валерий Вагизович, Лесная",
-          "time": "1 пара (08:30-09:45)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": true,
-              "consecutive_pairs": 2,
-              "display_time": null,
-              "id": 723,
-              "is_block": false,
-              "is_lab": true,
-              "name": "ЛПЗ ВМДК.04.02 Диагностика, техническое обслуживание и ремонт мехатронных систем автомобиля",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 32,
-              "room_name": "207",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": 65,
-              "teacher_id": 60,
-              "uid": "lesson-474ef9f00c3ba061",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 2,
-          "text": "ЛПЗ ВМДК.04.02 Диагностика, техническое обслуживание и ремонт мехатронных систем автомобиля — 2 п/г, Тимеров Валерий Вагизович, Лесная",
-          "time": "2 пара (09:55-11:10)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": true,
-              "consecutive_pairs": 2,
-              "display_time": null,
-              "id": 715,
-              "is_block": false,
-              "is_lab": true,
-              "name": "ЛПЗ МДК.01.01 Устройство автомобилей",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 32,
-              "room_name": "207",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": 65,
-              "teacher_id": 60,
-              "uid": "lesson-6de460738e5557b0",
-              "week_parity": "all"
-            },
-            {
-              "avoid_lunch_split": true,
-              "consecutive_pairs": 2,
-              "display_time": null,
-              "id": 719,
-              "is_block": false,
-              "is_lab": true,
-              "name": "ЛПЗ ВМДК.04.01 Слесарное дело и технические измерения",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 64,
-              "room_name": "115-116",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": 64,
-              "teacher_id": 59,
-              "uid": "lesson-d98dabe437f45eae",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 3,
-          "text": "ЛПЗ МДК.01.01 Устройство автомобилей — 2 п/г, Тимеров Валерий Вагизович, Лесная | ЛПЗ ВМДК.04.01 Слесарное дело и технические измерения — 1 п/г, Самцов Андрей Евгеньевич, Лесная",
-          "time": "3 пара (11:30-12:45)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": true,
-              "consecutive_pairs": 2,
-              "display_time": null,
-              "id": 715,
-              "is_block": false,
-              "is_lab": true,
-              "name": "ЛПЗ МДК.01.01 Устройство автомобилей",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 32,
-              "room_name": "207",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": 65,
-              "teacher_id": 60,
-              "uid": "lesson-6de460738e5557b0",
-              "week_parity": "all"
-            },
-            {
-              "avoid_lunch_split": true,
-              "consecutive_pairs": 2,
-              "display_time": null,
-              "id": 719,
-              "is_block": false,
-              "is_lab": true,
-              "name": "ЛПЗ ВМДК.04.01 Слесарное дело и технические измерения",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 64,
-              "room_name": "115-116",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": 64,
-              "teacher_id": 59,
-              "uid": "lesson-d98dabe437f45eae",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 4,
-          "text": "ЛПЗ МДК.01.01 Устройство автомобилей — 2 п/г, Тимеров Валерий Вагизович, Лесная | ЛПЗ ВМДК.04.01 Слесарное дело и технические измерения — 1 п/г, Самцов Андрей Евгеньевич, Лесная",
-          "time": "4 пара (12:55-14:10)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": true,
-              "consecutive_pairs": 2,
-              "display_time": null,
-              "id": 722,
-              "is_block": false,
-              "is_lab": true,
-              "name": "ЛПЗ ВМДК.04.02 Диагностика, техническое обслуживание и ремонт мехатронных систем автомобиля",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 32,
-              "room_name": "207",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": 64,
-              "teacher_id": 60,
-              "uid": "lesson-7900ea6f5c567cd8",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 5,
-          "text": "ЛПЗ ВМДК.04.02 Диагностика, техническое обслуживание и ремонт мехатронных систем автомобиля — 1 п/г, Тимеров Валерий Вагизович, Лесная",
-          "time": "5 пара (14:20-15:30)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": true,
-              "consecutive_pairs": 2,
-              "display_time": null,
-              "id": 722,
-              "is_block": false,
-              "is_lab": true,
-              "name": "ЛПЗ ВМДК.04.02 Диагностика, техническое обслуживание и ремонт мехатронных систем автомобиля",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 32,
-              "room_name": "207",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": 64,
-              "teacher_id": 60,
-              "uid": "lesson-7900ea6f5c567cd8",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 6,
-          "text": "ЛПЗ ВМДК.04.02 Диагностика, техническое обслуживание и ремонт мехатронных систем автомобиля — 1 п/г, Тимеров Валерий Вагизович, Лесная",
-          "time": "6 пара (15:40-16:50)"
-        },
-        {
-          "lessons": [],
-          "slot": 7,
-          "text": "-",
-          "time": "7 пара (17:00-18:10)"
-        }
-      ],
-      "weekday": "СБ"
+      "weekday": "СР"
     }
   ],
   "group_index": 32,

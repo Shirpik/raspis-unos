@@ -1,22 +1,22 @@
 {
   "days": [
     {
-      "date": "01.09.2026",
-      "date_iso": "2026-09-01",
+      "date": "07.10.2026",
+      "date_iso": "2026-10-07",
       "day_index": 0,
       "slots": [
         {
           "lessons": [
             {
-              "avoid_lunch_split": true,
-              "consecutive_pairs": 2,
-              "display_time": null,
-              "id": 593,
-              "is_block": false,
-              "is_lab": true,
-              "name": "ЛПЗ ВМДК.06.01 Технология выполнения газовой сварки и резки",
-              "requested_room_id": 68,
-              "requested_room_name": "ЦПДЭ",
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": "08:30-12:30",
+              "id": 577,
+              "is_block": true,
+              "is_lab": false,
+              "name": "УП.01",
+              "requested_room_id": null,
+              "requested_room_name": null,
               "room_id": 68,
               "room_name": "ЦПДЭ",
               "room_substituted": false,
@@ -24,207 +24,12 @@
               "room_type": 0,
               "subgroup": 52,
               "teacher_id": 57,
-              "uid": "lesson-4fbfde60eb747130",
+              "uid": "lesson-a108cb0c0d815f7f",
               "week_parity": "all"
             }
           ],
           "slot": 1,
-          "text": "ЛПЗ ВМДК.06.01 Технология выполнения газовой сварки и резки — 1 п/г, Подчиненнов Александр Юрьевич, Лесная",
-          "time": "1 пара (08:30-09:55)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": true,
-              "consecutive_pairs": 2,
-              "display_time": null,
-              "id": 593,
-              "is_block": false,
-              "is_lab": true,
-              "name": "ЛПЗ ВМДК.06.01 Технология выполнения газовой сварки и резки",
-              "requested_room_id": 68,
-              "requested_room_name": "ЦПДЭ",
-              "room_id": 68,
-              "room_name": "ЦПДЭ",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": 52,
-              "teacher_id": 57,
-              "uid": "lesson-4fbfde60eb747130",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 2,
-          "text": "ЛПЗ ВМДК.06.01 Технология выполнения газовой сварки и резки — 1 п/г, Подчиненнов Александр Юрьевич, Лесная",
-          "time": "2 пара (10:05-11:30)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": true,
-              "consecutive_pairs": 2,
-              "display_time": null,
-              "id": 585,
-              "is_block": false,
-              "is_lab": true,
-              "name": "ЛПЗ МДК.05.01 Электросварочные работы на автоматических и полуавтоматических машинах",
-              "requested_room_id": 66,
-              "requested_room_name": "120-121",
-              "room_id": 66,
-              "room_name": "120-121",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": 52,
-              "teacher_id": 55,
-              "uid": "lesson-27033b55f4af7c9f",
-              "week_parity": "all"
-            },
-            {
-              "avoid_lunch_split": true,
-              "consecutive_pairs": 2,
-              "display_time": null,
-              "id": 594,
-              "is_block": false,
-              "is_lab": true,
-              "name": "ЛПЗ ВМДК.06.01 Технология выполнения газовой сварки и резки",
-              "requested_room_id": 68,
-              "requested_room_name": "ЦПДЭ",
-              "room_id": 68,
-              "room_name": "ЦПДЭ",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": 53,
-              "teacher_id": 57,
-              "uid": "lesson-c0ae18ab1e808717",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 3,
-          "text": "ЛПЗ МДК.05.01 Электросварочные работы на автоматических и полуавтоматических машинах — 1 п/г, Лимонова Евгения Николаевна, Лесная | ЛПЗ ВМДК.06.01 Технология выполнения газовой сварки и резки — 2 п/г, Подчиненнов Александр Юрьевич, Лесная",
-          "time": "3 пара (12:25-13:50)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": true,
-              "consecutive_pairs": 2,
-              "display_time": null,
-              "id": 585,
-              "is_block": false,
-              "is_lab": true,
-              "name": "ЛПЗ МДК.05.01 Электросварочные работы на автоматических и полуавтоматических машинах",
-              "requested_room_id": 66,
-              "requested_room_name": "120-121",
-              "room_id": 66,
-              "room_name": "120-121",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": 52,
-              "teacher_id": 55,
-              "uid": "lesson-27033b55f4af7c9f",
-              "week_parity": "all"
-            },
-            {
-              "avoid_lunch_split": true,
-              "consecutive_pairs": 2,
-              "display_time": null,
-              "id": 594,
-              "is_block": false,
-              "is_lab": true,
-              "name": "ЛПЗ ВМДК.06.01 Технология выполнения газовой сварки и резки",
-              "requested_room_id": 68,
-              "requested_room_name": "ЦПДЭ",
-              "room_id": 68,
-              "room_name": "ЦПДЭ",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": 53,
-              "teacher_id": 57,
-              "uid": "lesson-c0ae18ab1e808717",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 4,
-          "text": "ЛПЗ МДК.05.01 Электросварочные работы на автоматических и полуавтоматических машинах — 1 п/г, Лимонова Евгения Николаевна, Лесная | ЛПЗ ВМДК.06.01 Технология выполнения газовой сварки и резки — 2 п/г, Подчиненнов Александр Юрьевич, Лесная",
-          "time": "4 пара (14:00-15:25)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": true,
-              "consecutive_pairs": 2,
-              "display_time": null,
-              "id": 576,
-              "is_block": false,
-              "is_lab": true,
-              "name": "ЛПЗ МДК.01.02 Основное оборудование для производства сварных конструкций",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 31,
-              "room_name": "205",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": 53,
-              "teacher_id": 56,
-              "uid": "lesson-55cc2cf9c8427b26",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 5,
-          "text": "ЛПЗ МДК.01.02 Основное оборудование для производства сварных конструкций — 2 п/г, Ахметов Артур Фанависович, Лесная",
-          "time": "5 пара (15:35-16:55)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": true,
-              "consecutive_pairs": 2,
-              "display_time": null,
-              "id": 576,
-              "is_block": false,
-              "is_lab": true,
-              "name": "ЛПЗ МДК.01.02 Основное оборудование для производства сварных конструкций",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 31,
-              "room_name": "205",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": 53,
-              "teacher_id": 56,
-              "uid": "lesson-55cc2cf9c8427b26",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 6,
-          "text": "ЛПЗ МДК.01.02 Основное оборудование для производства сварных конструкций — 2 п/г, Ахметов Артур Фанависович, Лесная",
-          "time": "6 пара (17:05-18:25)"
-        },
-        {
-          "lessons": [],
-          "slot": 7,
-          "text": "-",
-          "time": "7 пара (18:35-19:55)"
-        }
-      ],
-      "weekday": "ВТ"
-    },
-    {
-      "date": "02.10.2026",
-      "date_iso": "2026-10-02",
-      "day_index": 0,
-      "slots": [
-        {
-          "lessons": [],
-          "slot": 1,
-          "text": "-",
+          "text": "УП.01 (УП утро 08:30-12:30) — 1 п/г, Подчиненнов Александр Юрьевич, Лесная",
           "time": "1 пара (08:30-09:55)"
         },
         {
@@ -234,208 +39,12 @@
           "time": "2 пара (10:05-11:30)"
         },
         {
-          "lessons": [],
-          "slot": 3,
-          "text": "-",
-          "time": "3 пара (12:25-13:50)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 592,
-              "is_block": false,
-              "is_lab": false,
-              "name": "ВМДК.06.01 Технология выполнения газовой сварки и резки",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 31,
-              "room_name": "205",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": -1,
-              "teacher_id": 56,
-              "uid": "lesson-c604322898bf7f78",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 4,
-          "text": "ВМДК.06.01 Технология выполнения газовой сварки и резки — вся группа, Ахметов Артур Фанависович, Лесная",
-          "time": "4 пара (14:00-15:25)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 572,
-              "is_block": false,
-              "is_lab": false,
-              "name": "Физическая культура",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 67,
-              "room_name": "Спортзал",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": -1,
-              "teacher_id": 34,
-              "uid": "lesson-4ffde76975f6b438",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 5,
-          "text": "Физическая культура — вся группа, Нуров Мирзо Нуралиевич, Лесная",
-          "time": "5 пара (15:35-16:55)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 572,
-              "is_block": false,
-              "is_lab": false,
-              "name": "Физическая культура",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 67,
-              "room_name": "Спортзал",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": -1,
-              "teacher_id": 34,
-              "uid": "lesson-4ffde76975f6b438",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 6,
-          "text": "Физическая культура — вся группа, Нуров Мирзо Нуралиевич, Лесная",
-          "time": "6 пара (17:05-18:25)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 570,
-              "is_block": false,
-              "is_lab": false,
-              "name": "Иностранный язык в профессиональной деятельности",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 41,
-              "room_name": "324",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": 53,
-              "teacher_id": 27,
-              "uid": "lesson-a21f9c7ebd930160",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 7,
-          "text": "Иностранный язык в профессиональной деятельности — 2 п/г, Ермолина Ирина Павловна, Лесная",
-          "time": "7 пара (18:35-19:55)"
-        }
-      ],
-      "weekday": "ПТ"
-    },
-    {
-      "date": "03.10.2026",
-      "date_iso": "2026-10-03",
-      "day_index": 0,
-      "slots": [
-        {
           "lessons": [
             {
               "avoid_lunch_split": true,
               "consecutive_pairs": 2,
               "display_time": null,
-              "id": 580,
-              "is_block": false,
-              "is_lab": true,
-              "name": "ЛПЗ МДК.03.01 Формы и методы контроля качества металлов и сварных конструкций",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 31,
-              "room_name": "205",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": 52,
-              "teacher_id": 56,
-              "uid": "lesson-16885dcf5b931336",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 1,
-          "text": "ЛПЗ МДК.03.01 Формы и методы контроля качества металлов и сварных конструкций — 1 п/г, Ахметов Артур Фанависович, Лесная",
-          "time": "1 пара (08:30-09:45)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": true,
-              "consecutive_pairs": 2,
-              "display_time": null,
-              "id": 580,
-              "is_block": false,
-              "is_lab": true,
-              "name": "ЛПЗ МДК.03.01 Формы и методы контроля качества металлов и сварных конструкций",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 31,
-              "room_name": "205",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": 52,
-              "teacher_id": 56,
-              "uid": "lesson-16885dcf5b931336",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 2,
-          "text": "ЛПЗ МДК.03.01 Формы и методы контроля качества металлов и сварных конструкций — 1 п/г, Ахметов Артур Фанависович, Лесная",
-          "time": "2 пара (09:55-11:10)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": true,
-              "consecutive_pairs": 2,
-              "display_time": null,
-              "id": 581,
-              "is_block": false,
-              "is_lab": true,
-              "name": "ЛПЗ МДК.03.01 Формы и методы контроля качества металлов и сварных конструкций",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 31,
-              "room_name": "205",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": 53,
-              "teacher_id": 56,
-              "uid": "lesson-f9faccbb439923c3",
-              "week_parity": "all"
-            },
-            {
-              "avoid_lunch_split": true,
-              "consecutive_pairs": 2,
-              "display_time": null,
-              "id": 588,
+              "id": 589,
               "is_block": false,
               "is_lab": true,
               "name": "ЛПЗ МДК.05.02 Технология ручной дуговой сварки неплавящимся электродом в защитном газе",
@@ -446,15 +55,15 @@
               "room_substituted": false,
               "room_substitution_reason": null,
               "room_type": 0,
-              "subgroup": 52,
+              "subgroup": 53,
               "teacher_id": 55,
-              "uid": "lesson-946cef0d8b7e28b9",
+              "uid": "lesson-0d919345fda95926",
               "week_parity": "all"
             }
           ],
           "slot": 3,
-          "text": "ЛПЗ МДК.03.01 Формы и методы контроля качества металлов и сварных конструкций — 2 п/г, Ахметов Артур Фанависович, Лесная | ЛПЗ МДК.05.02 Технология ручной дуговой сварки неплавящимся электродом в защитном газе — 1 п/г, Лимонова Евгения Николаевна, Лесная",
-          "time": "3 пара (11:30-12:45)"
+          "text": "ЛПЗ МДК.05.02 Технология ручной дуговой сварки неплавящимся электродом в защитном газе — 2 п/г, Лимонова Евгения Николаевна, Лесная",
+          "time": "3 пара (12:25-13:50)"
         },
         {
           "lessons": [
@@ -462,27 +71,7 @@
               "avoid_lunch_split": true,
               "consecutive_pairs": 2,
               "display_time": null,
-              "id": 581,
-              "is_block": false,
-              "is_lab": true,
-              "name": "ЛПЗ МДК.03.01 Формы и методы контроля качества металлов и сварных конструкций",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 31,
-              "room_name": "205",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": 53,
-              "teacher_id": 56,
-              "uid": "lesson-f9faccbb439923c3",
-              "week_parity": "all"
-            },
-            {
-              "avoid_lunch_split": true,
-              "consecutive_pairs": 2,
-              "display_time": null,
-              "id": 588,
+              "id": 589,
               "is_block": false,
               "is_lab": true,
               "name": "ЛПЗ МДК.05.02 Технология ручной дуговой сварки неплавящимся электродом в защитном газе",
@@ -493,78 +82,78 @@
               "room_substituted": false,
               "room_substitution_reason": null,
               "room_type": 0,
-              "subgroup": 52,
+              "subgroup": 53,
               "teacher_id": 55,
-              "uid": "lesson-946cef0d8b7e28b9",
+              "uid": "lesson-0d919345fda95926",
               "week_parity": "all"
             }
           ],
           "slot": 4,
-          "text": "ЛПЗ МДК.03.01 Формы и методы контроля качества металлов и сварных конструкций — 2 п/г, Ахметов Артур Фанависович, Лесная | ЛПЗ МДК.05.02 Технология ручной дуговой сварки неплавящимся электродом в защитном газе — 1 п/г, Лимонова Евгения Николаевна, Лесная",
-          "time": "4 пара (12:55-14:10)"
+          "text": "ЛПЗ МДК.05.02 Технология ручной дуговой сварки неплавящимся электродом в защитном газе — 2 п/г, Лимонова Евгения Николаевна, Лесная",
+          "time": "4 пара (14:00-15:25)"
         },
         {
           "lessons": [
             {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
+              "avoid_lunch_split": true,
+              "consecutive_pairs": 2,
               "display_time": null,
-              "id": 570,
+              "id": 586,
               "is_block": false,
-              "is_lab": false,
-              "name": "Иностранный язык в профессиональной деятельности",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 41,
-              "room_name": "324",
+              "is_lab": true,
+              "name": "ЛПЗ МДК.05.01 Электросварочные работы на автоматических и полуавтоматических машинах",
+              "requested_room_id": 66,
+              "requested_room_name": "120-121",
+              "room_id": 66,
+              "room_name": "120-121",
               "room_substituted": false,
               "room_substitution_reason": null,
               "room_type": 0,
               "subgroup": 53,
-              "teacher_id": 27,
-              "uid": "lesson-a21f9c7ebd930160",
+              "teacher_id": 55,
+              "uid": "lesson-a0b4e9b829970932",
               "week_parity": "all"
             }
           ],
           "slot": 5,
-          "text": "Иностранный язык в профессиональной деятельности — 2 п/г, Ермолина Ирина Павловна, Лесная",
-          "time": "5 пара (14:20-15:30)"
+          "text": "ЛПЗ МДК.05.01 Электросварочные работы на автоматических и полуавтоматических машинах — 2 п/г, Лимонова Евгения Николаевна, Лесная",
+          "time": "5 пара (15:35-16:55)"
         },
         {
           "lessons": [
             {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
+              "avoid_lunch_split": true,
+              "consecutive_pairs": 2,
               "display_time": null,
-              "id": 570,
+              "id": 586,
               "is_block": false,
-              "is_lab": false,
-              "name": "Иностранный язык в профессиональной деятельности",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 41,
-              "room_name": "324",
+              "is_lab": true,
+              "name": "ЛПЗ МДК.05.01 Электросварочные работы на автоматических и полуавтоматических машинах",
+              "requested_room_id": 66,
+              "requested_room_name": "120-121",
+              "room_id": 66,
+              "room_name": "120-121",
               "room_substituted": false,
               "room_substitution_reason": null,
               "room_type": 0,
               "subgroup": 53,
-              "teacher_id": 27,
-              "uid": "lesson-a21f9c7ebd930160",
+              "teacher_id": 55,
+              "uid": "lesson-a0b4e9b829970932",
               "week_parity": "all"
             }
           ],
           "slot": 6,
-          "text": "Иностранный язык в профессиональной деятельности — 2 п/г, Ермолина Ирина Павловна, Лесная",
-          "time": "6 пара (15:40-16:50)"
+          "text": "ЛПЗ МДК.05.01 Электросварочные работы на автоматических и полуавтоматических машинах — 2 п/г, Лимонова Евгения Николаевна, Лесная",
+          "time": "6 пара (17:05-18:25)"
         },
         {
           "lessons": [],
           "slot": 7,
           "text": "-",
-          "time": "7 пара (17:00-18:10)"
+          "time": "7 пара (18:35-19:55)"
         }
       ],
-      "weekday": "СБ"
+      "weekday": "СР"
     }
   ],
   "group_index": 26,

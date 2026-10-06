@@ -1,8 +1,8 @@
 {
   "days": [
     {
-      "date": "01.09.2026",
-      "date_iso": "2026-09-01",
+      "date": "07.10.2026",
+      "date_iso": "2026-10-07",
       "day_index": 0,
       "slots": [
         {
@@ -12,30 +12,9 @@
           "time": "1 пара (08:30-09:55)"
         },
         {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 236,
-              "is_block": false,
-              "is_lab": false,
-              "name": "География",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 33,
-              "room_name": "209",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": -1,
-              "teacher_id": 15,
-              "uid": "lesson-e210800422e32e38",
-              "week_parity": "all"
-            }
-          ],
+          "lessons": [],
           "slot": 2,
-          "text": "География — вся группа, Кропотова Анастасия Андреевна, Лесная",
+          "text": "-",
           "time": "2 пара (10:05-11:30)"
         },
         {
@@ -44,25 +23,25 @@
               "avoid_lunch_split": false,
               "consecutive_pairs": 1,
               "display_time": null,
-              "id": 238,
+              "id": 241,
               "is_block": false,
               "is_lab": false,
-              "name": "История России",
+              "name": "Физическая культура",
               "requested_room_id": null,
               "requested_room_name": null,
-              "room_id": 37,
-              "room_name": "317",
+              "room_id": 67,
+              "room_name": "Спортзал",
               "room_substituted": false,
               "room_substitution_reason": null,
               "room_type": 0,
               "subgroup": -1,
-              "teacher_id": 14,
-              "uid": "lesson-eff803cb750186f5",
+              "teacher_id": 34,
+              "uid": "lesson-7ceeb0e028bb2fe4",
               "week_parity": "all"
             }
           ],
           "slot": 3,
-          "text": "История России — вся группа, Лучинин Александр Васильевич, Лесная",
+          "text": "Физическая культура — вся группа, Нуров Мирзо Нуралиевич, Лесная",
           "time": "3 пара (12:25-13:50)"
         },
         {
@@ -120,187 +99,6 @@
           "time": "5 пара (15:35-16:55)"
         },
         {
-          "lessons": [],
-          "slot": 6,
-          "text": "-",
-          "time": "6 пара (17:05-18:25)"
-        },
-        {
-          "lessons": [],
-          "slot": 7,
-          "text": "-",
-          "time": "7 пара (18:35-19:55)"
-        }
-      ],
-      "weekday": "ВТ"
-    },
-    {
-      "date": "02.10.2026",
-      "date_iso": "2026-10-02",
-      "day_index": 0,
-      "slots": [
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 249,
-              "is_block": false,
-              "is_lab": false,
-              "name": "Метрология, стандартизация и сертификация",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 44,
-              "room_name": "405",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": -1,
-              "teacher_id": 41,
-              "uid": "lesson-3871afdce71347c6",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 1,
-          "text": "Метрология, стандартизация и сертификация — вся группа, Садриева Татьяна Геннадьевна, Лесная",
-          "time": "1 пара (08:30-09:55)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 241,
-              "is_block": false,
-              "is_lab": false,
-              "name": "Физическая культура",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 67,
-              "room_name": "Спортзал",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": -1,
-              "teacher_id": 34,
-              "uid": "lesson-7ceeb0e028bb2fe4",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 2,
-          "text": "Физическая культура — вся группа, Нуров Мирзо Нуралиевич, Лесная",
-          "time": "2 пара (10:05-11:30)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 249,
-              "is_block": false,
-              "is_lab": false,
-              "name": "Метрология, стандартизация и сертификация",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 44,
-              "room_name": "405",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": -1,
-              "teacher_id": 41,
-              "uid": "lesson-3871afdce71347c6",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 3,
-          "text": "Метрология, стандартизация и сертификация — вся группа, Садриева Татьяна Геннадьевна, Лесная",
-          "time": "3 пара (12:25-13:50)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 241,
-              "is_block": false,
-              "is_lab": false,
-              "name": "Физическая культура",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 67,
-              "room_name": "Спортзал",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": -1,
-              "teacher_id": 34,
-              "uid": "lesson-7ceeb0e028bb2fe4",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 4,
-          "text": "Физическая культура — вся группа, Нуров Мирзо Нуралиевич, Лесная",
-          "time": "4 пара (14:00-15:25)"
-        },
-        {
-          "lessons": [],
-          "slot": 5,
-          "text": "-",
-          "time": "5 пара (15:35-16:55)"
-        },
-        {
-          "lessons": [],
-          "slot": 6,
-          "text": "-",
-          "time": "6 пара (17:05-18:25)"
-        },
-        {
-          "lessons": [],
-          "slot": 7,
-          "text": "-",
-          "time": "7 пара (18:35-19:55)"
-        }
-      ],
-      "weekday": "ПТ"
-    },
-    {
-      "date": "03.10.2026",
-      "date_iso": "2026-10-03",
-      "day_index": 0,
-      "slots": [
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 247,
-              "is_block": false,
-              "is_lab": false,
-              "name": "Математические методы моделирования производственных процессов",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 36,
-              "room_name": "315",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": -1,
-              "teacher_id": 17,
-              "uid": "lesson-bc2678c96f1ce50a",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 1,
-          "text": "Математические методы моделирования производственных процессов — вся группа, Нифонтова Ирина Геннадьевна, Лесная",
-          "time": "1 пара (08:30-09:45)"
-        },
-        {
           "lessons": [
             {
               "avoid_lunch_split": false,
@@ -323,63 +121,18 @@
               "week_parity": "all"
             }
           ],
-          "slot": 2,
-          "text": "История России — вся группа, Лучинин Александр Васильевич, Лесная",
-          "time": "2 пара (09:55-11:10)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 247,
-              "is_block": false,
-              "is_lab": false,
-              "name": "Математические методы моделирования производственных процессов",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 36,
-              "room_name": "315",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": -1,
-              "teacher_id": 17,
-              "uid": "lesson-bc2678c96f1ce50a",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 3,
-          "text": "Математические методы моделирования производственных процессов — вся группа, Нифонтова Ирина Геннадьевна, Лесная",
-          "time": "3 пара (11:30-12:45)"
-        },
-        {
-          "lessons": [],
-          "slot": 4,
-          "text": "-",
-          "time": "4 пара (12:55-14:10)"
-        },
-        {
-          "lessons": [],
-          "slot": 5,
-          "text": "-",
-          "time": "5 пара (14:20-15:30)"
-        },
-        {
-          "lessons": [],
           "slot": 6,
-          "text": "-",
-          "time": "6 пара (15:40-16:50)"
+          "text": "История России — вся группа, Лучинин Александр Васильевич, Лесная",
+          "time": "6 пара (17:05-18:25)"
         },
         {
           "lessons": [],
           "slot": 7,
           "text": "-",
-          "time": "7 пара (17:00-18:10)"
+          "time": "7 пара (18:35-19:55)"
         }
       ],
-      "weekday": "СБ"
+      "weekday": "СР"
     }
   ],
   "group_index": 12,

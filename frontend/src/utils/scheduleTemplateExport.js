@@ -91,6 +91,19 @@ const weekdayFromIso = iso => {
 
 const displayDateFromIso = iso => `${iso.slice(8, 10)}.${iso.slice(5, 7)}.${iso.slice(0, 4)}`
 
+const addIsoDays = (iso, offset) => {
+  const date = new Date(`${iso}T12:00:00`)
+  date.setDate(date.getDate() + offset)
+  return date.toISOString().slice(0, 10)
+}
+
+const mondayIso = iso => {
+  const date = new Date(`${iso}T12:00:00`)
+  const day = date.getDay()
+  date.setDate(date.getDate() - (day === 0 ? 6 : day - 1))
+  return date.toISOString().slice(0, 10)
+}
+
 export function scheduleForDates(schedule, selectedDates) {
   const dates = [...new Set((selectedDates || []).map(value => {
     if (/^\d{4}-\d{2}-\d{2}$/.test(String(value || ''))) return String(value)
@@ -257,6 +270,9 @@ export async function buildScheduleExcelWorkbook(schedule, templateBuffer) {
     }
     datesByWeekday.set(weekday, dateIso(day))
   }
+  // The template contains the whole Monday–Saturday week. Keep every header
+  // aligned with the exported day even when the selected scope is one day.
+  const anchorIso = scheduleDates.length ? mondayIso(dateIso(scheduleDates[0])) : ''
   const templateGroupKeys = new Set()
   let insertedLessons = 0
 
@@ -271,6 +287,11 @@ export async function buildScheduleExcelWorkbook(schedule, templateBuffer) {
     // Keeping it makes the exported headers render exactly like the supplied
     // workbook (31.8, 1.9, ...), including in non-Microsoft viewers.
     for (const { headerRow } of Object.values(DAY_LAYOUT)) sheet.getCell(headerRow, 1).numFmt = 'd\\.m'
+    if (anchorIso) {
+      for (const [offset, weekday] of ['ПН', 'ВТ', 'СР', 'ЧТ', 'ПТ', 'СБ'].entries()) {
+        sheet.getCell(DAY_LAYOUT[weekday].headerRow, 1).value = excelDate({ date_iso: addIsoDays(anchorIso, offset) })
+      }
+    }
     const groups = templateGroupColumns(sheet)
     groups.forEach(group => templateGroupKeys.add(groupKey(group.name)))
 

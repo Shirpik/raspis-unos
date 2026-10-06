@@ -2006,6 +2006,24 @@ JsonValue BuildDataAudit(const JsonValue& source_root) {
     std::unordered_set<int> lesson_ids;
     std::unordered_map<int, long long> teacher_slots;
     std::unordered_map<int, long long> group_slots;
+    std::unordered_map<int, int> lesson_groups;
+    std::unordered_map<int, long long> confirmed_lesson_hours;
+    for (const JsonValue& lesson : lessons.array_value)
+        lesson_groups[JsonInt(lesson, "id", -1)] = JsonInt(lesson, "group", -1);
+    for (const JsonValue& entry : root.At("teaching_ledger").array_value) {
+        if (JsonString(entry, "status", "confirmed") != "confirmed") continue;
+        const int lesson = JsonInt(entry, "lesson_id", -1);
+        const int group = JsonInt(entry, "group_id", -1);
+        const int slot = JsonInt(entry, "slot", 0);
+        const int hours = JsonInt(entry, "hours", 0);
+        Date date{};
+        const auto lesson_group = lesson_groups.find(lesson);
+        if (lesson_group != lesson_groups.end() && group == lesson_group->second &&
+            slot >= 1 && slot <= SLOTS_PER_DAY && hours > 0 &&
+            ParseDateIso(JsonString(entry, "date", ""), date)) {
+            confirmed_lesson_hours[lesson] += hours;
+        }
+    }
     for (const JsonValue& lesson : lessons.array_value) {
         const int id = JsonInt(lesson, "id", -1);
         const int group = JsonInt(lesson, "group", -1);
@@ -2023,7 +2041,9 @@ JsonValue BuildDataAudit(const JsonValue& source_root) {
             AddIssue(issues, "error", "lesson_teacher_missing", "Занятие «" + name + "» ссылается на отсутствующего преподавателя", "lesson", id);
         if (teacher < 0)
             AddIssue(issues, "warning", "teacher_vacancy", "Для занятия «" + name + "» преподаватель не назначен", "lesson", id);
-        if (generation_active && total_slots <= 0)
+        const int total_hours = JsonInt(lesson, "total_hours", 0);
+        const bool fully_confirmed = total_hours > 0 && confirmed_lesson_hours[id] >= total_hours;
+        if (generation_active && total_slots <= 0 && !fully_confirmed)
             AddIssue(issues, "error", "lesson_hours_invalid", "У занятия «" + name + "» отсутствует положительная нагрузка", "lesson", id);
         const int consecutive_pairs = JsonInt(lesson, "consecutive_pairs", 1);
         if (consecutive_pairs != 1 && consecutive_pairs != 2)
@@ -2076,13 +2096,31 @@ JsonValue BuildDataAudit(const JsonValue& source_root) {
         if (group >= 0) group_slots[group] += occupied;
     }
 
+    const JsonValue& settings = root.At("settings");
+    Date selected_start;
+    Date selected_end;
+    const bool selected_range_valid =
+        ParseDateIso(JsonString(settings, "start_date", ""), selected_start) &&
+        ParseDateIso(JsonString(settings, "end_date", ""), selected_end) && selected_end >= selected_start;
+    if (!selected_range_valid) {
+        AddIssue(issues, "error", "invalid_date_range", "Некорректный диапазон дат семестра");
+    }
     Date start;
     Date end;
-    const JsonValue& settings = root.At("settings");
+    const std::string semester_start_text = JsonString(settings, "semester_start_date", JsonString(settings, "start_date", ""));
+    std::string semester_end_text = JsonString(settings, "semester_end_date", JsonString(settings, "end_date", ""));
+    Date configured_semester_end;
+    Date first_course_end;
+    if (ParseDateIso(semester_end_text, configured_semester_end) &&
+        ParseDateIso(JsonString(settings, "first_course_semester_end_date", ""), first_course_end) &&
+        first_course_end > configured_semester_end) {
+        semester_end_text = JsonString(settings, "first_course_semester_end_date", "");
+    }
     int available_slot_capacity = 0;
-    if (!ParseDateIso(JsonString(settings, "start_date", ""), start) ||
-        !ParseDateIso(JsonString(settings, "end_date", ""), end) || end < start) {
-        AddIssue(issues, "error", "invalid_date_range", "Некорректный диапазон дат семестра");
+    if (!ParseDateIso(semester_start_text, start) ||
+        !ParseDateIso(semester_end_text, end) || end < start) {
+        if (selected_range_valid)
+            AddIssue(issues, "error", "invalid_date_range", "Некорректный диапазон дат семестра");
     } else {
         available_slot_capacity = static_cast<int>(GenerateSchoolDays(start, end).size()) * SLOTS_PER_DAY;
         for (const auto& pair : teacher_slots) {

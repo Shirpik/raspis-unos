@@ -1,64 +1,35 @@
 {
   "days": [
     {
-      "date": "01.09.2026",
-      "date_iso": "2026-09-01",
+      "date": "07.10.2026",
+      "date_iso": "2026-10-07",
       "day_index": 0,
       "slots": [
         {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 353,
-              "is_block": false,
-              "is_lab": false,
-              "name": "Иностранный язык в профессиональной деятельности",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 7,
-              "room_name": "18/2",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": 34,
-              "teacher_id": 30,
-              "uid": "lesson-0006397e20ae271e",
-              "week_parity": "all"
-            },
-            {
-              "avoid_lunch_split": true,
-              "consecutive_pairs": 2,
-              "display_time": null,
-              "id": 363,
-              "is_block": false,
-              "is_lab": true,
-              "name": "ЛПЗ МДК.01.01 Основы аналитической химии и физико-химических методов анализа",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 52,
-              "room_name": "54",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": 35,
-              "teacher_id": 10,
-              "uid": "lesson-30d5bf26daf31552",
-              "week_parity": "all"
-            }
-          ],
+          "lessons": [],
           "slot": 1,
-          "text": "Иностранный язык в профессиональной деятельности — 1 п/г, Синельникова Елена Владимировна, Кривоусова | ЛПЗ МДК.01.01 Основы аналитической химии и физико-химических методов анализа — 2 п/г, Семенова Лилиана Ивановна, Кривоусова",
+          "text": "-",
           "time": "1 пара (08:30-09:55)"
         },
         {
+          "lessons": [],
+          "slot": 2,
+          "text": "-",
+          "time": "2 пара (10:05-11:30)"
+        },
+        {
+          "lessons": [],
+          "slot": 3,
+          "text": "-",
+          "time": "3 пара (12:25-13:50)"
+        },
+        {
           "lessons": [
             {
               "avoid_lunch_split": false,
               "consecutive_pairs": 1,
               "display_time": null,
-              "id": 353,
+              "id": 354,
               "is_block": false,
               "is_lab": false,
               "name": "Иностранный язык в профессиональной деятельности",
@@ -69,35 +40,15 @@
               "room_substituted": false,
               "room_substitution_reason": null,
               "room_type": 0,
-              "subgroup": 34,
-              "teacher_id": 30,
-              "uid": "lesson-0006397e20ae271e",
-              "week_parity": "all"
-            },
-            {
-              "avoid_lunch_split": true,
-              "consecutive_pairs": 2,
-              "display_time": null,
-              "id": 363,
-              "is_block": false,
-              "is_lab": true,
-              "name": "ЛПЗ МДК.01.01 Основы аналитической химии и физико-химических методов анализа",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 52,
-              "room_name": "54",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
               "subgroup": 35,
-              "teacher_id": 10,
-              "uid": "lesson-30d5bf26daf31552",
+              "teacher_id": 30,
+              "uid": "lesson-4dd5b8d82d537d0f",
               "week_parity": "all"
             }
           ],
-          "slot": 2,
-          "text": "Иностранный язык в профессиональной деятельности — 1 п/г, Синельникова Елена Владимировна, Кривоусова | ЛПЗ МДК.01.01 Основы аналитической химии и физико-химических методов анализа — 2 п/г, Семенова Лилиана Ивановна, Кривоусова",
-          "time": "2 пара (10:05-11:30)"
+          "slot": 4,
+          "text": "Иностранный язык в профессиональной деятельности — 2 п/г, Синельникова Елена Владимировна, Кривоусова",
+          "time": "4 пара (14:00-15:25)"
         },
         {
           "lessons": [
@@ -105,267 +56,26 @@
               "avoid_lunch_split": false,
               "consecutive_pairs": 1,
               "display_time": null,
-              "id": 359,
+              "id": 367,
               "is_block": false,
               "is_lab": false,
-              "name": "Аналитическая химия",
+              "name": "ВМДК.04.02 Химический анализ сырья, материалов и готовой продукции",
               "requested_room_id": null,
               "requested_room_name": null,
-              "room_id": 52,
-              "room_name": "54",
+              "room_id": 58,
+              "room_name": "67",
               "room_substituted": false,
               "room_substitution_reason": null,
               "room_type": 0,
               "subgroup": -1,
-              "teacher_id": 10,
-              "uid": "lesson-30cb3a2082ba852b",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 3,
-          "text": "Аналитическая химия — вся группа, Семенова Лилиана Ивановна, Кривоусова",
-          "time": "3 пара (12:25-13:50)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 353,
-              "is_block": false,
-              "is_lab": false,
-              "name": "Иностранный язык в профессиональной деятельности",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 7,
-              "room_name": "18/2",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": 34,
-              "teacher_id": 30,
-              "uid": "lesson-0006397e20ae271e",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 4,
-          "text": "Иностранный язык в профессиональной деятельности — 1 п/г, Синельникова Елена Владимировна, Кривоусова",
-          "time": "4 пара (14:00-15:25)"
-        },
-        {
-          "lessons": [],
-          "slot": 5,
-          "text": "-",
-          "time": "5 пара (15:35-16:55)"
-        },
-        {
-          "lessons": [],
-          "slot": 6,
-          "text": "-",
-          "time": "6 пара (17:05-18:25)"
-        },
-        {
-          "lessons": [],
-          "slot": 7,
-          "text": "-",
-          "time": "7 пара (18:35-19:55)"
-        }
-      ],
-      "weekday": "ВТ"
-    },
-    {
-      "date": "02.10.2026",
-      "date_iso": "2026-10-02",
-      "day_index": 0,
-      "slots": [
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": true,
-              "consecutive_pairs": 2,
-              "display_time": null,
-              "id": 369,
-              "is_block": false,
-              "is_lab": true,
-              "name": "ЛПЗ ВМДК.04.02 Химический анализ сырья, материалов и готовой продукции",
-              "requested_room_id": 68,
-              "requested_room_name": "ЦПДЭ",
-              "room_id": 68,
-              "room_name": "ЦПДЭ",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": 35,
               "teacher_id": 81,
-              "uid": "lesson-de308c217f2bfc75",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 1,
-          "text": "ЛПЗ ВМДК.04.02 Химический анализ сырья, материалов и готовой продукции — 2 п/г, Рахматулина Наталья Владимировна, Лесная",
-          "time": "1 пара (08:30-09:55)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": true,
-              "consecutive_pairs": 2,
-              "display_time": null,
-              "id": 369,
-              "is_block": false,
-              "is_lab": true,
-              "name": "ЛПЗ ВМДК.04.02 Химический анализ сырья, материалов и готовой продукции",
-              "requested_room_id": 68,
-              "requested_room_name": "ЦПДЭ",
-              "room_id": 68,
-              "room_name": "ЦПДЭ",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": 35,
-              "teacher_id": 81,
-              "uid": "lesson-de308c217f2bfc75",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 2,
-          "text": "ЛПЗ ВМДК.04.02 Химический анализ сырья, материалов и готовой продукции — 2 п/г, Рахматулина Наталья Владимировна, Лесная",
-          "time": "2 пара (10:05-11:30)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": true,
-              "consecutive_pairs": 2,
-              "display_time": null,
-              "id": 366,
-              "is_block": false,
-              "is_lab": true,
-              "name": "ЛПЗ МДК.04.01 Выполнение работ по профессии лаборант химического анализа",
-              "requested_room_id": 68,
-              "requested_room_name": "ЦПДЭ",
-              "room_id": 68,
-              "room_name": "ЦПДЭ",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": 35,
-              "teacher_id": 81,
-              "uid": "lesson-8742e5b34b158183",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 3,
-          "text": "ЛПЗ МДК.04.01 Выполнение работ по профессии лаборант химического анализа — 2 п/г, Рахматулина Наталья Владимировна, Лесная",
-          "time": "3 пара (12:25-13:50)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": true,
-              "consecutive_pairs": 2,
-              "display_time": null,
-              "id": 366,
-              "is_block": false,
-              "is_lab": true,
-              "name": "ЛПЗ МДК.04.01 Выполнение работ по профессии лаборант химического анализа",
-              "requested_room_id": 68,
-              "requested_room_name": "ЦПДЭ",
-              "room_id": 68,
-              "room_name": "ЦПДЭ",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": 35,
-              "teacher_id": 81,
-              "uid": "lesson-8742e5b34b158183",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 4,
-          "text": "ЛПЗ МДК.04.01 Выполнение работ по профессии лаборант химического анализа — 2 п/г, Рахматулина Наталья Владимировна, Лесная",
-          "time": "4 пара (14:00-15:25)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": true,
-              "consecutive_pairs": 2,
-              "display_time": null,
-              "id": 368,
-              "is_block": false,
-              "is_lab": true,
-              "name": "ЛПЗ ВМДК.04.02 Химический анализ сырья, материалов и готовой продукции",
-              "requested_room_id": 68,
-              "requested_room_name": "ЦПДЭ",
-              "room_id": 68,
-              "room_name": "ЦПДЭ",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": 34,
-              "teacher_id": 81,
-              "uid": "lesson-d664a95a292cb4f1",
+              "uid": "lesson-1af2492a570059c2",
               "week_parity": "all"
             }
           ],
           "slot": 5,
-          "text": "ЛПЗ ВМДК.04.02 Химический анализ сырья, материалов и готовой продукции — 1 п/г, Рахматулина Наталья Владимировна, Лесная",
+          "text": "ВМДК.04.02 Химический анализ сырья, материалов и готовой продукции — вся группа, Рахматулина Наталья Владимировна, Кривоусова",
           "time": "5 пара (15:35-16:55)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": true,
-              "consecutive_pairs": 2,
-              "display_time": null,
-              "id": 368,
-              "is_block": false,
-              "is_lab": true,
-              "name": "ЛПЗ ВМДК.04.02 Химический анализ сырья, материалов и готовой продукции",
-              "requested_room_id": 68,
-              "requested_room_name": "ЦПДЭ",
-              "room_id": 68,
-              "room_name": "ЦПДЭ",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": 34,
-              "teacher_id": 81,
-              "uid": "lesson-d664a95a292cb4f1",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 6,
-          "text": "ЛПЗ ВМДК.04.02 Химический анализ сырья, материалов и готовой продукции — 1 п/г, Рахматулина Наталья Владимировна, Лесная",
-          "time": "6 пара (17:05-18:25)"
-        },
-        {
-          "lessons": [],
-          "slot": 7,
-          "text": "-",
-          "time": "7 пара (18:35-19:55)"
-        }
-      ],
-      "weekday": "ПТ"
-    },
-    {
-      "date": "03.10.2026",
-      "date_iso": "2026-10-03",
-      "day_index": 0,
-      "slots": [
-        {
-          "lessons": [],
-          "slot": 1,
-          "text": "-",
-          "time": "1 пара (08:30-09:45)"
-        },
-        {
-          "lessons": [],
-          "slot": 2,
-          "text": "-",
-          "time": "2 пара (09:55-11:10)"
         },
         {
           "lessons": [
@@ -390,9 +100,9 @@
               "week_parity": "all"
             }
           ],
-          "slot": 3,
+          "slot": 6,
           "text": "Физическая и коллоидная химия — вся группа, Семенова Лилиана Ивановна, Кривоусова",
-          "time": "3 пара (11:30-12:45)"
+          "time": "6 пара (17:05-18:25)"
         },
         {
           "lessons": [
@@ -417,72 +127,12 @@
               "week_parity": "all"
             }
           ],
-          "slot": 4,
-          "text": "Физическая и коллоидная химия — вся группа, Семенова Лилиана Ивановна, Кривоусова",
-          "time": "4 пара (12:55-14:10)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 355,
-              "is_block": false,
-              "is_lab": false,
-              "name": "Физическая культура",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 22,
-              "room_name": "Спортзал",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": -1,
-              "teacher_id": 8,
-              "uid": "lesson-5e2dbe623ff4e0a2",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 5,
-          "text": "Физическая культура — вся группа, Потапова Регина Александровна, Кривоусова",
-          "time": "5 пара (14:20-15:30)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 355,
-              "is_block": false,
-              "is_lab": false,
-              "name": "Физическая культура",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 22,
-              "room_name": "Спортзал",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": -1,
-              "teacher_id": 8,
-              "uid": "lesson-5e2dbe623ff4e0a2",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 6,
-          "text": "Физическая культура — вся группа, Потапова Регина Александровна, Кривоусова",
-          "time": "6 пара (15:40-16:50)"
-        },
-        {
-          "lessons": [],
           "slot": 7,
-          "text": "-",
-          "time": "7 пара (17:00-18:10)"
+          "text": "Физическая и коллоидная химия — вся группа, Семенова Лилиана Ивановна, Кривоусова",
+          "time": "7 пара (18:35-19:55)"
         }
       ],
-      "weekday": "СБ"
+      "weekday": "СР"
     }
   ],
   "group_index": 17,
