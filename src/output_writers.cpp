@@ -39,6 +39,7 @@ std::string BuildGroupSlotText(
         if (BoolValue(response, x[l][t])) {
             std::ostringstream ss;
             std::string lesson_name = lessons[l].name;
+            if (lessons[l].IsClassroomTheory(all_days[day])) lesson_name += " (теория)";
 
             if (lessons[l].is_block) {
                 std::string up_label = UpShiftLabelForDisplaySlot(all_days[day], slot);
@@ -577,7 +578,7 @@ void WriteSlotLessonsJson(
         out << "{"
             << "\"id\":" << lessons[l].id
             << ",\"uid\":\"" << JsonEscape(lessons[l].uid) << "\""
-            << ",\"name\":\"" << JsonEscape(lessons[l].name) << "\""
+            << ",\"name\":\"" << JsonEscape(lessons[l].name + (lessons[l].IsClassroomTheory(date) ? " (теория)" : "")) << "\""
             << ",\"teacher_id\":" << (lessons[l].teacher >= 0 ? std::to_string(lessons[l].teacher) : "null")
             << ",\"subgroup\":" << lessons[l].subgroup
             << ",\"is_lab\":" << (lessons[l].is_lab ? "true" : "false")

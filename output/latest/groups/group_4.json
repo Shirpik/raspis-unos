@@ -1,8 +1,8 @@
 {
   "days": [
     {
-      "date": "07.10.2026",
-      "date_iso": "2026-10-07",
+      "date": "08.10.2026",
+      "date_iso": "2026-10-08",
       "day_index": 0,
       "slots": [
         {
@@ -13,6 +13,214 @@
         },
         {
           "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 83,
+              "is_block": false,
+              "is_lab": false,
+              "name": "математика",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 56,
+              "room_name": "64",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": -1,
+              "teacher_id": 23,
+              "uid": "lesson-9a439e2053cb5a68",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 2,
+          "text": "математика — вся группа, Журавский Константин Сергеевич, Кривоусова",
+          "time": "2 пара (10:05-11:30)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 88,
+              "is_block": false,
+              "is_lab": false,
+              "name": "основы безопасности и защиты Родины",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 18,
+              "room_name": "37",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": -1,
+              "teacher_id": 8,
+              "uid": "lesson-3c99b79a7d8b7398",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 3,
+          "text": "основы безопасности и защиты Родины — вся группа, Потапова Регина Александровна, Кривоусова",
+          "time": "3 пара (12:25-13:50)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 83,
+              "is_block": false,
+              "is_lab": false,
+              "name": "математика",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 56,
+              "room_name": "64",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": -1,
+              "teacher_id": 23,
+              "uid": "lesson-9a439e2053cb5a68",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 4,
+          "text": "математика — вся группа, Журавский Константин Сергеевич, Кривоусова",
+          "time": "4 пара (14:00-15:25)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 90,
+              "is_block": false,
+              "is_lab": false,
+              "name": "химия",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 4,
+              "room_name": "15",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": -1,
+              "teacher_id": 20,
+              "uid": "lesson-4a3de124a3dc543a",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 5,
+          "text": "химия — вся группа, Соболева Любовь Анатольевна, Кривоусова",
+          "time": "5 пара (15:35-16:55)"
+        },
+        {
+          "lessons": [],
+          "slot": 6,
+          "text": "-",
+          "time": "6 пара (17:05-18:25)"
+        },
+        {
+          "lessons": [],
+          "slot": 7,
+          "text": "-",
+          "time": "7 пара (18:35-19:55)"
+        }
+      ],
+      "weekday": "ЧТ"
+    },
+    {
+      "date": "09.10.2026",
+      "date_iso": "2026-10-09",
+      "day_index": 1,
+      "slots": [
+        {
+          "lessons": [],
+          "slot": 1,
+          "text": "-",
+          "time": "1 пара (08:30-09:55)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 89,
+              "is_block": false,
+              "is_lab": false,
+              "name": "физика",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 54,
+              "room_name": "57",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": -1,
+              "teacher_id": 19,
+              "uid": "lesson-1eaf279213bb5fe6",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 2,
+          "text": "физика — вся группа, Силенок Марина Юрьевна, Кривоусова",
+          "time": "2 пара (10:05-11:30)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 89,
+              "is_block": false,
+              "is_lab": false,
+              "name": "физика",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 54,
+              "room_name": "57",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": -1,
+              "teacher_id": 19,
+              "uid": "lesson-1eaf279213bb5fe6",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 3,
+          "text": "физика — вся группа, Силенок Марина Юрьевна, Кривоусова",
+          "time": "3 пара (12:25-13:50)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 82,
+              "is_block": false,
+              "is_lab": false,
+              "name": "иностранный язык",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 59,
+              "room_name": "68",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 9,
+              "teacher_id": 16,
+              "uid": "lesson-3d322617e8690622",
+              "week_parity": "all"
+            },
             {
               "avoid_lunch_split": false,
               "consecutive_pairs": 1,
@@ -34,9 +242,9 @@
               "week_parity": "all"
             }
           ],
-          "slot": 2,
-          "text": "информатика — 1 п/г, Круглова Юлия Петровна, Кривоусова",
-          "time": "2 пара (10:05-11:30)"
+          "slot": 4,
+          "text": "иностранный язык — 2 п/г, Буркова Елена Владимировна, Кривоусова | информатика — 1 п/г, Круглова Юлия Петровна, Кривоусова",
+          "time": "4 пара (14:00-15:25)"
         },
         {
           "lessons": [
@@ -61,62 +269,8 @@
               "week_parity": "all"
             }
           ],
-          "slot": 3,
-          "text": "математика — вся группа, Журавский Константин Сергеевич, Кривоусова",
-          "time": "3 пара (12:25-13:50)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 88,
-              "is_block": false,
-              "is_lab": false,
-              "name": "основы безопасности и защиты Родины",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 18,
-              "room_name": "37",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": -1,
-              "teacher_id": 8,
-              "uid": "lesson-3c99b79a7d8b7398",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 4,
-          "text": "основы безопасности и защиты Родины — вся группа, Потапова Регина Александровна, Кривоусова",
-          "time": "4 пара (14:00-15:25)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 88,
-              "is_block": false,
-              "is_lab": false,
-              "name": "основы безопасности и защиты Родины",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 18,
-              "room_name": "37",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": -1,
-              "teacher_id": 8,
-              "uid": "lesson-3c99b79a7d8b7398",
-              "week_parity": "all"
-            }
-          ],
           "slot": 5,
-          "text": "основы безопасности и защиты Родины — вся группа, Потапова Регина Александровна, Кривоусова",
+          "text": "математика — вся группа, Журавский Константин Сергеевич, Кривоусова",
           "time": "5 пара (15:35-16:55)"
         },
         {
@@ -132,7 +286,141 @@
           "time": "7 пара (18:35-19:55)"
         }
       ],
-      "weekday": "СР"
+      "weekday": "ПТ"
+    },
+    {
+      "date": "10.10.2026",
+      "date_iso": "2026-10-10",
+      "day_index": 2,
+      "slots": [
+        {
+          "lessons": [],
+          "slot": 1,
+          "text": "-",
+          "time": "1 пара (08:30-09:45)"
+        },
+        {
+          "lessons": [],
+          "slot": 2,
+          "text": "-",
+          "time": "2 пара (09:55-11:10)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 89,
+              "is_block": false,
+              "is_lab": false,
+              "name": "физика",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 54,
+              "room_name": "57",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": -1,
+              "teacher_id": 19,
+              "uid": "lesson-1eaf279213bb5fe6",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 3,
+          "text": "физика — вся группа, Силенок Марина Юрьевна, Кривоусова",
+          "time": "3 пара (11:30-12:45)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 89,
+              "is_block": false,
+              "is_lab": false,
+              "name": "физика",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 54,
+              "room_name": "57",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": -1,
+              "teacher_id": 19,
+              "uid": "lesson-1eaf279213bb5fe6",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 4,
+          "text": "физика — вся группа, Силенок Марина Юрьевна, Кривоусова",
+          "time": "4 пара (12:55-14:10)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 77,
+              "is_block": false,
+              "is_lab": false,
+              "name": "литература",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 18,
+              "room_name": "37",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": -1,
+              "teacher_id": 22,
+              "uid": "lesson-99973ebb030394a0",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 5,
+          "text": "литература — вся группа, Кибардина Татьяна Леонидовна, Кривоусова",
+          "time": "5 пара (14:20-15:30)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 83,
+              "is_block": false,
+              "is_lab": false,
+              "name": "математика",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 56,
+              "room_name": "64",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": -1,
+              "teacher_id": 23,
+              "uid": "lesson-9a439e2053cb5a68",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 6,
+          "text": "математика — вся группа, Журавский Константин Сергеевич, Кривоусова",
+          "time": "6 пара (15:40-16:50)"
+        },
+        {
+          "lessons": [],
+          "slot": 7,
+          "text": "-",
+          "time": "7 пара (17:00-18:10)"
+        }
+      ],
+      "weekday": "СБ"
     }
   ],
   "group_index": 4,

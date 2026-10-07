@@ -1,8 +1,8 @@
 {
   "days": [
     {
-      "date": "07.10.2026",
-      "date_iso": "2026-10-07",
+      "date": "08.10.2026",
+      "date_iso": "2026-10-08",
       "day_index": 0,
       "slots": [
         {
@@ -11,26 +11,119 @@
               "avoid_lunch_split": false,
               "consecutive_pairs": 1,
               "display_time": null,
-              "id": 896,
+              "id": 912,
+              "is_block": false,
+              "is_lab": true,
+              "name": "ЛПЗ МДК.01.04 Системное программирование",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 49,
+              "room_name": "411",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 85,
+              "teacher_id": 67,
+              "uid": "lesson-ca3ab64d1072f662",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 1,
+          "text": "ЛПЗ МДК.01.04 Системное программирование — 2 п/г, Гарбузов Андрей Евгеньевич, Лесная",
+          "time": "1 пара (08:30-09:55)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 897,
               "is_block": false,
               "is_lab": false,
               "name": "Иностранный язык в профессиональной деятельности",
               "requested_room_id": null,
               "requested_room_name": null,
-              "room_id": 47,
-              "room_name": "417",
+              "room_id": 43,
+              "room_name": "401",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 85,
+              "teacher_id": 4,
+              "uid": "lesson-ba1c6383aa536401",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 2,
+          "text": "Иностранный язык в профессиональной деятельности — 2 п/г, Давыдова Валентина Алексеевна, Лесная",
+          "time": "2 пара (10:05-11:30)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 897,
+              "is_block": false,
+              "is_lab": false,
+              "name": "Иностранный язык в профессиональной деятельности",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 43,
+              "room_name": "401",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 85,
+              "teacher_id": 4,
+              "uid": "lesson-ba1c6383aa536401",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 3,
+          "text": "Иностранный язык в профессиональной деятельности — 2 п/г, Давыдова Валентина Алексеевна, Лесная",
+          "time": "3 пара (12:25-13:50)"
+        },
+        {
+          "lessons": [],
+          "slot": 4,
+          "text": "-",
+          "time": "4 пара (14:00-15:25)"
+        },
+        {
+          "lessons": [],
+          "slot": 5,
+          "text": "-",
+          "time": "5 пара (15:35-16:55)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 905,
+              "is_block": false,
+              "is_lab": true,
+              "name": "ЛПЗ МДК.01.02 Поддержка и тестирование программных модулей",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 30,
+              "room_name": "204",
               "room_substituted": false,
               "room_substitution_reason": null,
               "room_type": 0,
               "subgroup": 84,
-              "teacher_id": 28,
-              "uid": "lesson-66f91e25e3ba771c",
+              "teacher_id": 64,
+              "uid": "lesson-a7c97e625c251637",
               "week_parity": "all"
             }
           ],
-          "slot": 1,
-          "text": "Иностранный язык в профессиональной деятельности — 1 п/г, Новосёлова Светлана Юрьевна, Лесная",
-          "time": "1 пара (08:30-09:55)"
+          "slot": 6,
+          "text": "ЛПЗ МДК.01.02 Поддержка и тестирование программных модулей — 1 п/г, Меренчуков Иван Александрович, Лесная",
+          "time": "6 пара (17:05-18:25)"
         },
         {
           "lessons": [
@@ -55,9 +148,225 @@
               "week_parity": "all"
             }
           ],
-          "slot": 2,
+          "slot": 7,
           "text": "ЛПЗ МДК 01.03 Разработка мобильных приложений — 1 п/г, Меренчуков Иван Александрович, Лесная",
+          "time": "7 пара (18:35-19:55)"
+        }
+      ],
+      "weekday": "ЧТ"
+    },
+    {
+      "date": "09.10.2026",
+      "date_iso": "2026-10-09",
+      "day_index": 1,
+      "slots": [
+        {
+          "lessons": [],
+          "slot": 1,
+          "text": "-",
+          "time": "1 пара (08:30-09:55)"
+        },
+        {
+          "lessons": [],
+          "slot": 2,
+          "text": "-",
           "time": "2 пара (10:05-11:30)"
+        },
+        {
+          "lessons": [],
+          "slot": 3,
+          "text": "-",
+          "time": "3 пара (12:25-13:50)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 912,
+              "is_block": false,
+              "is_lab": true,
+              "name": "ЛПЗ МДК.01.04 Системное программирование",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 49,
+              "room_name": "411",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 85,
+              "teacher_id": 67,
+              "uid": "lesson-ca3ab64d1072f662",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 4,
+          "text": "ЛПЗ МДК.01.04 Системное программирование — 2 п/г, Гарбузов Андрей Евгеньевич, Лесная",
+          "time": "4 пара (14:00-15:25)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 898,
+              "is_block": false,
+              "is_lab": false,
+              "name": "Физическая культура",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 67,
+              "room_name": "Спортзал",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": -1,
+              "teacher_id": 34,
+              "uid": "lesson-68df6bd41ebfa6d4",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 5,
+          "text": "Физическая культура — вся группа, Нуров Мирзо Нуралиевич, Лесная",
+          "time": "5 пара (15:35-16:55)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 898,
+              "is_block": false,
+              "is_lab": false,
+              "name": "Физическая культура",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 67,
+              "room_name": "Спортзал",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": -1,
+              "teacher_id": 34,
+              "uid": "lesson-68df6bd41ebfa6d4",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 6,
+          "text": "Физическая культура — вся группа, Нуров Мирзо Нуралиевич, Лесная",
+          "time": "6 пара (17:05-18:25)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 897,
+              "is_block": false,
+              "is_lab": false,
+              "name": "Иностранный язык в профессиональной деятельности",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 43,
+              "room_name": "401",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 85,
+              "teacher_id": 4,
+              "uid": "lesson-ba1c6383aa536401",
+              "week_parity": "all"
+            },
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 911,
+              "is_block": false,
+              "is_lab": true,
+              "name": "ЛПЗ МДК.01.04 Системное программирование",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 49,
+              "room_name": "411",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 84,
+              "teacher_id": 67,
+              "uid": "lesson-97e983ef677fc7b8",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 7,
+          "text": "Иностранный язык в профессиональной деятельности — 2 п/г, Давыдова Валентина Алексеевна, Лесная | ЛПЗ МДК.01.04 Системное программирование — 1 п/г, Гарбузов Андрей Евгеньевич, Лесная",
+          "time": "7 пара (18:35-19:55)"
+        }
+      ],
+      "weekday": "ПТ"
+    },
+    {
+      "date": "10.10.2026",
+      "date_iso": "2026-10-10",
+      "day_index": 2,
+      "slots": [
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 902,
+              "is_block": false,
+              "is_lab": true,
+              "name": "ЛПЗ МДК.01.01 Разработка программных модулей",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 49,
+              "room_name": "411",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 84,
+              "teacher_id": 67,
+              "uid": "lesson-38a8403510134537",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 1,
+          "text": "ЛПЗ МДК.01.01 Разработка программных модулей — 1 п/г, Гарбузов Андрей Евгеньевич, Лесная",
+          "time": "1 пара (08:30-09:45)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 905,
+              "is_block": false,
+              "is_lab": true,
+              "name": "ЛПЗ МДК.01.02 Поддержка и тестирование программных модулей",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 30,
+              "room_name": "204",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 84,
+              "teacher_id": 64,
+              "uid": "lesson-a7c97e625c251637",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 2,
+          "text": "ЛПЗ МДК.01.02 Поддержка и тестирование программных модулей — 1 п/г, Меренчуков Иван Александрович, Лесная",
+          "time": "2 пара (09:55-11:10)"
         },
         {
           "lessons": [
@@ -84,13 +393,7 @@
           ],
           "slot": 3,
           "text": "ЛПЗ МДК.01.04 Системное программирование — 1 п/г, Гарбузов Андрей Евгеньевич, Лесная",
-          "time": "3 пара (12:25-13:50)"
-        },
-        {
-          "lessons": [],
-          "slot": 4,
-          "text": "-",
-          "time": "4 пара (14:00-15:25)"
+          "time": "3 пара (11:30-12:45)"
         },
         {
           "lessons": [
@@ -98,26 +401,53 @@
               "avoid_lunch_split": false,
               "consecutive_pairs": 1,
               "display_time": null,
-              "id": 897,
+              "id": 914,
               "is_block": false,
-              "is_lab": false,
-              "name": "Иностранный язык в профессиональной деятельности",
+              "is_lab": true,
+              "name": "ЛПЗ ВМДК 05.01 Управление и автоматизация баз данных",
               "requested_room_id": null,
               "requested_room_name": null,
-              "room_id": 43,
-              "room_name": "401",
+              "room_id": 39,
+              "room_name": "319",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 84,
+              "teacher_id": 68,
+              "uid": "lesson-e5a39cb496f75a51",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 4,
+          "text": "ЛПЗ ВМДК 05.01 Управление и автоматизация баз данных — 1 п/г, Ханьжина Ксения Владимировна, Лесная",
+          "time": "4 пара (12:55-14:10)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 912,
+              "is_block": false,
+              "is_lab": true,
+              "name": "ЛПЗ МДК.01.04 Системное программирование",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 49,
+              "room_name": "411",
               "room_substituted": false,
               "room_substitution_reason": null,
               "room_type": 0,
               "subgroup": 85,
-              "teacher_id": 4,
-              "uid": "lesson-ba1c6383aa536401",
+              "teacher_id": 67,
+              "uid": "lesson-ca3ab64d1072f662",
               "week_parity": "all"
             }
           ],
           "slot": 5,
-          "text": "Иностранный язык в профессиональной деятельности — 2 п/г, Давыдова Валентина Алексеевна, Лесная",
-          "time": "5 пара (15:35-16:55)"
+          "text": "ЛПЗ МДК.01.04 Системное программирование — 2 п/г, Гарбузов Андрей Евгеньевич, Лесная",
+          "time": "5 пара (14:20-15:30)"
         },
         {
           "lessons": [
@@ -125,26 +455,26 @@
               "avoid_lunch_split": false,
               "consecutive_pairs": 1,
               "display_time": null,
-              "id": 897,
+              "id": 912,
               "is_block": false,
-              "is_lab": false,
-              "name": "Иностранный язык в профессиональной деятельности",
+              "is_lab": true,
+              "name": "ЛПЗ МДК.01.04 Системное программирование",
               "requested_room_id": null,
               "requested_room_name": null,
-              "room_id": 43,
-              "room_name": "401",
+              "room_id": 49,
+              "room_name": "411",
               "room_substituted": false,
               "room_substitution_reason": null,
               "room_type": 0,
               "subgroup": 85,
-              "teacher_id": 4,
-              "uid": "lesson-ba1c6383aa536401",
+              "teacher_id": 67,
+              "uid": "lesson-ca3ab64d1072f662",
               "week_parity": "all"
             }
           ],
           "slot": 6,
-          "text": "Иностранный язык в профессиональной деятельности — 2 п/г, Давыдова Валентина Алексеевна, Лесная",
-          "time": "6 пара (17:05-18:25)"
+          "text": "ЛПЗ МДК.01.04 Системное программирование — 2 п/г, Гарбузов Андрей Евгеньевич, Лесная",
+          "time": "6 пара (15:40-16:50)"
         },
         {
           "lessons": [
@@ -152,29 +482,29 @@
               "avoid_lunch_split": false,
               "consecutive_pairs": 1,
               "display_time": null,
-              "id": 897,
+              "id": 906,
               "is_block": false,
-              "is_lab": false,
-              "name": "Иностранный язык в профессиональной деятельности",
+              "is_lab": true,
+              "name": "ЛПЗ МДК.01.02 Поддержка и тестирование программных модулей",
               "requested_room_id": null,
               "requested_room_name": null,
-              "room_id": 43,
-              "room_name": "401",
+              "room_id": 30,
+              "room_name": "204",
               "room_substituted": false,
               "room_substitution_reason": null,
               "room_type": 0,
               "subgroup": 85,
-              "teacher_id": 4,
-              "uid": "lesson-ba1c6383aa536401",
+              "teacher_id": 64,
+              "uid": "lesson-16d4e894b99c5243",
               "week_parity": "all"
             }
           ],
           "slot": 7,
-          "text": "Иностранный язык в профессиональной деятельности — 2 п/г, Давыдова Валентина Алексеевна, Лесная",
-          "time": "7 пара (18:35-19:55)"
+          "text": "ЛПЗ МДК.01.02 Поддержка и тестирование программных модулей — 2 п/г, Меренчуков Иван Александрович, Лесная",
+          "time": "7 пара (17:00-18:10)"
         }
       ],
-      "weekday": "СР"
+      "weekday": "СБ"
     }
   ],
   "group_index": 42,

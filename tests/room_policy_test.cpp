@@ -42,6 +42,17 @@ int main() {
     const auto cpde = Room(68, "ЦПДЭ", timetable::LESNAYA, "exclusive");
 
     bool ok = true;
+    auto pe = Lesson(8, "Физическая культура");
+    pe.required_room_purpose = "sports_hall";
+    pe.allowed_campuses = {timetable::KRIVOUSOVA};
+    pe.classroom_theory_dates.insert({2026, 10, 10});
+    ok &= Expect(pe.RoomPurposeOn({2026, 10, 10}).empty(), "dated PE theory uses a classroom");
+    ok &= Expect(pe.CampusesOn({2026, 10, 10}).count(timetable::LESNAYA), "dated theory permits Lesnaya fallback");
+    for (const auto date : {timetable::Date{2026, 10, 9}, timetable::Date{2026, 10, 17}}) {
+        ok &= Expect(pe.RoomPurposeOn(date) == "sports_hall", "other dates retain the gym requirement");
+        ok &= Expect(!pe.CampusesOn(date).count(timetable::LESNAYA), "other dates retain campus restrictions");
+    }
+    ok &= Expect(pe.teacher == 8, "theory exception retains teacher identity");
     ok &= Expect(OperationalRoomPolicyAllows(cpde, Lesson(57, "МДК лПз"), saturday),
         "Podchinennov LPZ must use CPDE irrespective of marker case");
     ok &= Expect(!OperationalRoomPolicyAllows(ordinary, Lesson(57, "МДК ЛПЗ"), saturday),

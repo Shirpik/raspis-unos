@@ -1,59 +1,40 @@
 {
   "days": [
     {
-      "date": "07.10.2026",
-      "date_iso": "2026-10-07",
+      "date": "08.10.2026",
+      "date_iso": "2026-10-08",
       "day_index": 0,
       "slots": [
         {
-          "lessons": [],
-          "slot": 1,
-          "text": "-",
-          "time": "1 пара (08:30-09:55)"
-        },
-        {
-          "lessons": [],
-          "slot": 2,
-          "text": "-",
-          "time": "2 пара (10:05-11:30)"
-        },
-        {
           "lessons": [
             {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
+              "avoid_lunch_split": true,
+              "consecutive_pairs": 2,
               "display_time": null,
-              "id": 488,
+              "id": 500,
               "is_block": false,
-              "is_lab": false,
-              "name": "Иностранный язык в профессиональной деятельности",
+              "is_lab": true,
+              "name": "ЛПЗ МДК.03.02 Процессы приготовления, подготовки к реализации холодных блюд, кулинарных изделий, закусок сложного ассортимента",
               "requested_room_id": null,
               "requested_room_name": null,
-              "room_id": 7,
-              "room_name": "18/2",
+              "room_id": 28,
+              "room_name": "61",
               "room_substituted": false,
               "room_substitution_reason": null,
               "room_type": 0,
               "subgroup": 47,
-              "teacher_id": 30,
-              "uid": "lesson-f3ab1138a416ab3f",
+              "teacher_id": 53,
+              "uid": "lesson-0fe9fb0c5378e05c",
               "week_parity": "all"
-            }
-          ],
-          "slot": 3,
-          "text": "Иностранный язык в профессиональной деятельности — 2 п/г, Синельникова Елена Владимировна, Кривоусова",
-          "time": "3 пара (12:25-13:50)"
-        },
-        {
-          "lessons": [
+            },
             {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
+              "avoid_lunch_split": true,
+              "consecutive_pairs": 2,
               "display_time": null,
-              "id": 513,
+              "id": 514,
               "is_block": false,
-              "is_lab": false,
-              "name": "МДК.06.01 Оперативное управление текущей деятельностью подчиненного персонала",
+              "is_lab": true,
+              "name": "ЛПЗ МДК.06.01 Оперативное управление текущей деятельностью подчиненного персонала",
               "requested_room_id": null,
               "requested_room_name": null,
               "room_id": 25,
@@ -61,15 +42,62 @@
               "room_substituted": false,
               "room_substitution_reason": null,
               "room_type": 0,
-              "subgroup": -1,
+              "subgroup": 46,
               "teacher_id": 45,
-              "uid": "lesson-93fd216c079f1ff2",
+              "uid": "lesson-050b877f97ccdb15",
               "week_parity": "all"
             }
           ],
-          "slot": 4,
-          "text": "МДК.06.01 Оперативное управление текущей деятельностью подчиненного персонала — вся группа, Елагина Ольга Александровна, Кривоусова",
-          "time": "4 пара (14:00-15:25)"
+          "slot": 1,
+          "text": "ЛПЗ МДК.03.02 Процессы приготовления, подготовки к реализации холодных блюд, кулинарных изделий, закусок сложного ассортимента — 2 п/г, Конева Кристина Сергеевна, Кривоусова | ЛПЗ МДК.06.01 Оперативное управление текущей деятельностью подчиненного персонала — 1 п/г, Елагина Ольга Александровна, Кривоусова",
+          "time": "1 пара (08:30-09:55)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": true,
+              "consecutive_pairs": 2,
+              "display_time": null,
+              "id": 500,
+              "is_block": false,
+              "is_lab": true,
+              "name": "ЛПЗ МДК.03.02 Процессы приготовления, подготовки к реализации холодных блюд, кулинарных изделий, закусок сложного ассортимента",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 28,
+              "room_name": "61",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 47,
+              "teacher_id": 53,
+              "uid": "lesson-0fe9fb0c5378e05c",
+              "week_parity": "all"
+            },
+            {
+              "avoid_lunch_split": true,
+              "consecutive_pairs": 2,
+              "display_time": null,
+              "id": 514,
+              "is_block": false,
+              "is_lab": true,
+              "name": "ЛПЗ МДК.06.01 Оперативное управление текущей деятельностью подчиненного персонала",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 25,
+              "room_name": "50",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 46,
+              "teacher_id": 45,
+              "uid": "lesson-050b877f97ccdb15",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 2,
+          "text": "ЛПЗ МДК.03.02 Процессы приготовления, подготовки к реализации холодных блюд, кулинарных изделий, закусок сложного ассортимента — 2 п/г, Конева Кристина Сергеевна, Кривоусова | ЛПЗ МДК.06.01 Оперативное управление текущей деятельностью подчиненного персонала — 1 п/г, Елагина Ольга Александровна, Кривоусова",
+          "time": "2 пара (10:05-11:30)"
         },
         {
           "lessons": [
@@ -97,26 +125,26 @@
               "avoid_lunch_split": true,
               "consecutive_pairs": 2,
               "display_time": null,
-              "id": 500,
+              "id": 515,
               "is_block": false,
               "is_lab": true,
-              "name": "ЛПЗ МДК.03.02 Процессы приготовления, подготовки к реализации холодных блюд, кулинарных изделий, закусок сложного ассортимента",
+              "name": "ЛПЗ МДК.06.01 Оперативное управление текущей деятельностью подчиненного персонала",
               "requested_room_id": null,
               "requested_room_name": null,
-              "room_id": 28,
-              "room_name": "61",
+              "room_id": 25,
+              "room_name": "50",
               "room_substituted": false,
               "room_substitution_reason": null,
               "room_type": 0,
               "subgroup": 47,
-              "teacher_id": 53,
-              "uid": "lesson-0fe9fb0c5378e05c",
+              "teacher_id": 45,
+              "uid": "lesson-0d3afb2b42bb972e",
               "week_parity": "all"
             }
           ],
-          "slot": 5,
-          "text": "Иностранный язык в профессиональной деятельности — 1 п/г, Синельникова Елена Владимировна, Кривоусова | ЛПЗ МДК.03.02 Процессы приготовления, подготовки к реализации холодных блюд, кулинарных изделий, закусок сложного ассортимента — 2 п/г, Конева Кристина Сергеевна, Кривоусова",
-          "time": "5 пара (15:35-16:55)"
+          "slot": 3,
+          "text": "Иностранный язык в профессиональной деятельности — 1 п/г, Синельникова Елена Владимировна, Кривоусова | ЛПЗ МДК.06.01 Оперативное управление текущей деятельностью подчиненного персонала — 2 п/г, Елагина Ольга Александровна, Кривоусова",
+          "time": "3 пара (12:25-13:50)"
         },
         {
           "lessons": [
@@ -124,20 +152,127 @@
               "avoid_lunch_split": true,
               "consecutive_pairs": 2,
               "display_time": null,
-              "id": 500,
+              "id": 515,
               "is_block": false,
               "is_lab": true,
-              "name": "ЛПЗ МДК.03.02 Процессы приготовления, подготовки к реализации холодных блюд, кулинарных изделий, закусок сложного ассортимента",
+              "name": "ЛПЗ МДК.06.01 Оперативное управление текущей деятельностью подчиненного персонала",
               "requested_room_id": null,
               "requested_room_name": null,
-              "room_id": 28,
-              "room_name": "61",
+              "room_id": 25,
+              "room_name": "50",
               "room_substituted": false,
               "room_substitution_reason": null,
               "room_type": 0,
               "subgroup": 47,
-              "teacher_id": 53,
-              "uid": "lesson-0fe9fb0c5378e05c",
+              "teacher_id": 45,
+              "uid": "lesson-0d3afb2b42bb972e",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 4,
+          "text": "ЛПЗ МДК.06.01 Оперативное управление текущей деятельностью подчиненного персонала — 2 п/г, Елагина Ольга Александровна, Кривоусова",
+          "time": "4 пара (14:00-15:25)"
+        },
+        {
+          "lessons": [],
+          "slot": 5,
+          "text": "-",
+          "time": "5 пара (15:35-16:55)"
+        },
+        {
+          "lessons": [],
+          "slot": 6,
+          "text": "-",
+          "time": "6 пара (17:05-18:25)"
+        },
+        {
+          "lessons": [],
+          "slot": 7,
+          "text": "-",
+          "time": "7 пара (18:35-19:55)"
+        }
+      ],
+      "weekday": "ЧТ"
+    },
+    {
+      "date": "09.10.2026",
+      "date_iso": "2026-10-09",
+      "day_index": 1,
+      "slots": [
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 490,
+              "is_block": false,
+              "is_lab": false,
+              "name": "Психология общения",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 15,
+              "room_name": "32",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": -1,
+              "teacher_id": 50,
+              "uid": "lesson-c8ac25f967070917",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 1,
+          "text": "Психология общения — вся группа, Ярославцева Елена Анатольевна, Кривоусова",
+          "time": "1 пара (08:30-09:55)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 490,
+              "is_block": false,
+              "is_lab": false,
+              "name": "Психология общения",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 15,
+              "room_name": "32",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": -1,
+              "teacher_id": 50,
+              "uid": "lesson-c8ac25f967070917",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 2,
+          "text": "Психология общения — вся группа, Ярославцева Елена Анатольевна, Кривоусова",
+          "time": "2 пара (10:05-11:30)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 488,
+              "is_block": false,
+              "is_lab": false,
+              "name": "Иностранный язык в профессиональной деятельности",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 7,
+              "room_name": "18/2",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 47,
+              "teacher_id": 30,
+              "uid": "lesson-f3ab1138a416ab3f",
               "week_parity": "all"
             },
             {
@@ -161,9 +296,9 @@
               "week_parity": "all"
             }
           ],
-          "slot": 6,
-          "text": "ЛПЗ МДК.03.02 Процессы приготовления, подготовки к реализации холодных блюд, кулинарных изделий, закусок сложного ассортимента — 2 п/г, Конева Кристина Сергеевна, Кривоусова | ЛПЗ МДК.06.01 Оперативное управление текущей деятельностью подчиненного персонала — 1 п/г, Елагина Ольга Александровна, Кривоусова",
-          "time": "6 пара (17:05-18:25)"
+          "slot": 3,
+          "text": "Иностранный язык в профессиональной деятельности — 2 п/г, Синельникова Елена Владимировна, Кривоусова | ЛПЗ МДК.06.01 Оперативное управление текущей деятельностью подчиненного персонала — 1 п/г, Елагина Ольга Александровна, Кривоусова",
+          "time": "3 пара (12:25-13:50)"
         },
         {
           "lessons": [
@@ -188,12 +323,206 @@
               "week_parity": "all"
             }
           ],
-          "slot": 7,
+          "slot": 4,
           "text": "ЛПЗ МДК.06.01 Оперативное управление текущей деятельностью подчиненного персонала — 1 п/г, Елагина Ольга Александровна, Кривоусова",
+          "time": "4 пара (14:00-15:25)"
+        },
+        {
+          "lessons": [],
+          "slot": 5,
+          "text": "-",
+          "time": "5 пара (15:35-16:55)"
+        },
+        {
+          "lessons": [],
+          "slot": 6,
+          "text": "-",
+          "time": "6 пара (17:05-18:25)"
+        },
+        {
+          "lessons": [],
+          "slot": 7,
+          "text": "-",
           "time": "7 пара (18:35-19:55)"
         }
       ],
-      "weekday": "СР"
+      "weekday": "ПТ"
+    },
+    {
+      "date": "10.10.2026",
+      "date_iso": "2026-10-10",
+      "day_index": 2,
+      "slots": [
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": true,
+              "consecutive_pairs": 2,
+              "display_time": null,
+              "id": 514,
+              "is_block": false,
+              "is_lab": true,
+              "name": "ЛПЗ МДК.06.01 Оперативное управление текущей деятельностью подчиненного персонала",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 25,
+              "room_name": "50",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 46,
+              "teacher_id": 45,
+              "uid": "lesson-050b877f97ccdb15",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 1,
+          "text": "ЛПЗ МДК.06.01 Оперативное управление текущей деятельностью подчиненного персонала — 1 п/г, Елагина Ольга Александровна, Кривоусова",
+          "time": "1 пара (08:30-09:45)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": true,
+              "consecutive_pairs": 2,
+              "display_time": null,
+              "id": 514,
+              "is_block": false,
+              "is_lab": true,
+              "name": "ЛПЗ МДК.06.01 Оперативное управление текущей деятельностью подчиненного персонала",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 25,
+              "room_name": "50",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 46,
+              "teacher_id": 45,
+              "uid": "lesson-050b877f97ccdb15",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 2,
+          "text": "ЛПЗ МДК.06.01 Оперативное управление текущей деятельностью подчиненного персонала — 1 п/г, Елагина Ольга Александровна, Кривоусова",
+          "time": "2 пара (09:55-11:10)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 513,
+              "is_block": false,
+              "is_lab": false,
+              "name": "МДК.06.01 Оперативное управление текущей деятельностью подчиненного персонала",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 25,
+              "room_name": "50",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": -1,
+              "teacher_id": 45,
+              "uid": "lesson-93fd216c079f1ff2",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 3,
+          "text": "МДК.06.01 Оперативное управление текущей деятельностью подчиненного персонала — вся группа, Елагина Ольга Александровна, Кривоусова",
+          "time": "3 пара (11:30-12:45)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 513,
+              "is_block": false,
+              "is_lab": false,
+              "name": "МДК.06.01 Оперативное управление текущей деятельностью подчиненного персонала",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 25,
+              "room_name": "50",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": -1,
+              "teacher_id": 45,
+              "uid": "lesson-93fd216c079f1ff2",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 4,
+          "text": "МДК.06.01 Оперативное управление текущей деятельностью подчиненного персонала — вся группа, Елагина Ольга Александровна, Кривоусова",
+          "time": "4 пара (12:55-14:10)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": true,
+              "consecutive_pairs": 2,
+              "display_time": null,
+              "id": 515,
+              "is_block": false,
+              "is_lab": true,
+              "name": "ЛПЗ МДК.06.01 Оперативное управление текущей деятельностью подчиненного персонала",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 25,
+              "room_name": "50",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 47,
+              "teacher_id": 45,
+              "uid": "lesson-0d3afb2b42bb972e",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 5,
+          "text": "ЛПЗ МДК.06.01 Оперативное управление текущей деятельностью подчиненного персонала — 2 п/г, Елагина Ольга Александровна, Кривоусова",
+          "time": "5 пара (14:20-15:30)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": true,
+              "consecutive_pairs": 2,
+              "display_time": null,
+              "id": 515,
+              "is_block": false,
+              "is_lab": true,
+              "name": "ЛПЗ МДК.06.01 Оперативное управление текущей деятельностью подчиненного персонала",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 25,
+              "room_name": "50",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 47,
+              "teacher_id": 45,
+              "uid": "lesson-0d3afb2b42bb972e",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 6,
+          "text": "ЛПЗ МДК.06.01 Оперативное управление текущей деятельностью подчиненного персонала — 2 п/г, Елагина Ольга Александровна, Кривоусова",
+          "time": "6 пара (15:40-16:50)"
+        },
+        {
+          "lessons": [],
+          "slot": 7,
+          "text": "-",
+          "time": "7 пара (17:00-18:10)"
+        }
+      ],
+      "weekday": "СБ"
     }
   ],
   "group_index": 23,

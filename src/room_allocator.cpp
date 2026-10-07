@@ -48,8 +48,8 @@ bool CanTeacherUseRoom(const RoomData& room, int teacher) {
     return teacher >= 0 && room.responsible_teacher_ids.count(teacher) > 0;
 }
 
-bool MatchesRoomPurpose(const RoomData& room, const Lesson& lesson) {
-    return room.purpose == lesson.required_room_purpose;
+bool MatchesRoomPurpose(const RoomData& room, const Lesson& lesson, const Date& date) {
+    return room.purpose == lesson.RoomPurposeOn(date);
 }
 
 bool MatchesRoomFeatures(const RoomData& room, const Lesson& lesson) {
@@ -82,7 +82,7 @@ std::string ConflictReason(
         const Date& event_date = all_days[event.start / SLOTS_PER_DAY];
         if (!OperationalRoomPolicyAllows(room, lesson, event_date)) continue;
         has_operational_policy = true;
-        if (!MatchesRoomPurpose(room, lesson)) continue;
+        if (!MatchesRoomPurpose(room, lesson, event_date)) continue;
         has_purpose = true;
         if (!MatchesRoomFeatures(room, lesson)) continue;
         has_features = true;
@@ -177,7 +177,7 @@ RoomAllocationResult AllocateRooms(
                 if (!CanTeacherUseRoom(room, event.teacher)) continue;
                 if (!OperationalRoomPolicyAllows(
                         room, lessons[l], all_days[event.start / SLOTS_PER_DAY])) continue;
-                if (!MatchesRoomPurpose(room, lessons[l])) continue;
+                if (!MatchesRoomPurpose(room, lessons[l], all_days[day])) continue;
                 if (!MatchesRoomFeatures(room, lessons[l])) continue;
                 if (!IsAvailableAt(room, all_days, event.start, event.duration)) continue;
                 if (room.campus != event.campus) continue;
@@ -239,7 +239,7 @@ RoomAllocationResult AllocateRooms(
             teacher_required_capacity[key], event.required_capacity);
         const Lesson& lesson = lessons[event.lesson];
         teacher_events[key].push_back(event.lesson);
-        teacher_room_purposes[key].insert(lesson.required_room_purpose);
+        teacher_room_purposes[key].insert(lesson.RoomPurposeOn(all_days[event.start / SLOTS_PER_DAY]));
         if (lesson.preferred_room >= 0)
             teacher_preferred_room_id.emplace(key, lesson.preferred_room);
         if (lesson.fixed_room >= 0 && !lesson.allow_room_substitution)

@@ -151,10 +151,10 @@ std::string GroupLabel(const GroupData* group, int id) {
     return group ? group->name : "группа #" + std::to_string(id);
 }
 
-bool RoomFitsLesson(const RoomData& room, const Lesson& lesson) {
+bool RoomFitsLesson(const RoomData& room, const Lesson& lesson, const Date& date) {
     if (lesson.required_room_type > 0 && room.room_type != lesson.required_room_type) return false;
     if (lesson.required_capacity > 0 && room.capacity < lesson.required_capacity) return false;
-    if (room.purpose != lesson.required_room_purpose) return false;
+    if (room.purpose != lesson.RoomPurposeOn(date)) return false;
     for (const std::string& equipment : lesson.required_equipment) {
         if (!room.equipment.count(equipment)) return false;
     }
@@ -470,7 +470,7 @@ ScheduleValidationResult ValidateScheduleJson(
             collector.Add("error", "rooms", "operational_room_policy_mismatch",
                           "Аудитория не соответствует правилу ЛПЗ/лекции преподавателя", ctx);
         }
-        if (!RoomFitsLesson(*room, *lesson)) {
+        if (!RoomFitsLesson(*room, *lesson, event.date)) {
             JsonValue ctx = Context(); Put(ctx, "room", event.room); Put(ctx, "lesson", event.lesson);
             collector.Add("error", "rooms", "room_requirements_mismatch",
                           "Аудитория не соответствует типу, вместимости, оборудованию или назначению занятия", ctx);
@@ -485,12 +485,12 @@ ScheduleValidationResult ValidateScheduleJson(
                               "Вместо закреплённой аудитории использована допустимая замена", ctx);
             }
         }
-        if (!lesson->allowed_campuses.count(static_cast<Campus>(room->campus))) {
+        if (!lesson->CampusesOn(event.date).count(static_cast<Campus>(room->campus))) {
             JsonValue ctx = Context(); Put(ctx, "lesson", event.lesson); Put(ctx, "campus", room->campus);
             collector.Add("error", "campus", "lesson_campus_mismatch",
                           "Занятие поставлено на запрещённую площадку", ctx);
         }
-        if (teacher && !teacher->allowed_campuses.empty() &&
+        if (teacher && !lesson->IsClassroomTheory(event.date) && !teacher->allowed_campuses.empty() &&
             !teacher->allowed_campuses.count(room->campus)) {
             JsonValue ctx = Context(); Put(ctx, "teacher", event.teacher); Put(ctx, "campus", room->campus);
             collector.Add("error", "campus", "teacher_campus_mismatch",

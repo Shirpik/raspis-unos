@@ -1,42 +1,36 @@
 {
   "days": [
     {
-      "date": "07.10.2026",
-      "date_iso": "2026-10-07",
+      "date": "08.10.2026",
+      "date_iso": "2026-10-08",
       "day_index": 0,
       "slots": [
-        {
-          "lessons": [],
-          "slot": 1,
-          "text": "-",
-          "time": "1 пара (08:30-09:55)"
-        },
         {
           "lessons": [
             {
               "avoid_lunch_split": false,
               "consecutive_pairs": 1,
               "display_time": null,
-              "id": 737,
+              "id": 732,
               "is_block": false,
               "is_lab": false,
-              "name": "КП МДК.02.02 Управление процессом технического обслуживания и ремонта автомобилей",
+              "name": "Охрана труда",
               "requested_room_id": null,
               "requested_room_name": null,
-              "room_id": 29,
-              "room_name": "201",
+              "room_id": 38,
+              "room_name": "318",
               "room_substituted": false,
               "room_substitution_reason": null,
               "room_type": 0,
               "subgroup": -1,
-              "teacher_id": 38,
-              "uid": "lesson-e7b84fd33af86e82",
+              "teacher_id": 13,
+              "uid": "lesson-6c312b19ae2b4a25",
               "week_parity": "all"
             }
           ],
-          "slot": 2,
-          "text": "КП МДК.02.02 Управление процессом технического обслуживания и ремонта автомобилей — вся группа, Абрамчук Раида Филимазовна, Лесная",
-          "time": "2 пара (10:05-11:30)"
+          "slot": 1,
+          "text": "Охрана труда — вся группа, Костарева Наталья Викторовна, Лесная",
+          "time": "1 пара (08:30-09:55)"
         },
         {
           "lessons": [
@@ -61,8 +55,148 @@
               "week_parity": "all"
             }
           ],
-          "slot": 3,
+          "slot": 2,
           "text": "МДК.03.02 Организация работ по модернизации автотранспортных средств — вся группа, Тимеров Валерий Вагизович, Лесная",
+          "time": "2 пара (10:05-11:30)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 744,
+              "is_block": false,
+              "is_lab": false,
+              "name": "МДК.03.04 Производственное оборудование",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 35,
+              "room_name": "311",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": -1,
+              "teacher_id": 59,
+              "uid": "lesson-90852a515296c25c",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 3,
+          "text": "МДК.03.04 Производственное оборудование — вся группа, Самцов Андрей Евгеньевич, Лесная",
+          "time": "3 пара (12:25-13:50)"
+        },
+        {
+          "lessons": [],
+          "slot": 4,
+          "text": "-",
+          "time": "4 пара (14:00-15:25)"
+        },
+        {
+          "lessons": [],
+          "slot": 5,
+          "text": "-",
+          "time": "5 пара (15:35-16:55)"
+        },
+        {
+          "lessons": [],
+          "slot": 6,
+          "text": "-",
+          "time": "6 пара (17:05-18:25)"
+        },
+        {
+          "lessons": [],
+          "slot": 7,
+          "text": "-",
+          "time": "7 пара (18:35-19:55)"
+        }
+      ],
+      "weekday": "ЧТ"
+    },
+    {
+      "date": "09.10.2026",
+      "date_iso": "2026-10-09",
+      "day_index": 1,
+      "slots": [
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": true,
+              "consecutive_pairs": 2,
+              "display_time": null,
+              "id": 743,
+              "is_block": false,
+              "is_lab": true,
+              "name": "ЛПЗ МДК.03.03 Тюнинг автомобилей",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 64,
+              "room_name": "115-116",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 67,
+              "teacher_id": 59,
+              "uid": "lesson-a694bda8445a64a3",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 1,
+          "text": "ЛПЗ МДК.03.03 Тюнинг автомобилей — 2 п/г, Самцов Андрей Евгеньевич, Лесная",
+          "time": "1 пара (08:30-09:55)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": true,
+              "consecutive_pairs": 2,
+              "display_time": null,
+              "id": 743,
+              "is_block": false,
+              "is_lab": true,
+              "name": "ЛПЗ МДК.03.03 Тюнинг автомобилей",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 64,
+              "room_name": "115-116",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 67,
+              "teacher_id": 59,
+              "uid": "lesson-a694bda8445a64a3",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 2,
+          "text": "ЛПЗ МДК.03.03 Тюнинг автомобилей — 2 п/г, Самцов Андрей Евгеньевич, Лесная",
+          "time": "2 пара (10:05-11:30)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 732,
+              "is_block": false,
+              "is_lab": false,
+              "name": "Охрана труда",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 38,
+              "room_name": "318",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": -1,
+              "teacher_id": 13,
+              "uid": "lesson-6c312b19ae2b4a25",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 3,
+          "text": "Охрана труда — вся группа, Костарева Наталья Викторовна, Лесная",
           "time": "3 пара (12:25-13:50)"
         },
         {
@@ -93,30 +227,9 @@
           "time": "4 пара (14:00-15:25)"
         },
         {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 744,
-              "is_block": false,
-              "is_lab": false,
-              "name": "МДК.03.04 Производственное оборудование",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 44,
-              "room_name": "405",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": -1,
-              "teacher_id": 59,
-              "uid": "lesson-90852a515296c25c",
-              "week_parity": "all"
-            }
-          ],
+          "lessons": [],
           "slot": 5,
-          "text": "МДК.03.04 Производственное оборудование — вся группа, Самцов Андрей Евгеньевич, Лесная",
+          "text": "-",
           "time": "5 пара (15:35-16:55)"
         },
         {
@@ -132,7 +245,141 @@
           "time": "7 пара (18:35-19:55)"
         }
       ],
-      "weekday": "СР"
+      "weekday": "ПТ"
+    },
+    {
+      "date": "10.10.2026",
+      "date_iso": "2026-10-10",
+      "day_index": 2,
+      "slots": [
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 731,
+              "is_block": false,
+              "is_lab": false,
+              "name": "Правовое обеспечение профессиональной деятельности",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 18,
+              "room_name": "37",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": -1,
+              "teacher_id": 1,
+              "uid": "lesson-a03faf523648ef58",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 1,
+          "text": "Правовое обеспечение профессиональной деятельности — вся группа, Вагайская Татьяна Александровна, Кривоусова",
+          "time": "1 пара (08:30-09:45)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 731,
+              "is_block": false,
+              "is_lab": false,
+              "name": "Правовое обеспечение профессиональной деятельности",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 18,
+              "room_name": "37",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": -1,
+              "teacher_id": 1,
+              "uid": "lesson-a03faf523648ef58",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 2,
+          "text": "Правовое обеспечение профессиональной деятельности — вся группа, Вагайская Татьяна Александровна, Кривоусова",
+          "time": "2 пара (09:55-11:10)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 730,
+              "is_block": false,
+              "is_lab": false,
+              "name": "Психология общения",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 15,
+              "room_name": "32",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": -1,
+              "teacher_id": 50,
+              "uid": "lesson-fb6902e83f8e50b7",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 3,
+          "text": "Психология общения — вся группа, Ярославцева Елена Анатольевна, Кривоусова",
+          "time": "3 пара (11:30-12:45)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 730,
+              "is_block": false,
+              "is_lab": false,
+              "name": "Психология общения",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 15,
+              "room_name": "32",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": -1,
+              "teacher_id": 50,
+              "uid": "lesson-fb6902e83f8e50b7",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 4,
+          "text": "Психология общения — вся группа, Ярославцева Елена Анатольевна, Кривоусова",
+          "time": "4 пара (12:55-14:10)"
+        },
+        {
+          "lessons": [],
+          "slot": 5,
+          "text": "-",
+          "time": "5 пара (14:20-15:30)"
+        },
+        {
+          "lessons": [],
+          "slot": 6,
+          "text": "-",
+          "time": "6 пара (15:40-16:50)"
+        },
+        {
+          "lessons": [],
+          "slot": 7,
+          "text": "-",
+          "time": "7 пара (17:00-18:10)"
+        }
+      ],
+      "weekday": "СБ"
     }
   ],
   "group_index": 33,

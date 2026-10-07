@@ -1,20 +1,62 @@
 {
   "days": [
     {
-      "date": "07.10.2026",
-      "date_iso": "2026-10-07",
+      "date": "08.10.2026",
+      "date_iso": "2026-10-08",
       "day_index": 0,
       "slots": [
         {
-          "lessons": [],
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 473,
+              "is_block": false,
+              "is_lab": false,
+              "name": "Информационные технологии в профессиональной деятельности/Адаптивные информационные и коммуникационные технологии",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 58,
+              "room_name": "67",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 44,
+              "teacher_id": 31,
+              "uid": "lesson-19c0b3d8239c05b8",
+              "week_parity": "all"
+            }
+          ],
           "slot": 1,
-          "text": "-",
+          "text": "Информационные технологии в профессиональной деятельности/Адаптивные информационные и коммуникационные технологии — 1 п/г, Ланитина Елена Сергеевна, Кривоусова",
           "time": "1 пара (08:30-09:55)"
         },
         {
-          "lessons": [],
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 473,
+              "is_block": false,
+              "is_lab": false,
+              "name": "Информационные технологии в профессиональной деятельности/Адаптивные информационные и коммуникационные технологии",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 58,
+              "room_name": "67",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 44,
+              "teacher_id": 31,
+              "uid": "lesson-19c0b3d8239c05b8",
+              "week_parity": "all"
+            }
+          ],
           "slot": 2,
-          "text": "-",
+          "text": "Информационные технологии в профессиональной деятельности/Адаптивные информационные и коммуникационные технологии — 1 п/г, Ланитина Елена Сергеевна, Кривоусова",
           "time": "2 пара (10:05-11:30)"
         },
         {
@@ -47,26 +89,6 @@
         {
           "lessons": [
             {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 474,
-              "is_block": false,
-              "is_lab": false,
-              "name": "Информационные технологии в профессиональной деятельности/Адаптивные информационные и коммуникационные технологии",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 20,
-              "room_name": "41",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": 45,
-              "teacher_id": 31,
-              "uid": "lesson-d4c729a03fba7038",
-              "week_parity": "all"
-            },
-            {
               "avoid_lunch_split": true,
               "consecutive_pairs": 2,
               "display_time": null,
@@ -88,7 +110,7 @@
             }
           ],
           "slot": 4,
-          "text": "Информационные технологии в профессиональной деятельности/Адаптивные информационные и коммуникационные технологии — 2 п/г, Ланитина Елена Сергеевна, Кривоусова | ЛПЗ МДК.02.01 Организация процессов приготовления, подготовки к реализации горячих блюд, кулинарных изделий, закусок сложного ассортимента — 1 п/г, Конева Кристина Сергеевна, Кривоусова",
+          "text": "ЛПЗ МДК.02.01 Организация процессов приготовления, подготовки к реализации горячих блюд, кулинарных изделий, закусок сложного ассортимента — 1 п/г, Конева Кристина Сергеевна, Кривоусова",
           "time": "4 пара (14:00-15:25)"
         },
         {
@@ -97,20 +119,154 @@
               "avoid_lunch_split": true,
               "consecutive_pairs": 2,
               "display_time": null,
-              "id": 482,
+              "id": 483,
               "is_block": false,
               "is_lab": true,
               "name": "ЛПЗ ВМДК.07.02 Термическая обработка теста и отделка поверхности хлебобулочных изделий",
               "requested_room_id": null,
               "requested_room_name": null,
-              "room_id": 53,
-              "room_name": "56",
+              "room_id": 51,
+              "room_name": "13",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 45,
+              "teacher_id": 54,
+              "uid": "lesson-5c2579fec9c01f95",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 5,
+          "text": "ЛПЗ ВМДК.07.02 Термическая обработка теста и отделка поверхности хлебобулочных изделий — 2 п/г, Кузнецова Елизавета Олеговна, Кривоусова",
+          "time": "5 пара (15:35-16:55)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": true,
+              "consecutive_pairs": 2,
+              "display_time": null,
+              "id": 483,
+              "is_block": false,
+              "is_lab": true,
+              "name": "ЛПЗ ВМДК.07.02 Термическая обработка теста и отделка поверхности хлебобулочных изделий",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 51,
+              "room_name": "13",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 45,
+              "teacher_id": 54,
+              "uid": "lesson-5c2579fec9c01f95",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 6,
+          "text": "ЛПЗ ВМДК.07.02 Термическая обработка теста и отделка поверхности хлебобулочных изделий — 2 п/г, Кузнецова Елизавета Олеговна, Кривоусова",
+          "time": "6 пара (17:05-18:25)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 467,
+              "is_block": false,
+              "is_lab": false,
+              "name": "Иностранный язык в профессиональной деятельности",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 7,
+              "room_name": "18/2",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 45,
+              "teacher_id": 30,
+              "uid": "lesson-2feae13c3822c5b3",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 7,
+          "text": "Иностранный язык в профессиональной деятельности — 2 п/г, Синельникова Елена Владимировна, Кривоусова",
+          "time": "7 пара (18:35-19:55)"
+        }
+      ],
+      "weekday": "ЧТ"
+    },
+    {
+      "date": "09.10.2026",
+      "date_iso": "2026-10-09",
+      "day_index": 1,
+      "slots": [
+        {
+          "lessons": [],
+          "slot": 1,
+          "text": "-",
+          "time": "1 пара (08:30-09:55)"
+        },
+        {
+          "lessons": [],
+          "slot": 2,
+          "text": "-",
+          "time": "2 пара (10:05-11:30)"
+        },
+        {
+          "lessons": [],
+          "slot": 3,
+          "text": "-",
+          "time": "3 пара (12:25-13:50)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 481,
+              "is_block": false,
+              "is_lab": false,
+              "name": "ВМДК.07.02 Термическая обработка теста и отделка поверхности хлебобулочных изделий",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 51,
+              "room_name": "13",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": -1,
+              "teacher_id": 54,
+              "uid": "lesson-0a2fa9f7cbd50b6b",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 4,
+          "text": "ВМДК.07.02 Термическая обработка теста и отделка поверхности хлебобулочных изделий — вся группа, Кузнецова Елизавета Олеговна, Кривоусова",
+          "time": "4 пара (14:00-15:25)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 466,
+              "is_block": false,
+              "is_lab": false,
+              "name": "Иностранный язык в профессиональной деятельности",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 7,
+              "room_name": "18/2",
               "room_substituted": false,
               "room_substitution_reason": null,
               "room_type": 0,
               "subgroup": 44,
-              "teacher_id": 52,
-              "uid": "lesson-d3fc37221ea46d89",
+              "teacher_id": 30,
+              "uid": "lesson-b5e85a603a5a8388",
               "week_parity": "all"
             },
             {
@@ -135,29 +291,29 @@
             }
           ],
           "slot": 5,
-          "text": "ЛПЗ ВМДК.07.02 Термическая обработка теста и отделка поверхности хлебобулочных изделий — 1 п/г, Чадова Марина Александровна, Кривоусова | ЛПЗ ВМДК.07.02 Термическая обработка теста и отделка поверхности хлебобулочных изделий — 2 п/г, Кузнецова Елизавета Олеговна, Кривоусова",
+          "text": "Иностранный язык в профессиональной деятельности — 1 п/г, Синельникова Елена Владимировна, Кривоусова | ЛПЗ ВМДК.07.02 Термическая обработка теста и отделка поверхности хлебобулочных изделий — 2 п/г, Кузнецова Елизавета Олеговна, Кривоусова",
           "time": "5 пара (15:35-16:55)"
         },
         {
           "lessons": [
             {
-              "avoid_lunch_split": true,
-              "consecutive_pairs": 2,
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
               "display_time": null,
-              "id": 482,
+              "id": 466,
               "is_block": false,
-              "is_lab": true,
-              "name": "ЛПЗ ВМДК.07.02 Термическая обработка теста и отделка поверхности хлебобулочных изделий",
+              "is_lab": false,
+              "name": "Иностранный язык в профессиональной деятельности",
               "requested_room_id": null,
               "requested_room_name": null,
-              "room_id": 53,
-              "room_name": "56",
+              "room_id": 7,
+              "room_name": "18/2",
               "room_substituted": false,
               "room_substitution_reason": null,
               "room_type": 0,
               "subgroup": 44,
-              "teacher_id": 52,
-              "uid": "lesson-d3fc37221ea46d89",
+              "teacher_id": 30,
+              "uid": "lesson-b5e85a603a5a8388",
               "week_parity": "all"
             },
             {
@@ -182,8 +338,124 @@
             }
           ],
           "slot": 6,
-          "text": "ЛПЗ ВМДК.07.02 Термическая обработка теста и отделка поверхности хлебобулочных изделий — 1 п/г, Чадова Марина Александровна, Кривоусова | ЛПЗ ВМДК.07.02 Термическая обработка теста и отделка поверхности хлебобулочных изделий — 2 п/г, Кузнецова Елизавета Олеговна, Кривоусова",
+          "text": "Иностранный язык в профессиональной деятельности — 1 п/г, Синельникова Елена Владимировна, Кривоусова | ЛПЗ ВМДК.07.02 Термическая обработка теста и отделка поверхности хлебобулочных изделий — 2 п/г, Кузнецова Елизавета Олеговна, Кривоусова",
           "time": "6 пара (17:05-18:25)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 481,
+              "is_block": false,
+              "is_lab": false,
+              "name": "ВМДК.07.02 Термическая обработка теста и отделка поверхности хлебобулочных изделий",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 51,
+              "room_name": "13",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": -1,
+              "teacher_id": 54,
+              "uid": "lesson-0a2fa9f7cbd50b6b",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 7,
+          "text": "ВМДК.07.02 Термическая обработка теста и отделка поверхности хлебобулочных изделий — вся группа, Кузнецова Елизавета Олеговна, Кривоусова",
+          "time": "7 пара (18:35-19:55)"
+        }
+      ],
+      "weekday": "ПТ"
+    },
+    {
+      "date": "10.10.2026",
+      "date_iso": "2026-10-10",
+      "day_index": 2,
+      "slots": [
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 466,
+              "is_block": false,
+              "is_lab": false,
+              "name": "Иностранный язык в профессиональной деятельности",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 7,
+              "room_name": "18/2",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 44,
+              "teacher_id": 30,
+              "uid": "lesson-b5e85a603a5a8388",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 1,
+          "text": "Иностранный язык в профессиональной деятельности — 1 п/г, Синельникова Елена Владимировна, Кривоусова",
+          "time": "1 пара (08:30-09:45)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 466,
+              "is_block": false,
+              "is_lab": false,
+              "name": "Иностранный язык в профессиональной деятельности",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 7,
+              "room_name": "18/2",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 44,
+              "teacher_id": 30,
+              "uid": "lesson-b5e85a603a5a8388",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 2,
+          "text": "Иностранный язык в профессиональной деятельности — 1 п/г, Синельникова Елена Владимировна, Кривоусова",
+          "time": "2 пара (09:55-11:10)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": true,
+              "consecutive_pairs": 2,
+              "display_time": null,
+              "id": 482,
+              "is_block": false,
+              "is_lab": true,
+              "name": "ЛПЗ ВМДК.07.02 Термическая обработка теста и отделка поверхности хлебобулочных изделий",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 53,
+              "room_name": "56",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 44,
+              "teacher_id": 52,
+              "uid": "lesson-d3fc37221ea46d89",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 3,
+          "text": "ЛПЗ ВМДК.07.02 Термическая обработка теста и отделка поверхности хлебобулочных изделий — 1 п/г, Чадова Марина Александровна, Кривоусова",
+          "time": "3 пара (11:30-12:45)"
         },
         {
           "lessons": [
@@ -197,8 +469,8 @@
               "name": "Информационные технологии в профессиональной деятельности/Адаптивные информационные и коммуникационные технологии",
               "requested_room_id": null,
               "requested_room_name": null,
-              "room_id": 20,
-              "room_name": "41",
+              "room_id": 58,
+              "room_name": "67",
               "room_substituted": false,
               "room_substitution_reason": null,
               "room_type": 0,
@@ -206,14 +478,115 @@
               "teacher_id": 31,
               "uid": "lesson-d4c729a03fba7038",
               "week_parity": "all"
+            },
+            {
+              "avoid_lunch_split": true,
+              "consecutive_pairs": 2,
+              "display_time": null,
+              "id": 482,
+              "is_block": false,
+              "is_lab": true,
+              "name": "ЛПЗ ВМДК.07.02 Термическая обработка теста и отделка поверхности хлебобулочных изделий",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 53,
+              "room_name": "56",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 44,
+              "teacher_id": 52,
+              "uid": "lesson-d3fc37221ea46d89",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 4,
+          "text": "Информационные технологии в профессиональной деятельности/Адаптивные информационные и коммуникационные технологии — 2 п/г, Ланитина Елена Сергеевна, Кривоусова | ЛПЗ ВМДК.07.02 Термическая обработка теста и отделка поверхности хлебобулочных изделий — 1 п/г, Чадова Марина Александровна, Кривоусова",
+          "time": "4 пара (12:55-14:10)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 467,
+              "is_block": false,
+              "is_lab": false,
+              "name": "Иностранный язык в профессиональной деятельности",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 7,
+              "room_name": "18/2",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 45,
+              "teacher_id": 30,
+              "uid": "lesson-2feae13c3822c5b3",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 5,
+          "text": "Иностранный язык в профессиональной деятельности — 2 п/г, Синельникова Елена Владимировна, Кривоусова",
+          "time": "5 пара (14:20-15:30)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": true,
+              "consecutive_pairs": 2,
+              "display_time": null,
+              "id": 483,
+              "is_block": false,
+              "is_lab": true,
+              "name": "ЛПЗ ВМДК.07.02 Термическая обработка теста и отделка поверхности хлебобулочных изделий",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 51,
+              "room_name": "13",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 45,
+              "teacher_id": 54,
+              "uid": "lesson-5c2579fec9c01f95",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 6,
+          "text": "ЛПЗ ВМДК.07.02 Термическая обработка теста и отделка поверхности хлебобулочных изделий — 2 п/г, Кузнецова Елизавета Олеговна, Кривоусова",
+          "time": "6 пара (15:40-16:50)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": true,
+              "consecutive_pairs": 2,
+              "display_time": null,
+              "id": 483,
+              "is_block": false,
+              "is_lab": true,
+              "name": "ЛПЗ ВМДК.07.02 Термическая обработка теста и отделка поверхности хлебобулочных изделий",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 51,
+              "room_name": "13",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 45,
+              "teacher_id": 54,
+              "uid": "lesson-5c2579fec9c01f95",
+              "week_parity": "all"
             }
           ],
           "slot": 7,
-          "text": "Информационные технологии в профессиональной деятельности/Адаптивные информационные и коммуникационные технологии — 2 п/г, Ланитина Елена Сергеевна, Кривоусова",
-          "time": "7 пара (18:35-19:55)"
+          "text": "ЛПЗ ВМДК.07.02 Термическая обработка теста и отделка поверхности хлебобулочных изделий — 2 п/г, Кузнецова Елизавета Олеговна, Кривоусова",
+          "time": "7 пара (17:00-18:10)"
         }
       ],
-      "weekday": "СР"
+      "weekday": "СБ"
     }
   ],
   "group_index": 22,

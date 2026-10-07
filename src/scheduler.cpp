@@ -36,6 +36,7 @@
 #include "model_utils.h"
 #include "output_writers.h"
 #include "room_allocator.h"
+#include "room_policy.h"
 #include "runtime_config.h"
 #include "scheduler_rules.h"
 #include "types.h"
@@ -82,6 +83,13 @@ static bool IsTransferredToPpTeacher(
 static bool IsUpLessonName(const std::string& name) {
     return name.rfind("УП.", 0) == 0 || name.rfind("УП ", 0) == 0 ||
         name.rfind("ВУП.", 0) == 0 || name.rfind("ВУП ", 0) == 0;
+}
+
+// Loginova (teacher 32) teaches the ordinary informatics rows in the current
+// curriculum. Keep one subgroup/group from receiving a third consecutive
+// ordinary pair; LPZ rows remain free to occupy three consecutive pairs.
+static bool HasLoginovaOrdinaryConsecutiveCap(const Lesson& lesson) {
+    return lesson.teacher == 32 && !lesson.is_lab && !lesson.is_block && !lesson.is_pp;
 }
 
 static void ExcludeTransferredUpLessons(ScheduleInputData& data) {
@@ -707,6 +715,21 @@ GenerationResult GenerateSchedule(const std::string& output_dir, const Generatio
         }
     }
 
+    // Loginova's ordinary informatics rows may use at most two consecutive
+    // pairs for one group/subgroup. LPZ rows are intentionally excluded.
+    for (int l = 0; l < num_lessons; l++) {
+        if (!HasLoginovaOrdinaryConsecutiveCap(lessons[l])) continue;
+        for (int d = 0; d < num_days; d++) {
+            for (int s = 0; s <= SLOTS_PER_DAY - 3; s++) {
+                model.AddLessOrEqual(
+                    x[l][d * SLOTS_PER_DAY + s] +
+                    x[l][d * SLOTS_PER_DAY + s + 1] +
+                    x[l][d * SLOTS_PER_DAY + s + 2],
+                    2);
+            }
+        }
+    }
+
     // Обычные ЛПЗ, которым требуется двойная пара, моделируются отдельными
     // стартами. В отличие от УП их total_slots уже выражен в занятых парах.
     for (int l = 0; l < num_lessons; l++) {
@@ -1227,8 +1250,8 @@ GenerationResult GenerateSchedule(const std::string& output_dir, const Generatio
                         .OnlyEnforceIf(x[l][t]);
                 }
 
-                if (lessons[l].allowed_campuses.size() == 1) {
-                    int campus = static_cast<int>(*lessons[l].allowed_campuses.begin());
+                if (lessons[l].CampusesOn(all_days[d]).size() == 1) {
+                    int campus = static_cast<int>(*lessons[l].CampusesOn(all_days[d]).begin());
 
                     model.AddEquality(group_day_campus[group][d], campus)
                         .OnlyEnforceIf(x[l][t]);
@@ -1276,8 +1299,8 @@ GenerationResult GenerateSchedule(const std::string& output_dir, const Generatio
                 lower += campus;
                 lower -= 1;
                 model.AddGreaterOrEqual(at_campus1, lower);
-                LinearExpr& demand0 = lessons[l].required_room_purpose == "sports_hall" ? sports0_demand : campus0_demand;
-                LinearExpr& demand1 = lessons[l].required_room_purpose == "sports_hall" ? sports1_demand : campus1_demand;
+                LinearExpr& demand0 = lessons[l].RoomPurposeOn(all_days[d]) == "sports_hall" ? sports0_demand : campus0_demand;
+                LinearExpr& demand1 = lessons[l].RoomPurposeOn(all_days[d]) == "sports_hall" ? sports1_demand : campus1_demand;
                 demand1 += at_campus1;
                 demand0 += x[l][t];
                 demand0 -= at_campus1;
@@ -2541,6 +2564,20 @@ static WeekSolveResult SolveOneWeek(
         }
     }
 
+    // The same two-consecutive-pair cap is applied to the local week model.
+    for (int l = 0; l < num_lessons; l++) {
+        if (quotas[l] == 0 || !HasLoginovaOrdinaryConsecutiveCap(lessons[l])) continue;
+        for (int ld = 0; ld < W; ld++) {
+            for (int s = 0; s <= SLOTS_PER_DAY - 3; s++) {
+                model.AddLessOrEqual(
+                    x[l][ld * SLOTS_PER_DAY + s] +
+                    x[l][ld * SLOTS_PER_DAY + s + 1] +
+                    x[l][ld * SLOTS_PER_DAY + s + 2],
+                    2);
+            }
+        }
+    }
+
     // Непрерывные двойные ЛПЗ и запрет склейки пары через обед.
     for (int l = 0; l < num_lessons; l++) {
         if (quotas[l] == 0 || lessons[l].is_block) continue;
@@ -3137,8 +3174,8 @@ static WeekSolveResult SolveOneWeek(
                     if (teacher >= 0)
                         model.AddEquality(group_day_campus[g][ld], teacher_day_campus[teacher][ld])
                             .OnlyEnforceIf(x[l][lt]);
-                    if (lessons[l].allowed_campuses.size() == 1) {
-                        int campus = static_cast<int>(*lessons[l].allowed_campuses.begin());
+                    if (lessons[l].CampusesOn(week_days[ld]).size() == 1) {
+                        int campus = static_cast<int>(*lessons[l].CampusesOn(week_days[ld]).begin());
                         model.AddEquality(group_day_campus[g][ld], campus).OnlyEnforceIf(x[l][lt]);
                         if (teacher >= 0)
                             model.AddEquality(teacher_day_campus[teacher][ld], campus).OnlyEnforceIf(x[l][lt]);
@@ -3148,6 +3185,44 @@ static WeekSolveResult SolveOneWeek(
     }
 
     ScheduleInputData class_hour_data = class_hour_input;
+    // Exclude placements without any usable room before scheduling. Aggregate
+    // campus capacity alone misses teacher access and operational room rules.
+    for (int ld = 0; ld < W; ++ld) {
+        for (int s = 0; s < SLOTS_PER_DAY; ++s) {
+            const int lt = ld * SLOTS_PER_DAY + s;
+            std::map<int, LinearExpr> only_room_demand;
+            for (int l = 0; l < num_lessons; ++l) {
+                if (quotas[l] <= 0) continue;
+                const Lesson& lesson = lessons[l];
+                std::vector<int> candidates[2];
+                for (const RoomData& room : rooms) {
+                    if (!room.active || room.access_mode == "blocked" || room.campus < 0 || room.campus > 1) continue;
+                    if (!lesson.CampusesOn(week_days[ld]).count(static_cast<Campus>(room.campus))) continue;
+                    if (room.access_mode == "exclusive" && !room.responsible_teacher_ids.count(lesson.teacher)) continue;
+                    if (!OperationalRoomPolicyAllows(room, lesson, week_days[ld])) continue;
+                    if (room.purpose != lesson.RoomPurposeOn(week_days[ld])) continue;
+                    if (!WorkScheduleAllows(room.work_schedule, week_days[ld], s)) continue;
+                    if (!room.available_slots.empty() && !room.available_slots.count(s + 1)) continue;
+                    if (lesson.fixed_room >= 0 && !lesson.allow_room_substitution && room.id != lesson.fixed_room) continue;
+                    if (lesson.required_room_type > 0 && room.room_type != lesson.required_room_type) continue;
+                    if (room.capacity > 0 && lesson.required_capacity > room.capacity) continue;
+                    bool equipped = true;
+                    for (const auto& feature : lesson.required_equipment)
+                        if (!room.equipment.count(feature)) equipped = false;
+                    if (equipped) candidates[room.campus].push_back(room.id);
+                }
+                if (candidates[0].empty() && candidates[1].empty()) {
+                    model.AddEquality(x[l][lt], 0);
+                } else if (candidates[0].empty() || candidates[1].empty()) {
+                    const int campus = candidates[0].empty() ? 1 : 0;
+                    model.AddEquality(group_day_campus[lesson.group][ld], campus).OnlyEnforceIf(x[l][lt]);
+                    if (candidates[campus].size() == 1)
+                        only_room_demand[candidates[campus].front()] += x[l][lt];
+                }
+            }
+            for (const auto& demand : only_room_demand) model.AddLessOrEqual(demand.second, 1);
+        }
+    }
     class_hour_data.groups = groups;
     class_hour_data.teachers = teachers;
     class_hour_data.rooms = rooms;
@@ -3191,8 +3266,8 @@ static WeekSolveResult SolveOneWeek(
                     lower += campus;
                     lower -= 1;
                     model.AddGreaterOrEqual(at_campus1, lower);
-                    LinearExpr& demand0 = lessons[l].required_room_purpose == "sports_hall" ? sports0_demand : campus0_demand;
-                    LinearExpr& demand1 = lessons[l].required_room_purpose == "sports_hall" ? sports1_demand : campus1_demand;
+                    LinearExpr& demand0 = lessons[l].RoomPurposeOn(week_days[ld]) == "sports_hall" ? sports0_demand : campus0_demand;
+                    LinearExpr& demand1 = lessons[l].RoomPurposeOn(week_days[ld]) == "sports_hall" ? sports1_demand : campus1_demand;
                     demand1 += at_campus1;
                     demand0 += x[l][lt];
                     demand0 -= at_campus1;

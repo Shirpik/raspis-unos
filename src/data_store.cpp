@@ -1742,6 +1742,10 @@ bool LoadScheduleInputDataFromRoot(const JsonValue& source, ScheduleInputData& d
         lesson.required_room_purpose = JsonString(item, "required_room_purpose", "");
         if (lesson.name == "Физическая культура") lesson.required_room_purpose = "sports_hall";
         if (lesson.required_room_purpose != "sports_hall") lesson.required_room_purpose.clear();
+        for (const std::string& value : JsonStringArray(item.At("classroom_theory_dates"))) {
+            Date date;
+            if (ParseDateIso(value, date)) lesson.classroom_theory_dates.insert(date);
+        }
         lesson.required_equipment.clear();
         for (const std::string& value : JsonStringArray(item.At("required_equipment"))) {
             lesson.required_equipment.insert(value);

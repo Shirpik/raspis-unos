@@ -71,6 +71,17 @@ struct Lesson {
     // Пустая строка = обычная учебная аудитория. Специальное назначение
     // (например, sports_hall) является жёстким требованием занятия.
     std::string required_room_purpose;
+    // Explicit one-date PE theory exceptions; retain teacher and curriculum IDs.
+    std::set<Date> classroom_theory_dates;
+    bool IsClassroomTheory(const Date& date) const {
+        return required_room_purpose == "sports_hall" && classroom_theory_dates.count(date);
+    }
+    std::string RoomPurposeOn(const Date& date) const {
+        return IsClassroomTheory(date) ? "" : required_room_purpose;
+    }
+    std::set<Campus> CampusesOn(const Date& date) const {
+        return IsClassroomTheory(date) ? std::set<Campus>{LESNAYA, KRIVOUSOVA} : allowed_campuses;
+    }
     // Derived from the active semester and group calendar, never user quotas.
     bool calendar_restricted = false;
     std::vector<std::pair<Date, Date>> teaching_windows;

@@ -1,10 +1,153 @@
 {
   "days": [
     {
-      "date": "07.10.2026",
-      "date_iso": "2026-10-07",
+      "date": "08.10.2026",
+      "date_iso": "2026-10-08",
       "day_index": 0,
       "slots": [
+        {
+          "lessons": [],
+          "slot": 1,
+          "text": "-",
+          "time": "1 пара (08:30-09:55)"
+        },
+        {
+          "lessons": [],
+          "slot": 2,
+          "text": "-",
+          "time": "2 пара (10:05-11:30)"
+        },
+        {
+          "lessons": [],
+          "slot": 3,
+          "text": "-",
+          "time": "3 пара (12:25-13:50)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 775,
+              "is_block": false,
+              "is_lab": false,
+              "name": "Математика в профессиональной деятельности",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 29,
+              "room_name": "201",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": -1,
+              "teacher_id": 38,
+              "uid": "lesson-a17308410f528128",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 4,
+          "text": "Математика в профессиональной деятельности — вся группа, Абрамчук Раида Филимазовна, Лесная",
+          "time": "4 пара (14:00-15:25)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 780,
+              "is_block": false,
+              "is_lab": false,
+              "name": "ВМДК.07.01 Технология обработки на металлорежущих станках",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 40,
+              "room_name": "322",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": -1,
+              "teacher_id": 61,
+              "uid": "lesson-9aaa6fa2cac02b88",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 5,
+          "text": "ВМДК.07.01 Технология обработки на металлорежущих станках — вся группа, Саламатина Вера Викторовна, Лесная",
+          "time": "5 пара (15:35-16:55)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 780,
+              "is_block": false,
+              "is_lab": false,
+              "name": "ВМДК.07.01 Технология обработки на металлорежущих станках",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 40,
+              "room_name": "322",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": -1,
+              "teacher_id": 61,
+              "uid": "lesson-9aaa6fa2cac02b88",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 6,
+          "text": "ВМДК.07.01 Технология обработки на металлорежущих станках — вся группа, Саламатина Вера Викторовна, Лесная",
+          "time": "6 пара (17:05-18:25)"
+        },
+        {
+          "lessons": [],
+          "slot": 7,
+          "text": "-",
+          "time": "7 пара (18:35-19:55)"
+        }
+      ],
+      "weekday": "ЧТ"
+    },
+    {
+      "date": "09.10.2026",
+      "date_iso": "2026-10-09",
+      "day_index": 1,
+      "slots": [
+        {
+          "lessons": [],
+          "slot": 1,
+          "text": "-",
+          "time": "1 пара (08:30-09:55)"
+        },
+        {
+          "lessons": [],
+          "slot": 2,
+          "text": "-",
+          "time": "2 пара (10:05-11:30)"
+        },
+        {
+          "lessons": [],
+          "slot": 3,
+          "text": "-",
+          "time": "3 пара (12:25-13:50)"
+        },
+        {
+          "lessons": [],
+          "slot": 4,
+          "text": "-",
+          "time": "4 пара (14:00-15:25)"
+        },
+        {
+          "lessons": [],
+          "slot": 5,
+          "text": "-",
+          "time": "5 пара (15:35-16:55)"
+        },
         {
           "lessons": [
             {
@@ -28,111 +171,152 @@
               "week_parity": "all"
             }
           ],
-          "slot": 1,
-          "text": "Химия — вся группа, Соболева Любовь Анатольевна, Кривоусова",
-          "time": "1 пара (08:30-09:55)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 770,
-              "is_block": false,
-              "is_lab": false,
-              "name": "Инженерная графика",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 61,
-              "room_name": "70",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": -1,
-              "teacher_id": 40,
-              "uid": "lesson-1d66fec2d3fa0dc8",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 2,
-          "text": "Инженерная графика — вся группа, Сивилькаев Вадим Михайлович, Кривоусова",
-          "time": "2 пара (10:05-11:30)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 770,
-              "is_block": false,
-              "is_lab": false,
-              "name": "Инженерная графика",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 61,
-              "room_name": "70",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": -1,
-              "teacher_id": 40,
-              "uid": "lesson-1d66fec2d3fa0dc8",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 3,
-          "text": "Инженерная графика — вся группа, Сивилькаев Вадим Михайлович, Кривоусова",
-          "time": "3 пара (12:25-13:50)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 770,
-              "is_block": false,
-              "is_lab": false,
-              "name": "Инженерная графика",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 61,
-              "room_name": "70",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": -1,
-              "teacher_id": 40,
-              "uid": "lesson-1d66fec2d3fa0dc8",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 4,
-          "text": "Инженерная графика — вся группа, Сивилькаев Вадим Михайлович, Кривоусова",
-          "time": "4 пара (14:00-15:25)"
-        },
-        {
-          "lessons": [],
-          "slot": 5,
-          "text": "-",
-          "time": "5 пара (15:35-16:55)"
-        },
-        {
-          "lessons": [],
           "slot": 6,
-          "text": "-",
+          "text": "Химия — вся группа, Соболева Любовь Анатольевна, Кривоусова",
           "time": "6 пара (17:05-18:25)"
         },
         {
-          "lessons": [],
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 766,
+              "is_block": false,
+              "is_lab": false,
+              "name": "Химия",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 4,
+              "room_name": "15",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": -1,
+              "teacher_id": 20,
+              "uid": "lesson-36ed342866481948",
+              "week_parity": "all"
+            }
+          ],
           "slot": 7,
-          "text": "-",
+          "text": "Химия — вся группа, Соболева Любовь Анатольевна, Кривоусова",
           "time": "7 пара (18:35-19:55)"
         }
       ],
-      "weekday": "СР"
+      "weekday": "ПТ"
+    },
+    {
+      "date": "10.10.2026",
+      "date_iso": "2026-10-10",
+      "day_index": 2,
+      "slots": [
+        {
+          "lessons": [],
+          "slot": 1,
+          "text": "-",
+          "time": "1 пара (08:30-09:45)"
+        },
+        {
+          "lessons": [],
+          "slot": 2,
+          "text": "-",
+          "time": "2 пара (09:55-11:10)"
+        },
+        {
+          "lessons": [],
+          "slot": 3,
+          "text": "-",
+          "time": "3 пара (11:30-12:45)"
+        },
+        {
+          "lessons": [],
+          "slot": 4,
+          "text": "-",
+          "time": "4 пара (12:55-14:10)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 770,
+              "is_block": false,
+              "is_lab": false,
+              "name": "Инженерная графика",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 61,
+              "room_name": "70",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": -1,
+              "teacher_id": 40,
+              "uid": "lesson-1d66fec2d3fa0dc8",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 5,
+          "text": "Инженерная графика — вся группа, Сивилькаев Вадим Михайлович, Кривоусова",
+          "time": "5 пара (14:20-15:30)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 766,
+              "is_block": false,
+              "is_lab": false,
+              "name": "Химия",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 4,
+              "room_name": "15",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": -1,
+              "teacher_id": 20,
+              "uid": "lesson-36ed342866481948",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 6,
+          "text": "Химия — вся группа, Соболева Любовь Анатольевна, Кривоусова",
+          "time": "6 пара (15:40-16:50)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 766,
+              "is_block": false,
+              "is_lab": false,
+              "name": "Химия",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 4,
+              "room_name": "15",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": -1,
+              "teacher_id": 20,
+              "uid": "lesson-36ed342866481948",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 7,
+          "text": "Химия — вся группа, Соболева Любовь Анатольевна, Кривоусова",
+          "time": "7 пара (17:00-18:10)"
+        }
+      ],
+      "weekday": "СБ"
     }
   ],
   "group_index": 35,

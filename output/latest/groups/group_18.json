@@ -1,8 +1,8 @@
 {
   "days": [
     {
-      "date": "07.10.2026",
-      "date_iso": "2026-10-07",
+      "date": "08.10.2026",
+      "date_iso": "2026-10-08",
       "day_index": 0,
       "slots": [
         {
@@ -11,25 +11,25 @@
               "avoid_lunch_split": false,
               "consecutive_pairs": 1,
               "display_time": null,
-              "id": 374,
+              "id": 372,
               "is_block": false,
               "is_lab": false,
-              "name": "Иностранный язык в профессиональной деятельности",
+              "name": "Основы философии",
               "requested_room_id": null,
               "requested_room_name": null,
-              "room_id": 7,
-              "room_name": "18/2",
+              "room_id": 37,
+              "room_name": "317",
               "room_substituted": false,
               "room_substitution_reason": null,
               "room_type": 0,
-              "subgroup": 37,
-              "teacher_id": 30,
-              "uid": "lesson-897f74e5f58f1d16",
+              "subgroup": -1,
+              "teacher_id": 14,
+              "uid": "lesson-03300b194b80c34e",
               "week_parity": "all"
             }
           ],
           "slot": 1,
-          "text": "Иностранный язык в профессиональной деятельности — 2 п/г, Синельникова Елена Владимировна, Кривоусова",
+          "text": "Основы философии — вся группа, Лучинин Александр Васильевич, Лесная",
           "time": "1 пара (08:30-09:55)"
         },
         {
@@ -38,86 +38,237 @@
               "avoid_lunch_split": false,
               "consecutive_pairs": 1,
               "display_time": null,
-              "id": 374,
+              "id": 372,
               "is_block": false,
               "is_lab": false,
-              "name": "Иностранный язык в профессиональной деятельности",
+              "name": "Основы философии",
               "requested_room_id": null,
               "requested_room_name": null,
-              "room_id": 7,
-              "room_name": "18/2",
+              "room_id": 37,
+              "room_name": "317",
               "room_substituted": false,
               "room_substitution_reason": null,
               "room_type": 0,
-              "subgroup": 37,
-              "teacher_id": 30,
-              "uid": "lesson-897f74e5f58f1d16",
+              "subgroup": -1,
+              "teacher_id": 14,
+              "uid": "lesson-03300b194b80c34e",
               "week_parity": "all"
             }
           ],
           "slot": 2,
-          "text": "Иностранный язык в профессиональной деятельности — 2 п/г, Синельникова Елена Владимировна, Кривоусова",
+          "text": "Основы философии — вся группа, Лучинин Александр Васильевич, Лесная",
           "time": "2 пара (10:05-11:30)"
         },
         {
-          "lessons": [],
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 375,
+              "is_block": false,
+              "is_lab": false,
+              "name": "Физическая культура",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 67,
+              "room_name": "Спортзал",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": -1,
+              "teacher_id": 34,
+              "uid": "lesson-9d1a1bcd03712894",
+              "week_parity": "all"
+            }
+          ],
           "slot": 3,
+          "text": "Физическая культура — вся группа, Нуров Мирзо Нуралиевич, Лесная",
+          "time": "3 пара (12:25-13:50)"
+        },
+        {
+          "lessons": [],
+          "slot": 4,
           "text": "-",
+          "time": "4 пара (14:00-15:25)"
+        },
+        {
+          "lessons": [],
+          "slot": 5,
+          "text": "-",
+          "time": "5 пара (15:35-16:55)"
+        },
+        {
+          "lessons": [],
+          "slot": 6,
+          "text": "-",
+          "time": "6 пара (17:05-18:25)"
+        },
+        {
+          "lessons": [],
+          "slot": 7,
+          "text": "-",
+          "time": "7 пара (18:35-19:55)"
+        }
+      ],
+      "weekday": "ЧТ"
+    },
+    {
+      "date": "09.10.2026",
+      "date_iso": "2026-10-09",
+      "day_index": 1,
+      "slots": [
+        {
+          "lessons": [],
+          "slot": 1,
+          "text": "-",
+          "time": "1 пара (08:30-09:55)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 375,
+              "is_block": false,
+              "is_lab": false,
+              "name": "Физическая культура",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 67,
+              "room_name": "Спортзал",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": -1,
+              "teacher_id": 34,
+              "uid": "lesson-9d1a1bcd03712894",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 2,
+          "text": "Физическая культура — вся группа, Нуров Мирзо Нуралиевич, Лесная",
+          "time": "2 пара (10:05-11:30)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 375,
+              "is_block": false,
+              "is_lab": false,
+              "name": "Физическая культура",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 67,
+              "room_name": "Спортзал",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": -1,
+              "teacher_id": 34,
+              "uid": "lesson-9d1a1bcd03712894",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 3,
+          "text": "Физическая культура — вся группа, Нуров Мирзо Нуралиевич, Лесная",
           "time": "3 пара (12:25-13:50)"
         },
         {
           "lessons": [
             {
-              "avoid_lunch_split": true,
-              "consecutive_pairs": 2,
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
               "display_time": null,
-              "id": 386,
+              "id": 375,
               "is_block": false,
-              "is_lab": true,
-              "name": "ЛПЗ МДК.02.01 Основы качественного и количественного анализа природных и промышленных материалов",
+              "is_lab": false,
+              "name": "Физическая культура",
               "requested_room_id": null,
               "requested_room_name": null,
-              "room_id": 52,
-              "room_name": "54",
+              "room_id": 67,
+              "room_name": "Спортзал",
               "room_substituted": false,
               "room_substitution_reason": null,
               "room_type": 0,
-              "subgroup": 36,
-              "teacher_id": 10,
-              "uid": "lesson-05f1264d778f22a4",
+              "subgroup": -1,
+              "teacher_id": 34,
+              "uid": "lesson-9d1a1bcd03712894",
               "week_parity": "all"
             }
           ],
           "slot": 4,
-          "text": "ЛПЗ МДК.02.01 Основы качественного и количественного анализа природных и промышленных материалов — 1 п/г, Семенова Лилиана Ивановна, Кривоусова",
+          "text": "Физическая культура — вся группа, Нуров Мирзо Нуралиевич, Лесная",
           "time": "4 пара (14:00-15:25)"
         },
         {
           "lessons": [
             {
-              "avoid_lunch_split": true,
-              "consecutive_pairs": 2,
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
               "display_time": null,
-              "id": 386,
+              "id": 378,
               "is_block": false,
-              "is_lab": true,
-              "name": "ЛПЗ МДК.02.01 Основы качественного и количественного анализа природных и промышленных материалов",
+              "is_lab": false,
+              "name": "метрология, стандартизация и сертификация",
               "requested_room_id": null,
               "requested_room_name": null,
-              "room_id": 52,
-              "room_name": "54",
+              "room_id": 44,
+              "room_name": "405",
               "room_substituted": false,
               "room_substitution_reason": null,
               "room_type": 0,
-              "subgroup": 36,
-              "teacher_id": 10,
-              "uid": "lesson-05f1264d778f22a4",
+              "subgroup": -1,
+              "teacher_id": 41,
+              "uid": "lesson-d7d67128b48cdf25",
               "week_parity": "all"
             }
           ],
           "slot": 5,
-          "text": "ЛПЗ МДК.02.01 Основы качественного и количественного анализа природных и промышленных материалов — 1 п/г, Семенова Лилиана Ивановна, Кривоусова",
+          "text": "метрология, стандартизация и сертификация — вся группа, Садриева Татьяна Геннадьевна, Лесная",
           "time": "5 пара (15:35-16:55)"
+        },
+        {
+          "lessons": [],
+          "slot": 6,
+          "text": "-",
+          "time": "6 пара (17:05-18:25)"
+        },
+        {
+          "lessons": [],
+          "slot": 7,
+          "text": "-",
+          "time": "7 пара (18:35-19:55)"
+        }
+      ],
+      "weekday": "ПТ"
+    },
+    {
+      "date": "10.10.2026",
+      "date_iso": "2026-10-10",
+      "day_index": 2,
+      "slots": [
+        {
+          "lessons": [],
+          "slot": 1,
+          "text": "-",
+          "time": "1 пара (08:30-09:45)"
+        },
+        {
+          "lessons": [],
+          "slot": 2,
+          "text": "-",
+          "time": "2 пара (09:55-11:10)"
+        },
+        {
+          "lessons": [],
+          "slot": 3,
+          "text": "-",
+          "time": "3 пара (11:30-12:45)"
         },
         {
           "lessons": [
@@ -125,26 +276,80 @@
               "avoid_lunch_split": false,
               "consecutive_pairs": 1,
               "display_time": null,
-              "id": 373,
+              "id": 372,
               "is_block": false,
               "is_lab": false,
-              "name": "Иностранный язык в профессиональной деятельности",
+              "name": "Основы философии",
               "requested_room_id": null,
               "requested_room_name": null,
-              "room_id": 7,
-              "room_name": "18/2",
+              "room_id": 37,
+              "room_name": "317",
               "room_substituted": false,
               "room_substitution_reason": null,
               "room_type": 0,
-              "subgroup": 36,
-              "teacher_id": 30,
-              "uid": "lesson-24f06ed51733ee99",
+              "subgroup": -1,
+              "teacher_id": 14,
+              "uid": "lesson-03300b194b80c34e",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 4,
+          "text": "Основы философии — вся группа, Лучинин Александр Васильевич, Лесная",
+          "time": "4 пара (12:55-14:10)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 372,
+              "is_block": false,
+              "is_lab": false,
+              "name": "Основы философии",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 37,
+              "room_name": "317",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": -1,
+              "teacher_id": 14,
+              "uid": "lesson-03300b194b80c34e",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 5,
+          "text": "Основы философии — вся группа, Лучинин Александр Васильевич, Лесная",
+          "time": "5 пара (14:20-15:30)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 375,
+              "is_block": false,
+              "is_lab": false,
+              "name": "Физическая культура",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 67,
+              "room_name": "Спортзал",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": -1,
+              "teacher_id": 34,
+              "uid": "lesson-9d1a1bcd03712894",
               "week_parity": "all"
             }
           ],
           "slot": 6,
-          "text": "Иностранный язык в профессиональной деятельности — 1 п/г, Синельникова Елена Владимировна, Кривоусова",
-          "time": "6 пара (17:05-18:25)"
+          "text": "Физическая культура — вся группа, Нуров Мирзо Нуралиевич, Лесная",
+          "time": "6 пара (15:40-16:50)"
         },
         {
           "lessons": [
@@ -152,29 +357,29 @@
               "avoid_lunch_split": false,
               "consecutive_pairs": 1,
               "display_time": null,
-              "id": 373,
+              "id": 375,
               "is_block": false,
               "is_lab": false,
-              "name": "Иностранный язык в профессиональной деятельности",
+              "name": "Физическая культура",
               "requested_room_id": null,
               "requested_room_name": null,
-              "room_id": 7,
-              "room_name": "18/2",
+              "room_id": 67,
+              "room_name": "Спортзал",
               "room_substituted": false,
               "room_substitution_reason": null,
               "room_type": 0,
-              "subgroup": 36,
-              "teacher_id": 30,
-              "uid": "lesson-24f06ed51733ee99",
+              "subgroup": -1,
+              "teacher_id": 34,
+              "uid": "lesson-9d1a1bcd03712894",
               "week_parity": "all"
             }
           ],
           "slot": 7,
-          "text": "Иностранный язык в профессиональной деятельности — 1 п/г, Синельникова Елена Владимировна, Кривоусова",
-          "time": "7 пара (18:35-19:55)"
+          "text": "Физическая культура — вся группа, Нуров Мирзо Нуралиевич, Лесная",
+          "time": "7 пара (17:00-18:10)"
         }
       ],
-      "weekday": "СР"
+      "weekday": "СБ"
     }
   ],
   "group_index": 18,

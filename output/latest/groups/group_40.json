@@ -1,54 +1,36 @@
 {
   "days": [
     {
-      "date": "07.10.2026",
-      "date_iso": "2026-10-07",
+      "date": "08.10.2026",
+      "date_iso": "2026-10-08",
       "day_index": 0,
       "slots": [
-        {
-          "lessons": [],
-          "slot": 1,
-          "text": "-",
-          "time": "1 пара (08:30-09:55)"
-        },
-        {
-          "lessons": [],
-          "slot": 2,
-          "text": "-",
-          "time": "2 пара (10:05-11:30)"
-        },
-        {
-          "lessons": [],
-          "slot": 3,
-          "text": "-",
-          "time": "3 пара (12:25-13:50)"
-        },
         {
           "lessons": [
             {
               "avoid_lunch_split": false,
               "consecutive_pairs": 1,
               "display_time": null,
-              "id": 866,
+              "id": 860,
               "is_block": false,
-              "is_lab": true,
-              "name": "ЛПЗ Основы проектирования баз данных",
+              "is_lab": false,
+              "name": "Физическая культура",
               "requested_room_id": null,
               "requested_room_name": null,
-              "room_id": 46,
-              "room_name": "409",
+              "room_id": 67,
+              "room_name": "Спортзал",
               "room_substituted": false,
               "room_substitution_reason": null,
               "room_type": 0,
-              "subgroup": 80,
-              "teacher_id": 65,
-              "uid": "lesson-5b5c2e1cc55ecdaa",
+              "subgroup": -1,
+              "teacher_id": 34,
+              "uid": "lesson-49b5a4183c248ae8",
               "week_parity": "all"
             }
           ],
-          "slot": 4,
-          "text": "ЛПЗ Основы проектирования баз данных — 1 п/г, Михайлова Татьяна Алексеевна, Лесная",
-          "time": "4 пара (14:00-15:25)"
+          "slot": 1,
+          "text": "Физическая культура — вся группа, Нуров Мирзо Нуралиевич, Лесная",
+          "time": "1 пара (08:30-09:55)"
         },
         {
           "lessons": [
@@ -73,36 +55,9 @@
               "week_parity": "all"
             }
           ],
-          "slot": 5,
+          "slot": 2,
           "text": "География — вся группа, Кропотова Анастасия Андреевна, Лесная",
-          "time": "5 пара (15:35-16:55)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 863,
-              "is_block": false,
-              "is_lab": false,
-              "name": "Теория вероятностей и математическая статистика",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 36,
-              "room_name": "315",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": -1,
-              "teacher_id": 17,
-              "uid": "lesson-d7480ad9c96e1c10",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 6,
-          "text": "Теория вероятностей и математическая статистика — вся группа, Нифонтова Ирина Геннадьевна, Лесная",
-          "time": "6 пара (17:05-18:25)"
+          "time": "2 пара (10:05-11:30)"
         },
         {
           "lessons": [
@@ -127,12 +82,344 @@
               "week_parity": "all"
             }
           ],
-          "slot": 7,
+          "slot": 3,
           "text": "История — вся группа, Лучинин Александр Васильевич, Лесная",
+          "time": "3 пара (12:25-13:50)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 863,
+              "is_block": false,
+              "is_lab": false,
+              "name": "Теория вероятностей и математическая статистика",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 36,
+              "room_name": "315",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": -1,
+              "teacher_id": 17,
+              "uid": "lesson-d7480ad9c96e1c10",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 4,
+          "text": "Теория вероятностей и математическая статистика — вся группа, Нифонтова Ирина Геннадьевна, Лесная",
+          "time": "4 пара (14:00-15:25)"
+        },
+        {
+          "lessons": [],
+          "slot": 5,
+          "text": "-",
+          "time": "5 пара (15:35-16:55)"
+        },
+        {
+          "lessons": [],
+          "slot": 6,
+          "text": "-",
+          "time": "6 пара (17:05-18:25)"
+        },
+        {
+          "lessons": [],
+          "slot": 7,
+          "text": "-",
           "time": "7 пара (18:35-19:55)"
         }
       ],
-      "weekday": "СР"
+      "weekday": "ЧТ"
+    },
+    {
+      "date": "09.10.2026",
+      "date_iso": "2026-10-09",
+      "day_index": 1,
+      "slots": [
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 866,
+              "is_block": false,
+              "is_lab": true,
+              "name": "ЛПЗ Основы проектирования баз данных",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 46,
+              "room_name": "409",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 80,
+              "teacher_id": 65,
+              "uid": "lesson-5b5c2e1cc55ecdaa",
+              "week_parity": "all"
+            },
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 874,
+              "is_block": false,
+              "is_lab": true,
+              "name": "ЛПЗ МДК.03.02 Обеспечение качеств функционирования компьютерных систем",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 49,
+              "room_name": "411",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 81,
+              "teacher_id": 67,
+              "uid": "lesson-cf9bbee139074045",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 1,
+          "text": "ЛПЗ Основы проектирования баз данных — 1 п/г, Михайлова Татьяна Алексеевна, Лесная | ЛПЗ МДК.03.02 Обеспечение качеств функционирования компьютерных систем — 2 п/г, Гарбузов Андрей Евгеньевич, Лесная",
+          "time": "1 пара (08:30-09:55)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 857,
+              "is_block": false,
+              "is_lab": false,
+              "name": "История",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 37,
+              "room_name": "317",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": -1,
+              "teacher_id": 14,
+              "uid": "lesson-680e6b001d717c9c",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 2,
+          "text": "История — вся группа, Лучинин Александр Васильевич, Лесная",
+          "time": "2 пара (10:05-11:30)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 858,
+              "is_block": false,
+              "is_lab": false,
+              "name": "Иностранный язык в профессиональной деятельности",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 43,
+              "room_name": "401",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 80,
+              "teacher_id": 4,
+              "uid": "lesson-a3e6e646bd969d4e",
+              "week_parity": "all"
+            },
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 867,
+              "is_block": false,
+              "is_lab": true,
+              "name": "ЛПЗ Основы проектирования баз данных",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 46,
+              "room_name": "409",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 81,
+              "teacher_id": 65,
+              "uid": "lesson-c185d1cf2d162667",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 3,
+          "text": "Иностранный язык в профессиональной деятельности — 1 п/г, Давыдова Валентина Алексеевна, Лесная | ЛПЗ Основы проектирования баз данных — 2 п/г, Михайлова Татьяна Алексеевна, Лесная",
+          "time": "3 пара (12:25-13:50)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 858,
+              "is_block": false,
+              "is_lab": false,
+              "name": "Иностранный язык в профессиональной деятельности",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 43,
+              "room_name": "401",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 80,
+              "teacher_id": 4,
+              "uid": "lesson-a3e6e646bd969d4e",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 4,
+          "text": "Иностранный язык в профессиональной деятельности — 1 п/г, Давыдова Валентина Алексеевна, Лесная",
+          "time": "4 пара (14:00-15:25)"
+        },
+        {
+          "lessons": [],
+          "slot": 5,
+          "text": "-",
+          "time": "5 пара (15:35-16:55)"
+        },
+        {
+          "lessons": [],
+          "slot": 6,
+          "text": "-",
+          "time": "6 пара (17:05-18:25)"
+        },
+        {
+          "lessons": [],
+          "slot": 7,
+          "text": "-",
+          "time": "7 пара (18:35-19:55)"
+        }
+      ],
+      "weekday": "ПТ"
+    },
+    {
+      "date": "10.10.2026",
+      "date_iso": "2026-10-10",
+      "day_index": 2,
+      "slots": [
+        {
+          "lessons": [],
+          "slot": 1,
+          "text": "-",
+          "time": "1 пара (08:30-09:45)"
+        },
+        {
+          "lessons": [],
+          "slot": 2,
+          "text": "-",
+          "time": "2 пара (09:55-11:10)"
+        },
+        {
+          "lessons": [],
+          "slot": 3,
+          "text": "-",
+          "time": "3 пара (11:30-12:45)"
+        },
+        {
+          "lessons": [],
+          "slot": 4,
+          "text": "-",
+          "time": "4 пара (12:55-14:10)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 856,
+              "is_block": false,
+              "is_lab": false,
+              "name": "Химия",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 41,
+              "room_name": "324",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": -1,
+              "teacher_id": 48,
+              "uid": "lesson-acb8fa01f0cb5191",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 5,
+          "text": "Химия — вся группа, Альшаева Алина Павловна, Лесная",
+          "time": "5 пара (14:20-15:30)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 856,
+              "is_block": false,
+              "is_lab": false,
+              "name": "Химия",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 41,
+              "room_name": "324",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": -1,
+              "teacher_id": 48,
+              "uid": "lesson-acb8fa01f0cb5191",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 6,
+          "text": "Химия — вся группа, Альшаева Алина Павловна, Лесная",
+          "time": "6 пара (15:40-16:50)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 856,
+              "is_block": false,
+              "is_lab": false,
+              "name": "Химия",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 41,
+              "room_name": "324",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": -1,
+              "teacher_id": 48,
+              "uid": "lesson-acb8fa01f0cb5191",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 7,
+          "text": "Химия — вся группа, Альшаева Алина Павловна, Лесная",
+          "time": "7 пара (17:00-18:10)"
+        }
+      ],
+      "weekday": "СБ"
     }
   ],
   "group_index": 40,

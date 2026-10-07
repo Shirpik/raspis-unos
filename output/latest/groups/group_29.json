@@ -1,9 +1,143 @@
 {
   "days": [
     {
-      "date": "07.10.2026",
-      "date_iso": "2026-10-07",
+      "date": "08.10.2026",
+      "date_iso": "2026-10-08",
       "day_index": 0,
+      "slots": [
+        {
+          "lessons": [],
+          "slot": 1,
+          "text": "-",
+          "time": "1 пара (08:30-09:55)"
+        },
+        {
+          "lessons": [],
+          "slot": 2,
+          "text": "-",
+          "time": "2 пара (10:05-11:30)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 653,
+              "is_block": false,
+              "is_lab": false,
+              "name": "КП МДК.02.01 Основы расчѐта и проектирования сварных конструкций",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 58,
+              "room_name": "67",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": -1,
+              "teacher_id": 58,
+              "uid": "lesson-c49d25d9a6109aa7",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 3,
+          "text": "КП МДК.02.01 Основы расчѐта и проектирования сварных конструкций — вся группа, Билалова Рауиза Галлинуровна, Кривоусова",
+          "time": "3 пара (12:25-13:50)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": true,
+              "consecutive_pairs": 2,
+              "display_time": null,
+              "id": 652,
+              "is_block": false,
+              "is_lab": true,
+              "name": "ЛПЗ МДК.02.01 Основы расчѐта и проектирования сварных конструкций",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 58,
+              "room_name": "67",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": -1,
+              "teacher_id": 58,
+              "uid": "lesson-6ed4a2c1c4afc3ce",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 4,
+          "text": "ЛПЗ МДК.02.01 Основы расчѐта и проектирования сварных конструкций — вся группа, Билалова Рауиза Галлинуровна, Кривоусова",
+          "time": "4 пара (14:00-15:25)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": true,
+              "consecutive_pairs": 2,
+              "display_time": null,
+              "id": 652,
+              "is_block": false,
+              "is_lab": true,
+              "name": "ЛПЗ МДК.02.01 Основы расчѐта и проектирования сварных конструкций",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 58,
+              "room_name": "67",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": -1,
+              "teacher_id": 58,
+              "uid": "lesson-6ed4a2c1c4afc3ce",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 5,
+          "text": "ЛПЗ МДК.02.01 Основы расчѐта и проектирования сварных конструкций — вся группа, Билалова Рауиза Галлинуровна, Кривоусова",
+          "time": "5 пара (15:35-16:55)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 645,
+              "is_block": false,
+              "is_lab": false,
+              "name": "Менеджмент",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 25,
+              "room_name": "50",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": -1,
+              "teacher_id": 45,
+              "uid": "lesson-798eba1b319e96c9",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 6,
+          "text": "Менеджмент — вся группа, Елагина Ольга Александровна, Кривоусова",
+          "time": "6 пара (17:05-18:25)"
+        },
+        {
+          "lessons": [],
+          "slot": 7,
+          "text": "-",
+          "time": "7 пара (18:35-19:55)"
+        }
+      ],
+      "weekday": "ЧТ"
+    },
+    {
+      "date": "09.10.2026",
+      "date_iso": "2026-10-09",
+      "day_index": 1,
       "slots": [
         {
           "lessons": [
@@ -65,31 +199,52 @@
               "avoid_lunch_split": false,
               "consecutive_pairs": 1,
               "display_time": null,
-              "id": 645,
+              "id": 643,
               "is_block": false,
               "is_lab": false,
-              "name": "Менеджмент",
+              "name": "Физическая культура",
               "requested_room_id": null,
               "requested_room_name": null,
-              "room_id": 25,
-              "room_name": "50",
+              "room_id": 22,
+              "room_name": "Спортзал",
               "room_substituted": false,
               "room_substitution_reason": null,
               "room_type": 0,
               "subgroup": -1,
-              "teacher_id": 45,
-              "uid": "lesson-798eba1b319e96c9",
+              "teacher_id": 8,
+              "uid": "lesson-2bbf2c6104e40578",
               "week_parity": "all"
             }
           ],
           "slot": 3,
-          "text": "Менеджмент — вся группа, Елагина Ольга Александровна, Кривоусова",
+          "text": "Физическая культура — вся группа, Потапова Регина Александровна, Кривоусова",
           "time": "3 пара (12:25-13:50)"
         },
         {
-          "lessons": [],
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 643,
+              "is_block": false,
+              "is_lab": false,
+              "name": "Физическая культура",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 22,
+              "room_name": "Спортзал",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": -1,
+              "teacher_id": 8,
+              "uid": "lesson-2bbf2c6104e40578",
+              "week_parity": "all"
+            }
+          ],
           "slot": 4,
-          "text": "-",
+          "text": "Физическая культура — вся группа, Потапова Регина Александровна, Кривоусова",
           "time": "4 пара (14:00-15:25)"
         },
         {
@@ -111,7 +266,141 @@
           "time": "7 пара (18:35-19:55)"
         }
       ],
-      "weekday": "СР"
+      "weekday": "ПТ"
+    },
+    {
+      "date": "10.10.2026",
+      "date_iso": "2026-10-10",
+      "day_index": 2,
+      "slots": [
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 643,
+              "is_block": false,
+              "is_lab": false,
+              "name": "Физическая культура (теория)",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 44,
+              "room_name": "405",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": -1,
+              "teacher_id": 8,
+              "uid": "lesson-2bbf2c6104e40578",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 1,
+          "text": "Физическая культура (теория) — вся группа, Потапова Регина Александровна, Лесная",
+          "time": "1 пара (08:30-09:45)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 643,
+              "is_block": false,
+              "is_lab": false,
+              "name": "Физическая культура (теория)",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 44,
+              "room_name": "405",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": -1,
+              "teacher_id": 8,
+              "uid": "lesson-2bbf2c6104e40578",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 2,
+          "text": "Физическая культура (теория) — вся группа, Потапова Регина Александровна, Лесная",
+          "time": "2 пара (09:55-11:10)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 643,
+              "is_block": false,
+              "is_lab": false,
+              "name": "Физическая культура (теория)",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 44,
+              "room_name": "405",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": -1,
+              "teacher_id": 8,
+              "uid": "lesson-2bbf2c6104e40578",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 3,
+          "text": "Физическая культура (теория) — вся группа, Потапова Регина Александровна, Лесная",
+          "time": "3 пара (11:30-12:45)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 647,
+              "is_block": false,
+              "is_lab": false,
+              "name": "Эффективное поведение на рынке труда",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 33,
+              "room_name": "209",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": -1,
+              "teacher_id": 15,
+              "uid": "lesson-06c3510fb2ac8faf",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 4,
+          "text": "Эффективное поведение на рынке труда — вся группа, Кропотова Анастасия Андреевна, Лесная",
+          "time": "4 пара (12:55-14:10)"
+        },
+        {
+          "lessons": [],
+          "slot": 5,
+          "text": "-",
+          "time": "5 пара (14:20-15:30)"
+        },
+        {
+          "lessons": [],
+          "slot": 6,
+          "text": "-",
+          "time": "6 пара (15:40-16:50)"
+        },
+        {
+          "lessons": [],
+          "slot": 7,
+          "text": "-",
+          "time": "7 пара (17:00-18:10)"
+        }
+      ],
+      "weekday": "СБ"
     }
   ],
   "group_index": 29,

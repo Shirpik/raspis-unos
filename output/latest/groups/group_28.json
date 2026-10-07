@@ -1,9 +1,256 @@
 {
   "days": [
     {
-      "date": "07.10.2026",
-      "date_iso": "2026-10-07",
+      "date": "08.10.2026",
+      "date_iso": "2026-10-08",
       "day_index": 0,
+      "slots": [
+        {
+          "lessons": [],
+          "slot": 1,
+          "text": "-",
+          "time": "1 пара (08:30-09:55)"
+        },
+        {
+          "lessons": [],
+          "slot": 2,
+          "text": "-",
+          "time": "2 пара (10:05-11:30)"
+        },
+        {
+          "lessons": [],
+          "slot": 3,
+          "text": "-",
+          "time": "3 пара (12:25-13:50)"
+        },
+        {
+          "lessons": [],
+          "slot": 4,
+          "text": "-",
+          "time": "4 пара (14:00-15:25)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 621,
+              "is_block": false,
+              "is_lab": false,
+              "name": "Менеджмент",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 25,
+              "room_name": "50",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": -1,
+              "teacher_id": 45,
+              "uid": "lesson-9c30fe6ccb215960",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 5,
+          "text": "Менеджмент — вся группа, Елагина Ольга Александровна, Кривоусова",
+          "time": "5 пара (15:35-16:55)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 641,
+              "is_block": false,
+              "is_lab": false,
+              "name": "МДК.04.01 Основы организации и планирования производственных работ на сварочном участке",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 58,
+              "room_name": "67",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": -1,
+              "teacher_id": 58,
+              "uid": "lesson-3ed59571f999d6cf",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 6,
+          "text": "МДК.04.01 Основы организации и планирования производственных работ на сварочном участке — вся группа, Билалова Рауиза Галлинуровна, Кривоусова",
+          "time": "6 пара (17:05-18:25)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 621,
+              "is_block": false,
+              "is_lab": false,
+              "name": "Менеджмент",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 25,
+              "room_name": "50",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": -1,
+              "teacher_id": 45,
+              "uid": "lesson-9c30fe6ccb215960",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 7,
+          "text": "Менеджмент — вся группа, Елагина Ольга Александровна, Кривоусова",
+          "time": "7 пара (18:35-19:55)"
+        }
+      ],
+      "weekday": "ЧТ"
+    },
+    {
+      "date": "09.10.2026",
+      "date_iso": "2026-10-09",
+      "day_index": 1,
+      "slots": [
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 633,
+              "is_block": false,
+              "is_lab": false,
+              "name": "МДК.02.02 Основы проектирования технологических процессов",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 31,
+              "room_name": "205",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": -1,
+              "teacher_id": 56,
+              "uid": "lesson-13dcced48c1af5ee",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 1,
+          "text": "МДК.02.02 Основы проектирования технологических процессов — вся группа, Ахметов Артур Фанависович, Лесная",
+          "time": "1 пара (08:30-09:55)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 623,
+              "is_block": false,
+              "is_lab": false,
+              "name": "Эффективное поведение на рынке труда",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 33,
+              "room_name": "209",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": -1,
+              "teacher_id": 15,
+              "uid": "lesson-1301923ffda1432a",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 2,
+          "text": "Эффективное поведение на рынке труда — вся группа, Кропотова Анастасия Андреевна, Лесная",
+          "time": "2 пара (10:05-11:30)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": true,
+              "consecutive_pairs": 2,
+              "display_time": null,
+              "id": 634,
+              "is_block": false,
+              "is_lab": true,
+              "name": "ЛПЗ МДК.02.02 Основы проектирования технологических процессов",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 31,
+              "room_name": "205",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 56,
+              "teacher_id": 56,
+              "uid": "lesson-fb9555cf8444ac26",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 3,
+          "text": "ЛПЗ МДК.02.02 Основы проектирования технологических процессов — 1 п/г, Ахметов Артур Фанависович, Лесная",
+          "time": "3 пара (12:25-13:50)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": true,
+              "consecutive_pairs": 2,
+              "display_time": null,
+              "id": 634,
+              "is_block": false,
+              "is_lab": true,
+              "name": "ЛПЗ МДК.02.02 Основы проектирования технологических процессов",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 31,
+              "room_name": "205",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 56,
+              "teacher_id": 56,
+              "uid": "lesson-fb9555cf8444ac26",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 4,
+          "text": "ЛПЗ МДК.02.02 Основы проектирования технологических процессов — 1 п/г, Ахметов Артур Фанависович, Лесная",
+          "time": "4 пара (14:00-15:25)"
+        },
+        {
+          "lessons": [],
+          "slot": 5,
+          "text": "-",
+          "time": "5 пара (15:35-16:55)"
+        },
+        {
+          "lessons": [],
+          "slot": 6,
+          "text": "-",
+          "time": "6 пара (17:05-18:25)"
+        },
+        {
+          "lessons": [],
+          "slot": 7,
+          "text": "-",
+          "time": "7 пара (18:35-19:55)"
+        }
+      ],
+      "weekday": "ПТ"
+    },
+    {
+      "date": "10.10.2026",
+      "date_iso": "2026-10-10",
+      "day_index": 2,
       "slots": [
         {
           "lessons": [
@@ -30,7 +277,7 @@
           ],
           "slot": 1,
           "text": "ЛПЗ МДК.02.02 Основы проектирования технологических процессов — 1 п/г, Ахметов Артур Фанависович, Лесная",
-          "time": "1 пара (08:30-09:55)"
+          "time": "1 пара (08:30-09:45)"
         },
         {
           "lessons": [
@@ -57,7 +304,7 @@
           ],
           "slot": 2,
           "text": "ЛПЗ МДК.02.02 Основы проектирования технологических процессов — 1 п/г, Ахметов Артур Фанависович, Лесная",
-          "time": "2 пара (10:05-11:30)"
+          "time": "2 пара (09:55-11:10)"
         },
         {
           "lessons": [
@@ -80,22 +327,15 @@
               "teacher_id": 4,
               "uid": "lesson-7c73e039defa4b4a",
               "week_parity": "all"
-            }
-          ],
-          "slot": 3,
-          "text": "Иностранный язык — 1 п/г, Давыдова Валентина Алексеевна, Лесная",
-          "time": "3 пара (12:25-13:50)"
-        },
-        {
-          "lessons": [
+            },
             {
               "avoid_lunch_split": true,
               "consecutive_pairs": 2,
               "display_time": null,
-              "id": 626,
+              "id": 638,
               "is_block": false,
               "is_lab": true,
-              "name": "ЛПЗ МДК.01.02 Основное оборудование для производства сварных конструкций",
+              "name": "ЛПЗ МДК.03.01 Формы и методы контроля качества металлов и сварных конструкций",
               "requested_room_id": null,
               "requested_room_name": null,
               "room_id": 31,
@@ -105,13 +345,40 @@
               "room_type": 0,
               "subgroup": 57,
               "teacher_id": 56,
-              "uid": "lesson-e1c08689de2d0e32",
+              "uid": "lesson-06db20be7fefae89",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 3,
+          "text": "Иностранный язык — 1 п/г, Давыдова Валентина Алексеевна, Лесная | ЛПЗ МДК.03.01 Формы и методы контроля качества металлов и сварных конструкций — 2 п/г, Ахметов Артур Фанависович, Лесная",
+          "time": "3 пара (11:30-12:45)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": true,
+              "consecutive_pairs": 2,
+              "display_time": null,
+              "id": 638,
+              "is_block": false,
+              "is_lab": true,
+              "name": "ЛПЗ МДК.03.01 Формы и методы контроля качества металлов и сварных конструкций",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 31,
+              "room_name": "205",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 57,
+              "teacher_id": 56,
+              "uid": "lesson-06db20be7fefae89",
               "week_parity": "all"
             }
           ],
           "slot": 4,
-          "text": "ЛПЗ МДК.01.02 Основное оборудование для производства сварных конструкций — 2 п/г, Ахметов Артур Фанависович, Лесная",
-          "time": "4 пара (14:00-15:25)"
+          "text": "ЛПЗ МДК.03.01 Формы и методы контроля качества металлов и сварных конструкций — 2 п/г, Ахметов Артур Фанависович, Лесная",
+          "time": "4 пара (12:55-14:10)"
         },
         {
           "lessons": [
@@ -138,7 +405,7 @@
           ],
           "slot": 5,
           "text": "ЛПЗ МДК.01.02 Основное оборудование для производства сварных конструкций — 2 п/г, Ахметов Артур Фанависович, Лесная",
-          "time": "5 пара (15:35-16:55)"
+          "time": "5 пара (14:20-15:30)"
         },
         {
           "lessons": [
@@ -146,10 +413,10 @@
               "avoid_lunch_split": true,
               "consecutive_pairs": 2,
               "display_time": null,
-              "id": 635,
+              "id": 626,
               "is_block": false,
               "is_lab": true,
-              "name": "ЛПЗ МДК.02.02 Основы проектирования технологических процессов",
+              "name": "ЛПЗ МДК.01.02 Основное оборудование для производства сварных конструкций",
               "requested_room_id": null,
               "requested_room_name": null,
               "room_id": 31,
@@ -159,43 +426,22 @@
               "room_type": 0,
               "subgroup": 57,
               "teacher_id": 56,
-              "uid": "lesson-0ae459fe5abb11d1",
+              "uid": "lesson-e1c08689de2d0e32",
               "week_parity": "all"
             }
           ],
           "slot": 6,
-          "text": "ЛПЗ МДК.02.02 Основы проектирования технологических процессов — 2 п/г, Ахметов Артур Фанависович, Лесная",
-          "time": "6 пара (17:05-18:25)"
+          "text": "ЛПЗ МДК.01.02 Основное оборудование для производства сварных конструкций — 2 п/г, Ахметов Артур Фанависович, Лесная",
+          "time": "6 пара (15:40-16:50)"
         },
         {
-          "lessons": [
-            {
-              "avoid_lunch_split": true,
-              "consecutive_pairs": 2,
-              "display_time": null,
-              "id": 635,
-              "is_block": false,
-              "is_lab": true,
-              "name": "ЛПЗ МДК.02.02 Основы проектирования технологических процессов",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 31,
-              "room_name": "205",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": 57,
-              "teacher_id": 56,
-              "uid": "lesson-0ae459fe5abb11d1",
-              "week_parity": "all"
-            }
-          ],
+          "lessons": [],
           "slot": 7,
-          "text": "ЛПЗ МДК.02.02 Основы проектирования технологических процессов — 2 п/г, Ахметов Артур Фанависович, Лесная",
-          "time": "7 пара (18:35-19:55)"
+          "text": "-",
+          "time": "7 пара (17:00-18:10)"
         }
       ],
-      "weekday": "СР"
+      "weekday": "СБ"
     }
   ],
   "group_index": 28,
