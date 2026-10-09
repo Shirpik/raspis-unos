@@ -136,5 +136,17 @@ export const api = {
     submitNotification: (data) => request('POST', '/teacher/notifications', data),
     getTeachersList: (password) => request('POST', '/teacher/list', { password }),
     getSchedule: (password, teacherId) => request('POST', '/teacher/schedule', { password, teacher_id: teacherId })
+  },
+  announcements: {
+    list: () => request('GET', '/announcements'),
+    create: (d) => request('POST', '/announcements', d),
+    update: (id, d) => request('PUT', `/announcements/${id}`, d),
+    patch: (id, d) => request('PATCH', `/announcements/${id}`, d),
+    remove: (id) => request('DELETE', `/announcements/${id}`),
+  },
+  push: {
+    subscribe: (subscription) => request('POST', '/push/subscribe', subscription),
+    unsubscribe: (endpoint) => request('POST', '/push/unsubscribe', { endpoint }),
+    send: (announcementId) => request('POST', '/push/send', { announcement_id: announcementId }),
   }
 }

@@ -118,7 +118,8 @@ import {
   PanelLeftClose,
   ChevronUp,
   ChevronDown,
-  Database
+  Database,
+  Bell
 } from 'lucide-vue-next'
 
 const router = useRouter()
@@ -171,6 +172,7 @@ const navItems = computed(() => [
     ]
   },
   { to: '/settings', label: 'Настройки', icon: Settings },
+  { to: '/announcements', label: 'Рассылки', icon: Bell },
 ])
 
 function isGroupActive(group) {

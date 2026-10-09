@@ -4,8 +4,15 @@ import router from './router/index.js'
 import App from './App.vue'
 import './tailwind.css'
 import './style.css'
+import { registerServiceWorker, setupPwaInstallPrompt } from './utils/pwa.js'
 
 const app = createApp(App)
 app.use(createPinia())
 app.use(router)
 app.mount('#app')
+
+// Initialize PWA
+if ('serviceWorker' in navigator) {
+  registerServiceWorker()
+  setupPwaInstallPrompt()
+}

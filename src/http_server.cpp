@@ -63,6 +63,7 @@ inline void WSACleanup() {}
 #include "runtime_config.h"
 #include "schedule_validator.h"
 #include "scheduler.h"
+#include "web_push.h"
 
 namespace timetable {
 namespace {
@@ -1655,6 +1656,11 @@ std::string HandleRequest(const std::string& request, const std::string& output_
             "\"GET/PUT/PATCH/DELETE /api/teacher-unavailable/{id}\","
             "\"GET/POST /api/teacher-notifications\","
             "\"GET/PATCH/DELETE /api/teacher-notifications/{id}\","
+            "\"GET/POST /api/announcements\","
+            "\"GET/PUT/PATCH/DELETE /api/announcements/{id}\","
+            "\"POST /api/push/subscribe\","
+            "\"POST /api/push/unsubscribe\","
+            "\"POST /api/push/send\","
             "\"GET/POST /api/rooms\","
             "\"GET/PUT/PATCH/DELETE /api/rooms/{id}\"," 
             "\"GET/POST /api/room-types\"," 
@@ -1996,6 +2002,220 @@ std::string HandleRequest(const std::string& request, const std::string& output_
     if (!crud.empty()) return crud;
     crud = HandleCrud(method, path, body, "/api/accounting-adjustments", "accounting_adjustments");
     if (!crud.empty()) return crud;
+    crud = HandleCrud(method, path, body, "/api/announcements", "announcements");
+    if (!crud.empty()) return crud;
+
+    // Push subscriptions endpoints
+
+    // Get VAPID public key
+    if (method == "GET" && path == "/api/push/vapid-public-key") {
+        JsonParseResult root_parsed = LoadRoot();
+        if (!root_parsed.ok) return ErrorJson(500, "Internal Server Error", root_parsed.error);
+
+        // Check if VAPID keys exist
+        std::string public_key = JsonString(root_parsed.value, "vapid_public_key", "");
+        if (public_key.empty()) {
+            // Generate new VAPID keys
+            WebPushKeys keys = GenerateVapidKeys();
+            if (keys.public_key.empty() || keys.private_key.empty()) {
+                return ErrorJson(500, "Internal Server Error", "Не удалось сгенерировать VAPID ключи");
+            }
+
+            root_parsed.value.At("vapid_public_key") = JsonValue::MakeString(keys.public_key);
+            root_parsed.value.At("vapid_private_key") = JsonValue::MakeString(keys.private_key);
+
+            std::string error;
+            if (!SaveRoot(root_parsed.value, error)) {
+                return ErrorJson(500, "Internal Server Error", error);
+            }
+
+            public_key = keys.public_key;
+        }
+
+        JsonValue response = JsonValue::MakeObject();
+        response.At("public_key") = JsonValue::MakeString(public_key);
+        return OkJson(response);
+    }
+    if (method == "POST" && path == "/api/push/subscribe") {
+
+        JsonParseResult parsed = ParseJson(body);
+        if (!parsed.ok || !parsed.value.IsObject())
+            return ErrorJson(400, "Bad Request", "Нужен JSON-объект с subscription");
+
+        JsonParseResult root_parsed = LoadRoot();
+        if (!root_parsed.ok) return ErrorJson(500, "Internal Server Error", root_parsed.error);
+
+        JsonValue& subscriptions = root_parsed.value.At("push_subscriptions");
+        if (!subscriptions.IsArray()) subscriptions = JsonValue::MakeArray();
+
+        JsonValue subscription = parsed.value;
+        const std::string endpoint = JsonString(subscription, "endpoint", "");
+
+        // Remove old subscription with same endpoint
+        for (size_t i = 0; i < subscriptions.array_value.size(); ) {
+            if (JsonString(subscriptions.array_value[i], "endpoint", "") == endpoint) {
+                subscriptions.array_value.erase(subscriptions.array_value.begin() + i);
+            } else {
+                ++i;
+            }
+        }
+
+        subscription.At("id") = JsonValue::MakeNumber(NextId(subscriptions));
+        subscription.At("created_at") = JsonValue::MakeString(std::to_string(std::time(nullptr)));
+        subscriptions.array_value.push_back(subscription);
+
+        std::string error;
+        if (!SaveRoot(root_parsed.value, error))
+            return ErrorJson(500, "Internal Server Error", error);
+
+        return CreatedJson(subscriptions.array_value.back());
+    }
+
+    if (method == "POST" && path == "/api/push/unsubscribe") {
+        JsonParseResult parsed = ParseJson(body);
+        if (!parsed.ok || !parsed.value.IsObject())
+            return ErrorJson(400, "Bad Request", "Нужен JSON-объект с endpoint");
+
+        const std::string endpoint = JsonString(parsed.value, "endpoint", "");
+        if (endpoint.empty())
+            return ErrorJson(400, "Bad Request", "Требуется endpoint");
+
+        JsonParseResult root_parsed = LoadRoot();
+        if (!root_parsed.ok) return ErrorJson(500, "Internal Server Error", root_parsed.error);
+
+        JsonValue& subscriptions = root_parsed.value.At("push_subscriptions");
+        bool found = false;
+        for (size_t i = 0; i < subscriptions.array_value.size(); ) {
+            if (JsonString(subscriptions.array_value[i], "endpoint", "") == endpoint) {
+                subscriptions.array_value.erase(subscriptions.array_value.begin() + i);
+                found = true;
+            } else {
+                ++i;
+            }
+        }
+
+        if (!found)
+            return ErrorJson(404, "Not Found", "Подписка не найдена");
+
+        std::string error;
+        if (!SaveRoot(root_parsed.value, error))
+            return ErrorJson(500, "Internal Server Error", error);
+
+        JsonValue response = JsonValue::MakeObject();
+        response.At("success") = JsonValue::MakeBool(true);
+        return OkJson(response);
+    }
+
+    if (method == "POST" && path == "/api/push/send") {
+        JsonParseResult parsed = ParseJson(body);
+        if (!parsed.ok || !parsed.value.IsObject())
+            return ErrorJson(400, "Bad Request", "Нужен JSON-объект с announcement_id");
+
+        const int announcement_id = JsonInt(parsed.value, "announcement_id", -1);
+        if (announcement_id < 0)
+            return ErrorJson(400, "Bad Request", "Требуется announcement_id");
+
+        JsonParseResult root_parsed = LoadRoot();
+        if (!root_parsed.ok) return ErrorJson(500, "Internal Server Error", root_parsed.error);
+
+        JsonValue* announcement = FindObjectById(root_parsed.value.At("announcements"), announcement_id);
+        if (!announcement)
+            return ErrorJson(404, "Not Found", "Рассылка не найдена");
+
+        const std::string title = JsonString(*announcement, "title", "Уведомление");
+        const std::string message = JsonString(*announcement, "message", "");
+        const bool all_groups = JsonBool(*announcement, "all_groups", false);
+        const int target_course = JsonInt(*announcement, "target_course", -1);
+
+        JsonValue& target_groups_value = announcement->At("target_groups");
+        std::set<int> target_groups_set;
+        if (target_groups_value.IsArray()) {
+            for (const JsonValue& v : target_groups_value.array_value) {
+                if (v.IsNumber()) target_groups_set.insert(static_cast<int>(v.number_value));
+            }
+        }
+
+        // Get VAPID keys
+        std::string vapid_public = JsonString(root_parsed.value, "vapid_public_key", "");
+        std::string vapid_private = JsonString(root_parsed.value, "vapid_private_key", "");
+
+        if (vapid_public.empty() || vapid_private.empty()) {
+            return ErrorJson(500, "Internal Server Error", "VAPID ключи не настроены");
+        }
+
+        // Build notification payload
+        JsonValue notification = JsonValue::MakeObject();
+        notification.At("title") = JsonValue::MakeString(title);
+        notification.At("body") = JsonValue::MakeString(message);
+        notification.At("icon") = JsonValue::MakeString("/icons/icon-192x192.svg");
+        notification.At("badge") = JsonValue::MakeString("/icons/icon-192x192.svg");
+        notification.At("data") = JsonValue::MakeObject();
+        notification.At("data").At("announcement_id") = JsonValue::MakeNumber(announcement_id);
+        notification.At("data").At("url") = JsonValue::MakeString("/");
+
+        std::string payload = ToJson(notification);
+
+        JsonValue& subscriptions = root_parsed.value.At("push_subscriptions");
+        int sent = 0, failed = 0;
+        std::vector<std::string> expired_endpoints;
+
+        for (JsonValue& sub : subscriptions.array_value) {
+            if (!sub.IsObject()) continue;
+
+            const int user_course = JsonInt(sub, "course", -1);
+            const int user_group = JsonInt(sub, "group_id", -1);
+
+            bool should_send = all_groups;
+            if (!should_send && target_course >= 0 && user_course == target_course) should_send = true;
+            if (!should_send && user_group >= 0 && target_groups_set.count(user_group)) should_send = true;
+            if (!should_send) continue;
+
+            WebPushSubscription web_sub;
+            web_sub.endpoint = JsonString(sub, "endpoint", "");
+            web_sub.p256dh = JsonString(sub.At("keys"), "p256dh", "");
+            web_sub.auth = JsonString(sub.At("keys"), "auth", "");
+
+            if (web_sub.endpoint.empty() || web_sub.p256dh.empty() || web_sub.auth.empty()) {
+                failed++;
+                continue;
+            }
+
+            WebPushResult result = SendWebPush(payload, web_sub, vapid_private, vapid_public, 
+                                               "mailto:admin@raspis-unss.com");
+
+            if (result.success) {
+                sent++;
+            } else {
+                failed++;
+                if (result.http_code == 410 || result.http_code == 404) {
+                    expired_endpoints.push_back(web_sub.endpoint);
+                }
+            }
+        }
+
+        // Remove expired subscriptions
+        for (const std::string& endpoint : expired_endpoints) {
+            for (size_t i = 0; i < subscriptions.array_value.size(); ) {
+                if (JsonString(subscriptions.array_value[i], "endpoint", "") == endpoint) {
+                    subscriptions.array_value.erase(subscriptions.array_value.begin() + i);
+                } else {
+                    ++i;
+                }
+            }
+        }
+
+        if (!expired_endpoints.empty()) {
+            std::string error;
+            SaveRoot(root_parsed.value, error);
+        }
+
+        JsonValue response = JsonValue::MakeObject();
+        response.At("success") = JsonValue::MakeBool(true);
+        response.At("sent") = JsonValue::MakeNumber(sent);
+        response.At("failed") = JsonValue::MakeNumber(failed);
+        response.At("expired") = JsonValue::MakeNumber(expired_endpoints.size());
+        return OkJson(response);
+    }
 
     if (method == "POST" && path == "/api/schedule/validate") {
         if (g_gen.running.load()) {

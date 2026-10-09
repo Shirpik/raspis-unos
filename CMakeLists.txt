@@ -11,10 +11,10 @@ find_package(ortools CONFIG REQUIRED)
 # libpq and enable the durable PostgreSQL-backed data store automatically.
 find_package(PostgreSQL QUIET)
 
-# auth.cpp использует OpenSSL (RAND_bytes, PKCS5_PBKDF2_HMAC) на всех платформах,
-# кроме Windows, где вместо этого используется встроенный Windows CNG (bcrypt.lib).
+# OpenSSL и CURL требуются для web_push.cpp на всех платформах
+find_package(OpenSSL REQUIRED)
 if (NOT WIN32)
-    find_package(OpenSSL REQUIRED)
+    find_package(CURL REQUIRED)
 endif()
 
 add_executable(timetable_solver
@@ -39,6 +39,7 @@ add_executable(timetable_solver
     src/room_allocator.cpp
     src/room_policy.cpp
     src/auth.cpp
+    src/web_push.cpp
 )
 
 # Small CP-SAT companion used by the short-period preparation scripts. Keeping
@@ -61,9 +62,9 @@ if (PostgreSQL_FOUND)
 endif()
 
 if (WIN32)
-    target_link_libraries(timetable_solver PRIVATE ws2_32 bcrypt)
+    target_link_libraries(timetable_solver PRIVATE ws2_32 bcrypt OpenSSL::Crypto OpenSSL::SSL)
 else()
-    target_link_libraries(timetable_solver PRIVATE OpenSSL::Crypto)
+    target_link_libraries(timetable_solver PRIVATE OpenSSL::Crypto OpenSSL::SSL CURL::libcurl)
 endif()
 
 include(CTest)

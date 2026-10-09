@@ -8,24 +8,44 @@ export default defineConfig({
     vue(),
     VitePWA({
       registerType: 'autoUpdate',
-      includeAssets: ['icons/icon.svg', 'templates/schedule-template.xlsx'],
+      includeAssets: ['icons/icon-192x192.svg', 'icons/icon-512x512.svg', 'templates/schedule-template.xlsx'],
       workbox: {
-        // Тяжёлые библиотеки Excel/PDF загружаются только по нажатию экспорта,
-        // а не вместе с установкой/обновлением основного интерфейса.
-        globIgnores: ['**/referenceAccountingExport-*.js', '**/scheduleExport-*.js', '**/xlsx-*.js']
-      },
-      manifest: {
-        name: 'Расписание УСПО',
-        short_name: 'Расписание',
-        description: 'Генератор расписания учебных занятий',
-        theme_color: '#6366f1',
-        background_color: '#0f172a',
-        display: 'standalone',
-        orientation: 'any',
-        start_url: '/',
-        icons: [
-          { src: 'icons/icon.svg', sizes: 'any', type: 'image/svg+xml', purpose: 'any maskable' }
+        globIgnores: ['**/referenceAccountingExport-*.js', '**/scheduleExport-*.js', '**/xlsx-*.js'],
+        runtimeCaching: [
+          {
+            urlPattern: /^https:\/\/fonts\.googleapis\.com\/.*/i,
+            handler: 'CacheFirst',
+            options: {
+              cacheName: 'google-fonts-cache',
+              expiration: {
+                maxEntries: 10,
+                maxAgeSeconds: 60 * 60 * 24 * 365
+              },
+              cacheableResponse: {
+                statuses: [0, 200]
+              }
+            }
+          },
+          {
+            urlPattern: /^https?:\/\/.*\/api\/.*/i,
+            handler: 'NetworkFirst',
+            options: {
+              cacheName: 'api-cache',
+              networkTimeoutSeconds: 10,
+              expiration: {
+                maxEntries: 50,
+                maxAgeSeconds: 60 * 5
+              },
+              cacheableResponse: {
+                statuses: [0, 200]
+              }
+            }
+          }
         ]
+      },
+      manifest: false,
+      injectManifest: {
+        globPatterns: ['**/*.{js,css,html,svg,png,ico,txt,woff2}']
       }
     })
   ],

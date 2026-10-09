@@ -1,11 +1,16 @@
 <template>
   <div class="student-page">
+    <PwaPrompt />
+
     <div class="student-header">
       <RouterLink to="/" class="back-link">
         <ArrowLeft :size="16" />
         <span>Назад</span>
       </RouterLink>
       <h1 class="page-title">Расписание занятий</h1>
+      <button class="settings-btn" @click="showSettings = true" title="Настройки">
+        <Settings :size="20" />
+      </button>
     </div>
 
     <!-- Group selector -->
@@ -202,6 +207,110 @@
         </table>
       </div>
     </template>
+
+    <!-- Settings Modal -->
+    <Teleport to="body">
+      <div v-if="showSettings" class="modal-overlay" @click.self="showSettings = false">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h2>Настройки</h2>
+            <button class="icon-btn" @click="showSettings = false">
+              <X :size="20" />
+            </button>
+          </div>
+
+          <div class="modal-body">
+            <!-- Course and Group Settings -->
+            <div class="settings-section">
+              <div class="section-header">
+                <GraduationCap :size="18" />
+                <h3>Курс и группа</h3>
+              </div>
+
+              <div class="settings-item">
+                <div class="item-info">
+                  <span class="item-label">Ваш курс</span>
+                  <span class="item-desc">Выберите курс обучения</span>
+                </div>
+                <select v-model="selectedYear" class="settings-select">
+                  <option :value="0">Не выбран</option>
+                  <option v-for="year in [1, 2, 3, 4]" :key="year" :value="year">
+                    {{ year }} курс
+                  </option>
+                </select>
+              </div>
+
+              <div v-if="selectedYear > 0 && groupsForYear.length > 0" class="settings-item">
+                <div class="item-info">
+                  <span class="item-label">Ваша группа</span>
+                  <span class="item-desc">Выберите вашу группу</span>
+                </div>
+                <select v-model="selectedGroupIndex" class="settings-select">
+                  <option :value="null">Не выбрана</option>
+                  <option v-for="g in groupsForYear" :key="g.group_index" :value="g.group_index">
+                    {{ g.group_name }}
+                  </option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Notifications Section -->
+            <div class="settings-section">
+              <div class="section-header">
+                <Bell :size="18" />
+                <h3>Уведомления</h3>
+              </div>
+
+              <div v-if="!notificationSupport" class="info-message">
+                <AlertCircle :size="16" />
+                <span>Ваш браузер не поддерживает уведомления</span>
+              </div>
+
+              <div v-else class="settings-item">
+                <div class="item-info">
+                  <span class="item-label">Push-уведомления</span>
+                  <span class="item-desc">Получайте уведомления об изменениях в расписании</span>
+                </div>
+                <button
+                  class="btn"
+                  :class="isSubscribed ? 'btn-secondary' : 'btn-primary'"
+                  @click="toggleNotifications"
+                  :disabled="notificationLoading"
+                >
+                  {{ isSubscribed ? 'Отключить' : 'Включить' }}
+                </button>
+              </div>
+            </div>
+
+            <!-- Announcements Section -->
+            <div class="settings-section">
+              <div class="section-header">
+                <MessageSquare :size="18" />
+                <h3>Рассылки</h3>
+              </div>
+
+              <div v-if="loadingAnnouncements" class="info-message">
+                <div class="spinner-sm"></div>
+                <span>Загрузка...</span>
+              </div>
+
+              <div v-else-if="filteredAnnouncements.length === 0" class="info-message">
+                <Info :size="16" />
+                <span>Нет новых рассылок</span>
+              </div>
+
+              <div v-else class="announcements-list">
+                <div v-for="item in filteredAnnouncements" :key="item.id" class="announcement-item">
+                  <h4>{{ item.title }}</h4>
+                  <p>{{ item.message }}</p>
+                  <span class="announcement-date">{{ formatAnnouncementDate(item.created_at) }}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </Teleport>
   </div>
 </template>
 
@@ -209,8 +318,11 @@
 import { ref, computed, onMounted, watch } from 'vue'
 import { useScheduleStore } from '../stores/schedule.js'
 import { collectSlotNumbers, slotLessonEntries } from '../utils/schedulePresentation.js'
-import { GraduationCap, Users, ArrowLeft, Calendar, AlertCircle, ChevronLeft, ChevronRight, Clock } from 'lucide-vue-next'
+import { GraduationCap, Users, ArrowLeft, Calendar, AlertCircle, ChevronLeft, ChevronRight, Clock, Settings, Bell, MessageSquare, Info, X } from 'lucide-vue-next'
 import Skeleton from '../components/ui/Skeleton.vue'
+import PwaPrompt from '../components/PwaPrompt.vue'
+import { requestNotificationPermission, subscribeToPush, unsubscribeFromPush, isPushSubscribed } from '../utils/pwa.js'
+import { api } from '../api/index.js'
 
 const store = useScheduleStore()
 
@@ -218,11 +330,80 @@ const selectedYear = ref(0)
 const selectedGroupIndex = ref(null)
 const weekIndex = ref(0)
 const availableGroups = ref([])
+const showSettings = ref(false)
+const isSubscribed = ref(false)
+const notificationLoading = ref(false)
+const notificationSupport = ref(false)
+const announcements = ref([])
+const loadingAnnouncements = ref(false)
 
 onMounted(async () => {
   availableGroups.value = await store.fetchPublishedGroups()
-  // Auto-jump to current week will happen when group is selected
+  notificationSupport.value = 'Notification' in window && 'serviceWorker' in navigator
+  isSubscribed.value = await isPushSubscribed()
+  loadAnnouncements()
 })
+
+async function loadAnnouncements() {
+  loadingAnnouncements.value = true
+  try {
+    const result = await api.announcements.list()
+    if (result.ok) {
+      announcements.value = result.data
+    }
+  } catch (err) {
+    console.error('Failed to load announcements:', err)
+  } finally {
+    loadingAnnouncements.value = false
+  }
+}
+
+const filteredAnnouncements = computed(() => {
+  if (!announcements.value) return []
+
+  const userCourse = selectedYear.value
+  const userGroup = selectedGroupIndex.value
+
+  return announcements.value.filter(item => {
+    if (item.all_groups) return true
+    if (item.target_course >= 0 && item.target_course === userCourse) return true
+    if (item.target_groups && Array.isArray(item.target_groups) && userGroup && item.target_groups.includes(userGroup)) return true
+    return false
+  }).sort((a, b) => (b.created_at || 0) - (a.created_at || 0)).slice(0, 10)
+})
+
+function formatAnnouncementDate(timestamp) {
+  if (!timestamp) return ''
+  const date = new Date(parseInt(timestamp) * 1000)
+  return date.toLocaleString('ru-RU', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' })
+}
+
+async function toggleNotifications() {
+  notificationLoading.value = true
+  try {
+    if (isSubscribed.value) {
+      await unsubscribeFromPush()
+      isSubscribed.value = false
+    } else {
+      const permission = await requestNotificationPermission()
+      if (permission) {
+        const success = await subscribeToPush(selectedYear.value, selectedGroupIndex.value)
+        if (success) {
+          isSubscribed.value = true
+        } else {
+          alert('Не удалось подписаться на уведомления')
+        }
+      } else {
+        alert('Разрешение на уведомления не предоставлено')
+      }
+    }
+  } catch (err) {
+    console.error('Toggle notifications error:', err)
+    alert('Ошибка при управлении уведомлениями')
+  } finally {
+    notificationLoading.value = false
+  }
+}
 
 // ── Helpers ──────────────────────────────────────────────────────────────
 
@@ -976,5 +1157,246 @@ function parseDetails(text) {
   }
   .cell-room { font-size: 10px; }
   .cell-empty { font-size: 12px; min-height: 40px; }
+}
+
+/* Settings Modal */
+.settings-btn {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all var(--transition);
+  margin-left: auto;
+}
+
+.settings-btn:hover {
+  background: var(--bg-tertiary);
+  color: var(--text-primary);
+  border-color: var(--border-strong);
+}
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 24px;
+}
+
+.modal-content {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  width: 100%;
+  max-width: 600px;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 24px;
+  border-bottom: 1px solid var(--border);
+}
+
+.modal-header h2 {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.modal-body {
+  padding: 24px;
+  overflow-y: auto;
+}
+
+.icon-btn {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  color: var(--text-secondary);
+  cursor: pointer;
+  border-radius: var(--radius);
+  transition: all var(--transition);
+}
+
+.icon-btn:hover {
+  background: var(--bg-tertiary);
+  color: var(--text-primary);
+}
+
+.settings-section {
+  margin-bottom: 32px;
+}
+
+.settings-section:last-child {
+  margin-bottom: 0;
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+  color: var(--text-primary);
+}
+
+.section-header h3 {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.settings-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding: 16px;
+  background: var(--bg-primary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  margin-bottom: 12px;
+}
+
+.settings-item:last-child {
+  margin-bottom: 0;
+}
+
+.settings-select {
+  padding: 8px 12px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  color: var(--text-primary);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--transition);
+  min-width: 140px;
+}
+
+.settings-select:hover {
+  border-color: var(--border-strong);
+}
+
+.settings-select:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+.settings-select option {
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+}
+
+.item-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.item-label {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.item-desc {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.info-message {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 16px;
+  background: rgba(59, 130, 246, 0.1);
+  border: 1px solid rgba(59, 130, 246, 0.2);
+  border-radius: var(--radius);
+  color: #3b82f6;
+  font-size: 14px;
+}
+
+.spinner-sm {
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(59, 130, 246, 0.3);
+  border-top-color: #3b82f6;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+.announcements-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.announcement-item {
+  padding: 16px;
+  background: var(--bg-primary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.announcement-item h4 {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0 0 8px;
+}
+
+.announcement-item p {
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  margin: 0 0 8px;
+  white-space: pre-wrap;
+}
+
+.announcement-date {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+@media (max-width: 640px) {
+  .modal-overlay {
+    padding: 0;
+  }
+
+  .modal-content {
+    max-height: 100vh;
+    border-radius: 0;
+  }
+
+  .settings-item {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .btn {
+    width: 100%;
+  }
 }
 </style>

@@ -12,6 +12,8 @@ import DataToolsView from '../views/DataToolsView.vue'
 import LoginView from '../views/LoginView.vue'
 import TeacherPortalView from '../views/TeacherPortalView.vue'
 import TeacherNotificationsView from '../views/TeacherNotificationsView.vue'
+import AnnouncementsView from '../views/AnnouncementsView.vue'
+import PwaInstallView from '../views/PwaInstallView.vue'
 import { useAuthStore } from '../stores/auth.js'
 
 const routes = [
@@ -19,6 +21,7 @@ const routes = [
   { path: '/student', component: StudentView, meta: { title: 'Расписание', hideNav: true, public: true } },
   { path: '/teacher-portal', component: TeacherPortalView, meta: { title: 'Портал преподавателя', hideNav: true, public: true } },
   { path: '/login', component: LoginView, meta: { title: 'Вход диспетчера', hideNav: true, public: true } },
+  { path: '/pwa-install', component: PwaInstallView, meta: { title: 'Установка приложения', hideNav: true, public: true } },
   { path: '/schedule', component: ScheduleView, meta: { title: 'Расписание' } },
   { path: '/constructor', component: ConstructorView, meta: { title: 'Конструктор' } },
   { path: '/teachers', component: TeachersView, meta: { title: 'Преподаватели' } },
@@ -28,6 +31,7 @@ const routes = [
   { path: '/data-tools', component: DataToolsView, meta: { title: 'Данные и контроль' } },
   { path: '/data', component: DataToolsView, meta: { title: 'Данные и контроль' } },
   { path: '/teacher-notifications', component: TeacherNotificationsView, meta: { title: 'Уведомления преподавателей' } },
+  { path: '/announcements', component: AnnouncementsView, meta: { title: 'Рассылки студентам' } },
   { path: '/settings', component: SettingsView, meta: { title: 'Настройки' } },
 ]
 
