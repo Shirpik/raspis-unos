@@ -1,0 +1,75 @@
+{
+  "dates": {
+    "2026-09-22": {
+      "groups": 23,
+      "pair_slots_min": 3,
+      "pair_slots_max": 7,
+      "quality": {
+        "completion_percent": 100,
+        "configured_student_daily_limit": 4,
+        "excess_hours": 0,
+        "five_pair_student_days": 0,
+        "load_matches_plan_exactly": true,
+        "max_student_pairs_per_day": 4,
+        "mismatched_lessons": 0,
+        "missing_hours": 0,
+        "planned_hours": 236,
+        "remaining_hours": 0,
+        "rooms": {
+          "assigned": 109,
+          "conflicts": [],
+          "events": 109,
+          "inventory_configured": true,
+          "substituted": 0,
+          "substitutions": [],
+          "unassigned": 0
+        },
+        "scheduled_hours": 236,
+        "student_days_at_daily_limit": 39,
+        "student_windows": 0,
+        "teacher_windows": 0,
+        "up_day_rule_violations": 0,
+        "up_teacher_lock_violations": 0
+      },
+      "strict_ok": true,
+      "hard_errors": 0,
+      "events": 118
+    },
+    "2026-09-24": {
+      "groups": 23,
+      "pair_slots_min": 3,
+      "pair_slots_max": 7,
+      "quality": {
+        "completion_percent": 100,
+        "configured_student_daily_limit": 4,
+        "excess_hours": 0,
+        "five_pair_student_days": 0,
+        "load_matches_plan_exactly": true,
+        "max_student_pairs_per_day": 4,
+        "mismatched_lessons": 0,
+        "missing_hours": 0,
+        "planned_hours": 228,
+        "remaining_hours": 0,
+        "rooms": {
+          "assigned": 104,
+          "conflicts": [],
+          "events": 104,
+          "inventory_configured": true,
+          "substituted": 0,
+          "substitutions": [],
+          "unassigned": 0
+        },
+        "scheduled_hours": 228,
+        "student_days_at_daily_limit": 38,
+        "student_windows": 0,
+        "teacher_windows": 0,
+        "up_day_rule_violations": 0,
+        "up_teacher_lock_violations": 0
+      },
+      "strict_ok": true,
+      "hard_errors": 0,
+      "events": 114
+    }
+  },
+  "external_occupancy_conflicts": []
+}

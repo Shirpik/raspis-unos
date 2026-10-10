@@ -1,6 +1,160 @@
 {
   "days": [
     {
+      "date": "01.09.2026",
+      "date_iso": "2026-09-01",
+      "day_index": 0,
+      "slots": [
+        {
+          "lessons": [],
+          "slot": 1,
+          "text": "-",
+          "time": "1 пара (08:30-09:55)"
+        },
+        {
+          "lessons": [],
+          "slot": 2,
+          "text": "-",
+          "time": "2 пара (10:05-11:30)"
+        },
+        {
+          "lessons": [],
+          "slot": 3,
+          "text": "-",
+          "time": "3 пара (12:25-13:50)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 307,
+              "is_block": false,
+              "is_lab": false,
+              "name": "Метрология и стандартизация",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 24,
+              "room_name": "48",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": -1,
+              "teacher_id": 41,
+              "uid": "lesson-61a534f7f8c0a721",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 4,
+          "text": "Метрология и стандартизация — вся группа, Садриева Татьяна Геннадьевна, Кривоусова",
+          "time": "4 пара (14:00-15:25)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 317,
+              "is_block": false,
+              "is_lab": true,
+              "name": "ЛПЗ МДК.02.03 Основное, вспомогательное и технологическое оборудование, агрегаты в производстве цветных металлов и сплавов",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 57,
+              "room_name": "65",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 30,
+              "teacher_id": 43,
+              "uid": "lesson-60425c095e632007",
+              "week_parity": "all"
+            },
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 321,
+              "is_block": false,
+              "is_lab": true,
+              "name": "ЛПЗ МДК.02.05 Автоматизация технологических процессов производства цветных металлов и сплавов",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 61,
+              "room_name": "70",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 31,
+              "teacher_id": 40,
+              "uid": "lesson-5d8980eeab0532b5",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 5,
+          "text": "ЛПЗ МДК.02.03 Основное, вспомогательное и технологическое оборудование, агрегаты в производстве цветных металлов и сплавов — 1 п/г, Попова Татьяна Вильевна, Кривоусова | ЛПЗ МДК.02.05 Автоматизация технологических процессов производства цветных металлов и сплавов — 2 п/г, Сивилькаев Вадим Михайлович, Кривоусова",
+          "time": "5 пара (15:35-16:55)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 313,
+              "is_block": false,
+              "is_lab": false,
+              "name": "МДК 02.02 Технология производства цветных металлов и сплавов",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 57,
+              "room_name": "65",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": -1,
+              "teacher_id": 43,
+              "uid": "lesson-4d3261ba98e8aebf",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 6,
+          "text": "МДК 02.02 Технология производства цветных металлов и сплавов — вся группа, Попова Татьяна Вильевна, Кривоусова",
+          "time": "6 пара (17:05-18:25)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 313,
+              "is_block": false,
+              "is_lab": false,
+              "name": "МДК 02.02 Технология производства цветных металлов и сплавов",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 57,
+              "room_name": "65",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": -1,
+              "teacher_id": 43,
+              "uid": "lesson-4d3261ba98e8aebf",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 7,
+          "text": "МДК 02.02 Технология производства цветных металлов и сплавов — вся группа, Попова Татьяна Вильевна, Кривоусова",
+          "time": "7 пара (18:35-19:55)"
+        }
+      ],
+      "weekday": "ВТ"
+    },
+    {
       "date": "08.10.2026",
       "date_iso": "2026-10-08",
       "day_index": 0,

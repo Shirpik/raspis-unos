@@ -1,6 +1,140 @@
 {
   "days": [
     {
+      "date": "01.09.2026",
+      "date_iso": "2026-09-01",
+      "day_index": 0,
+      "slots": [
+        {
+          "lessons": [],
+          "slot": 1,
+          "text": "-",
+          "time": "1 пара (08:30-09:55)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 410,
+              "is_block": false,
+              "is_lab": false,
+              "name": "МДК.03.01 Организация лабораторно-производственной деятельности",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 13,
+              "room_name": "28",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": -1,
+              "teacher_id": 81,
+              "uid": "lesson-b4d5c2fac493e32c",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 2,
+          "text": "МДК.03.01 Организация лабораторно-производственной деятельности — вся группа, Рахматулина Наталья Владимировна, Кривоусова",
+          "time": "2 пара (10:05-11:30)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 410,
+              "is_block": false,
+              "is_lab": false,
+              "name": "МДК.03.01 Организация лабораторно-производственной деятельности",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 14,
+              "room_name": "31",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": -1,
+              "teacher_id": 81,
+              "uid": "lesson-b4d5c2fac493e32c",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 3,
+          "text": "МДК.03.01 Организация лабораторно-производственной деятельности — вся группа, Рахматулина Наталья Владимировна, Кривоусова",
+          "time": "3 пара (12:25-13:50)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 411,
+              "is_block": false,
+              "is_lab": false,
+              "name": "КП МДК.03.01 Организация лабораторно-производственной деятельности",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 15,
+              "room_name": "32",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": -1,
+              "teacher_id": 81,
+              "uid": "lesson-1cdc4365ed650469",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 4,
+          "text": "КП МДК.03.01 Организация лабораторно-производственной деятельности — вся группа, Рахматулина Наталья Владимировна, Кривоусова",
+          "time": "4 пара (14:00-15:25)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 407,
+              "is_block": false,
+              "is_lab": false,
+              "name": "КП МДК.02.01 Основы качественного и количественного анализа природных и промышленных материалов",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 52,
+              "room_name": "54",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": -1,
+              "teacher_id": 10,
+              "uid": "lesson-878e82f9ba807579",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 5,
+          "text": "КП МДК.02.01 Основы качественного и количественного анализа природных и промышленных материалов — вся группа, Семенова Лилиана Ивановна, Кривоусова",
+          "time": "5 пара (15:35-16:55)"
+        },
+        {
+          "lessons": [],
+          "slot": 6,
+          "text": "-",
+          "time": "6 пара (17:05-18:25)"
+        },
+        {
+          "lessons": [],
+          "slot": 7,
+          "text": "-",
+          "time": "7 пара (18:35-19:55)"
+        }
+      ],
+      "weekday": "ВТ"
+    },
+    {
       "date": "08.10.2026",
       "date_iso": "2026-10-08",
       "day_index": 0,

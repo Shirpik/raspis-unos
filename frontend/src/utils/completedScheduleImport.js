@@ -7,6 +7,7 @@ const normalized = value => text(value)
   // Common typo in the source workbook.  Treat it as the canonical subject
   // name so a completed lesson reduces the correct curriculum balance.
   .replaceAll('жизнидеятельности', 'жизнедеятельности')
+  .replace(/\s*\([тп]\)\s*$/giu, '')
   .replace(/лпз/giu, ' ')
   .replace(/(?:^|\s)(?:1|2)\s*(?:п\s*\/?\s*г|подгрупп[а-яё]*)(?=\s|$)/giu, ' ')
   .replace(/[^a-zа-я0-9]+/giu, ' ')
@@ -127,6 +128,13 @@ const confirmedSubjectAliases = [
   },
 ]
 
+// The weekly Google export drops the slash from this group name.  Keep the
+// database group as the canonical target so its completed hours continue to
+// reduce the existing curriculum rows instead of creating an unmatched group.
+const confirmedGroupAliases = [
+  { source: 'ПКД-380607п', target: 'ПКД-3806/07п' },
+]
+
 function chooseLesson(cell, groupId, inferredSubgroup, current, teachersById) {
   const groupName = (current.groups || []).find(group => Number(group.id) === Number(groupId))?.name || ''
   const alias = confirmedSubjectAliases.find(item =>
@@ -204,13 +212,35 @@ function sheetBlocks(rows, knownGroups) {
     if (date) previousDate = date
     if (nextHeader >= 0) rowIndex = nextHeader - 1
   }
-  return blocks
+  // Weekly grids repeat only the weekday, keeping one group header for the
+  // entire sheet. Split those grids at each weekday so all six days retain
+  // their actual date rather than being accounted against Monday.
+  const dailyBlocks = []
+  for (const block of blocks) {
+    let start = block.from
+    let date = block.date
+    for (let rowIndex = block.from + 1; rowIndex < block.to; rowIndex++) {
+      const day = weekdayIndex(rows[rowIndex]?.[0])
+      if (day < 0 || !date) continue
+      dailyBlocks.push({ ...block, from: start, to: rowIndex, date })
+      let candidate = nextIsoDate(date)
+      for (let step = 0; step < 7 && isoWeekday(candidate) !== day; step++) candidate = nextIsoDate(candidate)
+      date = candidate
+      start = rowIndex
+    }
+    dailyBlocks.push({ ...block, from: start, date })
+  }
+  return dailyBlocks
 }
 
 export async function parseCompletedSchedule(file, current, options = {}) {
   const bytes = await file.arrayBuffer()
   const workbook = XLSX.read(bytes, { type: 'array', cellDates: true, raw: true })
   const knownGroups = new Map((current.groups || []).map(group => [normalized(group.name), group]))
+  for (const alias of confirmedGroupAliases) {
+    const target = knownGroups.get(normalized(alias.target))
+    if (target) knownGroups.set(normalized(alias.source), target)
+  }
   const teachersById = new Map((current.teachers || []).map(teacher => [Number(teacher.id), teacher.name || '']))
   const teacherIdBySurname = new Map()
   for (const [id, name] of teachersById) {

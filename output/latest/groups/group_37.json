@@ -1,6 +1,200 @@
 {
   "days": [
     {
+      "date": "01.09.2026",
+      "date_iso": "2026-09-01",
+      "day_index": 0,
+      "slots": [
+        {
+          "lessons": [],
+          "slot": 1,
+          "text": "-",
+          "time": "1 пара (08:30-09:55)"
+        },
+        {
+          "lessons": [],
+          "slot": 2,
+          "text": "-",
+          "time": "2 пара (10:05-11:30)"
+        },
+        {
+          "lessons": [],
+          "slot": 3,
+          "text": "-",
+          "time": "3 пара (12:25-13:50)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 821,
+              "is_block": false,
+              "is_lab": false,
+              "name": "ВМДК.06.02 Технология металлообработки на металлорежущих станках с программным управлением",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 48,
+              "room_name": "413",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": -1,
+              "teacher_id": 62,
+              "uid": "lesson-e11a46b0aa42f831",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 4,
+          "text": "ВМДК.06.02 Технология металлообработки на металлорежущих станках с программным управлением — вся группа, Вальдиянов Ян Мансурович, Лесная",
+          "time": "4 пара (14:00-15:25)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 820,
+              "is_block": false,
+              "is_lab": true,
+              "name": "ЛПЗ МДК.02.01 Разработка и внедрение управляющих программ изготовления деталей машин",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 48,
+              "room_name": "413",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 75,
+              "teacher_id": 62,
+              "uid": "lesson-ce97c9c48e849009",
+              "week_parity": "all"
+            },
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 825,
+              "is_block": false,
+              "is_lab": true,
+              "name": "ЛПЗ ВМДК.07.01 Технология обработки на металлорежущих станках",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 44,
+              "room_name": "405",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 74,
+              "teacher_id": 63,
+              "uid": "lesson-c1ebb6e9f3d37051",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 5,
+          "text": "ЛПЗ МДК.02.01 Разработка и внедрение управляющих программ изготовления деталей машин — 2 п/г, Вальдиянов Ян Мансурович, Лесная | ЛПЗ ВМДК.07.01 Технология обработки на металлорежущих станках — 1 п/г, Клабуков Василий Витальевич, Лесная",
+          "time": "5 пара (15:35-16:55)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 811,
+              "is_block": false,
+              "is_lab": true,
+              "name": "ЛПЗ МДК.01.01 Разработка технологических процессов изготовления деталей машин с применением систем автоматизированного проектироания",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 48,
+              "room_name": "413",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 74,
+              "teacher_id": 62,
+              "uid": "lesson-960bfe7cb868c903",
+              "week_parity": "all"
+            },
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 826,
+              "is_block": false,
+              "is_lab": true,
+              "name": "ЛПЗ ВМДК.07.01 Технология обработки на металлорежущих станках",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 44,
+              "room_name": "405",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 75,
+              "teacher_id": 63,
+              "uid": "lesson-0baa9de35290f54d",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 6,
+          "text": "ЛПЗ МДК.01.01 Разработка технологических процессов изготовления деталей машин с применением систем автоматизированного проектироания — 1 п/г, Вальдиянов Ян Мансурович, Лесная | ЛПЗ ВМДК.07.01 Технология обработки на металлорежущих станках — 2 п/г, Клабуков Василий Витальевич, Лесная",
+          "time": "6 пара (17:05-18:25)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 822,
+              "is_block": false,
+              "is_lab": true,
+              "name": "ЛПЗ ВМДК.06.02 Технология металлообработки на металлорежущих станках с программным управлением",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 48,
+              "room_name": "413",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 74,
+              "teacher_id": 62,
+              "uid": "lesson-8eb798e0e0179c47",
+              "week_parity": "all"
+            },
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 826,
+              "is_block": false,
+              "is_lab": true,
+              "name": "ЛПЗ ВМДК.07.01 Технология обработки на металлорежущих станках",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 44,
+              "room_name": "405",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 75,
+              "teacher_id": 63,
+              "uid": "lesson-0baa9de35290f54d",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 7,
+          "text": "ЛПЗ ВМДК.06.02 Технология металлообработки на металлорежущих станках с программным управлением — 1 п/г, Вальдиянов Ян Мансурович, Лесная | ЛПЗ ВМДК.07.01 Технология обработки на металлорежущих станках — 2 п/г, Клабуков Василий Витальевич, Лесная",
+          "time": "7 пара (18:35-19:55)"
+        }
+      ],
+      "weekday": "ВТ"
+    },
+    {
       "date": "08.10.2026",
       "date_iso": "2026-10-08",
       "day_index": 0,

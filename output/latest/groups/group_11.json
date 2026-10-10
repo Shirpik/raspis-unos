@@ -1,6 +1,140 @@
 {
   "days": [
     {
+      "date": "01.09.2026",
+      "date_iso": "2026-09-01",
+      "day_index": 0,
+      "slots": [
+        {
+          "lessons": [],
+          "slot": 1,
+          "text": "-",
+          "time": "1 пара (08:30-09:55)"
+        },
+        {
+          "lessons": [],
+          "slot": 2,
+          "text": "-",
+          "time": "2 пара (10:05-11:30)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 228,
+              "is_block": false,
+              "is_lab": false,
+              "name": "МДК.01.03 Выполнение простых и сложных видов окрашивания волос",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 11,
+              "room_name": "24",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": -1,
+              "teacher_id": 36,
+              "uid": "lesson-78edc9ef3cb67fb5",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 3,
+          "text": "МДК.01.03 Выполнение простых и сложных видов окрашивания волос — вся группа, Дорохова Евгения Владимировна, Кривоусова",
+          "time": "3 пара (12:25-13:50)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 228,
+              "is_block": false,
+              "is_lab": false,
+              "name": "МДК.01.03 Выполнение простых и сложных видов окрашивания волос",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 11,
+              "room_name": "24",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": -1,
+              "teacher_id": 36,
+              "uid": "lesson-78edc9ef3cb67fb5",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 4,
+          "text": "МДК.01.03 Выполнение простых и сложных видов окрашивания волос — вся группа, Дорохова Евгения Владимировна, Кривоусова",
+          "time": "4 пара (14:00-15:25)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 233,
+              "is_block": false,
+              "is_lab": false,
+              "name": "ВМДК.02.01 Технология выполнения типовых парикмахерских услуг",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 11,
+              "room_name": "24",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": -1,
+              "teacher_id": 36,
+              "uid": "lesson-23962bf056567d07",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 5,
+          "text": "ВМДК.02.01 Технология выполнения типовых парикмахерских услуг — вся группа, Дорохова Евгения Владимировна, Кривоусова",
+          "time": "5 пара (15:35-16:55)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 228,
+              "is_block": false,
+              "is_lab": false,
+              "name": "МДК.01.03 Выполнение простых и сложных видов окрашивания волос",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 11,
+              "room_name": "24",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": -1,
+              "teacher_id": 36,
+              "uid": "lesson-78edc9ef3cb67fb5",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 6,
+          "text": "МДК.01.03 Выполнение простых и сложных видов окрашивания волос — вся группа, Дорохова Евгения Владимировна, Кривоусова",
+          "time": "6 пара (17:05-18:25)"
+        },
+        {
+          "lessons": [],
+          "slot": 7,
+          "text": "-",
+          "time": "7 пара (18:35-19:55)"
+        }
+      ],
+      "weekday": "ВТ"
+    },
+    {
       "date": "08.10.2026",
       "date_iso": "2026-10-08",
       "day_index": 0,

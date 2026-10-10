@@ -3623,6 +3623,7 @@ GenerationResult GenerateScheduleWeekly(
                 const int id = JsonInt(lesson, "id", -1);
                 const bool regular_curriculum =
                     JsonBool(lesson, "curriculum_active", true) &&
+                    JsonBool(lesson, "plan_active", true) &&
                     !JsonBool(lesson, "is_block", false) &&
                     !JsonBool(lesson, "is_pp", false) &&
                     !IsUpLessonName(JsonString(lesson, "name", ""));
@@ -3671,6 +3672,16 @@ GenerationResult GenerateScheduleWeekly(
             [&](const Lesson& lesson) { return !selected_groups.count(lesson.group); }), input_data.lessons.end());
         if (input_data.groups.empty()) {
             return {false, "INPUT_ERROR", "Для выбранных курсов не найдено учебных групп", output_dir};
+        }
+        // The scoped 1-2 course rebuild is explicitly allowed to use any
+        // suitable room.  Imported fixed rooms belong to the original
+        // semester plan and may be occupied by the already confirmed 3-4
+        // course lessons on the reconstructed date.
+        if (!options.scope_from.empty()) {
+            for (Lesson& lesson : input_data.lessons) {
+                lesson.fixed_room = -1;
+                lesson.allow_room_substitution = true;
+            }
         }
     }
     ExcludeTransferredUpLessons(input_data);
@@ -3743,7 +3754,24 @@ GenerationResult GenerateScheduleWeekly(
                 }
             }
         }
-        const auto balances = ReadTeachingBalances(scoped_source.value, input_data.start_date);
+        // A historical one-day reconstruction must account for every lesson
+        // already confirmed anywhere in the imported ledger, including dates
+        // after the selected day.  Counting only records before Sep 1 would
+        // reopen hours that are already consumed later in the semester.
+        Date balance_before = semester_end;
+        if (balance_before.year != 0) {
+            if (++balance_before.day > DaysInMonth(balance_before.month, balance_before.year)) {
+                balance_before.day = 1;
+                if (++balance_before.month > 12) { balance_before.month = 1; ++balance_before.year; }
+            }
+        } else {
+            balance_before = input_data.end_date;
+            if (++balance_before.day > DaysInMonth(balance_before.month, balance_before.year)) {
+                balance_before.day = 1;
+                if (++balance_before.month > 12) { balance_before.month = 1; ++balance_before.year; }
+            }
+        }
+        const auto balances = ReadTeachingBalances(scoped_source.value, balance_before);
         const bool single_day_scope = input_data.start_date == input_data.end_date;
         std::set<int> day_emergency_groups;
         std::set<int> day_emergency_teachers;

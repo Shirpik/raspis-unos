@@ -175,3 +175,52 @@ test('uses the dispatcher-confirmed subject mapping for ИСП-3306п', async ()
   assert.equal(result.data.teaching_ledger[0].lesson_id, 900)
   assert.equal(result.data.teaching_ledger[0].source_subject, 'Метрология, стандартизация и сертификация')
 })
+
+test('weekly grid keeps every weekday and the renamed ПКД group attached to its curriculum', async () => {
+  const renamedData = {
+    groups: [{ id: 22, name: 'ПКД-3806/07п' }],
+    teachers: [{ id: 3, name: 'Иванова Анна Олеговна' }],
+    lessons: [{ id: 470, group: 22, teacher: 3, subgroup: -1, name: 'Организация обслуживания', total_hours: 34 }],
+    teaching_ledger: [{ id: 1, lesson_id: 470, group_id: 22, date: '2026-09-30', slot: 1, hours: 2, status: 'confirmed' }],
+  }
+  const workbook = XLSX.utils.book_new()
+  const rows = [['05.10.2026', '', '', 'ПКД-380607п']]
+  for (const day of ['ПОНЕДЕЛЬНИК', 'ВТОРНИК', 'СРЕДА', 'ЧЕТВЕРГ', 'ПЯТНИЦА', 'СУББОТА']) {
+    rows.push([day, '8.30–10.00', 1, 'Организация обслуживания\nИванова 61_К'])
+  }
+  XLSX.utils.book_append_sheet(workbook, XLSX.utils.aoa_to_sheet(rows), '3 курс')
+  const bytes = XLSX.write(workbook, { type: 'buffer', bookType: 'xlsx' })
+  const file = { name: 'weekly-grid.xlsx', arrayBuffer: async () => bytes }
+  const result = await parseCompletedSchedule(file, renamedData)
+  assert.deepEqual(result.errors, [])
+  assert.deepEqual(result.importedDates, ['2026-10-05', '2026-10-06', '2026-10-07', '2026-10-08', '2026-10-09', '2026-10-10'])
+  assert.equal(result.imported, 6)
+  assert.equal(result.importedHours, 12)
+  assert.equal(result.duplicates, 0)
+  assert.ok(result.importedRows.every(row => row.group_id === 22 && row.lesson_id === 470))
+  assert.deepEqual(result.data.teaching_ledger[0], renamedData.teaching_ledger[0])
+  const scoped = await parseCompletedSchedule(file, renamedData, { dateFrom: '2026-10-08', dateTo: '2026-10-08' })
+  assert.deepEqual(scoped.importedDates, ['2026-10-08'])
+  assert.equal(scoped.imported, 1)
+})
+
+test('display-only theory suffix keeps coursework separate from ordinary theory', async () => {
+  const current = {
+    groups: [{ id: 20, name: 'ТЭО-Пф-3501' }],
+    teachers: [{ id: 82, name: 'Усков Алексей Николаевич' }],
+    lessons: [
+      { id: 419, group: 20, teacher: 82, subgroup: -1, name: 'МДК.02.02 Разработка документации по эксплуатации электрического и электромеханического оборудования' },
+      { id: 422, group: 20, teacher: 82, subgroup: -1, name: 'КП МДК.02.02 Разработка документации по эксплуатации электрического и электромеханического оборудования' },
+    ],
+    teaching_ledger: [],
+  }
+  const workbook = XLSX.utils.book_new()
+  XLSX.utils.book_append_sheet(workbook, XLSX.utils.aoa_to_sheet([
+    ['08.10.2026', '', '', 'ТЭО-Пф-3501'],
+    ['ЧЕТВЕРГ', '8.30–10.00', 1, 'КП МДК.02.02 Разработка документации по эксплуатации электрического и электромеханического оборудования(т)\nУсков 68_К'],
+  ]), '3 курс')
+  const bytes = XLSX.write(workbook, { type: 'buffer', bookType: 'xlsx' })
+  const result = await parseCompletedSchedule({ name: 'coursework.xlsx', arrayBuffer: async () => bytes }, current)
+  assert.deepEqual(result.errors, [])
+  assert.equal(result.importedRows[0].lesson_id, 422)
+})

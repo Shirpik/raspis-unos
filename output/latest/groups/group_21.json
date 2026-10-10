@@ -1,6 +1,180 @@
 {
   "days": [
     {
+      "date": "01.09.2026",
+      "date_iso": "2026-09-01",
+      "day_index": 0,
+      "slots": [
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": true,
+              "consecutive_pairs": 2,
+              "display_time": null,
+              "id": 453,
+              "is_block": false,
+              "is_lab": true,
+              "name": "ЛПЗ ВМДК.07.01 Технология приготовления теста для хлебобулочных изделий",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 53,
+              "room_name": "56",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 42,
+              "teacher_id": 52,
+              "uid": "lesson-8c2b903a610bfa36",
+              "week_parity": "all"
+            },
+            {
+              "avoid_lunch_split": true,
+              "consecutive_pairs": 2,
+              "display_time": null,
+              "id": 462,
+              "is_block": false,
+              "is_lab": true,
+              "name": "ЛПЗ ВМДК.08.01 Технология приготовления, оформления и подготовка к реализации простых мучных кондитерских изделий разнообразного ассортимента",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 51,
+              "room_name": "13",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 43,
+              "teacher_id": 54,
+              "uid": "lesson-e61007ddc20c29b3",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 1,
+          "text": "ЛПЗ ВМДК.07.01 Технология приготовления теста для хлебобулочных изделий — 1 п/г, Чадова Марина Александровна, Кривоусова | ЛПЗ ВМДК.08.01 Технология приготовления, оформления и подготовка к реализации простых мучных кондитерских изделий разнообразного ассортимента — 2 п/г, Кузнецова Елизавета Олеговна, Кривоусова",
+          "time": "1 пара (08:30-09:55)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": true,
+              "consecutive_pairs": 2,
+              "display_time": null,
+              "id": 453,
+              "is_block": false,
+              "is_lab": true,
+              "name": "ЛПЗ ВМДК.07.01 Технология приготовления теста для хлебобулочных изделий",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 53,
+              "room_name": "56",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 42,
+              "teacher_id": 52,
+              "uid": "lesson-8c2b903a610bfa36",
+              "week_parity": "all"
+            },
+            {
+              "avoid_lunch_split": true,
+              "consecutive_pairs": 2,
+              "display_time": null,
+              "id": 462,
+              "is_block": false,
+              "is_lab": true,
+              "name": "ЛПЗ ВМДК.08.01 Технология приготовления, оформления и подготовка к реализации простых мучных кондитерских изделий разнообразного ассортимента",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 51,
+              "room_name": "13",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 43,
+              "teacher_id": 54,
+              "uid": "lesson-e61007ddc20c29b3",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 2,
+          "text": "ЛПЗ ВМДК.07.01 Технология приготовления теста для хлебобулочных изделий — 1 п/г, Чадова Марина Александровна, Кривоусова | ЛПЗ ВМДК.08.01 Технология приготовления, оформления и подготовка к реализации простых мучных кондитерских изделий разнообразного ассортимента — 2 п/г, Кузнецова Елизавета Олеговна, Кривоусова",
+          "time": "2 пара (10:05-11:30)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 442,
+              "is_block": false,
+              "is_lab": false,
+              "name": "Химия",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 4,
+              "room_name": "15",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": -1,
+              "teacher_id": 20,
+              "uid": "lesson-12f8ee13398b3715",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 3,
+          "text": "Химия — вся группа, Соболева Любовь Анатольевна, Кривоусова",
+          "time": "3 пара (12:25-13:50)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 447,
+              "is_block": false,
+              "is_lab": false,
+              "name": "МДК.01.01 Организация процессов приготовления, подготовки к реализации кулинарных полуфабрикатов",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 28,
+              "room_name": "61",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": -1,
+              "teacher_id": 53,
+              "uid": "lesson-62f36f4fe10492fe",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 4,
+          "text": "МДК.01.01 Организация процессов приготовления, подготовки к реализации кулинарных полуфабрикатов — вся группа, Конева Кристина Сергеевна, Кривоусова",
+          "time": "4 пара (14:00-15:25)"
+        },
+        {
+          "lessons": [],
+          "slot": 5,
+          "text": "-",
+          "time": "5 пара (15:35-16:55)"
+        },
+        {
+          "lessons": [],
+          "slot": 6,
+          "text": "-",
+          "time": "6 пара (17:05-18:25)"
+        },
+        {
+          "lessons": [],
+          "slot": 7,
+          "text": "-",
+          "time": "7 пара (18:35-19:55)"
+        }
+      ],
+      "weekday": "ВТ"
+    },
+    {
       "date": "08.10.2026",
       "date_iso": "2026-10-08",
       "day_index": 0,

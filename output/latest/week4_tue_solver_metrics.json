@@ -1,0 +1,25 @@
+{
+  "mode": "weekly",
+  "quality_improvement_seconds": 0,
+  "state": "done",
+  "total_seconds": 19.9152472,
+  "weeks": [
+    {
+      "adaptive_quality_stop": false,
+      "branches": 59094,
+      "conflicts": 3348,
+      "constraints": 35282,
+      "date_from": "22.09.2026",
+      "date_to": "22.09.2026",
+      "feasibility_seconds": 15.0969233,
+      "model_build_seconds": 0.1025381,
+      "quality_seconds": 0,
+      "relaxed_daily_min_groups": [],
+      "solve_seconds": 15.0969233,
+      "status": "FEASIBLE",
+      "variables": 7876,
+      "warm_start_hints": 0,
+      "week": 1
+    }
+  ]
+}

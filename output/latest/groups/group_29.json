@@ -1,6 +1,140 @@
 {
   "days": [
     {
+      "date": "01.09.2026",
+      "date_iso": "2026-09-01",
+      "day_index": 0,
+      "slots": [
+        {
+          "lessons": [],
+          "slot": 1,
+          "text": "-",
+          "time": "1 пара (08:30-09:55)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 651,
+              "is_block": false,
+              "is_lab": false,
+              "name": "МДК.02.01 Основы расчѐта и проектирования сварных конструкций",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 11,
+              "room_name": "24",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": -1,
+              "teacher_id": 58,
+              "uid": "lesson-c70365ff60a79ebb",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 2,
+          "text": "МДК.02.01 Основы расчѐта и проектирования сварных конструкций — вся группа, Билалова Рауиза Галлинуровна, Кривоусова",
+          "time": "2 пара (10:05-11:30)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 654,
+              "is_block": false,
+              "is_lab": false,
+              "name": "МДК.02.02 Основы проектирования технологических процессов",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 59,
+              "room_name": "68",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": -1,
+              "teacher_id": 58,
+              "uid": "lesson-c5a950fdd86fc3af",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 3,
+          "text": "МДК.02.02 Основы проектирования технологических процессов — вся группа, Билалова Рауиза Галлинуровна, Кривоусова",
+          "time": "3 пара (12:25-13:50)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 659,
+              "is_block": false,
+              "is_lab": false,
+              "name": "МДК.04.01 Основы организации и планирования производственных работ на сварочном участке",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 59,
+              "room_name": "68",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": -1,
+              "teacher_id": 58,
+              "uid": "lesson-33484e4faf15ffac",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 4,
+          "text": "МДК.04.01 Основы организации и планирования производственных работ на сварочном участке — вся группа, Билалова Рауиза Галлинуровна, Кривоусова",
+          "time": "4 пара (14:00-15:25)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 651,
+              "is_block": false,
+              "is_lab": false,
+              "name": "МДК.02.01 Основы расчѐта и проектирования сварных конструкций",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 59,
+              "room_name": "68",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": -1,
+              "teacher_id": 58,
+              "uid": "lesson-c70365ff60a79ebb",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 5,
+          "text": "МДК.02.01 Основы расчѐта и проектирования сварных конструкций — вся группа, Билалова Рауиза Галлинуровна, Кривоусова",
+          "time": "5 пара (15:35-16:55)"
+        },
+        {
+          "lessons": [],
+          "slot": 6,
+          "text": "-",
+          "time": "6 пара (17:05-18:25)"
+        },
+        {
+          "lessons": [],
+          "slot": 7,
+          "text": "-",
+          "time": "7 пара (18:35-19:55)"
+        }
+      ],
+      "weekday": "ВТ"
+    },
+    {
       "date": "08.10.2026",
       "date_iso": "2026-10-08",
       "day_index": 0,

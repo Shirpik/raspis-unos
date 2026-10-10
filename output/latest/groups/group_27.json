@@ -1,6 +1,140 @@
 {
   "days": [
     {
+      "date": "01.09.2026",
+      "date_iso": "2026-09-01",
+      "day_index": 0,
+      "slots": [
+        {
+          "lessons": [],
+          "slot": 1,
+          "text": "-",
+          "time": "1 пара (08:30-09:55)"
+        },
+        {
+          "lessons": [],
+          "slot": 2,
+          "text": "-",
+          "time": "2 пара (10:05-11:30)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": true,
+              "consecutive_pairs": 2,
+              "display_time": null,
+              "id": 611,
+              "is_block": false,
+              "is_lab": true,
+              "name": "ЛПЗ МДК.05.02 Технология ручной дуговой сварки неплавящимся электродом в защитном газе",
+              "requested_room_id": 66,
+              "requested_room_name": "120-121",
+              "room_id": 66,
+              "room_name": "120-121",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": -1,
+              "teacher_id": 55,
+              "uid": "lesson-ca1dd65769137fcc",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 3,
+          "text": "ЛПЗ МДК.05.02 Технология ручной дуговой сварки неплавящимся электродом в защитном газе — вся группа, Лимонова Евгения Николаевна, Лесная",
+          "time": "3 пара (12:25-13:50)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": true,
+              "consecutive_pairs": 2,
+              "display_time": null,
+              "id": 611,
+              "is_block": false,
+              "is_lab": true,
+              "name": "ЛПЗ МДК.05.02 Технология ручной дуговой сварки неплавящимся электродом в защитном газе",
+              "requested_room_id": 66,
+              "requested_room_name": "120-121",
+              "room_id": 66,
+              "room_name": "120-121",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": -1,
+              "teacher_id": 55,
+              "uid": "lesson-ca1dd65769137fcc",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 4,
+          "text": "ЛПЗ МДК.05.02 Технология ручной дуговой сварки неплавящимся электродом в защитном газе — вся группа, Лимонова Евгения Николаевна, Лесная",
+          "time": "4 пара (14:00-15:25)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 601,
+              "is_block": false,
+              "is_lab": false,
+              "name": "КП МДК.01.01 Технология сварочных работ",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 31,
+              "room_name": "205",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": -1,
+              "teacher_id": 56,
+              "uid": "lesson-dae4792b62e0f3c6",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 5,
+          "text": "КП МДК.01.01 Технология сварочных работ — вся группа, Ахметов Артур Фанависович, Лесная",
+          "time": "5 пара (15:35-16:55)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 598,
+              "is_block": false,
+              "is_lab": false,
+              "name": "Иностранный язык в профессиональной деятельности",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 41,
+              "room_name": "324",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": -1,
+              "teacher_id": 27,
+              "uid": "lesson-0ee11a60e1e9ef41",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 6,
+          "text": "Иностранный язык в профессиональной деятельности — вся группа, Ермолина Ирина Павловна, Лесная",
+          "time": "6 пара (17:05-18:25)"
+        },
+        {
+          "lessons": [],
+          "slot": 7,
+          "text": "-",
+          "time": "7 пара (18:35-19:55)"
+        }
+      ],
+      "weekday": "ВТ"
+    },
+    {
       "date": "08.10.2026",
       "date_iso": "2026-10-08",
       "day_index": 0,

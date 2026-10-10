@@ -105,6 +105,11 @@ bool Fits(const ScheduleInputData& data, const std::vector<AcademicEvent>& event
     if (pair && !room.available_slots.empty() && !room.available_slots.count(pair)) return false;
     if (room.access_mode == "exclusive" && !room.responsible_teacher_ids.count(teacher.id)) return false;
     if (room.capacity > 0 && group.size > room.capacity) return false;
+    // A curator may travel to the other campus only for the zero-period
+    // class hour.  Any class-hour fallback placed into an ordinary pair must
+    // stay on the curator's regular teaching campus.
+    if (pair != 0 && !teacher.allowed_campuses.empty() &&
+        !teacher.allowed_campuses.count(room.campus)) return false;
     const bool fixed_class_campus = group.class_hour_room_required || group.curator_teacher == 26;
     if (fixed_class_campus && group.class_hour_campus >= 0 && group.class_hour_campus != room.campus) return false;
     if (group.class_hour_room_required && group.class_hour_room != room.id) return false;
