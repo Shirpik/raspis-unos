@@ -581,7 +581,7 @@ JsonValue BuildScheduleContext(const JsonValue& data) {
     result.At("lessons") = ProjectArray(data.At("lessons"), {
         "id", "uid", "name", "subgroup", "teacher", "is_lab", "is_block", "is_class_hour"});
     result.At("teaching_ledger") = ProjectArray(data.At("teaching_ledger"), {
-        "lesson_id", "group_id", "date", "slot", "status", "actual_teacher", "room", "hours"},
+        "lesson_id", "group_id", "date", "slot", "status", "actual_teacher", "room", "hours", "source_file"},
         [](const JsonValue& item) { return JsonString(item, "status", "") == "confirmed"; });
     return result;
 }
@@ -2149,6 +2149,20 @@ std::string HandleRequest(const std::string& request, const std::string& output_
             }
         }
 
+        // Constructor rule: Popova is never auto-completed. Her assignments
+        // are taken only from the manual Constructor snapshot; groups may
+        // still be completed with other teachers.
+        if (opts.lock_source == "manual" && request.Has("scope_from")) {
+            const JsonValue& teachers = audit_source.value.At("teachers");
+            if (teachers.IsArray()) {
+                for (const JsonValue& teacher : teachers.array_value) {
+                    const std::string name = JsonString(teacher, "name", "");
+                    if (name.find("Попова") != std::string::npos)
+                        opts.blocked_teacher_ids.insert(JsonInt(teacher, "id", -1));
+                }
+            }
+        }
+
         if (request.Has("scope_from")) {
             if (gen_mode != "weekly")
                 return ErrorJson(400, "Bad Request", "Выбор дат работает только в недельном режиме");
@@ -2488,6 +2502,116 @@ std::string HandleRequest(const std::string& request, const std::string& output_
         // older draft after a data import and save it again against the current
         // revision.  Generation validates lesson ids and assignments normally.
         return JsonResponse(200, "OK", ReadFileUtf8(file));
+    }
+
+    if (method == "PUT" && path == "/api/schedule/manual/complete-day") {
+        if (g_gen.running.load())
+            return ErrorJson(409, "Conflict", "Дождитесь завершения генерации перед зачётом дня");
+        const JsonParseResult request_data = ParseJson(body);
+        Date requested_date{};
+        const std::string date = request_data.ok ? JsonString(request_data.value, "date", "") : "";
+        if (!request_data.ok || !request_data.value.IsObject() || !ParseDateIso(date, requested_date))
+            return ErrorJson(400, "Bad Request", "Укажите корректную дату дня");
+
+        std::lock_guard<std::mutex> lock(g_schedule_mutex);
+        const std::filesystem::path manual_dir = std::filesystem::path("output") / "manual";
+        const std::filesystem::path manual_file = manual_dir / "schedule_all.json";
+        if (!FileExists(manual_file))
+            return ErrorJson(404, "Not Found", "Сначала сохраните расписание Конструктора");
+        const JsonValue manual = ReadOptionalJsonFile(manual_file);
+        if (!manual.IsObject() || !manual.At("groups").IsArray())
+            return ErrorJson(500, "Internal Server Error", "Ручное расписание повреждено");
+
+        JsonParseResult parsed = ParseJson(ReadDataJsonText());
+        if (!parsed.ok || !parsed.value.IsObject())
+            return ErrorJson(500, "Internal Server Error", "Не удалось прочитать базу данных");
+        NormalizeDataRoot(parsed.value);
+        JsonValue& ledger = parsed.value.At("teaching_ledger");
+        const bool completed = JsonBool(request_data.value, "completed", true);
+        const std::string source_tag = "constructor-day-completion";
+        const bool auto_was_current = FileExists(out_dir / "schedule_all.json") &&
+            ScheduleFileIsCurrent((out_dir / "schedule_all.json").string());
+        int changed = 0;
+
+        if (completed) {
+            std::set<int> valid_lessons;
+            for (const JsonValue& lesson : parsed.value.At("lessons").array_value)
+                valid_lessons.insert(JsonInt(lesson, "id", -1));
+            std::set<std::string> confirmed_keys;
+            int next_id = NextId(ledger);
+            for (const JsonValue& item : ledger.array_value) {
+                if (JsonString(item, "status", "") != "confirmed") continue;
+                confirmed_keys.insert(std::to_string(JsonInt(item, "lesson_id", -1)) + "|" +
+                    JsonString(item, "date", "") + "|" + std::to_string(JsonInt(item, "slot", 0)));
+            }
+            for (const JsonValue& group : manual.At("groups").array_value) {
+                const int group_id = JsonInt(group, "group_index", -1);
+                if (group_id < 0) continue;
+                for (const JsonValue& day : group.At("days").array_value) {
+                    if (JsonString(day, "date_iso", "") != date) continue;
+                    for (const JsonValue& slot : day.At("slots").array_value) {
+                        const int slot_number = JsonInt(slot, "slot", 0);
+                        if (slot_number < 1 || slot_number > 7) continue;
+                        for (const JsonValue& lesson : slot.At("lessons").array_value) {
+                            if (JsonBool(lesson, "is_class_hour", false)) continue;
+                            const int lesson_id = JsonInt(lesson, "id", -1);
+                            if (lesson_id < 0 || !valid_lessons.count(lesson_id)) continue;
+                            const std::string key = std::to_string(lesson_id) + "|" + date + "|" + std::to_string(slot_number);
+                            if (!confirmed_keys.insert(key).second) continue;
+
+                            JsonValue fact = JsonValue::MakeObject();
+                            fact.At("id") = JsonValue::MakeNumber(next_id++);
+                            fact.At("lesson_id") = JsonValue::MakeNumber(lesson_id);
+                            fact.At("group_id") = JsonValue::MakeNumber(group_id);
+                            fact.At("date") = JsonValue::MakeString(date);
+                            fact.At("slot") = JsonValue::MakeNumber(slot_number);
+                            fact.At("hours") = JsonValue::MakeNumber(JsonBool(lesson, "is_block", false) ? 6 : 2);
+                            fact.At("status") = JsonValue::MakeString("confirmed");
+                            fact.At("actual_teacher") = JsonValue::MakeNumber(JsonInt(lesson, "teacher_id", -1));
+                            fact.At("source_file") = JsonValue::MakeString(source_tag);
+                            fact.At("source_subject") = JsonValue::MakeString(JsonString(lesson, "name", ""));
+                            fact.At("room") = JsonValue::MakeString("");
+                            ledger.array_value.push_back(std::move(fact));
+                            ++changed;
+                        }
+                    }
+                }
+            }
+            if (changed == 0) {
+                bool already_marked = false;
+                for (const JsonValue& item : ledger.array_value)
+                    if (JsonString(item, "source_file", "") == source_tag && JsonString(item, "date", "") == date)
+                        already_marked = true;
+                if (!already_marked)
+                    return ErrorJson(422, "Unprocessable Entity", "На выбранную дату нет занятий Конструктора для зачёта");
+            }
+        } else {
+            auto& items = ledger.array_value;
+            const auto old_size = items.size();
+            items.erase(std::remove_if(items.begin(), items.end(), [&](const JsonValue& item) {
+                return JsonString(item, "status", "") == "confirmed" &&
+                    JsonString(item, "source_file", "") == source_tag && JsonString(item, "date", "") == date;
+            }), items.end());
+            changed = static_cast<int>(old_size - items.size());
+        }
+
+        if (changed > 0) {
+            std::string error;
+            if (!SaveDataJson(parsed.value, error, completed ? "Зачёт дня из Конструктора" : "Отмена зачёта дня из Конструктора"))
+                return ErrorJson(500, "Internal Server Error", error);
+            if (!WriteScheduleDataRevision(manual_dir.string(), error))
+                return ErrorJson(500, "Internal Server Error", error);
+            if (auto_was_current && !WriteScheduleDataRevision(out_dir.string(), error))
+                return ErrorJson(500, "Internal Server Error", error);
+        }
+
+        JsonValue result = JsonValue::MakeObject();
+        result.At("success") = JsonValue::MakeBool(true);
+        result.At("date") = JsonValue::MakeString(date);
+        result.At("completed") = JsonValue::MakeBool(completed);
+        result.At("changed") = JsonValue::MakeNumber(changed);
+        result.At("message") = JsonValue::MakeString(completed ? "Занятия дня засчитаны как проведённые" : "Отметка дня отменена");
+        return OkJson(result);
     }
 
     if (method == "POST" && path == "/api/schedule/manual") {

@@ -62,6 +62,7 @@ export const api = {
     save: (data) => request('POST', '/schedule/manual', data),
     clear: () => request('DELETE', '/schedule/manual'),
     copyFromAuto: () => request('POST', '/schedule/manual/copy-from-auto'),
+    completeDay: (date, completed) => request('PUT', '/schedule/manual/complete-day', { date, completed }),
   },
   groups: {
     importCalendar: (groups) => request('POST', '/groups/calendar', { groups }),

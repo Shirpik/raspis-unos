@@ -45,7 +45,9 @@ RuntimeSolverConfig DefaultSolverConfig() {
     cfg.teacher_campus_preference_weight = 25;
     cfg.student_window_weight = 300;
 
-    cfg.min_student_pairs_per_study_day = 1;
+    // A study day must contain at least two pairs; the per-day ceiling is
+    // configured separately and remains four for the current timetable.
+    cfg.min_student_pairs_per_study_day = 2;
     cfg.max_student_pairs_per_day = 5;
     cfg.max_whole_group_same_subject_pairs_per_day = 2;
     cfg.max_same_subject_pairs_per_day = 3;

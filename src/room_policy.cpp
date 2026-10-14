@@ -43,6 +43,8 @@ bool OperationalRoomPolicyAllows(
     const Lesson& lesson,
     const Date& date
 ) {
+    const auto required_room = lesson.date_rooms.find(date);
+    if (required_room != lesson.date_rooms.end() && room.id != required_room->second) return false;
     if (date < kEffectiveFrom) return true;
 
     // 01.10.2026 ЦПДЭ и мастерская 124 закрыты для обычных занятий.

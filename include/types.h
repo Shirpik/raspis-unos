@@ -1,6 +1,7 @@
 #pragma once
 
 #include <set>
+#include <map>
 #include <string>
 #include <vector>
 
@@ -60,6 +61,8 @@ struct Lesson {
     // Запрещает считать 2-ю и 3-ю пары одним непрерывным блоком: между ними обед.
     bool avoid_lunch_split = false;
     std::set<Campus> allowed_campuses;
+    std::map<Date, std::set<Campus>> date_campuses;
+    std::map<Date, int> date_rooms;
     std::string week_parity = "all";  // all | odd | even
     int fixed_room = -1;              // -1 = кабинет пока не закреплён
     int preferred_room = -1;          // Мягкое закрепление преподавателя.
@@ -80,6 +83,8 @@ struct Lesson {
         return IsClassroomTheory(date) ? "" : required_room_purpose;
     }
     std::set<Campus> CampusesOn(const Date& date) const {
+        const auto override = date_campuses.find(date);
+        if (override != date_campuses.end()) return override->second;
         return IsClassroomTheory(date) ? std::set<Campus>{LESNAYA, KRIVOUSOVA} : allowed_campuses;
     }
     // Derived from the active semester and group calendar, never user quotas.

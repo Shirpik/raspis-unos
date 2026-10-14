@@ -1,4 +1,4 @@
 {
-  "scope": "single_day",
+  "scope": "date_range",
   "status": "CANDIDATE_BOUNDS"
 }

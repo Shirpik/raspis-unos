@@ -556,6 +556,655 @@
         }
       ],
       "weekday": "СБ"
+    },
+    {
+      "date": "13.10.2026",
+      "date_iso": "2026-10-13",
+      "day_index": 0,
+      "slots": [
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 419,
+              "is_block": false,
+              "is_lab": false,
+              "name": "МДК.02.02 Разработка документации по эксплуатации электрического и электромеханического оборудования",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 55,
+              "room_name": "63",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": -1,
+              "teacher_id": 82,
+              "uid": "lesson-ac5f305ab4ff1bf0",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 1,
+          "text": "МДК.02.02 Разработка документации по эксплуатации электрического и электромеханического оборудования — вся группа, Усков Алексей Николаевич, Кривоусова",
+          "time": "1 пара (08:30-09:55)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 419,
+              "is_block": false,
+              "is_lab": false,
+              "name": "МДК.02.02 Разработка документации по эксплуатации электрического и электромеханического оборудования",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 55,
+              "room_name": "63",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": -1,
+              "teacher_id": 82,
+              "uid": "lesson-ac5f305ab4ff1bf0",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 2,
+          "text": "МДК.02.02 Разработка документации по эксплуатации электрического и электромеханического оборудования — вся группа, Усков Алексей Николаевич, Кривоусова",
+          "time": "2 пара (10:05-11:30)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 419,
+              "is_block": false,
+              "is_lab": false,
+              "name": "МДК.02.02 Разработка документации по эксплуатации электрического и электромеханического оборудования",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 55,
+              "room_name": "63",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": -1,
+              "teacher_id": 82,
+              "uid": "lesson-ac5f305ab4ff1bf0",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 3,
+          "text": "МДК.02.02 Разработка документации по эксплуатации электрического и электромеханического оборудования — вся группа, Усков Алексей Николаевич, Кривоусова",
+          "time": "3 пара (12:25-13:50)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 422,
+              "is_block": false,
+              "is_lab": false,
+              "name": "КП МДК.02.02 Разработка документации по эксплуатации электрического и электромеханического оборудования",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 55,
+              "room_name": "63",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": -1,
+              "teacher_id": 82,
+              "uid": "lesson-9fee41b0c176e0c5",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 4,
+          "text": "КП МДК.02.02 Разработка документации по эксплуатации электрического и электромеханического оборудования — вся группа, Усков Алексей Николаевич, Кривоусова",
+          "time": "4 пара (14:00-15:25)"
+        },
+        {
+          "lessons": [],
+          "slot": 5,
+          "text": "-",
+          "time": "5 пара (15:35-16:55)"
+        },
+        {
+          "lessons": [],
+          "slot": 6,
+          "text": "-",
+          "time": "6 пара (17:05-18:25)"
+        },
+        {
+          "lessons": [],
+          "slot": 7,
+          "text": "-",
+          "time": "7 пара (18:35-19:55)"
+        }
+      ],
+      "weekday": "ВТ"
+    },
+    {
+      "date": "14.10.2026",
+      "date_iso": "2026-10-14",
+      "day_index": 0,
+      "slots": [
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 433,
+              "is_block": false,
+              "is_lab": true,
+              "name": "ЛПЗ ВМДК..05.01 Организация работ по ремонту и обслуживанию электрооборудования",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 20,
+              "room_name": "41",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 40,
+              "teacher_id": 9,
+              "uid": "lesson-96e3b6a32a702c20",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 1,
+          "text": "ЛПЗ ВМДК..05.01 Организация работ по ремонту и обслуживанию электрооборудования — 1 п/г, Сутягин Артём Борисович, Кривоусова",
+          "time": "1 пара (08:30-09:55)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 433,
+              "is_block": false,
+              "is_lab": true,
+              "name": "ЛПЗ ВМДК..05.01 Организация работ по ремонту и обслуживанию электрооборудования",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 20,
+              "room_name": "41",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 40,
+              "teacher_id": 9,
+              "uid": "lesson-96e3b6a32a702c20",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 2,
+          "text": "ЛПЗ ВМДК..05.01 Организация работ по ремонту и обслуживанию электрооборудования — 1 п/г, Сутягин Артём Борисович, Кривоусова",
+          "time": "2 пара (10:05-11:30)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 424,
+              "is_block": false,
+              "is_lab": true,
+              "name": "ЛПЗ МДК.03.01 Основы энергоснабжения объектов отрасли",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 20,
+              "room_name": "41",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 40,
+              "teacher_id": 9,
+              "uid": "lesson-0f8b7f1463e2d311",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 3,
+          "text": "ЛПЗ МДК.03.01 Основы энергоснабжения объектов отрасли — 1 п/г, Сутягин Артём Борисович, Кривоусова",
+          "time": "3 пара (12:25-13:50)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 419,
+              "is_block": false,
+              "is_lab": false,
+              "name": "МДК.02.02 Разработка документации по эксплуатации электрического и электромеханического оборудования",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 3,
+              "room_name": "3",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": -1,
+              "teacher_id": 82,
+              "uid": "lesson-ac5f305ab4ff1bf0",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 4,
+          "text": "МДК.02.02 Разработка документации по эксплуатации электрического и электромеханического оборудования — вся группа, Усков Алексей Николаевич, Кривоусова",
+          "time": "4 пара (14:00-15:25)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 425,
+              "is_block": false,
+              "is_lab": true,
+              "name": "ЛПЗ МДК.03.01 Основы энергоснабжения объектов отрасли",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 20,
+              "room_name": "41",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 41,
+              "teacher_id": 9,
+              "uid": "lesson-55fdd4d3427d5163",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 5,
+          "text": "ЛПЗ МДК.03.01 Основы энергоснабжения объектов отрасли — 2 п/г, Сутягин Артём Борисович, Кривоусова",
+          "time": "5 пара (15:35-16:55)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 425,
+              "is_block": false,
+              "is_lab": true,
+              "name": "ЛПЗ МДК.03.01 Основы энергоснабжения объектов отрасли",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 20,
+              "room_name": "41",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 41,
+              "teacher_id": 9,
+              "uid": "lesson-55fdd4d3427d5163",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 6,
+          "text": "ЛПЗ МДК.03.01 Основы энергоснабжения объектов отрасли — 2 п/г, Сутягин Артём Борисович, Кривоусова",
+          "time": "6 пара (17:05-18:25)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 434,
+              "is_block": false,
+              "is_lab": true,
+              "name": "ЛПЗ ВМДК..05.01 Организация работ по ремонту и обслуживанию электрооборудования",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 20,
+              "room_name": "41",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 41,
+              "teacher_id": 9,
+              "uid": "lesson-87db4bcfefb32acf",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 7,
+          "text": "ЛПЗ ВМДК..05.01 Организация работ по ремонту и обслуживанию электрооборудования — 2 п/г, Сутягин Артём Борисович, Кривоусова",
+          "time": "7 пара (18:35-19:55)"
+        }
+      ],
+      "weekday": "СР"
+    },
+    {
+      "date": "15.10.2026",
+      "date_iso": "2026-10-15",
+      "day_index": 0,
+      "slots": [
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 419,
+              "is_block": false,
+              "is_lab": false,
+              "name": "МДК.02.02 Разработка документации по эксплуатации электрического и электромеханического оборудования",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 39,
+              "room_name": "319",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": -1,
+              "teacher_id": 82,
+              "uid": "lesson-ac5f305ab4ff1bf0",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 1,
+          "text": "МДК.02.02 Разработка документации по эксплуатации электрического и электромеханического оборудования — вся группа, Усков Алексей Николаевич, Лесная",
+          "time": "1 пара (08:30-09:55)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 419,
+              "is_block": false,
+              "is_lab": false,
+              "name": "МДК.02.02 Разработка документации по эксплуатации электрического и электромеханического оборудования",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 39,
+              "room_name": "319",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": -1,
+              "teacher_id": 82,
+              "uid": "lesson-ac5f305ab4ff1bf0",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 2,
+          "text": "МДК.02.02 Разработка документации по эксплуатации электрического и электромеханического оборудования — вся группа, Усков Алексей Николаевич, Лесная",
+          "time": "2 пара (10:05-11:30)"
+        },
+        {
+          "lessons": [],
+          "slot": 3,
+          "text": "-",
+          "time": "3 пара (12:25-13:50)"
+        },
+        {
+          "lessons": [],
+          "slot": 4,
+          "text": "-",
+          "time": "4 пара (14:00-15:25)"
+        },
+        {
+          "lessons": [],
+          "slot": 5,
+          "text": "-",
+          "time": "5 пара (15:35-16:55)"
+        },
+        {
+          "lessons": [],
+          "slot": 6,
+          "text": "-",
+          "time": "6 пара (17:05-18:25)"
+        },
+        {
+          "lessons": [],
+          "slot": 7,
+          "text": "-",
+          "time": "7 пара (18:35-19:55)"
+        }
+      ],
+      "weekday": "ЧТ"
+    },
+    {
+      "date": "16.10.2026",
+      "date_iso": "2026-10-16",
+      "day_index": 0,
+      "slots": [
+        {
+          "lessons": [],
+          "slot": 1,
+          "text": "-",
+          "time": "1 пара (08:30-09:55)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 415,
+              "is_block": false,
+              "is_lab": true,
+              "name": "ЛПЗ МДК.01.01 Технология ремонта, монтажа и наладки электрического и электромеханического оборудования",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 45,
+              "room_name": "407",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 40,
+              "teacher_id": 9,
+              "uid": "lesson-89aaaa1048844953",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 2,
+          "text": "ЛПЗ МДК.01.01 Технология ремонта, монтажа и наладки электрического и электромеханического оборудования — 1 п/г, Сутягин Артём Борисович, Лесная",
+          "time": "2 пара (10:05-11:30)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 415,
+              "is_block": false,
+              "is_lab": true,
+              "name": "ЛПЗ МДК.01.01 Технология ремонта, монтажа и наладки электрического и электромеханического оборудования",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 45,
+              "room_name": "407",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 40,
+              "teacher_id": 9,
+              "uid": "lesson-89aaaa1048844953",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 3,
+          "text": "ЛПЗ МДК.01.01 Технология ремонта, монтажа и наладки электрического и электромеханического оборудования — 1 п/г, Сутягин Артём Борисович, Лесная",
+          "time": "3 пара (12:25-13:50)"
+        },
+        {
+          "lessons": [],
+          "slot": 4,
+          "text": "-",
+          "time": "4 пара (14:00-15:25)"
+        },
+        {
+          "lessons": [],
+          "slot": 5,
+          "text": "-",
+          "time": "5 пара (15:35-16:55)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 425,
+              "is_block": false,
+              "is_lab": true,
+              "name": "ЛПЗ МДК.03.01 Основы энергоснабжения объектов отрасли",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 45,
+              "room_name": "407",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 41,
+              "teacher_id": 9,
+              "uid": "lesson-55fdd4d3427d5163",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 6,
+          "text": "ЛПЗ МДК.03.01 Основы энергоснабжения объектов отрасли — 2 п/г, Сутягин Артём Борисович, Лесная",
+          "time": "6 пара (17:05-18:25)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 425,
+              "is_block": false,
+              "is_lab": true,
+              "name": "ЛПЗ МДК.03.01 Основы энергоснабжения объектов отрасли",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 45,
+              "room_name": "407",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 41,
+              "teacher_id": 9,
+              "uid": "lesson-55fdd4d3427d5163",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 7,
+          "text": "ЛПЗ МДК.03.01 Основы энергоснабжения объектов отрасли — 2 п/г, Сутягин Артём Борисович, Лесная",
+          "time": "7 пара (18:35-19:55)"
+        }
+      ],
+      "weekday": "ПТ"
+    },
+    {
+      "date": "17.10.2026",
+      "date_iso": "2026-10-17",
+      "day_index": 1,
+      "slots": [
+        {
+          "lessons": [],
+          "slot": 1,
+          "text": "-",
+          "time": "1 пара (08:30-09:45)"
+        },
+        {
+          "lessons": [],
+          "slot": 2,
+          "text": "-",
+          "time": "2 пара (09:55-11:10)"
+        },
+        {
+          "lessons": [],
+          "slot": 3,
+          "text": "-",
+          "time": "3 пара (11:30-12:45)"
+        },
+        {
+          "lessons": [],
+          "slot": 4,
+          "text": "-",
+          "time": "4 пара (12:55-14:10)"
+        },
+        {
+          "lessons": [],
+          "slot": 5,
+          "text": "-",
+          "time": "5 пара (14:20-15:30)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 419,
+              "is_block": false,
+              "is_lab": false,
+              "name": "МДК.02.02 Разработка документации по эксплуатации электрического и электромеханического оборудования",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 29,
+              "room_name": "201",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": -1,
+              "teacher_id": 82,
+              "uid": "lesson-ac5f305ab4ff1bf0",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 6,
+          "text": "МДК.02.02 Разработка документации по эксплуатации электрического и электромеханического оборудования — вся группа, Усков Алексей Николаевич, Лесная",
+          "time": "6 пара (15:40-16:50)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 419,
+              "is_block": false,
+              "is_lab": false,
+              "name": "МДК.02.02 Разработка документации по эксплуатации электрического и электромеханического оборудования",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 45,
+              "room_name": "407",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": -1,
+              "teacher_id": 82,
+              "uid": "lesson-ac5f305ab4ff1bf0",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 7,
+          "text": "МДК.02.02 Разработка документации по эксплуатации электрического и электромеханического оборудования — вся группа, Усков Алексей Николаевич, Лесная",
+          "time": "7 пара (17:00-18:10)"
+        }
+      ],
+      "weekday": "СБ"
     }
   ],
   "group_index": 20,

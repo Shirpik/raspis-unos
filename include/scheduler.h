@@ -33,6 +33,9 @@ struct GenerationOptions {
     std::string scope_to;
     std::map<int, int> reserved_hours; // generated placements outside selected range, excluding confirmed facts
     std::set<Date> reserved_dates;
+    // In a Constructor scoped run these teachers may keep their locked pairs,
+    // but the solver must not add any new pair for them.
+    std::set<int> blocked_teacher_ids;
     // Empty means all courses. Otherwise only groups from these course years
     // participate in generation; the other groups are preserved on merge.
     std::set<int> course_years;

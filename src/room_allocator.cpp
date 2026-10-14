@@ -262,7 +262,7 @@ RoomAllocationResult AllocateRooms(
     });
 
     std::map<TeacherCampusKey, int> teacher_stable_room;
-    std::map<int, std::set<int>> stable_room_busy_slots;
+    std::map<int, std::map<int, int>> stable_room_busy_slots;
     std::map<int, int> stable_room_teacher_count;
     for (const TeacherCampusKey& key : teacher_keys) {
         std::vector<int> candidates;
@@ -293,7 +293,7 @@ RoomAllocationResult AllocateRooms(
             bool available = true;
             for (int slot : teacher_occupied_slots[key]) {
                 if (!IsAvailableAt(room, all_days, slot)) { available = false; break; }
-                if (stable_room_busy_slots[r].count(slot)) { available = false; break; }
+                if (stable_room_busy_slots[r][slot] >= room.parallel_classes) { available = false; break; }
             }
             if (available) candidates.push_back(r);
         }
@@ -330,8 +330,7 @@ RoomAllocationResult AllocateRooms(
         const int chosen = candidates.front();
         teacher_stable_room[key] = chosen;
         stable_room_teacher_count[chosen]++;
-        stable_room_busy_slots[chosen].insert(
-            teacher_occupied_slots[key].begin(), teacher_occupied_slots[key].end());
+        for (int slot : teacher_occupied_slots[key]) ++stable_room_busy_slots[chosen][slot];
     }
 
     std::map<int, std::set<int>> protected_rooms_by_start;
@@ -354,7 +353,7 @@ RoomAllocationResult AllocateRooms(
 
     // room_busy[room index] хранит занятые глобальные слоты. Двухпарные УП
     // резервируют одну и ту же аудиторию сразу на оба слота.
-    std::vector<std::set<int>> room_busy(rooms.size());
+    std::vector<std::map<int, int>> room_busy(rooms.size());
     // Один основной кабинет на преподавателя и корпус. Если преподаватель
     // работает в двух корпусах, в каждом сохраняется свой стабильный кабинет.
     std::map<std::pair<int, int>, int> teacher_primary_room;
@@ -396,7 +395,7 @@ RoomAllocationResult AllocateRooms(
                     protected_rooms_by_start[event.start].count(rooms[r].id)) continue;
                 bool free = true;
                 for (int dt = 0; dt < event.duration; dt++) {
-                    if (room_busy[r].count(event.start + dt)) { free = false; break; }
+                    if (room_busy[r][event.start + dt] >= rooms[r].parallel_classes) { free = false; break; }
                 }
                 if (free) return r;
             }
@@ -430,7 +429,7 @@ RoomAllocationResult AllocateRooms(
                 bool requested_is_busy = false;
                 if (requested_is_candidate) {
                     for (int dt = 0; dt < event.duration; ++dt) {
-                        if (room_busy[requested_index].count(event.start + dt)) {
+                        if (room_busy[requested_index][event.start + dt] >= rooms[requested_index].parallel_classes) {
                             requested_is_busy = true;
                             break;
                         }
@@ -451,7 +450,7 @@ RoomAllocationResult AllocateRooms(
             assigned.requested_room_name = requested_room_name;
             assigned.substitution_reason = substitution_reason;
             for (int dt = 0; dt < event.duration; dt++) {
-                room_busy[chosen].insert(event.start + dt);
+                ++room_busy[chosen][event.start + dt];
                 result.assignments[RoomAssignmentKey(event.lesson, event.start + dt)] = assigned;
             }
             if (event.teacher >= 0 && stable_it == teacher_stable_room.end() &&

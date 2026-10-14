@@ -71,6 +71,8 @@ struct TeacherData {
     // целевой функции. Это исключает перенос преподавателя с закреплённым
     // кабинетом в другой корпус ради более красивой сетки.
     std::set<int> allowed_campuses;
+    std::map<Date, int> date_campuses;
+    std::set<Date> allowed_window_dates;
     std::string room_responsibility;
     // 0 = без дополнительного ограничения. Например, 1 позволяет собрать
     // небольшую недельную нагрузку преподавателя в один выбранный решателем день.
@@ -86,6 +88,7 @@ struct TeacherData {
 };
 
 struct RoomData {
+    int parallel_classes = 1; // A named venue may represent several classrooms.
     int id = 0;
     std::string uid;
     std::string name;
@@ -130,6 +133,17 @@ struct LoadRequirement {
 };
 
 struct ScheduleInputData {
+    struct GroupDayRule {
+        int campus = -1, room = -1, common_slot = 0, minimum_pairs = 0, maximum_pairs = 0;
+        int teacher_id = -1, minimum_teacher_pairs = 0;
+        int minimum_group_pairs = 0, maximum_group_pairs = 0;
+        bool only_teacher = false;
+        bool whole_group_only = false;
+    };
+    std::map<std::pair<int, Date>, GroupDayRule> group_day_rules;
+    // Scoped generation keeps subject quotas as candidate bounds. These
+    // targets describe the average load of each student stream for the range.
+    std::map<std::pair<int, int>, int> scoped_part_pair_targets;
     // Read-only forecasts must use this request's settings, not the last
     // generation's global runtime configuration.
     int student_daily_limit = 0;

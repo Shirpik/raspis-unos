@@ -527,6 +527,53 @@ int main() {
         {{2026,11,2},{2026,11,8},0,36,0,0,false}, {{2026,11,9},{2026,12,20},0,0,36,0,false}};
     Require(timetable::GroupTeachingDeadline(before_up, {2026,9,1}, {2026,12,19}) == Date{2026,11,1},
         "ordinary lessons must finish before final full-time UP and PP interval");
+    auto window_input = Input();
+    window_input.lessons[0].total_slots = 2;
+    auto window_schedule = Schedule();
+    window_schedule.At("groups").array_value[0].At("days").array_value[0].At("slots").array_value[2].At("lessons").array_value.push_back(RenderedLesson());
+    auto window_config = config;
+    window_config.hard_no_teacher_windows = true;
+    window_config.hard_no_student_windows = false;
+    const auto hard_window = timetable::ValidateScheduleJson(window_input, window_config, window_schedule);
+    Require(!hard_window.ok && HasCode(hard_window.report, "teacher_window"), "teacher windows remain hard by default");
+    window_input.teachers[0].allowed_window_dates.insert(window_input.start_date);
+    const auto allowed_window = timetable::ValidateScheduleJson(window_input, window_config, window_schedule);
+    Require(allowed_window.ok && HasCode(allowed_window.report, "teacher_window"), "explicit teacher date exception is a visible warning");
+    window_input.teachers[0].allowed_window_dates = {{2026, 9, 4}};
+    Require(!timetable::ValidateScheduleJson(window_input, window_config, window_schedule).ok, "window exception cannot relax another date");
+    auto calendar_input = Input();
+    auto& calendar_rule = calendar_input.group_day_rules[{0, calendar_input.start_date}];
+    calendar_rule.common_slot = 2;
+    Require(HasCode(timetable::ValidateScheduleJson(calendar_input, config, Schedule()).report, "common_slot_missing"),
+        "calendar rule rejects a missing whole-group second pair");
+    calendar_rule.common_slot = 1;
+    calendar_rule.minimum_pairs = 2;
+    Require(HasCode(timetable::ValidateScheduleJson(calendar_input, config, Schedule()).report, "date_minimum_pairs"),
+        "calendar minimum is validated independently of solver success");
+    calendar_input.teachers[0].allowed_campuses = {1};
+    calendar_input.teachers[0].date_campuses[calendar_input.start_date] = 0;
+    Require(!HasCode(timetable::ValidateScheduleJson(calendar_input, config, Schedule()).report, "teacher_campus_mismatch"),
+        "explicit teacher calendar override applies only to its date");
+
+    auto venue_input = Input();
+    auto other_group = venue_input.groups[0]; other_group.id = 1;
+    venue_input.groups.push_back(other_group);
+    auto other_teacher = venue_input.teachers[0]; other_teacher.id = 1;
+    venue_input.teachers.push_back(other_teacher);
+    auto other_lesson = venue_input.lessons[0]; other_lesson.id = 1; other_lesson.group = 1; other_lesson.teacher = 1; other_lesson.uid = "lesson-1";
+    venue_input.lessons.push_back(other_lesson);
+    auto venue_schedule = Schedule();
+    auto other_row = venue_schedule.At("groups").array_value[0];
+    other_row.At("group_index") = JsonValue::MakeNumber(1);
+    auto& other_rendered = other_row.At("days").array_value[0].At("slots").array_value[0].At("lessons").array_value[0];
+    other_rendered.At("id") = JsonValue::MakeNumber(1);
+    other_rendered.At("teacher_id") = JsonValue::MakeNumber(1);
+    venue_schedule.At("groups").array_value.push_back(other_row);
+    Require(HasCode(timetable::ValidateScheduleJson(venue_input, config, venue_schedule).report, "room_conflict"),
+        "ordinary room rejects two simultaneous independent classes");
+    venue_input.rooms[0].parallel_classes = 2;
+    Require(!HasCode(timetable::ValidateScheduleJson(venue_input, config, venue_schedule).report, "room_conflict"),
+        "venue with two classrooms allows two simultaneous independent classes");
     std::cout << "schedule validator regression passed\n";
     return 0;
 }

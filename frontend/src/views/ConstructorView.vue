@@ -77,6 +77,24 @@
       <ul v-if="importReport.warnings?.length"><li v-for="message in importReport.warnings.slice(0, 8)" :key="message">{{ message }}</li></ul>
     </div>
 
+    <section class="generation-range-card">
+      <div class="generation-range-copy"><strong>Закрепление площадки на выбранные даты</strong><span>Выберите курс или несколько групп. Исключения сохранят свои отдельные правила.</span></div>
+      <div class="generation-range-controls">
+        <label><span>С даты</span><input v-model="campusFrom" type="date" class="form-input" /></label>
+        <label><span>По дату</span><input v-model="campusTo" type="date" class="form-input" /></label>
+        <label><span>Выбор</span><select v-model="campusSelection" class="form-select"><option value="course">Курс</option><option value="groups">Группы</option></select></label>
+        <label v-if="campusSelection === 'course'"><span>Курс</span><select v-model.number="campusCourse" class="form-select"><option v-for="n in 4" :key="n" :value="n">{{ n }} курс</option></select></label>
+        <label v-else><span>Группы (можно несколько)</span><select v-model="campusGroups" multiple class="form-select"><option v-for="g in data.groups" :key="g.id" :value="g.id">{{ g.name }}</option></select></label>
+        <label><span>Площадка</span><select v-model.number="campusValue" class="form-select"><option :value="0">Лесная</option><option :value="1">Кривоусова</option></select></label>
+        <label><span>Исключить группы</span><select v-model="campusExcept" multiple class="form-select"><option v-for="g in data.groups" :key="g.id" :value="g.name">{{ g.name }}</option></select></label>
+        <label><span>Общая пара всей группы</span><select v-model.number="campusCommon" class="form-select"><option :value="0">Не закреплять</option><option v-for="n in 7" :key="n" :value="n">{{ n }} пара</option></select></label>
+        <button class="btn btn-primary btn-sm" :disabled="savingCampusRules" @click="addCampusRule">Сохранить правило</button>
+      </div>
+      <div v-for="(rule, index) in campusRules" :key="index" style="display:flex;gap:12px;align-items:center;margin-top:10px">
+        <span>{{ campusRuleLabel(rule) }}</span><button class="btn btn-ghost btn-sm" :disabled="savingCampusRules" @click="removeCampusRule(index)">Удалить</button>
+      </div>
+    </section>
+
     <ValidationPanel :result="validationResult" />
 
     <div v-if="cstore.loading" class="center-block">
@@ -156,6 +174,19 @@
               >
                 <span class="day-name">{{ getDayWeekday(dateStr).toUpperCase() }}</span>
                 <span class="day-date-sub">{{ formatDateShort(dateStr) }}</span>
+                <button
+                  v-if="dayCompletion(dateStr).marked || !dayCompletion(dateStr).done"
+                  class="day-completion-button"
+                  :class="{ completed: dayCompletion(dateStr).marked }"
+                  :disabled="dayCompletionBusy === dateStr || (!dayCompletion(dateStr).count && !dayCompletion(dateStr).marked)"
+                  :title="dayCompletion(dateStr).marked ? 'Отменить отметку и убрать созданные ею факты' : 'Засчитать все занятия этого дня как проведённые'"
+                  @click.stop="toggleDayCompletion(dateStr)"
+                >
+                  <span v-if="dayCompletionBusy === dateStr" class="spinner spinner-sm" />
+                  <CheckCircle v-else :size="13" />
+                  {{ dayCompletionBusy === dateStr ? 'Сохраняю…' : dayCompletion(dateStr).marked ? 'Отменить отметку' : 'Засчитать день' }}
+                </button>
+                <span v-else-if="dayCompletion(dateStr).done" class="day-completed-label"><CheckCircle :size="13" /> День зачтён</span>
               </th>
             </tr>
             <tr>
@@ -186,8 +217,9 @@
                     'day-separator': gi === 0,
                     'cell-lab': cellIsLab(g.group_index, dateStr, slotNum),
                     'cell-practice': cellIsBlock(g.group_index, dateStr, slotNum),
+                    'day-completed-cell': dayCompletion(dateStr).done,
                   }"
-                  @click="slotNum === 0 ? null : openPicker(g, dateStr, slotNum)"
+                  @click="slotNum === 0 || dayCompletion(dateStr).done ? null : openPicker(g, dateStr, slotNum)"
                 >
                   <div class="cell-inner" v-if="cellLessons(g.group_index, dateStr, slotNum).length">
                     <div
@@ -331,6 +363,40 @@ const generationFrom = ref('')
 const generationTo = ref('')
 const teacherFilter = ref(-1)
 const teachingLedger = ref([])
+const dayCompletionBusy = ref('')
+const campusFrom = ref('')
+const campusTo = ref('')
+const campusSelection = ref('course')
+const campusCourse = ref(4)
+const campusGroups = ref([])
+const campusExcept = ref([])
+const campusValue = ref(1)
+const campusCommon = ref(2)
+const savingCampusRules = ref(false)
+const campusRules = computed(() => data.settings?.generation_rules?.campus_rules || [])
+function campusRuleLabel(rule) {
+  const names = rule.group ? rule.group : rule.course ? `${rule.course} курс` : (rule.group_ids || []).map(id => data.groups.find(g => g.id === id)?.name || id).join(', ')
+  const room = data.rooms.find(r => r.id === rule.room_id)?.name
+  const pairs = rule.minimum_group_pairs || rule.minimum_pairs
+  return `${rule.from} — ${rule.to}: ${names}, ${rule.campus === 0 ? 'Лесная' : 'Кривоусова'}${room ? `, ${room}` : ''}${rule.except?.length ? `; кроме ${rule.except.join(', ')}` : ''}${rule.common_slot ? `; общая ${rule.common_slot} пара` : ''}${pairs ? `; ${pairs} пар в день` : ''}`
+}
+async function saveCampusRules(rules) {
+  savingCampusRules.value = true
+  try {
+    const response = await data.saveSettings({ generation_rules: { ...(data.settings.generation_rules || {}), campus_rules: rules } })
+    if (!response.ok) { toast.error(response.data?.message || 'Правило не сохранено'); return false }
+    toast.success('Правила сохранены. Применятся при достройке выбранных дат.')
+    return true
+  } finally { savingCampusRules.value = false }
+}
+async function addCampusRule() {
+  if (!campusFrom.value || !campusTo.value || campusTo.value < campusFrom.value || (campusSelection.value === 'groups' && !campusGroups.value.length)) { toast.warning('Выберите даты и группы'); return }
+  const rule = { from: campusFrom.value, to: campusTo.value, campus: campusValue.value, common_slot: campusCommon.value, except: [...campusExcept.value] }
+  if (campusSelection.value === 'course') rule.course = campusCourse.value
+  else rule.group_ids = [...campusGroups.value]
+  await saveCampusRules([...campusRules.value, rule])
+}
+async function removeCampusRule(index) { await saveCampusRules(campusRules.value.filter((_, i) => i !== index)) }
 
 onMounted(async () => {
   const [, , contextResponse] = await Promise.all([
@@ -343,8 +409,83 @@ onMounted(async () => {
     : []
   ensureConstructorGroups()
   setDefaultGenerationRange()
+  campusFrom.value = generationFrom.value
+  campusTo.value = generationFrom.value
   jumpToGenerationWeek()
 })
+
+const dayCompletionCache = computed(() => {
+  const confirmed = new Set(teachingLedger.value
+    .filter(entry => entry.status === 'confirmed')
+    .map(entry => `${Number(entry.lesson_id)}|${entry.date}|${Number(entry.slot)}`))
+  const markedDates = new Set(teachingLedger.value
+    .filter(entry => entry.status === 'confirmed' && entry.source_file === 'constructor-day-completion')
+    .map(entry => entry.date))
+  const result = new Map()
+  for (const group of groups.value) {
+    for (const day of group.days || []) {
+      const date = day.date_iso
+      if (!date) continue
+      const current = result.get(date) || { count: 0, confirmed: 0, keys: new Set() }
+      for (const slot of day.slots || []) {
+        for (const lesson of slot.lessons || []) {
+          if (lesson.is_class_hour) continue
+          const id = Number(lesson.id)
+          const slotNumber = Number(slot.slot)
+          if (!Number.isInteger(id) || id < 0 || !Number.isInteger(slotNumber) || slotNumber < 1) continue
+          const key = `${id}|${date}|${slotNumber}`
+          if (current.keys.has(key)) continue
+          current.keys.add(key)
+          current.count++
+          if (confirmed.has(key)) current.confirmed++
+        }
+      }
+      result.set(date, current)
+    }
+  }
+  for (const [date, status] of result) {
+    status.marked = markedDates.has(date)
+    status.done = status.count > 0 && (status.marked || status.confirmed >= status.count)
+  }
+  return result
+})
+
+function dayCompletion(date) {
+  return dayCompletionCache.value.get(date) || { count: 0, confirmed: 0, marked: false, done: false }
+}
+
+async function toggleDayCompletion(date) {
+  const current = dayCompletion(date)
+  const completed = !current.marked
+  if (completed && date > isoDate(new Date())) {
+    toast.warning('Будущий день можно зачесть после его проведения')
+    return
+  }
+  const prompt = completed
+    ? `Засчитать ${current.count} занятий за ${formatDateShort(date)} как проведённые? Часы войдут в факт и вычтутся из остатка.`
+    : `Отменить отметку дня ${formatDateShort(date)}? Уберутся только факты, добавленные этой отметкой.`
+  if (!window.confirm(prompt)) return
+  dayCompletionBusy.value = date
+  try {
+    if (cstore.dirty) {
+      const saved = await cstore.save()
+      if (!saved.ok) {
+        toast.error(saved.data?.message || 'Сначала сохраните Конструктор')
+        return
+      }
+    }
+    const response = await api.constructor.completeDay(date, completed)
+    if (!response.ok) {
+      toast.error(response.data?.message || 'Не удалось изменить отметку дня')
+      return
+    }
+    const context = await api.schedule.context()
+    if (context.ok && Array.isArray(context.data?.teaching_ledger)) teachingLedger.value = context.data.teaching_ledger
+    toast.success(completed ? `День ${formatDateShort(date)} зачтён как проведённый` : `Отметка за ${formatDateShort(date)} отменена`)
+  } finally {
+    dayCompletionBusy.value = ''
+  }
+}
 
 // ── Computed shape ──
 const groups = computed(() => cstore.manualData?.groups || [])
@@ -1137,6 +1278,17 @@ function initScratch() {
 .th-day:first-child { border-left: none; }
 .day-name { display: block; font-size: 12px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; }
 .day-date-sub { display: block; font-size: 10px; font-weight: 400; opacity: 0.72; margin-top: 3px; letter-spacing: 0.04em; }
+.day-completion-button, .day-completed-label {
+  display: inline-flex; align-items: center; justify-content: center; gap: 5px;
+  margin-top: 7px; padding: 4px 8px; border: 1px solid rgba(255,255,255,0.45);
+  border-radius: 999px; color: #fff; background: rgba(15,23,42,0.22);
+  font-size: 10px; font-weight: 700; line-height: 1.2; white-space: nowrap;
+}
+.day-completion-button { cursor: pointer; }
+.day-completion-button:hover:not(:disabled) { background: rgba(15,23,42,0.4); }
+.day-completion-button:disabled { cursor: not-allowed; opacity: 0.55; }
+.day-completion-button.completed, .day-completed-label { background: rgba(5,150,105,0.32); border-color: rgba(167,243,208,0.7); }
+.day-completed-cell { background-image: linear-gradient(rgba(16,185,129,0.035), rgba(16,185,129,0.035)); }
 .th-group {
   background: #1a2540; color: var(--text-secondary); text-align: center;
   font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em;

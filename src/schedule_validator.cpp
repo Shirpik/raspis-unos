@@ -490,8 +490,9 @@ ScheduleValidationResult ValidateScheduleJson(
             collector.Add("error", "campus", "lesson_campus_mismatch",
                           "Занятие поставлено на запрещённую площадку", ctx);
         }
-        if (teacher && !lesson->IsClassroomTheory(event.date) && !teacher->allowed_campuses.empty() &&
-            !teacher->allowed_campuses.count(room->campus)) {
+        if (teacher && !lesson->IsClassroomTheory(event.date) &&
+            ((teacher->date_campuses.count(event.date) && teacher->date_campuses.at(event.date) != room->campus) ||
+             (!teacher->date_campuses.count(event.date) && !teacher->allowed_campuses.empty() && !teacher->allowed_campuses.count(room->campus)))) {
             JsonValue ctx = Context(); Put(ctx, "teacher", event.teacher); Put(ctx, "campus", room->campus);
             collector.Add("error", "campus", "teacher_campus_mismatch",
                           TeacherLabel(teacher, event.teacher) + " поставлен(а) на запрещённую площадку", ctx);
@@ -518,7 +519,8 @@ ScheduleValidationResult ValidateScheduleJson(
                       "У преподавателя несколько занятий одновременно", ctx);
     }
     for (const auto& item : room_slot) {
-        if (item.second.size() <= 1) continue;
+        const auto* room = FindRoom(data, std::get<2>(item.first));
+        if (item.second.size() <= static_cast<size_t>(room ? room->parallel_classes : 1)) continue;
         JsonValue ctx = Context(); Put(ctx, "date", DateLabel(std::get<0>(item.first))); Put(ctx, "pair", std::get<1>(item.first)); Put(ctx, "room", std::get<2>(item.first));
         collector.Add("error", "conflicts", "room_conflict",
                       "Аудитория занята несколькими занятиями одновременно", ctx);
@@ -682,7 +684,10 @@ ScheduleValidationResult ValidateScheduleJson(
         const int part = std::get<1>(item.first);
         const Date& date = std::get<2>(item.first);
         const int count = static_cast<int>(item.second.size());
-        if (count > config.max_student_pairs_per_day) {
+        const auto date_rule = data.group_day_rules.find({group_id, date});
+        const int maximum = date_rule != data.group_day_rules.end() && date_rule->second.maximum_pairs > 0
+            ? date_rule->second.maximum_pairs : config.max_student_pairs_per_day;
+        if (count > maximum) {
             JsonValue ctx = Context(); Put(ctx, "group", group_id); Put(ctx, "part", part + 1); Put(ctx, "date", DateLabel(date)); Put(ctx, "count", count); Put(ctx, "min", config.min_student_pairs_per_study_day); Put(ctx, "max", config.max_student_pairs_per_day);
             collector.Add("error", "daily_load", "student_daily_load",
                           "Суточная нагрузка подгруппы выходит за заданные границы", ctx);
@@ -703,6 +708,47 @@ ScheduleValidationResult ValidateScheduleJson(
             collector.Add(config.hard_no_student_windows ? "error" : "warning", "windows", "student_window",
                           "У подгруппы есть окно между занятиями", ctx);
         }
+    }
+
+    for (const auto& [key, rule] : data.group_day_rules) {
+        if (key.second < data.start_date || data.end_date < key.second) continue;
+        bool common_found = rule.common_slot == 0;
+        int required_teacher_pairs = 0;
+        std::set<int> group_pairs;
+        for (const auto& event : events) {
+            if (event.group != key.first || !(event.date == key.second)) continue;
+            const auto* lesson = FindLesson(data, event.lesson);
+            group_pairs.insert(event.pair);
+            if (event.teacher == rule.teacher_id) ++required_teacher_pairs;
+            if (rule.only_teacher && event.teacher != rule.teacher_id) {
+                JsonValue ctx = Context(); Put(ctx, "group", key.first); Put(ctx, "date", DateLabel(key.second));
+                collector.Add("error", "daily_load", "required_teacher", "Назначен другой преподаватель", ctx);
+            }
+            if (lesson && lesson->subgroup < 0 && event.pair == rule.common_slot) common_found = true;
+            if (rule.whole_group_only && lesson && lesson->subgroup >= 0) {
+                JsonValue ctx = Context(); Put(ctx, "group", key.first); Put(ctx, "date", DateLabel(key.second));
+                collector.Add("error", "daily_load", "whole_group_required", "В этот день требуются занятия всей группы", ctx);
+            }
+        }
+        if (!common_found) {
+            JsonValue ctx = Context(); Put(ctx, "group", key.first); Put(ctx, "date", DateLabel(key.second));
+            collector.Add("error", "daily_load", "common_slot_missing", "Не поставлена обязательная общая пара", ctx);
+        }
+        if (required_teacher_pairs < rule.minimum_teacher_pairs) {
+            JsonValue ctx = Context(); Put(ctx, "group", key.first); Put(ctx, "date", DateLabel(key.second));
+            collector.Add("error", "daily_load", "required_teacher_load", "Не выполнена обязательная нагрузка преподавателя с группой", ctx);
+        }
+        if (static_cast<int>(group_pairs.size()) < rule.minimum_group_pairs ||
+            (rule.maximum_group_pairs > 0 && static_cast<int>(group_pairs.size()) > rule.maximum_group_pairs)) {
+            JsonValue ctx = Context(); Put(ctx, "group", key.first); Put(ctx, "date", DateLabel(key.second));
+            collector.Add("error", "daily_load", "date_group_pairs", "Не выполнено число пар группы на выбранную дату", ctx);
+        }
+        const auto* group = FindGroup(data, key.first);
+        if (group) for (int part = 0; part < group->parts; ++part)
+            if (static_cast<int>(part_day_slots[{key.first, part, key.second}].size()) < rule.minimum_pairs) {
+                JsonValue ctx = Context(); Put(ctx, "group", key.first); Put(ctx, "date", DateLabel(key.second));
+                collector.Add("error", "daily_load", "date_minimum_pairs", "Не выполнена нагрузка на выбранную дату", ctx);
+            }
     }
 
     // A serialized constructor result must not hide empty or one-pair days.
@@ -819,7 +865,8 @@ ScheduleValidationResult ValidateScheduleJson(
         }
         if (!IsContiguous(teacher_continuity[item.first])) {
             JsonValue ctx = Context(); Put(ctx, "teacher", teacher_id); Put(ctx, "date", DateLabel(date)); ctx.At("slots") = SlotsJson(item.second);
-            collector.Add(config.hard_no_teacher_windows ? "error" : "warning", "windows", "teacher_window",
+            const bool allowed_window = teacher && teacher->allowed_window_dates.count(date);
+            collector.Add(config.hard_no_teacher_windows && !allowed_window ? "error" : "warning", "windows", "teacher_window",
                           "У преподавателя есть окно между занятиями", ctx);
         }
         teacher_week_days[{teacher_id, MondaySerial(data.start_date, date)}]++;

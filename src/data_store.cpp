@@ -1445,6 +1445,10 @@ bool LoadScheduleInputDataFromRoot(const JsonValue& source, ScheduleInputData& d
         if (!item.IsObject()) continue;
         TeacherData teacher;
         teacher.scheduling_active = JsonBool(item, "scheduling_active", true);
+        for (const auto& value : item.At("allowed_window_dates").array_value) {
+            Date date{};
+            if (value.IsString() && ParseDateIso(value.string_value, date)) teacher.allowed_window_dates.insert(date);
+        }
         teacher.class_hour_max_groups = std::clamp(JsonInt(item, "class_hour_max_groups", 2), 1, 10);
         for (const auto& row : item.At("external_busy_slots").array_value) {
             Date date{};
@@ -1512,6 +1516,7 @@ bool LoadScheduleInputDataFromRoot(const JsonValue& source, ScheduleInputData& d
             room.name = JsonString(item, "name", "Кабинет " + std::to_string(room.id));
             room.campus = JsonInt(item, "campus", LESNAYA);
             room.capacity = JsonInt(item, "capacity", 0);
+            room.parallel_classes = std::clamp(JsonInt(item, "parallel_classes", 1), 1, 100);
             room.room_type = JsonInt(item, "room_type", 0);
             room.active = JsonBool(item, "active", true);
             room.access_mode = JsonString(item, "access_mode", "general");
@@ -1785,6 +1790,74 @@ bool LoadScheduleInputDataFromRoot(const JsonValue& source, ScheduleInputData& d
             lesson.allowed_campuses.insert(static_cast<Campus>(room_it->second.campus));
         }
         data.lessons.push_back(lesson);
+    }
+
+    // Calendar rules affect only the selected dates and retain curriculum identities.
+    data.group_day_rules.clear();
+    for (const auto& rule : settings.At("generation_rules").At("campus_rules").array_value) {
+        Date first{}, last{};
+        if (!ParseDateIso(JsonString(rule, "from", ""), first) ||
+            !ParseDateIso(JsonString(rule, "to", ""), last) || last < first || DaysBetween(first, last) > 366) {
+            error = "Некорректный период закрепления площадки"; return false;
+        }
+        const int campus = JsonInt(rule, "campus", -1);
+        if (campus < 0 || campus > 1) { error = "Некорректная площадка"; return false; }
+        std::set<int> ids;
+        for (const auto& id : rule.At("group_ids").array_value)
+            if (id.IsNumber()) ids.insert(static_cast<int>(id.number_value));
+        const auto exceptions = JsonStringArray(rule.At("except"));
+        for (const auto& group : data.groups) {
+            const bool matches = ids.count(group.id) || JsonString(rule, "group", "") == group.name ||
+                (JsonInt(rule, "course", -1) == group.course_year);
+            if (!matches || std::find(exceptions.begin(), exceptions.end(), group.name) != exceptions.end()) continue;
+            for (const auto& day : GenerateSchoolDays(first, last)) {
+                auto& target = data.group_day_rules[{group.id, day}];
+                target.campus = campus;
+                target.room = JsonInt(rule, "room_id", -1);
+                target.common_slot = JsonInt(rule, "common_slot", 0);
+                target.minimum_pairs = JsonInt(rule, "minimum_pairs", 0);
+                target.maximum_pairs = JsonInt(rule, "maximum_pairs", 0);
+                target.whole_group_only = JsonBool(rule, "whole_group_only", false);
+                target.teacher_id = JsonInt(rule, "teacher_id", -1);
+                target.minimum_teacher_pairs = JsonInt(rule, "minimum_teacher_pairs", 0);
+                target.minimum_group_pairs = JsonInt(rule, "minimum_group_pairs", 0);
+                target.maximum_group_pairs = JsonInt(rule, "maximum_group_pairs", 0);
+                target.only_teacher = JsonBool(rule, "only_teacher", false);
+                if (target.common_slot < 0 || target.common_slot > SLOTS_PER_DAY ||
+                    target.minimum_pairs < 0 || target.maximum_pairs > SLOTS_PER_DAY ||
+                    (target.maximum_pairs > 0 && target.maximum_pairs < target.minimum_pairs)) {
+                    error = "Некорректная нагрузка или общая пара в правиле площадки"; return false;
+                }
+            }
+        }
+    }
+    for (auto& teacher : data.teachers) {
+        const auto source = std::find_if(root.At("teachers").array_value.begin(), root.At("teachers").array_value.end(),
+            [&](const auto& item) { return JsonInt(item, "id", -1) == teacher.id; });
+        if (source == root.At("teachers").array_value.end()) continue;
+        for (const auto& entry : source->At("date_campus_overrides").array_value) {
+            Date date{}; const int campus = JsonInt(entry, "campus", -1);
+            if (ParseDateIso(JsonString(entry, "date", ""), date) && campus >= 0 && campus <= 1)
+                teacher.date_campuses[date] = campus;
+        }
+    }
+    for (auto& lesson : data.lessons) {
+        const auto teacher = std::find_if(data.teachers.begin(), data.teachers.end(),
+            [&](const auto& value) { return value.id == lesson.teacher; });
+        if (teacher != data.teachers.end())
+            for (const auto& [date, campus] : teacher->date_campuses)
+                lesson.date_campuses[date] = {static_cast<Campus>(campus)};
+        for (const auto& [key, rule] : data.group_day_rules) {
+            if (key.first != lesson.group) continue;
+            const auto& date = key.second;
+            bool teacher_allows = teacher == data.teachers.end() || teacher->allowed_campuses.empty() ||
+                teacher->allowed_campuses.count(rule.campus);
+            if (teacher != data.teachers.end() && teacher->date_campuses.count(date))
+                teacher_allows = teacher->date_campuses.at(date) == rule.campus;
+            lesson.date_campuses[date] = teacher_allows
+                ? std::set<Campus>{static_cast<Campus>(rule.campus)} : std::set<Campus>{};
+            if (rule.room >= 0) lesson.date_rooms[date] = rule.room;
+        }
     }
 
     if (update_runtime) SetRuntimeNames(NamesFromGroups(data.groups), NamesFromTeachers(data.teachers));
@@ -2285,6 +2358,19 @@ JsonValue BuildHoursReport(const JsonValue& source_root, const std::string& sche
     if (semester_end_iso.empty()) semester_end_iso = JsonString(root.At("settings"), "end_date", "");
     const bool has_semester_start = ParseDateIso(semester_start_iso, semester_start);
     const bool has_semester_end = ParseDateIso(semester_end_iso, semester_end);
+    Date as_of_date{};
+    const std::string configured_as_of = JsonString(root.At("settings"), "accounting_as_of_date",
+        JsonString(root.At("settings"), "today", ""));
+    if (!ParseDateIso(configured_as_of, as_of_date)) {
+        const std::time_t now = std::time(nullptr);
+        std::tm local_now{};
+#ifdef _WIN32
+        localtime_s(&local_now, &now);
+#else
+        localtime_r(&now, &local_now);
+#endif
+        as_of_date = {local_now.tm_year + 1900, local_now.tm_mon + 1, local_now.tm_mday};
+    }
     if (has_semester_start && has_semester_end && semester_start <= semester_end) {
         Date week_start = semester_start;
         int week = 0;
@@ -2294,6 +2380,60 @@ JsonValue BuildHoursReport(const JsonValue& source_root, const std::string& sche
             week_ranges[week++] = {DateToIso(week_start), DateToIso(week_end)};
             week_start = NextDay(week_end);
         }
+    }
+
+    std::unordered_map<int, std::string> group_names;
+    std::unordered_map<int, std::string> group_accounting_titles;
+    std::unordered_map<int, int> group_parts;
+    for (const JsonValue& group : root.At("groups").array_value) {
+        const int group_id = JsonInt(group, "id", -1);
+        group_names[group_id] = JsonString(group, "name", "");
+        group_parts[group_id] = std::clamp(JsonInt(group, "parts", PARTS_PER_GROUP), 1, PARTS_PER_GROUP);
+        group_accounting_titles[group_id] = JsonString(
+            group, "accounting_title", JsonString(group, "name", ""));
+    }
+    std::unordered_map<int, std::string> teacher_names;
+    for (const JsonValue& teacher : root.At("teachers").array_value)
+        teacher_names[JsonInt(teacher, "id", -1)] = JsonString(teacher, "name", "");
+    std::unordered_map<int, int> lesson_teachers;
+    std::unordered_map<int, int> lesson_groups;
+    std::unordered_map<int, std::string> lesson_names;
+    std::unordered_map<int, bool> lesson_is_block;
+    std::unordered_map<int, int> lesson_hours_per_unit;
+    std::unordered_map<int, int> lesson_subgroups;
+    for (const JsonValue& lesson : root.At("lessons").array_value) {
+        const int lesson_id = JsonInt(lesson, "id", -1);
+        const bool is_block = JsonBool(lesson, "is_block", false);
+        lesson_teachers[lesson_id] = JsonInt(lesson, "teacher", -1);
+        lesson_groups[lesson_id] = JsonInt(lesson, "group", -1);
+        lesson_names[lesson_id] = JsonString(lesson, "name", "");
+        lesson_is_block[lesson_id] = is_block;
+        lesson_hours_per_unit[lesson_id] = is_block ? 6 : 2;
+        lesson_subgroups[lesson_id] = JsonInt(lesson, "subgroup", -1);
+    }
+
+    JsonValue quota_report = JsonValue::MakeObject();
+    const std::filesystem::path quota_file = std::filesystem::path(schedule_file).parent_path() / "quota_balance.json";
+    if (std::filesystem::exists(quota_file)) {
+        std::ifstream quota_in(quota_file, std::ios::binary);
+        if (quota_in) {
+            std::ostringstream quota_text;
+            quota_text << quota_in.rdbuf();
+            JsonParseResult quota_parsed = ParseJson(quota_text.str());
+            if (quota_parsed.ok) quota_report = quota_parsed.value;
+        }
+    }
+    std::unordered_map<int, std::vector<int>> solver_weekly_hours;
+    std::unordered_map<int, std::vector<int>> solver_weekly_pairs;
+    for (const JsonValue& quota : quota_report.At("lesson_quotas").array_value) {
+        const int id = JsonInt(quota, "lesson_id", -1);
+        if (id < 0) continue;
+        solver_weekly_hours[id].clear();
+        solver_weekly_pairs[id].clear();
+        for (const JsonValue& value : quota.At("final_weekly_hours").array_value)
+            solver_weekly_hours[id].push_back(static_cast<int>(value.number_value));
+        for (const JsonValue& value : quota.At("final_weekly_pairs").array_value)
+            solver_weekly_pairs[id].push_back(static_cast<int>(value.number_value));
     }
 
     const bool schedule_found = std::filesystem::exists(schedule_file);
@@ -2323,33 +2463,16 @@ JsonValue BuildHoursReport(const JsonValue& source_root, const std::string& sche
                                 if (id < 0) continue;
                                 const std::string key = std::to_string(id) + "|" + date_iso + "|" +
                                     std::to_string(JsonInt(slot, "slot", 0));
-                                if (projected_events.insert(key).second) projected_hours[id] += 2;
+                                if (projected_events.insert(key).second) {
+                                    const int hours = lesson_is_block.count(id) && lesson_is_block[id] ? 6 : 2;
+                                    projected_hours[id] += hours;
+                                }
                             }
                         }
                     }
                 }
             }
         }
-    }
-
-    std::unordered_map<int, std::string> group_names;
-    std::unordered_map<int, std::string> group_accounting_titles;
-    for (const JsonValue& group : root.At("groups").array_value) {
-        group_names[JsonInt(group, "id", -1)] = JsonString(group, "name", "");
-        group_accounting_titles[JsonInt(group, "id", -1)] = JsonString(
-            group, "accounting_title", JsonString(group, "name", ""));
-    }
-    std::unordered_map<int, std::string> teacher_names;
-    for (const JsonValue& teacher : root.At("teachers").array_value)
-        teacher_names[JsonInt(teacher, "id", -1)] = JsonString(teacher, "name", "");
-    std::unordered_map<int, int> lesson_teachers;
-    std::unordered_map<int, int> lesson_groups;
-    std::unordered_map<int, std::string> lesson_names;
-    for (const JsonValue& lesson : root.At("lessons").array_value) {
-        const int lesson_id = JsonInt(lesson, "id", -1);
-        lesson_teachers[lesson_id] = JsonInt(lesson, "teacher", -1);
-        lesson_groups[lesson_id] = JsonInt(lesson, "group", -1);
-        lesson_names[lesson_id] = JsonString(lesson, "name", "");
     }
 
     std::set<std::string> confirmed_events;
@@ -2368,7 +2491,10 @@ JsonValue BuildHoursReport(const JsonValue& source_root, const std::string& sche
         if (range.first.empty() || date_iso < range.first) range.first = date_iso;
         if (range.second.empty() || date_iso > range.second) range.second = date_iso;
         confirmed_hours[lesson] += hours;
-        if (projected_events.count(key)) projected_hours[lesson] = std::max(0, projected_hours[lesson] - 2);
+        if (projected_events.count(key)) {
+            const int unit_hours = lesson_hours_per_unit.count(lesson) ? lesson_hours_per_unit[lesson] : 2;
+            projected_hours[lesson] = std::max(0, projected_hours[lesson] - unit_hours);
+        }
         occurrences.push_back({lesson, lesson_groups[lesson], lesson_teachers[lesson],
             JsonInt(entry, "actual_teacher", lesson_teachers[lesson]), date_iso, slot, week, hours,
             JsonString(entry, "room", ""), 0, false, "", ""});
@@ -2383,9 +2509,13 @@ JsonValue BuildHoursReport(const JsonValue& source_root, const std::string& sche
         int substitution_out = 0;
         int adjustment = 0;
         std::map<int, int> weekly;
+        std::map<std::string, int> daily;
     };
     std::unordered_map<int, Totals> by_group;
     std::unordered_map<int, Totals> by_teacher;
+    std::unordered_map<int, std::vector<int>> group_solver_weekly_hours;
+    std::unordered_map<int, std::vector<int>> teacher_solver_weekly_hours;
+    std::map<std::pair<int, int>, Totals> by_group_subgroup;
     JsonValue lesson_rows = JsonValue::MakeArray();
 
     for (const JsonValue& lesson : root.At("lessons").array_value) {
@@ -2402,6 +2532,25 @@ JsonValue BuildHoursReport(const JsonValue& source_root, const std::string& sche
         by_group[group].scheduled += actual_hours;
         by_group[group].projected += future_hours;
         by_group[group].credited += actual_hours;
+        auto add_solver_weekly = [](std::unordered_map<int, std::vector<int>>& target,
+                                    int key, const std::vector<int>& values) {
+            if (values.empty()) return;
+            auto& output = target[key];
+            if (output.size() < values.size()) output.resize(values.size(), 0);
+            for (size_t i = 0; i < values.size(); ++i) output[i] += values[i];
+        };
+        const auto quota_it = solver_weekly_hours.find(id);
+        if (quota_it != solver_weekly_hours.end()) {
+            add_solver_weekly(group_solver_weekly_hours, group, quota_it->second);
+            if (teacher >= 0) add_solver_weekly(teacher_solver_weekly_hours, teacher, quota_it->second);
+        }
+        const int parts = group_parts.count(group) ? group_parts[group] : PARTS_PER_GROUP;
+        const int subgroup = JsonInt(lesson, "subgroup", -1);
+        const int planned_per_part = parts > 0 ? planned_hours : 0;
+        for (int part = 0; part < parts; ++part) {
+            if (subgroup >= 0 && subgroup != part) continue;
+            by_group_subgroup[{group, part}].planned += planned_per_part;
+        }
         if (teacher >= 0) {
             by_teacher[teacher].planned += planned_hours;
             by_teacher[teacher].scheduled += actual_hours;
@@ -2426,6 +2575,13 @@ JsonValue BuildHoursReport(const JsonValue& source_root, const std::string& sche
         row.At("projected_hours") = JsonValue::MakeNumber(future_hours);
         row.At("credited_hours") = JsonValue::MakeNumber(actual_hours);
         row.At("remaining_hours") = JsonValue::MakeNumber(planned_hours - actual_hours);
+        row.At("solver_weekly_hours") = solver_weekly_hours.count(id)
+            ? [&]() { JsonValue values = JsonValue::MakeArray(); for (int value : solver_weekly_hours[id]) values.array_value.push_back(JsonValue::MakeNumber(value)); return values; }()
+            : JsonValue::MakeArray();
+        row.At("solver_weekly_pairs") = solver_weekly_pairs.count(id)
+            ? [&]() { JsonValue values = JsonValue::MakeArray(); for (int value : solver_weekly_pairs[id]) values.array_value.push_back(JsonValue::MakeNumber(value)); return values; }()
+            : JsonValue::MakeArray();
+        row.At("planned_weekly_hours") = row.At("solver_weekly_hours");
         lesson_rows.array_value.push_back(row);
     }
 
@@ -2462,9 +2618,20 @@ JsonValue BuildHoursReport(const JsonValue& source_root, const std::string& sche
             occurrence.actual_teacher = JsonInt(*substitution, "substitute_teacher", occurrence.actual_teacher);
         if (occurrence.actual_teacher < 0) occurrence.actual_teacher = occurrence.teacher;
         by_group[occurrence.group].weekly[occurrence.week] += occurrence.hours;
+        by_group[occurrence.group].daily[occurrence.date] += occurrence.hours;
+        const int subgroup = lesson_subgroups.count(occurrence.lesson) ? lesson_subgroups[occurrence.lesson] : -1;
+        const int parts = group_parts.count(occurrence.group) ? group_parts[occurrence.group] : PARTS_PER_GROUP;
+        for (int part = 0; part < parts; ++part) {
+            if (subgroup >= 0 && subgroup != part) continue;
+            by_group_subgroup[{occurrence.group, part}].scheduled += occurrence.hours;
+            by_group_subgroup[{occurrence.group, part}].credited += occurrence.hours;
+            by_group_subgroup[{occurrence.group, part}].weekly[occurrence.week] += occurrence.hours;
+            by_group_subgroup[{occurrence.group, part}].daily[occurrence.date] += occurrence.hours;
+        }
         if (occurrence.actual_teacher >= 0) {
             by_teacher[occurrence.actual_teacher].credited += occurrence.hours;
             by_teacher[occurrence.actual_teacher].weekly[occurrence.week] += occurrence.hours;
+            by_teacher[occurrence.actual_teacher].daily[occurrence.date] += occurrence.hours;
         }
         if (occurrence.actual_teacher != occurrence.teacher) {
             if (occurrence.teacher >= 0) by_teacher[occurrence.teacher].substitution_out += occurrence.hours;
@@ -2542,10 +2709,21 @@ JsonValue BuildHoursReport(const JsonValue& source_root, const std::string& sche
         return std::vector<int>(ids.begin(), ids.end());
     }();
 
-    auto totals_to_json = [&week_ids](const std::unordered_map<int, Totals>& totals,
+    auto totals_to_json = [&week_ids, &week_ranges, &semester_start, &semester_end, &as_of_date](
+                             const std::unordered_map<int, Totals>& totals,
                              const std::unordered_map<int, std::string>& names,
+                             const std::unordered_map<int, std::vector<int>>& solver_weekly,
                              const std::string& id_key, const std::string& name_key) {
         JsonValue array = JsonValue::MakeArray();
+        const int total_weeks = static_cast<int>(week_ranges.size());
+        Date remaining_from = as_of_date;
+        if (semester_start.year > 0 && remaining_from < semester_start) remaining_from = semester_start;
+        const int remaining_days = semester_start.year > 0 && semester_end.year > 0 && remaining_from <= semester_end
+            ? static_cast<int>(GenerateSchoolDays(remaining_from, semester_end).size()) : 0;
+        int remaining_weeks = 0;
+        for (const auto& range : week_ranges)
+            if (range.second >= DateToIso(as_of_date)) ++remaining_weeks;
+        remaining_weeks = std::max(1, remaining_weeks);
         std::vector<int> ids;
         for (const auto& pair : names) if (pair.first >= 0) ids.push_back(pair.first);
         std::sort(ids.begin(), ids.end());
@@ -2565,6 +2743,14 @@ JsonValue BuildHoursReport(const JsonValue& source_root, const std::string& sche
             row.At("substitution_out_hours") = JsonValue::MakeNumber(value.substitution_out);
             row.At("adjustment_hours") = JsonValue::MakeNumber(value.adjustment);
             row.At("remaining_hours") = JsonValue::MakeNumber(value.planned - value.credited);
+            row.At("average_weekly_hours") = JsonValue::MakeNumber(
+                total_weeks > 0 ? static_cast<double>(value.planned) / total_weeks : 0.0);
+            row.At("required_weekly_hours") = JsonValue::MakeNumber(
+                static_cast<double>(value.planned - value.credited) / remaining_weeks);
+            row.At("required_daily_hours") = JsonValue::MakeNumber(
+                remaining_days > 0 ? static_cast<double>(value.planned - value.credited) / remaining_days : 0.0);
+            row.At("remaining_weeks") = JsonValue::MakeNumber(remaining_weeks);
+            row.At("remaining_teaching_days") = JsonValue::MakeNumber(remaining_days);
             JsonValue weekly = JsonValue::MakeArray();
             for (int week : week_ids) {
                 auto wit = value.weekly.find(week);
@@ -2572,6 +2758,21 @@ JsonValue BuildHoursReport(const JsonValue& source_root, const std::string& sche
                     wit == value.weekly.end() ? 0 : wit->second));
             }
             row.At("weekly_hours") = weekly;
+            JsonValue planned_weekly = JsonValue::MakeArray();
+            auto sit = solver_weekly.find(id);
+            if (sit != solver_weekly.end())
+                for (int hours : sit->second) planned_weekly.array_value.push_back(JsonValue::MakeNumber(hours));
+            row.At("solver_weekly_hours") = planned_weekly;
+            row.At("planned_weekly_hours") = planned_weekly;
+            JsonValue daily = JsonValue::MakeArray();
+            for (const auto& entry : value.daily) {
+                JsonValue item = JsonValue::MakeObject();
+                item.At("date") = JsonValue::MakeString(entry.first);
+                item.At("hours") = JsonValue::MakeNumber(entry.second);
+                item.At("pairs") = JsonValue::MakeNumber(static_cast<double>(entry.second) / 2.0);
+                daily.array_value.push_back(item);
+            }
+            row.At("daily_hours") = daily;
             array.array_value.push_back(row);
         }
         return array;
@@ -2605,20 +2806,49 @@ JsonValue BuildHoursReport(const JsonValue& source_root, const std::string& sche
         item.At("to") = JsonValue::MakeString(it == week_ranges.end() ? "" : it->second.second);
         weeks.array_value.push_back(item);
     }
-    JsonValue group_rows = totals_to_json(by_group, group_names, "group_id", "group_name");
+    JsonValue group_rows = totals_to_json(by_group, group_names, group_solver_weekly_hours, "group_id", "group_name");
     for (JsonValue& row : group_rows.array_value) {
         const int group_id = JsonInt(row, "group_id", -1);
         row.At("accounting_title") = JsonValue::MakeString(group_accounting_titles[group_id]);
+        JsonValue subgroup_rows = JsonValue::MakeArray();
+        const int parts = group_parts.count(group_id) ? group_parts[group_id] : PARTS_PER_GROUP;
+        for (int part = 0; part < parts; ++part) {
+            const auto it = by_group_subgroup.find({group_id, part});
+            const Totals value = it == by_group_subgroup.end() ? Totals{} : it->second;
+            JsonValue subgroup_row = JsonValue::MakeObject();
+            subgroup_row.At("subgroup") = JsonValue::MakeNumber(part);
+            subgroup_row.At("planned_hours") = JsonValue::MakeNumber(value.planned);
+            subgroup_row.At("scheduled_hours") = JsonValue::MakeNumber(value.scheduled);
+            subgroup_row.At("credited_hours") = JsonValue::MakeNumber(value.credited);
+            subgroup_row.At("remaining_hours") = JsonValue::MakeNumber(value.planned - value.credited);
+            subgroup_row.At("required_weekly_hours") = row.At("required_weekly_hours");
+            subgroup_row.At("required_daily_hours") = row.At("required_daily_hours");
+            JsonValue daily = JsonValue::MakeArray();
+            for (const auto& entry : value.daily) {
+                JsonValue item = JsonValue::MakeObject();
+                item.At("date") = JsonValue::MakeString(entry.first);
+                item.At("hours") = JsonValue::MakeNumber(entry.second);
+                item.At("pairs") = JsonValue::MakeNumber(static_cast<double>(entry.second) / 2.0);
+                daily.array_value.push_back(item);
+            }
+            subgroup_row.At("daily_hours") = daily;
+            subgroup_rows.array_value.push_back(subgroup_row);
+        }
+        row.At("subgroups") = subgroup_rows;
     }
-    JsonValue teacher_rows = totals_to_json(by_teacher, teacher_names, "teacher_id", "teacher_name");
+    JsonValue teacher_rows = totals_to_json(by_teacher, teacher_names, teacher_solver_weekly_hours, "teacher_id", "teacher_name");
     attach_occurrences(group_rows, "group_id", occurrences_by_group, "scheduled_occurrences");
     attach_occurrences(teacher_rows, "teacher_id", scheduled_by_teacher, "scheduled_occurrences");
     attach_occurrences(teacher_rows, "teacher_id", credited_by_teacher, "credited_occurrences");
     attach_occurrences(lesson_rows, "lesson_id", occurrences_by_lesson, "scheduled_occurrences");
 
     result.At("weeks") = weeks;
+    result.At("as_of_date") = JsonValue::MakeString(DateToIso(as_of_date));
     result.At("semester_start") = JsonValue::MakeString(semester_start_iso);
     result.At("semester_end") = JsonValue::MakeString(semester_end_iso);
+    result.At("solver_plan") = quota_report;
+    result.At("solver_plan_found") = JsonValue::MakeBool(quota_report.At("lesson_quotas").IsArray() &&
+        !quota_report.At("lesson_quotas").array_value.empty());
     result.At("lessons") = lesson_rows;
     result.At("groups") = group_rows;
     result.At("teachers") = teacher_rows;
