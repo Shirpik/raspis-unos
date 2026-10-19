@@ -128,13 +128,56 @@ bool HasCode(const JsonValue& report, const std::string& code) {
 
 }  // namespace
 
-int main() {
+int main(int argc, char** argv) {
     RuntimeSolverConfig config = timetable::DefaultSolverConfig();
     config.min_student_pairs_per_study_day = 1;
     config.max_student_pairs_per_day = 7;
     config.hard_min_study_days_per_week = false;
     config.hard_no_student_windows = true;
 
+    {
+    // UP's displayed row is not its bell interval. On Saturday ordinary
+    // pair 3 ends before afternoon UP, while on Thursday it overlaps UP.
+    auto up_interval_input = Input();
+    auto second_group = up_interval_input.groups[0]; second_group.id = 1;
+    up_interval_input.groups.push_back(second_group);
+    auto second_lesson = up_interval_input.lessons[0]; second_lesson.id = 1; second_lesson.group = 1;
+    up_interval_input.lessons.push_back(second_lesson);
+    up_interval_input.teachers.resize(1);
+    up_interval_input.lessons[1].teacher = 0;
+    up_interval_input.lessons[1].is_block = true;
+    up_interval_input.lessons[1].name = "УП.01";
+    auto up_interval_schedule = Schedule();
+    auto second_row = up_interval_schedule.At("groups").array_value[0];
+    second_row.At("group_index") = JsonValue::MakeNumber(1);
+    second_row.At("days").array_value[0].At("slots").array_value[0].At("lessons").array_value[0].At("id") = JsonValue::MakeNumber(1);
+    up_interval_schedule.At("groups").array_value.push_back(second_row);
+    for (auto& row : up_interval_schedule.At("groups").array_value) {
+        auto& day = row.At("days").array_value[0];
+        day.At("date_iso") = JsonValue::MakeString("2026-10-24");
+        auto& slots = day.At("slots").array_value;
+        slots[2].At("lessons") = slots[0].At("lessons");
+        slots[0].At("lessons") = JsonValue::MakeArray();
+        slots[2].At("lessons").array_value[0].At("teacher_id") = JsonValue::MakeNumber(0);
+    }
+    up_interval_input.start_date = up_interval_input.end_date = {2026,10,24};
+    Require(!HasCode(timetable::ValidateScheduleJson(up_interval_input, config, up_interval_schedule).report, "teacher_conflict"),
+        "Saturday pair 3 and afternoon UP are disjoint despite sharing a display row");
+    up_interval_input.start_date = up_interval_input.end_date = {2026,10,22};
+    for (auto& row : up_interval_schedule.At("groups").array_value)
+        row.At("days").array_value[0].At("date_iso") = JsonValue::MakeString("2026-10-22");
+    Require(HasCode(timetable::ValidateScheduleJson(up_interval_input, config, up_interval_schedule).report, "teacher_conflict"),
+        "weekday pair 3 overlaps afternoon UP and must fail");
+    auto& up_slots = up_interval_schedule.At("groups").array_value[1].At("days").array_value[0].At("slots").array_value;
+    up_slots[0].At("lessons") = up_slots[2].At("lessons");
+    up_slots[2].At("lessons") = JsonValue::MakeArray();
+    Require(HasCode(timetable::ValidateScheduleJson(up_interval_input, config, up_interval_schedule).report, "teacher_conflict"),
+        "morning UP also conflicts with weekday pair 3 in a different display row");
+
+    }
+    if (argc == 2 && std::string(argv[1]) == "--teacher-intervals") {
+        std::cout << "teacher interval regression passed\n"; return 0;
+    }
     ScheduleInputData input = Input();
     auto valid = timetable::ValidateScheduleJson(input, config, Schedule());
     Require(valid.ok, "valid schedule must pass");
@@ -148,12 +191,24 @@ int main() {
     ScheduleValidationOptions scoped_options;
     scoped_options.allow_daily_minimum_fallback = true;
     scoped_options.require_weekly_study_days = false;
+    scoped_options.require_selected_study_days = true;
     auto scoped_daily = timetable::ValidateScheduleJson(
         input, strict_daily_config, Schedule(), scoped_options);
     Require(!scoped_daily.ok &&
             HasCode(scoped_daily.report, "student_daily_minimum_fallback") &&
             HasCode(scoped_daily.report, "student_daily_minimum_missing_day"),
         "scoped generation reports the fallback but still requires every selected study day");
+    auto spare_day = Schedule();
+    auto empty_day = spare_day.At("groups").array_value[0].At("days").array_value[0];
+    empty_day.At("date_iso") = JsonValue::MakeString("2026-09-04");
+    empty_day.At("slots") = JsonValue::MakeArray();
+    spare_day.At("groups").array_value[0].At("days").array_value.push_back(empty_day);
+    Require(!HasCode(timetable::ValidateScheduleJson(input, config, spare_day).report,
+                     "student_daily_minimum_missing_day"),
+        "full-period quotas may leave an unused day without inventing extra curriculum hours");
+    Require(HasCode(timetable::ValidateScheduleJson(input, config, spare_day, scoped_options).report,
+                    "student_daily_minimum_missing_day"),
+        "selected Constructor dates still require every group to have lessons");
 
     auto up_input = Input();
     up_input.lessons[0].is_block = true;
@@ -297,7 +352,7 @@ int main() {
     gap_slots[3].At("lessons") = gap_slots[1].At("lessons");
     gap_slots[1].At("lessons") = JsonValue::MakeArray();
     auto gap_validation = timetable::ValidateScheduleJson(continuous_input, config, gap_schedule);
-    Require(!gap_validation.ok && HasCode(gap_validation.report, "class_hour_student_window"), "zero lesson must participate in student window validation");
+    Require(!HasCode(gap_validation.report, "student_window") && !HasCode(gap_validation.report, "class_hour_student_window"), "class hour must not create a student window before teaching begins");
     auto late_schedule = gap_schedule;
     auto& late_slots = late_schedule.At("groups").array_value[0].At("days").array_value[0].At("slots").array_value;
     late_slots[2].At("lessons") = late_slots[0].At("lessons");
@@ -309,25 +364,72 @@ int main() {
     Require(timetable::ValidateClassHours(continuous_input, late_schedule).array_value.empty(), "late class followed by the very next pair must pass");
     late_slots[4].At("lessons") = late_slots[3].At("lessons");
     late_slots[3].At("lessons") = JsonValue::MakeArray();
-    Require(!timetable::ValidateClassHours(continuous_input, late_schedule).array_value.empty(), "late class must not be separated from regular pairs");
+    Require(timetable::ValidateClassHours(continuous_input, late_schedule).array_value.empty(), "class hour does not require both subgroups to begin in the next pair");
+    auto before_schedule = late_schedule;
+    auto& before_slots = before_schedule.At("groups").array_value[0].At("days").array_value[0].At("slots").array_value;
+    before_slots[1].At("lessons") = before_slots[4].At("lessons");
+    before_slots[4].At("lessons") = JsonValue::MakeArray();
+    auto before_issues = JsonValue::MakeObject();
+    before_issues.At("issues") = timetable::ValidateClassHours(continuous_input, before_schedule);
+    Require(HasCode(before_issues, "teaching_before_class_hour"), "no subgroup may have teaching before its class hour");
 
-    const auto model_with_zero = [&](int first_pair) {
+    for (int pair : {1,5}) {
+        auto allowed_schedule = late_schedule;
+        auto& slots = allowed_schedule.At("groups").array_value[0].At("days").array_value[0].At("slots").array_value;
+        const auto academic = slots[4].At("lessons");
+        auto class_lesson = slots[2].At("lessons").array_value[0];
+        for (auto& slot : slots) slot.At("lessons") = JsonValue::MakeArray();
+        const auto interval = timetable::PairSlotInterval(1,pair-1);
+        class_lesson.At("start_time") = JsonValue::MakeString(timetable::MinuteToString(interval.to_minute-40));
+        class_lesson.At("end_time") = JsonValue::MakeString(timetable::MinuteToString(interval.to_minute));
+        slots[pair].At("lessons").array_value.push_back(class_lesson);
+        slots[pair+1].At("lessons") = academic;
+        Require(timetable::ValidateClassHours(continuous_input, allowed_schedule).array_value.empty(), "first and fifth pair second halves are permitted");
+    }
+
+    const auto model_with_class = [&](int class_pair, int first_pair, int second_pair = -1) {
         using namespace operations_research::sat;
         auto model_input = continuous_input;
-        model_input.teachers[0].work_schedule.date_slot_overrides[monday.start_date] = {1};
+        model_input.groups[0].class_hour_fixed_pair = class_pair;
         CpModelBuilder model;
         std::vector<std::vector<std::vector<BoolVar>>> pb(1, std::vector<std::vector<BoolVar>>(2));
         std::vector<std::vector<BoolVar>> tb(1);
         for (int slot=0; slot<7; ++slot) {
             auto t = model.NewBoolVar(); model.AddEquality(t,0); tb[0].push_back(t);
-            for (int part=0; part<2; ++part) { auto p = model.NewBoolVar(); model.AddEquality(p,slot+1==first_pair); pb[0][part].push_back(p); }
+            for (int part=0; part<2; ++part) { auto p = model.NewBoolVar(); model.AddEquality(p,slot+1==((part==1 && second_pair>0)?second_pair:first_pair)); pb[0][part].push_back(p); }
         }
         std::vector<std::vector<IntVar>> gc{{model.NewIntVar(operations_research::Domain(0,1))}}, tc{{model.NewIntVar(operations_research::Domain(0,1))}};
         timetable::AddClassHourTimeConstraints(model, model_input, {monday.start_date},pb,tb,gc,tc);
         return Solve(model.Build()).status();
     };
-    Require(model_with_zero(1) == operations_research::sat::CpSolverStatus::OPTIMAL, "integrated model permits zero then pair one");
-    Require(model_with_zero(2) == operations_research::sat::CpSolverStatus::INFEASIBLE, "integrated model forbids zero then pair two without pair one");
+    Require(model_with_class(0,1) == operations_research::sat::CpSolverStatus::OPTIMAL, "integrated model permits zero then pair one");
+    Require(model_with_class(0,2,3) == operations_research::sat::CpSolverStatus::OPTIMAL, "subgroups may start at different times after zero class hour");
+    Require(model_with_class(1,2,3) == operations_research::sat::CpSolverStatus::OPTIMAL, "subgroups may start independently after first-pair class hour");
+    Require(model_with_class(5,6,7) == operations_research::sat::CpSolverStatus::OPTIMAL, "fifth-pair class hour permits later subgroup starts");
+    Require(model_with_class(3,2,4) == operations_research::sat::CpSolverStatus::INFEASIBLE, "teaching in either subgroup before class hour is forbidden");
+    Require(model_with_class(2,2) == operations_research::sat::CpSolverStatus::INFEASIBLE, "academic pair cannot overlap class hour");
+
+    const auto model_with_up = [&](int class_pair, int up_start, bool selected = true) {
+        using namespace operations_research::sat;
+        auto model_input = continuous_input;
+        model_input.groups[0].class_hour_fixed_pair = class_pair;
+        model_input.lessons[0].is_block = true;
+        CpModelBuilder model;
+        std::vector<std::vector<std::vector<BoolVar>>> pb(1, std::vector<std::vector<BoolVar>>(2));
+        std::vector<std::vector<BoolVar>> tb(1), placements(1);
+        for (int slot=0; slot<7; ++slot) {
+            auto t=model.NewBoolVar(); model.AddEquality(t,0); tb[0].push_back(t);
+            auto x=model.NewBoolVar(); model.AddEquality(x,selected && slot==up_start); placements[0].push_back(x);
+            for(int part=0;part<2;++part){auto p=model.NewBoolVar();model.AddEquality(p,0);pb[0][part].push_back(p);}
+        }
+        std::vector<std::vector<IntVar>> gc{{model.NewIntVar(operations_research::Domain(0,1))}}, tc{{model.NewIntVar(operations_research::Domain(0,1))}};
+        timetable::AddClassHourTimeConstraints(model,model_input,{monday.start_date},pb,tb,gc,tc,&model_input.lessons,&placements);
+        return Solve(model.Build()).status();
+    };
+    Require(model_with_up(1,2) == operations_research::sat::CpSolverStatus::OPTIMAL, "afternoon UP may follow first-pair class hour");
+    Require(model_with_up(3,2) == operations_research::sat::CpSolverStatus::INFEASIBLE, "UP may not begin before class hour ends, even at its displayed pair");
+    Require(model_with_up(0,0) == operations_research::sat::CpSolverStatus::INFEASIBLE, "08:30 UP cannot overlap zero class hour ending at 08:55");
+    Require(model_with_up(0,0,false) == operations_research::sat::CpSolverStatus::OPTIMAL, "an unused UP must not block ordinary placements");
 
     auto semester_root = timetable::ParseJson(R"({"settings":{"semester_start_date":"2026-09-07","semester_weeks":16},
       "teachers":[{"id":0,"desired_load_rules":[{"group_ids":[0],"course_year":2,"deadline":"2026-09-12"}]}],
@@ -355,6 +457,118 @@ int main() {
     Require(timetable::JsonInt(hours.At("lessons").array_value[0], "scheduled_hours", -1) == 2 &&
             timetable::JsonInt(hours.At("lessons").array_value[0], "projected_hours", -1) == 0,
         "confirmed ledger hours and generated projection must be separated");
+
+    auto accounting_root = timetable::ParseJson(R"({
+      "settings":{"start_date":"2026-09-07","end_date":"2026-09-12","semester_start_date":"2026-09-07","semester_end_date":"2026-10-04","accounting_as_of_date":"2026-09-14"},
+      "groups":[{"id":0,"name":"TEST","parts":1,"accounting_order":4}],"teachers":[{"id":0,"name":"Teacher"}],
+      "lessons":[{"id":10,"teacher":0,"group":0,"name":"Theory","total_hours":12,"total_slots":6,"workload_order":7}],
+      "teaching_ledger":[
+        {"lesson_id":10,"date":"2026-09-07","slot":1,"hours":2,"status":"confirmed"},
+        {"lesson_id":10,"date":"2026-09-07","slot":1,"hours":1,"status":"planned"},
+        {"lesson_id":10,"date":"2026-09-15","slot":2,"hours":2,"status":"planned"},
+        {"lesson_id":10,"date":"2026-09-15","slot":2,"hours":2,"status":"planned"},
+        {"lesson_id":10,"date":"2026-09-07","slot":3,"hours":2,"status":"confirmed","is_class_hour":true}
+      ]})").value;
+    const auto accounting = timetable::BuildHoursReport(accounting_root, "nonexistent-schedule-test.json");
+    const auto& accounting_lesson = accounting.At("lessons").array_value[0];
+    Require(timetable::JsonInt(accounting_lesson, "workload_order", -1) == 7 &&
+            timetable::JsonInt(accounting_lesson, "group_order", -1) == 4 &&
+            timetable::JsonInt(accounting.At("groups").array_value[0], "accounting_order", -1) == 4,
+        "hours report preserves group-tab and lesson-row order from the workload workbook");
+    Require(timetable::JsonInt(accounting_lesson, "scheduled_hours", -1) == 2 &&
+            timetable::JsonInt(accounting_lesson, "reserved_hours", -1) == 2 &&
+            timetable::JsonInt(accounting_lesson, "remaining_hours", -1) == 10 &&
+            timetable::JsonInt(accounting_lesson, "available_hours", -1) == 8,
+        "journal reservations deduplicate, confirmed wins, and class hours never consume curriculum");
+    const auto& accounting_teacher = accounting.At("teachers").array_value[0];
+    Require(timetable::JsonInt(accounting_teacher, "required_weekly_hours", -1) == 5 &&
+            timetable::JsonInt(accounting_teacher, "remaining_weeks", -1) == 2,
+        "weekly readout pace uses remaining hours and only complete future semester weeks");
+
+    auto merged_teacher_root = timetable::ParseJson(R"({
+      "settings":{"semester_start_date":"2026-09-01","semester_end_date":"2026-09-19","accounting_as_of_date":"2026-09-14"},
+      "groups":[{"id":0,"name":"TEST","parts":1}],
+      "teachers":[{"id":1,"name":"Former name","merged_into_teacher_id":2},{"id":2,"name":"Current name"}],
+      "lessons":[{"id":10,"teacher":1,"group":0,"name":"Theory","total_hours":12,"total_slots":6}],
+      "teaching_ledger":[
+        {"lesson_id":10,"date":"2026-09-02","slot":1,"hours":2,"status":"confirmed","actual_teacher":1},
+        {"lesson_id":10,"date":"2026-09-02","slot":2,"hours":2,"status":"confirmed","actual_teacher":1},
+        {"lesson_id":10,"date":"2026-09-02","slot":3,"hours":2,"status":"confirmed","actual_teacher":1}
+      ]})").value;
+    const auto merged_teacher_accounting = timetable::BuildHoursReport(
+        merged_teacher_root, "nonexistent-schedule-test.json");
+    Require(merged_teacher_accounting.At("teachers").array_value.size() == 1 &&
+            timetable::JsonInt(merged_teacher_accounting.At("teachers").array_value[0], "teacher_id", -1) == 2 &&
+            timetable::JsonInt(merged_teacher_accounting.At("teachers").array_value[0], "planned_hours", -1) == 12 &&
+            timetable::JsonInt(merged_teacher_accounting.At("teachers").array_value[0], "credited_hours", -1) == 6,
+        "merged teacher hours and confirmed credits are consolidated under the current teacher");
+    const auto& merged_occurrences = merged_teacher_accounting.At("teachers").array_value[0].At("credited_occurrences").array_value;
+    Require(merged_occurrences.size() == 3 &&
+            timetable::JsonString(merged_occurrences[0], "date", "") == "2026-09-02" &&
+            timetable::JsonInt(merged_occurrences[0], "actual_teacher_id", -1) == 2,
+        "merged teacher confirmed dates and identities are reported under the current teacher");
+    Require(timetable::JsonInt(merged_teacher_accounting.At("lessons").array_value[0], "teacher_id", -1) == 2,
+        "lesson accounting displays the canonical teacher identity after a merge");
+
+    auto pp_accounting_root = timetable::ParseJson(R"({
+      "settings":{"start_date":"2026-09-07","end_date":"2026-09-12","semester_start_date":"2026-09-07","semester_end_date":"2026-09-19","accounting_as_of_date":"2026-09-07"},
+      "groups":[{"id":0,"name":"TEST","parts":1}],"teachers":[{"id":0,"name":"Teacher"}],
+      "lessons":[
+        {"id":20,"teacher":0,"group":0,"source_index":"1","name":"Theory","total_hours":12,"total_slots":6},
+        {"id":21,"teacher":0,"group":0,"source_index":"ПП.04","name":"ПП.04 Производственная практика","total_hours":144,"total_slots":72}
+      ],
+      "teaching_ledger":[
+        {"lesson_id":20,"date":"2026-09-07","slot":1,"hours":2,"status":"confirmed"},
+        {"lesson_id":21,"date":"2026-09-07","slot":2,"hours":6,"status":"confirmed"},
+        {"lesson_id":21,"date":"2026-09-14","slot":2,"hours":6,"status":"planned"}
+      ]})").value;
+    const auto pp_accounting = timetable::BuildHoursReport(pp_accounting_root, "nonexistent-schedule-test.json");
+    Require(pp_accounting.At("lessons").array_value.size() == 1 &&
+            timetable::JsonInt(pp_accounting.At("lessons").array_value[0], "lesson_id", -1) == 20,
+        "production-practice lessons are omitted from hour-accounting details");
+    Require(timetable::JsonInt(pp_accounting.At("groups").array_value[0], "planned_hours", -1) == 12 &&
+            timetable::JsonInt(pp_accounting.At("groups").array_value[0], "scheduled_hours", -1) == 2 &&
+            timetable::JsonInt(pp_accounting.At("groups").array_value[0], "projected_hours", -1) == 0,
+        "production-practice planned, confirmed, and reserved hours do not affect group accounting");
+    Require(timetable::JsonInt(pp_accounting.At("teachers").array_value[0], "planned_hours", -1) == 12 &&
+            timetable::JsonInt(pp_accounting.At("teachers").array_value[0], "scheduled_hours", -1) == 2,
+        "production-practice hours do not affect teacher accounting");
+    Require(pp_accounting_root.At("lessons").array_value.size() == 2,
+        "excluding production practice from accounting does not remove source curriculum data");
+
+    auto transferred_pp_root = timetable::ParseJson(R"({
+      "settings":{"semester_start_date":"2026-09-07","semester_end_date":"2026-09-19","accounting_as_of_date":"2026-09-14"},
+      "groups":[{"id":0,"name":"TEST","parts":1}],
+      "teachers":[{"id":0,"name":"Teacher"},{"id":88,"name":"вынесена на ПП"}],
+      "lessons":[
+        {"id":30,"teacher":0,"group":0,"name":"Theory","total_hours":12,"total_slots":6},
+        {"id":31,"teacher":88,"group":0,"source_index":"УП.02","name":"УП.02","total_hours":120,"total_slots":60}
+      ],
+      "teaching_ledger":[
+        {"lesson_id":30,"date":"2026-09-07","slot":1,"hours":2,"status":"confirmed"},
+        {"lesson_id":31,"date":"2026-09-07","slot":2,"hours":6,"status":"confirmed"},
+        {"lesson_id":31,"date":"2026-09-15","slot":2,"hours":6,"status":"planned"}
+      ]})").value;
+    const auto transferred_pp = timetable::BuildHoursReport(transferred_pp_root, "nonexistent-schedule-test.json");
+    Require(transferred_pp.At("lessons").array_value.size() == 1 &&
+            timetable::JsonInt(transferred_pp.At("lessons").array_value[0], "lesson_id", -1) == 30,
+        "UP rows assigned to the transferred-to-PP service teacher are absent from accounting details");
+    Require(transferred_pp.At("teachers").array_value.size() == 1 &&
+            timetable::JsonInt(transferred_pp.At("teachers").array_value[0], "teacher_id", -1) == 0 &&
+            timetable::JsonInt(transferred_pp.At("teachers").array_value[0], "planned_hours", -1) == 12,
+        "the transferred-to-PP service teacher and its hours are absent from teacher accounting");
+    Require(timetable::JsonInt(transferred_pp.At("groups").array_value[0], "planned_hours", -1) == 12 &&
+            timetable::JsonInt(transferred_pp.At("groups").array_value[0], "scheduled_hours", -1) == 2 &&
+            timetable::JsonInt(transferred_pp.At("groups").array_value[0], "projected_hours", -1) == 0,
+        "transferred-to-PP planned, confirmed, and reserved hours are excluded from group accounting");
+    Require(transferred_pp_root.At("lessons").array_value.size() == 2,
+        "transferred-to-PP curriculum remains in source data");
+
+    accounting_root.At("settings").At("accounting_as_of_date") = JsonValue::MakeString("2026-10-05");
+    const auto expired_accounting = timetable::BuildHoursReport(accounting_root, "nonexistent-schedule-test.json");
+    Require(expired_accounting.At("teachers").array_value[0].At("required_weekly_hours").IsNull() &&
+            timetable::JsonInt(expired_accounting.At("teachers").array_value[0], "remaining_weeks", -1) == 0,
+        "an expired semester must not invent another available week");
 
     auto completed_lesson_root = timetable::ParseJson(R"({
       "settings":{"start_date":"2026-09-09","end_date":"2026-09-11","semester_start_date":"2026-09-02","semester_end_date":"2026-09-11","automatic_period_quotas":true},
@@ -387,6 +601,13 @@ int main() {
     Require(std::any_of(completed_lesson_data.lessons.begin(), completed_lesson_data.lessons.end(),
                 [](const auto& lesson) { return lesson.id == 12 && lesson.is_block; }),
         "UP name must restore block semantics when imported is_block is malformed");
+    auto completed_up_root = completed_lesson_root;
+    completed_up_root.At("teaching_ledger").array_value.push_back(timetable::ParseJson(
+        R"({"id":5,"lesson_id":12,"date":"2026-09-08","slot":2,"hours":6,"status":"confirmed"})").value);
+    Require(timetable::LoadScheduleInputDataFromRoot(completed_up_root, completed_lesson_data, completed_lesson_error, false) &&
+            std::none_of(completed_lesson_data.lessons.begin(), completed_lesson_data.lessons.end(),
+                [](const auto& lesson) { return lesson.id == 12; }),
+        "a credited six-hour UP block cannot be assigned again");
 
     auto practice_root = completed_lesson_root;
     practice_root.At("settings").At("semester_end_date") = JsonValue::MakeString("2026-12-19");
@@ -514,6 +735,9 @@ int main() {
     auto balance = timetable::ReadTeachingBalances(reservation_root, {2026,9,18});
     Require(balance.confirmed[10] == 2 && balance.reserved[10] == 2,
         "planned prior dates reserve hours once; regeneration dates and class hours do not consume balance");
+    balance = timetable::ReadTeachingBalances(reservation_root, {2026,9,20}, {2026,9,17}, {2026,9,18});
+    Require(balance.confirmed[10] == 2 && balance.reserved[10] == 0,
+        "scoped replacement releases planned reservations inside the selected range without deleting facts");
     GroupData course_one;
     course_one.semester_end_date = "2026-12-26";
     Require(timetable::GroupTeachingDeadline(course_one, {2026,9,1}, {2026,12,19}) == Date{2026,12,26},

@@ -10,6 +10,7 @@ export const useScheduleStore = defineStore('schedule', () => {
   const semester = ref(null)
   const generating = ref(false)
   const lastScoped = ref(false)
+  const lastScope = ref(null)
 
   // Прогресс недельной генерации
   const progress = ref(null)   // null | { state, total_weeks, current_week, solved_weeks, weeks, message, total_elapsed }
@@ -113,6 +114,9 @@ export const useScheduleStore = defineStore('schedule', () => {
   async function regenerate(opts = {}) {
     generating.value = true
     lastScoped.value = Boolean(opts.scope_from)
+    lastScope.value = opts.scope_from && opts.scope_to
+      ? { from: opts.scope_from, to: opts.scope_to }
+      : null
     progress.value = null
 
     const capability = await api.data.semesterReadout()
@@ -155,7 +159,7 @@ export const useScheduleStore = defineStore('schedule', () => {
   const groups = computed(() => scheduleData.value?.groups || [])
 
   return {
-    scheduleData, loading, error, generating, semester, lastScoped,
+    scheduleData, loading, error, generating, semester, lastScoped, lastScope,
     progress,
     groups,
     fetchSchedule, fetchPublished, fetchPublishedGroups, fetchPublishedGroup, regenerate, cancelGeneration,

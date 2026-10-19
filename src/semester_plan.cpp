@@ -45,7 +45,7 @@ int Course(const JsonValue& root, int group) {
 }
 }
 
-TeachingBalances ReadTeachingBalances(const JsonValue& root, Date before) {
+TeachingBalances ReadTeachingBalances(const JsonValue& root, Date before, Date replace_from, Date replace_to) {
     TeachingBalances result;
     std::map<std::string, std::pair<int, const JsonValue*>> records;
     for (const auto& entry : root.At("teaching_ledger").array_value) {
@@ -56,6 +56,9 @@ TeachingBalances ReadTeachingBalances(const JsonValue& root, Date before) {
             !ParseDateIso(JsonString(entry, "date", ""), day) || !(day < before) ||
             id < 0 || slot < 1 || slot > 7 || JsonInt(entry, "hours", 0) <= 0 ||
             JsonBool(entry, "is_class_hour", false)) continue;
+        // A selected range replaces its planned events; confirmed facts remain credits.
+        if (status == "planned" && replace_from.year && replace_to.year &&
+            replace_from <= day && day <= replace_to) continue;
         const auto key = std::to_string(id) + "|" + DateToIso(day) + "|" + std::to_string(slot);
         const int priority = status == "confirmed" ? 2 : 1;
         if (!records.count(key) || priority > records[key].first) records[key] = {priority, &entry};

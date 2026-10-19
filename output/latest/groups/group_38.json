@@ -1,8 +1,8 @@
 {
   "days": [
     {
-      "date": "01.09.2026",
-      "date_iso": "2026-09-01",
+      "date": "20.10.2026",
+      "date_iso": "2026-10-20",
       "day_index": 0,
       "slots": [
         {
@@ -10,212 +10,6 @@
           "slot": 1,
           "text": "-",
           "time": "1 пара (08:30-09:55)"
-        },
-        {
-          "lessons": [],
-          "slot": 2,
-          "text": "-",
-          "time": "2 пара (10:05-11:30)"
-        },
-        {
-          "lessons": [],
-          "slot": 3,
-          "text": "-",
-          "time": "3 пара (12:25-13:50)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 840,
-              "is_block": false,
-              "is_lab": false,
-              "name": "МДК.05.01 Планирование, организация и контроль деятельности подчиненного персонала",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 54,
-              "room_name": "57",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": -1,
-              "teacher_id": 46,
-              "uid": "lesson-e32cc321099a028e",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 4,
-          "text": "МДК.05.01 Планирование, организация и контроль деятельности подчиненного персонала — вся группа, Черепанова Татьяна Михайловна, Кривоусова",
-          "time": "4 пара (14:00-15:25)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 840,
-              "is_block": false,
-              "is_lab": false,
-              "name": "МДК.05.01 Планирование, организация и контроль деятельности подчиненного персонала",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 54,
-              "room_name": "57",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": -1,
-              "teacher_id": 46,
-              "uid": "lesson-e32cc321099a028e",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 5,
-          "text": "МДК.05.01 Планирование, организация и контроль деятельности подчиненного персонала — вся группа, Черепанова Татьяна Михайловна, Кривоусова",
-          "time": "5 пара (15:35-16:55)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 831,
-              "is_block": false,
-              "is_lab": false,
-              "name": "МДК.03.01 Разработка и реализация технологических процессов в механосборочном производстве",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 61,
-              "room_name": "70",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": -1,
-              "teacher_id": 40,
-              "uid": "lesson-3613fa8593f05519",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 6,
-          "text": "МДК.03.01 Разработка и реализация технологических процессов в механосборочном производстве — вся группа, Сивилькаев Вадим Михайлович, Кривоусова",
-          "time": "6 пара (17:05-18:25)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 831,
-              "is_block": false,
-              "is_lab": false,
-              "name": "МДК.03.01 Разработка и реализация технологических процессов в механосборочном производстве",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 61,
-              "room_name": "70",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": -1,
-              "teacher_id": 40,
-              "uid": "lesson-3613fa8593f05519",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 7,
-          "text": "МДК.03.01 Разработка и реализация технологических процессов в механосборочном производстве — вся группа, Сивилькаев Вадим Михайлович, Кривоусова",
-          "time": "7 пара (18:35-19:55)"
-        }
-      ],
-      "weekday": "ВТ"
-    },
-    {
-      "date": "08.10.2026",
-      "date_iso": "2026-10-08",
-      "day_index": 0,
-      "slots": [
-        {
-          "lessons": [],
-          "slot": 1,
-          "text": "-",
-          "time": "1 пара (08:30-09:55)"
-        },
-        {
-          "lessons": [],
-          "slot": 2,
-          "text": "-",
-          "time": "2 пара (10:05-11:30)"
-        },
-        {
-          "lessons": [],
-          "slot": 3,
-          "text": "-",
-          "time": "3 пара (12:25-13:50)"
-        },
-        {
-          "lessons": [],
-          "slot": 4,
-          "text": "-",
-          "time": "4 пара (14:00-15:25)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 1001,
-              "is_block": false,
-              "is_lab": false,
-              "name": "КП МДК.05.01 Планирование, организация и контроль деятельности подчиненного персонала",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 20,
-              "room_name": "41",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": -1,
-              "teacher_id": 46,
-              "uid": "lesson-6c313afd6c5ba167",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 5,
-          "text": "КП МДК.05.01 Планирование, организация и контроль деятельности подчиненного персонала — вся группа, Черепанова Татьяна Михайловна, Кривоусова",
-          "time": "5 пара (15:35-16:55)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 829,
-              "is_block": false,
-              "is_lab": false,
-              "name": "Физическая культура",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 22,
-              "room_name": "Спортзал",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": -1,
-              "teacher_id": 8,
-              "uid": "lesson-74fbc344a9e6d641",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 6,
-          "text": "Физическая культура — вся группа, Потапова Регина Александровна, Кривоусова",
-          "time": "6 пара (17:05-18:25)"
         },
         {
           "lessons": [
@@ -240,43 +34,136 @@
               "week_parity": "all"
             }
           ],
-          "slot": 7,
+          "slot": 2,
           "text": "ЛПЗ МДК.03.01 Разработка и реализация технологических процессов в механосборочном производстве — 2 п/г, Сивилькаев Вадим Михайлович, Кривоусова",
+          "time": "2 пара (10:05-11:30)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 833,
+              "is_block": false,
+              "is_lab": true,
+              "name": "ЛПЗ МДК.03.01 Разработка и реализация технологических процессов в механосборочном производстве",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 61,
+              "room_name": "70",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 77,
+              "teacher_id": 40,
+              "uid": "lesson-1257b5085514f787",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 3,
+          "text": "ЛПЗ МДК.03.01 Разработка и реализация технологических процессов в механосборочном производстве — 2 п/г, Сивилькаев Вадим Михайлович, Кривоусова",
+          "time": "3 пара (12:25-13:50)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 1001,
+              "is_block": false,
+              "is_lab": false,
+              "name": "КП МДК.05.01 Планирование, организация и контроль деятельности подчиненного персонала",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 59,
+              "room_name": "68",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": -1,
+              "teacher_id": 46,
+              "uid": "lesson-6c313afd6c5ba167",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 4,
+          "text": "КП МДК.05.01 Планирование, организация и контроль деятельности подчиненного персонала — вся группа, Черепанова Татьяна Михайловна, Кривоусова",
+          "time": "4 пара (14:00-15:25)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 1001,
+              "is_block": false,
+              "is_lab": false,
+              "name": "КП МДК.05.01 Планирование, организация и контроль деятельности подчиненного персонала",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 59,
+              "room_name": "68",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": -1,
+              "teacher_id": 46,
+              "uid": "lesson-6c313afd6c5ba167",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 5,
+          "text": "КП МДК.05.01 Планирование, организация и контроль деятельности подчиненного персонала — вся группа, Черепанова Татьяна Михайловна, Кривоусова",
+          "time": "5 пара (15:35-16:55)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 832,
+              "is_block": false,
+              "is_lab": true,
+              "name": "ЛПЗ МДК.03.01 Разработка и реализация технологических процессов в механосборочном производстве",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 61,
+              "room_name": "70",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 76,
+              "teacher_id": 40,
+              "uid": "lesson-ffd9e1b599e02cbb",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 6,
+          "text": "ЛПЗ МДК.03.01 Разработка и реализация технологических процессов в механосборочном производстве — 1 п/г, Сивилькаев Вадим Михайлович, Кривоусова",
+          "time": "6 пара (17:05-18:25)"
+        },
+        {
+          "lessons": [],
+          "slot": 7,
+          "text": "-",
           "time": "7 пара (18:35-19:55)"
         }
       ],
-      "weekday": "ЧТ"
+      "weekday": "ВТ"
     },
     {
-      "date": "09.10.2026",
-      "date_iso": "2026-10-09",
+      "date": "21.10.2026",
+      "date_iso": "2026-10-21",
       "day_index": 1,
       "slots": [
         {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 1001,
-              "is_block": false,
-              "is_lab": false,
-              "name": "КП МДК.05.01 Планирование, организация и контроль деятельности подчиненного персонала",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 20,
-              "room_name": "41",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": -1,
-              "teacher_id": 46,
-              "uid": "lesson-6c313afd6c5ba167",
-              "week_parity": "all"
-            }
-          ],
+          "lessons": [],
           "slot": 1,
-          "text": "КП МДК.05.01 Планирование, организация и контроль деятельности подчиненного персонала — вся группа, Черепанова Татьяна Михайловна, Кривоусова",
+          "text": "-",
           "time": "1 пара (08:30-09:55)"
         },
         {
@@ -285,25 +172,25 @@
               "avoid_lunch_split": false,
               "consecutive_pairs": 1,
               "display_time": null,
-              "id": 1001,
+              "id": 1000,
               "is_block": false,
               "is_lab": false,
-              "name": "КП МДК.05.01 Планирование, организация и контроль деятельности подчиненного персонала",
+              "name": "МДК.03.02 Контроль соответствия качеству деталей требованиям технической документации",
               "requested_room_id": null,
               "requested_room_name": null,
-              "room_id": 55,
-              "room_name": "63",
+              "room_id": 40,
+              "room_name": "322",
               "room_substituted": false,
               "room_substitution_reason": null,
               "room_type": 0,
               "subgroup": -1,
-              "teacher_id": 46,
-              "uid": "lesson-6c313afd6c5ba167",
+              "teacher_id": 61,
+              "uid": "lesson-b88de5c245d89377",
               "week_parity": "all"
             }
           ],
           "slot": 2,
-          "text": "КП МДК.05.01 Планирование, организация и контроль деятельности подчиненного персонала — вся группа, Черепанова Татьяна Михайловна, Кривоусова",
+          "text": "МДК.03.02 Контроль соответствия качеству деталей требованиям технической документации — вся группа, Саламатина Вера Викторовна, Лесная",
           "time": "2 пара (10:05-11:30)"
         },
         {
@@ -312,406 +199,25 @@
               "avoid_lunch_split": false,
               "consecutive_pairs": 1,
               "display_time": null,
-              "id": 1001,
+              "id": 1000,
               "is_block": false,
               "is_lab": false,
-              "name": "КП МДК.05.01 Планирование, организация и контроль деятельности подчиненного персонала",
+              "name": "МДК.03.02 Контроль соответствия качеству деталей требованиям технической документации",
               "requested_room_id": null,
               "requested_room_name": null,
-              "room_id": 8,
-              "room_name": "21",
+              "room_id": 40,
+              "room_name": "322",
               "room_substituted": false,
               "room_substitution_reason": null,
               "room_type": 0,
               "subgroup": -1,
-              "teacher_id": 46,
-              "uid": "lesson-6c313afd6c5ba167",
+              "teacher_id": 61,
+              "uid": "lesson-b88de5c245d89377",
               "week_parity": "all"
             }
           ],
           "slot": 3,
-          "text": "КП МДК.05.01 Планирование, организация и контроль деятельности подчиненного персонала — вся группа, Черепанова Татьяна Михайловна, Кривоусова",
-          "time": "3 пара (12:25-13:50)"
-        },
-        {
-          "lessons": [],
-          "slot": 4,
-          "text": "-",
-          "time": "4 пара (14:00-15:25)"
-        },
-        {
-          "lessons": [],
-          "slot": 5,
-          "text": "-",
-          "time": "5 пара (15:35-16:55)"
-        },
-        {
-          "lessons": [],
-          "slot": 6,
-          "text": "-",
-          "time": "6 пара (17:05-18:25)"
-        },
-        {
-          "lessons": [],
-          "slot": 7,
-          "text": "-",
-          "time": "7 пара (18:35-19:55)"
-        }
-      ],
-      "weekday": "ПТ"
-    },
-    {
-      "date": "10.10.2026",
-      "date_iso": "2026-10-10",
-      "day_index": 2,
-      "slots": [
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 831,
-              "is_block": false,
-              "is_lab": false,
-              "name": "МДК.03.01 Разработка и реализация технологических процессов в механосборочном производстве",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 61,
-              "room_name": "70",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": -1,
-              "teacher_id": 40,
-              "uid": "lesson-3613fa8593f05519",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 1,
-          "text": "МДК.03.01 Разработка и реализация технологических процессов в механосборочном производстве — вся группа, Сивилькаев Вадим Михайлович, Кривоусова",
-          "time": "1 пара (08:30-09:45)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 834,
-              "is_block": false,
-              "is_lab": false,
-              "name": "КП МДК.03.01 Разработка и реализация технологических процессов в механосборочном производстве",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 61,
-              "room_name": "70",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": -1,
-              "teacher_id": 40,
-              "uid": "lesson-762415706f6267fa",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 2,
-          "text": "КП МДК.03.01 Разработка и реализация технологических процессов в механосборочном производстве — вся группа, Сивилькаев Вадим Михайлович, Кривоусова",
-          "time": "2 пара (09:55-11:10)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 834,
-              "is_block": false,
-              "is_lab": false,
-              "name": "КП МДК.03.01 Разработка и реализация технологических процессов в механосборочном производстве",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 61,
-              "room_name": "70",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": -1,
-              "teacher_id": 40,
-              "uid": "lesson-762415706f6267fa",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 3,
-          "text": "КП МДК.03.01 Разработка и реализация технологических процессов в механосборочном производстве — вся группа, Сивилькаев Вадим Михайлович, Кривоусова",
-          "time": "3 пара (11:30-12:45)"
-        },
-        {
-          "lessons": [],
-          "slot": 4,
-          "text": "-",
-          "time": "4 пара (12:55-14:10)"
-        },
-        {
-          "lessons": [],
-          "slot": 5,
-          "text": "-",
-          "time": "5 пара (14:20-15:30)"
-        },
-        {
-          "lessons": [],
-          "slot": 6,
-          "text": "-",
-          "time": "6 пара (15:40-16:50)"
-        },
-        {
-          "lessons": [],
-          "slot": 7,
-          "text": "-",
-          "time": "7 пара (17:00-18:10)"
-        }
-      ],
-      "weekday": "СБ"
-    },
-    {
-      "date": "13.10.2026",
-      "date_iso": "2026-10-13",
-      "day_index": 0,
-      "slots": [
-        {
-          "lessons": [],
-          "slot": 1,
-          "text": "-",
-          "time": "1 пара (08:30-09:55)"
-        },
-        {
-          "lessons": [],
-          "slot": 2,
-          "text": "-",
-          "time": "2 пара (10:05-11:30)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 833,
-              "is_block": false,
-              "is_lab": true,
-              "name": "ЛПЗ МДК.03.01 Разработка и реализация технологических процессов в механосборочном производстве",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 61,
-              "room_name": "70",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": 77,
-              "teacher_id": 40,
-              "uid": "lesson-1257b5085514f787",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 3,
-          "text": "ЛПЗ МДК.03.01 Разработка и реализация технологических процессов в механосборочном производстве — 2 п/г, Сивилькаев Вадим Михайлович, Кривоусова",
-          "time": "3 пара (12:25-13:50)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 840,
-              "is_block": false,
-              "is_lab": false,
-              "name": "МДК.05.01 Планирование, организация и контроль деятельности подчиненного персонала",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 54,
-              "room_name": "57",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": -1,
-              "teacher_id": 46,
-              "uid": "lesson-e32cc321099a028e",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 4,
-          "text": "МДК.05.01 Планирование, организация и контроль деятельности подчиненного персонала — вся группа, Черепанова Татьяна Михайловна, Кривоусова",
-          "time": "4 пара (14:00-15:25)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 840,
-              "is_block": false,
-              "is_lab": false,
-              "name": "МДК.05.01 Планирование, организация и контроль деятельности подчиненного персонала",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 54,
-              "room_name": "57",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": -1,
-              "teacher_id": 46,
-              "uid": "lesson-e32cc321099a028e",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 5,
-          "text": "МДК.05.01 Планирование, организация и контроль деятельности подчиненного персонала — вся группа, Черепанова Татьяна Михайловна, Кривоусова",
-          "time": "5 пара (15:35-16:55)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 832,
-              "is_block": false,
-              "is_lab": true,
-              "name": "ЛПЗ МДК.03.01 Разработка и реализация технологических процессов в механосборочном производстве",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 61,
-              "room_name": "70",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": 76,
-              "teacher_id": 40,
-              "uid": "lesson-ffd9e1b599e02cbb",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 6,
-          "text": "ЛПЗ МДК.03.01 Разработка и реализация технологических процессов в механосборочном производстве — 1 п/г, Сивилькаев Вадим Михайлович, Кривоусова",
-          "time": "6 пара (17:05-18:25)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 832,
-              "is_block": false,
-              "is_lab": true,
-              "name": "ЛПЗ МДК.03.01 Разработка и реализация технологических процессов в механосборочном производстве",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 61,
-              "room_name": "70",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": 76,
-              "teacher_id": 40,
-              "uid": "lesson-ffd9e1b599e02cbb",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 7,
-          "text": "ЛПЗ МДК.03.01 Разработка и реализация технологических процессов в механосборочном производстве — 1 п/г, Сивилькаев Вадим Михайлович, Кривоусова",
-          "time": "7 пара (18:35-19:55)"
-        }
-      ],
-      "weekday": "ВТ"
-    },
-    {
-      "date": "14.10.2026",
-      "date_iso": "2026-10-14",
-      "day_index": 0,
-      "slots": [
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 840,
-              "is_block": false,
-              "is_lab": false,
-              "name": "МДК.05.01 Планирование, организация и контроль деятельности подчиненного персонала",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 58,
-              "room_name": "67",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": -1,
-              "teacher_id": 46,
-              "uid": "lesson-e32cc321099a028e",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 1,
-          "text": "МДК.05.01 Планирование, организация и контроль деятельности подчиненного персонала — вся группа, Черепанова Татьяна Михайловна, Кривоусова",
-          "time": "1 пара (08:30-09:55)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 840,
-              "is_block": false,
-              "is_lab": false,
-              "name": "МДК.05.01 Планирование, организация и контроль деятельности подчиненного персонала",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 58,
-              "room_name": "67",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": -1,
-              "teacher_id": 46,
-              "uid": "lesson-e32cc321099a028e",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 2,
-          "text": "МДК.05.01 Планирование, организация и контроль деятельности подчиненного персонала — вся группа, Черепанова Татьяна Михайловна, Кривоусова",
-          "time": "2 пара (10:05-11:30)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 840,
-              "is_block": false,
-              "is_lab": false,
-              "name": "МДК.05.01 Планирование, организация и контроль деятельности подчиненного персонала",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 58,
-              "room_name": "67",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": -1,
-              "teacher_id": 46,
-              "uid": "lesson-e32cc321099a028e",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 3,
-          "text": "МДК.05.01 Планирование, организация и контроль деятельности подчиненного персонала — вся группа, Черепанова Татьяна Михайловна, Кривоусова",
+          "text": "МДК.03.02 Контроль соответствия качеству деталей требованиям технической документации — вся группа, Саламатина Вера Викторовна, Лесная",
           "time": "3 пара (12:25-13:50)"
         },
         {
@@ -742,9 +248,9 @@
       "weekday": "СР"
     },
     {
-      "date": "15.10.2026",
-      "date_iso": "2026-10-15",
-      "day_index": 0,
+      "date": "22.10.2026",
+      "date_iso": "2026-10-22",
+      "day_index": 2,
       "slots": [
         {
           "lessons": [],
@@ -753,9 +259,30 @@
           "time": "1 пара (08:30-09:55)"
         },
         {
-          "lessons": [],
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 1000,
+              "is_block": false,
+              "is_lab": false,
+              "name": "МДК.03.02 Контроль соответствия качеству деталей требованиям технической документации",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 40,
+              "room_name": "322",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": -1,
+              "teacher_id": 61,
+              "uid": "lesson-b88de5c245d89377",
+              "week_parity": "all"
+            }
+          ],
           "slot": 2,
-          "text": "-",
+          "text": "МДК.03.02 Контроль соответствия качеству деталей требованиям технической документации — вся группа, Саламатина Вера Викторовна, Лесная",
           "time": "2 пара (10:05-11:30)"
         },
         {
@@ -764,25 +291,25 @@
               "avoid_lunch_split": false,
               "consecutive_pairs": 1,
               "display_time": null,
-              "id": 833,
+              "id": 1000,
               "is_block": false,
-              "is_lab": true,
-              "name": "ЛПЗ МДК.03.01 Разработка и реализация технологических процессов в механосборочном производстве",
+              "is_lab": false,
+              "name": "МДК.03.02 Контроль соответствия качеству деталей требованиям технической документации",
               "requested_room_id": null,
               "requested_room_name": null,
-              "room_id": 61,
-              "room_name": "70",
+              "room_id": 40,
+              "room_name": "322",
               "room_substituted": false,
               "room_substitution_reason": null,
               "room_type": 0,
-              "subgroup": 77,
-              "teacher_id": 40,
-              "uid": "lesson-1257b5085514f787",
+              "subgroup": -1,
+              "teacher_id": 61,
+              "uid": "lesson-b88de5c245d89377",
               "week_parity": "all"
             }
           ],
           "slot": 3,
-          "text": "ЛПЗ МДК.03.01 Разработка и реализация технологических процессов в механосборочном производстве — 2 п/г, Сивилькаев Вадим Михайлович, Кривоусова",
+          "text": "МДК.03.02 Контроль соответствия качеству деталей требованиям технической документации — вся группа, Саламатина Вера Викторовна, Лесная",
           "time": "3 пара (12:25-13:50)"
         },
         {
@@ -791,25 +318,25 @@
               "avoid_lunch_split": false,
               "consecutive_pairs": 1,
               "display_time": null,
-              "id": 833,
+              "id": 836,
               "is_block": false,
-              "is_lab": true,
-              "name": "ЛПЗ МДК.03.01 Разработка и реализация технологических процессов в механосборочном производстве",
+              "is_lab": false,
+              "name": "МДК.04.01 Контроль, наладка, подналадка и техническое обслуживание сборочного оборудования",
               "requested_room_id": null,
               "requested_room_name": null,
-              "room_id": 61,
-              "room_name": "70",
+              "room_id": 40,
+              "room_name": "322",
               "room_substituted": false,
               "room_substitution_reason": null,
               "room_type": 0,
-              "subgroup": 77,
-              "teacher_id": 40,
-              "uid": "lesson-1257b5085514f787",
+              "subgroup": -1,
+              "teacher_id": 61,
+              "uid": "lesson-7f60dbfc7fb601ca",
               "week_parity": "all"
             }
           ],
           "slot": 4,
-          "text": "ЛПЗ МДК.03.01 Разработка и реализация технологических процессов в механосборочном производстве — 2 п/г, Сивилькаев Вадим Михайлович, Кривоусова",
+          "text": "МДК.04.01 Контроль, наладка, подналадка и техническое обслуживание сборочного оборудования — вся группа, Саламатина Вера Викторовна, Лесная",
           "time": "4 пара (14:00-15:25)"
         },
         {
@@ -818,88 +345,46 @@
               "avoid_lunch_split": false,
               "consecutive_pairs": 1,
               "display_time": null,
-              "id": 833,
+              "id": 837,
               "is_block": false,
               "is_lab": true,
-              "name": "ЛПЗ МДК.03.01 Разработка и реализация технологических процессов в механосборочном производстве",
+              "name": "ЛПЗ МДК.04.01 Контроль, наладка, подналадка и техническое обслуживание сборочного оборудования",
               "requested_room_id": null,
               "requested_room_name": null,
-              "room_id": 61,
-              "room_name": "70",
+              "room_id": 48,
+              "room_name": "413",
               "room_substituted": false,
               "room_substitution_reason": null,
               "room_type": 0,
-              "subgroup": 77,
-              "teacher_id": 40,
-              "uid": "lesson-1257b5085514f787",
+              "subgroup": 76,
+              "teacher_id": 62,
+              "uid": "lesson-d7f13536ca6d7c0e",
               "week_parity": "all"
             }
           ],
           "slot": 5,
-          "text": "ЛПЗ МДК.03.01 Разработка и реализация технологических процессов в механосборочном производстве — 2 п/г, Сивилькаев Вадим Михайлович, Кривоусова",
+          "text": "ЛПЗ МДК.04.01 Контроль, наладка, подналадка и техническое обслуживание сборочного оборудования — 1 п/г, Вальдиянов Ян Мансурович, Лесная",
           "time": "5 пара (15:35-16:55)"
         },
         {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 832,
-              "is_block": false,
-              "is_lab": true,
-              "name": "ЛПЗ МДК.03.01 Разработка и реализация технологических процессов в механосборочном производстве",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 61,
-              "room_name": "70",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": 76,
-              "teacher_id": 40,
-              "uid": "lesson-ffd9e1b599e02cbb",
-              "week_parity": "all"
-            }
-          ],
+          "lessons": [],
           "slot": 6,
-          "text": "ЛПЗ МДК.03.01 Разработка и реализация технологических процессов в механосборочном производстве — 1 п/г, Сивилькаев Вадим Михайлович, Кривоусова",
+          "text": "-",
           "time": "6 пара (17:05-18:25)"
         },
         {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 832,
-              "is_block": false,
-              "is_lab": true,
-              "name": "ЛПЗ МДК.03.01 Разработка и реализация технологических процессов в механосборочном производстве",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 61,
-              "room_name": "70",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": 76,
-              "teacher_id": 40,
-              "uid": "lesson-ffd9e1b599e02cbb",
-              "week_parity": "all"
-            }
-          ],
+          "lessons": [],
           "slot": 7,
-          "text": "ЛПЗ МДК.03.01 Разработка и реализация технологических процессов в механосборочном производстве — 1 п/г, Сивилькаев Вадим Михайлович, Кривоусова",
+          "text": "-",
           "time": "7 пара (18:35-19:55)"
         }
       ],
       "weekday": "ЧТ"
     },
     {
-      "date": "16.10.2026",
-      "date_iso": "2026-10-16",
-      "day_index": 0,
+      "date": "23.10.2026",
+      "date_iso": "2026-10-23",
+      "day_index": 3,
       "slots": [
         {
           "lessons": [],
@@ -908,30 +393,9 @@
           "time": "1 пара (08:30-09:55)"
         },
         {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 1000,
-              "is_block": false,
-              "is_lab": false,
-              "name": "МДК.03.02 Контроль соответствия качеству деталей требованиям технической документации",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 13,
-              "room_name": "28",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": -1,
-              "teacher_id": 61,
-              "uid": "lesson-b88de5c245d89377",
-              "week_parity": "all"
-            }
-          ],
+          "lessons": [],
           "slot": 2,
-          "text": "МДК.03.02 Контроль соответствия качеству деталей требованиям технической документации — вся группа, Саламатина Вера Викторовна, Кривоусова",
+          "text": "-",
           "time": "2 пара (10:05-11:30)"
         },
         {
@@ -940,43 +404,106 @@
               "avoid_lunch_split": false,
               "consecutive_pairs": 1,
               "display_time": null,
-              "id": 1000,
+              "id": 832,
               "is_block": false,
-              "is_lab": false,
-              "name": "МДК.03.02 Контроль соответствия качеству деталей требованиям технической документации",
+              "is_lab": true,
+              "name": "ЛПЗ МДК.03.01 Разработка и реализация технологических процессов в механосборочном производстве",
               "requested_room_id": null,
               "requested_room_name": null,
-              "room_id": 13,
-              "room_name": "28",
+              "room_id": 61,
+              "room_name": "70",
               "room_substituted": false,
               "room_substitution_reason": null,
               "room_type": 0,
-              "subgroup": -1,
-              "teacher_id": 61,
-              "uid": "lesson-b88de5c245d89377",
+              "subgroup": 76,
+              "teacher_id": 40,
+              "uid": "lesson-ffd9e1b599e02cbb",
               "week_parity": "all"
             }
           ],
           "slot": 3,
-          "text": "МДК.03.02 Контроль соответствия качеству деталей требованиям технической документации — вся группа, Саламатина Вера Викторовна, Кривоусова",
+          "text": "ЛПЗ МДК.03.01 Разработка и реализация технологических процессов в механосборочном производстве — 1 п/г, Сивилькаев Вадим Михайлович, Кривоусова",
           "time": "3 пара (12:25-13:50)"
         },
         {
-          "lessons": [],
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 832,
+              "is_block": false,
+              "is_lab": true,
+              "name": "ЛПЗ МДК.03.01 Разработка и реализация технологических процессов в механосборочном производстве",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 61,
+              "room_name": "70",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 76,
+              "teacher_id": 40,
+              "uid": "lesson-ffd9e1b599e02cbb",
+              "week_parity": "all"
+            }
+          ],
           "slot": 4,
-          "text": "-",
+          "text": "ЛПЗ МДК.03.01 Разработка и реализация технологических процессов в механосборочном производстве — 1 п/г, Сивилькаев Вадим Михайлович, Кривоусова",
           "time": "4 пара (14:00-15:25)"
         },
         {
-          "lessons": [],
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 833,
+              "is_block": false,
+              "is_lab": true,
+              "name": "ЛПЗ МДК.03.01 Разработка и реализация технологических процессов в механосборочном производстве",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 61,
+              "room_name": "70",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 77,
+              "teacher_id": 40,
+              "uid": "lesson-1257b5085514f787",
+              "week_parity": "all"
+            }
+          ],
           "slot": 5,
-          "text": "-",
+          "text": "ЛПЗ МДК.03.01 Разработка и реализация технологических процессов в механосборочном производстве — 2 п/г, Сивилькаев Вадим Михайлович, Кривоусова",
           "time": "5 пара (15:35-16:55)"
         },
         {
-          "lessons": [],
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 833,
+              "is_block": false,
+              "is_lab": true,
+              "name": "ЛПЗ МДК.03.01 Разработка и реализация технологических процессов в механосборочном производстве",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 61,
+              "room_name": "70",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 77,
+              "teacher_id": 40,
+              "uid": "lesson-1257b5085514f787",
+              "week_parity": "all"
+            }
+          ],
           "slot": 6,
-          "text": "-",
+          "text": "ЛПЗ МДК.03.01 Разработка и реализация технологических процессов в механосборочном производстве — 2 п/г, Сивилькаев Вадим Михайлович, Кривоусова",
           "time": "6 пара (17:05-18:25)"
         },
         {
@@ -989,9 +516,9 @@
       "weekday": "ПТ"
     },
     {
-      "date": "17.10.2026",
-      "date_iso": "2026-10-17",
-      "day_index": 1,
+      "date": "24.10.2026",
+      "date_iso": "2026-10-24",
+      "day_index": 4,
       "slots": [
         {
           "lessons": [],
@@ -1000,84 +527,21 @@
           "time": "1 пара (08:30-09:45)"
         },
         {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 833,
-              "is_block": false,
-              "is_lab": true,
-              "name": "ЛПЗ МДК.03.01 Разработка и реализация технологических процессов в механосборочном производстве",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 61,
-              "room_name": "70",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": 77,
-              "teacher_id": 40,
-              "uid": "lesson-1257b5085514f787",
-              "week_parity": "all"
-            }
-          ],
+          "lessons": [],
           "slot": 2,
-          "text": "ЛПЗ МДК.03.01 Разработка и реализация технологических процессов в механосборочном производстве — 2 п/г, Сивилькаев Вадим Михайлович, Кривоусова",
+          "text": "-",
           "time": "2 пара (09:55-11:10)"
         },
         {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 833,
-              "is_block": false,
-              "is_lab": true,
-              "name": "ЛПЗ МДК.03.01 Разработка и реализация технологических процессов в механосборочном производстве",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 61,
-              "room_name": "70",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": 77,
-              "teacher_id": 40,
-              "uid": "lesson-1257b5085514f787",
-              "week_parity": "all"
-            }
-          ],
+          "lessons": [],
           "slot": 3,
-          "text": "ЛПЗ МДК.03.01 Разработка и реализация технологических процессов в механосборочном производстве — 2 п/г, Сивилькаев Вадим Михайлович, Кривоусова",
+          "text": "-",
           "time": "3 пара (11:30-12:45)"
         },
         {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 833,
-              "is_block": false,
-              "is_lab": true,
-              "name": "ЛПЗ МДК.03.01 Разработка и реализация технологических процессов в механосборочном производстве",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 61,
-              "room_name": "70",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": 77,
-              "teacher_id": 40,
-              "uid": "lesson-1257b5085514f787",
-              "week_parity": "all"
-            }
-          ],
+          "lessons": [],
           "slot": 4,
-          "text": "ЛПЗ МДК.03.01 Разработка и реализация технологических процессов в механосборочном производстве — 2 п/г, Сивилькаев Вадим Михайлович, Кривоусова",
+          "text": "-",
           "time": "4 пара (12:55-14:10)"
         },
         {
@@ -1086,25 +550,25 @@
               "avoid_lunch_split": false,
               "consecutive_pairs": 1,
               "display_time": null,
-              "id": 832,
+              "id": 829,
               "is_block": false,
-              "is_lab": true,
-              "name": "ЛПЗ МДК.03.01 Разработка и реализация технологических процессов в механосборочном производстве",
+              "is_lab": false,
+              "name": "Физическая культура",
               "requested_room_id": null,
               "requested_room_name": null,
-              "room_id": 61,
-              "room_name": "70",
+              "room_id": 22,
+              "room_name": "Спортзал",
               "room_substituted": false,
               "room_substitution_reason": null,
               "room_type": 0,
-              "subgroup": 76,
-              "teacher_id": 40,
-              "uid": "lesson-ffd9e1b599e02cbb",
+              "subgroup": -1,
+              "teacher_id": 8,
+              "uid": "lesson-74fbc344a9e6d641",
               "week_parity": "all"
             }
           ],
           "slot": 5,
-          "text": "ЛПЗ МДК.03.01 Разработка и реализация технологических процессов в механосборочном производстве — 1 п/г, Сивилькаев Вадим Михайлович, Кривоусова",
+          "text": "Физическая культура — вся группа, Потапова Регина Александровна, Кривоусова",
           "time": "5 пара (14:20-15:30)"
         },
         {
@@ -1113,10 +577,10 @@
               "avoid_lunch_split": false,
               "consecutive_pairs": 1,
               "display_time": null,
-              "id": 832,
+              "id": 831,
               "is_block": false,
-              "is_lab": true,
-              "name": "ЛПЗ МДК.03.01 Разработка и реализация технологических процессов в механосборочном производстве",
+              "is_lab": false,
+              "name": "МДК.03.01 Разработка и реализация технологических процессов в механосборочном производстве",
               "requested_room_id": null,
               "requested_room_name": null,
               "room_id": 61,
@@ -1124,14 +588,14 @@
               "room_substituted": false,
               "room_substitution_reason": null,
               "room_type": 0,
-              "subgroup": 76,
+              "subgroup": -1,
               "teacher_id": 40,
-              "uid": "lesson-ffd9e1b599e02cbb",
+              "uid": "lesson-3613fa8593f05519",
               "week_parity": "all"
             }
           ],
           "slot": 6,
-          "text": "ЛПЗ МДК.03.01 Разработка и реализация технологических процессов в механосборочном производстве — 1 п/г, Сивилькаев Вадим Михайлович, Кривоусова",
+          "text": "МДК.03.01 Разработка и реализация технологических процессов в механосборочном производстве — вся группа, Сивилькаев Вадим Михайлович, Кривоусова",
           "time": "6 пара (15:40-16:50)"
         },
         {
@@ -1140,10 +604,10 @@
               "avoid_lunch_split": false,
               "consecutive_pairs": 1,
               "display_time": null,
-              "id": 832,
+              "id": 831,
               "is_block": false,
-              "is_lab": true,
-              "name": "ЛПЗ МДК.03.01 Разработка и реализация технологических процессов в механосборочном производстве",
+              "is_lab": false,
+              "name": "МДК.03.01 Разработка и реализация технологических процессов в механосборочном производстве",
               "requested_room_id": null,
               "requested_room_name": null,
               "room_id": 61,
@@ -1151,14 +615,14 @@
               "room_substituted": false,
               "room_substitution_reason": null,
               "room_type": 0,
-              "subgroup": 76,
+              "subgroup": -1,
               "teacher_id": 40,
-              "uid": "lesson-ffd9e1b599e02cbb",
+              "uid": "lesson-3613fa8593f05519",
               "week_parity": "all"
             }
           ],
           "slot": 7,
-          "text": "ЛПЗ МДК.03.01 Разработка и реализация технологических процессов в механосборочном производстве — 1 п/г, Сивилькаев Вадим Михайлович, Кривоусова",
+          "text": "МДК.03.01 Разработка и реализация технологических процессов в механосборочном производстве — вся группа, Сивилькаев Вадим Михайлович, Кривоусова",
           "time": "7 пара (17:00-18:10)"
         }
       ],

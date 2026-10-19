@@ -89,6 +89,7 @@ struct Lesson {
     }
     // Derived from the active semester and group calendar, never user quotas.
     bool calendar_restricted = false;
+    std::set<Date> excluded_dates;
     std::vector<std::pair<Date, Date>> teaching_windows;
 };
 

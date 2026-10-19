@@ -747,18 +747,35 @@ bool PrepareGenerationScope(const JsonValue& data, const std::filesystem::path& 
         group_courses[JsonInt(group, "id", -1)] = GroupCourseYear(group);
     for (const JsonValue& lesson : data.At("lessons").array_value)
         lesson_courses[JsonInt(lesson, "id", -1)] = group_courses[JsonInt(lesson, "group", -1)];
-    std::set<std::string> confirmed_events;
+    std::set<std::string> journal_events;
+    std::set<std::pair<int, std::string>> imported_group_days;
     for (const JsonValue& entry : data.At("teaching_ledger").array_value) {
-        if (JsonString(entry, "status", "") != "confirmed") continue;
+        const auto status = JsonString(entry, "status", "");
+        if (status != "confirmed" && status != "planned") continue;
         const std::string date = JsonString(entry, "date", "");
+        Date ledger_date{};
+        const int slot = JsonInt(entry, "slot", 0);
+        if (!ParseDateIso(date, ledger_date) || slot < 1 || slot > SLOTS_PER_DAY ||
+            JsonInt(entry, "hours", 0) <= 0 || JsonBool(entry, "is_class_hour", false)) continue;
+        const auto key = std::to_string(JsonInt(entry, "lesson_id", -1)) + "|" + date + "|" + std::to_string(slot);
+        if (status != "confirmed") continue;
+        journal_events.insert(key);
+        // An imported completed timetable replaces the old generated snapshot
+        // for that group-day. Different stale lessons on the same day must
+        // not consume the remaining curriculum a second time.
+        if (!JsonString(entry, "source_file", "").empty()) {
+            const int lesson_id = JsonInt(entry, "lesson_id", -1);
+            int group_id = JsonInt(entry, "group_id", -1);
+            if (group_id < 0) for (const auto& lesson : data.At("lessons").array_value)
+                if (JsonInt(lesson, "id", -1) == lesson_id) { group_id = JsonInt(lesson, "group", -1); break; }
+            if (group_id >= 0) imported_group_days.insert({group_id, date});
+        }
         const int course = lesson_courses[JsonInt(entry, "lesson_id", -1)];
         if (from <= date && date <= to &&
             (opts.course_years.empty() || opts.course_years.count(course))) {
             error = "Выбранный период содержит подтверждённые пары. Они защищены от перезаписи; выберите будущую дату без факта.";
             return false;
         }
-        confirmed_events.insert(std::to_string(JsonInt(entry, "lesson_id", -1)) + "|" + date + "|" +
-                                std::to_string(JsonInt(entry, "slot", 0)));
     }
     // A scoped run must account for lessons already placed outside the range
     // even when the input revision changed (for example after importing fresh
@@ -777,15 +794,19 @@ bool PrepareGenerationScope(const JsonValue& data, const std::filesystem::path& 
         for (const JsonValue& day : group.At("days").array_value) {
             const std::string date = JsonString(day, "date_iso", "");
             if (date.empty() || (from <= date && date <= to)) continue;
+            if (imported_group_days.count({JsonInt(group, "group_index", -1), date})) continue;
             Date generated_date{};
-            if (ParseDateIso(date, generated_date)) opts.reserved_dates.insert(generated_date);
+            if (ParseDateIso(date, generated_date)) {
+                opts.reserved_dates.insert(generated_date);
+                opts.generated_group_days.insert({JsonInt(group, "group_index", -1), generated_date});
+            }
             for (const JsonValue& slot : day.At("slots").array_value)
                 for (const JsonValue& lesson : slot.At("lessons").array_value) {
                     const int id = JsonInt(lesson, "id", -1);
                     if (id < 0) continue;
                     const std::string key = std::to_string(id) + "|" + date + "|" +
                                             std::to_string(JsonInt(slot, "slot", 0));
-                    if (!confirmed_events.count(key) && seen.insert(key).second)
+                    if (!journal_events.count(key) && seen.insert(key).second)
                         opts.reserved_hours[id] += block_lessons.count(id) ? 6 : 2;
                 }
         }
@@ -2449,6 +2470,10 @@ std::string HandleRequest(const std::string& request, const std::string& output_
         const std::filesystem::path source = out_dir / "schedule_all.json";
         if (!FileExists(source)) return ErrorJson(404, "Not Found", "Сначала сгенерируй расписание");
         const FinalOutputValidation validation = ValidateFinalOutput(out_dir);
+        if (!validation.ok) {
+            JsonValue details = validation.ToJsonValue();
+            return JsonResponse(409, "Conflict", ToJson(ResponseEnvelope(false, validation.message, &details), 2));
+        }
         const std::filesystem::path published = std::filesystem::path("output") / "published";
         JsonParseResult snapshot = ParseJson(ReadFileUtf8(source));
         std::string publish_error;

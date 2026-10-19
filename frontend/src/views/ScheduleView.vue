@@ -470,13 +470,11 @@ async function runValidation() {
 async function downloadExcel() {
   excelExporting.value = true
   try {
-    const { exportScheduleExcel, scheduleForDates } = await import('../utils/scheduleTemplateExport.js')
+    const { exportScheduleExcel, scheduleForDates, scheduleDatesForWeek } = await import('../utils/scheduleTemplateExport.js')
     const selectedWeek = sortedWeeks.value[weekIndex.value]
-    const exportDates = selectedWeek ? Array.from({ length: 6 }, (_, offset) => {
-      const date = new Date(selectedWeek.mon)
-      date.setDate(date.getDate() + offset)
-      return fmtDate(date)
-    }) : weekDates.value
+    const exportDates = selectedWeek
+      ? scheduleDatesForWeek(toIsoDate(selectedWeek.mon), store.lastScoped ? store.lastScope : null)
+      : weekDates.value
     const weeklySchedule = scheduleForDates(store.scheduleData, exportDates)
     const result = await exportScheduleExcel(weeklySchedule)
     toast.success(`Excel за ${weekLabel.value} готов: ${result.insertedLessons} занятий`)

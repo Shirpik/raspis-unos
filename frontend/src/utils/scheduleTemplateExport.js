@@ -133,6 +133,15 @@ export function scheduleForDates(schedule, selectedDates) {
   }
 }
 
+export function scheduleDatesForWeek(monday, scope = null) {
+  const dates = Array.from({ length: 6 }, (_, offset) => addIsoDays(monday, offset))
+  const from = String(scope?.from || '')
+  const to = String(scope?.to || '')
+  if (!from || !to) return dates
+  const scopedDates = dates.filter(date => from <= date && date <= to)
+  return scopedDates.length ? scopedDates : dates
+}
+
 const filenameDateRange = schedule => {
   const dates = collectDates(schedule?.groups).map(day => dateParts(day.date))
   if (!dates.length) return new Date().toISOString().slice(0, 10)
@@ -225,7 +234,8 @@ const expectedLessonCount = schedule => {
   return (schedule?.groups || []).reduce((groupTotal, group) =>
     groupTotal + (group.days || []).reduce((dayTotal, day) =>
       dayTotal + (day.slots || []).reduce((slotTotal, slot) => {
-        if (!Array.isArray(slot.lessons)) return slotTotal + splitSlotText(slot.text).length
+        if (!Array.isArray(slot.lessons) || slot.lessons.length === 0)
+          return slotTotal + splitSlotText(slot.text).length
         let count = 0
         for (const lesson of slot.lessons) {
           if (lesson?.is_block) {
@@ -437,7 +447,12 @@ export async function exportScheduleExcel(schedule) {
     body: JSON.stringify(schedule),
   })
   if (serverResponse.ok) {
-    const filename = scheduleExcelFilename(schedule)
+    const disposition = serverResponse.headers.get('Content-Disposition') || ''
+    const encodedFilename = disposition.match(/filename\*=UTF-8''([^;]+)/i)?.[1]
+    let filename = scheduleExcelFilename(schedule)
+    if (encodedFilename) {
+      try { filename = decodeURIComponent(encodedFilename) } catch {}
+    }
     downloadBuffer(await serverResponse.arrayBuffer(), filename)
     return {
       filename,

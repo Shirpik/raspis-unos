@@ -1,8 +1,8 @@
 {
   "days": [
     {
-      "date": "01.09.2026",
-      "date_iso": "2026-09-01",
+      "date": "20.10.2026",
+      "date_iso": "2026-10-20",
       "day_index": 0,
       "slots": [
         {
@@ -11,25 +11,25 @@
               "avoid_lunch_split": false,
               "consecutive_pairs": 1,
               "display_time": null,
-              "id": 17,
+              "id": 11,
               "is_block": false,
               "is_lab": false,
-              "name": "техника бесконфликтного общения",
+              "name": "Физическая культура",
               "requested_room_id": null,
               "requested_room_name": null,
-              "room_id": 15,
-              "room_name": "32",
+              "room_id": 22,
+              "room_name": "Спортзал",
               "room_substituted": false,
               "room_substitution_reason": null,
               "room_type": 0,
               "subgroup": -1,
-              "teacher_id": 12,
-              "uid": "lesson-43daf6b0ec93b690",
+              "teacher_id": 7,
+              "uid": "lesson-f440941b8fc7b8fb",
               "week_parity": "all"
             }
           ],
           "slot": 1,
-          "text": "техника бесконфликтного общения — вся группа, Рабенок Мария Александровна, Кривоусова",
+          "text": "Физическая культура — вся группа, Кобылянская Татьяна Александровна, Кривоусова",
           "time": "1 пара (08:30-09:55)"
         },
         {
@@ -38,617 +38,107 @@
               "avoid_lunch_split": false,
               "consecutive_pairs": 1,
               "display_time": null,
-              "id": 17,
+              "id": 4,
               "is_block": false,
               "is_lab": false,
-              "name": "техника бесконфликтного общения",
+              "name": "география",
               "requested_room_id": null,
               "requested_room_name": null,
-              "room_id": 15,
-              "room_name": "32",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": -1,
-              "teacher_id": 12,
-              "uid": "lesson-43daf6b0ec93b690",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 2,
-          "text": "техника бесконфликтного общения — вся группа, Рабенок Мария Александровна, Кривоусова",
-          "time": "2 пара (10:05-11:30)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 17,
-              "is_block": false,
-              "is_lab": false,
-              "name": "техника бесконфликтного общения",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 15,
-              "room_name": "32",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": -1,
-              "teacher_id": 12,
-              "uid": "lesson-43daf6b0ec93b690",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 3,
-          "text": "техника бесконфликтного общения — вся группа, Рабенок Мария Александровна, Кривоусова",
-          "time": "3 пара (12:25-13:50)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 1,
-              "is_block": false,
-              "is_lab": false,
-              "name": "литература",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 10,
-              "room_name": "23",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": -1,
-              "teacher_id": 0,
-              "uid": "lesson-f5b41f7fcd5a7530",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 4,
-          "text": "литература — вся группа, Хасанова Гузель Хамитовна, Кривоусова",
-          "time": "4 пара (14:00-15:25)"
-        },
-        {
-          "lessons": [],
-          "slot": 5,
-          "text": "-",
-          "time": "5 пара (15:35-16:55)"
-        },
-        {
-          "lessons": [],
-          "slot": 6,
-          "text": "-",
-          "time": "6 пара (17:05-18:25)"
-        },
-        {
-          "lessons": [],
-          "slot": 7,
-          "text": "-",
-          "time": "7 пара (18:35-19:55)"
-        }
-      ],
-      "weekday": "ВТ"
-    },
-    {
-      "date": "22.09.2026",
-      "date_iso": "2026-09-22",
-      "day_index": 0,
-      "slots": [
-        {
-          "lessons": [],
-          "slot": 1,
-          "text": "-",
-          "time": "1 пара (08:30-09:55)"
-        },
-        {
-          "lessons": [],
-          "slot": 2,
-          "text": "-",
-          "time": "2 пара (10:05-11:30)"
-        },
-        {
-          "lessons": [],
-          "slot": 3,
-          "text": "-",
-          "time": "3 пара (12:25-13:50)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 13,
-              "is_block": false,
-              "is_lab": false,
-              "name": "физика",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 31,
-              "room_name": "205",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": -1,
-              "teacher_id": 9,
-              "uid": "lesson-e0adfa26e01388f4",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 4,
-          "text": "физика — вся группа, Сутягин Артём Борисович, Лесная",
-          "time": "4 пара (14:00-15:25)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 18,
-              "is_block": false,
-              "is_lab": false,
-              "name": "введение в специальность",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 38,
-              "room_name": "318",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": -1,
-              "teacher_id": 13,
-              "uid": "lesson-4622a46ab65cedba",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 5,
-          "text": "введение в специальность — вся группа, Костарева Наталья Викторовна, Лесная",
-          "time": "5 пара (15:35-16:55)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 18,
-              "is_block": false,
-              "is_lab": false,
-              "name": "введение в специальность",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 38,
-              "room_name": "318",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": -1,
-              "teacher_id": 13,
-              "uid": "lesson-4622a46ab65cedba",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 6,
-          "text": "введение в специальность — вся группа, Костарева Наталья Викторовна, Лесная",
-          "time": "6 пара (17:05-18:25)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 18,
-              "is_block": false,
-              "is_lab": false,
-              "name": "введение в специальность",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 38,
-              "room_name": "318",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": -1,
-              "teacher_id": 13,
-              "uid": "lesson-4622a46ab65cedba",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 7,
-          "text": "введение в специальность — вся группа, Костарева Наталья Викторовна, Лесная",
-          "time": "7 пара (18:35-19:55)"
-        }
-      ],
-      "weekday": "ВТ"
-    },
-    {
-      "date": "24.09.2026",
-      "date_iso": "2026-09-24",
-      "day_index": 0,
-      "slots": [
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 12,
-              "is_block": false,
-              "is_lab": false,
-              "name": "основы безопасности и защиты Родины",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 18,
-              "room_name": "37",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": -1,
-              "teacher_id": 8,
-              "uid": "lesson-4c56ae2d0c8240f5",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 1,
-          "text": "основы безопасности и защиты Родины — вся группа, Потапова Регина Александровна, Кривоусова",
-          "time": "1 пара (08:30-09:55)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 17,
-              "is_block": false,
-              "is_lab": false,
-              "name": "техника бесконфликтного общения",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 14,
-              "room_name": "31",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": -1,
-              "teacher_id": 12,
-              "uid": "lesson-43daf6b0ec93b690",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 2,
-          "text": "техника бесконфликтного общения — вся группа, Рабенок Мария Александровна, Кривоусова",
-          "time": "2 пара (10:05-11:30)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 15,
-              "is_block": false,
-              "is_lab": false,
-              "name": "биология",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 8,
-              "room_name": "21",
+              "room_id": 58,
+              "room_name": "67",
               "room_substituted": false,
               "room_substitution_reason": null,
               "room_type": 0,
               "subgroup": -1,
               "teacher_id": 3,
-              "uid": "lesson-f2b6859f9a07fa44",
+              "uid": "lesson-15226185217c3074",
               "week_parity": "all"
             }
           ],
-          "slot": 3,
-          "text": "биология — вся группа, Никонова Антонина Олеговна, Кривоусова",
-          "time": "3 пара (12:25-13:50)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 10,
-              "is_block": false,
-              "is_lab": false,
-              "name": "информатика",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 5,
-              "room_name": "16",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": 1,
-              "teacher_id": 6,
-              "uid": "lesson-6d3db3ff2ed60b28",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 4,
-          "text": "информатика — 2 п/г, Бобылева Екатерина Дмитриевна, Кривоусова",
-          "time": "4 пара (14:00-15:25)"
-        },
-        {
-          "lessons": [],
-          "slot": 5,
-          "text": "-",
-          "time": "5 пара (15:35-16:55)"
-        },
-        {
-          "lessons": [],
-          "slot": 6,
-          "text": "-",
-          "time": "6 пара (17:05-18:25)"
-        },
-        {
-          "lessons": [],
-          "slot": 7,
-          "text": "-",
-          "time": "7 пара (18:35-19:55)"
-        }
-      ],
-      "weekday": "ЧТ"
-    },
-    {
-      "date": "08.10.2026",
-      "date_iso": "2026-10-08",
-      "day_index": 0,
-      "slots": [
-        {
-          "lessons": [],
-          "slot": 1,
-          "text": "-",
-          "time": "1 пара (08:30-09:55)"
-        },
-        {
-          "lessons": [],
           "slot": 2,
-          "text": "-",
+          "text": "география — вся группа, Никонова Антонина Олеговна, Кривоусова",
           "time": "2 пара (10:05-11:30)"
         },
         {
-          "lessons": [],
-          "slot": 3,
-          "text": "-",
-          "time": "3 пара (12:25-13:50)"
-        },
-        {
           "lessons": [
             {
               "avoid_lunch_split": false,
               "consecutive_pairs": 1,
               "display_time": null,
-              "id": 9,
+              "id": 14,
               "is_block": false,
               "is_lab": false,
-              "name": "информатика",
+              "name": "химия",
               "requested_room_id": null,
               "requested_room_name": null,
-              "room_id": 5,
-              "room_name": "16",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": 0,
-              "teacher_id": 6,
-              "uid": "lesson-7a8e6ff5cfc70e98",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 4,
-          "text": "информатика — 1 п/г, Бобылева Екатерина Дмитриевна, Кривоусова",
-          "time": "4 пара (14:00-15:25)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 8,
-              "is_block": false,
-              "is_lab": false,
-              "name": "информатика",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 5,
-              "room_name": "16",
+              "room_id": 52,
+              "room_name": "54",
               "room_substituted": false,
               "room_substitution_reason": null,
               "room_type": 0,
               "subgroup": -1,
-              "teacher_id": 6,
-              "uid": "lesson-8d6ca1062d68e7d3",
+              "teacher_id": 10,
+              "uid": "lesson-ca9dd7df726f470b",
               "week_parity": "all"
             }
           ],
+          "slot": 3,
+          "text": "химия — вся группа, Семенова Лилиана Ивановна, Кривоусова",
+          "time": "3 пара (12:25-13:50)"
+        },
+        {
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 11,
+              "is_block": false,
+              "is_lab": false,
+              "name": "Физическая культура",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 22,
+              "room_name": "Спортзал",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": -1,
+              "teacher_id": 7,
+              "uid": "lesson-f440941b8fc7b8fb",
+              "week_parity": "all"
+            }
+          ],
+          "slot": 4,
+          "text": "Физическая культура — вся группа, Кобылянская Татьяна Александровна, Кривоусова",
+          "time": "4 пара (14:00-15:25)"
+        },
+        {
+          "lessons": [],
           "slot": 5,
-          "text": "информатика — вся группа, Бобылева Екатерина Дмитриевна, Кривоусова",
+          "text": "-",
           "time": "5 пара (15:35-16:55)"
         },
         {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 10,
-              "is_block": false,
-              "is_lab": false,
-              "name": "информатика",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 5,
-              "room_name": "16",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": 1,
-              "teacher_id": 6,
-              "uid": "lesson-6d3db3ff2ed60b28",
-              "week_parity": "all"
-            }
-          ],
+          "lessons": [],
           "slot": 6,
-          "text": "информатика — 2 п/г, Бобылева Екатерина Дмитриевна, Кривоусова",
+          "text": "-",
           "time": "6 пара (17:05-18:25)"
         },
         {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 10,
-              "is_block": false,
-              "is_lab": false,
-              "name": "информатика",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 5,
-              "room_name": "16",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": 1,
-              "teacher_id": 6,
-              "uid": "lesson-6d3db3ff2ed60b28",
-              "week_parity": "all"
-            }
-          ],
+          "lessons": [],
           "slot": 7,
-          "text": "информатика — 2 п/г, Бобылева Екатерина Дмитриевна, Кривоусова",
+          "text": "-",
           "time": "7 пара (18:35-19:55)"
         }
       ],
-      "weekday": "ЧТ"
+      "weekday": "ВТ"
     },
     {
-      "date": "09.10.2026",
-      "date_iso": "2026-10-09",
+      "date": "21.10.2026",
+      "date_iso": "2026-10-21",
       "day_index": 1,
       "slots": [
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 6,
-              "is_block": false,
-              "is_lab": false,
-              "name": "иностранный язык",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 43,
-              "room_name": "401",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": 1,
-              "teacher_id": 4,
-              "uid": "lesson-857c4cd40aa0b98c",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 1,
-          "text": "иностранный язык — 2 п/г, Давыдова Валентина Алексеевна, Лесная",
-          "time": "1 пара (08:30-09:55)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 7,
-              "is_block": false,
-              "is_lab": false,
-              "name": "математика",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 35,
-              "room_name": "311",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": -1,
-              "teacher_id": 5,
-              "uid": "lesson-4e103642ae61c632",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 2,
-          "text": "математика — вся группа, Домарева Ирина Вячеславовна, Лесная",
-          "time": "2 пара (10:05-11:30)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 13,
-              "is_block": false,
-              "is_lab": false,
-              "name": "физика",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 45,
-              "room_name": "407",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": -1,
-              "teacher_id": 9,
-              "uid": "lesson-e0adfa26e01388f4",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 3,
-          "text": "физика — вся группа, Сутягин Артём Борисович, Лесная",
-          "time": "3 пара (12:25-13:50)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 13,
-              "is_block": false,
-              "is_lab": false,
-              "name": "физика",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 45,
-              "room_name": "407",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": -1,
-              "teacher_id": 9,
-              "uid": "lesson-e0adfa26e01388f4",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 4,
-          "text": "физика — вся группа, Сутягин Артём Борисович, Лесная",
-          "time": "4 пара (14:00-15:25)"
-        },
         {
           "lessons": [
             {
@@ -672,323 +162,8 @@
               "week_parity": "all"
             }
           ],
-          "slot": 5,
+          "slot": 1,
           "text": "иностранный язык — 1 п/г, Давыдова Валентина Алексеевна, Лесная",
-          "time": "5 пара (15:35-16:55)"
-        },
-        {
-          "lessons": [],
-          "slot": 6,
-          "text": "-",
-          "time": "6 пара (17:05-18:25)"
-        },
-        {
-          "lessons": [],
-          "slot": 7,
-          "text": "-",
-          "time": "7 пара (18:35-19:55)"
-        }
-      ],
-      "weekday": "ПТ"
-    },
-    {
-      "date": "10.10.2026",
-      "date_iso": "2026-10-10",
-      "day_index": 2,
-      "slots": [
-        {
-          "lessons": [],
-          "slot": 1,
-          "text": "-",
-          "time": "1 пара (08:30-09:45)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 7,
-              "is_block": false,
-              "is_lab": false,
-              "name": "математика",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 35,
-              "room_name": "311",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": -1,
-              "teacher_id": 5,
-              "uid": "lesson-4e103642ae61c632",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 2,
-          "text": "математика — вся группа, Домарева Ирина Вячеславовна, Лесная",
-          "time": "2 пара (09:55-11:10)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 11,
-              "is_block": false,
-              "is_lab": false,
-              "name": "Физическая культура (теория)",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 45,
-              "room_name": "407",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": -1,
-              "teacher_id": 7,
-              "uid": "lesson-f440941b8fc7b8fb",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 3,
-          "text": "Физическая культура (теория) — вся группа, Кобылянская Татьяна Александровна, Лесная",
-          "time": "3 пара (11:30-12:45)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 11,
-              "is_block": false,
-              "is_lab": false,
-              "name": "Физическая культура (теория)",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 45,
-              "room_name": "407",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": -1,
-              "teacher_id": 7,
-              "uid": "lesson-f440941b8fc7b8fb",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 4,
-          "text": "Физическая культура (теория) — вся группа, Кобылянская Татьяна Александровна, Лесная",
-          "time": "4 пара (12:55-14:10)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 18,
-              "is_block": false,
-              "is_lab": false,
-              "name": "введение в специальность",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 38,
-              "room_name": "318",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": -1,
-              "teacher_id": 13,
-              "uid": "lesson-4622a46ab65cedba",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 5,
-          "text": "введение в специальность — вся группа, Костарева Наталья Викторовна, Лесная",
-          "time": "5 пара (14:20-15:30)"
-        },
-        {
-          "lessons": [],
-          "slot": 6,
-          "text": "-",
-          "time": "6 пара (15:40-16:50)"
-        },
-        {
-          "lessons": [],
-          "slot": 7,
-          "text": "-",
-          "time": "7 пара (17:00-18:10)"
-        }
-      ],
-      "weekday": "СБ"
-    },
-    {
-      "date": "13.10.2026",
-      "date_iso": "2026-10-13",
-      "day_index": 0,
-      "slots": [
-        {
-          "lessons": [],
-          "slot": 1,
-          "text": "-",
-          "time": "1 пара (08:30-09:55)"
-        },
-        {
-          "lessons": [],
-          "slot": 2,
-          "text": "-",
-          "time": "2 пара (10:05-11:30)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 14,
-              "is_block": false,
-              "is_lab": false,
-              "name": "химия",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 52,
-              "room_name": "54",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": -1,
-              "teacher_id": 10,
-              "uid": "lesson-ca9dd7df726f470b",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 3,
-          "text": "химия — вся группа, Семенова Лилиана Ивановна, Кривоусова",
-          "time": "3 пара (12:25-13:50)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 14,
-              "is_block": false,
-              "is_lab": false,
-              "name": "химия",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 52,
-              "room_name": "54",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": -1,
-              "teacher_id": 10,
-              "uid": "lesson-ca9dd7df726f470b",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 4,
-          "text": "химия — вся группа, Семенова Лилиана Ивановна, Кривоусова",
-          "time": "4 пара (14:00-15:25)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 1,
-              "is_block": false,
-              "is_lab": false,
-              "name": "литература",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 10,
-              "room_name": "23",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": -1,
-              "teacher_id": 0,
-              "uid": "lesson-f5b41f7fcd5a7530",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 5,
-          "text": "литература — вся группа, Хасанова Гузель Хамитовна, Кривоусова",
-          "time": "5 пара (15:35-16:55)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 9,
-              "is_block": false,
-              "is_lab": false,
-              "name": "информатика",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 5,
-              "room_name": "16",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": 0,
-              "teacher_id": 6,
-              "uid": "lesson-7a8e6ff5cfc70e98",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 6,
-          "text": "информатика — 1 п/г, Бобылева Екатерина Дмитриевна, Кривоусова",
-          "time": "6 пара (17:05-18:25)"
-        },
-        {
-          "lessons": [],
-          "slot": 7,
-          "text": "-",
-          "time": "7 пара (18:35-19:55)"
-        }
-      ],
-      "weekday": "ВТ"
-    },
-    {
-      "date": "14.10.2026",
-      "date_iso": "2026-10-14",
-      "day_index": 0,
-      "slots": [
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 18,
-              "is_block": false,
-              "is_lab": false,
-              "name": "введение в специальность",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 38,
-              "room_name": "318",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": -1,
-              "teacher_id": 13,
-              "uid": "lesson-4622a46ab65cedba",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 1,
-          "text": "введение в специальность — вся группа, Костарева Наталья Викторовна, Лесная",
           "time": "1 пара (08:30-09:55)"
         },
         {
@@ -1024,52 +199,31 @@
               "avoid_lunch_split": false,
               "consecutive_pairs": 1,
               "display_time": null,
-              "id": 7,
+              "id": 6,
               "is_block": false,
               "is_lab": false,
-              "name": "математика",
+              "name": "иностранный язык",
               "requested_room_id": null,
               "requested_room_name": null,
-              "room_id": 35,
-              "room_name": "311",
+              "room_id": 43,
+              "room_name": "401",
               "room_substituted": false,
               "room_substitution_reason": null,
               "room_type": 0,
-              "subgroup": -1,
-              "teacher_id": 5,
-              "uid": "lesson-4e103642ae61c632",
+              "subgroup": 1,
+              "teacher_id": 4,
+              "uid": "lesson-857c4cd40aa0b98c",
               "week_parity": "all"
             }
           ],
           "slot": 3,
-          "text": "математика — вся группа, Домарева Ирина Вячеславовна, Лесная",
+          "text": "иностранный язык — 2 п/г, Давыдова Валентина Алексеевна, Лесная",
           "time": "3 пара (12:25-13:50)"
         },
         {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 7,
-              "is_block": false,
-              "is_lab": false,
-              "name": "математика",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 35,
-              "room_name": "311",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": -1,
-              "teacher_id": 5,
-              "uid": "lesson-4e103642ae61c632",
-              "week_parity": "all"
-            }
-          ],
+          "lessons": [],
           "slot": 4,
-          "text": "математика — вся группа, Домарева Ирина Вячеславовна, Лесная",
+          "text": "-",
           "time": "4 пара (14:00-15:25)"
         },
         {
@@ -1094,154 +248,175 @@
       "weekday": "СР"
     },
     {
-      "date": "15.10.2026",
-      "date_iso": "2026-10-15",
-      "day_index": 0,
+      "date": "22.10.2026",
+      "date_iso": "2026-10-22",
+      "day_index": 2,
       "slots": [
         {
-          "lessons": [],
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 15,
+              "is_block": false,
+              "is_lab": false,
+              "name": "биология",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 58,
+              "room_name": "67",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": -1,
+              "teacher_id": 3,
+              "uid": "lesson-f2b6859f9a07fa44",
+              "week_parity": "all"
+            }
+          ],
           "slot": 1,
-          "text": "-",
+          "text": "биология — вся группа, Никонова Антонина Олеговна, Кривоусова",
           "time": "1 пара (08:30-09:55)"
         },
         {
-          "lessons": [],
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 17,
+              "is_block": false,
+              "is_lab": false,
+              "name": "техника бесконфликтного общения",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 20,
+              "room_name": "41",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": -1,
+              "teacher_id": 12,
+              "uid": "lesson-43daf6b0ec93b690",
+              "week_parity": "all"
+            }
+          ],
           "slot": 2,
-          "text": "-",
+          "text": "техника бесконфликтного общения — вся группа, Рабенок Мария Александровна, Кривоусова",
           "time": "2 пара (10:05-11:30)"
         },
         {
-          "lessons": [],
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 13,
+              "is_block": false,
+              "is_lab": false,
+              "name": "физика",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 71,
+              "room_name": "Дистант ТЭО-Пф-3501",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": -1,
+              "teacher_id": 9,
+              "uid": "lesson-e0adfa26e01388f4",
+              "week_parity": "all"
+            }
+          ],
           "slot": 3,
-          "text": "-",
+          "text": "физика — вся группа, Сутягин Артём Борисович, Кривоусова",
           "time": "3 пара (12:25-13:50)"
         },
         {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 10,
-              "is_block": false,
-              "is_lab": false,
-              "name": "информатика",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 5,
-              "room_name": "16",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": 1,
-              "teacher_id": 6,
-              "uid": "lesson-6d3db3ff2ed60b28",
-              "week_parity": "all"
-            }
-          ],
+          "lessons": [],
           "slot": 4,
-          "text": "информатика — 2 п/г, Бобылева Екатерина Дмитриевна, Кривоусова",
+          "text": "-",
           "time": "4 пара (14:00-15:25)"
         },
         {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 10,
-              "is_block": false,
-              "is_lab": false,
-              "name": "информатика",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 5,
-              "room_name": "16",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": 1,
-              "teacher_id": 6,
-              "uid": "lesson-6d3db3ff2ed60b28",
-              "week_parity": "all"
-            }
-          ],
+          "lessons": [],
           "slot": 5,
-          "text": "информатика — 2 п/г, Бобылева Екатерина Дмитриевна, Кривоусова",
+          "text": "-",
           "time": "5 пара (15:35-16:55)"
         },
         {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 9,
-              "is_block": false,
-              "is_lab": false,
-              "name": "информатика",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 5,
-              "room_name": "16",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": 0,
-              "teacher_id": 6,
-              "uid": "lesson-7a8e6ff5cfc70e98",
-              "week_parity": "all"
-            }
-          ],
+          "lessons": [],
           "slot": 6,
-          "text": "информатика — 1 п/г, Бобылева Екатерина Дмитриевна, Кривоусова",
+          "text": "-",
           "time": "6 пара (17:05-18:25)"
         },
         {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 9,
-              "is_block": false,
-              "is_lab": false,
-              "name": "информатика",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 5,
-              "room_name": "16",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": 0,
-              "teacher_id": 6,
-              "uid": "lesson-7a8e6ff5cfc70e98",
-              "week_parity": "all"
-            }
-          ],
+          "lessons": [],
           "slot": 7,
-          "text": "информатика — 1 п/г, Бобылева Екатерина Дмитриевна, Кривоусова",
+          "text": "-",
           "time": "7 пара (18:35-19:55)"
         }
       ],
       "weekday": "ЧТ"
     },
     {
-      "date": "16.10.2026",
-      "date_iso": "2026-10-16",
-      "day_index": 0,
+      "date": "23.10.2026",
+      "date_iso": "2026-10-23",
+      "day_index": 3,
       "slots": [
         {
-          "lessons": [],
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 13,
+              "is_block": false,
+              "is_lab": false,
+              "name": "физика",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 45,
+              "room_name": "407",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": -1,
+              "teacher_id": 9,
+              "uid": "lesson-e0adfa26e01388f4",
+              "week_parity": "all"
+            }
+          ],
           "slot": 1,
-          "text": "-",
+          "text": "физика — вся группа, Сутягин Артём Борисович, Лесная",
           "time": "1 пара (08:30-09:55)"
         },
         {
-          "lessons": [],
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 7,
+              "is_block": false,
+              "is_lab": false,
+              "name": "математика",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 35,
+              "room_name": "311",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": -1,
+              "teacher_id": 5,
+              "uid": "lesson-4e103642ae61c632",
+              "week_parity": "all"
+            }
+          ],
           "slot": 2,
-          "text": "-",
+          "text": "математика — вся группа, Домарева Ирина Вячеславовна, Лесная",
           "time": "2 пара (10:05-11:30)"
         },
         {
@@ -1251,57 +426,15 @@
           "time": "3 пара (12:25-13:50)"
         },
         {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 13,
-              "is_block": false,
-              "is_lab": false,
-              "name": "физика",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 45,
-              "room_name": "407",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": -1,
-              "teacher_id": 9,
-              "uid": "lesson-e0adfa26e01388f4",
-              "week_parity": "all"
-            }
-          ],
+          "lessons": [],
           "slot": 4,
-          "text": "физика — вся группа, Сутягин Артём Борисович, Лесная",
+          "text": "-",
           "time": "4 пара (14:00-15:25)"
         },
         {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 13,
-              "is_block": false,
-              "is_lab": false,
-              "name": "физика",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 45,
-              "room_name": "407",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": -1,
-              "teacher_id": 9,
-              "uid": "lesson-e0adfa26e01388f4",
-              "week_parity": "all"
-            }
-          ],
+          "lessons": [],
           "slot": 5,
-          "text": "физика — вся группа, Сутягин Артём Борисович, Лесная",
+          "text": "-",
           "time": "5 пара (15:35-16:55)"
         },
         {
@@ -1320,35 +453,14 @@
       "weekday": "ПТ"
     },
     {
-      "date": "17.10.2026",
-      "date_iso": "2026-10-17",
-      "day_index": 1,
+      "date": "24.10.2026",
+      "date_iso": "2026-10-24",
+      "day_index": 4,
       "slots": [
         {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 14,
-              "is_block": false,
-              "is_lab": false,
-              "name": "химия",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 52,
-              "room_name": "54",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": -1,
-              "teacher_id": 10,
-              "uid": "lesson-ca9dd7df726f470b",
-              "week_parity": "all"
-            }
-          ],
+          "lessons": [],
           "slot": 1,
-          "text": "химия — вся группа, Семенова Лилиана Ивановна, Кривоусова",
+          "text": "-",
           "time": "1 пара (08:30-09:45)"
         },
         {
@@ -1357,25 +469,25 @@
               "avoid_lunch_split": false,
               "consecutive_pairs": 1,
               "display_time": null,
-              "id": 14,
+              "id": 2,
               "is_block": false,
               "is_lab": false,
-              "name": "химия",
+              "name": "история",
               "requested_room_id": null,
               "requested_room_name": null,
-              "room_id": 52,
-              "room_name": "54",
+              "room_id": 59,
+              "room_name": "68",
               "room_substituted": false,
               "room_substitution_reason": null,
               "room_type": 0,
               "subgroup": -1,
-              "teacher_id": 10,
-              "uid": "lesson-ca9dd7df726f470b",
+              "teacher_id": 1,
+              "uid": "lesson-45d12a65a43185c9",
               "week_parity": "all"
             }
           ],
           "slot": 2,
-          "text": "химия — вся группа, Семенова Лилиана Ивановна, Кривоусова",
+          "text": "история — вся группа, Вагайская Татьяна Александровна, Кривоусова",
           "time": "2 пара (09:55-11:10)"
         },
         {
@@ -1384,37 +496,79 @@
               "avoid_lunch_split": false,
               "consecutive_pairs": 1,
               "display_time": null,
-              "id": 14,
+              "id": 1,
               "is_block": false,
               "is_lab": false,
-              "name": "химия",
+              "name": "литература",
               "requested_room_id": null,
               "requested_room_name": null,
-              "room_id": 52,
-              "room_name": "54",
+              "room_id": 10,
+              "room_name": "23",
               "room_substituted": false,
               "room_substitution_reason": null,
               "room_type": 0,
               "subgroup": -1,
-              "teacher_id": 10,
-              "uid": "lesson-ca9dd7df726f470b",
+              "teacher_id": 0,
+              "uid": "lesson-f5b41f7fcd5a7530",
               "week_parity": "all"
             }
           ],
           "slot": 3,
-          "text": "химия — вся группа, Семенова Лилиана Ивановна, Кривоусова",
+          "text": "литература — вся группа, Хасанова Гузель Хамитовна, Кривоусова",
           "time": "3 пара (11:30-12:45)"
         },
         {
-          "lessons": [],
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 0,
+              "is_block": false,
+              "is_lab": false,
+              "name": "русский язык",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 10,
+              "room_name": "23",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": -1,
+              "teacher_id": 0,
+              "uid": "lesson-a8e08014e6132838",
+              "week_parity": "all"
+            }
+          ],
           "slot": 4,
-          "text": "-",
+          "text": "русский язык — вся группа, Хасанова Гузель Хамитовна, Кривоусова",
           "time": "4 пара (12:55-14:10)"
         },
         {
-          "lessons": [],
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 1,
+              "is_block": false,
+              "is_lab": false,
+              "name": "литература",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 10,
+              "room_name": "23",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": -1,
+              "teacher_id": 0,
+              "uid": "lesson-f5b41f7fcd5a7530",
+              "week_parity": "all"
+            }
+          ],
           "slot": 5,
-          "text": "-",
+          "text": "литература — вся группа, Хасанова Гузель Хамитовна, Кривоусова",
           "time": "5 пара (14:20-15:30)"
         },
         {

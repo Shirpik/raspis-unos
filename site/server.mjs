@@ -5,6 +5,7 @@ import { existsSync } from 'node:fs'
 import { readFile, stat } from 'node:fs/promises'
 import { spawn } from 'node:child_process'
 import { fileURLToPath } from 'node:url'
+import { withReferenceContext } from '../frontend/src/utils/referenceAccountingMetrics.js'
 
 const siteDir = path.dirname(fileURLToPath(import.meta.url))
 const rootDir = path.resolve(siteDir, '..')
@@ -88,13 +89,36 @@ async function readJsonBody(request, maxBytes = 25 * 1024 * 1024) {
   return JSON.parse(Buffer.concat(chunks).toString('utf8'))
 }
 
+async function restrictScheduleToLastGeneratedScope(schedule) {
+  if (schedule?.generation_scope !== 'selected_dates' || schedule?.status !== 'scoped') return schedule
+  try {
+    const audit = JSON.parse(await readFile(path.join(rootDir, 'output', 'latest', 'strict_audit.json'), 'utf8'))
+    const from = audit.period_from
+    const to = audit.period_to
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(from || '') || !/^\d{4}-\d{2}-\d{2}$/.test(to || '')) return schedule
+    const dates = new Set((schedule.groups || []).flatMap(group => (group.days || [])
+      .map(day => day.date_iso)
+      .filter(date => date && from <= date && date <= to)))
+    if (!dates.size) return schedule
+    return {
+      ...schedule,
+      groups: (schedule.groups || []).map(group => ({
+        ...group,
+        days: (group.days || []).filter(day => dates.has(day.date_iso)),
+      })),
+    }
+  } catch {
+    return schedule
+  }
+}
+
 async function exportScheduleExcel(request, response) {
   if (request.method !== 'POST') {
     response.writeHead(405, { Allow: 'POST' }).end()
     return
   }
   try {
-    const schedule = await readJsonBody(request)
+    const schedule = await restrictScheduleToLastGeneratedScope(await readJsonBody(request))
     const template = await readFile(scheduleTemplatePath)
     const { buildScheduleExcelWorkbook, scheduleExcelFilename } = await scheduleExportModule
     const result = await buildScheduleExcelWorkbook(schedule, template)
@@ -116,6 +140,47 @@ async function exportScheduleExcel(request, response) {
   }
 }
 
+async function exportAccountingExcel(request, response) {
+  if (request.method !== 'POST') {
+    response.writeHead(405, { Allow: 'POST' }).end()
+    return
+  }
+  try {
+    // Read through the authenticated API, never accept an unauthenticated report payload.
+    const upstream = await fetch(`http://${apiHost}:${apiPort}/api/hours`, {
+      headers: { cookie: request.headers.cookie || '', authorization: request.headers.authorization || '' },
+      signal: AbortSignal.timeout(30000),
+    })
+    if (!upstream.ok) {
+      response.writeHead(upstream.status, { 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'no-store' })
+      response.end(await upstream.text())
+      return
+    }
+    const hours = await upstream.json()
+    const contextResponse = await fetch(`http://${apiHost}:${apiPort}/api/bootstrap`, {
+      headers: { cookie: request.headers.cookie || '', authorization: request.headers.authorization || '' },
+      signal: AbortSignal.timeout(30000),
+    })
+    if (!contextResponse.ok) throw new Error('Не удалось получить календарь групп для экспорта')
+    const context = await contextResponse.json()
+    const { buildReferenceAccountingWorkbook, writeReferenceAccountingBuffer } = await import('../frontend/src/utils/referenceAccountingExport.js')
+    const { workbook, groups, semester } = buildReferenceAccountingWorkbook(withReferenceContext(hours, context))
+    const body = Buffer.from(await writeReferenceAccountingBuffer(workbook))
+    const filename = `Учет_часов_по_образцу_${semester}_семестр_${hours.as_of_date || new Date().toISOString().slice(0, 10)}.xlsx`
+    response.writeHead(200, {
+      'Content-Type': mime.get('.xlsx'),
+      'Content-Disposition': `attachment; filename*=UTF-8''${encodeURIComponent(filename)}`,
+      'Content-Length': body.length, 'Cache-Control': 'no-store',
+      'X-Export-Groups': String(groups.length),
+      'X-Export-Sheets': String(workbook.worksheets.length),
+    })
+    response.end(body)
+  } catch (error) {
+    response.writeHead(500, { 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'no-store' })
+    response.end(JSON.stringify({ message: error.message || 'Не удалось собрать учёт часов' }))
+  }
+}
+
 async function serveFrontend(request, response) {
   const url = new URL(request.url || '/', `http://${request.headers.host || 'localhost'}`)
   let relative = decodeURIComponent(url.pathname).replace(/^\/+/, '')
@@ -128,6 +193,18 @@ async function serveFrontend(request, response) {
   try {
     if (!(await stat(filePath)).isFile()) throw new Error('not a file')
   } catch {
+    if (relative.startsWith('assets/')) {
+      // Previously opened tabs still request the old name of this stable export API.
+      // This compatibility module has no hashed dependencies, so an old tab
+      // cannot accidentally import and mount a second version of the whole app.
+      if (/^assets\/referenceAccountingExport-[\w-]+\.js$/.test(relative)) {
+        response.writeHead(200, { 'Content-Type': 'text/javascript; charset=utf-8', 'Cache-Control': 'no-store' })
+        response.end("export { downloadReferenceAccounting as exportReferenceAccountingWorkbook } from '/export/accounting-client.js';")
+        return
+      }
+      response.writeHead(404, { 'Content-Type': 'text/plain; charset=utf-8', 'Cache-Control': 'no-store' }).end('Asset not found')
+      return
+    }
     filePath = path.join(frontendDir, 'index.html')
   }
   const body = await readFile(filePath)
@@ -148,6 +225,13 @@ async function serveFrontend(request, response) {
 const server = http.createServer((request, response) => {
   const pathname = new URL(request.url || '/', `http://${request.headers.host || 'localhost'}`).pathname
   if (pathname === '/export/schedule.xlsx') exportScheduleExcel(request, response)
+  else if (pathname === '/export/accounting.xlsx') exportAccountingExcel(request, response)
+  else if (pathname === '/export/accounting-client.js') {
+    readFile(path.join(rootDir, 'frontend/src/utils/accountingDownload.js')).then(body => {
+      response.writeHead(200, { 'Content-Type': 'text/javascript; charset=utf-8', 'Cache-Control': 'no-store' })
+      response.end(body)
+    }).catch(() => response.writeHead(500).end('Export client unavailable'))
+  }
   else if (pathname.startsWith('/api')) proxyApi(request, response)
   else serveFrontend(request, response).catch(error => {
     response.writeHead(500, { 'Content-Type': 'text/plain; charset=utf-8' })

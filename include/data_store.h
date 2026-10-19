@@ -137,6 +137,8 @@ struct ScheduleInputData {
         int campus = -1, room = -1, common_slot = 0, minimum_pairs = 0, maximum_pairs = 0;
         int teacher_id = -1, minimum_teacher_pairs = 0;
         int minimum_group_pairs = 0, maximum_group_pairs = 0;
+        int minimum_whole_group_pairs = 0;
+        bool allow_short_subgroup_day = false;
         bool only_teacher = false;
         bool whole_group_only = false;
     };

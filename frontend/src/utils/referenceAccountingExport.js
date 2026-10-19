@@ -1,5 +1,9 @@
 import ExcelJS from 'exceljs'
 import { subgroupOrdinal } from './schedulePresentation.js'
+import { remainingTeachingWeeks } from './referenceAccountingMetrics.js'
+import { buildTemplateAccountingWorkbook } from './referenceAccountingTemplateExport.js'
+import { writeReferenceAccountingBuffer } from './referenceAccountingNotes.js'
+export { writeReferenceAccountingBuffer } from './referenceAccountingNotes.js'
 
 const COLORS = {
   border: 'FF000000', yellow: 'FFFFFF00', paleYellow: 'FFFFFFCC', green: 'FFC6F7C6',
@@ -50,13 +54,6 @@ const lessonWeekHours = (lesson, weeks) => {
     if (index >= 0 && index < values.length) values[index] += Number(occurrence.hours || 2)
   }
   return values
-}
-const remainingTeachingWeeks = hours => {
-  const weekCount = Math.max(1, (hours.weeks || []).length)
-  const latestAccountedWeek = (hours.lessons || []).reduce((latest, lesson) =>
-    (lesson.scheduled_occurrences || []).reduce((value, occurrence) =>
-      Math.max(value, Number(occurrence.week_index || 0)), latest), 0)
-  return Math.max(1, weekCount - latestAccountedWeek)
 }
 const displayLessonName = (lesson, groupLessons) => {
   const related = groupLessons.filter(item => Number(item.subject_id) === Number(lesson.subject_id))
@@ -296,22 +293,12 @@ function addGroupSheet(workbook, hours, group, semester, usedNames) {
 }
 
 export function buildReferenceAccountingWorkbook(hours) {
-  const workbook = new ExcelJS.Workbook()
-  workbook.creator = 'Генератор расписания техникума'
-  workbook.created = new Date()
-  workbook.calcProperties.fullCalcOnLoad = true
-  const semester = semesterNumber(hours.semester_start || hours.weeks?.[0]?.from)
-  addTeacherSummary(workbook, hours, semester)
-  addScheduleSheet(workbook, hours)
-  const usedNames = new Set(['пр', 'расписание'])
-  const groups = [...(hours.groups || [])].sort((a, b) => Number(a.group_id) - Number(b.group_id))
-  groups.forEach(group => addGroupSheet(workbook, hours, group, semester, usedNames))
-  return { workbook, groups, semester, remainingWeeks: remainingTeachingWeeks(hours) }
+  return buildTemplateAccountingWorkbook(hours)
 }
 
 export async function exportReferenceAccountingWorkbook({ hours }) {
   const { workbook, groups, semester } = buildReferenceAccountingWorkbook(hours)
-  const buffer = await workbook.xlsx.writeBuffer()
+  const buffer = await writeReferenceAccountingBuffer(workbook)
   const filename = `Учет_часов_по_образцу_${semester}_семестр_${new Date().toISOString().slice(0, 10)}.xlsx`
   downloadBuffer(buffer, filename)
   return { filename, sheets: workbook.worksheets.length, groups: groups.length, semester }

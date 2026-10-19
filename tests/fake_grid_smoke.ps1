@@ -283,7 +283,9 @@ try {
     $oneSlotDays = 1..7 | ForEach-Object { @{day=$_;enabled=($_ -eq 1);start_slot=1;end_slot=1} }
     $conflictData = @{
         schema_version = 4
-        settings = @{start_date='2026-09-07';end_date='2026-09-07';solver_config=@{week_time_limit_seconds=5;quality_improvement_seconds=0;solver_workers=2}}
+        # This room/class-hour fixture has one teaching pair; daily-minimum
+        # rejection is covered separately by daily_limits_smoke.ps1.
+        settings = @{start_date='2026-09-07';end_date='2026-09-07';solver_config=@{week_time_limit_seconds=5;quality_improvement_seconds=0;solver_workers=2;min_student_pairs_per_study_day=1}}
         campuses = @(@{id=0;name='Lesnaya'},@{id=1;name='Krivousova 53'})
         room_types = $roomTypes
         groups = @(

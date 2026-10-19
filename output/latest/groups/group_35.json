@@ -1,8 +1,8 @@
 {
   "days": [
     {
-      "date": "01.09.2026",
-      "date_iso": "2026-09-01",
+      "date": "20.10.2026",
+      "date_iso": "2026-10-20",
       "day_index": 0,
       "slots": [
         {
@@ -18,15 +18,21 @@
           "time": "2 пара (10:05-11:30)"
         },
         {
+          "lessons": [],
+          "slot": 3,
+          "text": "-",
+          "time": "3 пара (12:25-13:50)"
+        },
+        {
           "lessons": [
             {
               "avoid_lunch_split": false,
               "consecutive_pairs": 1,
               "display_time": null,
-              "id": 774,
+              "id": 780,
               "is_block": false,
               "is_lab": false,
-              "name": "Технология машиностроения",
+              "name": "ВМДК.07.01 Технология обработки на металлорежущих станках",
               "requested_room_id": null,
               "requested_room_name": null,
               "room_id": 40,
@@ -36,441 +42,12 @@
               "room_type": 0,
               "subgroup": -1,
               "teacher_id": 61,
-              "uid": "lesson-3b05c3dc5f35f576",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 3,
-          "text": "Технология машиностроения — вся группа, Саламатина Вера Викторовна, Лесная",
-          "time": "3 пара (12:25-13:50)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 774,
-              "is_block": false,
-              "is_lab": false,
-              "name": "Технология машиностроения",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 40,
-              "room_name": "322",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": -1,
-              "teacher_id": 61,
-              "uid": "lesson-3b05c3dc5f35f576",
+              "uid": "lesson-9aaa6fa2cac02b88",
               "week_parity": "all"
             }
           ],
           "slot": 4,
-          "text": "Технология машиностроения — вся группа, Саламатина Вера Викторовна, Лесная",
-          "time": "4 пара (14:00-15:25)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 771,
-              "is_block": false,
-              "is_lab": false,
-              "name": "Техническая механика",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 29,
-              "room_name": "201",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": -1,
-              "teacher_id": 38,
-              "uid": "lesson-df4906defba5672b",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 5,
-          "text": "Техническая механика — вся группа, Абрамчук Раида Филимазовна, Лесная",
-          "time": "5 пара (15:35-16:55)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 771,
-              "is_block": false,
-              "is_lab": false,
-              "name": "Техническая механика",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 29,
-              "room_name": "201",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": -1,
-              "teacher_id": 38,
-              "uid": "lesson-df4906defba5672b",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 6,
-          "text": "Техническая механика — вся группа, Абрамчук Раида Филимазовна, Лесная",
-          "time": "6 пара (17:05-18:25)"
-        },
-        {
-          "lessons": [],
-          "slot": 7,
-          "text": "-",
-          "time": "7 пара (18:35-19:55)"
-        }
-      ],
-      "weekday": "ВТ"
-    },
-    {
-      "date": "22.09.2026",
-      "date_iso": "2026-09-22",
-      "day_index": 0,
-      "slots": [
-        {
-          "lessons": [],
-          "slot": 1,
-          "text": "-",
-          "time": "1 пара (08:30-09:55)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 775,
-              "is_block": false,
-              "is_lab": false,
-              "name": "Математика в профессиональной деятельности",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 29,
-              "room_name": "201",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": -1,
-              "teacher_id": 38,
-              "uid": "lesson-a17308410f528128",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 2,
-          "text": "Математика в профессиональной деятельности — вся группа, Абрамчук Раида Филимазовна, Лесная",
-          "time": "2 пара (10:05-11:30)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 775,
-              "is_block": false,
-              "is_lab": false,
-              "name": "Математика в профессиональной деятельности",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 29,
-              "room_name": "201",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": -1,
-              "teacher_id": 38,
-              "uid": "lesson-a17308410f528128",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 3,
-          "text": "Математика в профессиональной деятельности — вся группа, Абрамчук Раида Филимазовна, Лесная",
-          "time": "3 пара (12:25-13:50)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 775,
-              "is_block": false,
-              "is_lab": false,
-              "name": "Математика в профессиональной деятельности",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 29,
-              "room_name": "201",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": -1,
-              "teacher_id": 38,
-              "uid": "lesson-a17308410f528128",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 4,
-          "text": "Математика в профессиональной деятельности — вся группа, Абрамчук Раида Филимазовна, Лесная",
-          "time": "4 пара (14:00-15:25)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 768,
-              "is_block": false,
-              "is_lab": false,
-              "name": "Иностранный язык в профессиональной деятельности",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 41,
-              "room_name": "324",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": 71,
-              "teacher_id": 27,
-              "uid": "lesson-7d2e45961f2d49be",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 5,
-          "text": "Иностранный язык в профессиональной деятельности — 2 п/г, Ермолина Ирина Павловна, Лесная",
-          "time": "5 пара (15:35-16:55)"
-        },
-        {
-          "lessons": [],
-          "slot": 6,
-          "text": "-",
-          "time": "6 пара (17:05-18:25)"
-        },
-        {
-          "lessons": [],
-          "slot": 7,
-          "text": "-",
-          "time": "7 пара (18:35-19:55)"
-        }
-      ],
-      "weekday": "ВТ"
-    },
-    {
-      "date": "24.09.2026",
-      "date_iso": "2026-09-24",
-      "day_index": 0,
-      "slots": [
-        {
-          "lessons": [],
-          "slot": 1,
-          "text": "-",
-          "time": "1 пара (08:30-09:55)"
-        },
-        {
-          "lessons": [],
-          "slot": 2,
-          "text": "-",
-          "time": "2 пара (10:05-11:30)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 768,
-              "is_block": false,
-              "is_lab": false,
-              "name": "Иностранный язык в профессиональной деятельности",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 41,
-              "room_name": "324",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": 71,
-              "teacher_id": 27,
-              "uid": "lesson-7d2e45961f2d49be",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 3,
-          "text": "Иностранный язык в профессиональной деятельности — 2 п/г, Ермолина Ирина Павловна, Лесная",
-          "time": "3 пара (12:25-13:50)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 771,
-              "is_block": false,
-              "is_lab": false,
-              "name": "Техническая механика",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 29,
-              "room_name": "201",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": -1,
-              "teacher_id": 38,
-              "uid": "lesson-df4906defba5672b",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 4,
-          "text": "Техническая механика — вся группа, Абрамчук Раида Филимазовна, Лесная",
-          "time": "4 пара (14:00-15:25)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 772,
-              "is_block": false,
-              "is_lab": false,
-              "name": "Материаловедение",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 40,
-              "room_name": "322",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": -1,
-              "teacher_id": 61,
-              "uid": "lesson-2a654c43e2d6c4f3",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 5,
-          "text": "Материаловедение — вся группа, Саламатина Вера Викторовна, Лесная",
-          "time": "5 пара (15:35-16:55)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 767,
-              "is_block": false,
-              "is_lab": false,
-              "name": "Иностранный язык в профессиональной деятельности",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 41,
-              "room_name": "324",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": 70,
-              "teacher_id": 27,
-              "uid": "lesson-c8e0ced1a44adfab",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 6,
-          "text": "Иностранный язык в профессиональной деятельности — 1 п/г, Ермолина Ирина Павловна, Лесная",
-          "time": "6 пара (17:05-18:25)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 767,
-              "is_block": false,
-              "is_lab": false,
-              "name": "Иностранный язык в профессиональной деятельности",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 41,
-              "room_name": "324",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": 70,
-              "teacher_id": 27,
-              "uid": "lesson-c8e0ced1a44adfab",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 7,
-          "text": "Иностранный язык в профессиональной деятельности — 1 п/г, Ермолина Ирина Павловна, Лесная",
-          "time": "7 пара (18:35-19:55)"
-        }
-      ],
-      "weekday": "ЧТ"
-    },
-    {
-      "date": "08.10.2026",
-      "date_iso": "2026-10-08",
-      "day_index": 0,
-      "slots": [
-        {
-          "lessons": [],
-          "slot": 1,
-          "text": "-",
-          "time": "1 пара (08:30-09:55)"
-        },
-        {
-          "lessons": [],
-          "slot": 2,
-          "text": "-",
-          "time": "2 пара (10:05-11:30)"
-        },
-        {
-          "lessons": [],
-          "slot": 3,
-          "text": "-",
-          "time": "3 пара (12:25-13:50)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 775,
-              "is_block": false,
-              "is_lab": false,
-              "name": "Математика в профессиональной деятельности",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 29,
-              "room_name": "201",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": -1,
-              "teacher_id": 38,
-              "uid": "lesson-a17308410f528128",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 4,
-          "text": "Математика в профессиональной деятельности — вся группа, Абрамчук Раида Филимазовна, Лесная",
+          "text": "ВМДК.07.01 Технология обработки на металлорежущих станках — вся группа, Саламатина Вера Викторовна, Лесная",
           "time": "4 пара (14:00-15:25)"
         },
         {
@@ -501,30 +78,9 @@
           "time": "5 пара (15:35-16:55)"
         },
         {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 780,
-              "is_block": false,
-              "is_lab": false,
-              "name": "ВМДК.07.01 Технология обработки на металлорежущих станках",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 40,
-              "room_name": "322",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": -1,
-              "teacher_id": 61,
-              "uid": "lesson-9aaa6fa2cac02b88",
-              "week_parity": "all"
-            }
-          ],
+          "lessons": [],
           "slot": 6,
-          "text": "ВМДК.07.01 Технология обработки на металлорежущих станках — вся группа, Саламатина Вера Викторовна, Лесная",
+          "text": "-",
           "time": "6 пара (17:05-18:25)"
         },
         {
@@ -534,11 +90,11 @@
           "time": "7 пара (18:35-19:55)"
         }
       ],
-      "weekday": "ЧТ"
+      "weekday": "ВТ"
     },
     {
-      "date": "09.10.2026",
-      "date_iso": "2026-10-09",
+      "date": "21.10.2026",
+      "date_iso": "2026-10-21",
       "day_index": 1,
       "slots": [
         {
@@ -554,256 +110,30 @@
           "time": "2 пара (10:05-11:30)"
         },
         {
-          "lessons": [],
-          "slot": 3,
-          "text": "-",
-          "time": "3 пара (12:25-13:50)"
-        },
-        {
-          "lessons": [],
-          "slot": 4,
-          "text": "-",
-          "time": "4 пара (14:00-15:25)"
-        },
-        {
-          "lessons": [],
-          "slot": 5,
-          "text": "-",
-          "time": "5 пара (15:35-16:55)"
-        },
-        {
           "lessons": [
             {
               "avoid_lunch_split": false,
               "consecutive_pairs": 1,
               "display_time": null,
-              "id": 766,
+              "id": 768,
               "is_block": false,
               "is_lab": false,
-              "name": "Химия",
+              "name": "Иностранный язык в профессиональной деятельности",
               "requested_room_id": null,
               "requested_room_name": null,
-              "room_id": 4,
-              "room_name": "15",
+              "room_id": 41,
+              "room_name": "324",
               "room_substituted": false,
               "room_substitution_reason": null,
               "room_type": 0,
-              "subgroup": -1,
-              "teacher_id": 20,
-              "uid": "lesson-36ed342866481948",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 6,
-          "text": "Химия — вся группа, Соболева Любовь Анатольевна, Кривоусова",
-          "time": "6 пара (17:05-18:25)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 766,
-              "is_block": false,
-              "is_lab": false,
-              "name": "Химия",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 4,
-              "room_name": "15",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": -1,
-              "teacher_id": 20,
-              "uid": "lesson-36ed342866481948",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 7,
-          "text": "Химия — вся группа, Соболева Любовь Анатольевна, Кривоусова",
-          "time": "7 пара (18:35-19:55)"
-        }
-      ],
-      "weekday": "ПТ"
-    },
-    {
-      "date": "10.10.2026",
-      "date_iso": "2026-10-10",
-      "day_index": 2,
-      "slots": [
-        {
-          "lessons": [],
-          "slot": 1,
-          "text": "-",
-          "time": "1 пара (08:30-09:45)"
-        },
-        {
-          "lessons": [],
-          "slot": 2,
-          "text": "-",
-          "time": "2 пара (09:55-11:10)"
-        },
-        {
-          "lessons": [],
-          "slot": 3,
-          "text": "-",
-          "time": "3 пара (11:30-12:45)"
-        },
-        {
-          "lessons": [],
-          "slot": 4,
-          "text": "-",
-          "time": "4 пара (12:55-14:10)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 770,
-              "is_block": false,
-              "is_lab": false,
-              "name": "Инженерная графика",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 61,
-              "room_name": "70",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": -1,
-              "teacher_id": 40,
-              "uid": "lesson-1d66fec2d3fa0dc8",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 5,
-          "text": "Инженерная графика — вся группа, Сивилькаев Вадим Михайлович, Кривоусова",
-          "time": "5 пара (14:20-15:30)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 766,
-              "is_block": false,
-              "is_lab": false,
-              "name": "Химия",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 4,
-              "room_name": "15",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": -1,
-              "teacher_id": 20,
-              "uid": "lesson-36ed342866481948",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 6,
-          "text": "Химия — вся группа, Соболева Любовь Анатольевна, Кривоусова",
-          "time": "6 пара (15:40-16:50)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 766,
-              "is_block": false,
-              "is_lab": false,
-              "name": "Химия",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 4,
-              "room_name": "15",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": -1,
-              "teacher_id": 20,
-              "uid": "lesson-36ed342866481948",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 7,
-          "text": "Химия — вся группа, Соболева Любовь Анатольевна, Кривоусова",
-          "time": "7 пара (17:00-18:10)"
-        }
-      ],
-      "weekday": "СБ"
-    },
-    {
-      "date": "13.10.2026",
-      "date_iso": "2026-10-13",
-      "day_index": 0,
-      "slots": [
-        {
-          "lessons": [],
-          "slot": 1,
-          "text": "-",
-          "time": "1 пара (08:30-09:55)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 780,
-              "is_block": false,
-              "is_lab": false,
-              "name": "ВМДК.07.01 Технология обработки на металлорежущих станках",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 40,
-              "room_name": "322",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": -1,
-              "teacher_id": 61,
-              "uid": "lesson-9aaa6fa2cac02b88",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 2,
-          "text": "ВМДК.07.01 Технология обработки на металлорежущих станках — вся группа, Саламатина Вера Викторовна, Лесная",
-          "time": "2 пара (10:05-11:30)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 780,
-              "is_block": false,
-              "is_lab": false,
-              "name": "ВМДК.07.01 Технология обработки на металлорежущих станках",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 40,
-              "room_name": "322",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": -1,
-              "teacher_id": 61,
-              "uid": "lesson-9aaa6fa2cac02b88",
+              "subgroup": 71,
+              "teacher_id": 27,
+              "uid": "lesson-7d2e45961f2d49be",
               "week_parity": "all"
             }
           ],
           "slot": 3,
-          "text": "ВМДК.07.01 Технология обработки на металлорежущих станках — вся группа, Саламатина Вера Викторовна, Лесная",
+          "text": "Иностранный язык в профессиональной деятельности — 2 п/г, Ермолина Ирина Павловна, Лесная",
           "time": "3 пара (12:25-13:50)"
         },
         {
@@ -839,134 +169,6 @@
               "avoid_lunch_split": false,
               "consecutive_pairs": 1,
               "display_time": null,
-              "id": 775,
-              "is_block": false,
-              "is_lab": false,
-              "name": "Математика в профессиональной деятельности",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 29,
-              "room_name": "201",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": -1,
-              "teacher_id": 38,
-              "uid": "lesson-a17308410f528128",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 5,
-          "text": "Математика в профессиональной деятельности — вся группа, Абрамчук Раида Филимазовна, Лесная",
-          "time": "5 пара (15:35-16:55)"
-        },
-        {
-          "lessons": [],
-          "slot": 6,
-          "text": "-",
-          "time": "6 пара (17:05-18:25)"
-        },
-        {
-          "lessons": [],
-          "slot": 7,
-          "text": "-",
-          "time": "7 пара (18:35-19:55)"
-        }
-      ],
-      "weekday": "ВТ"
-    },
-    {
-      "date": "14.10.2026",
-      "date_iso": "2026-10-14",
-      "day_index": 0,
-      "slots": [
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 775,
-              "is_block": false,
-              "is_lab": false,
-              "name": "Математика в профессиональной деятельности",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 29,
-              "room_name": "201",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": -1,
-              "teacher_id": 38,
-              "uid": "lesson-a17308410f528128",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 1,
-          "text": "Математика в профессиональной деятельности — вся группа, Абрамчук Раида Филимазовна, Лесная",
-          "time": "1 пара (08:30-09:55)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 772,
-              "is_block": false,
-              "is_lab": false,
-              "name": "Материаловедение",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 40,
-              "room_name": "322",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": -1,
-              "teacher_id": 61,
-              "uid": "lesson-2a654c43e2d6c4f3",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 2,
-          "text": "Материаловедение — вся группа, Саламатина Вера Викторовна, Лесная",
-          "time": "2 пара (10:05-11:30)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 775,
-              "is_block": false,
-              "is_lab": false,
-              "name": "Математика в профессиональной деятельности",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 29,
-              "room_name": "201",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": -1,
-              "teacher_id": 38,
-              "uid": "lesson-a17308410f528128",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 3,
-          "text": "Математика в профессиональной деятельности — вся группа, Абрамчук Раида Филимазовна, Лесная",
-          "time": "3 пара (12:25-13:50)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
               "id": 780,
               "is_block": false,
               "is_lab": false,
@@ -984,20 +186,35 @@
               "week_parity": "all"
             }
           ],
-          "slot": 4,
-          "text": "ВМДК.07.01 Технология обработки на металлорежущих станках — вся группа, Саламатина Вера Викторовна, Лесная",
-          "time": "4 пара (14:00-15:25)"
-        },
-        {
-          "lessons": [],
           "slot": 5,
-          "text": "-",
+          "text": "ВМДК.07.01 Технология обработки на металлорежущих станках — вся группа, Саламатина Вера Викторовна, Лесная",
           "time": "5 пара (15:35-16:55)"
         },
         {
-          "lessons": [],
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 767,
+              "is_block": false,
+              "is_lab": false,
+              "name": "Иностранный язык в профессиональной деятельности",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 41,
+              "room_name": "324",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 70,
+              "teacher_id": 27,
+              "uid": "lesson-c8e0ced1a44adfab",
+              "week_parity": "all"
+            }
+          ],
           "slot": 6,
-          "text": "-",
+          "text": "Иностранный язык в профессиональной деятельности — 1 п/г, Ермолина Ирина Павловна, Лесная",
           "time": "6 пара (17:05-18:25)"
         },
         {
@@ -1010,9 +227,9 @@
       "weekday": "СР"
     },
     {
-      "date": "15.10.2026",
-      "date_iso": "2026-10-15",
-      "day_index": 0,
+      "date": "22.10.2026",
+      "date_iso": "2026-10-22",
+      "day_index": 2,
       "slots": [
         {
           "lessons": [
@@ -1020,25 +237,25 @@
               "avoid_lunch_split": false,
               "consecutive_pairs": 1,
               "display_time": null,
-              "id": 775,
+              "id": 767,
               "is_block": false,
               "is_lab": false,
-              "name": "Математика в профессиональной деятельности",
+              "name": "Иностранный язык в профессиональной деятельности",
               "requested_room_id": null,
               "requested_room_name": null,
-              "room_id": 29,
-              "room_name": "201",
+              "room_id": 41,
+              "room_name": "324",
               "room_substituted": false,
               "room_substitution_reason": null,
               "room_type": 0,
-              "subgroup": -1,
-              "teacher_id": 38,
-              "uid": "lesson-a17308410f528128",
+              "subgroup": 70,
+              "teacher_id": 27,
+              "uid": "lesson-c8e0ced1a44adfab",
               "week_parity": "all"
             }
           ],
           "slot": 1,
-          "text": "Математика в профессиональной деятельности — вся группа, Абрамчук Раида Филимазовна, Лесная",
+          "text": "Иностранный язык в профессиональной деятельности — 1 п/г, Ермолина Ирина Павловна, Лесная",
           "time": "1 пара (08:30-09:55)"
         },
         {
@@ -1047,43 +264,106 @@
               "avoid_lunch_split": false,
               "consecutive_pairs": 1,
               "display_time": null,
-              "id": 773,
+              "id": 778,
               "is_block": false,
-              "is_lab": false,
-              "name": "Процессы формообразования и инструменты",
+              "is_lab": true,
+              "name": "ЛПЗ МДК.01.02 Оформление технологической документации по процессам изготовления деталей машин",
               "requested_room_id": null,
               "requested_room_name": null,
-              "room_id": 40,
-              "room_name": "322",
+              "room_id": 48,
+              "room_name": "413",
               "room_substituted": false,
               "room_substitution_reason": null,
               "room_type": 0,
-              "subgroup": -1,
-              "teacher_id": 61,
-              "uid": "lesson-37ea5589077313a7",
+              "subgroup": 70,
+              "teacher_id": 62,
+              "uid": "lesson-ac31aa3c2e07c794",
               "week_parity": "all"
             }
           ],
           "slot": 2,
-          "text": "Процессы формообразования и инструменты — вся группа, Саламатина Вера Викторовна, Лесная",
+          "text": "ЛПЗ МДК.01.02 Оформление технологической документации по процессам изготовления деталей машин — 1 п/г, Вальдиянов Ян Мансурович, Лесная",
           "time": "2 пара (10:05-11:30)"
         },
         {
-          "lessons": [],
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 778,
+              "is_block": false,
+              "is_lab": true,
+              "name": "ЛПЗ МДК.01.02 Оформление технологической документации по процессам изготовления деталей машин",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 48,
+              "room_name": "413",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 70,
+              "teacher_id": 62,
+              "uid": "lesson-ac31aa3c2e07c794",
+              "week_parity": "all"
+            }
+          ],
           "slot": 3,
-          "text": "-",
+          "text": "ЛПЗ МДК.01.02 Оформление технологической документации по процессам изготовления деталей машин — 1 п/г, Вальдиянов Ян Мансурович, Лесная",
           "time": "3 пара (12:25-13:50)"
         },
         {
-          "lessons": [],
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 768,
+              "is_block": false,
+              "is_lab": false,
+              "name": "Иностранный язык в профессиональной деятельности",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 41,
+              "room_name": "324",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 71,
+              "teacher_id": 27,
+              "uid": "lesson-7d2e45961f2d49be",
+              "week_parity": "all"
+            }
+          ],
           "slot": 4,
-          "text": "-",
+          "text": "Иностранный язык в профессиональной деятельности — 2 п/г, Ермолина Ирина Павловна, Лесная",
           "time": "4 пара (14:00-15:25)"
         },
         {
-          "lessons": [],
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 768,
+              "is_block": false,
+              "is_lab": false,
+              "name": "Иностранный язык в профессиональной деятельности",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 41,
+              "room_name": "324",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 71,
+              "teacher_id": 27,
+              "uid": "lesson-7d2e45961f2d49be",
+              "week_parity": "all"
+            }
+          ],
           "slot": 5,
-          "text": "-",
+          "text": "Иностранный язык в профессиональной деятельности — 2 п/г, Ермолина Ирина Павловна, Лесная",
           "time": "5 пара (15:35-16:55)"
         },
         {
@@ -1102,20 +382,82 @@
       "weekday": "ЧТ"
     },
     {
-      "date": "16.10.2026",
-      "date_iso": "2026-10-16",
-      "day_index": 0,
+      "date": "23.10.2026",
+      "date_iso": "2026-10-23",
+      "day_index": 3,
       "slots": [
         {
-          "lessons": [],
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 779,
+              "is_block": false,
+              "is_lab": true,
+              "name": "ЛПЗ МДК.01.02 Оформление технологической документации по процессам изготовления деталей машин",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 48,
+              "room_name": "413",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 71,
+              "teacher_id": 62,
+              "uid": "lesson-2b4e51d92a204a73",
+              "week_parity": "all"
+            },
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": "08:30-12:30",
+              "id": 781,
+              "is_block": true,
+              "is_lab": false,
+              "name": "УП.07",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 44,
+              "room_name": "405",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 70,
+              "teacher_id": 63,
+              "uid": "lesson-4ce17937fa5f378d",
+              "week_parity": "all"
+            }
+          ],
           "slot": 1,
-          "text": "-",
+          "text": "ЛПЗ МДК.01.02 Оформление технологической документации по процессам изготовления деталей машин — 2 п/г, Вальдиянов Ян Мансурович, Лесная | УП.07 (УП утро 08:30-12:30) — 1 п/г, Клабуков Василий Витальевич, Лесная",
           "time": "1 пара (08:30-09:55)"
         },
         {
-          "lessons": [],
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 768,
+              "is_block": false,
+              "is_lab": false,
+              "name": "Иностранный язык в профессиональной деятельности",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 41,
+              "room_name": "324",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 71,
+              "teacher_id": 27,
+              "uid": "lesson-7d2e45961f2d49be",
+              "week_parity": "all"
+            }
+          ],
           "slot": 2,
-          "text": "-",
+          "text": "Иностранный язык в профессиональной деятельности — 2 п/г, Ермолина Ирина Павловна, Лесная",
           "time": "2 пара (10:05-11:30)"
         },
         {
@@ -1125,57 +467,15 @@
           "time": "3 пара (12:25-13:50)"
         },
         {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 770,
-              "is_block": false,
-              "is_lab": false,
-              "name": "Инженерная графика",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 61,
-              "room_name": "70",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": -1,
-              "teacher_id": 40,
-              "uid": "lesson-1d66fec2d3fa0dc8",
-              "week_parity": "all"
-            }
-          ],
+          "lessons": [],
           "slot": 4,
-          "text": "Инженерная графика — вся группа, Сивилькаев Вадим Михайлович, Кривоусова",
+          "text": "-",
           "time": "4 пара (14:00-15:25)"
         },
         {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 770,
-              "is_block": false,
-              "is_lab": false,
-              "name": "Инженерная графика",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 61,
-              "room_name": "70",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": -1,
-              "teacher_id": 40,
-              "uid": "lesson-1d66fec2d3fa0dc8",
-              "week_parity": "all"
-            }
-          ],
+          "lessons": [],
           "slot": 5,
-          "text": "Инженерная графика — вся группа, Сивилькаев Вадим Михайлович, Кривоусова",
+          "text": "-",
           "time": "5 пара (15:35-16:55)"
         },
         {
@@ -1194,9 +494,9 @@
       "weekday": "ПТ"
     },
     {
-      "date": "17.10.2026",
-      "date_iso": "2026-10-17",
-      "day_index": 1,
+      "date": "24.10.2026",
+      "date_iso": "2026-10-24",
+      "day_index": 4,
       "slots": [
         {
           "lessons": [],
@@ -1265,9 +565,30 @@
           "time": "4 пара (12:55-14:10)"
         },
         {
-          "lessons": [],
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 772,
+              "is_block": false,
+              "is_lab": false,
+              "name": "Материаловедение",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 40,
+              "room_name": "322",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": -1,
+              "teacher_id": 61,
+              "uid": "lesson-2a654c43e2d6c4f3",
+              "week_parity": "all"
+            }
+          ],
           "slot": 5,
-          "text": "-",
+          "text": "Материаловедение — вся группа, Саламатина Вера Викторовна, Лесная",
           "time": "5 пара (14:20-15:30)"
         },
         {

@@ -1,7 +1,7 @@
 import test from 'node:test'
 import assert from 'node:assert/strict'
 import { readFile } from 'node:fs/promises'
-import { buildScheduleExcelWorkbook, scheduleForDates } from '../src/utils/scheduleTemplateExport.js'
+import { buildScheduleExcelWorkbook, scheduleForDates, scheduleDatesForWeek } from '../src/utils/scheduleTemplateExport.js'
 import { teacherBulkPayload, teacherFormFromEntity, teacherPayloadFromForm } from '../src/utils/entityPayloads.js'
 import ExcelJS from 'exceljs'
 import * as XLSX from 'xlsx'
@@ -26,7 +26,7 @@ test('workload reimport updates hours without replacing period quotas and room r
   const result = await parseVkleyki(makeFile('Иванов'), current)
   assert.deepEqual(result.errors, [])
   assert.deepEqual(result.data.lessons[0], { ...current.lessons[0], is_lab: false, is_block: false, is_pp: false,
-    week_parity: 'all', required_capacity: 0, required_equipment: [], total_hours: 12, curriculum_active: true, plan_active: true })
+    week_parity: 'all', required_capacity: 0, required_equipment: [], total_hours: 12, curriculum_active: true, plan_active: true, workload_order: 1 })
   assert.equal(result.data.lessons[1].total_slots, 0)
   assert.equal(result.data.lessons[1].generation_active, false)
   assert.equal(result.data.lessons[1].subject_id, 42)
@@ -120,12 +120,30 @@ test('weekly Excel slice keeps only the selected week and creates its empty week
   assert.equal(selected.groups[0].days[5].weekday, 'СБ')
 })
 
+test('weekly Excel export respects the last generated date range without affecting other weeks', () => {
+  assert.deepEqual(scheduleDatesForWeek('2026-10-19', { from: '2026-10-20', to: '2026-10-24' }), [
+    '2026-10-20', '2026-10-21', '2026-10-22', '2026-10-23', '2026-10-24',
+  ])
+  assert.deepEqual(scheduleDatesForWeek('2026-10-26', { from: '2026-10-20', to: '2026-10-24' }), [
+    '2026-10-26', '2026-10-27', '2026-10-28', '2026-10-29', '2026-10-30', '2026-10-31',
+  ])
+})
+
 test('template derives weekdays from dates when stored weekday labels are stale', async () => {
   const schedule = makeSchedule([])
   schedule.groups[0].days[0].weekday = 'ВТ'
   schedule.groups[0].days.push({ date: '08.09.2026', date_iso: '2026-09-08', weekday: 'ВТ', slots: [] })
   const result = await buildScheduleExcelWorkbook(schedule, template)
   assert.equal(result.dates, 2)
+})
+
+test('template export counts legacy slot text when structured lesson list is empty', async () => {
+  const result = await buildScheduleExcelWorkbook(makeSchedule([{
+    slot: 1,
+    text: 'математика — вся группа, Иванов Иван Иванович, Лесная',
+    lessons: [],
+  }]), template)
+  assert.equal(result.insertedLessons, 1)
 })
 
 test('ordinary lessons preserve separate template cells after Excel round-trip', async () => {

@@ -335,7 +335,7 @@
 
 <script setup>
 import { ref, computed, onMounted, watch } from 'vue'
-import { useRouter } from 'vue-router'
+import { useRouter, useRoute } from 'vue-router'
 import Modal from '../components/Modal.vue'
 import { useConstructorStore } from '../stores/constructor.js'
 import { useDataStore } from '../stores/data.js'
@@ -349,6 +349,7 @@ const cstore = useConstructorStore()
 const data = useDataStore()
 const scheduleStore = useScheduleStore()
 const router = useRouter()
+const route = useRoute()
 const toast = useToast()
 
 const selectedYear = ref(0)
@@ -409,6 +410,11 @@ onMounted(async () => {
     : []
   ensureConstructorGroups()
   setDefaultGenerationRange()
+  const requestedTeacher = Number(route.query.teacher)
+  if (route.query.teacher !== undefined && data.teachers.some(t => t.id === requestedTeacher))
+    teacherFilter.value = requestedTeacher
+  if (/^\d{4}-\d{2}-\d{2}$/.test(String(route.query.date || '')))
+    generationFrom.value = String(route.query.date)
   campusFrom.value = generationFrom.value
   campusTo.value = generationFrom.value
   jumpToGenerationWeek()

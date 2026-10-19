@@ -1241,7 +1241,7 @@ GenerationResult GenerateSchedule(const std::string& output_dir, const Generatio
     }
 
     AddClassHourTimeConstraints(model, input_data, all_days,
-        part_busy, teacher_busy, group_day_campus, teacher_day_campus);
+        part_busy, teacher_busy, group_day_campus, teacher_day_campus, &lessons, &x);
 
     for (int l = 0; l < num_lessons; l++) {
         int group = lessons[l].group;
@@ -1681,6 +1681,74 @@ struct QuotaBalanceResult {
     double solve_seconds = 0.0;
     JsonValue report = JsonValue::MakeObject();
 };
+
+// Necessary condition only: do not sum candidate quotas as required demand.
+// A scoped model may choose any compatible subset, but cannot fill a required
+// study day when a physical group part has no available curriculum candidate.
+static WeeklyPreflightResult BuildScopedDailyPreflight(
+    const std::vector<Lesson>& lessons, const std::vector<GroupData>& groups,
+    const std::vector<TeacherData>& teachers, const std::vector<Date>& days,
+    const std::map<int, std::vector<std::pair<Date, Date>>>& unavailable,
+    const std::map<int, std::vector<UnavailabilityPeriod>>& teacher_unavailable) {
+    WeeklyPreflightResult result;
+    JsonValue issues = JsonValue::MakeArray();
+    std::map<int, const TeacherData*> teacher_by_id;
+    for (const auto& teacher : teachers) teacher_by_id[teacher.id] = &teacher;
+    for (const auto& group : groups) for (const auto& day : days) {
+        if (MIN_STUDENT_PAIRS_PER_STUDY_DAY <= 0) continue;
+        if (!IsAvailable(day, group.id, unavailable)) continue;
+        bool group_open = false;
+        for (int slot = 0; slot < SLOTS_PER_DAY; ++slot)
+            group_open = group_open || WorkScheduleAllows(group.work_schedule, day, slot);
+        if (!group_open) continue;
+        JsonValue missing_parts = JsonValue::MakeArray();
+        for (int part = 0; part < std::clamp(group.parts, 1, PARTS_PER_GROUP); ++part) {
+            bool candidate = false;
+            for (const auto& lesson : lessons) {
+                if (lesson.total_slots <= 0 || !LessonAffectsPart(lesson, group.id, part) ||
+                    !LessonCalendarAllows(lesson, day)) continue;
+                const auto teacher = teacher_by_id.find(lesson.teacher);
+                if (teacher == teacher_by_id.end()) continue;
+                for (int slot = 0; slot < SLOTS_PER_DAY && !candidate; ++slot) {
+                    if (!WorkScheduleAllows(group.work_schedule, day, slot) ||
+                        !WorkScheduleAllows(teacher->second->work_schedule, day, slot) ||
+                        !IsAvailable(day, slot, lesson.teacher, teacher_unavailable)) continue;
+                    if (lesson.is_block) {
+                        if (!IsAllowedUpStartSlot(day, slot)) continue;
+                        bool interval_open = true;
+                        for (int blocked : TeacherBlockedSlotsForUpStart({day}, slot))
+                            interval_open = interval_open &&
+                                WorkScheduleAllows(group.work_schedule, day, blocked) &&
+                                WorkScheduleAllows(teacher->second->work_schedule, day, blocked) &&
+                                IsAvailable(day, blocked, lesson.teacher, teacher_unavailable);
+                        if (!interval_open) continue;
+                    }
+                    candidate = true;
+                }
+                if (candidate) break;
+            }
+            if (!candidate) missing_parts.array_value.push_back(JsonValue::MakeNumber(part + 1));
+        }
+        if (missing_parts.array_value.empty()) continue;
+        JsonValue issue = JsonValue::MakeObject();
+        const auto message = group.name + ", " + DateToIso(day) +
+            ": нет доступных занятий с оставшимися часами; требуется минимум " +
+            std::to_string(MIN_STUDENT_PAIRS_PER_STUDY_DAY) + " пары. Проверьте доступность преподавателей и учебный день группы.";
+        issue.At("severity") = JsonValue::MakeString("error");
+        issue.At("code") = JsonValue::MakeString("group_day_no_candidates");
+        issue.At("group_id") = JsonValue::MakeNumber(group.id);
+        issue.At("group_name") = JsonValue::MakeString(group.name);
+        issue.At("date") = JsonValue::MakeString(DateToIso(day));
+        issue.At("parts") = missing_parts;
+        issue.At("message") = JsonValue::MakeString(message);
+        issues.array_value.push_back(issue);
+        if (result.message.empty()) result.message = message;
+    }
+    result.ok = issues.array_value.empty();
+    result.report.At("ok") = JsonValue::MakeBool(result.ok);
+    result.report.At("issues") = issues;
+    return result;
+}
 
 static WeeklyPreflightResult BuildWeeklyPreflight(
     const std::vector<Lesson>& lessons,
@@ -2677,7 +2745,9 @@ static WeekSolveResult SolveOneWeek(
         int l = blk.lesson_id;
         int req = quotas[l];
 
-        if (static_cast<int>(blk.possible_starts.size()) < req) {
+        // Scoped quotas are upper bounds: a practice candidate with no valid
+        // start is simply unused. Exact weekly quotas still fail closed.
+        if (!allow_partial && static_cast<int>(blk.possible_starts.size()) < req) {
             WeekSolveResult res;
             res.success = false;
             res.status = "NO_STARTS_W" + std::to_string(week_num);
@@ -3038,7 +3108,7 @@ static WeekSolveResult SolveOneWeek(
                             group_day_open = group_day_open ||
                                 WorkScheduleAllows(*group_work[g], week_days[ld], slot);
                     }
-                    if (group_day_open) {
+                    if (group_day_open && allow_partial) {
                         model.AddEquality(has, 1).OnlyEnforceIf(daily_min_rule);
                         model.AddGreaterOrEqual(adjusted, eff_min).OnlyEnforceIf(daily_min_rule);
                     } else {
@@ -3091,9 +3161,12 @@ static WeekSolveResult SolveOneWeek(
             LinearExpr common;
             LinearExpr teacher_load;
             LinearExpr group_load;
+            LinearExpr whole_group_load;
             for (int s = 0; s < SLOTS_PER_DAY; ++s) group_load += group_busy[group][ld * SLOTS_PER_DAY + s];
             for (int l = 0; l < num_lessons; ++l) {
                 if (lessons[l].group != group || quotas[l] <= 0) continue;
+                if (lessons[l].subgroup < 0 && !lessons[l].is_block)
+                    for (int s = 0; s < SLOTS_PER_DAY; ++s) whole_group_load += x[l][ld * SLOTS_PER_DAY + s];
                 if (rule.whole_group_only && lessons[l].subgroup >= 0)
                     for (int s = 0; s < SLOTS_PER_DAY; ++s) model.AddEquality(x[l][ld * SLOTS_PER_DAY + s], 0);
                 if (rule.only_teacher && lessons[l].teacher != rule.teacher_id)
@@ -3106,6 +3179,7 @@ static WeekSolveResult SolveOneWeek(
             if (rule.common_slot > 0) model.AddEquality(common, 1);
             if (rule.minimum_teacher_pairs > 0) model.AddGreaterOrEqual(teacher_load, rule.minimum_teacher_pairs);
             if (rule.minimum_group_pairs > 0) model.AddGreaterOrEqual(group_load, rule.minimum_group_pairs);
+            if (rule.minimum_whole_group_pairs > 0) model.AddGreaterOrEqual(whole_group_load, rule.minimum_whole_group_pairs);
             if (rule.maximum_group_pairs > 0) model.AddLessOrEqual(group_load, rule.maximum_group_pairs);
         }
     }
@@ -3368,8 +3442,10 @@ static WeekSolveResult SolveOneWeek(
     class_hour_data.rooms = rooms;
     class_hour_data.unavailable = unavailable;
     class_hour_data.teacher_unavailable = teacher_unavailable;
+    std::map<int, int> class_hour_adjacency_assumption_group;
     AddClassHourTimeConstraints(model, class_hour_data, week_days,
-        part_busy, teacher_busy, group_day_campus, teacher_day_campus);
+        part_busy, teacher_busy, group_day_campus, teacher_day_campus, &lessons, &x,
+        &class_hour_adjacency_assumption_group);
 
     // ── Вместимость аудиторного фонда по корпусу ────────────────────────
     // Кабинеты назначаются после CP-SAT, но без этих ограничений модель могла
@@ -3577,14 +3653,22 @@ static WeekSolveResult SolveOneWeek(
     if (feasibility_resp.status() == CpSolverStatus::INFEASIBLE &&
         !feasibility_resp.sufficient_assumptions_for_infeasibility().empty()) {
         std::cerr << "  Группы в конфликте дневного минимума:";
+        std::cerr << "  Требование пары сразу после классного часа конфликтует у:";
         for (int literal : feasibility_resp.sufficient_assumptions_for_infeasibility()) {
             const int variable = literal >= 0 ? literal : -literal - 1;
             const auto it = daily_min_assumption_group.find(variable);
-            if (it == daily_min_assumption_group.end()) continue;
-            std::string name = "ID " + std::to_string(it->second);
+            const auto adjacency = class_hour_adjacency_assumption_group.find(variable);
+            if (it == daily_min_assumption_group.end() &&
+                adjacency == class_hour_adjacency_assumption_group.end()) continue;
+            const int group_id = adjacency != class_hour_adjacency_assumption_group.end()
+                ? adjacency->second : it->second;
+            std::string name = "ID " + std::to_string(group_id);
             for (const GroupData& group : groups)
-                if (group.id == it->second) { name = group.name; break; }
-            std::cerr << " [id=" << it->second << ", «" << name << "»]";
+                if (group.id == group_id) { name = group.name; break; }
+            if (it != daily_min_assumption_group.end())
+                std::cerr << " [id=" << group_id << ", «" << name << "»]";
+            if (adjacency != class_hour_adjacency_assumption_group.end())
+                std::cerr << " [id=" << group_id << ", «" << name << "»]";
         }
         std::cerr << "\n";
     }
@@ -3738,6 +3822,22 @@ static WeekSolveResult SolveOneWeek(
 
 }  // anonymous namespace
 
+static void ReleaseReplacedPlans(JsonValue& root, const GenerationOptions& options) {
+    std::map<int, int> groups;
+    for (const auto& lesson : root.At("lessons").array_value)
+        groups[JsonInt(lesson, "id", -1)] = JsonInt(lesson, "group", -1);
+    auto& ledger = root.At("teaching_ledger").array_value;
+    ledger.erase(std::remove_if(ledger.begin(), ledger.end(), [&](const JsonValue& entry) {
+        if (JsonString(entry, "status", "") != "planned") return false;
+        const auto date = JsonString(entry, "date", "");
+        Date day{};
+        const auto group = groups.find(JsonInt(entry, "lesson_id", -1));
+        return (options.scope_from <= date && date <= options.scope_to) ||
+            (ParseDateIso(date, day) && group != groups.end() &&
+             options.generated_group_days.count({group->second, day}));
+    }), ledger.end());
+}
+
 GenerationResult GenerateScheduleWeekly(const std::string& output_dir) {
     GenerationOptions empty_opts;
     return GenerateScheduleWeekly(output_dir, empty_opts);
@@ -3767,6 +3867,10 @@ GenerationResult GenerateScheduleWeekly(
             JsonValue& settings = parsed.value.At("settings");
             settings.At("start_date") = JsonValue::MakeString(options.scope_from);
             settings.At("end_date") = JsonValue::MakeString(options.scope_to);
+            Date scope_first{}, scope_last{};
+            const int scoped_days = ParseDateIso(options.scope_from, scope_first) &&
+                ParseDateIso(options.scope_to, scope_last) && scope_first <= scope_last
+                ? static_cast<int>(GenerateSchoolDays(scope_first, scope_last).size()) : 1;
             // Recalculate the small period from the semester balance and each
             // group's real teaching deadline, including practice periods.
             // Reopen curriculum rows whose current-period quota is zero.
@@ -3798,11 +3902,24 @@ GenerationResult GenerateScheduleWeekly(
                     !JsonBool(lesson, "is_block", false) &&
                     !JsonBool(lesson, "is_pp", false) &&
                     !IsUpLessonName(JsonString(lesson, "name", ""));
-                if (regular_curriculum) {
+                // Every scoped solve chooses compatible remaining UP as well
+                // as ordinary subjects. A zero rolling quota must not erase
+                // real practice capacity only because several days were selected.
+                // Transferred PP rows are still excluded after loading, and
+                // the loader/scoped balance pass cap UP at remaining / 6.
+                const bool day_practice_candidate =
+                    JsonBool(lesson, "curriculum_active", true) &&
+                    JsonBool(lesson, "plan_active", true) &&
+                    !JsonBool(lesson, "is_pp", false) &&
+                    JsonInt(lesson, "teacher", -1) >= 0 &&
+                    (JsonBool(lesson, "is_block", false) ||
+                     IsUpLessonName(JsonString(lesson, "name", "")));
+                if (regular_curriculum || day_practice_candidate) {
                     const int step = JsonInt(lesson, "consecutive_pairs", 1) == 2 ? 2 : 1;
                     lesson.At("generation_active") = JsonValue::MakeBool(true);
                     lesson.At("total_slots") = JsonValue::MakeNumber(
-                        std::max(JsonInt(lesson, "total_slots", 0), step));
+                        std::max(JsonInt(lesson, "total_slots", 0), day_practice_candidate
+                            ? std::max(step, scoped_days) : step));
                 }
                 const auto locked = locked_counts.find(id);
                 if (locked == locked_counts.end()) continue;
@@ -3837,6 +3954,8 @@ GenerationResult GenerateScheduleWeekly(
                     lesson.At("total_slots") = JsonValue::MakeNumber(slots);
                 }
             }
+            // Planned entries in this range are being replaced, not reserved again.
+            ReleaseReplacedPlans(parsed.value, options);
             input_loaded = LoadScheduleInputDataFromRoot(parsed.value, input_data, input_error);
         } else input_error = parsed.error;
     } else input_loaded = LoadScheduleInputData(input_data, input_error);
@@ -3953,7 +4072,9 @@ GenerationResult GenerateScheduleWeekly(
                 if (++balance_before.month > 12) { balance_before.month = 1; ++balance_before.year; }
             }
         }
-        const auto balances = ReadTeachingBalances(scoped_source.value, balance_before);
+        ReleaseReplacedPlans(scoped_source.value, options);
+        const auto balances = ReadTeachingBalances(scoped_source.value, balance_before,
+            input_data.start_date, input_data.end_date);
         const bool single_day_scope = input_data.start_date == input_data.end_date;
         std::set<int> day_emergency_groups;
         std::set<int> day_emergency_teachers;
@@ -4010,10 +4131,7 @@ GenerationResult GenerateScheduleWeekly(
             // make extra candidates safe; dropping them leaves groups infeasible.
             const bool curriculum_active = JsonBool(*source->second, "curriculum_active", true);
             if (units == 0) {
-                if (curriculum_active && hours > 0) {
-                    // Give curriculum rows a minimal quota so they become candidates
-                    lesson.total_slots = step;
-                }
+                // A partial pair cannot be rounded up beyond the curriculum balance.
                 continue;
             }
             if (single_day_scope) {
@@ -4100,13 +4218,19 @@ GenerationResult GenerateScheduleWeekly(
                 }
                 for (int part = 0; part < std::clamp(group.parts, 1, PARTS_PER_GROUP); ++part) {
                     const int average = static_cast<int>(std::lround(average_part_pairs[{group.id, part}]));
+                    int short_day_reduction = 0;
+                    for (const auto& [key, rule] : input_data.group_day_rules)
+                        if (key.first == group.id && input_data.start_date <= key.second &&
+                            key.second <= input_data.end_date && rule.allow_short_subgroup_day)
+                            short_day_reduction += std::max(0, MAX_STUDENT_PAIRS_PER_DAY - MIN_STUDENT_PAIRS_PER_STUDY_DAY);
                     // The hard daily rule below guarantees 2–4 pairs on each
                     // open date. Do not invent a 3-pair quota for an empty
                     // physical part: some groups have no active curriculum
                     // row for that part and that artificial target makes the
                     // whole scoped model infeasible before scheduling.
                     input_data.scoped_part_pair_targets[{group.id, part}] = std::clamp(
-                        average, 0, open_days * MAX_STUDENT_PAIRS_PER_DAY);
+                        std::min(average, open_days * MAX_STUDENT_PAIRS_PER_DAY - short_day_reduction),
+                        0, open_days * MAX_STUDENT_PAIRS_PER_DAY);
                 }
             }
         }
@@ -4381,11 +4505,13 @@ GenerationResult GenerateScheduleWeekly(
         }
     }
 
-    // Skip capacity diagnostics in scoped mode with locks, since total_slots
-    // doesn't reflect the actual quota (which is based on lock count).
-    const bool scoped_with_locks = !options.scope_from.empty() && !options.locked.empty();
-    if (!scoped_with_locks) {
+    // Scoped quotas are alternative candidate capacities, not simultaneous
+    // demands. Summing them produces a false "guaranteed infeasible" warning.
+    if (options.scope_from.empty()) {
         PrintInputDiagnostics(lessons, all_days, work_unavailable, start_date);
+    } else {
+        std::cout << "Предметов-кандидатов выбранного периода: " << lessons.size()
+                  << ". Совместимую нагрузку выбирает точная дневная модель.\n";
     }
 
     // ── ПП: детерминированная расстановка до CP-SAT ───────────────────────
@@ -4578,7 +4704,8 @@ GenerationResult GenerateScheduleWeekly(
 
     WeeklyPreflightResult preflight;
     if (scoped_range) {
-        preflight.report.At("ok") = JsonValue::MakeBool(true);
+        preflight = BuildScopedDailyPreflight(lessons, input_data.groups, input_data.teachers,
+            all_days, unavailable_model, teacher_unavailable_model);
         preflight.report.At("scope") = JsonValue::MakeString(
             scoped_single_day ? "single_day" : "date_range");
         preflight.report.At("note") = JsonValue::MakeString(
@@ -5258,7 +5385,7 @@ GenerationResult GenerateScheduleWeekly(
     if (!WriteScheduleFiles(output_dir, global_x_vals, num_days,
         lessons, all_days, global_group_day_campus,
         input_data.groups, input_data.rooms,
-        unavailable, unavailable_day_texts, true))
+        unavailable, unavailable_day_texts, options.scope_from.empty()))
         return {false, "OUTPUT_ERROR", "Не удалось записать итоговое расписание", output_dir};
 
     std::string finalize_error;
@@ -5267,6 +5394,16 @@ GenerationResult GenerateScheduleWeekly(
                           options.draft_semester_risk || !options.scope_from.empty(),
                           scoped_range))
         return {false, "FINAL_VALIDATION_FAILED", finalize_error, output_dir};
+
+    if (!options.scope_from.empty()) {
+        std::ifstream quality_in(std::filesystem::path(output_dir) / "quality_report.json", std::ios::binary);
+        std::ostringstream quality_text; quality_text << quality_in.rdbuf();
+        const auto quality = ParseJson(quality_text.str());
+        if (quality.ok)
+            std::cout << "Итоговая проверка: окон студентов " << JsonInt(quality.value, "student_windows", -1)
+                      << ", окон преподавателей " << JsonInt(quality.value, "teacher_windows", -1)
+                      << ", классных часов " << JsonInt(quality.value, "class_hours", 0) << "\n";
+    }
 
     std::cout << "\nФайлы созданы в: " << output_dir << "\n";
 

@@ -68,6 +68,15 @@ endif()
 
 include(CTest)
 if (BUILD_TESTING)
+    find_package(Python3 COMPONENTS Interpreter QUIET)
+    if (Python3_Interpreter_FOUND)
+        add_test(NAME scoped_accounting_api_regression
+            COMMAND "${Python3_EXECUTABLE}" "${CMAKE_SOURCE_DIR}/tests/test_scoped_accounting.py" "$<TARGET_FILE:timetable_solver>")
+        set_tests_properties(scoped_accounting_api_regression PROPERTIES TIMEOUT 45)
+        add_test(NAME teaching_balance_regression
+            COMMAND "${Python3_EXECUTABLE}" "${CMAKE_SOURCE_DIR}/tests/test_deadline_reservations.py" "$<TARGET_FILE:timetable_solver>")
+        set_tests_properties(teaching_balance_regression PROPERTIES TIMEOUT 45)
+    endif()
     add_executable(scheduler_rules_test
         tests/scheduler_rules_test.cpp
         src/scheduler_rules.cpp

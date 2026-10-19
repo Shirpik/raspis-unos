@@ -57,6 +57,10 @@ export async function parseVkleyki(file, current, semester = 1) {
   const errors = [], warnings = []
   const oldGroups = current.groups || [], oldTeachers = current.teachers || [], oldLessons = current.lessons || []
   const groupByName = new Map(oldGroups.map(g => [key(g.name), g]))
+  // Weekly timetables and workload exports use both spellings of this group.
+  // Preserve its canonical ID and subgroup IDs so journal links remain valid.
+  const pkdGroup = groupByName.get(key('ПКД-3806/07п'))
+  if (pkdGroup) groupByName.set(key('ПКД-380607п'), pkdGroup)
   const teacherByName = new Map(oldTeachers.map(t => [key(t.name), t]))
   const oldLessonByKey = new Map(oldLessons.map(l => [lessonKey(l), l]))
   let nextGroupId = Math.max(-1, ...oldGroups.map(x => x.id ?? -1)) + 1
@@ -77,7 +81,7 @@ export async function parseVkleyki(file, current, semester = 1) {
     return teacher.id
   }
 
-  for (const sheetName of workbook.SheetNames) {
+  for (const [accountingOrder, sheetName] of workbook.SheetNames.entries()) {
     const rows = XLSX.utils.sheet_to_json(workbook.Sheets[sheetName], { header: 1, raw: true, defval: null })
     const cols = findColumns(rows, semester)
     if (cols.headerRow < 0 || cols.subject < 0 || cols.teacher < 0) {
@@ -87,7 +91,8 @@ export async function parseVkleyki(file, current, semester = 1) {
     const name = text(sheetName)
     const previous = groupByName.get(key(name))
     const group = previous ? { ...previous } : { id: nextGroupId++, name, parts: 2, size: 0, home_campus: 0 }
-    group.accounting_title = accountingTitle(rows, cols.headerRow, name)
+    group.accounting_title = accountingTitle(rows, cols.headerRow, group.name)
+    group.accounting_order = accountingOrder
     groups.push(group)
 
     for (let r = cols.headerRow + 1; r < rows.length; r++) {
@@ -127,16 +132,23 @@ export async function parseVkleyki(file, current, semester = 1) {
         required_capacity: group.size || 0, required_equipment: []
       }
       lessons.push({ ...draft, ...(previousLesson || {}), teacher, total_hours: Math.round(hours),
-        curriculum_active: true, plan_active: true, source_index: indexValue, id: previousLesson?.id ?? nextLessonId++ })
+        curriculum_active: true, plan_active: previousLesson?.plan_active ?? true, source_index: indexValue,
+        workload_order: r, id: previousLesson?.id ?? nextLessonId++ })
     }
   }
 
   for(const teacher of oldTeachers) if(!teachers.some(t=>t.id===teacher.id)) teachers.push({...teacher})
-  for(const group of oldGroups) if(!groups.some(g=>g.id===group.id)) groups.push({...group})
+  let nextAccountingOrder = workbook.SheetNames.length
+  for(const group of oldGroups) if(!groups.some(g=>g.id===group.id)) groups.push({...group, accounting_order: nextAccountingOrder++})
+  const lastWorkloadOrder = new Map()
+  for(const lesson of lessons) if(Number.isFinite(Number(lesson.workload_order)))
+    lastWorkloadOrder.set(lesson.group, Math.max(lastWorkloadOrder.get(lesson.group) ?? -1, Number(lesson.workload_order)))
   for(const lesson of oldLessons) if(!lessons.some(l=>l.id===lesson.id)) {
     // Do not silently delete approved quotas/history if a workbook renames or
     // transfers a subject. Require explicit reconciliation of unmatched rows.
-    lessons.push({...lesson})
+    const workloadOrder = lastWorkloadOrder.has(lesson.group) ? lastWorkloadOrder.get(lesson.group) + 1 : lesson.workload_order
+    lessons.push({...lesson, ...(workloadOrder === undefined ? {} : { workload_order: workloadOrder })})
+    if(workloadOrder !== undefined)lastWorkloadOrder.set(lesson.group, workloadOrder)
     if (lesson.curriculum_active !== false && (lesson.total_hours || lesson.total_slots))
       warnings.push(`Не сопоставлена существующая строка ${lesson.id}: ${lesson.name}. Сохранена без изменений; требуется сверка.`)
   }

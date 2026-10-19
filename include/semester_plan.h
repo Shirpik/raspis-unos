@@ -5,7 +5,8 @@ struct TeachingBalances {
     std::map<int, int> confirmed;
     std::map<int, int> reserved;
 };
-TeachingBalances ReadTeachingBalances(const JsonValue& root, Date before);
+TeachingBalances ReadTeachingBalances(const JsonValue& root, Date before,
+                                     Date replace_from = {}, Date replace_to = {});
 Date GroupTeachingDeadline(const GroupData& group, Date semester_first, Date semester_last);
 bool GroupRegularCalendarAllows(const GroupData& group, const Date& date);
 int GroupTeachingCapacity(const ScheduleInputData& data, const GroupData& group,

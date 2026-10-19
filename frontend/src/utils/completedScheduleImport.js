@@ -7,6 +7,7 @@ const normalized = value => text(value)
   // Common typo in the source workbook.  Treat it as the canonical subject
   // name so a completed lesson reduces the correct curriculum balance.
   .replaceAll('жизнидеятельности', 'жизнедеятельности')
+  .replaceAll('филосовии', 'философии')
   .replace(/\s*\([тп]\)\s*$/giu, '')
   .replace(/лпз/giu, ' ')
   .replace(/(?:^|\s)(?:1|2)\s*(?:п\s*\/?\s*г|подгрупп[а-яё]*)(?=\s|$)/giu, ' ')
@@ -101,7 +102,7 @@ const parseCell = raw => {
     teacherSurname: hasTeacherLine ? teacherSurname(last) : '',
     teacherLine: hasTeacherLine ? last : '',
     room: hasTeacherLine ? roomFromLine(last) : '',
-    isPractice: /^УП(?:\.|\s|$)/iu.test(matchingSubject),
+    isPractice: /^В?УП(?:\.|\s|$)/iu.test(matchingSubject),
     isLab: /лпз/iu.test(subject),
   }
 }
@@ -171,6 +172,16 @@ function chooseLesson(cell, groupId, inferredSubgroup, current, teachersById) {
     .sort((a, b) => b.score - a.score || Number(a.lesson.id) - Number(b.lesson.id))
   if (!candidates.length || candidates[0].score < 55) return { error: 'Занятие не найдено в нагрузке' }
   if (candidates[1] && candidates[0].score === candidates[1].score) {
+    // Previously confirmed whole-group facts must not be assigned to an
+    // arbitrary subgroup when the historical source has no subgroup label.
+    const code = cell.matchingSubject.match(/^(В?МДК\.\d+\.\d+)(?:\s|$)/iu)?.[1]
+    const fact = !cell.subgroup && !inferredSubgroup && !cell.isLab && code
+      ? (current.lessons || []).find(item => Number(item.group) === Number(groupId)
+        && Number(item.subgroup) < 0
+        && normalized(item.name) === normalized(`${code} (общая пара, факт)`)
+        && normalized(teachersById.get(Number(item.teacher))).startsWith(cell.teacherSurname))
+      : null
+    if (fact) return { lesson: fact, teacherMismatch: false }
     return { error: `Неоднозначное сопоставление: ${candidates[0].lesson.name} / ${candidates[1].lesson.name}` }
   }
   return { lesson: candidates[0].lesson, teacherMismatch: Boolean(cell.teacherSurname && !candidates[0].surnameMatches) }
@@ -260,6 +271,7 @@ export async function parseCompletedSchedule(file, current, options = {}) {
     const rows = XLSX.utils.sheet_to_json(sheet, { header: 1, defval: '', raw: true })
     for (const block of sheetBlocks(rows, knownGroups)) {
       if (!block.date) {
+        if (!rows.slice(block.from, block.to).some(row => block.columns.some(entry => text(row[entry.column])))) continue
         errors.push(`${sheetName}: не удалось определить дату блока со строки ${block.header + 1}`)
         continue
       }
@@ -312,6 +324,8 @@ export async function parseCompletedSchedule(file, current, options = {}) {
             status,
             source_file: file.name,
             source_sheet: sheetName,
+            source_cell: XLSX.utils.encode_cell({ r: rowIndex, c: entry.column }),
+            source_raw: cell.raw,
             group_id: Number(entry.group.id),
             source_subject: cell.subject,
             source_teacher: cell.teacherLine,

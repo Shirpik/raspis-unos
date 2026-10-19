@@ -331,7 +331,7 @@ ScheduleValidationResult ValidateScheduleJson(
     }
 
     std::map<int, int> raw_occurrences;
-    std::map<std::tuple<Date, int, int>, std::vector<int>> teacher_slot;
+    std::map<std::pair<Date, int>, std::vector<Event>> teacher_events;
     std::map<std::tuple<Date, int, int>, std::vector<int>> room_slot;
     std::map<std::tuple<Date, int, int, int>, std::vector<int>> part_slot;
     std::map<std::pair<int, Date>, std::set<int>> teacher_day_slots;
@@ -409,7 +409,7 @@ ScheduleValidationResult ValidateScheduleJson(
                           TeacherLabel(teacher, event.teacher) + " недоступен(на) в это время", ctx);
         }
 
-        teacher_slot[{event.date, event.pair, event.teacher}].push_back(event.lesson);
+        teacher_events[{event.date, event.teacher}].push_back(event);
         teacher_day_slots[{event.teacher, event.date}].insert(event.pair);
         const std::string subject = SubjectFamilyKey(*lesson);
         for (int part = 0; part < std::max(1, group->parts); ++part) {
@@ -512,11 +512,19 @@ ScheduleValidationResult ValidateScheduleJson(
                           " находится не на приоритетной площадке", ctx);
     }
 
-    for (const auto& item : teacher_slot) {
-        if (item.second.size() <= 1) continue;
-        JsonValue ctx = Context(); Put(ctx, "date", DateLabel(std::get<0>(item.first))); Put(ctx, "pair", std::get<1>(item.first)); Put(ctx, "teacher", std::get<2>(item.first));
+    for (const auto& item : teacher_events) {
+      for (size_t a = 0; a < item.second.size(); ++a) for (size_t b = a + 1; b < item.second.size(); ++b) {
+        auto interval = [&](const Event& event) {
+            const auto* lesson = FindLesson(data, event.lesson);
+            return lesson && (lesson->is_block || IsUpLessonName(lesson->name))
+                ? UpIntervalForStartSlot(event.date, event.pair - 1)
+                : PairSlotInterval(DayOfWeek(event.date), event.pair - 1);
+        };
+        if (!IntervalsOverlap(interval(item.second[a]), interval(item.second[b]))) continue;
+        JsonValue ctx = Context(); Put(ctx, "date", DateLabel(item.first.first)); Put(ctx, "pair", item.second[a].pair); Put(ctx, "teacher", item.first.second);
         collector.Add("error", "conflicts", "teacher_conflict",
                       "У преподавателя несколько занятий одновременно", ctx);
+      }
     }
     for (const auto& item : room_slot) {
         const auto* room = FindRoom(data, std::get<2>(item.first));
@@ -642,10 +650,11 @@ ScheduleValidationResult ValidateScheduleJson(
                       "Подгруппа поставлена на разные площадки в один день", ctx);
     }
 
-    // Teaching loads exclude class hours. Continuity includes them, including
-    // zero period; external school work is occupied time for the teacher only.
+    // Class hours do not count towards either subgroup's load or continuity.
+    // They still occupy the curator's time, as does external school work.
     auto part_continuity = part_day_slots;
     auto teacher_continuity = teacher_day_slots;
+    std::set<std::pair<int, Date>> groups_with_class_hour;
     // An UP occurrence is rendered only in its start row, but it occupies the
     // complete 08:30-12:30 or 13:00-17:00 interval. Expand only the continuity
     // calendar here. Conflict checks keep using exact event intervals, because
@@ -669,8 +678,7 @@ ScheduleValidationResult ValidateScheduleJson(
                 for (const auto& lesson : slot.At("lessons").array_value) {
                     if (!JsonBool(lesson, "is_class_hour", false)) continue;
                     const int pair = JsonInt(slot, "slot", -1);
-                    for (int part = 0; part < definition->parts; ++part)
-                        part_continuity[{definition->id,part,date}].insert(pair);
+                    groups_with_class_hour.insert({JsonInt(group, "group_index", -1), date});
                     teacher_continuity[{JsonInt(lesson,"teacher_id",-1),date}].insert(pair);
                 }
         }
@@ -703,7 +711,8 @@ ScheduleValidationResult ValidateScheduleJson(
                               : "Суточная нагрузка подгруппы ниже заданного минимума",
                           ctx);
         }
-        if (!IsContiguous(part_continuity[item.first])) {
+        if (!groups_with_class_hour.count({group_id, date}) &&
+            !IsContiguous(part_continuity[item.first])) {
             JsonValue ctx = Context(); Put(ctx, "group", group_id); Put(ctx, "part", part + 1); Put(ctx, "date", DateLabel(date)); ctx.At("slots") = SlotsJson(item.second);
             collector.Add(config.hard_no_student_windows ? "error" : "warning", "windows", "student_window",
                           "У подгруппы есть окно между занятиями", ctx);
@@ -715,9 +724,11 @@ ScheduleValidationResult ValidateScheduleJson(
         bool common_found = rule.common_slot == 0;
         int required_teacher_pairs = 0;
         std::set<int> group_pairs;
+        std::set<int> whole_group_pairs;
         for (const auto& event : events) {
             if (event.group != key.first || !(event.date == key.second)) continue;
             const auto* lesson = FindLesson(data, event.lesson);
+            if (lesson && lesson->subgroup < 0 && !lesson->is_block) whole_group_pairs.insert(event.pair);
             group_pairs.insert(event.pair);
             if (event.teacher == rule.teacher_id) ++required_teacher_pairs;
             if (rule.only_teacher && event.teacher != rule.teacher_id) {
@@ -738,6 +749,10 @@ ScheduleValidationResult ValidateScheduleJson(
             JsonValue ctx = Context(); Put(ctx, "group", key.first); Put(ctx, "date", DateLabel(key.second));
             collector.Add("error", "daily_load", "required_teacher_load", "Не выполнена обязательная нагрузка преподавателя с группой", ctx);
         }
+        if (static_cast<int>(whole_group_pairs.size()) < rule.minimum_whole_group_pairs) {
+            JsonValue ctx = Context(); Put(ctx, "group", key.first); Put(ctx, "date", DateLabel(key.second));
+            collector.Add("error", "daily_load", "whole_group_pairs_minimum", "Не выполнено число общих пар группы", ctx);
+        }
         if (static_cast<int>(group_pairs.size()) < rule.minimum_group_pairs ||
             (rule.maximum_group_pairs > 0 && static_cast<int>(group_pairs.size()) > rule.maximum_group_pairs)) {
             JsonValue ctx = Context(); Put(ctx, "group", key.first); Put(ctx, "date", DateLabel(key.second));
@@ -757,7 +772,7 @@ ScheduleValidationResult ValidateScheduleJson(
     // rows.  This is deliberately independent of the solver status and of the
     // lesson-hour totals: a group with a closed quota is still a missing group
     // when its selected study day contains fewer than the hard minimum.
-    for (const auto& group_row : schedule.At("groups").array_value) {
+    if (options.require_selected_study_days) for (const auto& group_row : schedule.At("groups").array_value) {
         const int group_id = JsonInt(group_row, "group_index", -1);
         const GroupData* group = FindGroup(data, group_id);
         if (!group) continue;

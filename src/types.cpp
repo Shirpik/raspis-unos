@@ -5,6 +5,7 @@
 namespace timetable {
 
 bool LessonCalendarAllows(const Lesson& lesson, const Date& date) {
+    if (lesson.excluded_dates.count(date)) return false;
     if (lesson.is_block || lesson.is_pp || !lesson.calendar_restricted) return true;
     for (const auto& range : lesson.teaching_windows)
         if (range.first <= date && date <= range.second) return true;
