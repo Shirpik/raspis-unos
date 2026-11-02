@@ -544,7 +544,9 @@ ScheduleValidationResult ValidateScheduleJson(
         const int group = std::get<0>(key);
         const int part = std::get<1>(key);
         const Date& date = std::get<2>(key);
-        if (part_day_ordinary_count[key] > 0) {
+        const auto* group_data = FindGroup(data, group);
+        if (part_day_ordinary_count[key] > 0 &&
+            !(group_data && group_data->mixed_up_dates.count(date))) {
             JsonValue ctx = Context(); Put(ctx, "group", group); Put(ctx, "part", part + 1);
             Put(ctx, "date", DateLabel(date)); Put(ctx, "ordinary_pairs", part_day_ordinary_count[key]);
             collector.Add("error", "daily_load", "lesson_after_up",
@@ -627,7 +629,17 @@ ScheduleValidationResult ValidateScheduleJson(
                 effective_minimum = std::min(effective_minimum, available_slots);
             }
             if (effective_minimum <= 0) continue;
-            const int actual = static_cast<int>(teacher_day_slots[{teacher.id, date}].size());
+            // The solver applies date targets to teacher_busy, including every
+            // bell slot overlapped by UP. Its single rendered start row must
+            // not reduce a full practice shift to one pair in this audit.
+            auto occupied = teacher_day_slots[{teacher.id, date}];
+            for (const Event& event : teacher_events[{date, teacher.id}]) {
+                const Lesson* lesson = FindLesson(data, event.lesson);
+                if (!lesson || !(lesson->is_block || IsUpLessonName(lesson->name))) continue;
+                for (int slot : TeacherBlockedSlotsForUpStart({date}, event.pair - 1))
+                    occupied.insert(slot + 1);
+            }
+            const int actual = static_cast<int>(occupied.size());
             if (actual >= effective_minimum) continue;
             JsonValue ctx = Context(); Put(ctx, "teacher", teacher.id); Put(ctx, "date", DateLabel(date));
             Put(ctx, "minimum", effective_minimum); Put(ctx, "configured_minimum", minimum);
@@ -665,8 +677,14 @@ ScheduleValidationResult ValidateScheduleJson(
         if (!lesson || !(lesson->is_block || IsUpLessonName(lesson->name))) continue;
         const TimeInterval up = UpIntervalForStartSlot(event.date, event.pair - 1);
         for (int slot = 0; slot < SLOTS_PER_DAY; ++slot)
-            if (IntervalsOverlap(up, PairSlotInterval(DayOfWeek(event.date), slot)))
+            if (IntervalsOverlap(up, PairSlotInterval(DayOfWeek(event.date), slot))) {
                 teacher_continuity[{event.teacher, event.date}].insert(slot + 1);
+                const auto* group = FindGroup(data, event.group);
+                if (group && group->mixed_up_dates.count(event.date))
+                    for (int part = 0; part < std::max(1, group->parts); ++part)
+                        if (LessonAffectsPart(*lesson, event.group, part))
+                            part_continuity[{event.group, part, event.date}].insert(slot + 1);
+            }
     }
     for (const auto& group : schedule.At("groups").array_value) {
         const auto* definition = FindGroup(data, JsonInt(group, "group_index", -1));
@@ -691,7 +709,10 @@ ScheduleValidationResult ValidateScheduleJson(
         const int group_id = std::get<0>(item.first);
         const int part = std::get<1>(item.first);
         const Date& date = std::get<2>(item.first);
-        const int count = static_cast<int>(item.second.size());
+        const auto* group_data = FindGroup(data, group_id);
+        const int count = group_data && group_data->mixed_up_dates.count(date)
+            ? part_day_ordinary_count[item.first] + 3 * part_day_up_count[item.first]
+            : static_cast<int>(item.second.size());
         const auto date_rule = data.group_day_rules.find({group_id, date});
         const int maximum = date_rule != data.group_day_rules.end() && date_rule->second.maximum_pairs > 0
             ? date_rule->second.maximum_pairs : config.max_student_pairs_per_day;
@@ -711,8 +732,7 @@ ScheduleValidationResult ValidateScheduleJson(
                               : "Суточная нагрузка подгруппы ниже заданного минимума",
                           ctx);
         }
-        if (!groups_with_class_hour.count({group_id, date}) &&
-            !IsContiguous(part_continuity[item.first])) {
+        if (!IsContiguous(part_continuity[item.first])) {
             JsonValue ctx = Context(); Put(ctx, "group", group_id); Put(ctx, "part", part + 1); Put(ctx, "date", DateLabel(date)); ctx.At("slots") = SlotsJson(item.second);
             collector.Add(config.hard_no_student_windows ? "error" : "warning", "windows", "student_window",
                           "У подгруппы есть окно между занятиями", ctx);
@@ -794,8 +814,15 @@ ScheduleValidationResult ValidateScheduleJson(
                 Put(ctx, "group", group_id); Put(ctx, "part", part + 1);
                 Put(ctx, "date", DateLabel(date));
                 Put(ctx, "actual", actual); Put(ctx, "min", config.min_student_pairs_per_study_day);
-                collector.Add("error", "daily_load", "student_daily_minimum_missing_day",
-                              "У группы на выбранную учебную дату меньше обязательных пар", ctx);
+                collector.Add(options.allow_daily_minimum_fallback ? "warning" : "error",
+                              "daily_load",
+                              options.allow_daily_minimum_fallback
+                                  ? "student_daily_minimum_fallback"
+                                  : "student_daily_minimum_missing_day",
+                              options.allow_daily_minimum_fallback
+                                  ? "Дневной минимум ослаблен резервным режимом решателя"
+                                  : "У группы на выбранную учебную дату меньше обязательных пар",
+                              ctx);
             }
         }
     }

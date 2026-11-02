@@ -35,6 +35,32 @@ const workbookFile = () => {
   return { name: 'fact.xlsx', arrayBuffer: async () => bytes }
 }
 
+test('dispatcher confirmed combined legal title maps both TORД classes to legal workload', async () => {
+  const current={groups:[{id:33,name:'ТОРД-4705п'}],teachers:[{id:7,name:'Вагайская Татьяна Александровна'}],lessons:[{id:731,group:33,teacher:7,subgroup:-1,name:'Правовое обеспечение профессиональной деятельности',total_hours:40}],teaching_ledger:[]}
+  const book=XLSX.utils.book_new(),title='Правовые основы профессиональной деятельности/Социальная адаптация и основы социально-правовых знаний\nВагайская 31_К'
+  XLSX.utils.book_append_sheet(book,XLSX.utils.aoa_to_sheet([['31.10.2026','','','ТОРД-4705п'],['СУББОТА','13.00–14.30',4,title],['','14.40–16.10',5,title]]),'4 курс')
+  const bytes=XLSX.write(book,{type:'buffer',bookType:'xlsx'})
+  const result=await parseCompletedSchedule({name:'legal.xlsx',arrayBuffer:async()=>bytes},current,{status:'planned'})
+  assert.deepEqual(result.errors,[]);assert.equal(result.imported,2);assert.equal(result.importedHours,4)
+  assert(result.importedRows.every(r=>r.lesson_id===731&&r.status==='planned'))
+})
+
+test('a subgroup label cannot restore a retired duplicate instead of its canonical workload', async () => {
+  const current={groups:[{id:27,name:'СП-Пф-3602п',parts:1}],teachers:[{id:57,name:'Подчиненнов Александр Юрьевич'}],lessons:[
+    {id:614,group:27,teacher:57,subgroup:-1,name:'ЛПЗ ВМДК.06.01 Технология выполнения газовой сварки и резки',is_lab:true,total_hours:20,plan_active:true},
+    {id:1024,group:27,teacher:57,subgroup:54,name:'ЛПЗ ВМДК.06.01 Технология выполнения газовой сварки и резки',is_lab:true,total_hours:0,plan_active:false,curriculum_active:false,workload_retired:{canonical_lesson_id:614}},
+  ],teaching_ledger:[]}
+  const book=XLSX.utils.book_new()
+  XLSX.utils.book_append_sheet(book,XLSX.utils.aoa_to_sheet([
+    ['29.09.2026','','','СП-Пф-3602п'],['ВТОРНИК','17.00–18.30',7,'ЛПЗ ВМДК.06.01 Технология выполнения газовой сварки и резки 1 п/г\nПодчиненнов ЦПДЭ_Л'],
+  ]),'3 курс')
+  const bytes=XLSX.write(book,{type:'buffer',bookType:'xlsx'})
+  const result=await parseCompletedSchedule({name:'canonical.xlsx',arrayBuffer:async()=>bytes},current)
+  assert.deepEqual(result.errors,[])
+  assert.equal(result.importedRows[0].lesson_id,614)
+  assert.equal(result.importedHours,2)
+})
+
 test('completed schedule import filters dates, excludes class hours and keeps subgroup facts', async () => {
   const result = await parseCompletedSchedule(workbookFile(), data, { dateFrom: '2026-09-07', dateTo: '2026-09-07' })
   assert.deepEqual(result.errors, [])

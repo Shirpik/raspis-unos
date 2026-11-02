@@ -236,11 +236,12 @@ try {
     $hoursAfter = Invoke-RestMethod "$baseUrl/api/hours"
     $original = $hoursAfter.teachers | Where-Object teacher_id -eq 0
     $substitute = $hoursAfter.teachers | Where-Object teacher_id -eq 1
-    if ($original.credited_hours -ne 6 -or $original.substitution_out_hours -ne 2 -or $substitute.credited_hours -ne 2 -or $substitute.substitution_in_hours -ne 2) {
+    if ($original.credited_hours -ne 8 -or $original.substitution_out_hours -ne 2 -or $substitute.credited_hours -ne 0 -or $substitute.substitution_in_hours -ne 2) {
         throw "Substitution accounting is invalid: $($hoursAfter.teachers | ConvertTo-Json -Depth 8)"
     }
-    if (@($original.scheduled_occurrences).Count -ne 4 -or @($original.credited_occurrences).Count -ne 3 -or
-        @($substitute.credited_occurrences | Where-Object { $_.is_substitution -and $_.actual_teacher_id -eq 1 }).Count -ne 1) {
+    if (@($original.scheduled_occurrences).Count -ne 4 -or @($original.credited_occurrences).Count -ne 4 -or
+        @($original.credited_occurrences | Where-Object { $_.is_substitution -and $_.actual_teacher_id -eq 1 -and $_.credited_teacher_id -eq 0 }).Count -ne 1 -or
+        @($substitute.credited_occurrences).Count -ne 0) {
         throw "Occurrence accounting after substitution is invalid: $($hoursAfter.teachers | ConvertTo-Json -Depth 10)"
     }
     $occupancy = Invoke-RestMethod "$baseUrl/api/accounting/teacher-occupancy"

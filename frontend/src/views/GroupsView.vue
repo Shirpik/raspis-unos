@@ -86,7 +86,7 @@
             <td>
               <span v-if="g.curator_teacher >= 0">{{ store.teachers.find(t=>t.id===g.curator_teacher)?.name || `ID ${g.curator_teacher}` }}</span>
               <span v-else class="muted">не назначен</span>
-              <small v-if="g.curator_teacher >= 0 && g.class_hour_enabled !== false" class="class-hour-note">классный час: ПН 08:15</small>
+              <small v-if="g.curator_teacher >= 0 && g.class_hour_enabled !== false" class="class-hour-note">классный час: ПН, нулевой урок или 2-я половина пары 1–5</small>
             </td>
             <td>
               {{ workSummary(g) }}
@@ -124,8 +124,8 @@
         <select v-model.number="form.home_campus" class="form-select"><option :value="0">Лесная</option><option :value="1">Кривоусова, 53</option></select>
       </div>
       <div class="class-hour-box">
-        <div class="class-hour-head"><strong>Нулевой урок — классный час</strong><label><input v-model="form.class_hour_enabled" type="checkbox" /> включён</label></div>
-        <p>Фиксированно по понедельникам с 08:15 до 08:55. Обычные пары в понедельник начинаются с 09:15; решатель этот урок не рассчитывает.</p>
+        <div class="class-hour-head"><strong>Классный час в понедельник</strong><label><input v-model="form.class_hour_enabled" type="checkbox" /> включён</label></div>
+        <p>Нулевой урок 08:15–08:55 или вторая половина пары 1–5. Занятия группы начинаются после классного часа; он не входит в её учебную занятость и учёт часов. Куратор указывается и при больничном или отсутствии.</p>
         <div class="form-group">
           <label class="form-label">Куратор группы</label>
           <select v-model.number="form.curator_teacher" class="form-select">

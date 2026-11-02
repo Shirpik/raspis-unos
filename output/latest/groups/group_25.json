@@ -1,107 +1,176 @@
 {
   "days": [
     {
-      "date": "20.10.2026",
-      "date_iso": "2026-10-20",
+      "date": "03.11.2026",
+      "date_iso": "2026-11-03",
       "day_index": 0,
       "slots": [
         {
-          "lessons": [],
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "confirmed": true,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 548,
+              "is_block": false,
+              "is_lab": false,
+              "name": "Информационные технологии в профессиональной деятельности",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 56,
+              "room_name": "64",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 50,
+              "teacher_id": 31,
+              "uid": "lesson-51115653fa62c92e",
+              "week_parity": "all"
+            }
+          ],
           "slot": 1,
-          "text": "-",
+          "text": "Информационные технологии в профессиональной деятельности — undefined, каб. 64",
           "time": "1 пара (08:30-09:55)"
         },
         {
-          "lessons": [],
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "confirmed": true,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 548,
+              "is_block": false,
+              "is_lab": false,
+              "name": "Информационные технологии в профессиональной деятельности",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 56,
+              "room_name": "64",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 50,
+              "teacher_id": 31,
+              "uid": "lesson-51115653fa62c92e",
+              "week_parity": "all"
+            }
+          ],
           "slot": 2,
-          "text": "-",
+          "text": "Информационные технологии в профессиональной деятельности — undefined, каб. 64",
           "time": "2 пара (10:05-11:30)"
         },
         {
           "lessons": [
             {
               "avoid_lunch_split": false,
+              "confirmed": true,
               "consecutive_pairs": 1,
               "display_time": null,
-              "id": 545,
+              "id": 558,
               "is_block": false,
               "is_lab": false,
-              "name": "Иностранный язык в профессиональной деятельности",
+              "name": "Компас 3D",
               "requested_room_id": null,
               "requested_room_name": null,
-              "room_id": 41,
-              "room_name": "324",
+              "room_id": 14,
+              "room_name": "31",
               "room_substituted": false,
               "room_substitution_reason": null,
               "room_type": 0,
-              "subgroup": 50,
-              "teacher_id": 27,
-              "uid": "lesson-3da49cf25bb2f9be",
+              "subgroup": -1,
+              "teacher_id": 57,
+              "uid": "lesson-26d7f6c5922b9051",
               "week_parity": "all"
             }
           ],
           "slot": 3,
-          "text": "Иностранный язык в профессиональной деятельности — 1 п/г, Ермолина Ирина Павловна, Лесная",
+          "text": "Компас 3D — undefined, каб. 31",
           "time": "3 пара (12:25-13:50)"
         },
         {
           "lessons": [
             {
               "avoid_lunch_split": false,
+              "confirmed": true,
               "consecutive_pairs": 1,
               "display_time": null,
-              "id": 552,
+              "id": 558,
               "is_block": false,
               "is_lab": false,
-              "name": "Инженерная графика",
+              "name": "Компас 3D",
               "requested_room_id": null,
               "requested_room_name": null,
-              "room_id": 31,
-              "room_name": "205",
+              "room_id": 14,
+              "room_name": "31",
               "room_substituted": false,
               "room_substitution_reason": null,
               "room_type": 0,
               "subgroup": -1,
-              "teacher_id": 56,
-              "uid": "lesson-7cebc17421ab68c9",
+              "teacher_id": 57,
+              "uid": "lesson-26d7f6c5922b9051",
               "week_parity": "all"
             }
           ],
           "slot": 4,
-          "text": "Инженерная графика — вся группа, Ахметов Артур Фанависович, Лесная",
+          "text": "Компас 3D — undefined, каб. 31",
           "time": "4 пара (14:00-15:25)"
         },
         {
           "lessons": [
             {
               "avoid_lunch_split": false,
+              "confirmed": true,
               "consecutive_pairs": 1,
               "display_time": null,
-              "id": 554,
+              "id": 549,
               "is_block": false,
               "is_lab": false,
-              "name": "Материаловедение",
+              "name": "Информационные технологии в профессиональной деятельности",
               "requested_room_id": null,
               "requested_room_name": null,
-              "room_id": 29,
-              "room_name": "201",
+              "room_id": 56,
+              "room_name": "64",
               "room_substituted": false,
               "room_substitution_reason": null,
               "room_type": 0,
-              "subgroup": -1,
-              "teacher_id": 55,
-              "uid": "lesson-7d868eea3050fd4c",
+              "subgroup": 51,
+              "teacher_id": 31,
+              "uid": "lesson-6046900264569435",
               "week_parity": "all"
             }
           ],
           "slot": 5,
-          "text": "Материаловедение — вся группа, Лимонова Евгения Николаевна, Лесная",
+          "text": "Информационные технологии в профессиональной деятельности — undefined, каб. 64",
           "time": "5 пара (15:35-16:55)"
         },
         {
-          "lessons": [],
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "confirmed": true,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 549,
+              "is_block": false,
+              "is_lab": false,
+              "name": "Информационные технологии в профессиональной деятельности",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 56,
+              "room_name": "64",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 51,
+              "teacher_id": 31,
+              "uid": "lesson-6046900264569435",
+              "week_parity": "all"
+            }
+          ],
           "slot": 6,
-          "text": "-",
+          "text": "Информационные технологии в профессиональной деятельности — undefined, каб. 64",
           "time": "6 пара (17:05-18:25)"
         },
         {
@@ -112,477 +181,6 @@
         }
       ],
       "weekday": "ВТ"
-    },
-    {
-      "date": "21.10.2026",
-      "date_iso": "2026-10-21",
-      "day_index": 1,
-      "slots": [
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 545,
-              "is_block": false,
-              "is_lab": false,
-              "name": "Иностранный язык в профессиональной деятельности",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 41,
-              "room_name": "324",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": 50,
-              "teacher_id": 27,
-              "uid": "lesson-3da49cf25bb2f9be",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 1,
-          "text": "Иностранный язык в профессиональной деятельности — 1 п/г, Ермолина Ирина Павловна, Лесная",
-          "time": "1 пара (08:30-09:55)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 545,
-              "is_block": false,
-              "is_lab": false,
-              "name": "Иностранный язык в профессиональной деятельности",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 41,
-              "room_name": "324",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": 50,
-              "teacher_id": 27,
-              "uid": "lesson-3da49cf25bb2f9be",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 2,
-          "text": "Иностранный язык в профессиональной деятельности — 1 п/г, Ермолина Ирина Павловна, Лесная",
-          "time": "2 пара (10:05-11:30)"
-        },
-        {
-          "lessons": [],
-          "slot": 3,
-          "text": "-",
-          "time": "3 пара (12:25-13:50)"
-        },
-        {
-          "lessons": [],
-          "slot": 4,
-          "text": "-",
-          "time": "4 пара (14:00-15:25)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": true,
-              "consecutive_pairs": 2,
-              "display_time": null,
-              "id": 568,
-              "is_block": false,
-              "is_lab": true,
-              "name": "ЛПЗ ВМДК.06.02 Технология ручной дуговой сварки неплавящимся электродом в защитном газе",
-              "requested_room_id": 66,
-              "requested_room_name": "120-121",
-              "room_id": 66,
-              "room_name": "120-121",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": 51,
-              "teacher_id": 55,
-              "uid": "lesson-20cb85a9a131cd2f",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 5,
-          "text": "ЛПЗ ВМДК.06.02 Технология ручной дуговой сварки неплавящимся электродом в защитном газе — 2 п/г, Лимонова Евгения Николаевна, Лесная",
-          "time": "5 пара (15:35-16:55)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": true,
-              "consecutive_pairs": 2,
-              "display_time": null,
-              "id": 568,
-              "is_block": false,
-              "is_lab": true,
-              "name": "ЛПЗ ВМДК.06.02 Технология ручной дуговой сварки неплавящимся электродом в защитном газе",
-              "requested_room_id": 66,
-              "requested_room_name": "120-121",
-              "room_id": 66,
-              "room_name": "120-121",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": 51,
-              "teacher_id": 55,
-              "uid": "lesson-20cb85a9a131cd2f",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 6,
-          "text": "ЛПЗ ВМДК.06.02 Технология ручной дуговой сварки неплавящимся электродом в защитном газе — 2 п/г, Лимонова Евгения Николаевна, Лесная",
-          "time": "6 пара (17:05-18:25)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 546,
-              "is_block": false,
-              "is_lab": false,
-              "name": "Иностранный язык в профессиональной деятельности",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 41,
-              "room_name": "324",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": 51,
-              "teacher_id": 27,
-              "uid": "lesson-ef004d8e7f1655c3",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 7,
-          "text": "Иностранный язык в профессиональной деятельности — 2 п/г, Ермолина Ирина Павловна, Лесная",
-          "time": "7 пара (18:35-19:55)"
-        }
-      ],
-      "weekday": "СР"
-    },
-    {
-      "date": "22.10.2026",
-      "date_iso": "2026-10-22",
-      "day_index": 2,
-      "slots": [
-        {
-          "lessons": [],
-          "slot": 1,
-          "text": "-",
-          "time": "1 пара (08:30-09:55)"
-        },
-        {
-          "lessons": [],
-          "slot": 2,
-          "text": "-",
-          "time": "2 пара (10:05-11:30)"
-        },
-        {
-          "lessons": [],
-          "slot": 3,
-          "text": "-",
-          "time": "3 пара (12:25-13:50)"
-        },
-        {
-          "lessons": [],
-          "slot": 4,
-          "text": "-",
-          "time": "4 пара (14:00-15:25)"
-        },
-        {
-          "lessons": [],
-          "slot": 5,
-          "text": "-",
-          "time": "5 пара (15:35-16:55)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 546,
-              "is_block": false,
-              "is_lab": false,
-              "name": "Иностранный язык в профессиональной деятельности",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 41,
-              "room_name": "324",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": 51,
-              "teacher_id": 27,
-              "uid": "lesson-ef004d8e7f1655c3",
-              "week_parity": "all"
-            },
-            {
-              "avoid_lunch_split": true,
-              "consecutive_pairs": 2,
-              "display_time": null,
-              "id": 562,
-              "is_block": false,
-              "is_lab": true,
-              "name": "ЛПЗ МДК.01.01 Технология сварочных работ",
-              "requested_room_id": 66,
-              "requested_room_name": "120-121",
-              "room_id": 66,
-              "room_name": "120-121",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": 50,
-              "teacher_id": 55,
-              "uid": "lesson-3bfd7e7cd1cdd1d2",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 6,
-          "text": "Иностранный язык в профессиональной деятельности — 2 п/г, Ермолина Ирина Павловна, Лесная | ЛПЗ МДК.01.01 Технология сварочных работ — 1 п/г, Лимонова Евгения Николаевна, Лесная",
-          "time": "6 пара (17:05-18:25)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 546,
-              "is_block": false,
-              "is_lab": false,
-              "name": "Иностранный язык в профессиональной деятельности",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 41,
-              "room_name": "324",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": 51,
-              "teacher_id": 27,
-              "uid": "lesson-ef004d8e7f1655c3",
-              "week_parity": "all"
-            },
-            {
-              "avoid_lunch_split": true,
-              "consecutive_pairs": 2,
-              "display_time": null,
-              "id": 562,
-              "is_block": false,
-              "is_lab": true,
-              "name": "ЛПЗ МДК.01.01 Технология сварочных работ",
-              "requested_room_id": 66,
-              "requested_room_name": "120-121",
-              "room_id": 66,
-              "room_name": "120-121",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": 50,
-              "teacher_id": 55,
-              "uid": "lesson-3bfd7e7cd1cdd1d2",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 7,
-          "text": "Иностранный язык в профессиональной деятельности — 2 п/г, Ермолина Ирина Павловна, Лесная | ЛПЗ МДК.01.01 Технология сварочных работ — 1 п/г, Лимонова Евгения Николаевна, Лесная",
-          "time": "7 пара (18:35-19:55)"
-        }
-      ],
-      "weekday": "ЧТ"
-    },
-    {
-      "date": "23.10.2026",
-      "date_iso": "2026-10-23",
-      "day_index": 3,
-      "slots": [
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 550,
-              "is_block": false,
-              "is_lab": false,
-              "name": "Охрана труда",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 38,
-              "room_name": "318",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": -1,
-              "teacher_id": 13,
-              "uid": "lesson-f09901b5a7cf83d2",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 1,
-          "text": "Охрана труда — вся группа, Костарева Наталья Викторовна, Лесная",
-          "time": "1 пара (08:30-09:55)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 550,
-              "is_block": false,
-              "is_lab": false,
-              "name": "Охрана труда",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 38,
-              "room_name": "318",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": -1,
-              "teacher_id": 13,
-              "uid": "lesson-f09901b5a7cf83d2",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 2,
-          "text": "Охрана труда — вся группа, Костарева Наталья Викторовна, Лесная",
-          "time": "2 пара (10:05-11:30)"
-        },
-        {
-          "lessons": [],
-          "slot": 3,
-          "text": "-",
-          "time": "3 пара (12:25-13:50)"
-        },
-        {
-          "lessons": [],
-          "slot": 4,
-          "text": "-",
-          "time": "4 пара (14:00-15:25)"
-        },
-        {
-          "lessons": [],
-          "slot": 5,
-          "text": "-",
-          "time": "5 пара (15:35-16:55)"
-        },
-        {
-          "lessons": [],
-          "slot": 6,
-          "text": "-",
-          "time": "6 пара (17:05-18:25)"
-        },
-        {
-          "lessons": [],
-          "slot": 7,
-          "text": "-",
-          "time": "7 пара (18:35-19:55)"
-        }
-      ],
-      "weekday": "ПТ"
-    },
-    {
-      "date": "24.10.2026",
-      "date_iso": "2026-10-24",
-      "day_index": 4,
-      "slots": [
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": "08:30-12:30",
-              "id": 565,
-              "is_block": true,
-              "is_lab": false,
-              "name": "УП.01",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 68,
-              "room_name": "ЦПДЭ",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": 51,
-              "teacher_id": 57,
-              "uid": "lesson-3bfacfa4653d065f",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 1,
-          "text": "УП.01 (УП утро 08:30-12:30) — 2 п/г, Подчиненнов Александр Юрьевич, Лесная",
-          "time": "1 пара (08:30-09:45)"
-        },
-        {
-          "lessons": [],
-          "slot": 2,
-          "text": "-",
-          "time": "2 пара (09:55-11:10)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": "13:00-17:00",
-              "id": 564,
-              "is_block": true,
-              "is_lab": false,
-              "name": "УП.01",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 68,
-              "room_name": "ЦПДЭ",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": 50,
-              "teacher_id": 57,
-              "uid": "lesson-66f3dde7fd6e6589",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 3,
-          "text": "УП.01 (УП день 13:00-17:00) — 1 п/г, Подчиненнов Александр Юрьевич, Лесная",
-          "time": "3 пара (11:30-12:45)"
-        },
-        {
-          "lessons": [],
-          "slot": 4,
-          "text": "-",
-          "time": "4 пара (12:55-14:10)"
-        },
-        {
-          "lessons": [],
-          "slot": 5,
-          "text": "-",
-          "time": "5 пара (14:20-15:30)"
-        },
-        {
-          "lessons": [],
-          "slot": 6,
-          "text": "-",
-          "time": "6 пара (15:40-16:50)"
-        },
-        {
-          "lessons": [],
-          "slot": 7,
-          "text": "-",
-          "time": "7 пара (17:00-18:10)"
-        }
-      ],
-      "weekday": "СБ"
     }
   ],
   "group_index": 25,

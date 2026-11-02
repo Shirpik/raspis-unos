@@ -194,10 +194,10 @@ int main(int argc, char** argv) {
     scoped_options.require_selected_study_days = true;
     auto scoped_daily = timetable::ValidateScheduleJson(
         input, strict_daily_config, Schedule(), scoped_options);
-    Require(!scoped_daily.ok &&
+    Require(scoped_daily.ok &&
             HasCode(scoped_daily.report, "student_daily_minimum_fallback") &&
-            HasCode(scoped_daily.report, "student_daily_minimum_missing_day"),
-        "scoped generation reports the fallback but still requires every selected study day");
+            !HasCode(scoped_daily.report, "student_daily_minimum_missing_day"),
+        "scoped generation reports the fallback without rejecting the selected day");
     auto spare_day = Schedule();
     auto empty_day = spare_day.At("groups").array_value[0].At("days").array_value[0];
     empty_day.At("date_iso") = JsonValue::MakeString("2026-09-04");
@@ -206,9 +206,9 @@ int main(int argc, char** argv) {
     Require(!HasCode(timetable::ValidateScheduleJson(input, config, spare_day).report,
                      "student_daily_minimum_missing_day"),
         "full-period quotas may leave an unused day without inventing extra curriculum hours");
-    Require(HasCode(timetable::ValidateScheduleJson(input, config, spare_day, scoped_options).report,
-                    "student_daily_minimum_missing_day"),
-        "selected Constructor dates still require every group to have lessons");
+    Require(!HasCode(timetable::ValidateScheduleJson(input, config, spare_day, scoped_options).report,
+                     "student_daily_minimum_missing_day"),
+        "scoped fallback permits a selected day with no ordinary pair");
 
     auto up_input = Input();
     up_input.lessons[0].is_block = true;
@@ -307,15 +307,41 @@ int main(int argc, char** argv) {
     monday.start_date = monday.end_date = {2026, 9, 7};
     monday.require_class_hours = true;
     monday.groups[0].curator_teacher = 0;
+    monday.groups[0].class_hour_room_required = true;
+    monday.groups[0].class_hour_room = 0;
     monday.rooms[0].class_hour_open = true;
-    for (int id : {1, 2}) { auto group = monday.groups[0]; group.id = id; group.name = "G" + std::to_string(id); monday.groups.push_back(group); }
+    for (int id : {1, 2}) {
+        auto group = monday.groups[0]; group.id = id; group.name = "G" + std::to_string(id); monday.groups.push_back(group);
+        auto lesson = monday.lessons[0]; lesson.id = id; lesson.uid = "lesson-" + std::to_string(id); lesson.group = id; monday.lessons.push_back(lesson);
+    }
+    // Two groups start with pair one; the third starts with pair two so its
+    // curator can hold a separate first-pair class hour. Academic teachers and
+    // rooms are distinct from the shared curator/class-hour room.
+    for (int id = 0; id < 3; ++id) {
+        auto teacher = monday.teachers[0]; teacher.id = id + 1; monday.teachers.push_back(teacher);
+        auto room = monday.rooms[0]; room.id = id + 1; room.class_hour_open = false;
+        monday.rooms.push_back(room);
+        monday.lessons[id].teacher = id + 1;
+    }
     auto monday_schedule = Schedule();
     auto& original_group = monday_schedule.At("groups").array_value[0];
     original_group.At("days").array_value[0].At("date_iso") = JsonValue::MakeString("2026-09-07");
+    original_group.At("days").array_value[0].At("slots").array_value[0]
+        .At("lessons").array_value[0].At("teacher_id") = JsonValue::MakeNumber(1);
+    original_group.At("days").array_value[0].At("slots").array_value[0]
+        .At("lessons").array_value[0].At("room_id") = JsonValue::MakeNumber(1);
     auto empty_group = original_group;
-    empty_group.At("days").array_value[0].At("slots") = JsonValue::MakeArray();
     for (int id : {1, 2}) {
         empty_group.At("group_index") = JsonValue::MakeNumber(id);
+        empty_group.At("days").array_value[0].At("slots").array_value[0]
+            .At("lessons").array_value[0].At("id") = JsonValue::MakeNumber(id);
+        auto& slots = empty_group.At("days").array_value[0].At("slots").array_value;
+        slots[0].At("lessons").array_value[0].At("teacher_id") = JsonValue::MakeNumber(id + 1);
+        slots[0].At("lessons").array_value[0].At("room_id") = JsonValue::MakeNumber(id + 1);
+        if (id == 2) {
+            slots[1].At("lessons") = slots[0].At("lessons");
+            slots[0].At("lessons") = JsonValue::MakeArray();
+        }
         monday_schedule.At("groups").array_value.push_back(empty_group);
     }
     std::string class_error;
@@ -329,11 +355,11 @@ int main(int argc, char** argv) {
                     if (timetable::JsonInt(slot, "slot", -1) == 0) zeros++; else late++;
                     Require(timetable::JsonInt(lesson, "room_id", -1) == 0, "class hour needs a real room");
                 }
-    Require(zeros == 2 && late == 1, "two groups simultaneously, third in second half of later pair");
+    Require(zeros == 2 && late == 1, "two groups at zero, third immediately before its second academic pair");
     auto absent_curator = monday;
     absent_curator.teacher_unavailable[0].push_back({monday.start_date, monday.end_date});
-    Require(!timetable::PlanClassHours(absent_curator, monday_schedule, class_error), "class hour cannot bypass teacher absence");
-    Require(timetable::ValidateClassHours(absent_curator, monday_schedule).array_value.size() >= 3, "independent validator catches absent curator");
+    Require(timetable::PlanClassHours(absent_curator, monday_schedule, class_error), "class hour keeps the assigned curator during absence");
+    Require(timetable::ValidateClassHours(absent_curator, monday_schedule).array_value.empty(), "class-hour validation permits an absent curator");
     absent_curator.teachers[0].class_hour_available_dates.insert(monday.start_date);
     Require(timetable::ValidateClassHours(absent_curator, monday_schedule).array_value.empty(), "explicit class-hour-only exception permits curator without changing ordinary absence");
     Require(!absent_curator.teacher_unavailable[0].empty(), "class-hour exception must preserve ordinary absence");
@@ -362,13 +388,17 @@ int main(int argc, char** argv) {
     late_class.At("start_time") = JsonValue::MakeString("11:35");
     late_class.At("end_time") = JsonValue::MakeString("12:15");
     Require(timetable::ValidateClassHours(continuous_input, late_schedule).array_value.empty(), "late class followed by the very next pair must pass");
-    late_slots[4].At("lessons") = late_slots[3].At("lessons");
-    late_slots[3].At("lessons") = JsonValue::MakeArray();
-    Require(timetable::ValidateClassHours(continuous_input, late_schedule).array_value.empty(), "class hour does not require both subgroups to begin in the next pair");
+    auto delayed_schedule = late_schedule;
+    auto& delayed_slots = delayed_schedule.At("groups").array_value[0].At("days").array_value[0].At("slots").array_value;
+    delayed_slots[4].At("lessons") = delayed_slots[3].At("lessons");
+    delayed_slots[3].At("lessons") = JsonValue::MakeArray();
+    auto delayed_issues = JsonValue::MakeObject();
+    delayed_issues.At("issues") = timetable::ValidateClassHours(continuous_input, delayed_schedule);
+    Require(HasCode(delayed_issues, "class_hour_post_window"), "the first academic activity must follow the class hour immediately");
     auto before_schedule = late_schedule;
     auto& before_slots = before_schedule.At("groups").array_value[0].At("days").array_value[0].At("slots").array_value;
-    before_slots[1].At("lessons") = before_slots[4].At("lessons");
-    before_slots[4].At("lessons") = JsonValue::MakeArray();
+    before_slots[1].At("lessons") = before_slots[3].At("lessons");
+    before_slots[3].At("lessons") = JsonValue::MakeArray();
     auto before_issues = JsonValue::MakeObject();
     before_issues.At("issues") = timetable::ValidateClassHours(continuous_input, before_schedule);
     Require(HasCode(before_issues, "teaching_before_class_hour"), "no subgroup may have teaching before its class hour");
@@ -376,7 +406,7 @@ int main(int argc, char** argv) {
     for (int pair : {1,5}) {
         auto allowed_schedule = late_schedule;
         auto& slots = allowed_schedule.At("groups").array_value[0].At("days").array_value[0].At("slots").array_value;
-        const auto academic = slots[4].At("lessons");
+        const auto academic = slots[3].At("lessons");
         auto class_lesson = slots[2].At("lessons").array_value[0];
         for (auto& slot : slots) slot.At("lessons") = JsonValue::MakeArray();
         const auto interval = timetable::PairSlotInterval(1,pair-1);
@@ -403,7 +433,7 @@ int main(int argc, char** argv) {
         return Solve(model.Build()).status();
     };
     Require(model_with_class(0,1) == operations_research::sat::CpSolverStatus::OPTIMAL, "integrated model permits zero then pair one");
-    Require(model_with_class(0,2,3) == operations_research::sat::CpSolverStatus::OPTIMAL, "subgroups may start at different times after zero class hour");
+    Require(model_with_class(0,2,3) == operations_research::sat::CpSolverStatus::INFEASIBLE, "at least one subgroup must start immediately after zero class hour");
     Require(model_with_class(1,2,3) == operations_research::sat::CpSolverStatus::OPTIMAL, "subgroups may start independently after first-pair class hour");
     Require(model_with_class(5,6,7) == operations_research::sat::CpSolverStatus::OPTIMAL, "fifth-pair class hour permits later subgroup starts");
     Require(model_with_class(3,2,4) == operations_research::sat::CpSolverStatus::INFEASIBLE, "teaching in either subgroup before class hour is forbidden");
@@ -429,7 +459,7 @@ int main(int argc, char** argv) {
     Require(model_with_up(1,2) == operations_research::sat::CpSolverStatus::OPTIMAL, "afternoon UP may follow first-pair class hour");
     Require(model_with_up(3,2) == operations_research::sat::CpSolverStatus::INFEASIBLE, "UP may not begin before class hour ends, even at its displayed pair");
     Require(model_with_up(0,0) == operations_research::sat::CpSolverStatus::INFEASIBLE, "08:30 UP cannot overlap zero class hour ending at 08:55");
-    Require(model_with_up(0,0,false) == operations_research::sat::CpSolverStatus::OPTIMAL, "an unused UP must not block ordinary placements");
+    Require(model_with_up(0,0,false) == operations_research::sat::CpSolverStatus::INFEASIBLE, "an unused UP cannot satisfy the required immediate activity");
 
     auto semester_root = timetable::ParseJson(R"({"settings":{"semester_start_date":"2026-09-07","semester_weeks":16},
       "teachers":[{"id":0,"desired_load_rules":[{"group_ids":[0],"course_year":2,"deadline":"2026-09-12"}]}],
@@ -602,6 +632,19 @@ int main(int argc, char** argv) {
                 [](const auto& lesson) { return lesson.id == 12 && lesson.is_block; }),
         "UP name must restore block semantics when imported is_block is malformed");
     auto completed_up_root = completed_lesson_root;
+    auto replacement_root = completed_lesson_root;
+    replacement_root.At("teachers").array_value[0].At("scheduling_active") = JsonValue::MakeBool(false);
+    replacement_root.At("teachers").array_value.push_back(timetable::ParseJson(
+        R"({"id":1,"name":"Substitute","scheduling_active":true,"max_pairs_per_day":5})").value);
+    replacement_root.At("lessons").array_value[1].At("scheduling_teacher") = JsonValue::MakeNumber(1);
+    ScheduleInputData replacement_input;
+    Require(timetable::LoadScheduleInputDataFromRoot(replacement_root, replacement_input, completed_lesson_error, false),
+        "replacement workload must load while its owner is on sick leave");
+    Require(std::any_of(replacement_input.lessons.begin(), replacement_input.lessons.end(),
+                [](const auto& lesson) { return lesson.id == 11 && lesson.teacher == 1; }),
+        "solver must assign replacement workload to the actual teacher");
+    Require(timetable::JsonInt(replacement_root.At("lessons").array_value[1], "teacher", -1) == 0,
+        "loading a replacement must not rewrite the source workload teacher");
     completed_up_root.At("teaching_ledger").array_value.push_back(timetable::ParseJson(
         R"({"id":5,"lesson_id":12,"date":"2026-09-08","slot":2,"hours":6,"status":"confirmed"})").value);
     Require(timetable::LoadScheduleInputDataFromRoot(completed_up_root, completed_lesson_data, completed_lesson_error, false) &&
@@ -704,6 +747,18 @@ int main(int argc, char** argv) {
                          dated_load, config, Schedule(), dated_scope_options).report,
                      "teacher_date_minimum_not_met"),
             "saved date minimum is clamped to the teacher's actual date availability");
+
+    auto dated_up = input;
+    dated_up.lessons[0].is_block = true;
+    dated_up.lessons[0].name = "УП.01";
+    dated_up.teachers[0].date_minimum_pairs[dated_up.start_date] = 3;
+    Require(!HasCode(timetable::ValidateScheduleJson(dated_up, config, Schedule()).report,
+                     "teacher_date_minimum_not_met"),
+            "date minimum counts all three occupied pair slots of a rendered UP shift");
+    dated_up.teachers[0].date_minimum_pairs[dated_up.start_date] = 4;
+    Require(HasCode(timetable::ValidateScheduleJson(dated_up, config, Schedule()).report,
+                    "teacher_date_minimum_not_met"),
+            "UP shift alone does not satisfy a four-pair date target");
 
     auto draft_schedule = Schedule();
     draft_schedule.At("status") = JsonValue::MakeString("draft_semester_risk");

@@ -49,6 +49,7 @@ export const emptyTeacherForm = () => ({
   max_work_days_per_week: 0, max_pairs_per_day: 0,
   work_period: { from: '', to: '' }, work_days: defaultWorkDays(),
   date_slot_overrides: [],
+  week_schedule_overrides: [],
   date_load_targets: [],
   desired_load_rules: [],
   scheduling_active: true,

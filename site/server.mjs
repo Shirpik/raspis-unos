@@ -19,6 +19,8 @@ const scheduleExportModule = import('../frontend/src/utils/scheduleTemplateExpor
 
 const backendCandidates = [
   process.env.SITE_BACKEND_PATH,
+  path.join(rootDir, 'build', 'timetable_solver'),
+  '/usr/local/bin/timetable_solver',
   path.join(rootDir, 'build', 'Release', 'timetable_solver.exe'),
   path.join(rootDir, 'build-site', 'timetable_solver.exe'),
   // Historical temporary builds are a last resort only. They can be stale.
@@ -40,16 +42,21 @@ const portIsOpen = (hostname, targetPort) => new Promise(resolve => {
 })
 
 let backend = null
+let shuttingDown = false
 if (!(await portIsOpen(apiHost, apiPort))) {
-  if (!backendPath) throw new Error('Backend не найден. Соберите timetable_solver.exe или задайте SITE_BACKEND_PATH.')
+  if (!backendPath) throw new Error('Backend не найден. Соберите timetable_solver или задайте SITE_BACKEND_PATH.')
   backend = spawn(backendPath, [String(apiPort)], {
     cwd: rootDir,
     windowsHide: true,
     stdio: ['ignore', 'inherit', 'inherit'],
   })
   backend.once('exit', code => {
-    if (code && code !== 0) console.error(`Backend остановлен с кодом ${code}`)
+    if (!shuttingDown) {
+      console.error(`Backend остановлен с кодом ${code}`)
+      process.exit(1)
+    }
   })
+  backend.once('error', error => { console.error(error); process.exit(1) })
 }
 
 const mime = new Map([
@@ -92,9 +99,13 @@ async function readJsonBody(request, maxBytes = 25 * 1024 * 1024) {
 async function restrictScheduleToLastGeneratedScope(schedule) {
   if (schedule?.generation_scope !== 'selected_dates' || schedule?.status !== 'scoped') return schedule
   try {
-    const audit = JSON.parse(await readFile(path.join(rootDir, 'output', 'latest', 'strict_audit.json'), 'utf8'))
-    const from = audit.period_from
-    const to = audit.period_to
+    let from = schedule.scope_from
+    let to = schedule.scope_to
+    if (!from || !to) {
+      const audit = JSON.parse(await readFile(path.join(rootDir, 'output', 'latest', 'strict_audit.json'), 'utf8'))
+      from = from || audit.period_from
+      to = to || audit.period_to
+    }
     if (!/^\d{4}-\d{2}-\d{2}$/.test(from || '') || !/^\d{4}-\d{2}-\d{2}$/.test(to || '')) return schedule
     const dates = new Set((schedule.groups || []).flatMap(group => (group.days || [])
       .map(day => day.date_iso)
@@ -240,6 +251,7 @@ const server = http.createServer((request, response) => {
 })
 
 const shutdown = () => {
+  shuttingDown = true
   server.close(() => process.exit(0))
   if (backend && !backend.killed) backend.kill()
 }

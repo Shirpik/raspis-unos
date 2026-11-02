@@ -1,23 +1,71 @@
-# Production deployment
+﻿# Обновление Ubuntu / Docker
 
-The existing host nginx remains unchanged. It serves the frontend and proxies
-`/api/` to the application published only on `127.0.0.1:8080`.
+Приложение собирается для Linux amd64 в Ubuntu 24.04, независимо от версии
+Ubuntu хоста. OR-Tools 9.15 скачивается с официального GitHub; SHA-256 проверяется
+в Dockerfile. Во время сборки выполняются CTest и тесты фронта. Нужны Docker,
+Compose v2, доступ к Docker Hub, GitHub, Ubuntu apt и npm.
 
-Before the first build, place the OR-Tools 9.15 Linux archive at
-`deploy/or-tools.tar.gz` and create `deploy/.env` containing a strong value for
-`POSTGRES_PASSWORD`. Then run from the repository root:
+Контейнер запускает Node на 8080: фронт, `/export/*`, прокси API. C++ работает
+на внутреннем 8081. Наружу Compose открывает только `127.0.0.1:8080`.
+Часовой пояс контейнера — Asia/Yekaterinburg.
+
+## Сохранение данных
+
+При обновлении существующего сервера сохраняйте `deploy/.env`, пароль БД,
+том `raspis-unos_postgres_data`, каталоги `data`, `output` и
+`data/auth_config.json`. PostgreSQL является основным источником данных,
+JSON на диске может отставать. Локальную базу разработчика поверх серверной
+не копировать. `docker compose down -v` для обновления не нужен.
+
+До переключения создайте `pg_dump -Fc`, проверьте его через `pg_restore --list`,
+сохраните архив `data`, `output`, конфигурации nginx и Compose. Для полного
+отката после миграции нужны и старый образ, и этот дамп/файлы.
+
+## Подготовка кандидата из Git
+
+Обновляйте код только после проверки `git status`; не сбрасывайте серверные
+изменения. Данные и `.env` не включать в коммит релиза. Для первого запуска
+скопируйте `.env.example` в `.env` и задайте пароль; для существующей БД
+оставьте действующий пароль.
 
 ```bash
-docker compose --env-file deploy/.env -f deploy/compose.yaml build
-docker compose --env-file deploy/.env -f deploy/compose.yaml up -d
+docker compose --env-file deploy/.env -f deploy/compose.yaml config --quiet
+docker build -f deploy/Dockerfile -t raspis-unos:RELEASE .
 ```
 
-On its first database-backed startup the application imports the existing
-`data/timetable_data.json` into PostgreSQL. The JSON file is retained as a
-rollback source, but PostgreSQL is authoritative while
-`TIMETABLE_DATABASE_URL` is set. Application revisions are stored in
-`timetable_state_history`.
+Сначала проверьте образ на отдельной сети и копии базы/файлов; не подключайте
+пробный контейнер к боевой БД. Проверьте вход, `/api/auth/status`, `/api/hours`,
+генерацию на изолированных тестовых данных и оба Excel-экспорта. Без входа
+экспорт учёта должен отвечать 401. Запрос диапазона поддерживает 1–7 календарных
+дней, включая границы. Возвращаются только учебные даты внутри диапазона;
+закрепления применяются внутри него. Генерация не публикует расписание.
 
-The backup service creates and validates a compressed PostgreSQL dump every
-day in `deploy/backups` and deletes files only after 210 days. Copy this folder
-to separate storage for protection against total server or disk loss.
+## Переключение — отдельный этап
+
+В существующем nginx нужно направить **все** пути к Node, иначе останется
+старый статический фронт, а `/export/*.xlsx` не заработает. Образец:
+`deploy/nginx.conf.example`. Сохраните действующие домен, TLS и другие
+настройки хоста; проверьте `sudo nginx -t` перед reload.
+
+После проверки кандидата задайте `TIMETABLE_IMAGE=raspis-unos:RELEASE`
+в `deploy/.env`. Применение выполняется отдельно:
+
+```bash
+docker compose --env-file deploy/.env -f deploy/compose.yaml up -d --no-build --no-deps app
+sudo nginx -t && sudo systemctl reload nginx
+curl -fsS http://127.0.0.1:8080/api/auth/status
+curl -fsS http://127.0.0.1/api/auth/status
+```
+
+После переключения проверьте страницу через nginx, вход, учёт часов, экспорты,
+старые опубликованные расписания и новую генерацию в согласованном диапазоне.
+Обычные и строгие проверки расписания должны пройти до публикации.
+
+## Резервирование
+
+Сервис backup создаёт ежедневный дамп, проверяет его структуру и хранит
+210 дней. `auth_config.json` и прочие файлы в этот дамп не входят — для них
+нужна отдельная файловая копия. Копируйте резервные копии на другой носитель.
+
+Основания: [OR-Tools releases](https://github.com/google/or-tools/releases/tag/v9.15),
+[порядок запуска Compose](https://docs.docker.com/compose/how-tos/startup-order/).

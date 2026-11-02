@@ -123,9 +123,24 @@ const nameScore = (a, b) => {
 // title is the same workload row for ИСП-3306п, despite its different wording.
 const confirmedSubjectAliases = [
   {
+    group: 'ТОРД-4705п',
+    source: 'Правовые основы профессиональной деятельности/Социальная адаптация и основы социально-правовых знаний',
+    target: 'Правовое обеспечение профессиональной деятельности',
+  },
+  {
     group: 'ИСП-3306п',
     source: 'Метрология, стандартизация и сертификация',
     target: 'Стандартизация, серификация и техническое документоведение',
+  },
+  {
+    group: 'ТИК-212',
+    source: 'УП.05',
+    target: 'УП.01',
+  },
+  {
+    group: 'МЦМ-408',
+    source: 'УП.02',
+    target: 'УП.01',
   },
 ]
 
@@ -147,6 +162,11 @@ function chooseLesson(cell, groupId, inferredSubgroup, current, teachersById) {
   }
   const candidates = (current.lessons || [])
     .filter(lesson => Number(lesson.group) === Number(groupId))
+    // A retired duplicate must never receive new facts when its canonical
+    // workload row is present, even if a source still labels it as a subgroup.
+    .filter(lesson => !Number.isInteger(lesson.workload_retired?.canonical_lesson_id) ||
+      !(current.lessons || []).some(canonical =>
+        Number(canonical.id) === lesson.workload_retired.canonical_lesson_id && canonical.plan_active !== false))
     .map(lesson => {
       let score = nameScore(cell.matchingSubject || cell.subject, lesson.name)
       if (score < 35) return null

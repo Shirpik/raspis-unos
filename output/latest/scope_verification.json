@@ -1,0 +1,50 @@
+{
+  "passed": true,
+  "scope": "2026-11-03",
+  "events": 195,
+  "academic_groups": 44,
+  "industrial_practice_groups": [
+    36,
+    37
+  ],
+  "native_strict_ok": true,
+  "python_strict_ok": true,
+  "locks_preserved": 40,
+  "industrial_markers_preserved_separately": 2,
+  "real_interval_resource_check": true,
+  "normal_limits_outside_source_exceptions": true,
+  "hours": 406,
+  "rooms_unassigned": 0,
+  "student_windows": 0,
+  "teacher_windows": 0,
+  "popova": [
+    {
+      "group": 14,
+      "slot": 1,
+      "id": 292,
+      "room_id": 18,
+      "room_name": "37"
+    },
+    {
+      "group": 14,
+      "slot": 2,
+      "id": 292,
+      "room_id": 18,
+      "room_name": "37"
+    },
+    {
+      "group": 15,
+      "slot": 3,
+      "id": 306,
+      "room_id": 18,
+      "room_name": "37"
+    },
+    {
+      "group": 15,
+      "slot": 4,
+      "id": 317,
+      "room_id": 18,
+      "room_name": "37"
+    }
+  ]
+}

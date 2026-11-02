@@ -4,7 +4,7 @@ import ExcelJS from 'exceljs'
 import JSZip from 'jszip'
 import { buildReferenceAccountingWorkbook } from '../src/utils/referenceAccountingExport.js'
 import { writeReferenceAccountingBuffer } from '../src/utils/referenceAccountingNotes.js'
-import { referenceGroupWeeks, remainingTeachingWeeks, referenceTeacherConductedNote, referenceTeacherLoad, referenceWeeklyHours } from '../src/utils/referenceAccountingMetrics.js'
+import { referenceGroupWeeks, remainingTeachingWeeks, referenceTeacherConductedNote, referenceTeacherLoad, referenceWeeklyHours, withReferenceContext } from '../src/utils/referenceAccountingMetrics.js'
 
 const near = (actual, expected) => assert.ok(Math.abs(actual - expected) < 1e-9, `${actual} is not close to ${expected}`)
 
@@ -29,17 +29,17 @@ const hours = {
 
 test('reference accounting export follows the supplied sheet order and uses confirmed hours', async () => {
   const { workbook, remainingWeeks } = buildReferenceAccountingWorkbook(hours)
-  assert.equal(remainingWeeks, 1)
+  near(remainingWeeks, 1)
   assert.deepEqual(workbook.worksheets.map(sheet => sheet.name), ['Расписание', 'пр', 'СП-Пф-1605', 'Даты занятий'])
   const teachers = workbook.getWorksheet('пр')
-  assert.equal(teachers.getCell('B3').value.formula, 'G3')
-  assert.equal(teachers.getCell('B3').value.result, 48)
+  assert.match(teachers.getCell('B3').value.formula, /E3/)
+  near(teachers.getCell('B3').value.result, 48)
   assert.equal(referenceTeacherLoad(hours.teachers[0], hours), teachers.getCell('B3').value.result)
   assert.equal(teachers.getCell('C3').value.result, 58)
   assert.equal(teachers.getCell('D3').value.result, 10)
   assert.equal(teachers.getCell('E3').value.result, 48)
-  assert.match(teachers.getCell('F3').value.formula, /MAX\(0,E3\)\/\$[A-Z]+\$2/)
-  assert.equal(teachers.getCell('F3').value.result, 48)
+  assert.match(teachers.getCell('B3').value.formula, /E3\/\$[A-Z]+\$2/)
+  near(teachers.getCell('B3').value.result, 48)
   assert.equal(teachers.getCell('I3').value.result, 10)
   const group = workbook.getWorksheet('СП-Пф-1605')
   assert.equal(group.getCell('B2').value, '15.02.19 Сварочное производство')
@@ -59,14 +59,14 @@ test('reference accounting export follows the supplied sheet order and uses conf
   const datedGroup = datedWorkbook.getWorksheet('СП-Пф-1605')
   const dateSheet = datedWorkbook.getWorksheet('Даты занятий')
   assert.deepEqual(datedWorkbook.worksheets.map(sheet => sheet.name), ['Расписание', 'пр', 'СП-Пф-1605', 'Даты занятий'])
-  assert.equal(dateSheet.getCell('D2').value.toISOString(), '2026-09-03T12:00:00.000Z')
+  assert.equal(dateSheet.getCell('D2').value.toISOString(), '2026-09-03T00:00:00.000Z')
   assert.match(datedGroup.getCell('C10').hyperlink, /Даты занятий/)
-  assert.equal(datedGroup.getCell('J6').value.result.toISOString(), '2026-09-02T12:00:00.000Z')
+  assert.equal(datedGroup.getCell('J6').value.result.toISOString(), '2026-09-02T00:00:00.000Z')
 
   const restored = new ExcelJS.Workbook()
   await restored.xlsx.load(await writeReferenceAccountingBuffer(datedWorkbook))
-  assert.equal(restored.getWorksheet('Даты занятий').getCell('D2').value.toISOString(), '2026-09-03T12:00:00.000Z')
-  assert.equal(restored.getWorksheet('СП-Пф-1605').getCell('J6').value.result.toISOString(), '2026-09-02T12:00:00.000Z')
+  assert.equal(restored.getWorksheet('Даты занятий').getCell('D2').value.toISOString(), '2026-09-03T00:00:00.000Z')
+  assert.equal(restored.getWorksheet('СП-Пф-1605').getCell('J6').value.result.toISOString(), '2026-09-02T00:00:00.000Z')
   assert.equal(restored.getWorksheet('СП-Пф-1605').getCell('G10').value.result, 8)
 })
 
@@ -93,9 +93,9 @@ test('reference export follows workload tab and row order instead of IDs or alph
 test('teacher weekly load uses remaining semester hours divided by global remaining weeks', () => {
   const teacher = { ...hours.teachers[0], required_weekly_hours: 24, remaining_weeks: 2 }
   assert.equal(remainingTeachingWeeks(hours), 1)
-  assert.equal(referenceTeacherLoad(teacher, hours), 48)
+  near(referenceTeacherLoad(teacher, hours), 48)
   const untouched = { ...hours, lessons: [] }
-  assert.equal(referenceTeacherLoad(teacher, untouched), 24)
+  near(referenceTeacherLoad(teacher, untouched), 24)
 })
 
 test('weekly group averages use calendar weeks when the group has an empty work period', () => {
@@ -112,8 +112,8 @@ test('weekly group averages use calendar weeks when the group has an empty work 
       work_period: { from: '', to: '' },
       work_days: [1, 2, 3, 4, 5, 6, 7].map(day => ({ day, enabled: day !== 7 })),
       academic_calendar: [
-        { from: '2026-09-01', to: '2026-09-07', theory_hours: 24, pp_hours: 0, vacation: false },
-        { from: '2026-09-08', to: '2026-09-14', theory_hours: 24, pp_hours: 0, vacation: false },
+        { from: '2026-09-01', to: '2026-09-07', theory_hours: 36, pp_hours: 0, vacation: false },
+        { from: '2026-09-08', to: '2026-09-14', theory_hours: 36, pp_hours: 0, vacation: false },
       ] }],
     lessons: [{ lesson_id: 11, group_id: 4, group_name: 'ГР-104', teacher_id: 7,
       teacher_name: 'Иванова', source_index: '1', subject_id: 11, subgroup: -1, name: 'Предмет',
@@ -123,25 +123,25 @@ test('weekly group averages use calendar weeks when the group has an empty work 
       ] }],
   }
   const metrics = referenceGroupWeeks(datedHours.groups[0], datedHours)
-  assert.deepEqual(metrics.weights, [1, 1, 0])
+  metrics.weights.forEach((v,i)=>near(v,[1,1,0][i]))
   near(metrics.accountedWeights[0], 1)
   near(metrics.accountedWeights[1], 1 / 6)
   near(metrics.total, 2)
   near(metrics.accounted, 7 / 6)
   near(metrics.remaining, 5 / 6)
-  near(referenceTeacherLoad(datedHours.teachers[0], datedHours), 80)
+  near(referenceTeacherLoad(datedHours.teachers[0], datedHours), 96)
 
   const { workbook } = buildReferenceAccountingWorkbook(datedHours)
   const group = workbook.worksheets[2]
   const summary = workbook.worksheets[1]
   assert.equal(group.getCell('F10').value.result, 20)
-  assert.equal(group.getCell('H10').value.result, 50)
+  near(group.getCell('H10').value.result, 50)
   near(group.getCell('I10').value.result, 96)
-  near(summary.getCell('F3').value.result, 80)
-  near(summary.getCell('G3').value.result, 80)
+  near(summary.getCell('B3').value.result, 96)
+  near(summary.getCell('G3').value.result, 96)
 })
 
-test('teacher weekly load ignores different group deadlines and uses the shared semester denominator', () => {
+test('teacher summary denominator follows the first group as in the source workbook', () => {
   const data = {
     as_of_date: '2026-09-08', semester_start: '2026-09-01', semester_end: '2026-09-21',
     weeks: [
@@ -162,10 +162,10 @@ test('teacher weekly load ignores different group deadlines and uses the shared 
   }
   assert.equal(referenceGroupWeeks(data.groups[0], data).remaining, 0)
   near(referenceGroupWeeks(data.groups[1], data).remaining, 5 / 6)
-  near(referenceTeacherLoad(data.teachers[0], data), 80)
+  assert.equal(referenceTeacherLoad(data.teachers[0], data), null)
 })
 
-test('a 544-hour semester balance over 9 complete future weeks is about 60.44 hours per week', async () => {
+test('teacher summary follows fractional group weeks rather than replacing them with full future weeks', async () => {
   const weeks = Array.from({ length: 17 }, (_, index) => {
     const from = new Date(Date.UTC(2026, 8, 1 + index * 7))
     const to = new Date(from)
@@ -185,16 +185,16 @@ test('a 544-hour semester balance over 9 complete future weeks is about 60.44 ho
 
   const { workbook, remainingWeeks } = buildReferenceAccountingWorkbook(data)
   const summary = workbook.getWorksheet('пр')
-  assert.equal(remainingWeeks, 9)
-  near(referenceTeacherLoad(data.teachers[0], data), 544 / 9)
-  near(summary.getCell('F3').value.result, 544 / 9)
-  assert.match(summary.getCell('F3').value.formula, /MAX\(0,E3\)\/\$Z\$2/)
+  near(remainingWeeks, 31 / 3)
+  near(referenceTeacherLoad(data.teachers[0], data), 544 / (31 / 3))
+  near(summary.getCell('B3').value.result, 544 / (31 / 3))
+  assert.match(summary.getCell('B3').value.formula, /E3\/\$Z\$2/)
 
   const reloaded = new ExcelJS.Workbook()
   await reloaded.xlsx.load(await workbook.xlsx.writeBuffer())
-  const savedCell = reloaded.getWorksheet('пр').getCell('F3').value
-  assert.match(savedCell.formula, /MAX\(0,E3\)\/\$Z\$2/)
-  near(savedCell.result, 544 / 9)
+  const savedCell = reloaded.getWorksheet('пр').getCell('B3').value
+  assert.match(savedCell.formula, /E3\/\$Z\$2/)
+  near(savedCell.result, 544 / (31 / 3))
 })
 
 test('teacher hover notes show confirmed conducted dates and survive XLSX export', async () => {
@@ -233,18 +233,18 @@ test('remaining group weeks are anchored to the report date, not the last lesson
     ],
     teachers: [{ teacher_id: 7, teacher_name: 'Иванова', planned_hours: 100, credited_hours: 20, remaining_hours: 80 }],
     groups: [{ group_id: 4, group_name: 'ГР-104', academic_calendar: [
-      { from: '2026-09-01', to: '2026-09-07', theory_hours: 24, pp_hours: 0, vacation: false },
-      { from: '2026-09-08', to: '2026-09-14', theory_hours: 24, pp_hours: 0, vacation: false },
-      { from: '2026-09-15', to: '2026-09-21', theory_hours: 24, pp_hours: 0, vacation: false },
+      { from: '2026-09-01', to: '2026-09-07', theory_hours: 36, pp_hours: 0, vacation: false },
+      { from: '2026-09-08', to: '2026-09-14', theory_hours: 36, pp_hours: 0, vacation: false },
+      { from: '2026-09-15', to: '2026-09-21', theory_hours: 36, pp_hours: 0, vacation: false },
     ] }],
     lessons: [{ group_id: 4, teacher_id: 7, planned_hours: 100, scheduled_hours: 20,
       scheduled_occurrences: [{ date: '2026-09-04', week_index: 1, hours: 20 }] }],
   }
   const metrics = referenceGroupWeeks(data.groups[0], data)
-  assert.deepEqual(metrics.weights, [1, 1, 1])
-  assert.deepEqual(metrics.accountedWeights, [1, 0.5, 0])
+  metrics.weights.forEach(v=>near(v,1))
+  metrics.accountedWeights.forEach((v,i)=>near(v,[1,0.5,0][i]))
   near(metrics.remaining, 1.5)
-  near(referenceTeacherLoad(data.teachers[0], data), 80)
+  near(referenceTeacherLoad(data.teachers[0], data), 80 / 1.5)
 })
 
 test('teacher average weekly load is zero after all 114 planned hours are issued', () => {
@@ -256,28 +256,78 @@ test('teacher average weekly load is zero after all 114 planned hours are issued
 
   const { workbook } = buildReferenceAccountingWorkbook(completed)
   const summary = workbook.getWorksheet('пр')
-  assert.equal(summary.getCell('F1').value, 'ср. недельная нагрузка по остатку за семестр')
-  assert.match(summary.getCell('F3').value.formula, /MAX\(0,E3\)\/\$[A-Z]+\$2/)
+  assert.equal(summary.getCell('F1').value, 'ср. недельная нагрузка исходная по группам')
+  assert.match(summary.getCell('B3').value.formula, /E3\/\$[A-Z]+\$2/)
   assert.equal(referenceTeacherLoad(completed.teachers[0], completed), 0)
 })
 
-test('remaining weekly average never goes negative when delivered hours exceed a teacher plan', () => {
+test('teacher and group formulas retain signed balances like the reference', () => {
   const overrun = {
     as_of_date: '2026-09-08', semester_start: '2026-09-01', semester_end: '2026-09-21',
     weeks: [{ index: 1, from: '2026-09-01', to: '2026-09-07' }, { index: 2, from: '2026-09-08', to: '2026-09-14' }, { index: 3, from: '2026-09-15', to: '2026-09-21' }],
     teachers: [{ teacher_id: 8, teacher_name: 'Кальчевская', planned_hours: 0, credited_hours: 6, remaining_hours: -6 }],
     groups: [{ group_id: 9, group_name: 'ГР-104', academic_calendar: [
-      { from: '2026-09-01', to: '2026-09-07', theory_hours: 24, pp_hours: 0, vacation: false },
-      { from: '2026-09-08', to: '2026-09-14', theory_hours: 24, pp_hours: 0, vacation: false },
-      { from: '2026-09-15', to: '2026-09-21', theory_hours: 24, pp_hours: 0, vacation: false },
+      { from: '2026-09-01', to: '2026-09-07', theory_hours: 36, pp_hours: 0, vacation: false },
+      { from: '2026-09-08', to: '2026-09-14', theory_hours: 36, pp_hours: 0, vacation: false },
+      { from: '2026-09-15', to: '2026-09-21', theory_hours: 36, pp_hours: 0, vacation: false },
     ] }],
     lessons: [{ group_id: 9, teacher_id: 8, teacher_name: 'Кальчевская', planned_hours: 0, scheduled_hours: 6,
       scheduled_occurrences: [{ date: '2026-09-07', week_index: 1, hours: 6 }] }],
   }
   const { workbook } = buildReferenceAccountingWorkbook(overrun)
-  assert.match(workbook.getWorksheet('пр').getCell('F3').value.formula, /MAX\(0,E3\)\/\$[A-Z]+\$2/)
-  assert.match(workbook.worksheets[2].getCell('I10').value.formula, /MAX\(0,G10\)/)
-  assert.equal(referenceTeacherLoad(overrun.teachers[0], overrun), 0)
+  assert.match(workbook.getWorksheet('пр').getCell('B3').value.formula, /E3\/\$[A-Z]+\$2/)
+  assert.ok(workbook.worksheets[2].getCell('I10').value.result < 0)
+  near(referenceTeacherLoad(overrun.teachers[0], overrun), -6 / (11 / 6))
+})
+
+test('academic hours preserve the partial first week and include UP without truncating at temporary PP', () => {
+  const h={semester_start:'2026-09-01',semester_end:'2026-09-19',as_of_date:'2026-09-05',weeks:[
+    {index:1,from:'2026-09-01',to:'2026-09-05'}, {index:2,from:'2026-09-07',to:'2026-09-12'}, {index:3,from:'2026-09-14',to:'2026-09-19'}]}
+  const g={academic_calendar:[{from:'2026-08-31',to:'2026-09-06',theory_hours:36},
+    {from:'2026-09-07',to:'2026-09-13',up_hours:36}, {from:'2026-09-14',to:'2026-09-20',theory_hours:24}],
+    practice_periods:[{from:'2026-09-07',to:'2026-09-12',kind:'industrial'}]}
+  const m=referenceGroupWeeks(g,h)
+  near(m.total,1+2/3);near(m.accounted,1);near(m.remaining,2/3)
+  near(referenceGroupWeeks({...g,practice_periods:[]},h).total,2+2/3)
+})
+
+test('each academic graph includes its December teaching after the shared scheduling deadline', () => {
+  const h={semester_start:'2026-12-14',semester_end:'2026-12-26',as_of_date:'2026-12-19',
+    settings:{semester_end_date:'2026-12-19'},weeks:[{index:1,from:'2026-12-14',to:'2026-12-19'},{index:2,from:'2026-12-21',to:'2026-12-26'}]}
+  const later={academic_calendar:[{from:'2026-12-14',to:'2026-12-20',theory_hours:36},{from:'2026-12-21',to:'2026-12-27',theory_hours:30,up_hours:6}]}
+  const earlier={academic_calendar:[later.academic_calendar[0],{from:'2026-12-21',to:'2026-12-27',exam_hours:36}]}
+  near(referenceGroupWeeks(later,h).total,2);near(referenceGroupWeeks(later,h).remaining,1)
+  near(referenceGroupWeeks(earlier,h).total,1);near(referenceGroupWeeks(earlier,h).remaining,0)
+})
+
+test('accounting end dates affect only the specified group and semester', () => {
+  const h={semester_start:'2026-09-01',semester_end:'2026-09-19',as_of_date:'2026-09-05',weeks:[
+    {index:1,from:'2026-09-01',to:'2026-09-05'},{index:2,from:'2026-09-07',to:'2026-09-12'},{index:3,from:'2026-09-14',to:'2026-09-19'}]}
+  const base={academic_calendar:[{from:'2026-08-31',to:'2026-09-06',theory_hours:36},{from:'2026-09-07',to:'2026-09-13',theory_hours:36},{from:'2026-09-14',to:'2026-09-20',up_hours:36}]}
+  near(referenceGroupWeeks({...base,accounting_teaching_end_date:'2026-09-12'},h).total,2)
+  near(referenceGroupWeeks(base,h).total,3)
+  near(referenceGroupWeeks({...base,accounting_teaching_end_date:'2026-01-17'},h).total,3)
+})
+
+test('canonical retired duplicates are hidden only when all their accounting values are zero', () => {
+  const report={lessons:[{lesson_id:614,planned_hours:20,scheduled_hours:46},{lesson_id:1024,planned_hours:0,scheduled_hours:0},{lesson_id:1025,planned_hours:0,scheduled_hours:6},{lesson_id:99,planned_hours:0,scheduled_hours:0}]}
+  const data={lessons:[{id:1024,workload_retired:{canonical_lesson_id:614}},{id:1025,workload_retired:{canonical_lesson_id:615}},{id:99,workload_retired:{reason:'Different retired workload'}}]}
+  assert.deepEqual(withReferenceContext(report,data).lessons.map(l=>l.lesson_id),[614,1025,99])
+  assert.equal(report.lessons.length,4)
+})
+
+test('export honours credited teacher and adjustments in both cached values and formulas', () => {
+  const h=structuredClone(hours);h.teachers[0].adjustment_hours=2
+  h.lessons[0].scheduled_occurrences=[{date:'2026-09-03',week_index:1,hours:2,actual_teacher_id:99,actual_teacher_name:'Замена',credited_teacher_id:0,credited_teacher_name:h.teachers[0].teacher_name}]
+  const wb=buildReferenceAccountingWorkbook(h).workbook,s=wb.getWorksheet('пр'),g=wb.getWorksheet('СП-Пф-1605')
+  assert.equal(g.getCell('F10').value.result,2)
+  assert.equal(s.getCell('D3').value.result,4)
+  assert.equal(s.getCell('E3').value.result,54)
+  near(s.getCell('H3').value.result,27)
+  assert.equal(s.getCell('I3').value.result,2)
+  assert.match(s.getCell('F3').value.formula,/SUMIF\(.+!H\$/)
+  assert.match(s.getCell('G3').value.formula,/SUMIF\(.+!I\$/)
+  assert.match(g.getCell('J10').value.formula,/SUMIFS\('Даты занятий'!/)
 })
 
 test('remaining balance with no future group weeks is reported instead of silently averaged away', () => {
@@ -286,14 +336,14 @@ test('remaining balance with no future group weeks is reported instead of silent
     weeks: [{ index: 1, from: '2026-09-01', to: '2026-09-07' }, { index: 2, from: '2026-09-08', to: '2026-09-14' }],
     teachers: [{ teacher_id: 8, teacher_name: 'Преподаватель', planned_hours: 20, credited_hours: 10, remaining_hours: 10 }],
     groups: [{ group_id: 9, group_name: 'ГР-104', academic_calendar: [
-      { from: '2026-09-01', to: '2026-09-07', theory_hours: 24, pp_hours: 0, vacation: false },
-      { from: '2026-09-08', to: '2026-09-14', theory_hours: 24, pp_hours: 0, vacation: false },
+      { from: '2026-09-01', to: '2026-09-07', theory_hours: 36, pp_hours: 0, vacation: false },
+      { from: '2026-09-08', to: '2026-09-14', theory_hours: 36, pp_hours: 0, vacation: false },
     ] }],
     lessons: [{ group_id: 9, teacher_id: 8, teacher_name: 'Преподаватель', planned_hours: 20, scheduled_hours: 10,
       scheduled_occurrences: [{ date: '2026-09-07', week_index: 1, hours: 10 }] }],
   }
   const { workbook } = buildReferenceAccountingWorkbook(expired)
-  assert.equal(workbook.getWorksheet('пр').getCell('F3').value.result, 'нет недель')
+  assert.equal(workbook.getWorksheet('пр').getCell('B3').value.result, 'нет недель')
   assert.equal(referenceTeacherLoad(expired.teachers[0], expired), null)
 })
 
@@ -321,7 +371,8 @@ test('teacher weekly formulas stay within Excel formula-length limits across man
     teachers: [{ teacher_id: 7, teacher_name: 'Иванова', planned_hours: 92, credited_hours: 0, remaining_hours: 92 }],
     groups, lessons,
   })
-  const formula = workbook.getWorksheet('пр').getCell('F3').value.formula
-  assert.ok(formula.length <= 8192, `Excel formula is ${formula.length} characters`)
-  assert.match(formula, /MAX\(0,E3\)\/\$[A-Z]+\$2/)
+  workbook.eachSheet(sheet=>sheet.eachRow(row=>row.eachCell(cell=>{
+    if(cell.formula)assert.ok(cell.formula.length<=8192,`${sheet.name}!${cell.address}: ${cell.formula.length} characters`)
+  })))
+  assert.match(workbook.getWorksheet('пр').getCell('B3').value.formula, /E3\/\$[A-Z]+\$2/)
 })

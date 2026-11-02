@@ -102,6 +102,7 @@ struct GenState {
     int validation_hard_errors = 0;
     int validation_warnings = 0;
     std::string validation_hours_source;
+    std::filesystem::path diagnostic_dir;
 
     void reset(int total) {
         std::lock_guard<std::mutex> lock(mu);
@@ -683,42 +684,22 @@ bool SynchronizeScheduleArtifacts(const std::filesystem::path& out_dir, std::str
     return true;
 }
 
-JsonValue MergeScheduleRange(const JsonValue& existing, const JsonValue& generated,
-                             const std::string& from, const std::string& to) {
-    JsonValue merged = generated;
-    merged.At("generation_scope") = JsonValue::MakeString("selected_dates");
-    merged.At("status") = JsonValue::MakeString("scoped");
-    if (!existing.IsObject() || !existing.At("groups").IsArray()) return merged;
-    for (JsonValue& group : merged.At("groups").array_value) {
-        const int id = JsonInt(group, "group_index", -1);
-        for (const JsonValue& old_group : existing.At("groups").array_value) {
-            if (JsonInt(old_group, "group_index", -2) != id) continue;
-            for (const JsonValue& day : old_group.At("days").array_value) {
-                const std::string date = JsonString(day, "date_iso", "");
-                if (!date.empty() && (date < from || date > to))
-                    group.At("days").array_value.push_back(day);
-            }
-            break;
-        }
+JsonValue SelectScheduleRange(const JsonValue& generated,
+                              const std::string& from, const std::string& to) {
+    JsonValue scoped = generated;
+    scoped.At("generation_scope") = JsonValue::MakeString("selected_dates");
+    scoped.At("status") = JsonValue::MakeString("scoped");
+    scoped.At("scope_from") = JsonValue::MakeString(from);
+    scoped.At("scope_to") = JsonValue::MakeString(to);
+    if (!scoped.IsObject() || !scoped.At("groups").IsArray()) return scoped;
+    for (JsonValue& group : scoped.At("groups").array_value) {
         auto& days = group.At("days").array_value;
-        std::sort(days.begin(), days.end(), [](const JsonValue& a, const JsonValue& b) {
-            return JsonString(a, "date_iso", "") < JsonString(b, "date_iso", "");
-        });
+        days.erase(std::remove_if(days.begin(), days.end(), [&](const JsonValue& day) {
+            const std::string date = JsonString(day, "date_iso", "");
+            return date.empty() || date < from || date > to;
+        }), days.end());
     }
-    // A course-scoped candidate intentionally contains only selected groups.
-    // Preserve every group absent from it, including all of its days.
-    std::set<int> generated_group_ids;
-    for (const JsonValue& group : merged.At("groups").array_value)
-        generated_group_ids.insert(JsonInt(group, "group_index", -1));
-    for (const JsonValue& old_group : existing.At("groups").array_value) {
-        const int id = JsonInt(old_group, "group_index", -1);
-        if (!generated_group_ids.count(id)) merged.At("groups").array_value.push_back(old_group);
-    }
-    auto& groups = merged.At("groups").array_value;
-    std::sort(groups.begin(), groups.end(), [](const JsonValue& a, const JsonValue& b) {
-        return JsonInt(a, "group_index", -1) < JsonInt(b, "group_index", -1);
-    });
-    return merged;
+    return scoped;
 }
 
 bool PrepareGenerationScope(const JsonValue& data, const std::filesystem::path& schedule_file,
@@ -1950,7 +1931,13 @@ std::string HandleRequest(const std::string& request, const std::string& output_
     }
 
     if (method == "GET" && path == "/api/schedule/preflight") {
-        const auto report = out_dir / "solver_preflight.json";
+        std::filesystem::path diagnostic_dir = out_dir;
+        {
+            std::lock_guard<std::mutex> lk(g_gen.mu);
+            if ((g_gen.state == "failed" || g_gen.state == "running") && !g_gen.diagnostic_dir.empty())
+                diagnostic_dir = g_gen.diagnostic_dir;
+        }
+        const auto report = diagnostic_dir / "solver_preflight.json";
         if (!FileExists(report)) return ErrorJson(404, "Not Found", "Недельная проверка ещё не запускалась");
         return JsonResponse(200, "OK", ReadFileUtf8(report));
     }
@@ -2184,6 +2171,10 @@ std::string HandleRequest(const std::string& request, const std::string& output_
             }
         }
 
+        if (gen_mode != "weekly" && gen_mode != "monolithic")
+            return ErrorJson(400, "Bad Request", "Неизвестный режим генерации");
+        if (request.Has("scope_to") && !request.Has("scope_from"))
+            return ErrorJson(400, "Bad Request", "scope_to требует scope_from");
         if (request.Has("scope_from")) {
             if (gen_mode != "weekly")
                 return ErrorJson(400, "Bad Request", "Выбор дат работает только в недельном режиме");
@@ -2289,6 +2280,10 @@ std::string HandleRequest(const std::string& request, const std::string& output_
         std::string cap_output_dir = output_dir;
         std::filesystem::path cap_candidate = NewGenerationCandidate(out_dir);
         GenerationOptions cap_opts = opts;
+        {
+            std::lock_guard<std::mutex> lk(g_gen.mu);
+            g_gen.diagnostic_dir = cap_candidate;
+        }
 
         std::thread([cap_output_dir, cap_candidate, cap_opts]() mutable {
             WeeklyGenCallbacks cbs;
@@ -2345,13 +2340,13 @@ std::string HandleRequest(const std::string& request, const std::string& output_
                 } else {
                     const JsonValue quality = ReadOptionalJsonFile(cap_candidate / "quality_report.json");
                     const JsonValue rooms = ReadOptionalJsonFile(cap_candidate / "room_allocation.json");
+                    const JsonValue strict = ReadOptionalJsonFile(cap_candidate / "strict_audit.json");
                     validation.checked = true;
                     validation.unassigned_rooms = std::max(0, JsonInt(rooms, "unassigned", 0));
-                    // In Constructor mode the dispatcher-fixed subject, date
-                    // and pair are authoritative. A room is operational data:
-                    // keep the lesson even when the allocator has to leave its
-                    // room for manual clarification.
-                    validation.ok = JsonBool(quality, "load_matches_plan_exactly", false);
+                    validation.hard_errors = JsonInt(strict.At("summary"), "hard_errors", 0);
+                    validation.warnings = JsonInt(strict.At("summary"), "warnings", 0);
+                    validation.ok = JsonBool(quality, "load_matches_plan_exactly", false) &&
+                        JsonBool(strict, "ok", false) && validation.unassigned_rooms == 0;
                     validation.message = validation.ok
                         ? (validation.unassigned_rooms == 0
                             ? "Выбранный период проверен"
@@ -2359,14 +2354,11 @@ std::string HandleRequest(const std::string& request, const std::string& output_
                         : "Проверка выбранного периода: часы не совпали с планом";
                     ApplyFinalOutputGate(result, validation);
                     if (result.success) {
-                        const auto previous_path = std::filesystem::path(cap_output_dir) / "schedule_all.json";
-                        // Keep every day outside the requested range.  A data
-                        // refresh must not turn a Wed-Sat repair into a
-                        // replacement of the whole visible schedule.
-                        const JsonValue previous = FileExists(previous_path.string())
-                            ? ReadOptionalJsonFile(previous_path) : JsonValue::MakeNull();
                         const JsonValue generated = ReadOptionalJsonFile(cap_candidate / "schedule_all.json");
-                        const JsonValue merged = MergeScheduleRange(previous, generated,
+                        // An explicit date range is an isolated result. Do not
+                        // mix older active days into it: from/to must also be
+                        // the exact visible/exported range after promotion.
+                        const JsonValue merged = SelectScheduleRange(generated,
                             cap_opts.scope_from, cap_opts.scope_to);
                         std::string write_error;
                         if (!WriteScheduleSnapshot(cap_candidate, merged, write_error)) {
@@ -2516,6 +2508,233 @@ std::string HandleRequest(const std::string& request, const std::string& output_
         if (!FileExists(file)) return ErrorJson(404, "Not Found", "Расписание ещё не сгенерировано. Вызови POST /api/schedule/regenerate.");
         if (!ScheduleFileIsCurrent(file.string())) return ErrorJson(409, "Conflict", "База изменилась после генерации. Запусти генерацию заново.");
         return JsonResponse(200, "OK", ReadFileUtf8(file));
+    }
+
+    // Date actions operate on the automatic result, never on Constructor locks.
+    if (method == "POST" && path == "/api/schedule/days") {
+        if (g_gen.running.load())
+            return ErrorJson(409, "Conflict", "Дождитесь завершения генерации");
+        const auto request = ParseJson(body);
+        if (!request.ok || !request.value.IsObject())
+            return ErrorJson(400, "Bad Request", "Нужен объект действия и выбранных дат");
+        const std::string action = JsonString(request.value, "action", "");
+        const auto& requested = request.value.At("dates");
+        if ((action != "clear" && action != "confirm") || !requested.IsArray() ||
+            requested.array_value.empty() || requested.array_value.size() > 7)
+            return ErrorJson(400, "Bad Request", "Выберите от 1 до 7 дат и действие clear или confirm");
+        std::set<std::string> dates;
+        for (const auto& item : requested.array_value) {
+            Date date{};
+            if (!item.IsString() || !ParseDateIso(item.string_value, date))
+                return ErrorJson(400, "Bad Request", "Некорректная дата");
+            dates.insert(item.string_value);
+        }
+        std::lock_guard<std::mutex> lock(g_schedule_mutex);
+        const auto file = out_dir / "schedule_all.json";
+        JsonValue generated = ReadOptionalJsonFile(file);
+        if (!generated.IsObject() || !generated.At("groups").IsArray())
+            return ErrorJson(404, "Not Found", "Автоматическое расписание отсутствует");
+        const bool auto_was_current = ScheduleFileIsCurrent(file.string());
+        if (action == "confirm" && !auto_was_current)
+            return ErrorJson(409, "Conflict", "База изменилась. Обновите генерацию перед подтверждением дней");
+        const auto loaded = ParseJson(ReadDataJsonText());
+        if (!loaded.ok || !loaded.value.IsObject())
+            return ErrorJson(500, "Internal Server Error", "Не удалось прочитать учёт часов");
+        JsonValue data = loaded.value;
+        JsonValue published = ReadOptionalJsonFile(std::filesystem::path("output") / "published" / "schedule_all.json");
+        const auto key = [](int id, const std::string& date, int slot) {
+            return std::to_string(id) + "|" + date + "|" + std::to_string(slot);
+        };
+        std::set<std::string> confirmed, existing_dates, removed, protected_events;
+        for (const auto& fact : data.At("teaching_ledger").array_value) {
+            if (JsonString(fact, "status", "") != "confirmed") continue;
+            const auto date = JsonString(fact, "date", "");
+            confirmed.insert(key(JsonInt(fact, "lesson_id", -1), date, JsonInt(fact, "slot", 0)));
+            existing_dates.insert(date);
+        }
+        int changed = 0;
+        if (action == "confirm") {
+            std::map<int, JsonValue> definitions;
+            for (const auto& lesson : data.At("lessons").array_value)
+                definitions[JsonInt(lesson, "id", -1)] = lesson;
+            auto& ledger = data.At("teaching_ledger");
+            int next_id = NextId(ledger);
+            for (const auto& group : generated.At("groups").array_value)
+                for (const auto& day : group.At("days").array_value) {
+                    const auto date = JsonString(day, "date_iso", "");
+                    if (!dates.count(date)) continue;
+                    for (const auto& slot : day.At("slots").array_value)
+                        for (const auto& lesson : slot.At("lessons").array_value) {
+                            if (JsonBool(lesson, "is_class_hour", false)) continue;
+                            const int id = JsonInt(lesson, "id", -1);
+                            const int number = JsonInt(slot, "slot", 0);
+                            const auto definition = definitions.find(id);
+                            if (definition == definitions.end() || number < 1 || number > SLOTS_PER_DAY ||
+                                JsonInt(definition->second, "group", -1) != JsonInt(group, "group_index", -1))
+                                return ErrorJson(422, "Unprocessable Entity", "Неизвестное занятие в выбранных днях");
+                            existing_dates.insert(date);
+                            const auto event_key = key(id, date, number);
+                            if (!confirmed.insert(event_key).second) continue;
+                            JsonValue fact = JsonValue::MakeObject();
+                            // Promote an existing planned occurrence without losing its origin.
+                            for (const auto& planned : ledger.array_value)
+                                if (JsonString(planned, "status", "") == "planned" &&
+                                    key(JsonInt(planned, "lesson_id", -1), JsonString(planned, "date", ""), JsonInt(planned, "slot", 0)) == event_key)
+                                    fact = planned;
+                            if (!fact.Has("id")) fact.At("id") = JsonValue::MakeNumber(next_id++);
+                            fact.At("lesson_id") = JsonValue::MakeNumber(id);
+                            fact.At("group_id") = JsonValue::MakeNumber(JsonInt(group, "group_index", -1));
+                            fact.At("date") = JsonValue::MakeString(date);
+                            fact.At("slot") = JsonValue::MakeNumber(number);
+                            fact.At("hours") = JsonValue::MakeNumber(JsonBool(definition->second, "is_block", false) ? 6 : 2);
+                            fact.At("status") = JsonValue::MakeString("confirmed");
+                            fact.At("actual_teacher") = JsonValue::MakeNumber(JsonInt(lesson, "teacher_id", JsonInt(definition->second, "teacher", -1)));
+                            fact.At("room") = JsonValue::MakeString(JsonString(lesson, "room_name", ""));
+                            if (!fact.Has("source_file")) fact.At("source_file") = JsonValue::MakeString("schedule-day-confirmation");
+                            fact.At("source_subject") = definition->second.At("name");
+                            ledger.array_value.erase(std::remove_if(ledger.array_value.begin(), ledger.array_value.end(), [&](const JsonValue& entry) {
+                                return JsonString(entry, "status", "") == "planned" &&
+                                    key(JsonInt(entry, "lesson_id", -1), JsonString(entry, "date", ""), JsonInt(entry, "slot", 0)) == event_key;
+                            }), ledger.array_value.end());
+                            ledger.array_value.push_back(std::move(fact));
+                            ++changed;
+                        }
+                }
+            for (const auto& date : dates)
+                if (!existing_dates.count(date))
+                    return ErrorJson(422, "Unprocessable Entity", "На дату " + date + " нет учебных занятий для подтверждения");
+            if (changed > 0) {
+                const auto cutoff = JsonString(data.At("settings"), "accounting_as_of_date", "");
+                if (cutoff < *dates.rbegin())
+                    data.At("settings").At("accounting_as_of_date") = JsonValue::MakeString(*dates.rbegin());
+            }
+            const auto audit = BuildDataAudit(data);
+            if (!JsonBool(audit, "ok", false))
+                return ErrorJson(422, "Unprocessable Entity", "Подтверждение остановлено: ошибка учёта выбранных занятий");
+        }
+        bool snapshot_changed = false;
+        // Remove only proposals. Confirmed facts (including imported Excel) survive.
+        const auto clean = [&](JsonValue& schedule, bool mark) {
+            for (auto& group : schedule.At("groups").array_value)
+                for (auto& day : group.At("days").array_value) {
+                    const auto date = JsonString(day, "date_iso", "");
+                    if (!dates.count(date)) continue;
+                    for (auto& slot : day.At("slots").array_value) {
+                        auto& lessons = slot.At("lessons").array_value;
+                        const auto previous_size = lessons.size();
+                        lessons.erase(std::remove_if(lessons.begin(), lessons.end(), [&](JsonValue& lesson) {
+                            const auto event_key = key(JsonInt(lesson, "id", -1), date, JsonInt(slot, "slot", 0));
+                            if (confirmed.count(event_key) || JsonBool(lesson, "confirmed", false) || mark) {
+                                protected_events.insert(event_key);
+                                if ((mark || confirmed.count(event_key)) && !JsonBool(lesson, "confirmed", false)) {
+                                    lesson.At("confirmed") = JsonValue::MakeBool(true);
+                                    snapshot_changed = true;
+                                }
+                                return false;
+                            }
+                            removed.insert(event_key);
+                            snapshot_changed = true;
+                            return true;
+                        }), lessons.end());
+                        if (lessons.empty()) slot.At("text") = JsonValue::MakeString("");
+                        else if (lessons.size() != previous_size) {
+                            std::string text;
+                            for (auto& lesson : lessons) {
+                                std::string teacher_name = JsonString(lesson, "teacher_name", "");
+                                if (teacher_name.empty())
+                                    for (const auto& teacher : data.At("teachers").array_value)
+                                        if (JsonInt(teacher, "id", -1) == JsonInt(lesson, "teacher_id", -2))
+                                            teacher_name = JsonString(teacher, "name", "");
+                                if (!text.empty()) text += " | ";
+                                text += JsonString(lesson, "name", "");
+                                if (!teacher_name.empty()) text += " — " + teacher_name;
+                                const auto room = JsonString(lesson, "room_name", "");
+                                if (!room.empty()) text += ", каб. " + room;
+                            }
+                            slot.At("text") = JsonValue::MakeString(text);
+                        }
+                    }
+                }
+        };
+        if (action == "clear") {
+            clean(generated, false);
+            if (published.IsObject()) clean(published, false);
+            changed = static_cast<int>(removed.size());
+        } else {
+            clean(generated, true);
+            // Accepted days become visible history even if not previously published.
+            if (!published.IsObject()) {
+                published = JsonValue::MakeObject();
+                published.At("groups") = JsonValue::MakeArray();
+            }
+            clean(published, false);
+            for (const auto& group : generated.At("groups").array_value) {
+                bool has_selected_day = false;
+                for (const auto& day : group.At("days").array_value)
+                    has_selected_day = has_selected_day || dates.count(JsonString(day, "date_iso", ""));
+                if (!has_selected_day) continue;
+                JsonValue* target_group = nullptr;
+                for (auto& item : published.At("groups").array_value)
+                    if (JsonInt(item, "group_index", -1) == JsonInt(group, "group_index", -2)) target_group = &item;
+                if (!target_group) {
+                    JsonValue empty = group;
+                    empty.At("days") = JsonValue::MakeArray();
+                    published.At("groups").array_value.push_back(std::move(empty));
+                    snapshot_changed = true;
+                    target_group = &published.At("groups").array_value.back();
+                }
+                for (const auto& day : group.At("days").array_value) {
+                    const auto date = JsonString(day, "date_iso", "");
+                    if (!dates.count(date)) continue;
+                    JsonValue* target_day = nullptr;
+                    for (auto& item : target_group->At("days").array_value)
+                        if (JsonString(item, "date_iso", "") == date) target_day = &item;
+                    if (!target_day) { target_group->At("days").array_value.push_back(day); snapshot_changed = true; continue; }
+                    for (const auto& slot : day.At("slots").array_value) {
+                        JsonValue* target_slot = nullptr;
+                        for (auto& item : target_day->At("slots").array_value)
+                            if (JsonInt(item, "slot", -1) == JsonInt(slot, "slot", -2)) target_slot = &item;
+                        if (!target_slot) { target_day->At("slots").array_value.push_back(slot); snapshot_changed = true; continue; }
+                        for (const auto& lesson : slot.At("lessons").array_value) {
+                            bool found = false;
+                            for (const auto& item : target_slot->At("lessons").array_value)
+                                found = found || JsonInt(item, "id", -1) == JsonInt(lesson, "id", -2);
+                            if (!found) { target_slot->At("lessons").array_value.push_back(lesson); snapshot_changed = true; }
+                        }
+                    }
+                }
+            }
+        }
+        if (changed > 0 || snapshot_changed) {
+            std::string error;
+            const auto backup = std::filesystem::path("output") / "day_action_backups" /
+                ("before-" + action + "-" + TransferTimestamp(true) + "-" +
+                 std::to_string(std::chrono::steady_clock::now().time_since_epoch().count()) + ".raspis.json");
+            if (!AtomicWriteJsonFile(backup, BuildTransferBundle(out_dir, "before-day-action"), error))
+                return ErrorJson(500, "Internal Server Error", error);
+            if (action == "confirm" && changed > 0 && !SaveDataJson(data, error, "Подтверждение выбранных дней расписания"))
+                return ErrorJson(500, "Internal Server Error", error);
+            if (!WriteScheduleSnapshot(out_dir, generated, error) ||
+                (published.IsObject() && !WriteScheduleSnapshot(std::filesystem::path("output") / "published", published, error)))
+                return ErrorJson(500, "Internal Server Error", "Резервная копия: " + backup.string() + "; " + error);
+            if (action == "clear" && !auto_was_current) {
+                std::error_code ec;
+                std::filesystem::remove(out_dir / "data_revision.txt", ec);
+                if (ec) return ErrorJson(500, "Internal Server Error", ec.message());
+            }
+            // Confirmation changes the accounting revision; retain Constructor locks.
+            if (action == "confirm" && changed > 0 && FileExists(std::filesystem::path("output") / "manual" / "schedule_all.json") &&
+                !WriteScheduleDataRevision((std::filesystem::path("output") / "manual").string(), error))
+                return ErrorJson(500, "Internal Server Error", error);
+        }
+        JsonValue result = JsonValue::MakeObject();
+        result.At("success") = JsonValue::MakeBool(true);
+        result.At("changed") = JsonValue::MakeNumber(changed);
+        result.At("preserved_confirmed") = JsonValue::MakeNumber(static_cast<double>(protected_events.size()));
+        result.At("message") = JsonValue::MakeString(action == "clear"
+            ? (changed ? "Сгенерированные занятия удалены. Подтверждённые занятия сохранены" : "Нет сгенерированных занятий для удаления")
+            : (changed ? "Выбранные дни засчитаны как проведённые" : "Выбранные дни уже подтверждены"));
+        return OkJson(result);
     }
 
     // ── Manual (Конструктор) endpoints ──
@@ -2720,7 +2939,13 @@ void SendAll(SOCKET client, const std::string& data) {
     const char* ptr = data.data();
     int left = static_cast<int>(data.size());
     while (left > 0) {
+#ifdef _WIN32
         int sent = send(client, ptr, left, 0);
+#else
+        // A browser/proxy may close a long response. SIGPIPE must not kill
+        // the entire Linux API process (and an active generation).
+        int sent = send(client, ptr, left, MSG_NOSIGNAL);
+#endif
         if (sent == SOCKET_ERROR || sent == 0) break;
         ptr += sent;
         left -= sent;

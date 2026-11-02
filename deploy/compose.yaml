@@ -19,6 +19,7 @@ services:
       - no-new-privileges:true
 
   app:
+    image: ${TIMETABLE_IMAGE:-raspis-unos-app:latest}
     build:
       context: ..
       dockerfile: deploy/Dockerfile
@@ -27,7 +28,8 @@ services:
       db:
         condition: service_healthy
     environment:
-      TIMETABLE_HOST: 0.0.0.0
+      TIMETABLE_HOST: 127.0.0.1
+      TZ: Asia/Yekaterinburg
       TIMETABLE_DATABASE_URL: host=db port=5432 dbname=timetable user=timetable password=${POSTGRES_PASSWORD} connect_timeout=5
     ports:
       - "127.0.0.1:8080:8080"

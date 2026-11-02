@@ -2,6 +2,10 @@
   "name": "raspis-frontend",
   "version": "1.0.0",
   "private": true,
+  "engines": { "node": ">=22" },
+  "overrides": {
+    "exceljs": { "uuid": "11.1.1" }
+  },
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -14,6 +18,7 @@
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "exceljs": "4.4.0",
+    "jszip": "3.10.1",
     "lucide-vue-next": "^1.0.0",
     "pdfmake": "^0.3.11",
     "pinia": "^2.1.7",

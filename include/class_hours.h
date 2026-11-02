@@ -6,7 +6,9 @@
 
 namespace timetable {
 // Class hours precede teaching and are excluded from academic group occupancy.
-// The next academic pair must follow immediately, with no group-level windows.
+// The next activity must be a whole-group lesson, either/both subgroups, or UP.
+// Each student's academic timeline remains continuous; the two subgroups need
+// not start together.
 // Concrete room allocation is independently validated later.
 void AddClassHourTimeConstraints(
     operations_research::sat::CpModelBuilder& model,
@@ -17,7 +19,8 @@ void AddClassHourTimeConstraints(
     const std::vector<std::vector<operations_research::sat::IntVar>>& teacher_campus,
     const std::vector<Lesson>* lessons = nullptr,
     const std::vector<std::vector<operations_research::sat::BoolVar>>* placements = nullptr,
-    std::map<int, int>* adjacency_assumption_groups = nullptr);
+    std::map<int, int>* adjacency_assumption_groups = nullptr,
+    operations_research::sat::LinearExpr* placement_cost = nullptr);
 // Plans on a copy; caller publishes only after independent validation.
 bool PlanClassHours(const ScheduleInputData& data, JsonValue& schedule, std::string& error);
 JsonValue ValidateClassHours(const ScheduleInputData& data, const JsonValue& schedule);

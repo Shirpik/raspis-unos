@@ -140,6 +140,23 @@
       <span style="margin-left:10px">Запуск генерации…</span>
     </div>
 
+    <section v-if="store.progress?.state === 'failed'" class="solver-diagnostics">
+      <div class="solver-diagnostics-head">
+        <strong>Почему генерация невозможна</strong>
+        <span>{{ store.progress.message || 'Решатель не нашёл допустимое расписание' }}</span>
+      </div>
+      <div v-if="store.preflight?.issues?.length" class="solver-issue-list">
+        <article v-for="(issue, index) in store.preflight.issues" :key="`${issue.code}-${index}`" class="solver-issue">
+          <div><strong>{{ issue.code }}</strong><span>{{ issue.message }}</span></div>
+          <div v-if="issue.action_label" class="solver-issue-actions">
+            <button class="btn btn-secondary btn-sm" type="button" @click="openSolverIssue(issue)">{{ issue.action_label }}</button>
+            <button class="btn btn-ghost btn-sm" type="button" @click="rejectSolverIssue(issue)">Отклонить</button>
+          </div>
+        </article>
+      </div>
+      <p v-else class="solver-diagnostics-empty">Предварительная проверка не нашла одну конкретную причину. Проверьте закреплённые пары, доступность преподавателя и аудитории.</p>
+    </section>
+
     <ValidationPanel :result="validationResult" />
 
     <div class="schedule-mode-bar">
@@ -234,6 +251,26 @@
         <span v-if="weekConfirmedLoad.slots" class="week-fact-badge">✓ {{ weekConfirmedLoad.slots }} слотов · {{ weekConfirmedLoad.hours }} ч подтверждено</span>
         <span v-if="weekGeneratedLoad.slots" class="week-plan-badge">✦ {{ weekGeneratedLoad.slots }} слотов · {{ weekGeneratedLoad.hours }} ч запланировано</span>
       </div>
+
+      <section v-if="!demoMode" class="day-actions" aria-label="Действия с днями расписания">
+        <div class="day-actions-heading">
+          <strong>Дни расписания</strong>
+          <span>Действия применяются ко всем группам. Подтверждение засчитывает занятия в учёт часов.</span>
+        </div>
+        <div class="day-actions-dates">
+          <label v-for="day in actionDays" :key="day.iso" class="day-choice">
+            <input v-model="selectedActionDays" type="checkbox" :value="day.iso" :disabled="dayActionBusy || store.generating" />
+            <span>{{ day.label }}</span>
+          </label>
+          <button type="button" class="btn btn-ghost btn-sm" :disabled="dayActionBusy || store.generating" @click="selectedActionDays = actionDays.map(day => day.iso)">Выбрать все дни</button>
+        </div>
+        <div class="day-actions-buttons">
+          <button type="button" class="btn btn-secondary" :disabled="!selectedActionDays.length || dayActionBusy || store.generating" @click="openDayAction('clear', selectedActionDays)">Очистить дни</button>
+          <button type="button" class="btn btn-secondary" :disabled="!actionWeekDates.length || dayActionBusy || store.generating" @click="openDayAction('clear', actionWeekDates)">Очистить неделю</button>
+          <button type="button" class="btn btn-success" :disabled="!selectedActionDays.length || dayActionBusy || store.generating" @click="openDayAction('confirm', selectedActionDays)">Подтвердить дни</button>
+        </div>
+        <small>Очистка убирает сгенерированные занятия, в том числе из публикации. Проведённые занятия и Конструктор сохраняются.</small>
+      </section>
 
       <template v-if="viewMode === 'teachers'">
         <div v-if="!teacherSearch" class="empty-state compact-empty">
@@ -405,24 +442,37 @@
       </div>
       </template>
     </template>
+    <Modal v-model="dayActionDialog" :title="pendingDayAction === 'confirm' ? 'Подтвердить дни' : 'Очистить расписание'">
+      <p>{{ pendingDayAction === 'confirm' ? 'Засчитать занятия этих дней как проведённые для всех групп? Часы попадут в учёт, занятия появятся в опубликованной истории.' : 'Удалить сгенерированные занятия этих дней у всех групп и из публикации? Подтверждённые занятия и учёт часов сохранятся.' }}</p>
+      <p class="day-action-summary">{{ pendingDayDates.map(date => date.split('-').reverse().join('.')).join(', ') }}</p>
+      <template #footer>
+        <button type="button" class="btn btn-ghost" :disabled="dayActionBusy" @click="dayActionDialog = false">Отмена</button>
+        <button type="button" :class="['btn', pendingDayAction === 'confirm' ? 'btn-success' : 'btn-danger']" :disabled="dayActionBusy" @click="applyDayAction">{{ dayActionBusy ? 'Сохраняю…' : pendingDayAction === 'confirm' ? 'Засчитать как проведённые' : 'Удалить генерацию' }}</button>
+      </template>
+    </Modal>
   </div>
 </template>
 
 <script setup>
 import { ref, computed, onMounted, watch } from 'vue'
 import { useScheduleStore } from '../stores/schedule.js'
+import { generationDateDefaults, datesInGenerationScope } from '../utils/generationDates.js'
+import { useRouter } from 'vue-router'
 import { useDataStore } from '../stores/data.js'
 import { useToast } from '../composables/useToast.js'
 import { demoMode } from '../config.js'
 import { api } from '../api/index.js'
 import { collectSlotNumbers, subgroupLabel } from '../utils/schedulePresentation.js'
 import ValidationPanel from '../components/ValidationPanel.vue'
+import Modal from '../components/Modal.vue'
+import { calendarWeekDates, reconcileSelectedDays } from '../utils/scheduleDayActions.js'
 import {
   CalendarRange, Download, FileText, CheckCircle, Upload, Sparkles, X,
-  Info, Check, Minus, Circle, Users, User, Search, CalendarX, Clock, GraduationCap
+  Info, Check, Minus, Circle, Users, User, Search, CalendarX, Clock, GraduationCap, AlertCircle, Rocket
 } from 'lucide-vue-next'
 
 const store = useScheduleStore()
+const router = useRouter()
 const dataStore = useDataStore()
 const toast = useToast()
 
@@ -442,6 +492,39 @@ const validating = ref(false)
 const excelExporting = ref(false)
 const validationSource = ref('auto')
 const validationResult = ref(null)
+const selectedActionDays = ref([])
+const dayActionBusy = ref(false)
+const dayActionDialog = ref(false)
+const pendingDayAction = ref('clear')
+const pendingDayDates = ref([])
+const actionDays = computed(() => weekDates.value.map(day => ({ iso: toIsoDate(parseDMY(day)), label: day })))
+const actionWeekDates = computed(() => {
+  const week = sortedWeeks.value[weekIndex.value]
+  return week ? calendarWeekDates(toIsoDate(week.mon)).filter(date => {
+    const start = store.semester?.semester_start_date
+    const end = [store.semester?.semester_end_date, store.semester?.first_course_semester_end_date].filter(Boolean).sort().at(-1)
+    return (!start || date >= start) && (!end || date <= end)
+  }) : []
+})
+function openDayAction(action, dates) {
+  if (dayActionBusy.value || store.generating) return
+  pendingDayAction.value = action
+  pendingDayDates.value = [...new Set(dates)].sort()
+  dayActionDialog.value = true
+}
+async function applyDayAction() {
+  if (dayActionBusy.value || store.generating) return
+  dayActionBusy.value = true
+  try {
+    const result = await api.schedule.updateDays(pendingDayAction.value, pendingDayDates.value)
+    if (!result.ok) { toast.error(result.data?.message || 'Не удалось изменить выбранные дни'); return }
+    toast.success(result.data?.message || 'Изменения сохранены')
+    dayActionDialog.value = false
+    selectedActionDays.value = []
+    validationResult.value = null
+    await store.fetchSchedule()
+  } finally { dayActionBusy.value = false }
+}
 
 onMounted(async () => {
   await Promise.all([store.fetchSchedule(), dataStore.loadTeachers()])
@@ -694,16 +777,23 @@ const weekDates = computed(() => {
       if (from <= iso && iso <= to) set.add(fmtDate(date))
     }
   }
-  return [...set].sort(compareDMY)
+  const days = [...set].sort(compareDMY)
+  const visible = new Set(datesInGenerationScope(days.map(day => toIsoDate(parseDMY(day))),
+    store.lastScoped ? store.lastScope : null))
+  return days.filter(day => visible.has(toIsoDate(parseDMY(day))))
 })
 
 watch(weekDates, days => {
-  selectedDay.value = days[0] || ''
-  if (days.length) {
-    generationFrom.value = toIsoDate(parseDMY(days[0]))
-    generationTo.value = toIsoDate(parseDMY(days.at(-1)))
-  }
+  const isoDays = days.map(day => toIsoDate(parseDMY(day)))
+  const defaults = generationDateDefaults({
+    day: selectedDay.value ? toIsoDate(parseDMY(selectedDay.value)) : '',
+    from: generationFrom.value, to: generationTo.value,
+  }, isoDays)
+  selectedDay.value = days[isoDays.indexOf(defaults.day)] || ''
+  generationFrom.value = defaults.from
+  generationTo.value = defaults.to
 }, { immediate: true })
+watch(actionDays, days => { selectedActionDays.value = reconcileSelectedDays(selectedActionDays.value, days.map(day => day.iso)) })
 
 function selectedWeekLoad(confirmed) {
   let slots = 0
@@ -891,6 +981,8 @@ async function onRegenerate() {
     } else if (generationScope.value === 'range') {
       if (!generationFrom.value || !generationTo.value) return toast.error('Укажите начало и конец диапазона')
       if (generationTo.value < generationFrom.value) return toast.error('Конечная дата раньше начальной')
+      if ((Date.parse(generationTo.value) - Date.parse(generationFrom.value)) / 86400000 > 6)
+        return toast.error('Выберите диапазон не более 7 календарных дней')
       opts.scope_from = generationFrom.value
       opts.scope_to = generationTo.value
     } else {
@@ -900,7 +992,9 @@ async function onRegenerate() {
       opts.scope_to = toIsoDate(week.sun)
     }
     const start = store.semester?.semester_start_date
-    const end = store.semester?.first_course_semester_end_date || store.semester?.semester_end_date
+    const end = [store.semester?.first_course_semester_end_date, store.semester?.semester_end_date].filter(Boolean).sort().at(-1)
+    if (generationScope.value === 'range' && ((start && opts.scope_from < start) || (end && opts.scope_to > end)))
+      return toast.error('Выберите диапазон внутри дат семестра')
     if (start && opts.scope_from < start) opts.scope_from = start
     if (end && opts.scope_to > end) opts.scope_to = end
     if (opts.scope_to < opts.scope_from) return toast.error('Диапазон находится за пределами семестра')
@@ -946,9 +1040,28 @@ watch(() => store.progress?.state, (newState, oldState) => {
     store.fetchSchedule()
   }
 })
+
+function openSolverIssue(issue) {
+  const target = issue.action_target || '/data-tools?tab=unavailable'
+  const [path, query] = target.split('?')
+  router.push({ path, query: Object.fromEntries(new URLSearchParams(query || '')) })
+}
+
+function rejectSolverIssue(issue) {
+  if (Array.isArray(store.preflight?.issues)) {
+    store.preflight.issues = store.preflight.issues.filter(item => item !== issue)
+  }
+}
 </script>
 
 <style scoped>
+.day-actions { display:grid; gap:12px; padding:16px; margin-bottom:18px; border:1px solid var(--border); border-radius:var(--radius-lg); background:var(--bg-secondary); }
+.day-actions-heading { display:flex; flex-direction:column; gap:5px; }
+.day-actions-heading span, .day-actions small { color:var(--text-muted); font-size:12px; }
+.day-actions-dates, .day-actions-buttons { display:flex; flex-wrap:wrap; align-items:center; gap:10px; }
+.day-choice { display:flex; align-items:center; gap:7px; padding:7px 10px; border:1px solid var(--border); border-radius:var(--radius); cursor:pointer; }
+.day-choice input { accent-color:var(--accent); }
+.day-action-summary { margin-top:12px; font-weight:600; line-height:1.8; }
 .week-fact-badge, .week-plan-badge { border-radius: 999px; padding: 5px 10px; font-size: 12px; font-weight: 700; white-space: nowrap; }
 .week-fact-badge { color: var(--success); background: var(--success-light); }
 .week-plan-badge { color: var(--accent); background: var(--accent-light); }
@@ -965,6 +1078,14 @@ watch(() => store.progress?.state, (newState, oldState) => {
 .generation-panel-heading > div { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
 .generation-panel-heading strong { color: var(--text-primary); font-size: 15px; }
 .generation-panel-heading span { color: var(--text-secondary); font-size: 13px; }
+.solver-diagnostics { margin: 0 0 16px; padding: 14px 16px; border: 1px solid var(--error); border-radius: var(--radius); background: var(--error-light); }
+.solver-diagnostics-head { display: grid; gap: 4px; margin-bottom: 10px; }
+.solver-diagnostics-head span, .solver-diagnostics-empty { color: var(--text-secondary); font-size: 13px; }
+.solver-issue-list { display: grid; gap: 8px; }
+.solver-issue { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 10px; border: 1px solid var(--border); border-radius: var(--radius-sm); background: var(--bg-primary); }
+.solver-issue div { display: grid; gap: 3px; }
+.solver-issue div span { color: var(--text-secondary); font-size: 13px; }
+.solver-issue-actions { display: flex; gap: 6px; flex-shrink: 0; }
 .generation-panel-controls { display: flex; align-items: flex-end; gap: 10px; flex-wrap: wrap; }
 .generation-date-field { display: grid; gap: 4px; color: var(--text-secondary); font-size: 12px; font-weight: 600; }
 .generation-date-field .form-input { width: 145px; padding: 7px 9px; font-size: 13px; }

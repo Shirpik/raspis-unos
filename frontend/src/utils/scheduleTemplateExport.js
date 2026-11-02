@@ -368,8 +368,8 @@ export async function buildScheduleExcelWorkbook(schedule, templateBuffer) {
           if (wholeGroup.length === 1) {
             const value = lessonTemplateValue(wholeGroup[0].lesson, wholeGroup[0].segment, group?.group_index, slotNumber)
             if (wholeGroup[0].lesson?.is_class_hour) {
-              if (weekday !== 'ПН' || slotNumber < 2 || slotNumber > 4 || wholeGroup[0].lesson.half !== 2)
-                throw new Error(`${name}: поздний классный час должен занимать вторую половину пары 2–4 понедельника`)
+              if (weekday !== 'ПН' || slotNumber < 1 || slotNumber > 5 || wholeGroup[0].lesson.half !== 2)
+                throw new Error(`${name}: поздний классный час должен занимать вторую половину пары 1–5 понедельника`)
               second.value = value.text
               applyCampusFill(second, value.campus, value.text)
             } else {

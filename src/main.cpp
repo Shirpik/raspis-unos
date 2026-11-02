@@ -7,6 +7,10 @@
 #include <sstream>
 #include <string>
 
+#ifdef _WIN32
+#include <windows.h>
+#endif
+
 #include "data_store.h"
 #include "date_utils.h"
 #include "http_server.h"
@@ -17,6 +21,12 @@
 
 int main(int argc, char* argv[]) {
     std::setlocale(LC_ALL, "ru_RU.UTF-8");
+#ifdef _WIN32
+    // All JSON and diagnostic strings are UTF-8.  Set the console code page so
+    // solver messages do not appear as `Р...` mojibake in Windows terminals.
+    SetConsoleCP(CP_UTF8);
+    SetConsoleOutputCP(CP_UTF8);
+#endif
 
     if (argc > 1 && std::string(argv[1]) == "--audit-data") {
         std::string data_path = timetable::DataFilePath();

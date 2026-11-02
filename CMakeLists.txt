@@ -4,8 +4,17 @@ project(timetable_solver LANGUAGES CXX)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
+# All timetable data and diagnostics are UTF-8.  MSVC otherwise interprets
+# UTF-8 source literals using the active Windows code page, which turns the
+# Russian labels used by the solver into mojibake and also breaks comparisons
+# such as the transferred-to-PP teacher filter.
+if (MSVC)
+    add_compile_options(/utf-8)
+endif()
+
 # OR-Tools должен быть установлен в системе или доступен через CMAKE_PREFIX_PATH.
 find_package(ortools CONFIG REQUIRED)
+find_package(Threads REQUIRED)
 
 # PostgreSQL is optional for local/Windows builds. Production images install
 # libpq and enable the durable PostgreSQL-backed data store automatically.
@@ -53,7 +62,7 @@ target_include_directories(quota_optimizer PRIVATE include)
 target_link_libraries(quota_optimizer PRIVATE ortools::ortools)
 
 target_include_directories(timetable_solver PRIVATE include)
-target_link_libraries(timetable_solver PRIVATE ortools::ortools)
+target_link_libraries(timetable_solver PRIVATE ortools::ortools Threads::Threads)
 
 if (PostgreSQL_FOUND)
     target_link_libraries(timetable_solver PRIVATE PostgreSQL::PostgreSQL)
@@ -70,6 +79,9 @@ include(CTest)
 if (BUILD_TESTING)
     find_package(Python3 COMPONENTS Interpreter QUIET)
     if (Python3_Interpreter_FOUND)
+        add_test(NAME schedule_day_actions_api_regression
+            COMMAND "${Python3_EXECUTABLE}" "${CMAKE_SOURCE_DIR}/tests/test_schedule_day_actions.py" "$<TARGET_FILE:timetable_solver>")
+        set_tests_properties(schedule_day_actions_api_regression PROPERTIES TIMEOUT 60)
         add_test(NAME scoped_accounting_api_regression
             COMMAND "${Python3_EXECUTABLE}" "${CMAKE_SOURCE_DIR}/tests/test_scoped_accounting.py" "$<TARGET_FILE:timetable_solver>")
         set_tests_properties(scoped_accounting_api_regression PROPERTIES TIMEOUT 45)

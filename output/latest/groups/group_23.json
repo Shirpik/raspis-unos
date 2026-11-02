@@ -1,632 +1,164 @@
 {
   "days": [
     {
-      "date": "20.10.2026",
-      "date_iso": "2026-10-20",
+      "date": "03.11.2026",
+      "date_iso": "2026-11-03",
       "day_index": 0,
       "slots": [
         {
-          "lessons": [],
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "confirmed": true,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 494,
+              "is_block": false,
+              "is_lab": false,
+              "name": "Автоматизация складского учета в компьютерной программе 1С:Предприятие -",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 34,
+              "room_name": "210",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": 46,
+              "teacher_id": 47,
+              "uid": "lesson-882a3a8320542d22",
+              "week_parity": "all"
+            }
+          ],
           "slot": 1,
-          "text": "-",
+          "text": "Автоматизация складского учета в компьютерной программе 1С:Предприятие - — undefined, каб. 210",
           "time": "1 пара (08:30-09:55)"
         },
         {
-          "lessons": [],
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "confirmed": true,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 493,
+              "is_block": false,
+              "is_lab": false,
+              "name": "Автоматизация складского учета в компьютерной программе 1С:Предприятие",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 34,
+              "room_name": "210",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": -1,
+              "teacher_id": 47,
+              "uid": "lesson-24f98685489c7be4",
+              "week_parity": "all"
+            }
+          ],
           "slot": 2,
-          "text": "-",
+          "text": "Автоматизация складского учета в компьютерной программе 1С:Предприятие — undefined, каб. 210",
           "time": "2 пара (10:05-11:30)"
         },
         {
           "lessons": [
             {
               "avoid_lunch_split": false,
+              "confirmed": true,
               "consecutive_pairs": 1,
-              "display_time": "13:00-17:00",
-              "id": 506,
-              "is_block": true,
+              "display_time": null,
+              "id": 493,
+              "is_block": false,
               "is_lab": false,
-              "name": "УП.04",
+              "name": "Автоматизация складского учета в компьютерной программе 1С:Предприятие",
               "requested_room_id": null,
               "requested_room_name": null,
-              "room_id": 28,
-              "room_name": "61",
+              "room_id": 34,
+              "room_name": "210",
               "room_substituted": false,
               "room_substitution_reason": null,
               "room_type": 0,
-              "subgroup": 46,
-              "teacher_id": 53,
-              "uid": "lesson-71c7d389feefffdb",
+              "subgroup": -1,
+              "teacher_id": 47,
+              "uid": "lesson-24f98685489c7be4",
               "week_parity": "all"
             }
           ],
           "slot": 3,
-          "text": "УП.04 (УП день 13:00-17:00) — 1 п/г, Конева Кристина Сергеевна, Кривоусова",
+          "text": "Автоматизация складского учета в компьютерной программе 1С:Предприятие — undefined, каб. 210",
           "time": "3 пара (12:25-13:50)"
         },
         {
-          "lessons": [],
+          "lessons": [
+            {
+              "avoid_lunch_split": false,
+              "confirmed": true,
+              "consecutive_pairs": 1,
+              "display_time": null,
+              "id": 491,
+              "is_block": false,
+              "is_lab": false,
+              "name": "Правовые основы профессиональной деятельности/Социальная адаптация и основы социально-правовых знаний",
+              "requested_room_id": null,
+              "requested_room_name": null,
+              "room_id": 31,
+              "room_name": "205",
+              "room_substituted": false,
+              "room_substitution_reason": null,
+              "room_type": 0,
+              "subgroup": -1,
+              "teacher_id": 1,
+              "uid": "lesson-be301a78b2b09695",
+              "week_parity": "all"
+            }
+          ],
           "slot": 4,
-          "text": "-",
+          "text": "Правовые основы профессиональной деятельности/Социальная адаптация и основы социально-правовых знаний — undefined, каб. 205",
           "time": "4 пара (14:00-15:25)"
         },
         {
           "lessons": [
             {
               "avoid_lunch_split": false,
+              "confirmed": true,
               "consecutive_pairs": 1,
               "display_time": null,
-              "id": 488,
+              "id": 495,
               "is_block": false,
               "is_lab": false,
-              "name": "Иностранный язык в профессиональной деятельности",
+              "name": "Автоматизация складского учета в компьютерной программе 1С:Предприятие -",
               "requested_room_id": null,
               "requested_room_name": null,
-              "room_id": 7,
-              "room_name": "18/2",
+              "room_id": 34,
+              "room_name": "210",
               "room_substituted": false,
               "room_substitution_reason": null,
               "room_type": 0,
               "subgroup": 47,
-              "teacher_id": 30,
-              "uid": "lesson-f3ab1138a416ab3f",
+              "teacher_id": 47,
+              "uid": "lesson-3f1aa3793cf34a03",
               "week_parity": "all"
             }
           ],
           "slot": 5,
-          "text": "Иностранный язык в профессиональной деятельности — 2 п/г, Синельникова Елена Владимировна, Кривоусова",
+          "text": "Автоматизация складского учета в компьютерной программе 1С:Предприятие - — undefined, каб. 210",
           "time": "5 пара (15:35-16:55)"
         },
         {
-          "lessons": [
-            {
-              "avoid_lunch_split": true,
-              "consecutive_pairs": 2,
-              "display_time": null,
-              "id": 505,
-              "is_block": false,
-              "is_lab": true,
-              "name": "ЛПЗ МДК.04.02 Процессы приготовления, подготовки к реализации холодных и горячих десертов, напитков сложного ассортимента",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 51,
-              "room_name": "13",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": 47,
-              "teacher_id": 54,
-              "uid": "lesson-922a5074e4ee3103",
-              "week_parity": "all"
-            }
-          ],
+          "lessons": [],
           "slot": 6,
-          "text": "ЛПЗ МДК.04.02 Процессы приготовления, подготовки к реализации холодных и горячих десертов, напитков сложного ассортимента — 2 п/г, Кузнецова Елизавета Олеговна, Кривоусова",
+          "text": "-",
           "time": "6 пара (17:05-18:25)"
         },
         {
-          "lessons": [
-            {
-              "avoid_lunch_split": true,
-              "consecutive_pairs": 2,
-              "display_time": null,
-              "id": 505,
-              "is_block": false,
-              "is_lab": true,
-              "name": "ЛПЗ МДК.04.02 Процессы приготовления, подготовки к реализации холодных и горячих десертов, напитков сложного ассортимента",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 51,
-              "room_name": "13",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": 47,
-              "teacher_id": 54,
-              "uid": "lesson-922a5074e4ee3103",
-              "week_parity": "all"
-            }
-          ],
+          "lessons": [],
           "slot": 7,
-          "text": "ЛПЗ МДК.04.02 Процессы приготовления, подготовки к реализации холодных и горячих десертов, напитков сложного ассортимента — 2 п/г, Кузнецова Елизавета Олеговна, Кривоусова",
+          "text": "-",
           "time": "7 пара (18:35-19:55)"
         }
       ],
       "weekday": "ВТ"
-    },
-    {
-      "date": "21.10.2026",
-      "date_iso": "2026-10-21",
-      "day_index": 1,
-      "slots": [
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 495,
-              "is_block": false,
-              "is_lab": false,
-              "name": "Автоматизация складского учета в компьютерной программе 1С:Предприятие -",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 34,
-              "room_name": "210",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": 47,
-              "teacher_id": 47,
-              "uid": "lesson-3f1aa3793cf34a03",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 1,
-          "text": "Автоматизация складского учета в компьютерной программе 1С:Предприятие - — 2 п/г, Азарян Карине Айказовна, Лесная",
-          "time": "1 пара (08:30-09:55)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 495,
-              "is_block": false,
-              "is_lab": false,
-              "name": "Автоматизация складского учета в компьютерной программе 1С:Предприятие -",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 34,
-              "room_name": "210",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": 47,
-              "teacher_id": 47,
-              "uid": "lesson-3f1aa3793cf34a03",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 2,
-          "text": "Автоматизация складского учета в компьютерной программе 1С:Предприятие - — 2 п/г, Азарян Карине Айказовна, Лесная",
-          "time": "2 пара (10:05-11:30)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 494,
-              "is_block": false,
-              "is_lab": false,
-              "name": "Автоматизация складского учета в компьютерной программе 1С:Предприятие -",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 34,
-              "room_name": "210",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": 46,
-              "teacher_id": 47,
-              "uid": "lesson-882a3a8320542d22",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 3,
-          "text": "Автоматизация складского учета в компьютерной программе 1С:Предприятие - — 1 п/г, Азарян Карине Айказовна, Лесная",
-          "time": "3 пара (12:25-13:50)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 494,
-              "is_block": false,
-              "is_lab": false,
-              "name": "Автоматизация складского учета в компьютерной программе 1С:Предприятие -",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 34,
-              "room_name": "210",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": 46,
-              "teacher_id": 47,
-              "uid": "lesson-882a3a8320542d22",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 4,
-          "text": "Автоматизация складского учета в компьютерной программе 1С:Предприятие - — 1 п/г, Азарян Карине Айказовна, Лесная",
-          "time": "4 пара (14:00-15:25)"
-        },
-        {
-          "lessons": [],
-          "slot": 5,
-          "text": "-",
-          "time": "5 пара (15:35-16:55)"
-        },
-        {
-          "lessons": [],
-          "slot": 6,
-          "text": "-",
-          "time": "6 пара (17:05-18:25)"
-        },
-        {
-          "lessons": [],
-          "slot": 7,
-          "text": "-",
-          "time": "7 пара (18:35-19:55)"
-        }
-      ],
-      "weekday": "СР"
-    },
-    {
-      "date": "22.10.2026",
-      "date_iso": "2026-10-22",
-      "day_index": 2,
-      "slots": [
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": "08:30-12:30",
-              "id": 511,
-              "is_block": true,
-              "is_lab": false,
-              "name": "УП.05",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 28,
-              "room_name": "61",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": 46,
-              "teacher_id": 53,
-              "uid": "lesson-bcbf82c84343f780",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 1,
-          "text": "УП.05 (УП утро 08:30-12:30) — 1 п/г, Конева Кристина Сергеевна, Кривоусова",
-          "time": "1 пара (08:30-09:55)"
-        },
-        {
-          "lessons": [],
-          "slot": 2,
-          "text": "-",
-          "time": "2 пара (10:05-11:30)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": "13:00-17:00",
-              "id": 512,
-              "is_block": true,
-              "is_lab": false,
-              "name": "УП.05",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 51,
-              "room_name": "13",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": 47,
-              "teacher_id": 54,
-              "uid": "lesson-392a4bece6f15206",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 3,
-          "text": "УП.05 (УП день 13:00-17:00) — 2 п/г, Кузнецова Елизавета Олеговна, Кривоусова",
-          "time": "3 пара (12:25-13:50)"
-        },
-        {
-          "lessons": [],
-          "slot": 4,
-          "text": "-",
-          "time": "4 пара (14:00-15:25)"
-        },
-        {
-          "lessons": [],
-          "slot": 5,
-          "text": "-",
-          "time": "5 пара (15:35-16:55)"
-        },
-        {
-          "lessons": [],
-          "slot": 6,
-          "text": "-",
-          "time": "6 пара (17:05-18:25)"
-        },
-        {
-          "lessons": [],
-          "slot": 7,
-          "text": "-",
-          "time": "7 пара (18:35-19:55)"
-        }
-      ],
-      "weekday": "ЧТ"
-    },
-    {
-      "date": "23.10.2026",
-      "date_iso": "2026-10-23",
-      "day_index": 3,
-      "slots": [
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 495,
-              "is_block": false,
-              "is_lab": false,
-              "name": "Автоматизация складского учета в компьютерной программе 1С:Предприятие -",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 34,
-              "room_name": "210",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": 47,
-              "teacher_id": 47,
-              "uid": "lesson-3f1aa3793cf34a03",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 1,
-          "text": "Автоматизация складского учета в компьютерной программе 1С:Предприятие - — 2 п/г, Азарян Карине Айказовна, Лесная",
-          "time": "1 пара (08:30-09:55)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 495,
-              "is_block": false,
-              "is_lab": false,
-              "name": "Автоматизация складского учета в компьютерной программе 1С:Предприятие -",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 34,
-              "room_name": "210",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": 47,
-              "teacher_id": 47,
-              "uid": "lesson-3f1aa3793cf34a03",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 2,
-          "text": "Автоматизация складского учета в компьютерной программе 1С:Предприятие - — 2 п/г, Азарян Карине Айказовна, Лесная",
-          "time": "2 пара (10:05-11:30)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 494,
-              "is_block": false,
-              "is_lab": false,
-              "name": "Автоматизация складского учета в компьютерной программе 1С:Предприятие -",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 34,
-              "room_name": "210",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": 46,
-              "teacher_id": 47,
-              "uid": "lesson-882a3a8320542d22",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 3,
-          "text": "Автоматизация складского учета в компьютерной программе 1С:Предприятие - — 1 п/г, Азарян Карине Айказовна, Лесная",
-          "time": "3 пара (12:25-13:50)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 494,
-              "is_block": false,
-              "is_lab": false,
-              "name": "Автоматизация складского учета в компьютерной программе 1С:Предприятие -",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 34,
-              "room_name": "210",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": 46,
-              "teacher_id": 47,
-              "uid": "lesson-882a3a8320542d22",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 4,
-          "text": "Автоматизация складского учета в компьютерной программе 1С:Предприятие - — 1 п/г, Азарян Карине Айказовна, Лесная",
-          "time": "4 пара (14:00-15:25)"
-        },
-        {
-          "lessons": [],
-          "slot": 5,
-          "text": "-",
-          "time": "5 пара (15:35-16:55)"
-        },
-        {
-          "lessons": [],
-          "slot": 6,
-          "text": "-",
-          "time": "6 пара (17:05-18:25)"
-        },
-        {
-          "lessons": [],
-          "slot": 7,
-          "text": "-",
-          "time": "7 пара (18:35-19:55)"
-        }
-      ],
-      "weekday": "ПТ"
-    },
-    {
-      "date": "24.10.2026",
-      "date_iso": "2026-10-24",
-      "day_index": 4,
-      "slots": [
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": true,
-              "consecutive_pairs": 2,
-              "display_time": null,
-              "id": 515,
-              "is_block": false,
-              "is_lab": true,
-              "name": "ЛПЗ МДК.06.01 Оперативное управление текущей деятельностью подчиненного персонала",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 25,
-              "room_name": "50",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": 47,
-              "teacher_id": 45,
-              "uid": "lesson-0d3afb2b42bb972e",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 1,
-          "text": "ЛПЗ МДК.06.01 Оперативное управление текущей деятельностью подчиненного персонала — 2 п/г, Елагина Ольга Александровна, Кривоусова",
-          "time": "1 пара (08:30-09:45)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": true,
-              "consecutive_pairs": 2,
-              "display_time": null,
-              "id": 515,
-              "is_block": false,
-              "is_lab": true,
-              "name": "ЛПЗ МДК.06.01 Оперативное управление текущей деятельностью подчиненного персонала",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 25,
-              "room_name": "50",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": 47,
-              "teacher_id": 45,
-              "uid": "lesson-0d3afb2b42bb972e",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 2,
-          "text": "ЛПЗ МДК.06.01 Оперативное управление текущей деятельностью подчиненного персонала — 2 п/г, Елагина Ольга Александровна, Кривоусова",
-          "time": "2 пара (09:55-11:10)"
-        },
-        {
-          "lessons": [],
-          "slot": 3,
-          "text": "-",
-          "time": "3 пара (11:30-12:45)"
-        },
-        {
-          "lessons": [],
-          "slot": 4,
-          "text": "-",
-          "time": "4 пара (12:55-14:10)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": true,
-              "consecutive_pairs": 2,
-              "display_time": null,
-              "id": 514,
-              "is_block": false,
-              "is_lab": true,
-              "name": "ЛПЗ МДК.06.01 Оперативное управление текущей деятельностью подчиненного персонала",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 25,
-              "room_name": "50",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": 46,
-              "teacher_id": 45,
-              "uid": "lesson-050b877f97ccdb15",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 5,
-          "text": "ЛПЗ МДК.06.01 Оперативное управление текущей деятельностью подчиненного персонала — 1 п/г, Елагина Ольга Александровна, Кривоусова",
-          "time": "5 пара (14:20-15:30)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": true,
-              "consecutive_pairs": 2,
-              "display_time": null,
-              "id": 514,
-              "is_block": false,
-              "is_lab": true,
-              "name": "ЛПЗ МДК.06.01 Оперативное управление текущей деятельностью подчиненного персонала",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 25,
-              "room_name": "50",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": 46,
-              "teacher_id": 45,
-              "uid": "lesson-050b877f97ccdb15",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 6,
-          "text": "ЛПЗ МДК.06.01 Оперативное управление текущей деятельностью подчиненного персонала — 1 п/г, Елагина Ольга Александровна, Кривоусова",
-          "time": "6 пара (15:40-16:50)"
-        },
-        {
-          "lessons": [],
-          "slot": 7,
-          "text": "-",
-          "time": "7 пара (17:00-18:10)"
-        }
-      ],
-      "weekday": "СБ"
     }
   ],
   "group_index": 23,

@@ -2,6 +2,7 @@ const BASE = '/api'
 
 async function request(method, path, body = null) {
   const opts = { method, credentials: 'same-origin', headers: { 'Content-Type': 'application/json; charset=utf-8' } }
+  if (method === 'GET' && path === '/hours') opts.cache = 'no-store'
   if (body !== null) opts.body = JSON.stringify(body)
   try {
     const res = await fetch(BASE + path, opts)
@@ -49,7 +50,10 @@ export const api = {
     getGroup: (id) => request('GET', `/schedule/group/${encodeURIComponent(id)}`),
     regenerate: (opts = {}) => request('POST', '/schedule/regenerate', opts),
     progress: () => request('GET', '/schedule/progress'),
+    preflight: () => request('GET', '/schedule/preflight'),
+    solverMetrics: () => request('GET', '/schedule/solver-metrics'),
     cancel: () => request('POST', '/schedule/cancel'),
+    updateDays: (action, dates) => request('POST', '/schedule/days', { action, dates }),
     validate: (data = { source: 'auto' }) => request('POST', '/schedule/validate', data),
     publish: () => request('POST', '/schedule/publish'),
     getPublished: () => request('GET', '/schedule/published'),

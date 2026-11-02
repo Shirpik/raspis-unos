@@ -107,6 +107,9 @@
             <td>{{ workSummary(t) }}</td>
             <td><small>{{ workDaysSummary(t) }}</small></td>
             <td class="actions">
+              <button class="btn btn-secondary btn-sm" :title="`График на неделю: ${t.name}`" @click="openWeek(t)">
+                <CalendarDays :size="16" /> Неделя
+              </button>
               <button class="btn btn-ghost btn-sm" @click="openEdit(t)">
                 <Edit2 :size="16" />
               </button>
@@ -118,6 +121,14 @@
         </tbody>
       </table>
     </div>
+
+    <Modal v-model="weekModal" :title="`График на неделю: ${weekTeacher?.name || ''}`">
+      <TeacherWeekScheduleEditor v-if="weekModal && weekTeacher" v-model="weekDraft" :schedule="weekTeacher" />
+      <template #footer>
+        <button class="btn btn-ghost" :disabled="weekSaving" @click="weekModal=false">Отмена</button>
+        <button class="btn btn-primary" :disabled="weekSaving" @click="saveWeek">{{ weekSaving ? 'Сохраняю…' : 'Сохранить недельные настройки' }}</button>
+      </template>
+    </Modal>
 
     <!-- Add/Edit modal -->
     <Modal v-model="modalOpen" :title="editItem ? 'Редактировать преподавателя' : 'Добавить преподавателя'">
@@ -184,9 +195,10 @@
 
 <script setup>
 import { computed, ref, onMounted } from 'vue'
-import { Users, Clock, Plus, Edit2, Trash2 } from 'lucide-vue-next'
+import { Users, Clock, Plus, Edit2, Trash2, CalendarDays } from 'lucide-vue-next'
 import Modal from '../components/Modal.vue'
 import WorkScheduleEditor from '../components/WorkScheduleEditor.vue'
+import TeacherWeekScheduleEditor from '../components/TeacherWeekScheduleEditor.vue'
 import DesiredLoadEditor from '../components/DesiredLoadEditor.vue'
 import DateLoadEditor from '../components/DateLoadEditor.vue'
 import Skeleton from '../components/ui/Skeleton.vue'
@@ -203,6 +215,7 @@ const modalOpen = ref(false)
 const deleteModal = ref(false)
 const editItem = ref(null)
 const deleteTarget = ref(null)
+const weekModal=ref(false),weekSaving=ref(false),weekTeacher=ref(null),weekDraft=ref([])
 const selected=ref([]),bulkModal=ref(false)
 const search=ref(''),campusFilter=ref(-2),bulkTemplateId=ref(-1)
 const defaultDays=()=>Array.from({length:7},(_,i)=>({day:i+1,enabled:i<6,start_slot:1,end_slot:7,slots:i<6?Array.from({length:7},(_,j)=>j+1):[]}))
@@ -238,6 +251,18 @@ function openEdit(t) {
   editItem.value = t
   form.value = teacherFormFromEntity(t)
   modalOpen.value = true
+}
+function openWeek(teacher){
+  weekTeacher.value=teacher
+  weekDraft.value=JSON.parse(JSON.stringify(teacher.week_schedule_overrides||[]))
+  weekModal.value=true
+}
+async function saveWeek(){
+  weekSaving.value=true
+  const r=await store.updateTeacher(weekTeacher.value.id,{week_schedule_overrides:weekDraft.value})
+  weekSaving.value=false
+  if(r.ok){weekModal.value=false;toast.success('Недельные настройки сохранены. Они будут учтены при следующей генерации.')}
+  else toast.error(r.data?.message||'Не удалось сохранить недельные настройки')
 }
 function toggleVisible(){const visible=filteredTeachers.value.map(t=>t.id);selected.value=allVisibleSelected.value?selected.value.filter(id=>!visible.includes(id)):[...new Set([...selected.value,...visible])]}
 function openBulk(){if(!selected.value.length)return;bulkForm.value={preferred_campus:-1,allowed_campuses:[0,1],default_room:-1,...baseSchedule()};bulkApply.value={period:true,days:true,campus:false,allowedCampuses:false,room:false};bulkTemplateId.value=-1;bulkModal.value=true}

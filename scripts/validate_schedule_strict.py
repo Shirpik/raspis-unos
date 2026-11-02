@@ -128,7 +128,8 @@ def main() -> int:
 
     groups = {int(item["id"]): item for item in data.get("groups", [])}
     teachers = {int(item["id"]): item for item in data.get("teachers", [])}
-    lessons = {int(item["id"]): item for item in data.get("lessons", [])}
+    lessons = {int(item["id"]): {**item, "teacher": item.get("scheduling_teacher", item.get("teacher", -1))}
+               for item in data.get("lessons", [])}
     rooms = {int(item["id"]): item for item in data.get("rooms", [])}
     active_lessons = {
         lesson_id: lesson for lesson_id, lesson in lessons.items()

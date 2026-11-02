@@ -393,3 +393,7 @@ dist/
 output/*
 !output/latest/
 !output/latest/**
+!output/manual/
+output/manual/*
+!output/manual/schedule_all.json
+!output/manual/data_revision.txt

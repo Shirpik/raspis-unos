@@ -1,23 +1,23 @@
 {
   "mode": "weekly",
-  "quality_improvement_seconds": 60,
+  "quality_improvement_seconds": 0,
   "state": "done",
-  "total_seconds": 79,
+  "total_seconds": 20,
   "weeks": [
     {
       "adaptive_quality_stop": false,
-      "branches": 369900,
-      "conflicts": 4432,
-      "constraints": 272299,
-      "date_from": "20.10.2026",
-      "date_to": "24.10.2026",
-      "feasibility_seconds": 75,
+      "branches": 323778,
+      "conflicts": 627,
+      "constraints": 44406,
+      "date_from": "03.11.2026",
+      "date_to": "03.11.2026",
+      "feasibility_seconds": 15,
       "model_build_seconds": 0,
       "quality_seconds": 0,
       "relaxed_daily_min_groups": [],
-      "solve_seconds": 75,
+      "solve_seconds": 15,
       "status": "FEASIBLE",
-      "variables": 65157,
+      "variables": 10359,
       "warm_start_hints": 0,
       "week": 1
     }

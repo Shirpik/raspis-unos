@@ -1,203 +1,96 @@
 {
   "days": [
     {
-      "date": "20.10.2026",
-      "date_iso": "2026-10-20",
+      "date": "03.11.2026",
+      "date_iso": "2026-11-03",
       "day_index": 0,
       "slots": [
         {
           "lessons": [
             {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 283,
+              "confirmed": true,
+              "hours": 2,
+              "id": 292,
               "is_block": false,
+              "is_class_hour": false,
               "is_lab": false,
-              "name": "Иностранный язык в профессиональной деятельности",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 7,
-              "room_name": "18/2",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": 29,
-              "teacher_id": 30,
-              "uid": "lesson-02c43126ec63d343",
-              "week_parity": "all"
+              "locked": true,
+              "name": "МДК.02.01 Металлургия цветных металлов",
+              "room_id": 18,
+              "room_name": "37",
+              "source": "dispatcher-20261103",
+              "subgroup": -1,
+              "teacher_id": 43,
+              "teacher_name": "Попова Татьяна Вильевна",
+              "uid": "lesson-a3d08a90f6ae9fec"
             }
           ],
           "slot": 1,
-          "text": "Иностранный язык в профессиональной деятельности — 2 п/г, Синельникова Елена Владимировна, Кривоусова",
+          "text": "МДК.02.01 Металлургия цветных металлов — Попова Татьяна Вильевна, каб. 37",
           "time": "1 пара (08:30-09:55)"
         },
         {
           "lessons": [
             {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 282,
+              "confirmed": true,
+              "hours": 2,
+              "id": 292,
               "is_block": false,
+              "is_class_hour": false,
               "is_lab": false,
-              "name": "Иностранный язык в профессиональной деятельности",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 7,
-              "room_name": "18/2",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": 28,
-              "teacher_id": 30,
-              "uid": "lesson-c370107692e30bca",
-              "week_parity": "all"
-            },
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 301,
-              "is_block": false,
-              "is_lab": true,
-              "name": "ЛПЗ ВМДК.03.04 Производство медных порошков",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 20,
-              "room_name": "41",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": 29,
-              "teacher_id": 44,
-              "uid": "lesson-fcbe290936bd414a",
-              "week_parity": "all"
+              "locked": true,
+              "name": "МДК.02.01 Металлургия цветных металлов",
+              "room_id": 18,
+              "room_name": "37",
+              "source": "dispatcher-20261103",
+              "subgroup": -1,
+              "teacher_id": 43,
+              "teacher_name": "Попова Татьяна Вильевна",
+              "uid": "lesson-a3d08a90f6ae9fec"
             }
           ],
           "slot": 2,
-          "text": "Иностранный язык в профессиональной деятельности — 1 п/г, Синельникова Елена Владимировна, Кривоусова | ЛПЗ ВМДК.03.04 Производство медных порошков — 2 п/г, Письмак Владимир Николаевич, Кривоусова",
+          "text": "МДК.02.01 Металлургия цветных металлов — Попова Татьяна Вильевна, каб. 37",
           "time": "2 пара (10:05-11:30)"
         },
         {
           "lessons": [
             {
               "avoid_lunch_split": false,
+              "confirmed": true,
               "consecutive_pairs": 1,
               "display_time": null,
-              "id": 283,
+              "id": 281,
               "is_block": false,
               "is_lab": false,
-              "name": "Иностранный язык в профессиональной деятельности",
+              "name": "Химия",
               "requested_room_id": null,
               "requested_room_name": null,
-              "room_id": 7,
-              "room_name": "18/2",
+              "room_id": 4,
+              "room_name": "15",
               "room_substituted": false,
               "room_substitution_reason": null,
               "room_type": 0,
-              "subgroup": 29,
-              "teacher_id": 30,
-              "uid": "lesson-02c43126ec63d343",
-              "week_parity": "all"
-            },
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 300,
-              "is_block": false,
-              "is_lab": true,
-              "name": "ЛПЗ ВМДК.03.04 Производство медных порошков",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 20,
-              "room_name": "41",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": 28,
-              "teacher_id": 44,
-              "uid": "lesson-9d0ebc3fdf3790f7",
+              "subgroup": -1,
+              "teacher_id": 20,
+              "uid": "lesson-f64a465f9150710f",
               "week_parity": "all"
             }
           ],
           "slot": 3,
-          "text": "Иностранный язык в профессиональной деятельности — 2 п/г, Синельникова Елена Владимировна, Кривоусова | ЛПЗ ВМДК.03.04 Производство медных порошков — 1 п/г, Письмак Владимир Николаевич, Кривоусова",
+          "text": "Химия — undefined, каб. 15",
           "time": "3 пара (12:25-13:50)"
         },
         {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 282,
-              "is_block": false,
-              "is_lab": false,
-              "name": "Иностранный язык в профессиональной деятельности",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 7,
-              "room_name": "18/2",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": 28,
-              "teacher_id": 30,
-              "uid": "lesson-c370107692e30bca",
-              "week_parity": "all"
-            },
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 301,
-              "is_block": false,
-              "is_lab": true,
-              "name": "ЛПЗ ВМДК.03.04 Производство медных порошков",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 20,
-              "room_name": "41",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": 29,
-              "teacher_id": 44,
-              "uid": "lesson-fcbe290936bd414a",
-              "week_parity": "all"
-            }
-          ],
+          "lessons": [],
           "slot": 4,
-          "text": "Иностранный язык в профессиональной деятельности — 1 п/г, Синельникова Елена Владимировна, Кривоусова | ЛПЗ ВМДК.03.04 Производство медных порошков — 2 п/г, Письмак Владимир Николаевич, Кривоусова",
+          "text": "-",
           "time": "4 пара (14:00-15:25)"
         },
         {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 300,
-              "is_block": false,
-              "is_lab": true,
-              "name": "ЛПЗ ВМДК.03.04 Производство медных порошков",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 20,
-              "room_name": "41",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": 28,
-              "teacher_id": 44,
-              "uid": "lesson-9d0ebc3fdf3790f7",
-              "week_parity": "all"
-            }
-          ],
+          "lessons": [],
           "slot": 5,
-          "text": "ЛПЗ ВМДК.03.04 Производство медных порошков — 1 п/г, Письмак Владимир Николаевич, Кривоусова",
+          "text": "-",
           "time": "5 пара (15:35-16:55)"
         },
         {
@@ -214,625 +107,6 @@
         }
       ],
       "weekday": "ВТ"
-    },
-    {
-      "date": "21.10.2026",
-      "date_iso": "2026-10-21",
-      "day_index": 1,
-      "slots": [
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 283,
-              "is_block": false,
-              "is_lab": false,
-              "name": "Иностранный язык в профессиональной деятельности",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 7,
-              "room_name": "18/2",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": 29,
-              "teacher_id": 30,
-              "uid": "lesson-02c43126ec63d343",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 1,
-          "text": "Иностранный язык в профессиональной деятельности — 2 п/г, Синельникова Елена Владимировна, Кривоусова",
-          "time": "1 пара (08:30-09:55)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 289,
-              "is_block": false,
-              "is_lab": false,
-              "name": "Информационные технологии в профессиональной деятельности",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 56,
-              "room_name": "64",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": 29,
-              "teacher_id": 31,
-              "uid": "lesson-7bb434c76b192ece",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 2,
-          "text": "Информационные технологии в профессиональной деятельности — 2 п/г, Ланитина Елена Сергеевна, Кривоусова",
-          "time": "2 пара (10:05-11:30)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 282,
-              "is_block": false,
-              "is_lab": false,
-              "name": "Иностранный язык в профессиональной деятельности",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 7,
-              "room_name": "18/2",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": 28,
-              "teacher_id": 30,
-              "uid": "lesson-c370107692e30bca",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 3,
-          "text": "Иностранный язык в профессиональной деятельности — 1 п/г, Синельникова Елена Владимировна, Кривоусова",
-          "time": "3 пара (12:25-13:50)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 282,
-              "is_block": false,
-              "is_lab": false,
-              "name": "Иностранный язык в профессиональной деятельности",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 7,
-              "room_name": "18/2",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": 28,
-              "teacher_id": 30,
-              "uid": "lesson-c370107692e30bca",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 4,
-          "text": "Иностранный язык в профессиональной деятельности — 1 п/г, Синельникова Елена Владимировна, Кривоусова",
-          "time": "4 пара (14:00-15:25)"
-        },
-        {
-          "lessons": [],
-          "slot": 5,
-          "text": "-",
-          "time": "5 пара (15:35-16:55)"
-        },
-        {
-          "lessons": [],
-          "slot": 6,
-          "text": "-",
-          "time": "6 пара (17:05-18:25)"
-        },
-        {
-          "lessons": [],
-          "slot": 7,
-          "text": "-",
-          "time": "7 пара (18:35-19:55)"
-        }
-      ],
-      "weekday": "СР"
-    },
-    {
-      "date": "22.10.2026",
-      "date_iso": "2026-10-22",
-      "day_index": 2,
-      "slots": [
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 283,
-              "is_block": false,
-              "is_lab": false,
-              "name": "Иностранный язык в профессиональной деятельности",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 7,
-              "room_name": "18/2",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": 29,
-              "teacher_id": 30,
-              "uid": "lesson-02c43126ec63d343",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 1,
-          "text": "Иностранный язык в профессиональной деятельности — 2 п/г, Синельникова Елена Владимировна, Кривоусова",
-          "time": "1 пара (08:30-09:55)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 298,
-              "is_block": false,
-              "is_lab": true,
-              "name": "ЛПЗ ВМДК.03.02 Технология производства цветных металлов и сплавов (по типам производств)",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 57,
-              "room_name": "65",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": 29,
-              "teacher_id": 43,
-              "uid": "lesson-2ffc7c9ac3dbda34",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 2,
-          "text": "ЛПЗ ВМДК.03.02 Технология производства цветных металлов и сплавов (по типам производств) — 2 п/г, Попова Татьяна Вильевна, Кривоусова",
-          "time": "2 пара (10:05-11:30)"
-        },
-        {
-          "lessons": [],
-          "slot": 3,
-          "text": "-",
-          "time": "3 пара (12:25-13:50)"
-        },
-        {
-          "lessons": [],
-          "slot": 4,
-          "text": "-",
-          "time": "4 пара (14:00-15:25)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 297,
-              "is_block": false,
-              "is_lab": true,
-              "name": "ЛПЗ ВМДК.03.02 Технология производства цветных металлов и сплавов (по типам производств)",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 57,
-              "room_name": "65",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": 28,
-              "teacher_id": 43,
-              "uid": "lesson-59ef7ea5dc2ad12d",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 5,
-          "text": "ЛПЗ ВМДК.03.02 Технология производства цветных металлов и сплавов (по типам производств) — 1 п/г, Попова Татьяна Вильевна, Кривоусова",
-          "time": "5 пара (15:35-16:55)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 300,
-              "is_block": false,
-              "is_lab": true,
-              "name": "ЛПЗ ВМДК.03.04 Производство медных порошков",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 20,
-              "room_name": "41",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": 28,
-              "teacher_id": 44,
-              "uid": "lesson-9d0ebc3fdf3790f7",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 6,
-          "text": "ЛПЗ ВМДК.03.04 Производство медных порошков — 1 п/г, Письмак Владимир Николаевич, Кривоусова",
-          "time": "6 пара (17:05-18:25)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 300,
-              "is_block": false,
-              "is_lab": true,
-              "name": "ЛПЗ ВМДК.03.04 Производство медных порошков",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 20,
-              "room_name": "41",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": 28,
-              "teacher_id": 44,
-              "uid": "lesson-9d0ebc3fdf3790f7",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 7,
-          "text": "ЛПЗ ВМДК.03.04 Производство медных порошков — 1 п/г, Письмак Владимир Николаевич, Кривоусова",
-          "time": "7 пара (18:35-19:55)"
-        }
-      ],
-      "weekday": "ЧТ"
-    },
-    {
-      "date": "23.10.2026",
-      "date_iso": "2026-10-23",
-      "day_index": 3,
-      "slots": [
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 282,
-              "is_block": false,
-              "is_lab": false,
-              "name": "Иностранный язык в профессиональной деятельности",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 7,
-              "room_name": "18/2",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": 28,
-              "teacher_id": 30,
-              "uid": "lesson-c370107692e30bca",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 1,
-          "text": "Иностранный язык в профессиональной деятельности — 1 п/г, Синельникова Елена Владимировна, Кривоусова",
-          "time": "1 пара (08:30-09:55)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 297,
-              "is_block": false,
-              "is_lab": true,
-              "name": "ЛПЗ ВМДК.03.02 Технология производства цветных металлов и сплавов (по типам производств)",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 57,
-              "room_name": "65",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": 28,
-              "teacher_id": 43,
-              "uid": "lesson-59ef7ea5dc2ad12d",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 2,
-          "text": "ЛПЗ ВМДК.03.02 Технология производства цветных металлов и сплавов (по типам производств) — 1 п/г, Попова Татьяна Вильевна, Кривоусова",
-          "time": "2 пара (10:05-11:30)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 282,
-              "is_block": false,
-              "is_lab": false,
-              "name": "Иностранный язык в профессиональной деятельности",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 7,
-              "room_name": "18/2",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": 28,
-              "teacher_id": 30,
-              "uid": "lesson-c370107692e30bca",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 3,
-          "text": "Иностранный язык в профессиональной деятельности — 1 п/г, Синельникова Елена Владимировна, Кривоусова",
-          "time": "3 пара (12:25-13:50)"
-        },
-        {
-          "lessons": [],
-          "slot": 4,
-          "text": "-",
-          "time": "4 пара (14:00-15:25)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 298,
-              "is_block": false,
-              "is_lab": true,
-              "name": "ЛПЗ ВМДК.03.02 Технология производства цветных металлов и сплавов (по типам производств)",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 57,
-              "room_name": "65",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": 29,
-              "teacher_id": 43,
-              "uid": "lesson-2ffc7c9ac3dbda34",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 5,
-          "text": "ЛПЗ ВМДК.03.02 Технология производства цветных металлов и сплавов (по типам производств) — 2 п/г, Попова Татьяна Вильевна, Кривоусова",
-          "time": "5 пара (15:35-16:55)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 301,
-              "is_block": false,
-              "is_lab": true,
-              "name": "ЛПЗ ВМДК.03.04 Производство медных порошков",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 20,
-              "room_name": "41",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": 29,
-              "teacher_id": 44,
-              "uid": "lesson-fcbe290936bd414a",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 6,
-          "text": "ЛПЗ ВМДК.03.04 Производство медных порошков — 2 п/г, Письмак Владимир Николаевич, Кривоусова",
-          "time": "6 пара (17:05-18:25)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 301,
-              "is_block": false,
-              "is_lab": true,
-              "name": "ЛПЗ ВМДК.03.04 Производство медных порошков",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 20,
-              "room_name": "41",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": 29,
-              "teacher_id": 44,
-              "uid": "lesson-fcbe290936bd414a",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 7,
-          "text": "ЛПЗ ВМДК.03.04 Производство медных порошков — 2 п/г, Письмак Владимир Николаевич, Кривоусова",
-          "time": "7 пара (18:35-19:55)"
-        }
-      ],
-      "weekday": "ПТ"
-    },
-    {
-      "date": "24.10.2026",
-      "date_iso": "2026-10-24",
-      "day_index": 4,
-      "slots": [
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 300,
-              "is_block": false,
-              "is_lab": true,
-              "name": "ЛПЗ ВМДК.03.04 Производство медных порошков",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 20,
-              "room_name": "41",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": 28,
-              "teacher_id": 44,
-              "uid": "lesson-9d0ebc3fdf3790f7",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 1,
-          "text": "ЛПЗ ВМДК.03.04 Производство медных порошков — 1 п/г, Письмак Владимир Николаевич, Кривоусова",
-          "time": "1 пара (08:30-09:45)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 283,
-              "is_block": false,
-              "is_lab": false,
-              "name": "Иностранный язык в профессиональной деятельности",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 7,
-              "room_name": "18/2",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": 29,
-              "teacher_id": 30,
-              "uid": "lesson-02c43126ec63d343",
-              "week_parity": "all"
-            },
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 300,
-              "is_block": false,
-              "is_lab": true,
-              "name": "ЛПЗ ВМДК.03.04 Производство медных порошков",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 20,
-              "room_name": "41",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": 28,
-              "teacher_id": 44,
-              "uid": "lesson-9d0ebc3fdf3790f7",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 2,
-          "text": "Иностранный язык в профессиональной деятельности — 2 п/г, Синельникова Елена Владимировна, Кривоусова | ЛПЗ ВМДК.03.04 Производство медных порошков — 1 п/г, Письмак Владимир Николаевич, Кривоусова",
-          "time": "2 пара (09:55-11:10)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 301,
-              "is_block": false,
-              "is_lab": true,
-              "name": "ЛПЗ ВМДК.03.04 Производство медных порошков",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 59,
-              "room_name": "68",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": 29,
-              "teacher_id": 44,
-              "uid": "lesson-fcbe290936bd414a",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 3,
-          "text": "ЛПЗ ВМДК.03.04 Производство медных порошков — 2 п/г, Письмак Владимир Николаевич, Кривоусова",
-          "time": "3 пара (11:30-12:45)"
-        },
-        {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 298,
-              "is_block": false,
-              "is_lab": true,
-              "name": "ЛПЗ ВМДК.03.02 Технология производства цветных металлов и сплавов (по типам производств)",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 57,
-              "room_name": "65",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": 29,
-              "teacher_id": 43,
-              "uid": "lesson-2ffc7c9ac3dbda34",
-              "week_parity": "all"
-            }
-          ],
-          "slot": 4,
-          "text": "ЛПЗ ВМДК.03.02 Технология производства цветных металлов и сплавов (по типам производств) — 2 п/г, Попова Татьяна Вильевна, Кривоусова",
-          "time": "4 пара (12:55-14:10)"
-        },
-        {
-          "lessons": [],
-          "slot": 5,
-          "text": "-",
-          "time": "5 пара (14:20-15:30)"
-        },
-        {
-          "lessons": [],
-          "slot": 6,
-          "text": "-",
-          "time": "6 пара (15:40-16:50)"
-        },
-        {
-          "lessons": [],
-          "slot": 7,
-          "text": "-",
-          "time": "7 пара (17:00-18:10)"
-        }
-      ],
-      "weekday": "СБ"
     }
   ],
   "group_index": 14,

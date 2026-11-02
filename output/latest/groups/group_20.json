@@ -1,170 +1,116 @@
 {
   "days": [
     {
-      "date": "20.10.2026",
-      "date_iso": "2026-10-20",
+      "date": "03.11.2026",
+      "date_iso": "2026-11-03",
       "day_index": 0,
       "slots": [
         {
           "lessons": [
             {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 434,
+              "confirmed": true,
+              "hours": 2,
+              "id": 422,
               "is_block": false,
-              "is_lab": true,
-              "name": "ЛПЗ ВМДК..05.01 Организация работ по ремонту и обслуживанию электрооборудования",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 71,
-              "room_name": "Дистант ТЭО-Пф-3501",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": 41,
-              "teacher_id": 9,
-              "uid": "lesson-87db4bcfefb32acf",
-              "week_parity": "all"
+              "is_class_hour": false,
+              "is_lab": false,
+              "locked": true,
+              "name": "КП МДК.02.02 Разработка документации по эксплуатации электрического и электромеханического оборудования",
+              "room_id": 59,
+              "room_name": "68_К",
+              "source": "google-sheets-week10",
+              "subgroup": -1,
+              "teacher_id": 82,
+              "teacher_name": "Усков Алексей Николаевич",
+              "uid": "lesson-9fee41b0c176e0c5"
             }
           ],
           "slot": 1,
-          "text": "ЛПЗ ВМДК..05.01 Организация работ по ремонту и обслуживанию электрооборудования — 2 п/г, Сутягин Артём Борисович, Кривоусова",
+          "text": "КП МДК.02.02 Разработка документации по эксплуатации электрического и электромеханического оборудования — Усков Алексей Николаевич, каб. 68_К",
           "time": "1 пара (08:30-09:55)"
         },
         {
           "lessons": [
             {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 434,
+              "confirmed": true,
+              "hours": 2,
+              "id": 422,
               "is_block": false,
-              "is_lab": true,
-              "name": "ЛПЗ ВМДК..05.01 Организация работ по ремонту и обслуживанию электрооборудования",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 71,
-              "room_name": "Дистант ТЭО-Пф-3501",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": 41,
-              "teacher_id": 9,
-              "uid": "lesson-87db4bcfefb32acf",
-              "week_parity": "all"
+              "is_class_hour": false,
+              "is_lab": false,
+              "locked": true,
+              "name": "КП МДК.02.02 Разработка документации по эксплуатации электрического и электромеханического оборудования",
+              "room_id": 59,
+              "room_name": "68_К",
+              "source": "google-sheets-week10",
+              "subgroup": -1,
+              "teacher_id": 82,
+              "teacher_name": "Усков Алексей Николаевич",
+              "uid": "lesson-9fee41b0c176e0c5"
             }
           ],
           "slot": 2,
-          "text": "ЛПЗ ВМДК..05.01 Организация работ по ремонту и обслуживанию электрооборудования — 2 п/г, Сутягин Артём Борисович, Кривоусова",
+          "text": "КП МДК.02.02 Разработка документации по эксплуатации электрического и электромеханического оборудования — Усков Алексей Николаевич, каб. 68_К",
           "time": "2 пара (10:05-11:30)"
         },
         {
           "lessons": [
             {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 432,
+              "confirmed": true,
+              "hours": 2,
+              "id": 419,
               "is_block": false,
+              "is_class_hour": false,
               "is_lab": false,
-              "name": "ВМДК..05.01 Организация работ по ремонту и обслуживанию электрооборудования",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 71,
-              "room_name": "Дистант ТЭО-Пф-3501",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
+              "locked": true,
+              "name": "МДК.02.02 Разработка документации по эксплуатации электрического и электромеханического оборудования",
+              "room_id": 59,
+              "room_name": "68_К",
+              "source": "google-sheets-week10",
               "subgroup": -1,
-              "teacher_id": 9,
-              "uid": "lesson-30548a09ac03643e",
-              "week_parity": "all"
+              "teacher_id": 82,
+              "teacher_name": "Усков Алексей Николаевич",
+              "uid": "lesson-ac5f305ab4ff1bf0"
             }
           ],
           "slot": 3,
-          "text": "ВМДК..05.01 Организация работ по ремонту и обслуживанию электрооборудования — вся группа, Сутягин Артём Борисович, Кривоусова",
+          "text": "МДК.02.02 Разработка документации по эксплуатации электрического и электромеханического оборудования — Усков Алексей Николаевич, каб. 68_К",
           "time": "3 пара (12:25-13:50)"
         },
         {
           "lessons": [
             {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 432,
+              "confirmed": true,
+              "hours": 2,
+              "id": 419,
               "is_block": false,
+              "is_class_hour": false,
               "is_lab": false,
-              "name": "ВМДК..05.01 Организация работ по ремонту и обслуживанию электрооборудования",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 71,
-              "room_name": "Дистант ТЭО-Пф-3501",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
+              "locked": true,
+              "name": "МДК.02.02 Разработка документации по эксплуатации электрического и электромеханического оборудования",
+              "room_id": 59,
+              "room_name": "68_К",
+              "source": "google-sheets-week10",
               "subgroup": -1,
-              "teacher_id": 9,
-              "uid": "lesson-30548a09ac03643e",
-              "week_parity": "all"
+              "teacher_id": 82,
+              "teacher_name": "Усков Алексей Николаевич",
+              "uid": "lesson-ac5f305ab4ff1bf0"
             }
           ],
           "slot": 4,
-          "text": "ВМДК..05.01 Организация работ по ремонту и обслуживанию электрооборудования — вся группа, Сутягин Артём Борисович, Кривоусова",
+          "text": "МДК.02.02 Разработка документации по эксплуатации электрического и электромеханического оборудования — Усков Алексей Николаевич, каб. 68_К",
           "time": "4 пара (14:00-15:25)"
         },
         {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 433,
-              "is_block": false,
-              "is_lab": true,
-              "name": "ЛПЗ ВМДК..05.01 Организация работ по ремонту и обслуживанию электрооборудования",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 71,
-              "room_name": "Дистант ТЭО-Пф-3501",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": 40,
-              "teacher_id": 9,
-              "uid": "lesson-96e3b6a32a702c20",
-              "week_parity": "all"
-            }
-          ],
+          "lessons": [],
           "slot": 5,
-          "text": "ЛПЗ ВМДК..05.01 Организация работ по ремонту и обслуживанию электрооборудования — 1 п/г, Сутягин Артём Борисович, Кривоусова",
+          "text": "-",
           "time": "5 пара (15:35-16:55)"
         },
         {
-          "lessons": [
-            {
-              "avoid_lunch_split": false,
-              "consecutive_pairs": 1,
-              "display_time": null,
-              "id": 433,
-              "is_block": false,
-              "is_lab": true,
-              "name": "ЛПЗ ВМДК..05.01 Организация работ по ремонту и обслуживанию электрооборудования",
-              "requested_room_id": null,
-              "requested_room_name": null,
-              "room_id": 71,
-              "room_name": "Дистант ТЭО-Пф-3501",
-              "room_substituted": false,
-              "room_substitution_reason": null,
-              "room_type": 0,
-              "subgroup": 40,
-              "teacher_id": 9,
-              "uid": "lesson-96e3b6a32a702c20",
-              "week_parity": "all"
-            }
-          ],
+          "lessons": [],
           "slot": 6,
-          "text": "ЛПЗ ВМДК..05.01 Организация работ по ремонту и обслуживанию электрооборудования — 1 п/г, Сутягин Артём Борисович, Кривоусова",
+          "text": "-",
           "time": "6 пара (17:05-18:25)"
         },
         {
@@ -175,206 +121,6 @@
         }
       ],
       "weekday": "ВТ"
-    },
-    {
-      "date": "21.10.2026",
-      "date_iso": "2026-10-21",
-      "day_index": 1,
-      "slots": [
-        {
-          "lessons": [],
-          "slot": 1,
-          "text": "???-??-3501: ???? ?? ???? ?????? ????? ??????? ???????",
-          "time": "1 пара (08:30-09:55)"
-        },
-        {
-          "lessons": [],
-          "slot": 2,
-          "text": "-",
-          "time": "2 пара (10:05-11:30)"
-        },
-        {
-          "lessons": [],
-          "slot": 3,
-          "text": "-",
-          "time": "3 пара (12:25-13:50)"
-        },
-        {
-          "lessons": [],
-          "slot": 4,
-          "text": "-",
-          "time": "4 пара (14:00-15:25)"
-        },
-        {
-          "lessons": [],
-          "slot": 5,
-          "text": "-",
-          "time": "5 пара (15:35-16:55)"
-        },
-        {
-          "lessons": [],
-          "slot": 6,
-          "text": "-",
-          "time": "6 пара (17:05-18:25)"
-        },
-        {
-          "lessons": [],
-          "slot": 7,
-          "text": "-",
-          "time": "7 пара (18:35-19:55)"
-        }
-      ],
-      "weekday": "СР"
-    },
-    {
-      "date": "22.10.2026",
-      "date_iso": "2026-10-22",
-      "day_index": 2,
-      "slots": [
-        {
-          "lessons": [],
-          "slot": 1,
-          "text": "???-??-3501: ???? ?? ???? ?????? ????? ??????? ???????",
-          "time": "1 пара (08:30-09:55)"
-        },
-        {
-          "lessons": [],
-          "slot": 2,
-          "text": "-",
-          "time": "2 пара (10:05-11:30)"
-        },
-        {
-          "lessons": [],
-          "slot": 3,
-          "text": "-",
-          "time": "3 пара (12:25-13:50)"
-        },
-        {
-          "lessons": [],
-          "slot": 4,
-          "text": "-",
-          "time": "4 пара (14:00-15:25)"
-        },
-        {
-          "lessons": [],
-          "slot": 5,
-          "text": "-",
-          "time": "5 пара (15:35-16:55)"
-        },
-        {
-          "lessons": [],
-          "slot": 6,
-          "text": "-",
-          "time": "6 пара (17:05-18:25)"
-        },
-        {
-          "lessons": [],
-          "slot": 7,
-          "text": "-",
-          "time": "7 пара (18:35-19:55)"
-        }
-      ],
-      "weekday": "ЧТ"
-    },
-    {
-      "date": "23.10.2026",
-      "date_iso": "2026-10-23",
-      "day_index": 3,
-      "slots": [
-        {
-          "lessons": [],
-          "slot": 1,
-          "text": "???-??-3501: ???? ?? ???? ?????? ????? ??????? ???????",
-          "time": "1 пара (08:30-09:55)"
-        },
-        {
-          "lessons": [],
-          "slot": 2,
-          "text": "-",
-          "time": "2 пара (10:05-11:30)"
-        },
-        {
-          "lessons": [],
-          "slot": 3,
-          "text": "-",
-          "time": "3 пара (12:25-13:50)"
-        },
-        {
-          "lessons": [],
-          "slot": 4,
-          "text": "-",
-          "time": "4 пара (14:00-15:25)"
-        },
-        {
-          "lessons": [],
-          "slot": 5,
-          "text": "-",
-          "time": "5 пара (15:35-16:55)"
-        },
-        {
-          "lessons": [],
-          "slot": 6,
-          "text": "-",
-          "time": "6 пара (17:05-18:25)"
-        },
-        {
-          "lessons": [],
-          "slot": 7,
-          "text": "-",
-          "time": "7 пара (18:35-19:55)"
-        }
-      ],
-      "weekday": "ПТ"
-    },
-    {
-      "date": "24.10.2026",
-      "date_iso": "2026-10-24",
-      "day_index": 4,
-      "slots": [
-        {
-          "lessons": [],
-          "slot": 1,
-          "text": "???-??-3501: ???? ?? ???? ?????? ????? ??????? ???????",
-          "time": "1 пара (08:30-09:45)"
-        },
-        {
-          "lessons": [],
-          "slot": 2,
-          "text": "-",
-          "time": "2 пара (09:55-11:10)"
-        },
-        {
-          "lessons": [],
-          "slot": 3,
-          "text": "-",
-          "time": "3 пара (11:30-12:45)"
-        },
-        {
-          "lessons": [],
-          "slot": 4,
-          "text": "-",
-          "time": "4 пара (12:55-14:10)"
-        },
-        {
-          "lessons": [],
-          "slot": 5,
-          "text": "-",
-          "time": "5 пара (14:20-15:30)"
-        },
-        {
-          "lessons": [],
-          "slot": 6,
-          "text": "-",
-          "time": "6 пара (15:40-16:50)"
-        },
-        {
-          "lessons": [],
-          "slot": 7,
-          "text": "-",
-          "time": "7 пара (17:00-18:10)"
-        }
-      ],
-      "weekday": "СБ"
     }
   ],
   "group_index": 20,

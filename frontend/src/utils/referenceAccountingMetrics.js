@@ -5,7 +5,7 @@ const iso = value => value.toISOString().slice(0, 10)
 const finite = value => Number.isFinite(Number(value)) ? Number(value) : 0
 const limitNote = text => text.length <= 32000 ? text : `${text.slice(0, 31970)}\n… список сокращён`
 const accountingCutoff = hours => hours.as_of_date || hours.accounting_imported_through || ''
-const accounted = (item, hours) => !accountingCutoff(hours) || !item.date || item.date <= accountingCutoff(hours)
+const accounted = (item, hours) => item.status !== 'planned' && (!accountingCutoff(hours) || !item.date || item.date <= accountingCutoff(hours))
 const isProductionPractice = lesson => Boolean(lesson.is_pp) || [lesson.source_index, lesson.name].some(value => {
   const normalized = String(value || '').trim().toLocaleLowerCase('ru')
   return normalized.startsWith('пп.') || normalized.startsWith('пп ')
@@ -15,7 +15,12 @@ const isTransferredToPpTeacher = name => {
   return normalized.includes('вынес') && normalized.includes('пп')
 }
 export function withReferenceContext(hours, data = {}) {
-  return { ...hours, settings: data.settings || hours.settings || {}, groups: (hours.groups || []).map(group => ({
+  const sourceLessons=new Map((data.lessons||[]).map(lesson=>[Number(lesson.id),lesson]))
+  const lessons=(hours.lessons||[]).map(lesson=>({
+    workload_retired:sourceLessons.get(Number(lesson.lesson_id))?.workload_retired,...lesson,
+  })).filter(lesson=>!(Number.isInteger(lesson.workload_retired?.canonical_lesson_id) &&
+    !finite(lesson.planned_hours) && !finite(lesson.scheduled_hours) && !finite(lesson.credited_hours) && !finite(lesson.projected_hours)))
+  return { ...hours, lessons, settings: data.settings || hours.settings || {}, groups: (hours.groups || []).map(group => ({
     ...(data.groups || []).find(item => Number(item.id) === Number(group.group_id)), ...group,
   })) }
 }
@@ -27,36 +32,52 @@ export function latestAccountedWeek(hours) {
 export function referenceGroupWeeks(group, hours) {
   const weeks = hours.weeks || [], calendar = group.academic_calendar || [], settings = hours.settings || {}
   const course = Number(group.course_year) || Number(String(group.group_name || group.name || '').match(/-(\d)/)?.[1])
-  let deadline = group.teaching_deadline || (course === 1 ? settings.first_course_semester_end_date : '') || settings.semester_end_date || hours.semester_end || '9999-12-31'
-  for (const period of group.practice_periods || []) if (period.from <= deadline && period.to >= hours.semester_start) {
-    const previous = day(period.from); previous.setUTCDate(previous.getUTCDate()-1)
-    deadline = iso(previous) < deadline ? iso(previous) : deadline
-  }
+  const semesterEnd=hours.semester_end || settings.semester_end_date || '9999-12-31'
+  const graphEnd=calendar.filter(p=>p.from<=semesterEnd && p.to>=hours.semester_start && !p.vacation &&
+    finite(p.theory_hours)+finite(p.up_hours)>0).reduce((last,p)=>{
+      const end=p.to<semesterEnd?p.to:semesterEnd
+      return end>last?end:last
+    },'')
+  const accountingEnd=group.accounting_teaching_end_date
+  const deadline = (accountingEnd && accountingEnd>=hours.semester_start && accountingEnd<=semesterEnd ? accountingEnd : '') || graphEnd || group.teaching_deadline || (course === 1 ? settings.first_course_semester_end_date : '') || settings.semester_end_date || semesterEnd
   const cutoff = accountingCutoff(hours)
   const latest = cutoff ? 0 : latestAccountedWeek(hours)
-  const weights = [], accountedWeights = []
+  const weights = [], accountedWeights = [], dailyWeights = []
   for (const week of weeks) {
-    let days = 0
-    let remainingDays = 0
+    let weight = 0
+    let remainingWeight = 0
+    const daily = []
     for (let date = day(week.from); iso(date) <= week.to; date.setUTCDate(date.getUTCDate()+1)) {
       const value = iso(date), weekday = date.getUTCDay() || 7
       if (weekday === 7 || value > deadline || value < hours.semester_start) continue
       const period = group.work_period || {}
       if ((period.from && value < period.from) || (period.to && value > period.to)) continue
       if (group.work_days?.length && !group.work_days.some(rule => Number(rule.day) === weekday && rule.enabled !== false)) continue
-      if (calendar.length && !calendar.some(period => period.from <= value && value <= period.to &&
-          Number(period.theory_hours) > 0 && !period.vacation && !Number(period.pp_hours))) continue
-      days++
-      if (cutoff && value > cutoff) remainingDays++
+      if ((group.practice_periods || []).some(p => p.kind === 'industrial' && p.from <= value && value <= p.to)) continue
+      const entry = calendar.find(p => p.from <= value && value <= p.to)
+      if (calendar.length && (!entry || entry.vacation || !(finite(entry.theory_hours)+finite(entry.up_hours)))) continue
+      let dailyWeight = 1/6
+      if (entry) {
+        // The academic graph assigns hours to the first teaching week even
+        // when the semester starts on Tuesday. Do not lose that Monday twice.
+        let days = 0
+        for (let d=day(entry.from); iso(d)<=entry.to; d.setUTCDate(d.getUTCDate()+1)) {
+          if (d.getUTCDay() && iso(d)>=hours.semester_start && iso(d)<=(hours.semester_end || deadline)) days++
+        }
+        dailyWeight = days ? (finite(entry.theory_hours)+finite(entry.up_hours))/36/days : 0
+      }
+      weight += dailyWeight
+      daily.push({date:value,weight:dailyWeight})
+      if (cutoff && value > cutoff) remainingWeight += dailyWeight
     }
-    const weight = days/6
     weights.push(weight)
-    const remainingWeight = cutoff ? remainingDays/6 : Number(week.index) > latest ? weight : 0
+    dailyWeights.push(daily)
+    if (!cutoff) remainingWeight = Number(week.index) > latest ? weight : 0
     accountedWeights.push(Math.max(0, weight-remainingWeight))
   }
   const total = weights.reduce((sum,weight)=>sum+weight,0)
   const countedWeeks = accountedWeights.reduce((sum,weight)=>sum+weight,0)
-  return { weights, accountedWeights, total, accounted: countedWeeks, remaining: Math.max(0,total-countedWeeks) }
+  return { weights, accountedWeights, dailyWeights, total, accounted: countedWeeks, remaining: Math.max(0,total-countedWeeks) }
 }
 export function remainingTeachingWeeks(hours) {
   const weeks = hours.weeks || [], cutoff = accountingCutoff(hours)
@@ -71,9 +92,13 @@ export function remainingTeachingWeeks(hours) {
 }
 export function referenceTeacherLoad(teacher, hours) {
   if (isTransferredToPpTeacher(teacher.teacher_name)) return 0
-  const remaining = Math.max(0, finite(teacher.remaining_hours ?? (finite(teacher.planned_hours)-finite(teacher.credited_hours ?? teacher.scheduled_hours))))
-  const weeks = remainingTeachingWeeks(hours)
+  const remaining = finite(teacher.remaining_hours ?? (finite(teacher.planned_hours)-finite(teacher.credited_hours ?? teacher.scheduled_hours)))
+  const weeks = referenceSummaryWeeks(hours)
   return weeks > 0 ? remaining/weeks : remaining === 0 ? 0 : null
+}
+export function referenceSummaryWeeks(hours) {
+  const first=[...(hours.groups||[])].sort((a,b)=>finite(a.accounting_order??a.group_id)-finite(b.accounting_order??b.group_id)||finite(a.group_id)-finite(b.group_id))[0]
+  return first?referenceGroupWeeks(first,hours).remaining:remainingTeachingWeeks(hours)
 }
 export function referenceTeacherConductedNote(teacher, hours) {
   const cutoff = accountingCutoff(hours)
@@ -132,15 +157,15 @@ export function referenceLessonRows(hours, group) {
     // Future solver reservations remain visible in the site but do not inflate
     // "выдано" or consume the remaining teaching weeks in this report.
     const occurrences = (lesson.scheduled_occurrences || []).filter(item => accounted(item, hours))
-    const original = occurrences.filter(item=>Number(item.actual_teacher_id ?? lesson.teacher_id)===Number(lesson.teacher_id))
+    const original = occurrences.filter(item=>Number(item.credited_teacher_id ?? lesson.teacher_id)===Number(lesson.teacher_id))
     const base = { ...lesson, occurrences: original, issued: original.reduce((sum,item)=>sum+Number(item.hours??2),0) }
     if (!Array.isArray(lesson.scheduled_occurrences)) base.issued = finite(lesson.scheduled_hours)
     const replacements = new Map()
     for (const item of occurrences) {
-      const teacher = Number(item.actual_teacher_id ?? lesson.teacher_id)
+      const teacher = Number(item.credited_teacher_id ?? lesson.teacher_id)
       if (teacher===Number(lesson.teacher_id)) continue
       if (!replacements.has(teacher)) replacements.set(teacher,{...lesson,planned_hours:0,teacher_id:teacher,
-        teacher_name:item.actual_teacher_name,occurrences:[],issued:0,replacement:true})
+        teacher_name:item.credited_teacher_name ?? item.actual_teacher_name,occurrences:[],issued:0,replacement:true})
       const row=replacements.get(teacher); row.occurrences.push(item);row.issued+=Number(item.hours??2)
     }
     return [base,...replacements.values()]

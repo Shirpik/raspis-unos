@@ -6,17 +6,19 @@ Uses an isolated temporary database and a future date; never changes real schedu
 import hashlib
 import http.cookiejar
 import json
+import os
 import socket
 import subprocess
 import sys
 import tempfile
 import time
 import urllib.request
+import urllib.error
 from datetime import date, timedelta
 from pathlib import Path
 
 
-def run(solver, imported=False):
+def run(solver, imported=False, span=1):
     target = date.today() + timedelta(days=7 - date.today().weekday())
     prior = target - timedelta(days=2)
     iso = lambda day: day.isoformat()
@@ -27,7 +29,7 @@ def run(solver, imported=False):
                     solver_config=dict(week_time_limit_seconds=5,
                                        quality_improvement_seconds=0, solver_workers=2))
     lessons = [dict(id=n, group=0, teacher=0, subgroup=-1, name=f'Subject {n}',
-                    subject_id=n, total_hours=4, total_slots=1, allowed_campuses=[0])
+                    subject_id=n, total_hours=2*(span+1), total_slots=1, allowed_campuses=[0])
                for n in range(3)]
     ledger = [dict(id=2*n+i, lesson_id=n, date=iso(day), slot=n+1,
                    hours=2, status='planned')
@@ -63,7 +65,8 @@ def run(solver, imported=False):
         with socket.socket() as sock:
             sock.bind(('127.0.0.1', 0))
             port = sock.getsockname()[1]
-        opener = urllib.request.build_opener(urllib.request.HTTPCookieProcessor(http.cookiejar.CookieJar()))
+        opener = urllib.request.build_opener(urllib.request.ProxyHandler({}),
+                                            urllib.request.HTTPCookieProcessor(http.cookiejar.CookieJar()))
 
         def api(path, body=None):
             request = urllib.request.Request(f'http://127.0.0.1:{port}/api/{path}',
@@ -73,7 +76,10 @@ def run(solver, imported=False):
                 return json.load(response)
 
         with (folder/'server.log').open('w', encoding='utf-8') as log:
-            process = subprocess.Popen([str(solver), str(port)], cwd=folder, stdout=log, stderr=log)
+            environment = dict(os.environ)
+            environment.pop('TIMETABLE_DATABASE_URL', None)
+            environment['TIMETABLE_HOST'] = '127.0.0.1'
+            process = subprocess.Popen([str(solver), str(port)], cwd=folder, stdout=log, stderr=log, env=environment)
             try:
                 for attempt in range(80):
                     try:
@@ -85,8 +91,17 @@ def run(solver, imported=False):
                         time.sleep(0.1)
                 api('auth/login', dict(username='test', password=password))
                 normalized = json.loads((folder/'data/timetable_data.json').read_text(encoding='utf-8-sig'))
+                for invalid in (dict(scope_to=iso(target)), dict(mode='typo'),
+                                dict(scope_from='', scope_to=''),
+                                dict(scope_from=iso(target), scope_to=iso(prior))):
+                    try:
+                        api('schedule/regenerate', invalid)
+                        raise AssertionError(f'Invalid scope accepted: {invalid}')
+                    except urllib.error.HTTPError as error:
+                        assert error.code in (400, 422), error
+                last = target + timedelta(days=span-1)
                 assert api('schedule/regenerate', dict(mode='weekly', scope_from=iso(target),
-                           scope_to=iso(target), lock_existing='none'))['async']
+                           scope_to=iso(last), lock_existing='none'))['async']
                 for attempt in range(200):
                     progress = api('schedule/progress')
                     if progress['state'] in ('done', 'failed', 'cancelled'):
@@ -95,20 +110,24 @@ def run(solver, imported=False):
                 assert progress['state'] == 'done', progress
                 current = json.loads((folder/'output/latest/schedule_all.json').read_text(encoding='utf-8'))
                 days = current['groups'][0]['days']
-                old = next(day for day in days if day['date_iso'] == iso(prior))
-                assert old == previous_day, 'Generation changed an outside date'
-                events = [lesson for day in days if day['date_iso'] == iso(target)
+                assert {day['date_iso'] for day in days} == {iso(target+timedelta(days=i)) for i in range(span)}, days
+                assert current['scope_from'] == iso(target) and current['scope_to'] == iso(last)
+                assert json.loads((folder/'output/latest/strict_audit.json').read_text())['ok']
+                events = [lesson for day in days
                           for slot in day['slots'] for lesson in slot['lessons']
                           if not lesson.get('is_class_hour')]
-                assert sorted(lesson['id'] for lesson in events) == [0, 1, 2], events
+                if span == 1:
+                    assert sorted(lesson['id'] for lesson in events) == [0, 1, 2], events
+                else:
+                    assert len(events) >= 2*span and all(e['room_id'] is not None for e in events), events
                 saved = json.loads((folder/'data/timetable_data.json').read_text(encoding='utf-8-sig'))
                 assert saved['teaching_ledger'] == normalized['teaching_ledger'], 'Generation modified the teaching ledger'
                 report = api('hours')
-                for row in report['lessons']:
+                for row in report['lessons'] if span == 1 else []:
                     assert row['scheduled_hours'] == (2 if imported else 0), row
-                    assert row['reserved_hours'] == (2 if imported else 4) and row['available_hours'] == 0, row
+                    assert row['reserved_hours'] == 2*(span if imported else span+1) and row['available_hours'] == 0, row
                 print('Scoped accounting: reservations deduplicate, selected plans release, '
-                      'CP-SAT assigns 3 pairs, outside dates and journal preserved')
+                      'CP-SAT assigns 3 pairs, exact output dates and journal preserved')
             except Exception:
                 log.flush()
                 print((folder/'server.log').read_text(encoding='utf-8')[-5000:])
@@ -121,3 +140,4 @@ def run(solver, imported=False):
 if __name__ == '__main__':
     run(Path(sys.argv[1]).resolve())
     run(Path(sys.argv[1]).resolve(), imported=True)
+    run(Path(sys.argv[1]).resolve(), span=2)

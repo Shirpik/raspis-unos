@@ -418,6 +418,22 @@ WorkSchedule ParseWorkSchedule(const JsonValue& entity) {
             if (!output.enabled) output.slots.clear();
         }
     }
+    for (const JsonValue& week : entity.At("week_schedule_overrides").array_value) {
+        Date first{};
+        if (!ParseDateIso(JsonString(week, "week_from", ""), first) || DayOfWeek(first) != 1) continue;
+        for (const JsonValue& day : week.At("work_days").array_value) {
+            const int number = JsonInt(day, "day", 0);
+            if (number < 1 || number > 7 || !day.At("slots").IsArray()) continue;
+            Date date = first;
+            for (int offset = 1; offset < number; ++offset) date = NextDay(date);
+            std::set<int> slots;
+            for (const JsonValue& value : day.At("slots").array_value) {
+                const int slot = value.IsNumber() ? static_cast<int>(value.number_value) : 0;
+                if (slot >= 1 && slot <= SLOTS_PER_DAY) slots.insert(slot);
+            }
+            result.week_slot_overrides[date] = std::move(slots);
+        }
+    }
     const JsonValue& overrides = entity.At("date_slot_overrides");
     if (overrides.IsArray()) {
         for (const JsonValue& item : overrides.array_value) {
@@ -927,6 +943,8 @@ void NormalizeDataRoot(JsonValue& root) {
         if (!item.At("status").IsString()) item.At("status") = JsonValue::MakeString("active");
         if (!item.At("reason").IsString()) item.At("reason") = JsonValue::MakeString("");
         if (!item.At("comment").IsString()) item.At("comment") = JsonValue::MakeString("");
+        if (!item.At("credited_teacher").IsNumber())
+            item.At("credited_teacher") = JsonValue::MakeNumber(JsonInt(item, "absent_teacher", -1));
     }
 
     for (JsonValue& item : root.At("teaching_ledger").array_value) {
@@ -1275,6 +1293,9 @@ bool WorkScheduleAllows(const WorkSchedule& schedule, const Date& date, int zero
     const auto override_it = schedule.date_slot_overrides.find(date);
     if (override_it != schedule.date_slot_overrides.end())
         return override_it->second.count(zero_based_slot + 1) != 0;
+    const auto week_override = schedule.week_slot_overrides.find(date);
+    if (week_override != schedule.week_slot_overrides.end())
+        return week_override->second.count(zero_based_slot + 1) != 0;
     const WorkDayWindow& window = schedule.days[day - 1];
     const int human_slot = zero_based_slot + 1;
     return window.enabled && window.slots.count(human_slot) != 0;
@@ -1297,6 +1318,12 @@ bool LoadScheduleInputDataFromRoot(const JsonValue& source, ScheduleInputData& d
     if (!root.IsObject()) {
         error = "Файл данных должен быть JSON-объектом";
         return false;
+    }
+    // Substitute identity belongs to scheduling only. Keep the persisted
+    // workload teacher intact so historic and future credit stays with them.
+    for (JsonValue& lesson : root.At("lessons").array_value) {
+        const int replacement = JsonInt(lesson, "scheduling_teacher", -1);
+        if (replacement >= 0) lesson.At("teacher") = JsonValue::MakeNumber(replacement);
     }
 
     const JsonValue& settings = root.At("settings");
@@ -1392,6 +1419,11 @@ bool LoadScheduleInputDataFromRoot(const JsonValue& source, ScheduleInputData& d
         group.home_campus = JsonInt(item, "home_campus", -1);
         group.curator_teacher = JsonInt(item, "curator_teacher", -1);
         group.class_hour_enabled = JsonBool(item, "class_hour_enabled", true);
+        for (const auto& value : item.At("mixed_up_dates").array_value) {
+            Date date{};
+            if (value.IsString() && ParseDateIso(value.string_value, date))
+                group.mixed_up_dates.insert(date);
+        }
         group.class_hour_campus = JsonInt(item, "class_hour_campus", -1);
         group.class_hour_room = JsonInt(item, "class_hour_room", -1);
         group.class_hour_room_required = JsonBool(item, "class_hour_room_required", false);
@@ -1975,6 +2007,29 @@ JsonValue BuildDataAudit(const JsonValue& source_root) {
         if (enabled_days == 0)
             AddIssue(issues, "warning", "work_schedule_empty",
                 "Не выбран ни один рабочий день", type, id);
+        const auto& weeks = entity.At("week_schedule_overrides");
+        std::set<Date> seen_weeks;
+        if (!weeks.IsNull() && !weeks.IsArray())
+            AddIssue(issues, "error", "week_schedule_invalid", "Недельные графики должны быть списком", type, id);
+        for (const auto& week : weeks.array_value) {
+            Date first{};
+            if (!ParseDateIso(JsonString(week, "week_from", ""), first) || DayOfWeek(first) != 1 ||
+                !seen_weeks.insert(first).second || !week.At("work_days").IsArray()) {
+                AddIssue(issues, "error", "week_schedule_invalid",
+                    "Укажите уникальную неделю с понедельника и её рабочие дни", type, id);
+                continue;
+            }
+            std::set<int> seen_days;
+            for (const auto& day : week.At("work_days").array_value) {
+                const int number = JsonInt(day, "day", 0);
+                bool valid = number >= 1 && number <= 7 && seen_days.insert(number).second && day.At("slots").IsArray();
+                for (const auto& slot : day.At("slots").array_value)
+                    valid = valid && slot.IsNumber() && slot.number_value >= 1 && slot.number_value <= SLOTS_PER_DAY &&
+                        std::floor(slot.number_value) == slot.number_value;
+                if (!valid) AddIssue(issues, "error", "week_schedule_day_invalid",
+                    "В недельном графике день должен быть от 1 до 7, пары — целыми числами от 1 до 7", type, id);
+            }
+        }
     };
 
     auto register_uid = [&](const JsonValue& item, const std::string& type) {
@@ -2131,6 +2186,9 @@ JsonValue BuildDataAudit(const JsonValue& source_root) {
             AddIssue(issues, "error", "lesson_group_missing", "Занятие «" + name + "» ссылается на отсутствующую группу", "lesson", id);
         if (teacher >= 0 && !teacher_ids.count(teacher))
             AddIssue(issues, "error", "lesson_teacher_missing", "Занятие «" + name + "» ссылается на отсутствующего преподавателя", "lesson", id);
+        const int scheduling_teacher = JsonInt(lesson, "scheduling_teacher", -1);
+        if (scheduling_teacher >= 0 && !teacher_ids.count(scheduling_teacher))
+            AddIssue(issues, "error", "lesson_substitute_missing", "У занятия «" + name + "» указан отсутствующий заменяющий преподаватель", "lesson", id);
         if (teacher < 0)
             AddIssue(issues, "warning", "teacher_vacancy", "Для занятия «" + name + "» преподаватель не назначен", "lesson", id);
         const int total_hours = JsonInt(lesson, "total_hours", 0);
@@ -2275,6 +2333,8 @@ JsonValue BuildDataAudit(const JsonValue& source_root) {
             AddIssue(issues, "error", "substitution_lesson_missing", "Замена ссылается на отсутствующее занятие", "substitution", id);
         if (!teacher_ids.count(absent) || !teacher_ids.count(substitute))
             AddIssue(issues, "error", "substitution_teacher_missing", "В замене указан отсутствующий преподаватель", "substitution", id);
+        if (item.Has("credited_teacher") && !teacher_ids.count(JsonInt(item, "credited_teacher", -1)))
+            AddIssue(issues, "error", "substitution_credit_teacher_missing", "В зачёте часов замены указан отсутствующий преподаватель", "substitution", id);
         if (absent == substitute)
             AddIssue(issues, "error", "substitution_same_teacher", "Преподаватель не может заменять сам себя", "substitution", id);
         const std::string event_key = std::to_string(lesson) + "|" +
@@ -2359,6 +2419,7 @@ JsonValue BuildHoursReport(const JsonValue& source_root, const std::string& sche
         bool room_substituted = false;
         std::string requested_room;
         std::string room_substitution_reason;
+        int credited_teacher = -1;
     };
     std::vector<Occurrence> occurrences;
     std::unordered_map<int, int> confirmed_hours;
@@ -2735,6 +2796,9 @@ JsonValue BuildHoursReport(const JsonValue& source_root, const std::string& sche
                 JsonInt(*substitution, "substitute_teacher", occurrence.actual_teacher));
         if (occurrence.actual_teacher < 0) occurrence.actual_teacher = occurrence.teacher;
         occurrence.actual_teacher = accounting_teacher_id(occurrence.actual_teacher);
+        occurrence.credited_teacher = substitution
+            ? accounting_teacher_id(JsonInt(*substitution, "credited_teacher", occurrence.teacher))
+            : occurrence.teacher;
         by_group[occurrence.group].weekly[occurrence.week] += occurrence.hours;
         by_group[occurrence.group].daily[occurrence.date] += occurrence.hours;
         const int subgroup = lesson_subgroups.count(occurrence.lesson) ? lesson_subgroups[occurrence.lesson] : -1;
@@ -2746,10 +2810,10 @@ JsonValue BuildHoursReport(const JsonValue& source_root, const std::string& sche
             by_group_subgroup[{occurrence.group, part}].weekly[occurrence.week] += occurrence.hours;
             by_group_subgroup[{occurrence.group, part}].daily[occurrence.date] += occurrence.hours;
         }
-        if (occurrence.actual_teacher >= 0) {
-            by_teacher[occurrence.actual_teacher].credited += occurrence.hours;
-            by_teacher[occurrence.actual_teacher].weekly[occurrence.week] += occurrence.hours;
-            by_teacher[occurrence.actual_teacher].daily[occurrence.date] += occurrence.hours;
+        if (occurrence.credited_teacher >= 0) {
+            by_teacher[occurrence.credited_teacher].credited += occurrence.hours;
+            by_teacher[occurrence.credited_teacher].weekly[occurrence.week] += occurrence.hours;
+            by_teacher[occurrence.credited_teacher].daily[occurrence.date] += occurrence.hours;
         }
         if (occurrence.actual_teacher != occurrence.teacher) {
             if (occurrence.teacher >= 0) by_teacher[occurrence.teacher].substitution_out += occurrence.hours;
@@ -2790,6 +2854,9 @@ JsonValue BuildHoursReport(const JsonValue& source_root, const std::string& sche
         item.At("actual_teacher_id") = JsonValue::MakeNumber(actual_teacher);
         item.At("actual_teacher_name") = JsonValue::MakeString(
             actual_teacher >= 0 ? teacher_names[actual_teacher] : "вакансия");
+        item.At("credited_teacher_id") = JsonValue::MakeNumber(occurrence.credited_teacher);
+        item.At("credited_teacher_name") = JsonValue::MakeString(
+            occurrence.credited_teacher >= 0 ? teacher_names[occurrence.credited_teacher] : "вакансия");
         item.At("room") = JsonValue::MakeString(occurrence.room);
         item.At("room_type") = JsonValue::MakeNumber(occurrence.room_type);
         item.At("room_substituted") = JsonValue::MakeBool(occurrence.room_substituted);
@@ -2808,7 +2875,7 @@ JsonValue BuildHoursReport(const JsonValue& source_root, const std::string& sche
         occurrences_by_group[occurrence.group].push_back(item);
         occurrences_by_lesson[occurrence.lesson].push_back(item);
         if (occurrence.teacher >= 0) scheduled_by_teacher[occurrence.teacher].push_back(item);
-        if (actual_teacher >= 0) credited_by_teacher[actual_teacher].push_back(item);
+        if (occurrence.credited_teacher >= 0) credited_by_teacher[occurrence.credited_teacher].push_back(item);
     }
 
     auto sort_occurrences = [](auto& map) {

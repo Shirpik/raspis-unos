@@ -30,6 +30,9 @@ struct WorkSchedule {
     // Точечная доступность на конкретную дату. Номера пар хранятся как 1..7;
     // пустой набор означает, что преподаватель/группа в эту дату не работает.
     std::map<Date, std::set<int>> date_slot_overrides;
+    // Expanded dates of week-specific availability. Exact-date exceptions
+    // take precedence; dates outside these weeks inherit the ordinary grid.
+    std::map<Date, std::set<int>> week_slot_overrides;
 };
 
 struct AcademicWeek {
@@ -48,6 +51,8 @@ struct GroupData {
     int home_campus = -1;
     int curator_teacher = -1;
     bool class_hour_enabled = true;
+    // Dispatcher-approved dates on which practice may share a day with theory/labs.
+    std::set<Date> mixed_up_dates;
     int class_hour_campus = -1;
     int class_hour_room = -1;
     bool class_hour_room_required = false;

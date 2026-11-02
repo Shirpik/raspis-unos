@@ -3,6 +3,13 @@
 .tmp
 build
 build-site
+build-native
+rc-runtime
+data
+**/auth_config*.json
+**/.env
+**/db.env
+**/app.env
 deadline-tracker
 node_modules
 frontend/node_modules
@@ -15,4 +22,5 @@ deploy/backups
 deploy/.env
 *.log
 *.xlsx
+!frontend/public/templates/*.xlsx
 *.docx

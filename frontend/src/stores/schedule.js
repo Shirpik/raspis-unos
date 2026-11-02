@@ -2,6 +2,7 @@ import { defineStore } from 'pinia'
 import { ref, computed } from 'vue'
 import { api } from '../api/index.js'
 import { mergeConfirmedSchedule } from '../utils/scheduleLedger.js'
+import { generationScopeFromSchedule } from '../utils/generationDates.js'
 
 export const useScheduleStore = defineStore('schedule', () => {
   const scheduleData = ref(null)
@@ -14,6 +15,7 @@ export const useScheduleStore = defineStore('schedule', () => {
 
   // Прогресс недельной генерации
   const progress = ref(null)   // null | { state, total_weeks, current_week, solved_weeks, weeks, message, total_elapsed }
+  const preflight = ref(null)
   let _pollTimer = null
   let _pollFailures = 0
 
@@ -21,6 +23,8 @@ export const useScheduleStore = defineStore('schedule', () => {
     loading.value = true
     error.value = null
     const [res, raw] = await Promise.all([api.schedule.get(), api.schedule.context()])
+    lastScope.value = res.ok ? generationScopeFromSchedule(res.data) : null
+    lastScoped.value = Boolean(lastScope.value)
     loading.value = false
     if (raw.ok) {
       semester.value = raw.data?.settings || null
@@ -106,6 +110,10 @@ export const useScheduleStore = defineStore('schedule', () => {
       _stopPolling()
       _pollFailures = 0
       generating.value = false
+      if (st === 'failed') {
+        const diagnostic = await api.schedule.preflight()
+        preflight.value = diagnostic.ok ? diagnostic.data : null
+      }
       // Обновляем расписание если успешно завершено
       if (st === 'done') await fetchSchedule()
     }
@@ -113,11 +121,8 @@ export const useScheduleStore = defineStore('schedule', () => {
 
   async function regenerate(opts = {}) {
     generating.value = true
-    lastScoped.value = Boolean(opts.scope_from)
-    lastScope.value = opts.scope_from && opts.scope_to
-      ? { from: opts.scope_from, to: opts.scope_to }
-      : null
     progress.value = null
+    preflight.value = null
 
     const capability = await api.data.semesterReadout()
     if (!capability.ok || !(capability.data?.rules_version >= 3)) {
@@ -133,6 +138,8 @@ export const useScheduleStore = defineStore('schedule', () => {
     }
 
     if (res.data?.async) {
+      lastScoped.value = Boolean(opts.scope_from)
+      lastScope.value = opts.scope_from ? { from: opts.scope_from, to: opts.scope_to || opts.scope_from } : null
       // Async (weekly) — запускаем polling
       _stopPolling()
       _pollFailures = 0
@@ -160,7 +167,7 @@ export const useScheduleStore = defineStore('schedule', () => {
 
   return {
     scheduleData, loading, error, generating, semester, lastScoped, lastScope,
-    progress,
+    progress, preflight,
     groups,
     fetchSchedule, fetchPublished, fetchPublishedGroups, fetchPublishedGroup, regenerate, cancelGeneration,
   }
