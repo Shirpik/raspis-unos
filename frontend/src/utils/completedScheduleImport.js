@@ -19,7 +19,7 @@ const normalized = value => text(value)
 // are not teaching hours.  They must remain visible in the source workbook,
 // while being excluded from the teaching ledger used by hours accounting.
 const isClassHour = value => /(?:класс[а-яё]*|кл\.?)[\s.]*час/iu.test(text(value))
-const isNonTeachingMarker = value => /^впр$/iu.test(text(value))
+const isNonTeachingMarker = value => /^(?:впр|пп)$/iu.test(text(value))
 
 const parseExcelDate = (value, fallbackYear = 2026) => {
   if (value instanceof Date && !Number.isNaN(value.valueOf())) {
@@ -216,7 +216,7 @@ function inferredSubgroupForCell(rows, rowIndex, column, half, blockEnd) {
   return continuation && !continuation.excludedClassHour && !continuation.excludedNonTeaching ? 1 : 0
 }
 
-function sheetBlocks(rows, knownGroups) {
+function sheetBlocks(rows, knownGroups, referenceDates = new Map()) {
   const blocks = []
   let previousDate = ''
   for (let rowIndex = 0; rowIndex < rows.length; rowIndex++) {
@@ -229,6 +229,13 @@ function sheetBlocks(rows, knownGroups) {
     if (!columns.length) continue
     let date = parseExcelDate(row[0])
     const labelDay = weekdayIndex(rows[rowIndex + 1]?.[0])
+    // A deleted initial date leaves dependent Excel formulas at serials 1..5
+    // (year 1900). Recover only when this weekday has one unambiguous date
+    // elsewhere in the same workbook; never use the import/accounting date.
+    if (date && Number(date.slice(0, 4)) < 2000) date = ''
+    const reference = referenceDates.get(labelDay)
+    const recoveredDate = !date && reference?.size === 1 ? [...reference][0] : ''
+    if (recoveredDate) date = recoveredDate
     // Some exported sheets repeat the previous date in the next block's
     // header.  Prefer the visible weekday label when it disagrees, so the
     // completed ledger keeps Wednesday/Thursday on their actual calendar day.
@@ -239,7 +246,7 @@ function sheetBlocks(rows, knownGroups) {
     }
     if (!date && previousDate) date = nextIsoDate(previousDate)
     const nextHeader = rows.findIndex((candidate, index) => index > rowIndex && (candidate || []).some(value => knownGroups.has(normalized(value))))
-    blocks.push({ header: rowIndex, from: rowIndex + 1, to: nextHeader < 0 ? rows.length : nextHeader, date, columns })
+    blocks.push({ header: rowIndex, from: rowIndex + 1, to: nextHeader < 0 ? rows.length : nextHeader, date, columns, recoveredDate })
     if (date) previousDate = date
     if (nextHeader >= 0) rowIndex = nextHeader - 1
   }
@@ -280,16 +287,29 @@ export async function parseCompletedSchedule(file, current, options = {}) {
     teacherIdBySurname.set(surname, teacherIdBySurname.has(surname) ? -1 : id)
   }
   const status = options.status === 'planned' ? 'planned' : 'confirmed'
+  const sheets = workbook.SheetNames.map(name => ({
+    name,
+    rows: XLSX.utils.sheet_to_json(workbook.Sheets[name], { header: 1, defval: '', raw: true }),
+  }))
+  const referenceDates = new Map()
+  for (const { rows } of sheets) {
+    for (let index = 0; index < rows.length; index++) {
+      if (!rows[index].some(value => knownGroups.has(normalized(value)))) continue
+      const date = parseExcelDate(rows[index][0])
+      const day = weekdayIndex(rows[index + 1]?.[0])
+      if (!date || Number(date.slice(0, 4)) < 2000 || day < 0 || isoWeekday(date) !== day) continue
+      if (!referenceDates.has(day)) referenceDates.set(day, new Set())
+      referenceDates.get(day).add(date)
+    }
+  }
   const rowsToImport = []
   const detectedDates = new Set()
   const detectedGroupIds = new Set()
   const errors = [], warnings = []
   let excludedClassHours = 0, ignoredCells = 0
 
-  for (const sheetName of workbook.SheetNames) {
-    const sheet = workbook.Sheets[sheetName]
-    const rows = XLSX.utils.sheet_to_json(sheet, { header: 1, defval: '', raw: true })
-    for (const block of sheetBlocks(rows, knownGroups)) {
+  for (const { name: sheetName, rows } of sheets) {
+    for (const block of sheetBlocks(rows, knownGroups, referenceDates)) {
       if (!block.date) {
         if (!rows.slice(block.from, block.to).some(row => block.columns.some(entry => text(row[entry.column])))) continue
         errors.push(`${sheetName}: не удалось определить дату блока со строки ${block.header + 1}`)
@@ -297,6 +317,7 @@ export async function parseCompletedSchedule(file, current, options = {}) {
       }
       if (options.dateFrom && block.date < options.dateFrom) continue
       if (options.dateTo && block.date > options.dateTo) continue
+      if (block.recoveredDate) warnings.push(`${sheetName}, строка ${block.header + 1}: дата ${block.date} восстановлена по дню недели и датам других листов этой книги`)
       detectedDates.add(block.date)
       for (const entry of block.columns) detectedGroupIds.add(Number(entry.group.id))
       let slot = 0

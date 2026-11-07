@@ -170,6 +170,82 @@ test('uses the weekday when a source repeats the previous date and excludes admi
   assert.equal(result.excludedClassHours, 2)
 })
 
+test('production practice marker does not become a two-hour teaching fact', async () => {
+  const workbook = XLSX.utils.book_new()
+  XLSX.utils.book_append_sheet(workbook, XLSX.utils.aoa_to_sheet([
+    ['02.11.2026', '', '', 'ИСП-2308'],
+    ['ПОНЕДЕЛЬНИК', '8.30-10.00', 1, 'ПП'],
+    ['', '10.10-11.40', 2, 'Математика\nИванова 16_К'],
+  ]), '2 курс')
+  const bytes = XLSX.write(workbook, { type: 'buffer', bookType: 'xlsx' })
+  const current = { ...data, lessons: [...data.lessons,
+    { id: 20, group: 7, subgroup: -1, teacher: -1, name: 'ПП.07 Производственная практика', is_pp: true, total_hours: 216 }],
+  }
+  const result = await parseCompletedSchedule({ name: 'practice.xlsx', arrayBuffer: async () => bytes }, current)
+  assert.deepEqual(result.errors, [])
+  assert.equal(result.imported, 1)
+  assert.equal(result.importedHours, 2)
+  assert.equal(result.excludedClassHours, 1)
+  assert.equal(result.importedRows[0].lesson_id, 10)
+})
+
+test('recovers missing and year-1900 dates from matching weekdays on another sheet', async () => {
+  const workbook = XLSX.utils.book_new()
+  XLSX.utils.book_append_sheet(workbook, XLSX.utils.aoa_to_sheet([
+    ['', '', '', 'ИСП-2308'],
+    ['ПОНЕДЕЛЬНИК', '8.30-10.00', 1, 'Математика\nИванова 16_К'],
+    [new Date(1900, 0, 1), '', '', 'ИСП-2308'],
+    ['ВТОРНИК', '8.30-10.00', 1, 'Математика\nИванова 16_К'],
+  ]), 'Повреждённые даты')
+  XLSX.utils.book_append_sheet(workbook, XLSX.utils.aoa_to_sheet([
+    ['02.11.2026', '', '', 'ИСП-2308'],
+    ['ПОНЕДЕЛЬНИК', '8.30-10.00', 1, ''],
+    ['03.11.2026', '', '', 'ИСП-2308'],
+    ['ВТОРНИК', '8.30-10.00', 1, ''],
+  ]), 'Даты недели')
+  const bytes = XLSX.write(workbook, { type: 'buffer', bookType: 'xlsx' })
+  const result = await parseCompletedSchedule({ name: 'dates.xlsx', arrayBuffer: async () => bytes }, data, {
+    dateFrom: '2026-11-02', dateTo: '2026-11-03',
+  })
+  assert.deepEqual(result.errors, [])
+  assert.deepEqual(result.importedRows.map(row => row.date), ['2026-11-02', '2026-11-03'])
+  assert.equal(result.importedHours, 4)
+  assert.equal(result.warnings.length, 2)
+  assert(result.warnings.every(warning => warning.includes('восстановлена')))
+})
+
+test('missing dates stay unresolved when other sheets contain different weeks', async () => {
+  const workbook = XLSX.utils.book_new()
+  XLSX.utils.book_append_sheet(workbook, XLSX.utils.aoa_to_sheet([
+    ['', '', '', 'ИСП-2308'],
+    ['ПОНЕДЕЛЬНИК', '8.30-10.00', 1, 'Математика\nИванова 16_К'],
+  ]), 'Без даты')
+  for (const date of ['02.11.2026', '09.11.2026']) {
+    XLSX.utils.book_append_sheet(workbook, XLSX.utils.aoa_to_sheet([
+      [date, '', '', 'ИСП-2308'], ['ПОНЕДЕЛЬНИК', '8.30-10.00', 1, ''],
+    ]), date)
+  }
+  const bytes = XLSX.write(workbook, { type: 'buffer', bookType: 'xlsx' })
+  const result = await parseCompletedSchedule({ name: 'ambiguous.xlsx', arrayBuffer: async () => bytes }, data)
+  assert.equal(result.imported, 0)
+  assert.equal(result.errors.length, 1)
+  assert(result.errors[0].includes('не удалось определить дату'))
+  assert.deepEqual(result.data.teaching_ledger, data.teaching_ledger)
+})
+
+test('year-1900 formula dates cannot become teaching facts without a valid workbook date', async () => {
+  const workbook = XLSX.utils.book_new()
+  XLSX.utils.book_append_sheet(workbook, XLSX.utils.aoa_to_sheet([
+    [new Date(1900, 0, 1), '', '', 'ИСП-2308'],
+    ['ПОНЕДЕЛЬНИК', '8.30-10.00', 1, 'Математика\nИванова 16_К'],
+  ]), 'Неверная дата')
+  const bytes = XLSX.write(workbook, { type: 'buffer', bookType: 'xlsx' })
+  const result = await parseCompletedSchedule({ name: 'serial.xlsx', arrayBuffer: async () => bytes }, data)
+  assert.equal(result.imported, 0)
+  assert.equal(result.errors.length, 1)
+  assert.deepEqual(result.data.teaching_ledger, data.teaching_ledger)
+})
+
 test('recognizes subgroup labels before a colon', async () => {
   const workbook = XLSX.utils.book_new()
   XLSX.utils.book_append_sheet(workbook, XLSX.utils.aoa_to_sheet([
