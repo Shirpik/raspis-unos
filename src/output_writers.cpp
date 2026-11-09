@@ -48,9 +48,11 @@ std::string BuildGroupSlotText(
                 }
             }
 
-            std::string teacher_display = lessons[l].teacher >= 0
-                ? TEACHER_NAME[lessons[l].teacher]
+            const int actual_teacher = lessons[l].TeacherOn(all_days[day]);
+            std::string teacher_display = actual_teacher >= 0
+                ? TEACHER_NAME[actual_teacher]
                 : "вакансия";
+            if (actual_teacher != lessons[l].teacher) teacher_display += " (замена)";
             ss << lesson_name
                << " — " << SubgroupName(lessons[l].subgroup)
                << ", " << teacher_display
@@ -83,7 +85,7 @@ std::string BuildTeacherSlotText(
 
     int campus = IntValue(response, teacher_day_campus[teacher][day]);
     for (int l = 0; l < static_cast<int>(lessons.size()); l++) {
-        if (lessons[l].teacher != teacher) continue;
+        if (lessons[l].TeacherOn(all_days[day]) != teacher) continue;
         if (lessons[l].is_block) continue;
 
         if (BoolValue(response, x[l][t])) {
@@ -101,7 +103,7 @@ std::string BuildTeacherSlotText(
     for (const auto& blk : blocks) {
         const Lesson& lesson = lessons[blk.lesson_id];
 
-        if (lesson.teacher != teacher) {
+        if (lesson.TeacherOn(all_days[day]) != teacher) {
             continue;
         }
 
@@ -579,7 +581,9 @@ void WriteSlotLessonsJson(
             << "\"id\":" << lessons[l].id
             << ",\"uid\":\"" << JsonEscape(lessons[l].uid) << "\""
             << ",\"name\":\"" << JsonEscape(lessons[l].name + (lessons[l].IsClassroomTheory(date) ? " (теория)" : "")) << "\""
-            << ",\"teacher_id\":" << (lessons[l].teacher >= 0 ? std::to_string(lessons[l].teacher) : "null")
+            << ",\"teacher_id\":" << (lessons[l].TeacherOn(date) >= 0 ? std::to_string(lessons[l].TeacherOn(date)) : "null")
+            << ",\"workload_teacher_id\":" << lessons[l].teacher
+            << ",\"is_substitution\":" << (lessons[l].TeacherOn(date) != lessons[l].teacher ? "true" : "false")
             << ",\"subgroup\":" << lessons[l].subgroup
             << ",\"is_lab\":" << (lessons[l].is_lab ? "true" : "false")
             << ",\"is_block\":" << (lessons[l].is_block ? "true" : "false")

@@ -121,29 +121,39 @@ bool GroupRegularCalendarAllows(const GroupData& group, const Date& date) {
 }
 
 int GroupTeachingCapacity(const ScheduleInputData& data, const GroupData& group,
-                          Date first, Date last, const TeacherData* teacher, int student_streams) {
+                          Date first, Date last, const TeacherData* teacher, int student_streams, const Lesson* lesson) {
     if (last < first) return 0;
-    std::map<int, std::vector<int>> weeks;
+    std::map<std::pair<int,int>, std::vector<int>> weeks;
+    std::map<int,int> day_limits;
     for (const auto& day : GenerateSchoolDays(first, last)) {
+        const TeacherData* current_teacher = teacher;
+        if (lesson) {
+            const auto found = std::find_if(data.teachers.begin(), data.teachers.end(),
+                [&](const auto& t) { return t.id == lesson->TeacherOn(day); });
+            current_teacher = found == data.teachers.end() ? nullptr : &*found;
+            if (!current_teacher) continue;
+        }
         int count = 0;
         if (GroupRegularCalendarAllows(group, day) && IsAvailable(day, group.id, data.unavailable)) {
             for (int slot = 0; slot < 7; ++slot) {
                 if (WorkScheduleAllows(group.work_schedule, day, slot) &&
-                    (!teacher || (teacher->scheduling_active &&
-                                  WorkScheduleAllows(teacher->work_schedule, day, slot) &&
-                                  IsAvailable(day, slot, teacher->id, data.teacher_unavailable)))) {
+                    (!current_teacher || (current_teacher->scheduling_active &&
+                                  WorkScheduleAllows(current_teacher->work_schedule, day, slot) &&
+                                  IsAvailable(day, slot, current_teacher->id, data.teacher_unavailable)))) {
                     ++count;
                 }
             }
         }
         count = std::min(count, (data.student_daily_limit > 0 ? data.student_daily_limit : MAX_STUDENT_PAIRS_PER_DAY) * student_streams);
-        if (teacher && teacher->max_pairs_per_day > 0) count = std::min(count, teacher->max_pairs_per_day);
-        weeks[(DaysBetween(first, day) + DayOfWeek(first) - 1) / 7].push_back(count);
+        if (current_teacher && current_teacher->max_pairs_per_day > 0) count = std::min(count, current_teacher->max_pairs_per_day);
+        const int teacher_id = current_teacher ? current_teacher->id : -1;
+        day_limits[teacher_id] = current_teacher && current_teacher->max_work_days_per_week > 0 ? current_teacher->max_work_days_per_week : 7;
+        weeks[{(DaysBetween(first, day) + DayOfWeek(first) - 1) / 7,teacher_id}].push_back(count);
     }
     int total = 0;
     for (auto& week : weeks) {
         std::sort(week.second.begin(), week.second.end(), std::greater<int>());
-        int days = teacher && teacher->max_work_days_per_week > 0 ? teacher->max_work_days_per_week : 7;
+        int days = day_limits[week.first.second];
         for (int count : week.second) if (days-- > 0) total += count;
     }
     return total;
@@ -228,9 +238,35 @@ void PrepareSemesterRequirements(const JsonValue& root, ScheduleInputData& data)
         const auto t = std::find_if(data.teachers.begin(), data.teachers.end(), [&](const auto& x) { return x.id == lesson.teacher; });
         if (g == data.groups.end() || t == data.teachers.end()) return 0;
         Date last = configured ? std::min(data.end_date, GroupTeachingDeadline(*g, semester_first, semester_last)) : data.end_date;
-        return GroupTeachingCapacity(data, *g, data.start_date, last, &*t);
+        return GroupTeachingCapacity(data, *g, data.start_date, last, &*t, 1, &lesson);
     };
     const auto shared_teacher_capacity = [&](const TeacherData& teacher, const std::set<int>& lesson_ids, Date first, Date last) {
+        const bool has_replacements = std::any_of(data.lessons.begin(), data.lessons.end(), [&](const auto& l) {
+            return lesson_ids.count(l.id) && !l.date_teachers.empty();
+        });
+        if (has_replacements) {
+            int total = 0;
+            for (const auto& actual : data.teachers) {
+                if (!actual.scheduling_active) continue;
+                auto limited = actual;
+                for (const auto& day : GenerateSchoolDays(first, last)) {
+                    std::set<int> slots;
+                    for (int slot = 0; slot < 7; ++slot) {
+                        if (!WorkScheduleAllows(actual.work_schedule, day, slot)) continue;
+                        for (const auto& lesson : data.lessons) {
+                            if (!lesson_ids.count(lesson.id) || lesson.TeacherOn(day) != actual.id || !LessonCalendarAllows(lesson, day)) continue;
+                            for (const auto& group : data.groups) if (group.id == lesson.group &&
+                                (!configured || day <= GroupTeachingDeadline(group, semester_first, semester_last)) &&
+                                GroupRegularCalendarAllows(group, day) && IsAvailable(day, group.id, data.unavailable) &&
+                                WorkScheduleAllows(group.work_schedule, day, slot)) { slots.insert(slot + 1); break; }
+                        }
+                    }
+                    limited.work_schedule.date_slot_overrides[day] = slots;
+                }
+                total += Capacity(data, limited, first, last);
+            }
+            return total;
+        }
         // Union of eligible slots, not a sum across groups: one teacher cannot
         // teach two groups at once. This is still an upper bound (no room solve).
         auto limited = teacher;
@@ -431,7 +467,8 @@ void PrepareSemesterRequirements(const JsonValue& root, ScheduleInputData& data)
                 if (rest > 0) {
                     requirement.lesson_ids.insert(id);
                     remaining_pairs[id] = rest / 2;
-                    teacher_pairs[JsonInt(lesson, "teacher", -1)] += CeilDiv(rest, 2);
+                    if (lesson.At("teacher_replacements").array_value.empty())
+                        teacher_pairs[JsonInt(lesson, "teacher", -1)] += CeilDiv(rest, 2);
                 }
             }
             const int needed_pairs = CeilDiv(left, 2);
@@ -534,15 +571,18 @@ void PrepareSemesterRequirements(const JsonValue& root, ScheduleInputData& data)
             if (practice) { practice_left += left; continue; }
             const auto t = std::find_if(data.teachers.begin(), data.teachers.end(), [&](const auto& x) { return x.id == teacher_id; });
             const std::string teacher_name = t == data.teachers.end() ? "Не назначен" : t->name;
-            const int available = t == data.teachers.end() ? 0 : GroupTeachingCapacity(data, group, data.start_date, deadline, &*t);
+            const auto scheduled_lesson = std::find_if(data.lessons.begin(), data.lessons.end(), [&](const auto& l) { return l.id == id; });
+            const auto* dated_lesson = scheduled_lesson == data.lessons.end() ? nullptr : &*scheduled_lesson;
+            const int available = t == data.teachers.end() ? 0 : GroupTeachingCapacity(data, group, data.start_date, deadline, &*t, 1, dated_lesson);
             const std::string label = group.name + " / " + teacher_name + " / " + JsonString(source, "name", "Предмет");
             std::string status = left == 0 ? "completed" : "capacity_upper_bound_ok";
             if (confirmed[id] + reserved[id] > total)
                 issue("ledger_and_reservations_exceed_curriculum", label + ": факт и уже запланированные часы превышают вклейку на " +
                     std::to_string(confirmed[id] + reserved[id] - total) + " ч", teacher_id, "error", group_id, id);
             if (left > 0) {
-                teacher_demand[teacher_id] += left;
-                if (t == data.teachers.end() || !t->scheduling_active || !JsonBool(source, "plan_active", true)) {
+                const bool has_replacements = !source.At("teacher_replacements").array_value.empty();
+                if (!has_replacements) teacher_demand[teacher_id] += left;
+                if (t == data.teachers.end() || (!t->scheduling_active && !has_replacements) || !JsonBool(source, "plan_active", true)) {
                     status = t == data.teachers.end() ? "teacher_missing" : !t->scheduling_active ? "teacher_inactive" : "lesson_disabled";
                     issue(status, label + ": осталось " + std::to_string(left) + " ч; " +
                         (t == data.teachers.end() ? "назначьте преподавателя" : !t->scheduling_active ? "преподаватель выключен из генерации" : "предмет выключен из плана генерации"), teacher_id, "error", group_id, id);

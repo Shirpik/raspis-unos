@@ -113,6 +113,7 @@
               <button class="btn btn-ghost btn-sm" @click="openEdit(t)">
                 <Edit2 :size="16" />
               </button>
+              <button class="btn btn-secondary btn-sm" @click="replacementTeacher=t">Временная замена</button>
               <button class="btn btn-ghost btn-sm danger" @click="confirmDelete(t)">
                 <Trash2 :size="16" />
               </button>
@@ -122,6 +123,7 @@
       </table>
     </div>
 
+    <TeacherReplacementModal v-if="replacementTeacher" :teacher="replacementTeacher" @close="replacementTeacher=null" />
     <Modal v-model="weekModal" :title="`График на неделю: ${weekTeacher?.name || ''}`">
       <TeacherWeekScheduleEditor v-if="weekModal && weekTeacher" v-model="weekDraft" :schedule="weekTeacher" />
       <template #footer>
@@ -199,6 +201,7 @@ import { Users, Clock, Plus, Edit2, Trash2, CalendarDays } from 'lucide-vue-next
 import Modal from '../components/Modal.vue'
 import WorkScheduleEditor from '../components/WorkScheduleEditor.vue'
 import TeacherWeekScheduleEditor from '../components/TeacherWeekScheduleEditor.vue'
+import TeacherReplacementModal from '../components/TeacherReplacementModal.vue'
 import DesiredLoadEditor from '../components/DesiredLoadEditor.vue'
 import DateLoadEditor from '../components/DateLoadEditor.vue'
 import Skeleton from '../components/ui/Skeleton.vue'
@@ -215,6 +218,7 @@ const modalOpen = ref(false)
 const deleteModal = ref(false)
 const editItem = ref(null)
 const deleteTarget = ref(null)
+const replacementTeacher=ref(null)
 const weekModal=ref(false),weekSaving=ref(false),weekTeacher=ref(null),weekDraft=ref([])
 const selected=ref([]),bulkModal=ref(false)
 const search=ref(''),campusFilter=ref(-2),bulkTemplateId=ref(-1)

@@ -10,6 +10,7 @@ export const emptyRoomForm = () => ({
   purpose: '', access_mode: 'general', responsible_teacher_ids: [],
   responsible_note: '', description: '', available_slots: [], equipment: [],
   equipment_text: '',
+  work_period: { from: '', to: '' }, work_days: defaultWorkDays(), date_slot_overrides: [],
 })
 
 export function roomFormFromEntity(room = null) {
@@ -23,6 +24,9 @@ export function roomFormFromEntity(room = null) {
     available_slots: [...(source.available_slots || [])],
     equipment: [...(source.equipment || [])],
     equipment_text: (source.equipment || []).join(', '),
+    work_period: { from: source.work_period?.from || '', to: source.work_period?.to || '' },
+    work_days: clone(source.work_days || defaultWorkDays()),
+    date_slot_overrides: clone(source.date_slot_overrides || []),
   }
 }
 

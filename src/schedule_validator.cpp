@@ -303,15 +303,16 @@ ScheduleValidationResult ValidateScheduleJson(
                             collector.Add("error", "structure", "lesson_in_wrong_group",
                                           "Занятие находится в чужой группе", ctx);
                         }
-                        const int rendered_teacher = JsonInt(rendered, "teacher_id", lesson->teacher);
-                        if (rendered_teacher != lesson->teacher) {
-                            JsonValue ctx = Context(); Put(ctx, "lesson", lesson_id); Put(ctx, "teacher", rendered_teacher); Put(ctx, "expected_teacher", lesson->teacher);
+                        const int expected_teacher = lesson->TeacherOn(date);
+                        const int rendered_teacher = JsonInt(rendered, "teacher_id", expected_teacher);
+                        if (rendered_teacher != expected_teacher) {
+                            JsonValue ctx = Context(); Put(ctx, "lesson", lesson_id); Put(ctx, "teacher", rendered_teacher); Put(ctx, "expected_teacher", expected_teacher);
                             collector.Add("error", "structure", "lesson_teacher_mismatch",
                                           "В итоговом JSON изменён преподаватель занятия", ctx);
                         }
                         const JsonValue& room_value = rendered.At("room_id");
                         const int room_id = room_value.IsNumber() ? static_cast<int>(room_value.number_value) : -1;
-                        events.push_back({date, pair, group_id, lesson_id, lesson->teacher, room_id});
+                        events.push_back({date, pair, group_id, lesson_id, expected_teacher, room_id});
                     }
                 }
             }
@@ -961,9 +962,10 @@ ScheduleValidationResult ValidateScheduleJson(
     std::map<int, int> teacher_actual;
     for (const Lesson& lesson : data.lessons) {
         if (lesson.teacher < 0) continue;
-        teacher_planned[lesson.teacher] += lesson.total_slots;
-        teacher_actual[lesson.teacher] += scheduled_occurrences[lesson.id];
+        for (int teacher : lesson.SchedulingTeachers()) if (teacher >= 0)
+            teacher_planned[teacher] += lesson.total_slots;
     }
+    for (const auto& event : events) if (event.teacher >= 0) ++teacher_actual[event.teacher];
     for (const auto& target : data.teacher_period_targets) {
         const TeacherData* teacher = FindTeacher(data, target.first);
         if (teacher_planned[target.first] < target.second) {

@@ -149,7 +149,7 @@ RoomAllocationResult AllocateRooms(
 
             Event event;
             event.lesson = l;
-            event.teacher = lessons[l].teacher;
+            event.teacher = lessons[l].TeacherOn(all_days[t / SLOTS_PER_DAY]);
             event.start = t;
             event.duration = 1;
             if (grouped_pair) {

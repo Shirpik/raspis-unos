@@ -12,6 +12,7 @@
 #include "types.h"
 
 namespace timetable {
+bool ValidateTeacherReplacements(const JsonValue& root, std::string& error);
 
 struct WorkDayWindow {
     bool enabled = true;

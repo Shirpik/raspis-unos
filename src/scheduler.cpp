@@ -67,6 +67,16 @@ struct UpStartRef {
     TimeInterval interval;
 };
 
+// Weekly quota capacity is exact only when one teacher covers the whole week.
+// Mixed weeks are checked by the dated occupancy constraints in SolveWeek.
+static int TeacherForWeek(const Lesson& lesson, const std::vector<Date>& dates,
+                          const std::vector<int>& indices) {
+    if (indices.empty()) return lesson.teacher;
+    const int teacher = lesson.TeacherOn(dates[indices.front()]);
+    for (int index : indices) if (lesson.TeacherOn(dates[index]) != teacher) return -1;
+    return teacher;
+}
+
 static bool IsTransferredToPpTeacher(
     const std::vector<TeacherData>& teachers,
     int teacher_id
@@ -89,8 +99,8 @@ static bool IsUpLessonName(const std::string& name) {
 // Loginova (teacher 32) teaches the ordinary informatics rows in the current
 // curriculum. Keep one subgroup/group from receiving a third consecutive
 // ordinary pair; LPZ rows remain free to occupy three consecutive pairs.
-static bool HasLoginovaOrdinaryConsecutiveCap(const Lesson& lesson) {
-    return lesson.teacher == 32 && !lesson.is_lab && !lesson.is_block && !lesson.is_pp;
+static bool HasLoginovaOrdinaryConsecutiveCap(const Lesson& lesson, const Date& day) {
+    return lesson.TeacherOn(day) == 32 && !lesson.is_lab && !lesson.is_block && !lesson.is_pp;
 }
 
 static void ExcludeTransferredUpLessons(ScheduleInputData& data) {
@@ -267,7 +277,7 @@ static void AddMaxSameSubjectPerDay(
                     int shared_limit = SLOTS_PER_DAY;
                     for (int l : indices) {
                         int teacher_limit = limit;
-                        for (const auto& teacher : teachers) if (teacher.id == lessons[l].teacher) {
+                        for (const auto& teacher : teachers) if (teacher.id == lessons[l].TeacherOn(dates[day])) {
                             const auto found = teacher.date_same_subject_maximum.find(dates[day]);
                             if (found != teacher.date_same_subject_maximum.end()) teacher_limit = found->second;
                             break;
@@ -486,7 +496,7 @@ GenerationResult GenerateSchedule(const std::string& output_dir, const Generatio
                     continue;
                 }
                 const int group = lessons[l].group;
-                const int teacher = lessons[l].teacher;
+                const int teacher = lessons[l].TeacherOn(all_days[d]);
                 int t = d * SLOTS_PER_DAY + s;
                 bool available_for_interval = true;
                 for (int blocked_t : TeacherBlockedSlotsForUpStart(all_days, t)) {
@@ -702,8 +712,8 @@ GenerationResult GenerateSchedule(const std::string& output_dir, const Generatio
     // Частичные рабочие окна групп и преподавателей.
     for (int l = 0; l < num_lessons; l++) {
         const int group = lessons[l].group;
-        const int teacher = lessons[l].teacher;
         for (int d = 0; d < num_days; d++) {
+            const int teacher = lessons[l].TeacherOn(all_days[d]);
             for (int s = 0; s < SLOTS_PER_DAY; s++) {
                 const bool group_allowed = !group_work[group] ||
                     WorkScheduleAllows(*group_work[group], all_days[d], s);
@@ -719,8 +729,8 @@ GenerationResult GenerateSchedule(const std::string& output_dir, const Generatio
     // Loginova's ordinary informatics rows may use at most two consecutive
     // pairs for one group/subgroup. LPZ rows are intentionally excluded.
     for (int l = 0; l < num_lessons; l++) {
-        if (!HasLoginovaOrdinaryConsecutiveCap(lessons[l])) continue;
         for (int d = 0; d < num_days; d++) {
+            if (!HasLoginovaOrdinaryConsecutiveCap(lessons[l], all_days[d])) continue;
             for (int s = 0; s <= SLOTS_PER_DAY - 3; s++) {
                 model.AddLessOrEqual(
                     x[l][d * SLOTS_PER_DAY + s] +
@@ -914,7 +924,7 @@ GenerationResult GenerateSchedule(const std::string& output_dir, const Generatio
             LinearExpr sum;
 
             for (int l = 0; l < num_lessons; l++) {
-                if (lessons[l].teacher == teacher) {
+                if (lessons[l].TeacherOn(all_days[t / SLOTS_PER_DAY]) == teacher) {
                     sum += x[l][t];
                 }
             }
@@ -980,7 +990,10 @@ GenerationResult GenerateSchedule(const std::string& output_dir, const Generatio
                         week_pairs += teacher_busy[teacher.id][d * SLOTS_PER_DAY + s];
                 }
             model.AddLessOrEqual(work_days, teacher.max_work_days_per_week);
-            if (w < static_cast<int>(weekly_load.size()))
+            const bool has_replacements = std::any_of(lessons.begin(), lessons.end(), [&](const auto& lesson) {
+                return !lesson.date_teachers.empty() && lesson.SchedulingTeachers().count(teacher.id);
+            });
+            if (!has_replacements && w < static_cast<int>(weekly_load.size()))
                 model.AddEquality(week_pairs, weekly_load[w]);
         }
     }
@@ -1002,12 +1015,10 @@ GenerationResult GenerateSchedule(const std::string& output_dir, const Generatio
 
     for (const auto& blk : blocks) {
         int l = blk.lesson_id;
-        int teacher = lessons[l].teacher;
-
-        if (teacher < 0 || teacher >= TEACHERS) continue;
-
         for (int i = 0; i < static_cast<int>(blk.possible_starts.size()); i++) {
             int start_t = blk.possible_starts[i];
+            const int teacher = lessons[l].TeacherOn(all_days[start_t / SLOTS_PER_DAY]);
+            if (teacher < 0 || teacher >= TEACHERS) continue;
             std::vector<int> blocked_slots = TeacherBlockedSlotsForUpStart(
                 all_days,
                 start_t
@@ -1021,7 +1032,7 @@ GenerationResult GenerateSchedule(const std::string& output_dir, const Generatio
                         continue;
                     }
 
-                    if (lessons[other].teacher == teacher) {
+                    if (lessons[other].TeacherOn(all_days[blocked_t / SLOTS_PER_DAY]) == teacher) {
                         ordinary_teacher_lessons += x[other][blocked_t];
                     }
                 }
@@ -1045,7 +1056,7 @@ GenerationResult GenerateSchedule(const std::string& output_dir, const Generatio
             up_start_refs.push_back({
                 b,
                 i,
-                lesson.teacher,
+                lesson.TeacherOn(all_days[day]),
                 start_t,
                 UpIntervalForStartSlot(all_days[day], start_t % SLOTS_PER_DAY)
             });
@@ -1181,7 +1192,7 @@ GenerationResult GenerateSchedule(const std::string& output_dir, const Generatio
                 }
                 LinearExpr adjusted = day_sum;
                 for (const auto& blk : blocks) {
-                    if (lessons[blk.lesson_id].teacher != teacher) continue;
+                    if (lessons[blk.lesson_id].TeacherOn(all_days[d]) != teacher) continue;
                     for (int i = 0; i < static_cast<int>(blk.possible_starts.size()); ++i)
                         if (blk.possible_starts[i] / SLOTS_PER_DAY == d)
                             adjusted += blk.start_vars[i];
@@ -1245,9 +1256,8 @@ GenerationResult GenerateSchedule(const std::string& output_dir, const Generatio
 
     for (int l = 0; l < num_lessons; l++) {
         int group = lessons[l].group;
-        int teacher = lessons[l].teacher;
-
         for (int d = 0; d < num_days; d++) {
+            const int teacher = lessons[l].TeacherOn(all_days[d]);
             for (int s = 0; s < SLOTS_PER_DAY; s++) {
                 int t = d * SLOTS_PER_DAY + s;
 
@@ -1707,12 +1717,12 @@ static WeeklyPreflightResult BuildScopedDailyPreflight(
             for (const auto& lesson : lessons) {
                 if (lesson.total_slots <= 0 || !LessonAffectsPart(lesson, group.id, part) ||
                     !LessonCalendarAllows(lesson, day)) continue;
-                const auto teacher = teacher_by_id.find(lesson.teacher);
+                const auto teacher = teacher_by_id.find(lesson.TeacherOn(day));
                 if (teacher == teacher_by_id.end()) continue;
                 for (int slot = 0; slot < SLOTS_PER_DAY && !candidate; ++slot) {
                     if (!WorkScheduleAllows(group.work_schedule, day, slot) ||
                         !WorkScheduleAllows(teacher->second->work_schedule, day, slot) ||
-                        !IsAvailable(day, slot, lesson.teacher, teacher_unavailable)) continue;
+                        !IsAvailable(day, slot, lesson.TeacherOn(day), teacher_unavailable)) continue;
                     if (lesson.is_block) {
                         if (!IsAllowedUpStartSlot(day, slot)) continue;
                         bool interval_open = true;
@@ -1720,7 +1730,7 @@ static WeeklyPreflightResult BuildScopedDailyPreflight(
                             interval_open = interval_open &&
                                 WorkScheduleAllows(group.work_schedule, day, blocked) &&
                                 WorkScheduleAllows(teacher->second->work_schedule, day, blocked) &&
-                                IsAvailable(day, blocked, lesson.teacher, teacher_unavailable);
+                                IsAvailable(day, blocked, lesson.TeacherOn(day), teacher_unavailable);
                         if (!interval_open) continue;
                     }
                     candidate = true;
@@ -1818,8 +1828,8 @@ static WeeklyPreflightResult BuildWeeklyPreflight(
                 if (LessonAffectsPart(lesson, lesson.group, p))
                     group_part_demand[lesson.group][p] += occupied;
             }
-            if (lesson.teacher >= 0 && lesson.teacher < TEACHERS)
-                teacher_demand[lesson.teacher] += occupied;
+            const int week_teacher = TeacherForWeek(lesson, all_days, week_day_indices[w]);
+            if (week_teacher >= 0 && week_teacher < TEACHERS) teacher_demand[week_teacher] += occupied;
             if (lesson.fixed_room >= 0 && !lesson.allow_room_substitution)
                 fixed_room_demand[lesson.fixed_room] += occupied;
 
@@ -1835,11 +1845,11 @@ static WeeklyPreflightResult BuildWeeklyPreflight(
                         const bool group_ok = !group_work[lesson.group] ||
                             (WorkScheduleAllows(*group_work[lesson.group], date, s) &&
                              WorkScheduleAllows(*group_work[lesson.group], date, s + 1));
-                        const bool teacher_ok = lesson.teacher < 0 || !teacher_work[lesson.teacher] ||
-                            (WorkScheduleAllows(*teacher_work[lesson.teacher], date, s) &&
-                             WorkScheduleAllows(*teacher_work[lesson.teacher], date, s + 1) &&
-                             IsAvailable(date, s, lesson.teacher, teacher_unavailable) &&
-                             IsAvailable(date, s + 1, lesson.teacher, teacher_unavailable));
+                        const bool teacher_ok = lesson.TeacherOn(date) < 0 || !teacher_work[lesson.TeacherOn(date)] ||
+                            (WorkScheduleAllows(*teacher_work[lesson.TeacherOn(date)], date, s) &&
+                             WorkScheduleAllows(*teacher_work[lesson.TeacherOn(date)], date, s + 1) &&
+                             IsAvailable(date, s, lesson.TeacherOn(date), teacher_unavailable) &&
+                             IsAvailable(date, s + 1, lesson.TeacherOn(date), teacher_unavailable));
                         if (group_ok && teacher_ok)
                             possible_positions += lesson.is_block ? 1 : 2;
                     }
@@ -1847,9 +1857,9 @@ static WeeklyPreflightResult BuildWeeklyPreflight(
                     for (int s = 0; s < SLOTS_PER_DAY; s++) {
                         const bool group_ok = !group_work[lesson.group] ||
                             WorkScheduleAllows(*group_work[lesson.group], date, s);
-                        const bool teacher_ok = lesson.teacher < 0 || !teacher_work[lesson.teacher] ||
-                            (WorkScheduleAllows(*teacher_work[lesson.teacher], date, s) &&
-                             IsAvailable(date, s, lesson.teacher, teacher_unavailable));
+                        const bool teacher_ok = lesson.TeacherOn(date) < 0 || !teacher_work[lesson.TeacherOn(date)] ||
+                            (WorkScheduleAllows(*teacher_work[lesson.TeacherOn(date)], date, s) &&
+                             IsAvailable(date, s, lesson.TeacherOn(date), teacher_unavailable));
                         if (group_ok && teacher_ok) possible_positions++;
                     }
                 }
@@ -1928,7 +1938,7 @@ static WeeklyPreflightResult BuildWeeklyPreflight(
     for (const auto& [teacher, minimum_pairs] : teacher_period_targets) {
         int period_demand = 0;
         for (int l = 0; l < static_cast<int>(lessons.size()); l++) {
-            if (lessons[l].teacher != teacher || lessons[l].is_pp) continue;
+            if (!lessons[l].SchedulingTeachers().count(teacher) || lessons[l].is_pp) continue;
             int lesson_demand = 0;
             for (int value : lesson_week_quota[l]) lesson_demand += value;
             period_demand += lesson_demand;
@@ -2044,11 +2054,11 @@ static QuotaBalanceResult BalanceWeeklyQuotas(
                             const bool group_ok = !group_work[lessons[l].group] ||
                                 (WorkScheduleAllows(*group_work[lessons[l].group], date, s) &&
                                  WorkScheduleAllows(*group_work[lessons[l].group], date, s + 1));
-                            const bool teacher_ok = lessons[l].teacher < 0 || !teacher_work[lessons[l].teacher] ||
-                                (WorkScheduleAllows(*teacher_work[lessons[l].teacher], date, s) &&
-                                 WorkScheduleAllows(*teacher_work[lessons[l].teacher], date, s + 1) &&
-                                 IsAvailable(date, s, lessons[l].teacher, teacher_unavailable) &&
-                                 IsAvailable(date, s + 1, lessons[l].teacher, teacher_unavailable));
+                            const bool teacher_ok = lessons[l].TeacherOn(date) < 0 || !teacher_work[lessons[l].TeacherOn(date)] ||
+                                (WorkScheduleAllows(*teacher_work[lessons[l].TeacherOn(date)], date, s) &&
+                                 WorkScheduleAllows(*teacher_work[lessons[l].TeacherOn(date)], date, s + 1) &&
+                                 IsAvailable(date, s, lessons[l].TeacherOn(date), teacher_unavailable) &&
+                                 IsAvailable(date, s + 1, lessons[l].TeacherOn(date), teacher_unavailable));
                             if (group_ok && teacher_ok)
                                 max_positions += lessons[l].is_block ? 1 : 2;
                         }
@@ -2056,9 +2066,9 @@ static QuotaBalanceResult BalanceWeeklyQuotas(
                         for (int s = 0; s < SLOTS_PER_DAY; s++) {
                             const bool group_ok = !group_work[lessons[l].group] ||
                                 WorkScheduleAllows(*group_work[lessons[l].group], date, s);
-                            const bool teacher_ok = lessons[l].teacher < 0 || !teacher_work[lessons[l].teacher] ||
-                                (WorkScheduleAllows(*teacher_work[lessons[l].teacher], date, s) &&
-                                 IsAvailable(date, s, lessons[l].teacher, teacher_unavailable));
+                            const bool teacher_ok = lessons[l].TeacherOn(date) < 0 || !teacher_work[lessons[l].TeacherOn(date)] ||
+                                (WorkScheduleAllows(*teacher_work[lessons[l].TeacherOn(date)], date, s) &&
+                                 IsAvailable(date, s, lessons[l].TeacherOn(date), teacher_unavailable));
                             if (group_ok && teacher_ok) max_positions++;
                         }
                     }
@@ -2123,7 +2133,7 @@ static QuotaBalanceResult BalanceWeeklyQuotas(
                         IsAvailable(all_days[gd], s, teacher, teacher_unavailable)) capacity++;
             LinearExpr demand;
             for (int l = 0; l < L; l++) {
-                if (lessons[l].teacher == teacher)
+                if (TeacherForWeek(lessons[l], all_days, week_day_indices[w]) == teacher)
                     demand += q[l][w];
             }
             model.AddLessOrEqual(demand, capacity);
@@ -2339,9 +2349,9 @@ static bool WriteScheduleFiles(
 
     for (int l = 0; l < num_lessons; l++) {
         int g = lessons[l].group;
-        int teacher = lessons[l].teacher;
         int base_sg = g * PARTS_PER_GROUP;
         for (int t = 0; t < total_slots; t++) {
+            const int teacher = lessons[l].TeacherOn(all_days[t / SLOTS_PER_DAY]);
             if (!global_x_vals[l][t]) continue;
             gbusy_v[g][t] = 1;
             if (teacher >= 0) tbusy_v[teacher][t] = 1;
@@ -2365,8 +2375,8 @@ static bool WriteScheduleFiles(
     }
     for (int l = 0; l < num_lessons; l++) {
         int g = lessons[l].group;
-        int teacher = lessons[l].teacher;
         for (int d = 0; d < num_days; d++) {
+            const int teacher = lessons[l].TeacherOn(all_days[d]);
             for (int s = 0; s < SLOTS_PER_DAY; s++) {
                 if (global_x_vals[l][d * SLOTS_PER_DAY + s]) {
                     if (teacher >= 0) t_campus_v[teacher][d] = g_campus_v[g][d];
@@ -2634,8 +2644,8 @@ static WeekSolveResult SolveOneWeek(
         if (quotas[l] <= 0) continue;
         if (lessons[l].group >= 0 && lessons[l].group < GROUPS)
             active_group_lessons[lessons[l].group].push_back(l);
-        if (lessons[l].teacher >= 0 && lessons[l].teacher < TEACHERS)
-            active_teacher_lessons[lessons[l].teacher].push_back(l);
+        for (int teacher : lessons[l].SchedulingTeachers())
+            if (teacher >= 0 && teacher < TEACHERS) active_teacher_lessons[teacher].push_back(l);
         if (lessons[l].fixed_room >= 0 && !lessons[l].allow_room_substitution)
             active_room_lessons[lessons[l].fixed_room].push_back(l);
     }
@@ -2659,7 +2669,7 @@ static WeekSolveResult SolveOneWeek(
             for (int s = 0; s < SLOTS_PER_DAY - 1; s++) {
                 if (!IsAllowedUpStartSlot(week_days[ld], s)) continue;
                 const int group = lessons[l].group;
-                const int teacher = lessons[l].teacher;
+                const int teacher = lessons[l].TeacherOn(week_days[ld]);
                 const int start = ld * SLOTS_PER_DAY + s;
                 bool available_for_interval = true;
                 for (int blocked : TeacherBlockedSlotsForUpStart(week_days, start)) {
@@ -2695,8 +2705,8 @@ static WeekSolveResult SolveOneWeek(
     for (int l = 0; l < num_lessons; l++) {
         if (quotas[l] == 0) continue;
         const int group = lessons[l].group;
-        const int teacher = lessons[l].teacher;
         for (int ld = 0; ld < W; ld++) {
+            const int teacher = lessons[l].TeacherOn(week_days[ld]);
             for (int s = 0; s < SLOTS_PER_DAY; s++) {
                 const bool group_allowed = group < 0 || group >= GROUPS || !group_work[group] ||
                     WorkScheduleAllows(*group_work[group], week_days[ld], s);
@@ -2710,8 +2720,9 @@ static WeekSolveResult SolveOneWeek(
 
     // The same two-consecutive-pair cap is applied to the local week model.
     for (int l = 0; l < num_lessons; l++) {
-        if (quotas[l] == 0 || !HasLoginovaOrdinaryConsecutiveCap(lessons[l])) continue;
+        if (quotas[l] == 0) continue;
         for (int ld = 0; ld < W; ld++) {
+            if (!HasLoginovaOrdinaryConsecutiveCap(lessons[l], week_days[ld])) continue;
             for (int s = 0; s <= SLOTS_PER_DAY - 3; s++) {
                 model.AddLessOrEqual(
                     x[l][ld * SLOTS_PER_DAY + s] +
@@ -2812,10 +2823,10 @@ static WeekSolveResult SolveOneWeek(
     }
 
     for (int l = 0; l < num_lessons; l++) {
-        if (quotas[l] == 0 || lessons[l].teacher < 0) continue;
+        if (quotas[l] == 0) continue;
         for (int ld = 0; ld < W; ld++) {
             for (int s = 0; s < SLOTS_PER_DAY; s++) {
-                if (IsAvailable(week_days[ld], s, lessons[l].teacher, teacher_unavailable)) continue;
+                if (IsAvailable(week_days[ld], s, lessons[l].TeacherOn(week_days[ld]), teacher_unavailable)) continue;
                 model.AddEquality(x[l][ld * SLOTS_PER_DAY + s], 0);
             }
         }
@@ -2994,7 +3005,7 @@ static WeekSolveResult SolveOneWeek(
         for (int lt = 0; lt < local_slots; lt++) {
             LinearExpr ordinary_sum;
             for (int l : active_teacher_lessons[teacher])
-                if (!lessons[l].is_block) ordinary_sum += x[l][lt];
+                if (!lessons[l].is_block && lessons[l].TeacherOn(week_days[lt / SLOTS_PER_DAY]) == teacher) ordinary_sum += x[l][lt];
             // Ordinary pair rows still share the same exact bell interval.
             model.AddLessOrEqual(ordinary_sum, 1);
             LinearExpr sum = ordinary_sum;
@@ -3009,7 +3020,7 @@ static WeekSolveResult SolveOneWeek(
             // teacher_busy is only the OR-style occupancy indicator used by
             // daily limits and quality rules.
             for (const auto& blk : blocks) {
-                if (lessons[blk.lesson_id].teacher != teacher) continue;
+                if (lessons[blk.lesson_id].TeacherOn(week_days[lt / SLOTS_PER_DAY]) != teacher) continue;
                 for (int i = 0; i < static_cast<int>(blk.possible_starts.size()); ++i) {
                     const auto occupied = TeacherBlockedSlotsForUpStart(
                         week_days, blk.possible_starts[i]);
@@ -3032,16 +3043,16 @@ static WeekSolveResult SolveOneWeek(
 
     // ── Преподаватель заблокирован во время УП ────────────────────────────
     for (const auto& blk : blocks) {
-        int teacher = lessons[blk.lesson_id].teacher;
-        if (teacher < 0 || teacher >= TEACHERS) continue;
         for (int i = 0; i < static_cast<int>(blk.possible_starts.size()); i++) {
             int start_lt = blk.possible_starts[i];
+            const int teacher = lessons[blk.lesson_id].TeacherOn(week_days[start_lt / SLOTS_PER_DAY]);
+            if (teacher < 0 || teacher >= TEACHERS) continue;
             // week_days используется как локальный all_days → возвращает локальные слоты
             std::vector<int> blocked = TeacherBlockedSlotsForUpStart(week_days, start_lt);
             for (int blt : blocked) {
                 LinearExpr ord;
                 for (int other : active_teacher_lessons[teacher]) {
-                    if (!lessons[other].is_block) ord += x[other][blt];
+                    if (!lessons[other].is_block && lessons[other].TeacherOn(week_days[blt / SLOTS_PER_DAY]) == teacher) ord += x[other][blt];
                 }
                 model.AddEquality(ord, 0).OnlyEnforceIf(blk.start_vars[i]);
             }
@@ -3054,10 +3065,10 @@ static WeekSolveResult SolveOneWeek(
         std::vector<UpRef> up_refs;
         for (int b = 0; b < static_cast<int>(blocks.size()); b++) {
             const auto& blk = blocks[b];
-            int teacher = lessons[blk.lesson_id].teacher;
             for (int i = 0; i < static_cast<int>(blk.possible_starts.size()); i++) {
                 int lt = blk.possible_starts[i];
                 int ld = lt / SLOTS_PER_DAY;
+                const int teacher = lessons[blk.lesson_id].TeacherOn(week_days[ld]);
                 up_refs.push_back({b, i, teacher, lt,
                     UpIntervalForStartSlot(week_days[ld], lt % SLOTS_PER_DAY)});
             }
@@ -3244,11 +3255,11 @@ static WeekSolveResult SolveOneWeek(
                     for (int s = 0; s < SLOTS_PER_DAY; ++s) whole_group_load += x[l][ld * SLOTS_PER_DAY + s];
                 if (rule.whole_group_only && lessons[l].subgroup >= 0)
                     for (int s = 0; s < SLOTS_PER_DAY; ++s) model.AddEquality(x[l][ld * SLOTS_PER_DAY + s], 0);
-                if (rule.only_teacher && lessons[l].teacher != rule.teacher_id)
+                if (rule.only_teacher && lessons[l].TeacherOn(week_days[ld]) != rule.teacher_id)
                     for (int s = 0; s < SLOTS_PER_DAY; ++s) model.AddEquality(x[l][ld * SLOTS_PER_DAY + s], 0);
                 if (rule.common_slot > 0 && lessons[l].subgroup < 0 && !lessons[l].is_block)
                     common += x[l][ld * SLOTS_PER_DAY + rule.common_slot - 1];
-                if (rule.minimum_teacher_pairs > 0 && lessons[l].teacher == rule.teacher_id)
+                if (rule.minimum_teacher_pairs > 0 && lessons[l].TeacherOn(week_days[ld]) == rule.teacher_id)
                     for (int s = 0; s < SLOTS_PER_DAY; ++s) teacher_load += x[l][ld * SLOTS_PER_DAY + s];
             }
             if (rule.common_slot > 0) model.AddEquality(common, 1);
@@ -3333,7 +3344,7 @@ static WeekSolveResult SolveOneWeek(
                     ds += teacher_busy[teacher][ld * SLOTS_PER_DAY + s];
                 LinearExpr adjusted = ds;
                 for (const auto& blk : blocks) {
-                    if (lessons[blk.lesson_id].teacher != teacher) continue;
+                    if (lessons[blk.lesson_id].TeacherOn(week_days[ld]) != teacher) continue;
                     for (int i = 0; i < static_cast<int>(blk.possible_starts.size()); ++i)
                         if (blk.possible_starts[i] / SLOTS_PER_DAY == ld)
                             adjusted += blk.start_vars[i];
@@ -3458,8 +3469,8 @@ static WeekSolveResult SolveOneWeek(
     for (int l = 0; l < num_lessons; l++) {
             if (quotas[l] == 0) continue;
             int g = lessons[l].group;
-            int teacher = lessons[l].teacher;
             for (int ld = 0; ld < W; ld++) {
+                const int teacher = lessons[l].TeacherOn(week_days[ld]);
                 for (int s = 0; s < SLOTS_PER_DAY; s++) {
                     int lt = ld * SLOTS_PER_DAY + s;
                     if (teacher >= 0)
@@ -3489,7 +3500,7 @@ static WeekSolveResult SolveOneWeek(
                 for (const RoomData& room : rooms) {
                     if (!room.active || room.access_mode == "blocked" || room.campus < 0 || room.campus > 1) continue;
                     if (!lesson.CampusesOn(week_days[ld]).count(static_cast<Campus>(room.campus))) continue;
-                    if (room.access_mode == "exclusive" && !room.responsible_teacher_ids.count(lesson.teacher)) continue;
+                    if (room.access_mode == "exclusive" && !room.responsible_teacher_ids.count(lesson.TeacherOn(week_days[ld]))) continue;
                     if (!OperationalRoomPolicyAllows(room, lesson, week_days[ld])) continue;
                     if (room.purpose != lesson.RoomPurposeOn(week_days[ld])) continue;
                     if (!WorkScheduleAllows(room.work_schedule, week_days[ld], s)) continue;
@@ -4217,10 +4228,13 @@ GenerationResult GenerateScheduleWeekly(
                 if (!GroupRegularCalendarAllows(*group, day) ||
                     !IsAvailable(day, group->id, input_data.unavailable)) continue;
                 bool group_open = false, teacher_open = false;
+                const auto actual = std::find_if(input_data.teachers.begin(), input_data.teachers.end(),
+                    [&](const auto& t) { return t.id == lesson.TeacherOn(day); });
                 for (int slot = 0; slot < SLOTS_PER_DAY; slot++) {
                     group_open = group_open || WorkScheduleAllows(group->work_schedule, day, slot);
-                    teacher_open = teacher_open || (WorkScheduleAllows(teacher->work_schedule, day, slot) &&
-                        IsAvailable(day, slot, teacher->id, input_data.teacher_unavailable));
+                    teacher_open = teacher_open || (actual != input_data.teachers.end() && actual->scheduling_active &&
+                        WorkScheduleAllows(actual->work_schedule, day, slot) &&
+                        IsAvailable(day, slot, actual->id, input_data.teacher_unavailable));
                 }
                 if (group_open && teacher_open) eligible.push_back(day);
             }
@@ -4298,7 +4312,7 @@ GenerationResult GenerateScheduleWeekly(
             for (const auto& [key, rule] : input_data.group_day_rules)
                 if (key.first == lesson.group && input_data.start_date <= key.second && key.second <= input_data.end_date &&
                     ((rule.minimum_pairs > MAX_STUDENT_PAIRS_PER_DAY && lesson.subgroup < 0) ||
-                     (rule.minimum_teacher_pairs > 0 && lesson.teacher == rule.teacher_id)))
+                     (rule.minimum_teacher_pairs > 0 && lesson.TeacherOn(key.second) == rule.teacher_id)))
                     ++explicit_days;
             if (explicit_days > 0)
                 lesson.total_slots = std::min(units, explicit_days * max_units_per_day) * step;
@@ -4382,6 +4396,16 @@ GenerationResult GenerateScheduleWeekly(
         // for completion by other teachers.
         if (options.lock_source == "manual" && !options.blocked_teacher_ids.empty()) {
             for (Lesson& lesson : input_data.lessons) {
+                if (!lesson.date_teachers.empty()) {
+                    for (const auto& date : GenerateSchoolDays(input_data.start_date, input_data.end_date)) {
+                        if (!options.blocked_teacher_ids.count(lesson.TeacherOn(date))) continue;
+                        const bool locked_day = std::any_of(options.locked.begin(), options.locked.end(), [&](const auto& lock) {
+                            return lock.lesson_id == lesson.id && lock.date == date;
+                        });
+                        if (!locked_day) lesson.excluded_dates.insert(date);
+                    }
+                    continue;
+                }
                 if (!options.blocked_teacher_ids.count(lesson.teacher)) continue;
                 const auto locked = locked_counts.find(lesson.id);
                 lesson.total_slots = locked == locked_counts.end() ? 0 : locked->second;
@@ -4410,7 +4434,7 @@ GenerationResult GenerateScheduleWeekly(
                             !LessonAffectsPart(lesson, group.id, part) ||
                             !LessonCalendarAllows(lesson, input_data.start_date)) continue;
                         const auto teacher = std::find_if(input_data.teachers.begin(), input_data.teachers.end(),
-                            [&](const TeacherData& value) { return value.id == lesson.teacher; });
+                            [&](const TeacherData& value) { return value.id == lesson.TeacherOn(input_data.start_date); });
                         if (teacher == input_data.teachers.end()) continue;
                         found = true;
                         for (int slot = 0; slot < SLOTS_PER_DAY; ++slot) {
@@ -4452,7 +4476,8 @@ GenerationResult GenerateScheduleWeekly(
             // INFEASIBLE solely because of a day-off/unavailability marker.
             for (const Lesson& lesson : input_data.lessons)
                 if (day_emergency_groups.count(lesson.group) && lesson.total_slots > 0)
-                    day_emergency_teachers.insert(lesson.teacher);
+                    if (!lesson.date_teachers.count(input_data.start_date))
+                        day_emergency_teachers.insert(lesson.TeacherOn(input_data.start_date));
 
             std::set<int> all_slots;
             for (int slot = 1; slot <= SLOTS_PER_DAY; ++slot) all_slots.insert(slot);
@@ -5327,7 +5352,7 @@ GenerationResult GenerateScheduleWeekly(
                 for (int day = 0; day < num_days && !changed; ++day) {
                     std::set<int> busy;
                     for (int l = 0; l < num_lessons; ++l) {
-                        if (lessons[l].teacher != teacher.id) continue;
+                        if (lessons[l].TeacherOn(all_days[day]) != teacher.id) continue;
                         for (int slot = 0; slot < SLOTS_PER_DAY; ++slot)
                             if (global_x_vals[l][day * SLOTS_PER_DAY + slot]) busy.insert(slot);
                     }
@@ -5338,7 +5363,7 @@ GenerationResult GenerateScheduleWeekly(
                             if (!busy.count(slot)) { gap = slot; break; }
                     bool has_up = false;
                     for (int l = 0; l < num_lessons; ++l) {
-                        if (lessons[l].teacher != teacher.id || !lessons[l].is_block) continue;
+                        if (lessons[l].TeacherOn(all_days[day]) != teacher.id || !lessons[l].is_block) continue;
                         for (int slot = 0; slot < SLOTS_PER_DAY; ++slot)
                             has_up = has_up || global_x_vals[l][day * SLOTS_PER_DAY + slot];
                     }
@@ -5350,7 +5375,7 @@ GenerationResult GenerateScheduleWeekly(
                     const bool drop_left = below_teacher_minimum ||
                         left <= static_cast<int>(busy.size()) - left;
                     for (int l = 0; l < num_lessons; ++l) {
-                        if (lessons[l].teacher != teacher.id) continue;
+                        if (lessons[l].TeacherOn(all_days[day]) != teacher.id) continue;
                         int removed = 0;
                         for (int slot = 0; slot < SLOTS_PER_DAY; ++slot) {
                             if (!below_teacher_minimum && (slot < gap) != drop_left) continue;

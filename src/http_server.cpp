@@ -943,6 +943,7 @@ JsonParseResult LoadRoot() {
 }
 
 bool SaveRoot(const JsonValue& root, std::string& error) {
+    if (!ValidateTeacherReplacements(root, error)) return false;
     return SaveDataJson(root, error);
 }
 
@@ -981,6 +982,7 @@ std::string PostArrayEndpoint(const std::string& array_name, const std::string& 
     JsonValue& saved_item = parsed.value.At(array_name).array_value.back();
 
     std::string error;
+    if (!ValidateTeacherReplacements(parsed.value, error)) return ErrorJson(400, "Bad Request", error);
     if (!SaveRoot(parsed.value, error)) return ErrorJson(500, "Internal Server Error", error);
     JsonValue envelope = ResponseEnvelope(true, "Сохранено. Для применения вызови POST /api/schedule/regenerate.", &saved_item);
     return CreatedJson(envelope);
@@ -1009,6 +1011,7 @@ std::string PutArrayEndpoint(const std::string& array_name, int id, const std::s
     existing = FindObjectById(parsed.value.At(array_name), id);
 
     std::string error;
+    if (!ValidateTeacherReplacements(parsed.value, error)) return ErrorJson(400, "Bad Request", error);
     if (!SaveRoot(parsed.value, error)) return ErrorJson(500, "Internal Server Error", error);
     JsonValue envelope = ResponseEnvelope(true, "Обновлено. Для применения вызови POST /api/schedule/regenerate.", existing);
     return OkJson(envelope);
@@ -1035,6 +1038,7 @@ std::string PatchArrayEndpoint(const std::string& array_name, int id, const std:
     existing->At("id") = JsonValue::MakeNumber(id);
 
     std::string error;
+    if (!ValidateTeacherReplacements(parsed.value, error)) return ErrorJson(400, "Bad Request", error);
     if (!SaveRoot(parsed.value, error)) return ErrorJson(500, "Internal Server Error", error);
     JsonValue envelope = ResponseEnvelope(true, "Обновлено. Для применения вызови POST /api/schedule/regenerate.", existing);
     return OkJson(envelope);

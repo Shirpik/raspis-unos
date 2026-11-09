@@ -1312,7 +1312,36 @@ bool LoadScheduleInputData(ScheduleInputData& data, std::string& error) {
     return LoadScheduleInputDataFromRoot(parsed.value, data, error);
 }
 
+bool ValidateTeacherReplacements(const JsonValue& root, std::string& error) {
+    std::set<int> teachers;
+    for (const auto& t : root.At("teachers").array_value) teachers.insert(JsonInt(t, "id", -1));
+    for (const auto& lesson : root.At("lessons").array_value) {
+        const auto& periods = lesson.At("teacher_replacements");
+        if (periods.IsNull()) continue;
+        const auto label = JsonString(lesson, "name", "Предмет") + ": ";
+        if (!periods.IsArray()) { error = label + "замены должны быть списком"; return false; }
+        std::vector<std::pair<Date, Date>> seen;
+        for (const auto& p : periods.array_value) {
+            Date from{}, to{};
+            const int teacher = JsonInt(p, "teacher", -1);
+            if (!ParseDateIso(JsonString(p, "from", ""), from) ||
+                !ParseDateIso(JsonString(p, "to", ""), to) || to < from || DaysBetween(from, to) > 3660) {
+                error = label + "укажите корректный период временной замены (не более 10 лет)"; return false;
+            }
+            if (!teachers.count(teacher) || teacher == JsonInt(lesson, "teacher", -1)) {
+                error = label + "выберите другого существующего преподавателя"; return false;
+            }
+            for (const auto& old : seen) if (from <= old.second && old.first <= to) {
+                error = label + "периоды временных замен пересекаются"; return false;
+            }
+            seen.push_back({from,to});
+        }
+    }
+    return true;
+}
+
 bool LoadScheduleInputDataFromRoot(const JsonValue& source, ScheduleInputData& data, std::string& error, bool update_runtime) {
+    if (!ValidateTeacherReplacements(source, error)) return false;
     JsonValue root = source;
     NormalizeDataRoot(root);
     if (!root.IsObject()) {
@@ -1712,7 +1741,7 @@ bool LoadScheduleInputDataFromRoot(const JsonValue& source, ScheduleInputData& d
         const auto inactive_teacher = std::find_if(data.teachers.begin(), data.teachers.end(), [&](const auto& teacher) {
             return teacher.id == source_teacher && !teacher.scheduling_active;
         });
-        if (inactive_teacher != data.teachers.end()) continue;
+        if (inactive_teacher != data.teachers.end() && item.At("teacher_replacements").array_value.empty()) continue;
         Lesson lesson;
         lesson.id = JsonInt(item, "id", static_cast<int>(data.lessons.size()));
         for (const auto& value : item.At("excluded_dates").array_value) {
@@ -1727,6 +1756,18 @@ bool LoadScheduleInputDataFromRoot(const JsonValue& source, ScheduleInputData& d
             lesson.teacher = tv.IsNumber() ? static_cast<int>(std::llround(tv.number_value)) : -1;
         }
         lesson.total_slots = JsonInt(item, "total_slots", 1);
+        for (const auto& period : item.At("teacher_replacements").array_value) {
+            Date from{}, to{};
+            ParseDateIso(JsonString(period, "from", ""), from);
+            ParseDateIso(JsonString(period, "to", ""), to);
+            for (Date day = from; day <= to; day = NextDay(day))
+                lesson.date_teachers[day] = JsonInt(period, "teacher", -1);
+        }
+        if (inactive_teacher != data.teachers.end() || !lesson.date_teachers.empty())
+            for (Date day = data.start_date; day <= data.end_date; day = NextDay(day))
+                for (const auto& teacher : data.teachers)
+                    if (teacher.id == lesson.TeacherOn(day) && !teacher.scheduling_active)
+                        lesson.excluded_dates.insert(day);
         lesson.name = JsonString(item, "name", "Занятие");
         lesson.subject_id = JsonInt(item, "subject_id", -1);
         lesson.is_lab = JsonBool(item, "is_lab", false);
@@ -1762,8 +1803,8 @@ bool LoadScheduleInputDataFromRoot(const JsonValue& source, ScheduleInputData& d
                 const auto teacher_it = std::find_if(data.teachers.begin(), data.teachers.end(),
                     [&](const auto& teacher) { return teacher.id == lesson.teacher; });
                 const auto teacher = teacher_it == data.teachers.end() ? nullptr : &*teacher_it;
-                available_days = GroupTeachingCapacity(data, *group_it, data.start_date, deadline, teacher);
-                period_capacity = teacher ? GroupTeachingCapacity(data, *group_it, data.start_date, std::min(data.end_date, deadline), teacher) : 0;
+                available_days = GroupTeachingCapacity(data, *group_it, data.start_date, deadline, teacher, 1, &lesson);
+                period_capacity = teacher ? GroupTeachingCapacity(data, *group_it, data.start_date, std::min(data.end_date, deadline), teacher, 1, &lesson) : 0;
             }
             const int remaining_pairs = std::max(0, total_pairs - confirmed_pairs);
             lesson.total_slots = available_days > 0 ? std::min(remaining_pairs, static_cast<int>(
@@ -1836,6 +1877,14 @@ bool LoadScheduleInputDataFromRoot(const JsonValue& source, ScheduleInputData& d
             lesson.allowed_campuses.clear();
             lesson.allowed_campuses.insert(static_cast<Campus>(room_it->second.campus));
         }
+        for (const auto& replacement : lesson.date_teachers) {
+            if (room_it != rooms_by_id.end()) continue;
+            const auto allowed = teacher_allowed_campuses.find(replacement.second);
+            if (allowed != teacher_allowed_campuses.end() && !allowed->second.empty()) {
+                auto& campuses_on_date = lesson.date_campuses[replacement.first];
+                for (int campus : allowed->second) campuses_on_date.insert(static_cast<Campus>(campus));
+            }
+        }
         data.lessons.push_back(lesson);
     }
 
@@ -1892,14 +1941,15 @@ bool LoadScheduleInputDataFromRoot(const JsonValue& source, ScheduleInputData& d
         }
     }
     for (auto& lesson : data.lessons) {
-        const auto teacher = std::find_if(data.teachers.begin(), data.teachers.end(),
-            [&](const auto& value) { return value.id == lesson.teacher; });
-        if (teacher != data.teachers.end())
-            for (const auto& [date, campus] : teacher->date_campuses)
-                lesson.date_campuses[date] = {static_cast<Campus>(campus)};
+        for (const auto& teacher : data.teachers)
+            for (const auto& [date, campus] : teacher.date_campuses)
+                if (lesson.TeacherOn(date) == teacher.id)
+                    lesson.date_campuses[date] = {static_cast<Campus>(campus)};
         for (const auto& [key, rule] : data.group_day_rules) {
             if (key.first != lesson.group) continue;
             const auto& date = key.second;
+            const auto teacher = std::find_if(data.teachers.begin(), data.teachers.end(),
+                [&](const auto& value) { return value.id == lesson.TeacherOn(date); });
             bool teacher_allows = teacher == data.teachers.end() || teacher->allowed_campuses.empty() ||
                 teacher->allowed_campuses.count(rule.campus);
             if (teacher != data.teachers.end() && teacher->date_campuses.count(date))
@@ -1967,6 +2017,9 @@ JsonValue BuildDataAudit(const JsonValue& source_root) {
     JsonValue root = source_root;
     NormalizeDataRoot(root);
     JsonValue issues = JsonValue::MakeArray();
+    std::string replacement_error;
+    if (!ValidateTeacherReplacements(root, replacement_error))
+        AddIssue(issues, "error", "teacher_replacement_invalid", replacement_error, "lesson", -1);
 
     const JsonValue& groups = root.At("groups");
     const JsonValue& teachers = root.At("teachers");
@@ -2135,6 +2188,7 @@ JsonValue BuildDataAudit(const JsonValue& source_root) {
     }
     for (const JsonValue& room : rooms.array_value) {
         const int id = JsonInt(room, "id", -1);
+        audit_work_schedule(room, "room", id);
         const std::string name = JsonString(room, "name", "");
         register_uid(room, "room");
         if (id < 0 || !room_ids.insert(id).second)
@@ -3124,7 +3178,7 @@ JsonValue BuildTeacherOccupancyReport(const JsonValue& source_root, const std::s
                         const std::string key = std::to_string(lesson_id) + "|" + date + "|" + std::to_string(slot_number);
                         const JsonValue* replacement = !is_class_hour && substitutions.count(key) ? substitutions[key] : nullptr;
                         const int actual_teacher = replacement
-                            ? JsonInt(*replacement, "substitute_teacher", original_teacher) : original_teacher;
+                            ? JsonInt(*replacement, "substitute_teacher", original_teacher) : JsonInt(lesson, "teacher_id", original_teacher);
                         JsonValue item = JsonValue::MakeObject();
                         item.At("teacher_id") = JsonValue::MakeNumber(actual_teacher);
                         item.At("teacher_name") = JsonValue::MakeString(teacher_names[actual_teacher]);
@@ -3138,7 +3192,7 @@ JsonValue BuildTeacherOccupancyReport(const JsonValue& source_root, const std::s
                         item.At("group_id") = JsonValue::MakeNumber(group_id);
                         item.At("group_name") = JsonValue::MakeString(group_names[group_id]);
                         item.At("room") = JsonValue::MakeString(JsonString(lesson, "room_name", ""));
-                        item.At("is_substitution") = JsonValue::MakeBool(replacement != nullptr);
+                        item.At("is_substitution") = JsonValue::MakeBool(actual_teacher != original_teacher);
                         entries.array_value.push_back(item);
                     }
                 }

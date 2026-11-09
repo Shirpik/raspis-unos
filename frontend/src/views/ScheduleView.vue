@@ -413,6 +413,7 @@
                       >
                         <span v-if="lesson.confirmed" class="fact-label">Проведено</span>
                         <span class="cell-subject">{{ lesson.subject }}</span>
+                        <span v-if="lesson.teacherReplacement" class="cell-detail">Временная замена</span>
                         <span v-if="lesson.subgroupLabel" class="cell-detail">{{ lesson.subgroupLabel }}</span>
                         <span v-for="(detail, i) in lesson.details" :key="i" class="cell-detail">{{ detail }}</span>
                         <span
@@ -936,6 +937,7 @@ function getCellLessonRows(groupIndex, dateStr, slotNum) {
       missingRoom: !hasRoom,
       substituted: lesson.room_substituted === true,
       confirmed: lesson.confirmed === true,
+      teacherReplacement: lesson.is_substitution === true,
       substitutionReason: lesson.room_substitution_reason,
     }
   })

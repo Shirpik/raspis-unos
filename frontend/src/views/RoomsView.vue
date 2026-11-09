@@ -86,7 +86,7 @@
             <td><span :class="['badge', room.access_mode === 'exclusive' ? 'badge-warning' : room.access_mode === 'blocked' ? 'badge-muted' : 'badge-success']">{{ accessModeName(room.access_mode) }}</span></td>
             <td><span v-if="responsibleNames(room)" class="owner-list">{{ responsibleNames(room) }}</span><span v-else class="muted">не заданы</span></td>
             <td>{{ room.capacity || 'не указана' }}</td>
-            <td><span v-if="room.available_slots?.length" class="badge badge-muted">{{ room.available_slots.join(', ') }}</span><span v-else class="muted">весь день</span></td>
+            <td><span v-if="room.available_slots?.length" class="badge badge-muted">{{ room.available_slots.join(', ') }}</span><span v-else class="muted">весь день</span><small>{{ roomDays(room) }}</small></td>
             <td><span :class="['badge', room.active === false ? 'badge-muted' : 'badge-success']">{{ room.active === false ? 'не используется' : 'активна' }}</span></td>
             <td class="actions">
               <button class="btn btn-ghost btn-sm" @click="openEdit(room)">
@@ -113,6 +113,8 @@
         <div class="form-group wide"><label class="form-label">Ответственные преподаватели</label><select v-model="form.responsible_teacher_ids" class="form-select owner-select" multiple size="6"><option v-for="teacher in store.teachers" :key="teacher.id" :value="teacher.id">{{ teacher.name }}</option></select><small>Для персональной аудитории хотя бы один ответственный должен быть выбран. Если сотрудника нет в системе, аудитория останется недоступной для всех.</small></div>
         <div class="form-group wide"><label class="form-label">Доступные пары</label><div class="slot-picker"><label v-for="slot in 7" :key="slot" class="form-checkbox"><input v-model="form.available_slots" type="checkbox" :value="slot" /> {{ slot }}</label></div><small>Если ничего не выбрано — кабинет доступен весь учебный день.</small></div>
       </div>
+      <p class="subtitle">Доступность аудитории: отмечайте свободные дни и пары. Неотмеченные пары решатель использовать не будет. Общий список доступных пар выше действует одновременно с этим графиком.</p>
+      <WorkScheduleEditor :schedule="form" />
       <label v-if="form.access_mode !== 'blocked'" class="form-checkbox"><input v-model="form.active" type="checkbox" /> Аудитория доступна для расписания</label>
       <template #footer><button class="btn btn-ghost" @click="modalOpen=false">Отмена</button><button class="btn btn-primary" :disabled="saving || !form.name.trim()" @click="save">{{ saving ? 'Сохраняю…' : 'Сохранить' }}</button></template>
     </Modal>
@@ -123,6 +125,7 @@
 import { computed, onMounted, ref } from 'vue'
 import { DoorOpen, Building2, Plus, Edit2, Trash2 } from 'lucide-vue-next'
 import Modal from '../components/Modal.vue'
+import WorkScheduleEditor from '../components/WorkScheduleEditor.vue'
 import Skeleton from '../components/ui/Skeleton.vue'
 import { api } from '../api/index.js'
 import { useDataStore } from '../stores/data.js'
@@ -134,6 +137,7 @@ const toast = useToast()
 const loading = ref(true), saving = ref(false), modalOpen = ref(false), editItem = ref(null)
 const allocationReport = ref(null)
 const form = ref(emptyRoomForm())
+const roomDays = room => room.work_days ? room.work_days.filter(d => d.enabled && (!Array.isArray(d.slots) || d.slots.length)).map(d => ['','ПН','ВТ','СР','ЧТ','ПТ','СБ','ВС'][d.day]).join(', ') || 'Все дни закрыты' : 'ПН–СБ'
 const activeCount = computed(() => store.rooms.filter(r => r.active !== false && r.access_mode !== 'blocked').length)
 const exclusiveCount = computed(() => store.rooms.filter(r => r.access_mode === 'exclusive').length)
 const blockedCount = computed(() => store.rooms.filter(r => r.access_mode === 'blocked' || r.active === false).length)
@@ -154,6 +158,10 @@ async function loadAllocation() { const r = await api.schedule.rooms(); allocati
 function openAdd() { editItem.value = null; form.value = emptyRoomForm(); modalOpen.value = true }
 function openEdit(r) { editItem.value = r; form.value = roomFormFromEntity(r); modalOpen.value = true }
 async function save() {
+  const period=form.value.work_period
+  if ((!!period.from !== !!period.to) || (period.from && period.to < period.from)) { toast.error('Укажите корректный рабочий период аудитории'); return }
+  const dates=(form.value.date_slot_overrides || []).map(p=>p.date)
+  if (dates.some(d=>!d) || new Set(dates).size!==dates.length) { toast.error('Укажите неповторяющиеся даты исключений'); return }
   saving.value = true
   const data = roomPayloadFromForm(form.value)
   const r = editItem.value ? await store.updateRoom(editItem.value.id, data) : await store.createRoom(data)

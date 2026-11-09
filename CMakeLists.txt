@@ -79,6 +79,9 @@ include(CTest)
 if (BUILD_TESTING)
     find_package(Python3 COMPONENTS Interpreter QUIET)
     if (Python3_Interpreter_FOUND)
+        add_test(NAME period_replacements_solver_regression
+            COMMAND "${Python3_EXECUTABLE}" "${CMAKE_SOURCE_DIR}/tests/test_period_replacements.py" "$<TARGET_FILE:timetable_solver>")
+        set_tests_properties(period_replacements_solver_regression PROPERTIES TIMEOUT 120)
         add_test(NAME idle_connection_api_regression
             COMMAND "${Python3_EXECUTABLE}" "${CMAKE_SOURCE_DIR}/tests/test_idle_api.py" "$<TARGET_FILE:timetable_solver>")
         set_tests_properties(idle_connection_api_regression PROPERTIES TIMEOUT 15)

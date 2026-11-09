@@ -48,6 +48,17 @@ struct Lesson {
     int group;
     int subgroup;       // -1 = вся группа, иначе 0/1 или 2/3
     int teacher;
+    // Scheduling identity may change by date; the workload teacher stays intact.
+    std::map<Date, int> date_teachers;
+    int TeacherOn(const Date& date) const {
+        const auto it = date_teachers.find(date);
+        return it == date_teachers.end() ? teacher : it->second;
+    }
+    std::set<int> SchedulingTeachers() const {
+        std::set<int> result{teacher};
+        for (const auto& entry : date_teachers) result.insert(entry.second);
+        return result;
+    }
     int total_slots;
     std::string name;
     int subject_id;     // для связки теория-лабы

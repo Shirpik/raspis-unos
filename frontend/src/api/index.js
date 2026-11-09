@@ -84,6 +84,7 @@ export const api = {
     bulkUpdate: (ids, patch, all = false) => request('PATCH', '/teachers/bulk', { ids, patch, all }),
   },
   lessons: {
+    patch: (id, d) => request('PATCH', `/lessons/${id}`, d),
     list: () => request('GET', '/lessons'),
     create: (d) => request('POST', '/lessons', d),
     update: (id, d) => request('PUT', `/lessons/${id}`, d),

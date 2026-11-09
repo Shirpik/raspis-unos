@@ -59,7 +59,7 @@ std::vector<AcademicEvent> Academic(const ScheduleInputData& data, const JsonVal
                     auto time = PairSlotInterval(DayOfWeek(date), pair - 1);
                     if (lesson->is_block && IsAllowedUpStartSlot(date, pair - 1))
                         time = UpIntervalForStartSlot(date, pair - 1);
-                    events.push_back({date, lesson->group, lesson->teacher,
+                    events.push_back({date, lesson->group, lesson->TeacherOn(date),
                         room ? room->id : -1, pair, room ? room->campus : -1, time, lesson->subgroup, lesson->is_block});
                 }
             }
