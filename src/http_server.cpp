@@ -2952,11 +2952,23 @@ void SendAll(SOCKET client, const std::string& data) {
     }
 }
 
+void SetClientTimeout(SOCKET client, int option, int seconds) {
+#ifdef _WIN32
+    const DWORD timeout = seconds * 1000;
+#else
+    const timeval timeout{seconds, 0};
+#endif
+    setsockopt(client, SOL_SOCKET, option,
+        reinterpret_cast<const char*>(&timeout), sizeof(timeout));
+}
+
 std::string ReceiveFullRequest(SOCKET client_socket) {
     std::string request;
     char buffer[8192];
     int received = recv(client_socket, buffer, sizeof(buffer), 0);
     if (received <= 0) return request;
+    // Once a request starts, allow uploads more time than an unused connection.
+    SetClientTimeout(client_socket, SO_RCVTIMEO, 15);
     request.append(buffer, received);
 
     size_t header_end = request.find("\r\n\r\n");
@@ -3033,6 +3045,11 @@ int RunApiServer(const std::string& host, int port, const std::string& output_di
             continue;
         }
 
+        // HTTP clients can preconnect without sending a request. This API
+        // serves sockets sequentially: never let one idle socket stop all API
+        // requests and container health checks indefinitely.
+        SetClientTimeout(client_socket, SO_RCVTIMEO, 1);
+        SetClientTimeout(client_socket, SO_SNDTIMEO, 15);
         std::string request = ReceiveFullRequest(client_socket);
         if (!request.empty()) {
             std::string response = HandleRequest(request, output_dir);
