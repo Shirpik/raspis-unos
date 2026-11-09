@@ -674,6 +674,10 @@ int main(int argc, char** argv) {
             !timetable::IsAvailable({2026,10,4}, 0, practice_data.unavailable) &&
             timetable::IsAvailable({2026,10,5}, 0, practice_data.unavailable),
         "practice must block both interval endpoints and allow return afterwards");
+    Require(practice_data.unavailable_day_texts.at(0).at({2026,9,14}) == "На практике" &&
+            practice_data.unavailable_day_texts.at(0).at({2026,10,4}) == "На практике" &&
+            !practice_data.unavailable_day_texts.at(0).count({2026,10,5}),
+        "practice label must cover the inclusive period without leaking into the return day");
     practice_root.At("groups").array_value[0].At("practice_periods").array_value.erase(
         practice_root.At("groups").array_value[0].At("practice_periods").array_value.begin());
     Require(timetable::LoadScheduleInputDataFromRoot(practice_root, practice_data, completed_lesson_error, false),

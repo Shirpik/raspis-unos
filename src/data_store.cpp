@@ -1682,11 +1682,14 @@ bool LoadScheduleInputDataFromRoot(const JsonValue& source, ScheduleInputData& d
     // Practice blocks the group in every generation mode and in final validation.
     for (const auto& group : data.groups) {
         for (const auto& week : group.academic_calendar)
-            if (week.pp_hours > 0) data.unavailable[group.id].push_back({week.from, week.to});
+            if (week.pp_hours > 0) {
+                data.unavailable[group.id].push_back({week.from, week.to});
+                AddTextForRange(data.unavailable_day_texts[group.id], week.from, week.to, "На практике");
+            }
         for (const auto& period : group.practice_periods) {
             data.unavailable[group.id].push_back(period);
             AddTextForRange(data.unavailable_day_texts[group.id], period.first, period.second,
-                            "Производственная практика");
+                            "На практике");
         }
     }
 

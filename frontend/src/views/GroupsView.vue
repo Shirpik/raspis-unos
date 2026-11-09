@@ -94,6 +94,7 @@
               <small v-if="g.teaching_deadline" class="deadline-note">Вычитать до {{ g.teaching_deadline }}</small>
             </td>
             <td class="actions">
+              <button class="btn btn-secondary btn-sm" @click="openPractice(g)">На практику</button>
               <button class="btn btn-ghost btn-sm" @click="openEdit(g)">
                 <Edit2 :size="16" />
               </button>
@@ -160,6 +161,13 @@
       <template #footer><button class="btn btn-ghost" @click="bulkModal=false">Отмена</button><button class="btn btn-primary" :disabled="saving" @click="saveBulk">Применить</button></template>
     </Modal>
 
+    <Modal v-model="practiceModal" :title="`Практика · ${practiceTarget?.name || ''}`">
+      <p class="bulk-note">Выберите даты включительно. В эти дни решатель не назначает группе пары и классные часы, в новом расписании будет «На практике». Обычные занятия должны быть вычитаны до начала производственной практики.</p>
+      <PracticeCalendarEditor v-model="practicePeriods" />
+      <p class="bulk-note">После сохранения перегенерируйте нужные даты. Уже сохранённое расписание автоматически не меняется.</p>
+      <template #footer><button class="btn btn-ghost" :disabled="saving" @click="practiceModal=false">Отмена</button><button class="btn btn-primary" :disabled="saving" @click="savePractice">{{ saving ? 'Сохраняю…' : 'Сохранить практику' }}</button></template>
+    </Modal>
+
     <Modal v-model="deleteModal" title="Удалить группу?">
       <p style="color:var(--text-secondary)">Группа <strong style="color:var(--text-primary)">{{ deleteTarget?.name }}</strong> будет удалена.</p>
       <template #footer>
@@ -193,6 +201,34 @@ const modalOpen = ref(false)
 const deleteModal = ref(false)
 const editItem = ref(null)
 const deleteTarget = ref(null)
+const practiceModal = ref(false), practiceTarget = ref(null), practicePeriods = ref([])
+function openPractice(group) {
+  practiceTarget.value = group
+  practicePeriods.value = (group.practice_periods || []).map(p => ({ ...p }))
+  if (!practicePeriods.value.length) {
+    const now = new Date()
+    const today = `${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,'0')}-${String(now.getDate()).padStart(2,'0')}`
+    practicePeriods.value.push({ from: today, to: today, kind: 'industrial' })
+  }
+  practiceModal.value = true
+}
+async function savePractice() {
+  if (practicePeriods.value.some(p => !p.from || !p.to || p.to < p.from)) {
+    toast.error('Укажите корректные даты начала и окончания практики'); return
+  }
+  saving.value = true
+  try {
+    const current = store.groups.find(g => g.id === practiceTarget.value.id)
+    if (!current) { toast.error('Группа больше не найдена'); return }
+    const payload = { ...JSON.parse(JSON.stringify(current)), practice_periods: practicePeriods.value.map(p => ({ ...p })) }
+    delete payload.id
+    delete payload.uid
+    const result = await store.updateGroup(current.id, payload)
+    if (result.ok) { practiceModal.value = false; readoutRevision.value++; toast.success('Периоды практики сохранены. Перегенерируйте нужные даты расписания.') }
+    else toast.error(result.data?.message || 'Не удалось сохранить практику')
+  } catch { toast.error('Не удалось сохранить практику') }
+  finally { saving.value = false }
+}
 const selected=ref([]), bulkModal=ref(false)
 const defaultDays=()=>Array.from({length:7},(_,i)=>({day:i+1,enabled:i<6,start_slot:1,end_slot:7}))
 const baseSchedule=()=>({work_period:{from:'',to:''},work_days:defaultDays()})
